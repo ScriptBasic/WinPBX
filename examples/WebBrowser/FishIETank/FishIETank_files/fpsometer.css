@@ -1,0 +1,33 @@
+#infoPanel {
+	top: 95px; width: 100px; text-align: center; right: 15px; color: black; font-family: Segoe UI, Verdana, Arial, Sans-Serif; font-size: 18px; text-decoration: none; position: absolute; z-index: 201; opacity: 1; background-color: rgb(75, 175, 225);
+}
+#fpsometer {
+	top: 45px; width: 100px; text-align: center; right: 15px; color: black; font-family: Segoe UI, Verdana, Arial, Sans-Serif; font-size: 20px; position: absolute; z-index: 203; background-color: rgba(0, 0, 0, 0);
+}
+#fpsCanvas {
+	top: 40px; text-align: center; right: 10px; font-family: Segoe UI, Verdana, Arial, Sans-Serif; font-size: 18px; position: absolute; z-index: 202;
+}
+.label {
+	color: rgb(40, 40, 40); font-size: 14px;
+}
+.data {
+	margin-top: 15px;
+}
+.control {
+	color: rgb(40, 40, 40); font-size: 14px;
+}
+.control a:link {
+	color: rgb(40, 40, 40);
+}
+.control a:visited {
+	color: rgb(40, 40, 40);
+}
+.meter {
+	font-size: 28px;
+}
+.meterLabel {
+	font-size: 14px; margin-top: -5px;
+}
+.settingsLabel {
+	color: rgb(40, 40, 40); font-size: 14px; margin-top: 15px; border-bottom-color: currentColor; border-bottom-width: 2px; border-bottom-style: none;
+}
