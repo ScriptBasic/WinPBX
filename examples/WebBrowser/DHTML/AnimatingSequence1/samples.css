@@ -1,0 +1,39 @@
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: Verdana,Arial,sans-serif; FONT-SIZE: 80%; PADDING-TOP: 0px
+}
+DIV.body {
+	MARGIN: 10pt
+}
+H1 {
+	BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 0.3em; FONT-FAMILY: Tahoma,Arial,sans-serif; MARGIN-BOTTOM: 1em; COLOR: #3366cc; FONT-SIZE: 1.3em
+}
+H2 {
+	FONT-FAMILY: Tahoma,Arial,sans-serif; COLOR: #3366cc; FONT-SIZE: 1.2em
+}
+H3 {
+	FONT-FAMILY: Tahoma,Arial,sans-serif; COLOR: #333366; FONT-SIZE: 1.1em
+}
+H4 {
+	FONT-FAMILY: Tahoma,Arial,sans-serif; COLOR: #333366; FONT-SIZE: 1em
+}
+TD {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: Verdana,Arial,sans-serif; FONT-SIZE: 80%; PADDING-TOP: 5px
+}
+TH {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-FAMILY: Verdana,Arial,sans-serif; FONT-SIZE: 80%; PADDING-TOP: 5px
+}
+.viewsource {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; PADDING-BOTTOM: 5px; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND: #e4e4e4; COLOR: black !important; FONT-SIZE: 8pt; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; PADDING-TOP: 5px
+}
+.copyright {
+	PADDING-BOTTOM: 5px; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; FONT-SIZE: 8pt; PADDING-TOP: 5px
+}
+A {
+	COLOR: #3366cc; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #333366
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
