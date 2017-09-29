@@ -1,0 +1,24 @@
+' ########################################################################################
+' Microsoft Windows
+' File: mimedisp.inc
+' Copyright (c) 2011 José Roca
+' Portions Copyright (c) Microsoft Corporation.
+' All Rights Reserved.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#INCLUDE THIS ONCE
+%MIMEDISP_INC = 1
+
+%DISPID_IMIMEEDIT_BASE       = 100
+
+%DISPID_IMIMEEDIT_SRC        = (%DISPID_IMIMEEDIT_BASE + 1)
+%DISPID_IMIMEEDIT_STYLE      = (%DISPID_IMIMEEDIT_BASE + 2)
+%DISPID_IMIMEEDIT_EDITMODE   = (%DISPID_IMIMEEDIT_BASE + 3)
+%DISPID_IMIMEEDIT_MSGSRC     = (%DISPID_IMIMEEDIT_BASE + 4)
+%DISPID_IMIMEEDIT_TEXT       = (%DISPID_IMIMEEDIT_BASE + 5)
+%DISPID_IMIMEEDIT_HTML       = (%DISPID_IMIMEEDIT_BASE + 6)
+%DISPID_IMIMEEDIT_CLEAR      = (%DISPID_IMIMEEDIT_BASE + 7)
+%DISPID_IMIMEEDIT_DOCUMENT   = (%DISPID_IMIMEEDIT_BASE + 8)
