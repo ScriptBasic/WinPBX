@@ -1,0 +1,13 @@
+2
+CCWIN
+.bas
+.Generic console program
+#COMPILE CON
+#DIM ALL
+#INCLUDE ONCE "windows.inc"
+
+FUNCTION PBMAIN () AS LONG
+
+   |
+
+END FUNCTION

@@ -1,0 +1,8 @@
+2
+PBWIN
+.bas
+.PowerBASIC SLL
+#COMPILE SLL
+#DIM ALL
+
+|

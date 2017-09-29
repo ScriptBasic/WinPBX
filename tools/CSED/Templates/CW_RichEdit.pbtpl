@@ -1,0 +1,96 @@
+2
+PBWIN
+.bas
+CWindow: Rich Edit Control Resizable
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+%USERICHEDIT = 1
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+%IDC_RICHEDIT = 101
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow with a resizable RichEdit control", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 500, 320
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a rich edit control without coordinates (it will be resized in WM_SIZE, below)
+   pWindow.AddRichEdit(pWindow.hwnd, %IDC_RICHEDIT, "RichEdit box", 0, 0, 0, 0)
+
+   ' // Add a button without coordinates (it will be resized in WM_SIZE, below)
+   pWindow.AddButton(pWindow.hwnd, %IDCANCEL, "&Close", 0, 0, 75, 23)
+
+   |
+
+   ' // Force reizing
+   pWindow.Resize
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the controls
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDC_RICHEDIT), 100, 50, pWindow.ClientWidth - 200, pWindow.ClientHeight - 150, %TRUE
+            pWIndow.MoveWindow GetDlgItem(hwnd, %IDCANCEL), pWindow.ClientWidth - 95, pWindow.ClientHeight - 35, 75, 23, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

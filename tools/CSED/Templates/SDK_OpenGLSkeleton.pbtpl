@@ -1,0 +1,429 @@
+2
+PBWIN
+.bas
+SDK Window: OpenGL Skeleton
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+#INCLUDE ONCE "glu.inc"
+
+$WindowCaption = "OpenGL Template"
+
+%GL_WINDOWWIDTH  = 640         ' Window width
+%GL_WINDOWHEIGHT = 480         ' Window height
+%GL_BITSPERPEL   = 16          ' Color resolution in bits per pixel
+%GL_DEPTHBITS    = 16          ' Depth of the depth (z-axis) buffer
+
+GLOBAL hDC AS LONG             ' Device context handle
+
+' =======================================================================================
+' All the setup goes here
+' =======================================================================================
+SUB SetupScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' // Specify clear values for the color buffers
+   glClearColor 0.0!, 0.0!, 0.0!, 0.0!
+   ' // Specify the clear value for the depth buffer
+   glClearDepth 1.0!
+   ' // Specify the value used for depth-buffer comparisons
+   glDepthFunc %GL_LESS
+   ' // Enable depth comparisons and update the depth buffer
+   glEnable %GL_DEPTH_TEST
+   ' // Select smooth shading
+   glShadeModel %GL_SMOOTH
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Resize the scene
+' =======================================================================================
+SUB ResizeScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' // Prevent divide by zero making height equal one
+   IF nHeight = 0 THEN nHeight = 1
+   ' // Reset the current viewport
+   glViewport 0, 0, nWidth, nHeight
+   ' // Select the projection matrix
+   glMatrixMode %GL_PROJECTION
+   ' // Reset the projection matrix
+   glLoadIdentity
+   ' // Calculate the aspect ratio of the window
+   gluPerspective 45.0!, nWidth / nHeight, 0.1!, 100.0!
+   ' // Select the model view matrix
+   glMatrixMode %GL_MODELVIEW
+   ' // Reset the model view matrix
+   glLoadIdentity
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Draw the scene
+' =======================================================================================
+SUB DrawScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' // Clear the screen buffer
+   glClear %GL_COLOR_BUFFER_BIT OR %GL_DEPTH_BUFFER_BIT
+   ' // Reset the view
+   glLoadIdentity
+
+   ' ------------------------------------------------------------------------------------
+   ' Insert your code here
+   ' ------------------------------------------------------------------------------------
+
+   |
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Cleanup
+' =======================================================================================
+SUB Cleanup (BYVAL hwnd AS DWORD)
+
+   ' ------------------------------------------------------------------------------------
+   ' Insert your code here
+   ' ------------------------------------------------------------------------------------
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Processes keystrokes
+' Parameters:
+' * hwnd = Window hande
+' * vKeyCode = Virtual key code
+' * bKeyDown = %TRUE if key is pressed; %FALSE if it is released
+' =======================================================================================
+SUB ProcessKeystrokes (BYVAL hwnd AS DWORD, BYVAL vKeyCode AS LONG, BYVAL bKeyDown AS LONG)
+
+   SELECT CASE AS LONG vKeyCode
+
+      CASE %VK_ESCAPE
+         ' // Quit if Esc key pressed
+         SendMessage hwnd, %WM_CLOSE, 0, 0
+
+   END SELECT
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Processes mouse clicks and movement
+' Parameters:
+' * hwnd      = Window hande
+' * wMsg      = Windows message
+' * wKeyState = Indicates whether various virtual keys are down.
+'               MK_CONTROL    The CTRL key is down.
+'               MK_LBUTTON    The left mouse button is down.
+'               MK_MBUTTON    The middle mouse button is down.
+'               MK_RBUTTON    The right mouse button is down.
+'               MK_SHIFT      The SHIFT key is down.
+'               MK_XBUTTON1   Windows 2000/XP: The first X button is down.
+'               MK_XBUTTON2   Windows 2000/XP: The second X button is down.
+' * x         = x-coordinate of the cursor
+' * y         = y-coordinate of the cursor
+' =======================================================================================
+SUB ProcessMouse (BYVAL hwnd AS DWORD, BYVAL wMsg AS DWORD, BYVAL wKeyState AS DWORD, BYVAL x AS LONG, BYVAL y AS LONG)
+
+   SELECT CASE wMsg
+
+      CASE %WM_LBUTTONDOWN
+
+      CASE %WM_LBUTTONUP
+
+      CASE %WM_MOUSEMOVE
+
+   END SELECT
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Main
+' =======================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   LOCAL  hwnd        AS DWORD
+   LOCAL  wcex        AS WNDCLASSEX
+   LOCAL  msg         AS tagMSG
+   LOCAL  rc          AS RECT
+   LOCAL  bDone       AS LONG
+   LOCAL  nLeft       AS LONG
+   LOCAL  nTop        AS LONG
+   LOCAL  nWidth      AS LONG
+   LOCAL  nHeight     AS LONG
+   LOCAL  dwStyle     AS DWORD
+   LOCAL  dwStyleEx   AS DWORD
+   STATIC vKeyCode    AS LONG
+   STATIC bKeyDown    AS LONG
+   LOCAL  t           AS DOUBLE
+   LOCAL  t0          AS DOUBLE
+   LOCAL  fps         AS DOUBLE
+   LOCAL  nFrames     AS LONG
+   LOCAL  dm          AS DEVMODE
+   LOCAL  bFullScreen AS LONG
+   LOCAL  lResult     AS LONG
+#IF %DEF(%UNICODE)
+   LOCAL  szClassName AS WSTRINGZ * 256
+   LOCAL  szCaption   AS WSTRINGZ * 256
+#ELSE
+   LOCAL  szClassName AS ASCIIZ * 256
+   LOCAL  szCaption   AS ASCIIZ * 256
+#ENDIF
+
+   ' Register the window class
+   szClassName        = "PBOPENGL"
+   wcex.cbSize        = SIZEOF(wcex)
+   wcex.style         = %CS_HREDRAW OR %CS_VREDRAW OR %CS_OWNDC
+   wcex.lpfnWndProc   = CODEPTR(WndProc)
+   wcex.cbClsExtra    = 0
+   wcex.cbWndExtra    = 0
+   wcex.hInstance     = hInstance
+   wcex.hCursor       = LoadCursor (%NULL, BYVAL %IDC_ARROW)
+   wcex.hbrBackground = %NULL
+   wcex.lpszMenuName  = %NULL
+   wcex.lpszClassName = VARPTR(szClassName)
+   wcex.hIcon         = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)
+   wcex.hIconSm       = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)
+   RegisterClassEx wcex
+
+   ' // Ask the user which screen mode he prefers
+   lResult = MessageBox(%NULL, "Would you like to run in fullscreen mode?", _
+             "Start fullScreen?", %MB_YESNOCANCEL OR %MB_ICONQUESTION)
+   SELECT CASE lResult
+      CASE %IDCANCEL : EXIT FUNCTION
+      CASE %IDYES    : bFullScreen = %TRUE
+      CASE %IDNO     : bFullScreen = %FALSE
+   END SELECT
+
+   ' // Window size
+   nWidth  = %GL_WINDOWWIDTH
+   nHeight = %GL_WINDOWHEIGHT
+
+   IF bFullScreen THEN
+      ' // Change display settings
+      dm.dmSize       = SIZEOF(dm)
+      dm.dmPelsWidth  = nWidth
+      dm.dmPelsHeight = nHeight
+      dm.dmBitsPerPel = %GL_BITSPERPEL
+      dm.dmFields     = %DM_BITSPERPEL OR %DM_PELSWIDTH OR %DM_PELSHEIGHT
+      IF ChangeDisplaySettings(dm, %CDS_FULLSCREEN) = 0 THEN ShowCursor %FALSE
+   END IF
+
+   ' // Window caption
+   szCaption = $WindowCaption
+
+   ' // Window styles
+   IF ISFALSE bFullScreen THEN
+      dwStyle = %WS_OVERLAPPEDWINDOW
+      dwStyleEx = %WS_EX_APPWINDOW OR %WS_EX_WINDOWEDGE
+   ELSE
+      dwStyle = %WS_POPUP
+      dwStyleEx = %WS_EX_APPWINDOW
+   END IF
+
+   ' // Create the window
+   hwnd = CreateWindowEx( _
+            dwStyleEx, _                      ' extended styles
+            szClassName, _                    ' window class name
+            szCaption, _                      ' window caption
+            dwStyle, _                        ' window style
+            nLeft, _                          ' initial x position
+            nTop, _                           ' initial y position
+            nWidth, _                         ' initial x size
+            nHeight, _                        ' initial y size
+            %NULL, _                          ' parent window handle
+            0, _                              ' window menu handle
+            hInstance, _                      ' program instance handle
+            BYVAL %NULL)                      ' creation parameters
+
+   ' // Retrieve the coordinates of the window's client area
+   GetClientRect hwnd, rc
+   ' // Initialize the new OpenGl window
+   SetupScene hwnd, rc.Right - rc.Left, rc.Bottom - rc.Top
+
+   ' // Show the window
+   ShowWindow hwnd, nCmdShow
+   UpdateWindow hwnd
+
+   DO UNTIL bDone
+
+      ' // Windows message pump
+      DO WHILE PeekMessage(msg, %NULL, 0, 0, %PM_REMOVE)
+         IF msg.message = %WM_QUIT THEN
+            bDone = %TRUE
+         ELSE
+            IF msg.message = %WM_KEYDOWN THEN
+               vKeyCode = msg.wParam
+               bKeyDown = %TRUE
+            ELSEIF msg.message = %WM_KEYUP THEN
+               vKeyCode = msg.wParam
+               bKeyDown = %FALSE
+            END IF
+            TranslateMessage msg
+            DispatchMessage msg
+         END IF
+      LOOP
+
+      IF ISFALSE bFullScreen THEN
+         ' // Get time and mouse position
+         t = INT(TIMER)
+         ' // Calculate and display FPS (frames per second)
+         IF t > t0 OR nFrames = 0 THEN
+            fps = nFrames \ (t - t0)
+            wsprintf szCaption, $WindowCaption & " (%i FPS)", BYVAL fps
+            SetWindowText hwnd, szCaption
+            t0 = t
+            nFrames = 0
+         END IF
+         nFrames = nFrames + 1
+      END IF
+
+      ' // Draw the scene
+      DrawScene hwnd, nWidth, nHeight
+      ' // Exchange the front and back buffers
+      SwapBuffers hDC
+
+      ' // Process the keystrokes
+      IF vKeyCode THEN
+         ProcessKeystrokes hwnd, vKeyCode, bKeyDown
+         vKeyCode = 0
+      END IF
+
+   LOOP
+
+   ' // Retore defaults
+   IF bFullScreen THEN
+      ChangeDisplaySettings BYVAL %NULL, 0
+      ShowCursor %TRUE
+   END IF
+
+   FUNCTION = msg.wParam
+
+END FUNCTION
+' =======================================================================================
+
+' =======================================================================================
+' Main window procedure
+' =======================================================================================
+FUNCTION WndProc (BYVAL hwnd AS DWORD, BYVAL wMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   LOCAL  pf  AS LONG
+   LOCAL  pfd AS PIXELFORMATDESCRIPTOR
+   STATIC hRC AS LONG
+
+   SELECT CASE wMsg
+
+      CASE %WM_SYSCOMMAND
+
+         ' // Disable the Windows screensaver
+         IF (wParam AND &HFFF0) = %SC_SCREENSAVE THEN EXIT FUNCTION
+
+         ' // Close the window
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_CREATE
+
+         ' // Retrieve the device context handle
+         hDC = GetDC(hwnd)
+
+         ' // Fill the PIXELFORMATDESCRIPTOR structure
+         pfd.nSize           = SIZEOF(PIXELFORMATDESCRIPTOR)   ' Size of the structure
+         pfd.nVersion        = 1                               ' Version number
+         pfd.dwFlags         = %PFD_DRAW_TO_WINDOW _           ' Format must support window
+                               OR %PFD_SUPPORT_OPENGL _        ' Format must support OpenGL
+                               OR %PFD_DOUBLEBUFFER            ' Format must support double buffering
+         pfd.iPixelType      = %PFD_TYPE_RGBA                  ' Request an RGBA format
+         pfd.cColorBits      = %GL_BITSPERPEL                  ' Number of color bitplanes in each color buffer
+         pfd.cRedBits        = 0                               ' Number of red bitplanes in each RGBA color buffer.
+         pfd.cRedShift       = 0                               ' Shift count for red bitplanes in each RGBA color buffer.
+         pfd.cGreenBits      = 0                               ' Number of green bitplanes in each RGBA color buffer.
+         pfd.cGreenShift     = 0                               ' Shift count for green bitplanes in each RGBA color buffer.
+         pfd.cBlueBits       = 0                               ' Number of blue bitplanes in each RGBA color buffer.
+         pfd.cBlueShift      = 0                               ' Shift count for blue bitplanes in each RGBA color buffer.
+         pfd.cAlphaBits      = 0                               ' Number of alpha bitplanes in each RGBA color buffer
+         pfd.cAlphaShift     = 0                               ' Shift count for alpha bitplanes in each RGBA color buffer.
+         pfd.cAccumBits      = 0                               ' Total number of bitplanes in the accumulation buffer.
+         pfd.cAccumRedBits   = 0                               ' Number of red bitplanes in the accumulation buffer.
+         pfd.cAccumGreenBits = 0                               ' Number of gree bitplanes in the accumulation buffer.
+         pfd.cAccumBlueBits  = 0                               ' Number of blue bitplanes in the accumulation buffer.
+         pfd.cAccumAlphaBits = 0                               ' Number of alpha bitplanes in the accumulation buffer.
+         pfd.cDepthBits      = %GL_DEPTHBITS                   ' Depth of the depth (z-axis) buffer.
+         pfd.cStencilBits    = 0                               ' Depth of the stencil buffer.
+         pfd.cAuxBuffers     = 0                               ' Number of auxiliary buffers.
+         pfd.iLayerType      = %PFD_MAIN_PLANE                 ' Ignored. Earlier implementations of OpenGL used this member, but it is no longer used.
+         pfd.bReserved       = 0                               ' Number of overlay and underlay planes.
+         pfd.dwLayerMask     = 0                               ' Ignored. Earlier implementations of OpenGL used this member, but it is no longer used.
+         pfd.dwVisibleMask   = 0                               ' Transparent color or index of an underlay plane.
+         pfd.dwDamageMask    = 0                               ' Ignored. Earlier implementations of OpenGL used this member, but it is no longer used.
+
+         ' // Find a matching pixel format
+         pf = ChoosePixelFormat(hDC, pfd)
+         IF ISFALSE pf THEN
+            MessageBox hwnd, "Can't find a suitable pixel format", _
+                       "Error", %MB_OK OR %MB_ICONEXCLAMATION
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+         ' // Set the pixel format
+         IF ISFALSE SetPixelFormat(hDC, pf, pfd) THEN
+            MessageBox hwnd, "Can't set the pixel format", _
+                       "Error", %MB_OK OR %MB_ICONEXCLAMATION
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+         ' // Create a new OpenGL rendering context
+         hRC = wglCreateContext(hDC)
+         IF ISFALSE hRC THEN
+            MessageBox hwnd, "Can't create an OpenGL rendering context", _
+                       "Error", %MB_OK OR %MB_ICONEXCLAMATION
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+         ' // Make it current
+         IF ISFALSE wglMakeCurrent(hDC,hRC) THEN
+            MessageBox hwnd, "Can't activate the OpenGL rendering context", _
+                       "Error", %MB_OK OR %MB_ICONEXCLAMATION
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+         EXIT FUNCTION
+
+      CASE %WM_DESTROY
+         ' // Clear resources
+         Cleanup hwnd
+         ' // Release the device and rendering contexts
+         wglMakeCurrent hDC, 0
+         ' // Make the rendering context no longer current
+         wglDeleteContext hRC
+         ' // Release the device context
+         ReleaseDC hwnd, hDC
+         ' // Post an WM_QUIT message
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+      CASE %WM_SIZE
+         ResizeScene hwnd, LO(WORD, lParam), HI(WORD, lParam)
+         EXIT FUNCTION
+
+      CASE %WM_LBUTTONDOWN, %WM_LBUTTONUP, %WM_MOUSEMOVE
+         ProcessMouse hwnd, wMsg, wParam, LO(WORD, lParam), HI(WORD, lParam)
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Call the default window procedure to process unhandled messages
+   FUNCTION = DefWindowProc(hwnd, wMsg, wParam, lParam)
+
+END FUNCTION
+' =======================================================================================

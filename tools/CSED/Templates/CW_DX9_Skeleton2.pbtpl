@@ -1,0 +1,230 @@
+2
+PBWIN
+.bas
+CWindow: DirectX9 Skeleton (Class)
+' ########################################################################################
+' Microsoft Windows
+' File: CW_DX9_Skeleton2.bas
+' Contents: Template - CWindow DirectX9 sekeleton
+' Description: Demonstrates how to initialize Direct3D.
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk
+' ########################################################################################
+
+' CSED_PBWIN - Use the PBWIN compiler
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+#INCLUDE ONCE "CWindow.inc"
+' DirectX End-User Runtimes (June 2010)
+' http://www.microsoft.com/download/en/confirmation.aspx?id=8109
+$D3DX_DLLNAME = "d3dx9_43.dll"   ' --> change as needed
+#INCLUDE ONCE "D3DX9.INC"
+
+$WindowCaption = "Direct3D (DX9) - Initialization"
+
+GLOBAL pDX9 AS IDX9
+
+' =======================================================================================
+' DX9 class
+' =======================================================================================
+CLASS CDX9
+
+   INSTANCE m_pD3D AS IDirect3D9
+   INSTANCE m_pD3DDevice AS IDirect3DDevice9
+   INSTANCE m_d3ddm AS D3DDISPLAYMODE
+   INSTANCE m_d3dpp AS D3DPRESENT_PARAMETERS
+
+   ' =====================================================================================
+   INTERFACE IDX9 : INHERIT IUnknown
+   ' =====================================================================================
+
+   ' =====================================================================================
+   ' Initializes DirectX9
+   ' =====================================================================================
+   METHOD InitD3D (BYVAL hwnd AS DWORD) AS LONG
+
+      LOCAL hr AS LONG
+
+      ' // Creates an IDirect3D9 object and returns an interface to it
+      m_pD3D = Direct3DCreate9(%D3D_SDK_VERSION)
+      ' // TO DO: Respond to failure of Direct3DCreate9
+      IF ISNOTHING(m_pD3D) THEN EXIT METHOD
+
+      ' // Retrieves the current display mode of the adapter
+      LOCAL d3ddm AS D3DDISPLAYMODE
+      hr = m_pD3D.GetAdapterDisplayMode(%D3DADAPTER_DEFAULT, m_d3ddm)
+      ' // TO DO: Respond to failure of GetAdapterDisplayMode
+      IF hr <> %D3D_OK THEN EXIT METHOD
+
+      hr = m_pD3D.CheckDeviceFormat(%D3DADAPTER_DEFAULT, %D3DDEVTYPE_HAL, _
+                                    d3ddm.Format, %D3DUSAGE_DEPTHSTENCIL, _
+                                    %D3DRTYPE_SURFACE, %D3DFMT_D16)
+      IF FAILED(hr) THEN
+         IF hr = %D3DERR_NOTAVAILABLE THEN
+            ' // POTENTIAL PROBLEM: We need at least a 16-bit z-buffer!
+            EXIT METHOD
+         END IF
+      END IF
+
+      ' // Do we support hardware vertex processing? if so, use it.
+      ' // If not, downgrade to software.
+      LOCAL dCaps AS D3DCAPS9
+      IF FAILED(m_pD3D.GetDeviceCaps(%D3DADAPTER_DEFAULT, _
+                                     %D3DDEVTYPE_HAL, dCaps)) THEN
+         ' // TO DO: Respond to failure of GetDeviceCaps
+         EXIT METHOD
+      END IF
+
+      LOCAL dwBehaviorFlags AS DWORD
+      IF dCaps.VertexProcessingCaps <> 0 THEN
+         dwBehaviorFlags = %D3DCREATE_HARDWARE_VERTEXPROCESSING
+      ELSE
+         dwBehaviorFlags = %D3DCREATE_SOFTWARE_VERTEXPROCESSING
+      END IF
+
+      ' // Everything checks out - create a simple, windowed device.
+
+      ' // Creates a device to represent the display adapter
+      m_d3dpp.Windowed               = %TRUE
+      m_d3dpp.SwapEffect             = %D3DSWAPEFFECT_DISCARD
+      m_d3dpp.BackBufferFormat       = m_d3ddm.Format
+      m_d3dpp.EnableAutoDepthStencil = %TRUE
+      m_d3dpp.AutoDepthStencilFormat = %D3DFMT_D16
+      m_d3dpp.PresentationInterval   = %D3DPRESENT_INTERVAL_IMMEDIATE
+
+      hr = m_pD3D.CreateDevice (%D3DADAPTER_DEFAULT, %D3DDEVTYPE_HAL, hwnd, _
+                                %D3DCREATE_SOFTWARE_VERTEXPROCESSING, m_d3dpp, m_pD3DDevice)
+      ' // TO DO: Respond to failure of CreateDevice
+      IF hr <> %D3D_OK THEN EXIT METHOD
+
+      ' // Return success
+      METHOD = %TRUE
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   ' Renders the scene
+   ' =====================================================================================
+   METHOD RenderD3DScene
+
+      m_pD3DDevice.Clear(0, BYVAL %NULL, %D3DCLEAR_TARGET OR %D3DCLEAR_ZBUFFER, _
+         D3DCOLOR_COLORVALUE(0.0!,0.0!,1.0!,1.0!), 1.0!, 0)
+
+      m_pD3DDevice.BeginScene
+
+      ' // Render geometry here...
+
+      m_pD3DDevice.EndScene
+
+      m_pD3DDevice.Present(BYVAL %NULL, BYVAL %NULL, %NULL, BYVAL %NULL)
+
+   END METHOD
+   ' =====================================================================================
+
+   END INTERFACE
+
+END CLASS
+' =======================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Create an instance of the CWindow class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create an instance of the DX9 class
+   pDX9 = CLASS "CDX9"
+   IF ISNOTHING(pDX9) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   LOCAL hwnd AS DWORD
+   hwnd = pWindow.CreateWindow(%NULL, $WindowCaption, 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Change the class style to remove flicker
+   pWindow.ClassStyle = %CS_DBLCLKS
+   ' // Set the client size
+   pWindow.SetClientSize 600, 400
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Initialize DX9
+   IF ISFALSE pDX9.InitD3D(hwnd) THEN EXIT FUNCTION
+
+   ' // Set the timer
+   SetTimer(hwnd, 1, 0, %NULL)
+
+   ' // Show the window
+   ShowWindow hwnd, nCmdShow
+   UpdateWindow hwnd
+
+   ' // Message loop
+   LOCAL uMsg AS tagMsg
+   WHILE GetMessage(uMsg, %NULL, 0, 0)
+      TranslateMessage uMsg
+      DispatchMessage uMsg
+   WEND
+
+   ' // Kill the timer
+   KillTimer(hwnd, 1)
+
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main window procedure callback
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL wMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE wMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_SYSCOMMAND
+         ' // Disable the Windows screensaver
+         IF (wParam AND &HFFF0) = %SC_SCREENSAVE THEN EXIT FUNCTION
+         ' // Close the window
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_TIMER
+         ' // Render the scene
+         pDX9.RenderD3DScene
+         EXIT FUNCTION
+
+      CASE %WM_KEYDOWN
+         SELECT CASE LO(WORD, wParam)
+            CASE %VK_ESCAPE
+               SendMessage hwnd, %WM_CLOSE, 0, 0
+               EXIT FUNCTION
+         END SELECT
+
+      CASE %WM_DESTROY
+         ' // Destroy the class
+         pDX9 = NOTHING
+         ' // Close the application by sending a WM_QUIT message
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hWnd, wMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

@@ -1,0 +1,270 @@
+2
+PBWIN
+.bas
+CWindow: Web GUI
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+%USEWEBBROWSER = 1             ' // Use the WebBrowser control
+#INCLUDE ONCE "CWindow.inc"    ' // CWindow class
+
+' // Identifier
+%IDC_WEBBROWSER = 101
+
+' ########################################################################################
+' Main
+' ########################################################################################
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "AddWebBrowser Template: Web GUI", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 550, 350
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a WebBrowser control
+   LOCAL hCtl AS DWORD
+   LOCAL s AS WSTRING
+
+   ' // Build the web page
+   s  = "MSHTML:<!DOCTYPE html>" & $CRLF
+   s += "<html>" & $CRLF
+   s += "<head>" & $CRLF
+   s +=    "<meta http-equiv='MSThemeCompatible' content='yes'>" & $CRLF
+   s += "   <title>WebGui</title>" & $CRLF
+   s += "" & $CRLF
+   s += "   <style type='text/css'>" & $CRLF
+   s += "      <!--" & $CRLF
+   s += "" & $CRLF
+   s += "      #output" & $CRLF
+   s += "      {" & $CRLF
+   s += "         background: #FFFFCC;" & $CRLF
+   s += "         border: thin solid black;" & $CRLF
+   s += "         text-align: center;" & $CRLF
+   s += "         width: 300px;" & $CRLF
+   s += "      }" & $CRLF
+   s += "      -->" & $CRLF
+   s += "   </style>" & $CRLF
+   s += "" & $CRLF
+   s += "</head>" & $CRLF
+   s += "<body scroll='no'>" & $CRLF
+   s += "   <input type ='Button' id='Button_1' name='Button_1' value='Button 1'><br />" & $CRLF
+   s += "   <input type ='Button' id='Button_2' name='Button_2' value='Button 2'><br />" & $CRLF
+   s += "   <input type ='Button' id='Button_3' name='Button_3' value='Button 3'><br />" & $CRLF
+   s += "   <input type ='Button' id='Button_4' name='Button_4' value='Button 4'><br />" & $CRLF
+   s += "   <br />" & $CRLF
+   s += "   <div id='output'>" & $CRLF
+   s += "   Click a button" & $CRLF
+   s += "   </div>" & $CRLF
+   s += "   <br />" & $CRLF
+   s += "   <br />" & $CRLF
+   s += "   <input type='Text' id='Input_Text' name='Input_Text' value='' size=40><br />" & $CRLF
+   s += "   <br />" & $CRLF
+   s += "   <input type ='Button' id='Button_GetText' name='Button_GetTex' value='Get text'><br />" & $CRLF
+   s += "</body>" & $CRLF
+   s += "</html>" & $CRLF
+
+   ' // Create an instance of the event class
+   LOCAL pWBEvents AS DWebBrowserEvents2Impl
+   pWBEvents = CLASS "CDWebBrowserEvents2"
+
+   ' // Create the control
+   hCtl = pWindow.AddWebBrowserControl(pWindow.hwnd, %IDC_WEBBROWSER, s, pWBEvents, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   SetFocus hCtl
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ########################################################################################
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_SYSCOMMAND
+         ' // Capture this message and send a WM_CLOSE message
+         ' // Note: Needed with some OCXs, that otherwise remain in memory
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the control
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDC_WEBBROWSER), 0, 0, pWindow.ClientWidth, pWindow.ClientHeight, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ########################################################################################
+' Class CDWebBrowserEvents2
+' Interface name = DWebBrowserEvents2
+' IID = {34A715A0-6587-11D0-924A-0020AFC7AC4D}
+' Web Browser Control events interface
+' Attributes = 4112 [&H1010] [Hidden] [Dispatchable]
+' ########################################################################################
+
+CLASS CDWebBrowserEvents2 GUID$("{700B73A2-CCFC-4FE0-B9AC-D5853D71B7B9}") AS EVENT
+
+   INSTANCE pIWebBrowser2 AS IWebBrowser2
+   INSTANCE pHTMLDocumentEvents2 AS HTMLDocumentEvents2Impl
+
+   ' =====================================================================================
+   CLASS METHOD Destroy
+      ' // Disconnect events
+      IF ISOBJECT(pHTMLDocumentEvents2) THEN EVENTS END pHTMLDocumentEvents2
+   END METHOD
+   ' =====================================================================================
+
+' ========================================================================================
+' Implementation of the interface
+' ========================================================================================
+INTERFACE DWebBrowserEvents2Impl GUID$("{34A715A0-6587-11D0-924A-0020AFC7AC4D}") AS EVENT
+
+  INHERIT IDispatch
+
+   ' =====================================================================================
+   ' Note  It would be more appropriate to use the DocumentComplete event, but this
+   ' event isn't fired. See: BUG: DocumentComplete Does Not Fire When WebBrowser Is Not Visible
+   ' http://support.microsoft.com/kb/q259935/
+   ' =====================================================================================
+   METHOD DownloadComplete <104>
+
+      ' // Get a reference to the IHTMLDocument2 interface
+      LOCAL pHTMLDocument2 AS IHTMLDocument2
+      pHTMLDocument2 = pIWebBrowser2.Document
+      IF ISNOTHING(pHTMLDocument2) THEN EXIT METHOD
+      ' // Connect to the events fired by the page
+      IF ISOBJECT(pHTMLDocumentEvents2) THEN EXIT METHOD
+      pHTMLDocumentEvents2 = CLASS "CHTMLDocumentEvents2"
+      IF ISNOTHING(pHTMLDocumentEvents2) THEN EXIT METHOD
+      EVENTS FROM pHTMLDocument2 CALL pHTMLDocumentEvents2
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD BeforeNavigate2 <250> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF vURL AS VARIANT _                            ' __in VARIANT* URL
+   , BYREF vFlags AS VARIANT _                          ' __in VARIANT* Flags
+   , BYREF vTargetFrameName AS VARIANT _                ' __in VARIANT* TargetFrameName
+   , BYREF vPostData AS VARIANT _                       ' __in VARIANT* PostData
+   , BYREF vHeaders AS VARIANT _                        ' __in VARIANT* Headers
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+      ' Get a reference to the WebBrowser control
+      IF ISNOTHING(pIWebBrowser2) THEN pIWebBrowser2 = pDisp
+      IF ISNOTHING(pIWebBrowser2) THEN EXIT METHOD
+      ' If there was a previous loaded page, disconnect from the events
+      IF ISOBJECT(pHTMLDocumentEvents2) THEN
+         EVENTS END pHTMLDocumentEvents2
+         pHTMLDocumentEvents2 = NOTHING
+      END IF
+
+   END METHOD
+   ' =====================================================================================
+
+END INTERFACE
+
+END CLASS
+' ########################################################################################
+
+
+' ########################################################################################
+' Class CHTMLDocumentEvents2
+' Interface name = HTMLDocumentEvents2
+' IID = {3050F613-98B5-11CF-BB82-00AA00BDCE0B}
+' Attributes = 4112 [&H1010] [Hidden] [Dispatchable]
+' ########################################################################################
+
+CLASS CHTMLDocumentEvents2 GUID$("{1FFB0071-8BCC-4BBD-BC29-A662FAE87C82}") AS EVENT
+
+INTERFACE HTMLDocumentEvents2Impl GUID$("{3050F613-98B5-11CF-BB82-00AA00BDCE0B}") AS EVENT
+
+  INHERIT IDispatch
+
+   ' =====================================================================================
+   METHOD onclick <-600> ( _
+     BYVAL pEvtObj AS IHTMLEventObj _                   ' __in IHTMLEventObj* pEvtObj
+   )                                                    ' void
+
+      LOCAL pElement AS IHTMLElement           ' // Element that has fired the event
+      LOCAL pHTMLDocument2 AS IHTMLDocument2   ' // Document object
+      LOCAL bstrId AS WSTRING                  ' // Identifier of the element that has fired the event
+      LOCAL bstrValue AS WSTRING               ' // Value of the property
+
+      ' // Get a reference to the element that has fired the event
+      IF ISOBJECT(pEvtObj) THEN pElement = pEvtObj.srcElement
+      IF ISNOTHING(pElement) THEN EXIT METHOD
+
+      ' // Get a reference to the IHTMLDocument2 interface
+      pHTMLDocument2 = pElement.document
+      IF ISNOTHING(pHTMLDocument2) THEN EXIT METHOD
+
+      ' // Get the identifier of the element that has fired the event
+      bstrId = pElement.id
+
+      SELECT CASE bstrId
+         CASE "Button_1", "Button_2", "Button_3", "Button_4"
+            IHTMLDocument_setElementInnerHtmlById pHTMLDocument2, "output", "You have clicked " & bstrId
+         CASE "Button_GetText"
+            bstrValue = IHTMLDocument_getElementValueById(pHTMLDocument2, "Input_Text")
+            MSGBOX bstrValue
+      END SELECT
+
+   END METHOD
+   ' =====================================================================================
+
+END INTERFACE
+
+END CLASS
+' ########################################################################################

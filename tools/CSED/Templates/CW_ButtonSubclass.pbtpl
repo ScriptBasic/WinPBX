@@ -1,0 +1,119 @@
+2
+PBWIN
+.bas
+CWindow: Button Subclass
+' ########################################################################################
+' Microsoft Windows
+' File: CW_ButtonSubclass.pbtpl
+' Contents: Template - CWindow with a subclassed button
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   ' // Note: CW_USEDEFAULT is used as the default value When passing 0's as the width and height
+   pWindow.CreateWindow(%NULL, "CWindow with a subclassed button", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 500, 320
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a subclassed button without coordinates (it will be reiszed in WM_SIZE, below)
+   pWindow.AddButton(pWindow.hwnd, %IDCANCEL, "&Close", 0, 0, 75, 23, 0, 0, CODEPTR(TextBtn_SubclassProc))
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the sample button
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDCANCEL), pWindow.ClientWidth - 120, pWindow.ClientHeight - 50, 75, 23, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Processes messages for the subclassed Button window.
+' ========================================================================================
+FUNCTION TextBtn_SubclassProc ( _
+   BYVAL hwnd   AS DWORD, _                 ' // Control window handle
+   BYVAL uMsg   AS DWORD, _                 ' // Type of message
+   BYVAL wParam AS DWORD, _                 ' // First message parameter
+   BYVAL lParam AS LONG _                   ' // Second message parameter
+   ) AS LONG
+
+   SELECT CASE uMsg
+      CASE %WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         SetWindowLong hwnd, %GWL_WNDPROC, RemoveProp(hwnd, "OLDWNDPROC")
+   END SELECT
+
+   FUNCTION = CallWindowProc(GetProp(hwnd, "OLDWNDPROC"), hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

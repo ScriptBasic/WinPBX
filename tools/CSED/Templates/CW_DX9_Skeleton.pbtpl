@@ -1,0 +1,204 @@
+2
+PBWIN
+.bas
+CWindow: DirectX9 Skeleton
+' ########################################################################################
+' Microsoft Windows
+' File: CW_DX9_Skeleton.pbtpl
+' Contents: Template - CWindow DirectX9 sekeleton
+' Compilers: PBWIN 10, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+#INCLUDE ONCE "CWindow.inc"
+$D3DX_DLLNAME = "d3dx9_35.dll"   ' --> change as needed
+#INCLUDE ONCE "D3DX9.INC"
+
+GLOBAL g_hWnd AS DWORD
+GLOBAL g_pD3D AS IDirect3D9
+GLOBAL g_pD3DDevice AS IDirect3DDevice9
+
+' ========================================================================================
+' Initializes Direct3D
+' ========================================================================================
+FUNCTION InitD3D() AS LONG
+
+   LOCAL hr AS LONG
+   LOCAL d3ddm AS D3DDISPLAYMODE
+
+   g_pD3D = Direct3DCreate9(%D3D_SDK_VERSION)
+   ' // TO DO: Respond to failure of Direct3DCreate9
+   IF ISNOTHING(g_pD3D) THEN EXIT FUNCTION
+
+   IF FAILED(g_pD3D.GetAdapterDisplayMode(%D3DADAPTER_DEFAULT, d3ddm)) THEN
+      ' // TO DO: Respond to failure of GetAdapterDisplayMode
+      EXIT FUNCTION
+   END IF
+
+   hr = g_pD3D.CheckDeviceFormat(%D3DADAPTER_DEFAULT, %D3DDEVTYPE_HAL, _
+                                 d3ddm.Format, %D3DUSAGE_DEPTHSTENCIL, _
+                                 %D3DRTYPE_SURFACE, %D3DFMT_D16)
+   IF FAILED(hr) THEN
+      IF hr = %D3DERR_NOTAVAILABLE THEN
+         ' // POTENTIAL PROBLEM: We need at least a 16-bit z-buffer!
+         EXIT FUNCTION
+      END IF
+   END IF
+
+   ' //
+   ' // Do we support hardware vertex processing? if so, use it.
+   ' // If not, downgrade to software.
+   ' //
+
+   LOCAL dCaps AS D3DCAPS9
+
+   IF FAILED(g_pD3D.GetDeviceCaps(%D3DADAPTER_DEFAULT, _
+                                  %D3DDEVTYPE_HAL, dCaps)) THEN
+      ' // TO DO: Respond to failure of GetDeviceCaps
+      EXIT FUNCTION
+   END IF
+
+   LOCAL dwBehaviorFlags AS DWORD
+
+   IF dCaps.VertexProcessingCaps <> 0 THEN
+      dwBehaviorFlags = %D3DCREATE_HARDWARE_VERTEXPROCESSING
+   ELSE
+      dwBehaviorFlags = %D3DCREATE_SOFTWARE_VERTEXPROCESSING
+   END IF
+
+   ' //
+   ' // Everything checks out - create a simple, windowed device.
+   ' //
+
+   LOCAL d3dpp AS D3DPRESENT_PARAMETERS
+
+   d3dpp.Windowed               = %TRUE
+   d3dpp.SwapEffect             = %D3DSWAPEFFECT_DISCARD
+   d3dpp.BackBufferFormat       = d3ddm.Format
+   d3dpp.EnableAutoDepthStencil = %TRUE
+   d3dpp.AutoDepthStencilFormat = %D3DFMT_D16
+   d3dpp.PresentationInterval   = %D3DPRESENT_INTERVAL_IMMEDIATE
+
+   IF FAILED(g_pD3D.CreateDevice(%D3DADAPTER_DEFAULT, _
+                                 %D3DDEVTYPE_HAL, _
+                                 g_hWnd, _
+                                 dwBehaviorFlags, _
+                                 d3dpp, _
+                                 g_pD3DDevice)) THEN
+      ' // TO DO: Respond to failure of CreateDevice
+   END IF
+
+   FUNCTION = %TRUE
+
+END FUNCTION
+
+' ========================================================================================
+' Renders the scene
+' ========================================================================================
+SUB RenderD3DScene
+
+   g_pD3DDevice.Clear(0, BYVAL %NULL, %D3DCLEAR_TARGET OR %D3DCLEAR_ZBUFFER, _
+      D3DCOLOR_COLORVALUE(0.0!,0.0!,1.0!,1.0!), 1.0!, 0)
+
+   g_pD3DDevice.BeginScene
+
+   ' // Render geometry here...
+   |
+
+   g_pD3DDevice.EndScene
+
+   g_pD3DDevice.Present(BYVAL %NULL, BYVAL %NULL, %NULL, BYVAL %NULL)
+
+END SUB
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS LONG, BYVAL hPrevInstance AS LONG, BYVAL lpCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the window
+   g_hwnd = pWindow.CreateWindow(%NULL, "Direct3D (DX9) - Initialization", 0, 0, 0, 0, 0, 0, CODEPTR(WndProc))
+   ' // Set the client size
+   pWindow.SetClientSize 600, 400
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Show the window
+   ShowWindow g_hwnd, nCmdShow
+   ' // Update its client area
+   UpdateWindow g_hwnd
+
+   IF ISFALSE InitD3D THEN EXIT FUNCTION
+
+   ' // Set the timer
+   SetTimer(g_hwnd, 1, 0, %NULL)
+
+   ' // Message loop
+   LOCAL uMsg AS tagMsg
+   WHILE GetMessage(uMsg, %NULL, 0, 0)
+      TranslateMessage uMsg
+      DispatchMessage uMsg
+   WEND
+
+   ' // Kill the timer
+   KillTimer(g_hwnd, 1)
+
+END FUNCTION
+
+' ========================================================================================
+' Main window procedure callback
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS DWORD, BYVAL wMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   SELECT CASE wMsg
+
+      CASE %WM_SYSCOMMAND
+         ' // Disable the Windows screensaver
+         IF (wParam AND &HFFF0) = %SC_SCREENSAVE THEN EXIT FUNCTION
+         ' // Close the window
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_TIMER
+         ' // Render the scene
+         RenderD3DScene
+         EXIT FUNCTION
+
+      CASE %WM_KEYDOWN
+         SELECT CASE LO(WORD, wParam)
+            ' // If the Escape key has been pressed...
+            CASE %VK_ESCAPE
+               ' // ... close the application by sending a WM_CLOSE message
+               SendMessage hwnd, %WM_CLOSE, 0, 0
+               EXIT FUNCTION
+         END SELECT
+
+      CASE %WM_DESTROY
+         ' // Clear resources
+         g_pD3DDevice = NOTHING
+         g_pD3D = NOTHING
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hWnd, wMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

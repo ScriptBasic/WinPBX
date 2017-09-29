@@ -1,0 +1,104 @@
+2
+PBWIN
+.bas
+CWindow: Web Browser Image Hyperlink
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+%USEWEBBROWSER = 1            ' // Use the WebBrowser control
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+' // Identifier
+%IDC_WEBBROWSER = 101
+
+' ########################################################################################
+' Main
+' ########################################################################################
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "AddWebBrowser Template: Image hyperlink", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 400, 260
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a WebBrowser control
+   LOCAL hCtl AS DWORD
+   LOCAL bstrHTML AS WSTRING
+
+   ' // Script to display the hyperlink
+   bstrHTML  = "MSHTML:" & $CRLF
+   bstrHTML += "<body scroll='no' style='margin: 0px 0px 0px 0px'>" & $CRLF
+   bstrHTML += "<a href='http://www.jose.it-berater.org/smfforum/index.php' target='_blank'>" & _
+               "<img src='http://www.jose.it-berater.org/webpages_images/h_2.jpg' width='100%' height='100%' alt='Jose Roca Software'></a>"
+   bstrHTML += "</body>"
+
+   ' // Create the control
+   hCtl = pWindow.AddWebBrowserControl(pWindow.hwnd, %IDC_WEBBROWSER, bstrHTML, NOTHING, 45, 45, 311, 170)
+
+   ' // Note: Right click with the mouse to activate the options menu
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ########################################################################################
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_SYSCOMMAND
+         ' // Capture this message and send a WM_CLOSE message
+         ' // Note: Needed with some OCXs, that otherwise remain in memory
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

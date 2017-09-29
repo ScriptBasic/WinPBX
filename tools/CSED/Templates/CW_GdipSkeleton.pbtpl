@@ -1,0 +1,135 @@
+2
+PBWIN
+.bas
+CWindow: GDI+ Skeleton (High DPI)
+' ########################################################################################
+' Microsoft Windows
+' File: CW_GdipSkeleton.pbtpl
+' Contents: Template - CWindow GDI+ skeleton (High DPI)
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Header files for imported files
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+#INCLUDE ONCE "GDIPLUS.INC"   ' // GDI+
+
+%IDC_GRCTX = 101
+
+' ========================================================================================
+' The following sample code draws a line.
+' Change it with your own code.
+' ========================================================================================
+SUB GDIP_Render (BYVAL hdc AS DWORD)
+
+   LOCAL hStatus AS LONG
+   LOCAL pGraphics AS DWORD
+   LOCAL pPen AS DWORD
+   LOCAL rx AS SINGLE   ' // If High DPI Aware
+   LOCAL ry AS SINGLE   ' // If High DPI Aware
+
+   ' // If High DPI aware, retrieve the DPI scaling ratios
+   AfxGetDesktopDPIRatios(rx, ry)
+
+   ' // Create a graphics object
+   hStatus = GdipCreateFromHDC(hdc, pGraphics)
+
+   ' // Create a Pen
+   hStatus = GdipCreatePen1(GDIP_ARGB(255, 255, 0, 0), 1, %UnitPixel, pPen)
+   ' // If High DPI aware, scale the pen
+   hStatus = GdipCreatePen1(GDIP_ARGB(255, 255, 0, 0), 1 * rx, %UnitPixel, pPen)
+
+   ' // Draw the line
+   GdipDrawLineI pGraphics, pPen, 0, 0, 200, 100
+   ' // If High DPI aware, scale the line
+   GdipDrawLine pGraphics, pPen, 0, 0, 200 * rx, 100 * ry
+
+   ' // Cleanup
+   IF pPen THEN GdipDeletePen(pPen)
+   IF pGraphics THEN GdipDeleteGraphics(pGraphics)
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Initialize GDI+
+   LOCAL GdipToken AS DWORD
+   GdipToken = GdiPlusInit
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow GDI+ skeleton", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   pWindow.SetClientSize 400, 250
+   ' // Change the background color
+   pWindow.Brush = %COLOR_WINDOW + 1
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+   |
+
+   ' // Shutdown GDI+
+   GdiplusShutdown GdipToken
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   LOCAL hDC AS DWORD
+   LOCAL ps AS PAINTSTRUCT
+
+   SELECT CASE uMsg
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_PAINT
+         ' // Draw the graphics
+         hDC = BeginPaint(hwnd, ps)
+         GDIP_Render hDC
+         EndPaint(hwnd, ps)
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

@@ -1,0 +1,243 @@
+2
+PBWIN
+.bas
+CWindow: Tool Bar
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"       ' // CWindow class
+#INCLUDE ONCE "ToolBarCtrl.inc"   ' // ToolBar wrappers
+
+%IDC_TOOLBAR    = 1001
+
+%IDM_CUT        = 28000
+%IDM_COPY       = 28001
+%IDM_PASTE      = 28002
+%IDM_UNDO       = 28003
+%IDM_REDOW      = 28004
+%IDM_DELETE     = 28005
+%IDM_FILENEW    = 28006
+%IDM_FILEOPEN   = 28007
+%IDM_FILESAVE   = 28008
+%IDM_PRINTPRE   = 28009
+%IDM_PROPERTIES = 28010
+%IDM_HELP       = 28011
+%IDM_FIND       = 28012
+%IDM_REPLACE    = 28013
+%IDM_PRINT      = 28014
+
+' ========================================================================================
+' Create the toolbar
+' ========================================================================================
+FUNCTION CreateToolBar (BYVAL pWindow AS IWindow) AS DWORD
+
+   ' // Add a toolbar
+   LOCAL hToolBar AS DWORD
+   hToolBar = pWindow.AddToolBar(pWindow.hwnd, %IDC_TOOLBAR, "", 0, 0, 0, 0, _
+              %WS_VISIBLE OR %WS_CLIPCHILDREN OR %WS_CLIPSIBLINGS OR %CCS_TOP OR %WS_BORDER OR %TBSTYLE_FLAT)
+
+   ' // Add a bitmap with the button images
+   LOCAL ttbab AS TBADDBITMAP
+   ttbab.hInst = %HINST_COMMCTRL
+   IF pWindow.IsProcessDPIAware THEN
+      ttbab.nId = %IDB_STD_LARGE_COLOR
+   ELSE
+      ttbab.nId = %IDB_STD_SMALL_COLOR
+   END IF
+   ToolBar_AddBitmap hToolBar, 15, ttbab
+
+   ' // Add buttons to the toolbar
+   Toolbar_AddButton hToolBar, %STD_CUT, %IDM_CUT
+   Toolbar_AddButton hToolBar, %STD_COPY, %IDM_COPY
+   Toolbar_AddButton hToolBar, %STD_PASTE, %IDM_PASTE
+   Toolbar_AddButton hToolBar, %STD_DELETE, %IDM_DELETE
+   ToolBar_AddSeparator hToolBar
+   Toolbar_AddButton hToolBar, %STD_UNDO, %IDM_UNDO
+   Toolbar_AddButton hToolBar, %STD_REDOW, %IDM_REDOW
+   ToolBar_AddSeparator hToolBar
+   Toolbar_AddButton hToolBar, %STD_FILENEW, %IDM_FILENEW
+   Toolbar_AddButton hToolBar, %STD_FILEOPEN, %IDM_FILEOPEN
+   Toolbar_AddButton hToolBar, %STD_FILESAVE, %IDM_FILESAVE
+   Toolbar_AddButton hToolBar, %STD_PRINTPRE, %IDM_PRINTPRE
+   ToolBar_AddSeparator hToolBar
+   Toolbar_AddButton hToolBar, %STD_FIND, %IDM_FIND
+   Toolbar_AddButton hToolBar, %STD_REPLACE, %IDM_REPLACE
+   ToolBar_AddSeparator hToolBar
+   Toolbar_AddButton hToolBar, %STD_PROPERTIES, %IDM_PROPERTIES
+   Toolbar_AddButton hToolBar, %STD_PRINT, %IDM_PRINT
+   ToolBar_AddSeparator hToolBar
+   Toolbar_AddButton hToolBar, %STD_HELP, %IDM_HELP
+
+   ' // Size the toolbar
+   ToolBar_AutoSize hToolBar
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow with a toolbar", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Disable background erasing
+   pWindow.ClassStyle = %CS_DBLCLKS
+   ' // Set the client siz
+   pWindow.SetClientSize 600, 350
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a button without coordinates (it will be reiszed in WM_SIZE, below)
+   pWindow.AddButton(pWindow.hwnd, %IDCANCEL, "&Close", 0, 0, 75, 23)
+
+   ' // Add the toolbar
+   CreateToolBar pWindow
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+
+         SELECT CASE LO(WORD, wParam)
+
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+
+           CASE %IDM_CUT
+               MSGBOX "Cut button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_COPY
+               MSGBOX "Copy button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_PASTE
+               MSGBOX "Paste button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_UNDO
+               MSGBOX "Undo button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_REDOW
+               MSGBOX "Redo button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_DELETE
+               MSGBOX "Delete button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_FILENEW
+               MSGBOX "File New button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_FILEOPEN
+               MSGBOX "File Open button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_FILESAVE
+               MSGBOX "File Save button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_PRINTPRE
+               MSGBOX "Print Preview button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_PROPERTIES
+               MSGBOX "Properties button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_HELP
+               MSGBOX "Help button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_FIND
+               MSGBOX "Find button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_REPLACE
+               MSGBOX "Replace button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+            CASE %IDM_PRINT
+               MSGBOX "Print button clicked"
+               FUNCTION = %FALSE
+               EXIT FUNCTION
+
+         END SELECT
+
+      CASE %WM_SYSCOLORCHANGE
+         ' // Forward this message to common controls so that they will
+         ' // be properly updated when the user changes the color settings.
+         SendMessage GetDlgItem(hWnd, %IDC_TOOLBAR), %WM_SYSCOLORCHANGE, wParam, lParam
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Update the size and position of the Toolbar control
+            ToolBar_AutoSize GetDlgItem(hWnd, %IDC_TOOLBAR)
+            ' // Resize the sample button
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDCANCEL), pWindow.ClientWidth - 95, pWindow.ClientHeight - 35, 75, 23, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

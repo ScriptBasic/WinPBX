@@ -1,0 +1,323 @@
+2
+PBWIN
+.bas
+CWindow: ListView Multi Line Header (High DPI)
+' ########################################################################################
+' Microsoft Windows
+' File: CW_LV_Multiheader.pbtpl
+' Contents: Template - CWindow with a multi header ListView (High DPI)
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+' ########################################################################################
+' Mutiline header ListView example
+' The technique used is to process the HDM_LAYOUT message, fill the WINDOWPOS structure
+' with the appropriate size and position of the header control, and change the top position
+' of the rectangle that the header control will occupy.
+'   CASE %HDM_LAYOUT
+'      LOCAL phdl AS HDLAYOUT PTR
+'      phdl = lParam
+'      @phdl.@pwpos.hwnd = hwnd
+'      @phdl.@pwpos.flags = %SWP_FRAMECHANGED
+'      @phdl.@pwpos.x = @phdl.@prc.nLeft
+'      @phdl.@pwpos.y = 0
+'      @phdl.@pwpos.cx = @phdl.@prc.nRight - @phdl.@prc.nLeft
+'      @phdl.@pwpos.cy = 40   ' --> change me
+'      @phdl.@prc.nTop = 40   ' --> change me
+'      FUNCTION = -1
+'      EXIT FUNCTION
+' ########################################################################################
+
+#COMPILE EXE
+#DIM ALL
+
+%UNICODE = 1
+#INCLUDE ONCE "CWindow.inc"        ' // CWindow class
+#INCLUDE ONCE "ListViewCtrl.inc"   ' // ListView control wrapper functions
+#INCLUDE ONCE "HeaderCtrl.inc"     ' // Header control wrapper functions
+
+%IDC_LISTVIEW = 1001
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   LOCAL hwnd AS DWORD
+   hwnd = pWindow.CreateWindow(%NULL, "Multiline Header ListView (High DPI)", 0, 0, 0, 0, -1, -1, CODEPTR(WindowProc))
+   ' // Change the class style to avoid flicker
+   pWindow.ClassStyle = %CS_DBLCLKS
+   ' // Set the client size
+   pWindow.SetClientSize 565, 320
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a subclassed ListView control
+   LOCAL hListView AS DWORD
+   LOCAL rc AS RECT
+   GetClientRect hwnd, rc
+   LOCAL dwStyle AS DWORD
+   dwStyle = %WS_CHILD OR %WS_VISIBLE OR %LVS_REPORT OR %LVS_SINGLESEL OR %LVS_SHOWSELALWAYS
+   hListView = pWindow.AddListView(hwnd, %IDC_LISTVIEW, "", 0, 0, 0, 0, dwStyle, -1, CODEPTR(ListView_SubclassProc))
+
+   ' // Add some extended styles
+   LOCAL dwExStyle AS DWORD
+   dwExStyle = ListView_GetExtendedListViewStyle(hListView)
+   dwExStyle = dwExStyle OR %LVS_EX_FULLROWSELECT OR %LVS_EX_GRIDLINES
+   ListView_SetExtendedListViewStyle(hListView, dwExStyle)
+
+   ' // Get the handle of the ListView header control and subclass it
+   LOCAL hLvHeader AS DWORD
+   hLvHeader = ListView_GetHeader(hListView)
+   IF hLvHeader THEN SetProp hLvHeader, "OLDWNDPROC", SetWindowLong(hLvHeader, %GWL_WNDPROC, CODEPTR(ListViewHeader_SubclassProc))
+
+   ' // Add the header's column names
+   ' // If High DPI aware, scale the widths
+   ListView_AddColumn(hListView, 0, "Customer" & $CRLF & "number", pWindow.ScaleX(80), 1)
+   ListView_AddColumn(hListView, 1, "Name" & $CRLF & "First, last", pWindow.ScaleX(160), 0)
+   ListView_AddColumn(hListView, 2, "Telephone" & $CRLF & "number", pWindow.ScaleX(160), 0)
+   ListView_AddColumn(hListView, 3, "Street" & $CRLF & "address", pWindow.ScaleX(80), 0)
+   ListView_AddColumn(hListView, 4, "Action" & $CRLF & "items", pWindow.ScaleX(80), 1)
+
+   ' // Populate the ListView with some data
+   ListView_AddItem(hListView, 0, 0, "1")
+   ListView_SetItemText(hListView, 0, 1, "Doe, John")
+   ListView_SetItemText(hListView, 0, 2, "(000) 000-0000")
+   ListView_SetItemText(hListView, 0, 3, "No name")
+   ListView_SetItemText(hListView, 0, 4, "Unknown")
+   ListView_AddItem(hListView, 1, 0, "2")
+   ListView_SetItemText(hListView, 1, 1, "Smith, Joe")
+   ListView_SetItemText(hListView, 1, 2, "(111) 111-1111")
+   ListView_SetItemText(hListView, 1, 3, "No name")
+   ListView_SetItemText(hListView, 1, 4, "Unknown")
+   ' ... add more data
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ########################################################################################
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC hInstance AS DWORD        ' // Instance handle
+   STATIC lpc AS CREATESTRUCT PTR   ' // Pointer to the creation parameters
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Pointer to the creation parameters
+         lpc = lParam
+         ' // Instance handle
+         hInstance = @lpc.hInstance
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // Resize the ListView control and its header
+         IF wParam <> %SIZE_MINIMIZED THEN
+            LOCAL hListView AS DWORD
+            hListView = GetDlgItem(hwnd, %IDC_LISTVIEW)
+            MoveWindow hListView, 0, 0, LO(WORD, lParam), HI(WORD, lParam), %TRUE
+            ' // If High DPI aware, scale the height of the header
+            MoveWindow ListView_GetHeader(hListView), 0, 0, LO(WORD, lParam), pWindow.ScaleY(40), %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // Close the main window
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Processes messages for the subclassed ListView header control.
+' ========================================================================================
+FUNCTION ListViewHeader_SubclassProc ( _
+   BYVAL hwnd   AS DWORD, _                 ' // Control window handle
+   BYVAL uMsg   AS DWORD, _                 ' // Type of message
+   BYVAL wParam AS DWORD, _                 ' // First message parameter
+   BYVAL lParam AS LONG _                   ' // Second message parameter
+   ) AS LONG
+
+   SELECT CASE uMsg
+
+      CASE %WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         SetWindowLong hwnd, %GWL_WNDPROC, RemoveProp(hwnd, "OLDWNDPROC")
+
+      CASE %HDM_LAYOUT
+         ' // Fill the WINDOWPOS structure with the appropriate size and position of the
+         ' // header control and change the top position of the rectangle that the header
+         ' // control will occupy.
+         LOCAL phdl AS HDLAYOUT PTR
+         phdl = lParam
+         @phdl.@pwpos.hwnd = hwnd
+         @phdl.@pwpos.flags = %SWP_FRAMECHANGED
+         @phdl.@pwpos.x = @phdl.@prc.nLeft
+         @phdl.@pwpos.y = 0
+         ' // If High DPI aware, scale the size
+         LOCAL pWindow AS IWindow
+         pWindow = CWindow_GetObjectFromWindowHandle(hwnd)
+         @phdl.@pwpos.cx = pWindow.ScaleX(@phdl.@prc.nRight - @phdl.@prc.nLeft)
+         @phdl.@pwpos.cy = pWindow.ScaleY(40)   ' --> change me
+         @phdl.@prc.nTop = pWindow.ScaleY(40)   ' --> change me
+         FUNCTION = -1
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = CallWindowProc(GetProp(hwnd, "OLDWNDPROC"), hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Processes messages for the subclassed ListView control.
+' ========================================================================================
+FUNCTION ListView_SubclassProc ( _
+   BYVAL hwnd   AS DWORD, _                 ' // Control window handle
+   BYVAL uMsg   AS DWORD, _                 ' // Type of message
+   BYVAL wParam AS DWORD, _                 ' // First message parameter
+   BYVAL lParam AS LONG _                   ' // Second message parameter
+   ) AS LONG
+
+   ' // REQUIRED: Get the address of the original window procedure
+   LOCAL pOldWndProc AS DWORD
+   pOldWndProc = GetProp(hwnd, "OLDWNDPROC")
+
+   SELECT CASE uMsg
+
+      CASE %WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         SetWindowLong hwnd, %GWL_WNDPROC, RemoveProp(hwnd, "OLDWNDPROC")
+
+      CASE %WM_NOTIFY
+
+         LOCAL pnmh AS NMHDR PTR
+         LOCAL pnmcd AS NMCUSTOMDRAW PTR
+         LOCAL wszText AS WSTRINGZ * 260
+
+         pnmh = lParam
+         SELECT CASE @pnmh.code
+
+            CASE %NM_CUSTOMDRAW
+            pnmcd = lParam
+
+               ' // Check the drawing stage
+               SELECT CASE @pnmcd.dwDrawStage
+
+                  ' // Prior to painting
+                  CASE %CDDS_PREPAINT
+                     ' // Tell Windows we want individual notification of each item being drawn
+                     FUNCTION = %CDRF_NOTIFYITEMDRAW
+                     EXIT FUNCTION
+
+                  ' // Notification of each item being drawn
+                  CASE %CDDS_ITEMPREPAINT
+
+                     LOCAL hLvHeader AS DWORD
+                     LOCAL nIndex AS DWORD
+                     LOCAL nState AS DWORD
+
+                     nIndex = @pnmcd.dwItemSpec
+                     nState = @pnmcd.uItemState
+
+                     ' // Get the header item text...
+                     LOCAL hdi AS HDITEM
+                     hdi.mask = %HDI_TEXT
+                     hdi.pszText = VARPTR(wszText)
+                     hdi.cchtextmax = SIZEOF(wszText)
+                     hLvHeader = ListView_GetHeader(hwnd)
+                     Header_GetItem(hLvHeader, nIndex, hdi)
+
+                     ' // Create a new font
+                     LOCAL pWindow AS IWindow
+                     LOCAL hFont AS DWORD
+                     pWindow = CWindow_GetObjectFromWindowHandle(hwnd)
+                     hFont = pWindow.CreateFont("Tahoma", 10, %FW_BOLD, %FALSE, %FALSE, %FALSE, %DEFAULT_CHARSET)
+                     pWindow = NOTHING
+                     ' // Select the font into the current device context
+                     LOCAL hOldFont AS DWORD
+                     hOldFont = SelectObject(@pnmcd.hdc, hFont)
+
+                     ' // Draw the button state...
+                     IF (nState AND %CDIS_SELECTED) THEN
+                        DrawFrameControl @pnmcd.hdc, @pnmcd.rc, %DFC_BUTTON, %DFCS_BUTTONPUSH OR %DFCS_PUSHED
+                     ELSE
+                        DrawFrameControl @pnmcd.hdc, @pnmcd.rc, %DFC_BUTTON, %DFCS_BUTTONPUSH
+                     END IF
+
+                     ' // Paint the background
+                     LOCAL hBrush AS DWORD
+                     hBrush = CreateSolidBrush(RGB(228,120,51))
+                     InflateRect @pnmcd.rc, -2, -2
+                     FillRect @pnmcd.hdc, @pnmcd.rc, hBrush
+
+                     SetBkMode @pnmcd.hdc, %TRANSPARENT
+                     ' // Change your text color here...
+                     SetTextColor @pnmcd.hdc, RGB(92,51,23)
+
+                     ' // Offset the text slightly if depressed...
+                     IF (nState AND %CDIS_SELECTED) THEN InflateRect @pnmcd.rc, -2, -2
+                     ' // Draw multiline, using CRLF (i.e. wszText = "Customer" & $CRLF & "number")
+                     DrawText @pnmcd.hdc, wszText, LEN(wszText), @pnmcd.rc, %DT_CENTER OR %DT_VCENTER 'OR %DT_WORDBREAK
+                     ' // Draw multiline using word wrap (i.e. wszText = "Customer number")
+                     'DrawText @pnmcd.hdc, wszText, LEN(wszText), @pnmcd.rc, %DT_CENTER OR %DT_VCENTER OR %DT_WORDBREAK
+                     ' // Sraw single line with ellipsis... (i.e. wszText = "Customer number")
+                     'DrawText @pnmcd.hdc, wszText, LEN(wszText), @pnmcd.rc, %DT_CENTER OR %DT_VCENTER OR %DT_END_ELLIPSIS
+
+                     ' // Cleanup
+                     IF hBrush THEN DeleteObject hBrush
+                     IF hOldFont THEN SelectObject @pnmcd.hdc, hOldFont
+                     IF hFont THEN DeleteObject hFont
+
+                     ' // Tell Windows the item has already been drawn
+                     FUNCTION = %CDRF_SKIPDEFAULT
+                     EXIT FUNCTION
+
+               END SELECT
+
+         END SELECT
+
+   END SELECT
+
+   FUNCTION = CallWindowProc(pOldWndProc, hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

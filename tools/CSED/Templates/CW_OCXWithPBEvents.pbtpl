@@ -1,0 +1,203 @@
+2
+PBWIN
+.bas
+CWindow: OCX Control with PB Events
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+%USEOLECON = 1                ' // Use OLE container
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+#INCLUDE ONCE "MSCAL.INC"     ' // MSCalendar interfaces
+
+%IDC_OCX = 101
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow with OCX and PB Events", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 300, 300
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a MS Calendar control
+   LOCAL hCtl AS DWORD
+   hCtl = pWindow.AddOCX(pWindow.hwnd, %IDC_OCX, "MSCAL.Calendar", "", 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   SetFocus hCtl
+
+   ' // Get the IDispatch of the control
+   LOCAL pCal AS MSCAL_ICalendar
+   LOCAL pCalEvents AS DCalendarEventsImpl
+   pCal = OC_GetDispatch(hCtl)
+   IF ISOBJECT(pCal) THEN
+      ' // Connect events
+      pCalEvents = CLASS "CDCalendarEvents"
+      IF ISOBJECT(pCalEvents) THEN EVENTS FROM pCal CALL pCalEvents
+      pCal = NOTHING
+   END IF
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+   ' // Disconnect events
+   IF ISOBJECT(pCalEvents) THEN EVENTS END pCalEvents
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   ' // Process window mesages
+   SELECT CASE uMsg
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+
+' ########################################################################################
+' Class CDCalendarEvents
+' Interface name = DCalendarEvents
+' IID = {8E27C92D-1264-101C-8A2F-040224009C02}
+' Event interface for Calendar control
+' Attributes = 4112 [&H1010] [Hidden] [Dispatchable]
+' ########################################################################################
+
+CLASS CDCalendarEvents GUID$("{D4A44440-33A2-4A55-B0AB-30D70B127E3C}") AS EVENT
+
+INTERFACE DCalendarEventsImpl GUID$("{8E27C92D-1264-101C-8A2F-040224009C02}") AS EVENT
+
+  INHERIT IDispatch
+
+   ' =====================================================================================
+   METHOD Click <-600>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD DblClick <-601>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD KeyDown <-602> ( _
+     BYREF KeyCode AS INTEGER _                         ' __out short *KeyCode
+   , BYVAL iShift AS INTEGER _                          ' __in  short Shift
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD KeyPress <-603> ( _
+     BYREF KeyAscii AS INTEGER _                        ' __out short *KeyAscii
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD KeyUp <-604> ( _
+     BYREF KeyCode AS INTEGER _                         ' __out short *KeyCode
+   , BYVAL iShift AS INTEGER _                          ' __in  short Shift
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD BeforeUpdate <2> ( _
+     BYREF iCancel AS INTEGER _                         ' __out short *Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD AfterUpdate <1>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NewMonth <3>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NewYear <4>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+END INTERFACE
+
+END CLASS

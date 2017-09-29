@@ -1,0 +1,120 @@
+2
+PBWIN
+.bas
+CWindow: Status Bar with Progress Bar
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+#INCLUDE ONCE "CWindow.inc"           ' // CWindow class
+#INCLUDE ONCE "ProgressBarCtrl.inc"   ' // Progress bar wrappers
+
+%IDC_START = 1001
+%IDC_STATUSBAR = 1002
+%IDC_PROGRESSBAR = 1003
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "Status bar with progress bar", 0, 0, 400, 200, 0, 0, CODEPTR(WindowProc))
+
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a button
+   pWindow.AddButton(pWindow.hwnd, %IDC_START, "&Start", 20, 20, 75, 23)
+
+   ' // Add a status bar
+   LOCAL hStatusbar AS DWORD
+   hStatusbar = pWindow.AddStatusBar(pWindow.hwnd, %IDC_STATUSBAR, "", 0, 0, 0, 0)
+   pWindow.SetStatusbarPartsBySize(hStatusbar, "160, -1")
+
+   ' // Add a progress bar to the status bar
+   LOCAL hProgressBar AS DWORD
+   hProgressBar = pWindow.AddProgressBar(hStatusbar, %IDC_PROGRESSBAR, "", 0, 2, 160, 18)
+   ' // Set the range
+   ProgressBar_SetRange32(hProgressBar, 0, 100)
+   ' // Set the initial position
+   ProgressBar_SetPos(hProgressBar, 0)
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+            CASE %IDC_START
+               ' // Retrieve the handle to the progress bar.
+               LOCAL hProgressBar AS DWORD
+               hProgressBar = GetDlgItem(GetDlgItem(hwnd, %IDC_STATUSBAR), %IDC_PROGRESSBAR)
+               ' *** Test code ***
+               ' // Sets the step increment.
+               ProgressBar_SetStep(hProgressBar, 1)
+               ' // Draws the bar.
+               LOCAL i AS LONG
+               FOR i = 1 TO 100
+                  ' // Advances the current position for a progress bar by the step
+                  ' // increment and redraws the bar to reflect the new position.
+                  ProgressBar_StepIt(hProgressBar)
+                  SLEEP 10
+               NEXT
+               ' // Clears the bar by reseting its position to 0.
+               ProgressBar_SetPos(hProgressBar, 0)
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // Gets the handle of the status bar
+         LOCAL hStatusBar AS DWORD
+         hStatusBar = GetDlgItem(hwnd, %IDC_STATUSBAR)
+         ' // Resizes it
+         SendMessage hStatusBar, %WM_SIZE, wParam, lParam
+         ' // Redraws it
+         InvalidateRect hStatusBar, BYVAL %NULL, %TRUE
+         EXIT FUNCTION
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

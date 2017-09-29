@@ -1,0 +1,149 @@
+2
+PBWIN
+.bas
+CWindow: Bezier Splines
+' ########################################################################################
+' Microsoft Windows
+' File: CW_Petzold_Bezier.pbtpl
+' This program is a translation/adaptation of the BEZIER.C-Bezier Splines Demo
+' © Charles Petzold, 1998, described and analysed in Chapter 5 of the book Programming
+' Windows, 5th Edition.
+' Interactively draws Bézier splines. The two control points are manipulable, the first by
+' pressing the left mouse button and moving the mouse, the second by pressing the right
+' mouse button and moving the mouse.
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "Bezier Splines", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Center the window
+   pWindow.CenterWindow
+   ' // Set a white brush
+   pWindow.Brush = GetStockObject(%WHITE_BRUSH)
+
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Draws the Bézier splines.
+' ========================================================================================
+SUB DrawBezier (BYVAL hdc AS DWORD, BYREF apt() AS POINTAPI)
+
+   PolyBezier hdc, apt(0), 4
+   MoveToEx hdc, apt(0).x, apt(0).y, BYVAL %NULL
+   LineTo hdc, apt(1).x, apt(1).y
+   MoveToEx hdc, apt(2).x, apt(2).y, BYVAL %NULL
+   LineTo hdc, apt(3).x, apt(3).y
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC cxClient AS LONG
+   STATIC cyClient AS LONG
+   LOCAL  hdc AS DWORD
+   LOCAL  ps  AS PAINTSTRUCT
+   DIM    apt(3) AS STATIC POINT
+
+   SELECT CASE uMsg
+
+      CASE %WM_SIZE
+         cxClient = LO(WORD, lParam)
+         cyClient = HI(WORD, lParam)
+
+         apt(0).x = cxClient / 4
+         apt(0).y = cyClient / 2
+
+         apt(1).x = cxClient / 2
+         apt(1).y = cyClient / 4
+
+         apt(2).x =     cxClient / 2
+         apt(2).y = 3 * cyClient / 4
+
+         apt(3).x = 3 * cxClient / 4
+         apt(3).y =     cyClient / 2
+
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_LBUTTONDOWN, %WM_RBUTTONDOWN, %WM_MOUSEMOVE
+         IF (wParam AND %MK_LBUTTON) OR (wParam AND %MK_RBUTTON) THEN
+            hdc = GetDC(hwnd)
+            SelectObject hdc, GetStockObject(%WHITE_PEN)
+            DrawBezier hdc, apt()
+            IF (wParam AND %MK_LBUTTON) THEN
+               apt(1).x = LO(WORD, lParam)
+               apt(1).y = HI(WORD, lParam)
+            END IF
+            IF (wParam AND %MK_RBUTTON) THEN
+               apt(2).x = LO(WORD, lParam)
+               apt(2).y = HI(WORD, lParam)
+            END IF
+            SelectObject hdc, GetStockObject(%BLACK_PEN)
+            DrawBezier hdc, apt()
+            ReleaseDC hwnd, hdc
+         END IF
+
+      CASE %WM_PAINT
+         InvalidateRect hwnd, BYVAL %NULL, %TRUE
+         hdc = BeginPaint(hwnd, ps)
+         DrawBezier hdc, apt()
+         EndPaint hwnd, ps
+         EXIT FUNCTION
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

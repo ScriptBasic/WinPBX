@@ -1,0 +1,111 @@
+2
+PBWIN
+.bas
+CWindow: GDI+ Graphic Control Stretchable
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Header files for imported files
+%USEGRAPHCTX = 1
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+%IDC_GRCTX = 101
+
+' ========================================================================================
+' The following sample code draws a line.
+' Change it with your own code.
+' ========================================================================================
+SUB GDIP_Render (BYVAL hdc AS DWORD)
+
+   LOCAL hStatus AS LONG
+   LOCAL pGraphics AS DWORD
+   LOCAL pPen AS DWORD
+
+   hStatus = GdipCreateFromHDC(hdc, pGraphics)
+
+   ' // Create a Pen
+   hStatus = GdipCreatePen1(GDIP_ARGB(255, 255, 0, 0), 1, %UnitPixel, pPen)
+
+   ' // Draw the line
+   GdipDrawLineI pGraphics, pPen, 0, 0, 200, 100
+
+   ' // Cleanup
+   IF pPen THEN GdipDeletePen(pPen)
+   IF pGraphics THEN GdipDeleteGraphics(pGraphics)
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Create an instance of the CWindow class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow Graphic Control GDI+ Skeleton Stretchable", 0, 0, 400, 300, 0, 0, CODEPTR(WindowProc))
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a GDI+ aware graphic control
+   LOCAL hCtl AS DWORD
+   hCtl = pWindow.AddGdipGraphCtx(pWindow.hwnd, %IDC_GRCTX, "", 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+
+   ' // Set it stretchable
+   GraphCtx_SetStretchable(hCtl, %TRUE)
+
+   ' // Draw the graphics
+   GDIP_Render(GraphCtx_GetDc(hCtl))
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   SELECT CASE uMsg
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         LOCAL pWindow AS IWindow
+         IF wParam <> %SIZE_MINIMIZED THEN
+            pWindow = CWindow_GetObjectFromWindowHandle(hwnd)
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDC_GRCTX), 0, 0, pWindow.ClientWidth, pWindow.ClientHeight, %TRUE
+            pWindow = NOTHING
+            GDIP_Render(GraphCtx_GetDc(GetDlgItem(hwnd, %IDC_GRCTX)))
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

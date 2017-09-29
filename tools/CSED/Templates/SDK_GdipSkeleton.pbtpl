@@ -1,0 +1,152 @@
+2
+PBWIN
+.bas
+SDK Window: GDI+ Skeleton
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Header files for imported files
+#INCLUDE ONCE "GDIPLUS.INC"   ' // GDI+
+#INCLUDE ONCE "AfxWin.inc"    ' // Window wrappers
+
+' ========================================================================================
+' The following sample code draws a line.
+' Change it with your own code.
+' ========================================================================================
+SUB GDIP_Render (BYVAL hdc AS DWORD)
+
+   LOCAL hStatus AS LONG
+   LOCAL pGraphics AS DWORD
+   LOCAL pPen AS DWORD
+
+   hStatus = GdipCreateFromHDC(hdc, pGraphics)
+
+   ' // Create a Pen
+   hStatus = GdipCreatePen1(GDIP_ARGB(255, 255, 0, 0), 1, %UnitPixel, pPen)
+
+   ' // Draw the line
+   GdipDrawLineI pGraphics, pPen, 0, 0, 200, 100
+
+   ' // Cleanup
+   IF pPen THEN GdipDeletePen(pPen)
+   IF pGraphics THEN GdipDeleteGraphics(pGraphics)
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WINMAIN (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   LOCAL hwndMain AS DWORD
+   LOCAL wcex AS WNDCLASSEX
+#IF %DEF(%UNICODE)
+   LOCAL szClassName AS WSTRINGZ * 80
+   LOCAL szCaption AS WSTRINGZ * 255
+#ELSE
+   LOCAL szClassName AS ASCIIZ * 80
+   LOCAL szCaption AS ASCIIZ * 255
+#ENDIF
+
+   ' // Initialize GDI+
+   LOCAL GdipToken AS DWORD
+   GdipToken = GdiPlusInit
+
+   ' // Register the window class
+   szClassName        = "MyClassName"
+   wcex.cbSize        = SIZEOF(wcex)
+   wcex.style         = %CS_HREDRAW OR %CS_VREDRAW
+   wcex.lpfnWndProc   = CODEPTR(WndProc)
+   wcex.cbClsExtra    = 0
+   wcex.cbWndExtra    = 0
+   wcex.hInstance     = hInstance
+   wcex.hCursor       = LoadCursor (%NULL, BYVAL %IDC_ARROW)
+   wcex.hbrBackground = GetStockObject(%WHITE_BRUSH)
+   wcex.lpszMenuName  = %NULL
+   wcex.lpszClassName = VARPTR(szClassName)
+   wcex.hIcon         = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)   ' // Sample, if resource icon: LoadIcon(hInst, "APPICON")
+   wcex.hIconSm       = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)   ' // Remember to set small icon too..
+   RegisterClassEx wcex
+
+   ' // Window caption
+   szCaption = "GdipDrawLine"
+
+   ' Create a window using the registered class
+   hwndMain = CreateWindowEx(%WS_EX_CONTROLPARENT, _           ' extended style
+                             szClassName, _                    ' window class name
+                             szCaption, _                      ' window caption
+                             %WS_OVERLAPPEDWINDOW OR _
+                             %WS_CLIPCHILDREN, _               ' window style
+                             0, _                              ' initial x position
+                             0, _                              ' initial y position
+                             400, _                            ' initial x nSize
+                             300, _                            ' initial y nSize
+                             %NULL, _                          ' parent window handle
+                             0, _                              ' window menu handle
+                             hInstance, _                      ' program instance handle
+                             BYVAL %NULL)                      ' creation parameters
+
+   ' // Center the window
+   AfxCenterWindow hwndMain
+
+   |
+
+   ' // Show the window
+   ShowWindow hwndMain, nCmdShow
+   UpdateWindow hwndMain
+
+   ' // Message handler loop
+   LOCAL uMsg AS tagMsg
+   WHILE GetMessage(uMsg, %NULL, 0, 0)
+      IF IsDialogMessage(hwndMain, uMsg) = 0 THEN
+         TranslateMessage uMsg
+         DispatchMessage uMsg
+      END IF
+   WEND
+
+   ' // Shutdown GDI+
+   GdiplusShutdown GdipToken
+
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS DWORD, BYVAL wMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   LOCAL hDC AS DWORD
+   LOCAL ps AS PAINTSTRUCT
+
+   SELECT CASE wMsg
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_PAINT
+         ' // Draw the graphics
+         hDC = BeginPaint(hwnd, ps)
+         GDIP_Render hDC
+         EndPaint(hwnd, ps)
+
+      CASE %WM_DESTROY
+         ' // Close the main window
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProc(hwnd, wMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

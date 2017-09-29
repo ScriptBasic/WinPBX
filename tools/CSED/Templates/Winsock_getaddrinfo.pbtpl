@@ -1,0 +1,174 @@
+2
+PBWIN
+.bas
+Winsock: getaddrinfo
+' ########################################################################################
+' Demonstrates the use of the getaddrinfo Winsock function.
+' Adapted from code posted by Pierre Bellisle in the PowerBASIC forum:
+' http://www.powerbasic.com/support/pbforums/showthread.php?t=35760&highlight=Ai_FlagsToString
+' ########################################################################################
+
+#COMPILE EXE
+#DIM ALL
+
+#INCLUDE ONCE "ws2tcpip.inc"
+#INCLUDE ONCE "iphlpapi.inc"
+#INCLUDE ONCE "wsrm.inc"
+
+' ========================================================================================
+FUNCTION Ai_FlagsToString (BYVAL ai_flags AS DWORD) AS STRING
+
+   LOCAL strBuffer AS STRING
+
+   IF ai_flags THEN
+      IF (ai_flags AND %AI_PASSIVE)     THEN strBuffer = "AI_PASSIVE"
+      IF (ai_flags AND %AI_CANONNAME)   THEN strBuffer = strBuffer & " AI_CANONNAME"
+      IF (ai_flags AND %AI_NUMERICHOST) THEN strBuffer = strBuffer & " AI_NUMERICHOST"
+      IF (ai_flags AND %AI_ADDRCONFIG)  THEN strBuffer = strBuffer & " AI_ADDRCONFIG"
+      IF (ai_flags AND %AI_SECURE)      THEN strBuffer = strBuffer & " AI_SECURE"
+      IF (ai_flags AND %AI_RETURN_PREFERRED_NAMES) THEN
+         strBuffer = strBuffer & " AI_RETURN_PREFERRED_NAMES"
+      END IF
+      FUNCTION = LTRIM$(strBuffer)
+   ELSE
+      FUNCTION = "AI_NONE"
+   END IF
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+FUNCTION Ai_FamilyToString (BYVAL ai_family AS DWORD) AS STRING
+
+   SELECT CASE ai_family
+      CASE %AF_UNSPEC  : FUNCTION = "AF_UNSPEC"
+      CASE %AF_INET    : FUNCTION = "AF_INET"
+      CASE %AF_NETBIOS : FUNCTION = "AF_NETBIOS"
+      CASE %AF_INET6   : FUNCTION = "AF_INET6"
+      CASE %AF_IRDA    : FUNCTION = "AF_IRDA"
+      CASE %AF_BTH     : FUNCTION = "AF_BTH"
+      CASE ELSE        : FUNCTION = "AF_UNKNOWN" & STR$(ai_family)
+   END SELECT
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+FUNCTION Ai_SocktTypeToString (BYVAL ai_sockttype AS DWORD) AS STRING
+
+   SELECT CASE ai_sockttype
+      CASE %SOCK_STREAM    : FUNCTION = "SOCK_STREAM"
+      CASE %SOCK_DGRAM     : FUNCTION = "SOCK_DGRAM"
+      CASE %SOCK_RAW       : FUNCTION = "SOCK_RAW"
+      CASE %SOCK_RDM       : FUNCTION = "SOCK_RDM"
+      CASE %SOCK_SEQPACKET : FUNCTION = "SOCK_SEQPACKET"
+      CASE ELSE            : FUNCTION = "SOCK_UNKNOWN" & STR$(ai_sockttype)
+   END SELECT
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+FUNCTION Ai_ProtocolToString (BYVAL ai_protocol AS DWORD) AS STRING
+
+   SELECT CASE ai_protocol
+      CASE 0            : FUNCTION = "IPPROTO_ZERO"   ' Not_IPv4_nor_IPv6
+      CASE %IPPROTO_TCP : FUNCTION = "IPPROTO_TCP"
+      CASE %IPPROTO_UDP : FUNCTION = "IPPROTO_UDP"
+      CASE %IPPROTO_RM  : FUNCTION = "IPPROTO_RM"
+      CASE ELSE         : FUNCTION = "IPPROTO_UNKNOWN" & STR$(ai_protocol)
+   END SELECT
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+FUNCTION ipDwordToDot (BYVAL ip AS DWORD) AS STRING
+
+   LOCAL pByte AS BYTE PTR
+
+   pByte = VARPTR(ip)
+   FUNCTION = USING$("#_.#_.#_.#", @pByte, @pByte[1], @pByte[2], @pByte[3])
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+FUNCTION Memo (BYVAL strTxtDef AS STRING, BYVAL strTxtVar AS STRING) AS STRING
+
+   STATIC strBuffer AS STRING
+
+   strBuffer = strBuffer & strTxtDef & $TAB & strTxtVar & $CRLF
+   REPLACE $NUL WITH "." IN strBuffer
+   FUNCTION = strBuffer
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION PBMAIN () AS LONG
+
+   LOCAL WsaInfo     AS WsaData
+   LOCAL lResult     AS LONG
+   LOCAL szNodeName  AS ASCIIZ * %MAX_HOSTNAME_LEN
+   LOCAL szServName  AS ASCIIZ * %SNLEN
+   LOCAL hints       AS ADDRINFO
+   LOCAL pRes        AS ADDRINFO PTR
+   LOCAL pAi_Addr_In AS SOCKADDR_IN PTR
+   LOCAL pAi_Addr    AS SOCKADDR PTR
+   LOCAL strBuffer   AS STRING
+
+   szNodeName    = "microsoft.com"   ' Microsoft.com or ip 67.17.204.214
+   'szNodeName    = "ibm.com"
+   'szNodeName    = "powerbasic.com"
+   szServName    = "http"   ' Either a service name or port number. FTP-21, HTTP-80
+
+   WSAStartUp %WINSOCK_VERSION, WsaInfo
+
+   MSGBOX "Status: " & WsaInfo.szSystemStatus
+
+   lResult = getaddrinfo(szNodeName, szServName, hints, pRes)
+
+   Memo "szNodeName:         ", (szNodeName)
+   Memo "szServName:         ", (szServName)
+   Memo "Error:              ", AfxWinErrMsg(lResult)   ' Success returns zero. Failure returns a nonzero Windows Sockets error code
+
+   IF lResult = %ERROR_SUCCESS THEN
+      DO
+         Memo " ", $CRLF
+         Memo "addr info pointer: ", HEX$(pRes)
+         Memo "flags:             ", Ai_FlagsToString(@pRes.ai_flags)
+         Memo "family:            ", Ai_FamilyToString(@pRes.ai_family)
+         Memo "sockttype:         ", Ai_sockttypeToString(@pRes.ai_socktype)
+         Memo "protocol:          ", Ai_ProtocolToString(@pRes.ai_protocol)
+         Memo "canonical-addr:    ", HEX$(@pRes.ai_canonname)
+         IF @pRes.ai_canonname THEN
+            Memo "canonical-string:  ", (@pRes.@ai_canonname)
+         END IF
+         Memo "addrlen:           ", FORMAT$(@pRes.ai_addrlen)
+         pAi_Addr = @pRes.ai_addr
+         Memo "addr-sa-family:    ", Ai_FamilyToString((@pAi_Addr.sa_family))
+         IF @pAi_Addr.sa_family = %AF_INET THEN
+            pAi_Addr_In = @pRes.ai_addr
+            Memo "addr-sin-family:   ", Ai_FamilyToString((@pAi_Addr_In.sin_family))
+            Memo "addr-sin-port:     " , FORMAT$(@pAi_Addr_In.sin_port)
+            Memo "addr-sin-addr:     ", ipDwordToDot(@pAi_Addr_In.sin_addr.s_addr)
+            Memo "addr-sin-zero:     ", (@pAi_Addr_In.sin_zero)
+         ELSE
+            Memo "addr-sa-family:    ", Ai_FamilyToString((@pAi_Addr.sa_family))
+            Memo "addr-sa-data:      ", (@pAi_Addr.sa_data)
+         END IF
+         Memo "next addr info:    ", HEX$(@pRes.ai_next)
+         pRes = @pRes.ai_next
+      LOOP UNTIL pRes = 0
+   END IF
+
+   freeaddrinfo BYVAL pRes
+   WSACleanUp
+
+   MessageBox %HWND_DESKTOP, BYCOPY Memo("", ""), "getaddrinfo", %MB_ICONINFORMATION OR %MB_OK
+
+END FUNCTION
+' ========================================================================================

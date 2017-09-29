@@ -1,0 +1,184 @@
+2
+PBWIN
+.bas
+CWindow: OpenGL Graphic Control Resizable
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Header files for imported files
+%USEGLCTX = 1
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+#INCLUDE ONCE "GlCtx.inc"     ' // GLCtx control
+
+%IDC_GLCTX = 1001
+
+' =======================================================================================
+' All the setup goes here
+' =======================================================================================
+SUB SetupScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' Specify clear values for the color buffers
+   glClearColor 0.0!, 0.0!, 0.0!, 0.0!
+   ' Specify the clear value for the depth buffer
+   glClearDepth 1.0!
+   ' Specify the value used for depth-buffer comparisons
+   glDepthFunc %GL_LESS
+   ' Enable depth comparisons and update the depth buffer
+   glEnable %GL_DEPTH_TEST
+   ' Select smooth shading
+   glShadeModel %GL_SMOOTH
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Resize the scene
+' =======================================================================================
+SUB ResizeScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' Prevent divide by zero making height equal one
+   IF nHeight = 0 THEN nHeight = 1
+   ' Reset the current viewport
+   glViewport 0, 0, nWidth, nHeight
+   ' Select the projection matrix
+   glMatrixMode %GL_PROJECTION
+   ' Reset the projection matrix
+   glLoadIdentity
+   ' Calculate the aspect ratio of the window
+   gluPerspective 45.0!, nWidth / nHeight, 0.1!, 100.0!
+   ' Select the model view matrix
+   glMatrixMode %GL_MODELVIEW
+   ' Reset the model view matrix
+   glLoadIdentity
+
+END SUB
+' =======================================================================================
+
+' =======================================================================================
+' Draw the scene
+' =======================================================================================
+SUB DrawScene (BYVAL hwnd AS DWORD, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+
+   ' Clear the screen buffer
+   glClear %GL_COLOR_BUFFER_BIT OR %GL_DEPTH_BUFFER_BIT
+   ' Reset the view
+   glLoadIdentity
+
+   ' ------------------------------------------------------------------------------------
+   ' Insert your code here
+   ' ------------------------------------------------------------------------------------
+
+   ' // Sample code
+
+   glTranslatef -1.5!, 0.0!, -6.0!       ' Move left 1.5 units and into the screen 6.0
+
+   glBegin %GL_TRIANGLES                 ' Drawing using triangles
+      glColor3f   1.0!, 0.0!, 0.0!       ' Set the color to red
+      glVertex3f  0.0!, 1.0!, 0.0!       ' Top
+      glColor3f   0.0!, 1.0!, 0.0!       ' Set the color to green
+      glVertex3f  1.0!,-1.0!, 0.0!       ' Bottom right
+      glColor3f   0.0!, 0.0!, 1.0!       ' Set the color to blue
+      glVertex3f -1.0!,-1.0!, 0.0!       ' Bottom left
+   glEnd                                 ' Finished drawing the triangle
+
+   glTranslatef 3.0!,0.0!,0.0!           ' Move right 3 units
+
+   glColor3f 0.5!, 0.5!, 1.0!            ' Set the color to blue one time only
+   glBegin %GL_QUADS                     ' Draw a quad
+      glVertex3f -1.0!, 1.0!, 0.0!       ' Top left
+      glVertex3f  1.0!, 1.0!, 0.0!       ' Top right
+      glVertex3f  1.0!,-1.0!, 0.0!       ' Bottom right
+      glVertex3f -1.0!,-1.0!, 0.0!       ' Bottom left
+   glEnd                                 ' Done drawing the quad
+
+   ' // Required: force execution of GL commands in finite time
+   glFlush
+
+END SUB
+' =======================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the CWindow class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "CWindow OpenGL Graphic Control Resizable", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 600, 380
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a GDI+ aware graphic control
+   LOCAL hCtl AS DWORD
+   hCtl = pWindow.AddGlCtx(pWindow.hwnd, %IDC_GLCTX, "", 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   GlCtx_SetResizable hCtl, %TRUE
+
+   |
+
+   ' // Render the scene
+   SetupScene hCtl, pWindow.ClientWidth, pWindow.ClientHeight
+   ResizeScene hCtl, pWindow.ClientWidth, pWindow.ClientHeight
+   DrawScene hCtl, pWindow.ClientWidth, pWindow.ClientHeight
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         IF wParam <> %SIZE_MINIMIZED THEN
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDC_GLCTX), 0, 0, pWindow.ClientWidth, pWindow.ClientHeight, %TRUE
+            ' // Resize and render the OpenGL scene
+            ResizeScene hwnd, LO(WORD, lParam), HI(WORD, lParam)
+            DrawScene hwnd, LO(WORD, lParam), HI(WORD, lParam)
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

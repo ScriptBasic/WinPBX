@@ -1,0 +1,159 @@
+2
+PBWIN
+.bas
+SDK Window: Web Browser Control
+#COMPILE EXE
+#DIM ALL
+
+' // Include files for external files
+#INCLUDE ONCE "windows.inc"                     ' // Ole Container
+#INCLUDE ONCE "AfxWin.inc"                      ' // Standard library
+#INCLUDE ONCE "OLECON.inc"                      ' // Ole Container
+#INCLUDE ONCE "ExDisp.inc"                      ' // WebBrowser Control
+
+' // Identifier
+%IDC_WEBBROWSER = 101
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WINMAIN (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   LOCAL hwndMain AS DWORD
+   LOCAL hCtl AS DWORD
+   LOCAL hFont AS DWORD
+   LOCAL wcex AS WNDCLASSEX
+#IF %DEF(%UNICODE)
+   LOCAL szClassName AS WSTRINGZ * 80
+   LOCAL szCaption AS WSTRINGZ * 255
+#ELSE
+   LOCAL szClassName AS ASCIIZ * 80
+   LOCAL szCaption AS ASCIIZ * 255
+#ENDIF
+
+   ' // Default font
+   hFont = GetStockObject(%DEFAULT_GUI_FONT)
+
+   ' // Register the window class
+   szClassName        = "MyClassName"
+   wcex.cbSize        = SIZEOF(wcex)
+   wcex.style         = %CS_DBLCLKS OR %CS_HREDRAW OR %CS_VREDRAW
+   wcex.lpfnWndProc   = CODEPTR(WindowProc)
+   wcex.cbClsExtra    = 0
+   wcex.cbWndExtra    = 0
+   wcex.hInstance     = hInstance
+   wcex.hCursor       = LoadCursor (%NULL, BYVAL %IDC_ARROW)
+   wcex.hbrBackground = %COLOR_3DFACE + 1
+   wcex.lpszMenuName  = %NULL
+   wcex.lpszClassName = VARPTR(szClassName)
+   wcex.hIcon         = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)   ' // Sample, if resource icon: LoadIcon(hInst, "APPICON")
+   wcex.hIconSm       = LoadIcon (%NULL, BYVAL %IDI_APPLICATION)   ' // Remember to set small icon too..
+   RegisterClassEx wcex
+
+   ' // Window caption
+   szCaption = "SDK window with WebBrowser control"
+
+   ' Create a window using the registered class
+   hwndMain = CreateWindowEx(%WS_EX_CONTROLPARENT, _           ' extended style
+                             szClassName, _                    ' window class name
+                             szCaption, _                      ' window caption
+                             %WS_OVERLAPPEDWINDOW OR _
+                             %WS_CLIPCHILDREN, _               ' window style
+                             0, _                              ' initial x position
+                             0, _                              ' initial y position
+                             600, _                            ' initial x nSize
+                             400, _                            ' initial y nSize
+                             %NULL, _                          ' parent window handle
+                             0, _                              ' window menu handle
+                             hInstance, _                      ' program instance handle
+                             BYVAL %NULL)                      ' creation parameters
+
+   ' // Center the window
+   AfxCenterWindow hwndMain
+
+   ' // Required: Initialize the Ole Container
+   OC_WinInit
+
+   ' // Add a WebBrowser control
+   hCtl = CreateWindowEx(0, $OC_CLASSNAME, "Shell.Explorer", %WS_CHILD OR %WS_VISIBLE OR %WS_TABSTOP, _
+          0, 0, 0, 0, hwndMain, %IDC_WEBBROWSER, hInstance, BYVAL %NULL)
+   SetFocus hCtl
+
+   ' // Get a pointer to the IWebBrowser2 interface
+   LOCAL pIWebBrowser2 AS IWebBrowser2
+   pIWebBrowser2 = OC_GetDispatch(GetDlgItem(hwndMain, %IDC_WEBBROWSER))
+   IF ISOBJECT(pIWebBrowser2) THEN
+      ' // Navigate to a site
+      LOCAL vUrl AS VARIANT
+      vUrl = "http://www.jose.it-berater.org/index.html"
+      pIWebBrowser2.Navigate2(vUrl)
+      ' // Release the interface
+      pIWebBrowser2 = NOTHING
+   END IF
+
+   |
+
+   ' // Show the window
+   ShowWindow hwndMain, nCmdShow
+   UpdateWindow hwndMain
+
+   ' // Message handler loop
+   LOCAL uMsg AS tagMsg
+   WHILE GetMessage(uMsg, %NULL, 0, 0)
+      IF ISFALSE OC_ForwardMessage(GetFocus, uMsg) THEN
+         IF IsDialogMessage(hwndMain, uMsg) = 0 THEN
+            TranslateMessage uMsg
+            DispatchMessage uMsg
+         END IF
+      END IF
+   WEND
+
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   SELECT CASE uMsg
+
+      CASE %WM_SYSCOMMAND
+         ' // Capture this message and send a WM_CLOSE message
+         ' // Note: Needed with some OCXs, that otherwise remain in memory
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the control
+            MoveWindow GetDlgItem(hwnd, %IDC_WEBBROWSER), 0, 0, LO(WORD, lParam), HI(WORD, lParam), %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

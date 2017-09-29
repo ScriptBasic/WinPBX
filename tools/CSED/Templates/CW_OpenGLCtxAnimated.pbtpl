@@ -1,0 +1,278 @@
+2
+PBWIN
+.bas
+CWindow: OpenGL Graphic Control Animated
+' ########################################################################################
+' Renders a spinning colored triangle controlled with both the TIMER function and the mouse.
+' This version uses the CWindow class and the GlCtx graphic control
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' ########################################################################################
+
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Header files for imported files
+%USEGLCTX = 1
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+#INCLUDE ONCE "GlCtx.inc"     ' // OpenGL control
+
+$WindowCaption = "OpenGL - Spinning Triangle"
+
+%IDC_GLCTX = 1001
+
+GLOBAL pGL AS ISpinningTrianle
+
+' =======================================================================================
+' Spinning triangle class
+' =======================================================================================
+CLASS CSpinningTrianle
+
+   INTERFACE ISpinningTrianle : INHERIT IUnknown
+
+   ' ====================================================================================
+   ' All the setup goes here
+   ' ====================================================================================
+   METHOD SetupScene
+      ' // Specify clear values for the color buffers
+      glClearColor 0.0!, 0.0!, 0.0!, 0.0!
+   END METHOD
+   ' ====================================================================================
+
+   ' ====================================================================================
+   ' Resizes the scene
+   ' ====================================================================================
+   METHOD ResizeScene (BYVAL hCtl AS DWORD)
+      ' // Get the dimensions of the window
+      LOCAL nWidth, nHeight AS LONG
+      AfxGetWindowSize(hCtl, nWidth, nHeight)
+      ' // Prevent divide by zero making height equal one
+      IF nHeight = 0 THEN nHeight = 1
+      ' // Reset the current viewport
+      glViewport 0, 0, nWidth, nHeight
+      ' // Select the projection matrix
+      glMatrixMode %GL_PROJECTION
+      ' // Reset the projection matrix
+      glLoadIdentity
+      ' // Calculate the aspect ratio of the window
+      gluPerspective 65.0!, nWidth / nHeight, 1.0!, 100.0!
+      ' // Select the model view matrix
+      glMatrixMode %GL_MODELVIEW
+      ' // Reset the model view matrix
+      glLoadIdentity
+   END METHOD
+   ' ====================================================================================
+
+   ' ====================================================================================
+   ' Draws the scene
+   ' ====================================================================================
+   METHOD DrawScene (BYVAL hCtl AS DWORD)
+
+      ' // Get the dimensions of the window
+      LOCAL nWidth, nHeight AS LONG
+      AfxGetWindowSize(hCtl, nWidth, nHeight)
+
+      LOCAL pt AS POINTAPI
+      LOCAL t AS DOUBLE
+
+      GetCursorPos pt
+      t = TIMER
+
+      glClear %GL_COLOR_BUFFER_BIT
+
+      ' // Select and setup the modelview matrix
+      glMatrixMode %GL_MODELVIEW
+      glLoadIdentity
+      gluLookAt 0.0!,  1.0!, 0.0!, _   ' Eye-position
+                0.0!, 20.0!, 0.0!, _   ' View-point
+                0.0!,  0.0!, 1.0!      ' Up-vector
+
+      ' // Draw a rotating colorful triangle
+      glTranslatef 0.0!, 14.0!, 0.0!
+      glRotatef 0.3! * pt.x + t * 100.0!, 0.0!, 0.0!, 1.0!
+      glBegin %GL_TRIANGLES
+         glColor3f   1.0!, 0.0!,  0.0!
+         glVertex3f -5.0!, 0.0!, -4.0!
+         glColor3f   0.0!, 1.0!,  0.0!
+         glVertex3f  5.0!, 0.0!, -4.0!
+         glColor3f   0.0!, 0.0!,  1.0!
+         glVertex3f  0.0!, 0.0!,  6.0!
+      glEnd
+
+      ' // Required: Force execution of GL commands in finite time
+      glFlush
+
+      ' // Required: Force repainting of the control
+      InvalidateRect hCtl, BYVAL %NULL, %TRUE
+
+   END METHOD
+   ' ====================================================================================
+
+   ' ====================================================================================
+   ' Processes keystrokes
+   ' Parameters:
+   ' * hwnd = Window hande
+   ' * vKeyCode = Virtual key code
+   ' * bKeyDown = %TRUE if key is pressed; %FALSE if it is released
+   ' ====================================================================================
+   METHOD ProcessKeystrokes (BYVAL hwnd AS DWORD, BYVAL vKeyCode AS LONG, BYVAL bKeyDown AS LONG)
+      SELECT CASE AS LONG vKeyCode
+         CASE %VK_ESCAPE
+            ' // Quit if Esc key pressed
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+      END SELECT
+   END METHOD
+   ' ====================================================================================
+
+   END INTERFACE
+
+END CLASS
+' =======================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the CWindow class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   LOCAL hwnd AS DWORD
+   hwnd = pWindow.CreateWindow(%NULL, "CWindow with a OpenGL Graphic Control", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 600, 380
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Create an instance of the OpenGL lesson class
+   pGL = CLASS "CSpinningTrianle"
+   IF ISNOTHING(pGL) THEN EXIT FUNCTION
+
+   ' // Add an OpenGL aware graphic control
+   LOCAL hCtl AS DWORD
+   hCtl = pWindow.AddGlCtx(hwnd, %IDC_GLCTX, "", 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   GlCtx_SetResizable hCtl, %TRUE   ' // Make the control resizable
+
+   ' // Show the window
+   ShowWindow hwnd, nCmdShow
+   UpdateWindow hwnd
+
+   ' // Process Windows messages
+   LOCAL bDone    AS LONG
+   LOCAL vKeyCode AS LONG
+   LOCAL bKeyDown AS LONG
+   LOCAL msg      AS tagMSG
+
+   DO UNTIL bDone
+
+      ' // Windows message pump
+      DO WHILE PeekMessage(msg, %NULL, 0, 0, %PM_REMOVE)
+         IF msg.message = %WM_QUIT THEN
+            bDone = %TRUE
+         ELSE
+            IF msg.message = %WM_KEYDOWN THEN
+               vKeyCode = msg.wParam
+               bKeyDown = %TRUE
+            ELSEIF msg.message = %WM_KEYUP THEN
+               vKeyCode = msg.wParam
+               bKeyDown = %FALSE
+            END IF
+            TranslateMessage msg
+            DispatchMessage msg
+         END IF
+      LOOP
+
+      ' // Calculate and display the number of frames per second
+      LOCAL t         AS DOUBLE
+      LOCAL t0        AS DOUBLE
+      LOCAL fps       AS DOUBLE
+      LOCAL nFrames   AS LONG
+      LOCAL szCaption AS WSTRINGZ * 256
+
+      t = INT(TIMER)
+      IF t > t0 OR nFrames = 0 THEN
+         fps = nFrames \ (t - t0)
+         wsprintf szCaption, $WindowCaption & " (%i FPS)", BYVAL fps
+         SetWindowText hwnd, szCaption
+         t0 = t
+         nFrames = 0
+      END IF
+      nFrames = nFrames + 1
+
+      ' // Draw the scene
+      pGL.DrawScene(hCtl)
+
+      ' // Process the keystrokes
+      IF vKeyCode THEN
+         pGL.ProcessKeystrokes(hwnd, vKeyCode, bKeyDown)
+         vKeyCode = 0
+      END IF
+
+   LOOP
+
+   FUNCTION = msg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC hInstance AS DWORD        ' // Instance handle
+   STATIC lpc AS CREATESTRUCT PTR   ' // Pointer to the creation parameters
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Pointer to the creation parameters
+         lpc = lParam
+         ' // Instance handle
+         hInstance = @lpc.hInstance
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_SYSCOMMAND
+         ' // Close the window
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         LOCAL hCtl AS DWORD
+         hCtl = GetDlgItem(hwnd, %IDC_GLCTX)
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the control
+            pWindow.MoveWindow hCtl, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight, %TRUE
+            ' // Resize and render the OpenGL scene
+            IF ISOBJECT(pGL) THEN
+               pGL.SetupScene          ' // Setup the scene
+               pGL.ResizeScene(hCtl)   ' // Resize the scene
+               pGL.DrawScene(hCtl)     ' // Draw the scene
+            END IF
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

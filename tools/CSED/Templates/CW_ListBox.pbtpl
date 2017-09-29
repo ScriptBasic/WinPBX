@@ -1,0 +1,117 @@
+2
+PBWIN
+.bas
+CWindow: ListBox
+' ########################################################################################
+' Microsoft Windows
+' File: CW_ListBox.pbtpl
+' Contents: Template - CWindow with a ListBox
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"        ' // CWindow class
+#INCLUDE ONCE "ListBoxCtrl.inc"    ' // ListBox wrappers
+
+%IDC_LISTBOX = 1001
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   LOCAL hwndMain AS DWORD
+   hwndMain = pWindow.CreateWindow(%NULL, "CWindow with a ListBox", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Change the window style to avoid flicker
+   pWindow.ClassStyle = %CS_DBLCLKS
+   ' // Set the client size
+   pWindow.SetClientSize(320, 375)
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a listbox
+   LOCAL hListBox AS DWORD
+   hListBox = pWindow.AddListbox(hwndMain, %IDC_LISTBOX, "", 0, 0, 0, 0)
+   pWindow.SetWindowPos hListBox, %NULL, 8, 8, 300, 320, %SWP_NOZORDER
+
+   ' // Fill the list box
+   LOCAL i AS LONG
+   FOR i = 1 TO 50
+      ListBox_AddString(hListBox, "Item " & FORMAT$(i, "00"))
+   NEXT
+
+   ' // Select the first item
+   ListBox_SetCurSel hListBox, 0
+
+   ' // Add a cancel button
+   pWindow.AddButton(hwndMain, %IDCANCEL, "&Cancel", 233, 338, 75, 23)
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   ' // Process window mesages
+   SELECT CASE uMsg
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+
+            CASE %IDC_LISTBOX
+               SELECT CASE HI(WORD, wParam)
+                  CASE %LBN_DBLCLK
+                     ' // Get the handle of the Listbox
+                     LOCAL hListBox AS DWORD
+                     hListBox = GetDlgItem(hwnd, %IDC_LISTBOX)
+                     ' // Get the current selection
+                     LOCAL curSel AS LONG
+                     curSel = ListBox_GetCurSel(hListBox)
+                     MSGBOX ListBox_GetText(hListBox, curSel)
+                     EXIT FUNCTION
+               END SELECT
+
+         END SELECT
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

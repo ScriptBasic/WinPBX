@@ -1,0 +1,554 @@
+2
+PBWIN
+.bas
+CWindow: Web Browser with Events
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+%USEWEBBROWSER = 1            ' // Use the WebBrowser control
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+' // Identifier
+%IDC_WEBBROWSER = 101
+
+' ########################################################################################
+' Main
+' ########################################################################################
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "AddWebBrowser Template", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 600, 350
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add a WebBrowser control
+   LOCAL hCtl AS DWORD
+   LOCAL bstrURL AS WSTRING
+
+   ' // You can pass a URL
+   bstrURL = "http://www.jose.it-berater.org/smfforum/index.php"
+
+   ' // or a path to an Active document file (Excel, Word or PDF)
+'   bstrURL = EXE.Path$ & "Test.xls"              ' <-- change me!
+'   bstrURL = EXE.Path$ & "JetSQL.doc"            ' <-- change me!
+'   bstrURL = EXE.Path$ & "COMCollections.pdf"    ' <-- change me!
+
+   ' // or a fragment of HTML code (remember to always start with "MSHTML:")
+'   bstrURL = "MSHTML:<HTML><BODY>This is a line of text</BODY></HTML>"
+
+   ' // or a web page (remember to always start with "MSHTML:")
+'   LOCAL s AS WSTRING
+'   LOCAL bstrName AS WSTRING
+
+'   S =  "MSHTML:<?xml version=""1.0""?>"
+'   s += "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">" & $CRLF
+'   s += "<html xmlns=""http://www.w3.org/1999/xhtml"">" & $CRLF
+'   s += "<head>" & $CRLF
+'   s += "<title>Image Test</title>" & $CRLF
+'   s += "</head>" & $CRLF
+'   s += "<body scroll=" & $DQ & "auto" & $DQ & " style=" & $DQ & "MARGIN: 0px 0px 0px 0px" & $DQ & " >" & $CRLF
+'   bstrName = EXE.Path$ & "Ciutat_de_les_Arts_i_de_les_Ciencies_02.jpg"
+'   s += "<img src=" & $DQ & bstrName & $DQ & " alt=" & $DQ & bstrName & $DQ & " title=" & $DQ & bstrName & $DQ & " "
+'   s += "/>" & $CRLF
+'   s += "</body>" & $CRLF
+'   s += "</html>" & $CRLF
+'   bstrURL = s
+
+   ' // Create an instance of the event class
+   LOCAL pWBEvents AS DWebBrowserEvents2Impl
+   pWBEvents = CLASS "CDWebBrowserEvents2"
+
+   ' // Create the control
+   hCtl = pWindow.AddWebBrowserControl(pWindow.hwnd, %IDC_WEBBROWSER, bstrURL, pWBEvents, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   SetFocus hCtl
+
+   |
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ########################################################################################
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_SYSCOMMAND
+         ' // Capture this message and send a WM_CLOSE message
+         ' // Note: Needed with some OCXs, that otherwise remain in memory
+         IF (wParam AND &HFFF0) = %SC_CLOSE THEN
+            SendMessage hwnd, %WM_CLOSE, 0, 0
+            EXIT FUNCTION
+         END IF
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE %WM_SIZE
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the control
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDC_WEBBROWSER), 0, 0, pWindow.ClientWidth, pWindow.ClientHeight, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ########################################################################################
+' Class CDWebBrowserEvents2
+' Interface name = DWebBrowserEvents2
+' Web Browser Control events interface
+' ########################################################################################
+CLASS CDWebBrowserEvents2 AS EVENT
+
+INTERFACE DWebBrowserEvents2Impl $IID_DWebBrowserEvents2 AS EVENT
+
+   INHERIT IDispatch
+
+   ' =====================================================================================
+   METHOD StatusTextChange <102> ( _
+     BYVAL bstrText AS WSTRING _                        ' __in BSTR Text
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD ProgressChange <108> ( _
+     BYVAL Progress AS LONG _                           ' __in long Progress
+   , BYVAL ProgressMax AS LONG _                        ' __in long ProgressMax
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD CommandStateChange <105> ( _
+     BYVAL nCommand AS LONG _                           ' __in long Command
+   , BYVAL bEnable AS INTEGER _                         ' __in VARIANT_BOOL Enable
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD DownloadBegin <106>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD DownloadComplete <104>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD TitleChange <113> ( _
+     BYVAL bstrText AS WSTRING _                        ' __in BSTR Text
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD PropertyChange <112> ( _
+     BYVAL bstrProperty AS WSTRING _                    ' __in BSTR szProperty
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD BeforeNavigate2 <250> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF vURL AS VARIANT _                            ' __in VARIANT* URL
+   , BYREF vFlags AS VARIANT _                          ' __in VARIANT* Flags
+   , BYREF vTargetFrameName AS VARIANT _                ' __in VARIANT* TargetFrameName
+   , BYREF vPostData AS VARIANT _                       ' __in VARIANT* PostData
+   , BYREF vHeaders AS VARIANT _                        ' __in VARIANT* Headers
+   , BYREF Cancel AS INTEGER _                          ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NewWindow2 <251> ( _
+     BYREF ppDisp AS IDispatch _                        ' __in_out IDispatch** ppDisp
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NavigateComplete2 <252> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF vURL AS VARIANT _                            ' __in VARIANT* URL
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD DocumentComplete <259> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF vURL AS VARIANT _                            ' __in VARIANT* URL
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnQuit <253>
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnVisible <254> ( _
+     BYVAL bVisible AS INTEGER _                        ' __in VARIANT_BOOL Visible
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnToolBar <255> ( _
+     BYVAL bToolBar AS INTEGER _                        ' __in VARIANT_BOOL ToolBar
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnMenuBar <256> ( _
+     BYVAL bMenuBar AS INTEGER _                        ' __in VARIANT_BOOL MenuBar
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnStatusBar <257> ( _
+     BYVAL bStatusBar AS INTEGER _                      ' __in VARIANT_BOOL StatusBar
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnFullScreen <258> ( _
+     BYVAL bFullScreen AS INTEGER _                     ' __in VARIANT_BOOL FullScreen
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD OnTheaterMode <260> ( _
+     BYVAL bTheaterMode AS INTEGER _                    ' __in VARIANT_BOOL TheaterMode
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowSetResizable <262> ( _
+     BYVAL bResizable AS INTEGER _                      ' __in VARIANT_BOOL Resizable
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowSetLeft <264> ( _
+     BYVAL nLeft AS LONG _                              ' __in long Left
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowSetTop <265> ( _
+     BYVAL Top AS LONG _                                ' __in long Top
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowSetWidth <266> ( _
+     BYVAL nWidth AS LONG _                             ' __in long Width
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowSetHeight <267> ( _
+     BYVAL Height AS LONG _                             ' __in long Height
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowClosing <263> ( _
+     BYVAL IsChildWindow AS INTEGER _                   ' __in     VARIANT_BOOL IsChildWindow
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD ClientToHostWindow <268> ( _
+     BYREF CX AS LONG _                                 ' __in_out long* CX
+   , BYREF CY AS LONG _                                 ' __in_out long* CY
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD SetSecureLockIcon <269> ( _
+     BYVAL SecureLockIcon AS LONG _                     ' __in long SecureLockIcon
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD FileDownload <270> ( _
+     BYVAL bActiveDocument AS INTEGER _                 ' __in     VARIANT_BOOL ActiveDocument
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NavigateError <271> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF vURL AS VARIANT _                            ' __in VARIANT* URL
+   , BYREF vFrame AS VARIANT _                          ' __in VARIANT* Frame
+   , BYREF vStatusCode AS VARIANT _                     ' __in VARIANT* StatusCode
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD PrintTemplateInstantiation <225> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD PrintTemplateTeardown <226> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in pDisp /* VT_DISPATCH <IDispatch> */
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD UpdatePageStatus <227> ( _
+     BYVAL pDisp AS IDispatch _                         ' __in IDispatch* pDisp
+   , BYREF nPage AS VARIANT _                           ' __in VARIANT* nPage
+   , BYREF fDone AS VARIANT _                           ' __in VARIANT* fDone
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD PrivacyImpactedStateChange <272> ( _
+     BYVAL bImpacted AS INTEGER _                       ' __in VARIANT_BOOL bImpacted
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD NewWindow3 <273> ( _
+     BYREF ppDisp AS IDispatch _                        ' __in_out IDispatch** ppDisp
+   , BYREF bCancel AS INTEGER _                         ' __in_out VARIANT_BOOL* Cancel
+   , BYVAL dwFlags AS DWORD _                           ' __in unsigned long dwFlags
+   , BYVAL bstrUrlContext AS WSTRING _                  ' __in BSTR bstrUrlContext
+   , BYVAL bstrUrl AS WSTRING _                         ' __in BSTR bstrUrl
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD SetPhishingFilterStatus <282> ( _
+     BYVAL PhishingFilterStatus AS LONG _               ' __in long PhishingFilterStatus
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+   ' =====================================================================================
+   METHOD WindowStateChanged <283> ( _
+     BYVAL dwWindowStateFlags AS DWORD _                ' __in unsigned long dwWindowStateFlags
+   , BYVAL dwValidFlagsMask AS DWORD _                  ' __in unsigned long dwValidFlagsMask
+   )                                                    ' void
+
+     ' *** Insert your code here ***
+     OutputDebugString FUNCNAME$
+
+   END METHOD
+   ' =====================================================================================
+
+END INTERFACE
+
+END CLASS

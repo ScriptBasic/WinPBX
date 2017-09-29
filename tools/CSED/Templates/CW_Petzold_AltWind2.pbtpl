@@ -1,0 +1,126 @@
+2
+PBWIN
+.bas
+CWindow: Alternate and winding fill modes (2)
+' ########################################################################################
+' Microsoft Windows
+' File: CW_Petzold_AltWind.pbtpl
+' This program is a translation/adaptation of the ALTWIND.C-Alternate and Winding Fill
+' Modes Program © Charles Petzold, 1998, described and analysed in Chapter 5 of the book
+' Programming Windows, 5th Edition.
+' Displays the figure twice, once using the ALTERNATE filling mode and then using WINDING.
+' Compilers: PBWIN 10+, PBCC 6+
+' Headers: Windows API headers III
+' Copyright (c) 2014 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"   ' // CWindow class
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   pWindow.CreateWindow(%NULL, "Alternate and Winding Fill Modes", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Center the window
+   pWindow.CenterWindow
+
+   |
+
+   ShowWindow pWindow.hwnd, nCmdShow
+   UpdateWindow pWindow.hwnd
+
+   LOCAL uMsg AS tagMsg
+   WHILE GetMessage(uMsg, %NULL, 0, 0)
+      TranslateMessage uMsg
+      DispatchMessage uMsg
+   WEND
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC cxClient AS LONG
+   STATIC cyClient AS LONG
+   LOCAL  hdc AS DWORD
+   LOCAL  i AS LONG
+   LOCAL  ps  AS PAINTSTRUCT
+   DIM    aptFigure(9) AS STATIC POINTAPI
+   DIM    apt(9) AS POINTAPI
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         aptFigure(0).x = 10 : aptFigure(0).y = 70
+         aptFigure(1).x = 50 : aptFigure(1).y = 70
+         aptFigure(2).x = 50 : aptFigure(2).y = 10
+         aptFigure(3).x = 90 : aptFigure(3).y = 10
+         aptFigure(4).x = 90 : aptFigure(4).y = 50
+         aptFigure(5).x = 30 : aptFigure(5).y = 50
+         aptFigure(6).x = 30 : aptFigure(6).y = 90
+         aptFigure(7).x = 70 : aptFigure(7).y = 90
+         aptFigure(8).x = 70 : aptFigure(8).y = 30
+         aptFigure(9).x = 10 : aptFigure(9).y = 30
+         EXIT FUNCTION
+
+      CASE %WM_KEYDOWN
+         SELECT CASE LO(WORD, wParam)
+            CASE %VK_ESCAPE
+               SendMessage hwnd, %WM_CLOSE, 0, 0
+               EXIT FUNCTION
+         END SELECT
+
+      CASE %WM_SIZE
+         cxClient = LO(WORD, lParam)
+         cyClient = HI(WORD, lParam)
+         EXIT FUNCTION
+
+      CASE %WM_PAINT
+         hdc = BeginPaint(hwnd, ps)
+         SelectObject hdc, GetStockObject(%GRAY_BRUSH)
+         FOR i = 0 TO 9
+            apt(i).x = cxClient * aptFigure(i).x / 200
+            apt(i).y = cyClient * aptFigure(i).y / 100
+         NEXT
+         SetPolyFillMode hdc, %ALTERNATE
+         Polygon hdc, apt(0), 10
+         FOR i = 0 TO 9
+            apt(i).x = apt(i).x + cxClient / 2
+         NEXT
+         SetPolyFillMode hdc, %WINDING
+         Polygon hdc, apt(0), 10
+         EndPaint hwnd, ps
+         EXIT FUNCTION
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================

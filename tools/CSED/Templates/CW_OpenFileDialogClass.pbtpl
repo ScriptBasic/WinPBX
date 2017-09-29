@@ -1,0 +1,131 @@
+2
+PBWIN
+.bas
+CWindow: Open File Dialog (Class)
+#COMPILE EXE
+#DIM ALL
+%UNICODE = 1
+
+' // Include files for external files
+#INCLUDE ONCE "CWindow.inc"          ' // CWindow class
+#INCLUDE ONCE "CAfxFileDialog.inc"   ' // Open File Dialog class
+
+' ========================================================================================
+' Open file dialog (class).
+' ========================================================================================
+SUB OpenFileDialogClass (BYVAL hwnd AS DWORD)
+
+   LOCAL pofd AS IAfxFileDialog
+   pofd = CLASS "CAfxFileDialog"
+   IF ISNOTHING(pofd) THEN EXIT SUB
+
+   pofd.DefaultFolder = CURDIR$
+   pofd.FileName = "*.BAS;*.INC"
+   pofd.DefaultExtension = "BAS"
+   pofd.Filter = CHR$("PB Code Files (*.BAS)", 0, "*.BAS", 0) & _
+                 CHR$("PB Include Files (*.INC)", 0, "*.INC", 0) & _
+                 CHR$("PB Template Files (*.PBTPL)", 0, "*.PBTPL", 0) & _
+                 CHR$("All Files (*.*)", 0, "*.*", 0)
+   pofd.Options = %OFN_EXPLORER OR %OFN_FILEMUSTEXIST OR %OFN_ALLOWMULTISELECT
+   IF pofd.ShowOpenDialog THEN
+      LOCAL pFiles AS IPowerCollection
+      LOCAL vFile AS VARIANT
+      pFiles = pofd.Files
+      ? "Selected path: " & pofd.SelectedPath
+      FOR EACH vFile IN pFiles
+         ? VARIANT$$(vFile)
+      NEXT
+   END IF
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS DWORD, BYVAL hPrevInstance AS DWORD, BYVAL lpszCmdLine AS WSTRINGZ PTR, BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   ' // Create an instance of the class
+   LOCAL pWindow AS IWindow
+   pWindow = CLASS "CWindow"
+   IF ISNOTHING(pWindow) THEN EXIT FUNCTION
+
+   ' // Create the main window
+   ' // Note: CW_USEDEFAULT is used as the default value When passing 0's as the width and height
+   pWindow.CreateWindow(%NULL, "CWindow with Open File Dialog", 0, 0, 0, 0, 0, 0, CODEPTR(WindowProc))
+   ' // Set the client size
+   pWindow.SetClientSize 500, 320
+   ' // Center the window
+   pWindow.CenterWindow
+
+   ' // Add buttons
+   pWindow.AddButton(pWindow.hwnd, %IDOK, "&Start", 0, 0, 75, 23)
+   pWindow.AddButton(pWindow.hwnd, %IDCANCEL, "&Close", 0, 0, 75, 23)
+
+
+   ' // Default message pump (you can replace it with your own)
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main callback function.
+' ========================================================================================
+FUNCTION WindowProc (BYVAL hwnd AS DWORD, BYVAL uMsg AS DWORD, BYVAL wParam AS DWORD, BYVAL lParam AS LONG) AS LONG
+
+   STATIC hInstance AS DWORD        ' // Instance handle
+   STATIC lpc AS CREATESTRUCT PTR   ' // Pointer to the creation parameters
+   STATIC pWindow AS IWindow        ' // Reference to the IWindow interface
+
+   SELECT CASE uMsg
+
+      CASE %WM_CREATE
+         ' // Pointer to the creation parameters
+         lpc = lParam
+         ' // Instance handle
+         hInstance = @lpc.hInstance
+         ' // Get a reference to the IWindow interface from the CREATESTRUCT structure
+         pWindow = CWindow_GetObjectFromCreateStruct(lParam)
+         EXIT FUNCTION
+
+      CASE %WM_COMMAND
+         SELECT CASE LO(WORD, wParam)
+
+            CASE %IDOK
+               OpenFileDialogClass(hwnd)
+               EXIT FUNCTION
+
+            CASE %IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HI(WORD, wParam) = %BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, %WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+
+         END SELECT
+
+      CASE %WM_SIZE
+         ' // If the window isn't minimized, resize it
+         IF wParam <> %SIZE_MINIMIZED THEN
+            ' // Resize the sample button
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDOK), pWindow.ClientWidth - 195, pWindow.ClientHeight - 35, 75, 23, %TRUE
+            pWindow.MoveWindow GetDlgItem(hwnd, %IDCANCEL), pWindow.ClientWidth - 95, pWindow.ClientHeight - 35, 75, 23, %TRUE
+         END IF
+
+      CASE %WM_DESTROY
+         ' // End the application
+         PostQuitMessage 0
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Pass unprocessed messages to Windows
+   FUNCTION = DefWindowProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
