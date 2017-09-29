@@ -1,0 +1,173 @@
+' NOTE: Code may be modified or placed anywhere in a file except
+'       inside a >>PHNX_BEGIN_XXX and >>PHNX_END_XXX pair of tags.
+'       The >>PHNX_XXX_LOAD code block is programmer accessible, and is
+'       only modified when a project is packaged as a custom control.
+'       DO NOT remove the >>PHNX_BEGIN_XXX/>>PHNX_END_XXX tags.
+'       The code generator modifies tagged blocks on every build.
+
+' >>PHNX_BEGIN_CONSTANTS
+'=========================================================================================
+'----------------------------- [ String offsets ] ------------------------------
+
+' Maps numeric identifiers of objects to the identifiers
+' of descriptive strings in the resource file.
+' Toolbars and menus
+' ------------------
+' <command id>                  -> <tooltip id>
+' <command id> + OFFSET_CAPTION -> <caption id>
+' <command id> + OFFSET_BROWSE  -> <statusbar text id>
+
+' Controls
+' --------
+' <control id>                  -> <tooltip id>
+' <control id> + OFFSET_CAPTION -> <Caption id>
+
+' Control data(tab, statusbar | combobox, listbox)
+' ------------------------------------------------
+' <caption id> + OFFSET_BROWSE  -> <tooltip id> | <item data>
+%OFFSET_CAPTION                              = 22
+%OFFSET_BROWSE                               = 44
+
+'---------------------------- [ Icon Identifiers ] -----------------------------
+
+%IDI_TLB_LOGO_32                             = 100
+%IDI_TLB_LOGO_16                             = 101
+%IDI_TLB_TYPELIBS_16                         = 102
+%IDI_TLB_SPEAKER                             = 103
+%IDI_TLB_GRID_16                             = 104
+%IDI_TLB_TREEVIEW_16                         = 105
+%IDI_TLB_INTERFACES_16                       = 106
+%IDI_TLB_OPTIONS_16                          = 107
+
+'--------------------------- [ Bitmap Identifiers ] ----------------------------
+
+%IDB_TLB_EXIT_24                             = 100
+%IDB_TLB_INTERFACES_24                       = 101
+%IDB_TLB_OPEN_16                             = 102
+%IDB_TLB_SAVE_24                             = 103
+%IDB_TLB_STOP_24                             = 104
+%IDB_TLB_EVENTS_24                           = 106
+%IDB_TLB_RELOAD_16                           = 107
+%IDB_TLB_SAVE_16                             = 108
+%IDB_TLB_EXIT_16                             = 109
+%IDB_TLB_RELOAD_24                           = 110
+%IDB_TLB_HELP_24                             = 111
+%IDB_TLB_INTERFACES_D_24                     = 112
+%IDB_TLB_EVENTS_D_24                         = 113
+%IDB_TLB_STOP_D_24                           = 114
+%IDB_TLB_SAVE_D_24                           = 115
+%IDB_TLB_RELOAD_D_24                         = 116
+%IDB_TLB_HELP_D_24                           = 117
+%IDB_TLB_EXIT_D_24                           = 118
+%IDB_TLB_HELP_16                             = 119
+%IDB_TLB_ABOUT_16                            = 120
+%IDB_TLB_INTERFACES_16                       = 126
+
+'--------------------------- [ Command Identifiers ] ---------------------------
+
+%IDR_DIALOG1_MAINMENU                        = 103
+%IDM_FILE                                    = 28000
+%IDM_RELOAD                                  = 28001
+%IDM_OPEN                                    = 28002
+%IDM_IDENTIFIERS                             = 28003
+%IDM_ENUMERATIONS                            = 28004
+%IDM_EXIT                                    = 28005
+%IDM_MODULES                                 = 28006
+%IDM_RECORDS                                 = 28007
+%IDM_EVENTS                                  = 28011
+%IDM_CODE                                    = 28014
+%IDM_INTERFACES                              = 28015
+%IDM_DISPINTERFACES                          = 28016
+%IDM_HELPMENU                                = 28018
+%IDM_HELP                                    = 28019
+%IDM_ABOUT                                   = 28020
+%IDM_SAVE                                    = 28021
+%IDM_STOP                                    = 28022
+%IDM_TOOLBAR_HELP                            = 28023
+
+'------------------ [ Custom Styles/Messages/Notifications ] -------------------
+
+' Dialog1_Class messages
+' ----------------------
+%MYCREATEMESSAGE                             = 12345
+' Purpose: To be notified that all controls have been created.
+' wParam:  The handle of the ListView
+' lParam:  N/A
+' Return:  N/A
+
+%MYSETFOCUSMESSAGE                           = 12346
+' Purpose: To set the focus in a particular control
+' wParam:  The handle of the control
+' lParam:  N/A
+' Return:  N/A
+
+%MYENUMMESSAGE                               = 12347
+' Purpose: To be notified to enumerate items
+' wParam:  Enumeration type
+' lParam:  Report type
+' Return:  N/A
+
+'--------------------------- [ Control Identifiers ] ---------------------------
+
+' Dialog1
+%IDD_DIALOG1                                 = 100
+%IDC_DIALOG1_STATUSBAR1                      = 101
+%IDC_DIALOG1_OPTIONS                         = 102
+%IDC_DIALOG1_TOOLBAR1                        = 104
+%IDC_DIALOG1_TAB1                            = 105
+%IDC_DIALOG1_GRID                            = 106
+%IDC_DIALOG1_TREES                           = 107
+%IDC_DIALOG1_CODE                            = 108
+%IDC_DIALOG1_EDITPREFIX                      = 121
+' Grid
+%IDC_DIALOG1_LISTVIEW1                       = 109
+' Trees
+%IDC_DIALOG1_TREEVIEW1                       = 110
+%IDC_DIALOG1_SPLITTERBAR1                    = 111
+%IDC_DIALOG1_TREEVIEW2                       = 112
+' Code
+%IDC_DIALOG1_RICHEDIT_VIEWCODE               = 113
+' Options
+%IDC_DIALOG1_CHECK_USEMETHOD                 = 114
+%IDC_DIALOG1_CHECK_USEPREFIX                 = 115
+%IDC_DIALOG1_CHECK_USEENUMPREFIX             = 116
+%IDC_DIALOG1_CHECK_USEHEXNUMBERS             = 117
+%IDC_DIALOG1_CHECK_USEPROPGETSET             = 118
+%IDC_DIALOG1_CHECK_MIXDISPINTERFACES         = 119
+%IDC_DIALOG1_CHECK_RETRIEVELICENSEKEY        = 120
+%IDC_DIALOG1_CHECK_USEAUTOMATIONVIEW         = 121
+%IDC_DIALOG1_CHECK_USESETPREFIX              = 122
+%IDC_DIALOG1_CHECK_USEINTNAMESWITHEXOBJ      = 123
+%IDC_DIALOG1_CHECK_USEPRMNAMES               = 124
+%IDC_DIALOG1_CHECK_ADDPRMNAMESPREFIX         = 125
+
+'--------------------------- [ Custom data strings ] ---------------------------
+
+' Tab1
+%IDS_STRING3                                 = 32777
+%IDS_STRING4                                 = 32778
+%IDS_STRING5                                 = 32779
+%IDS_STRING15                                = 32780
+'=========================================================================================
+' >>PHNX_END_CONSTANTS
+
+' >>PHNX_BEGIN_GLOBALS
+'=========================================================================================
+GLOBAL   ghInstance              AS DWORD    ' handle of the application instance
+GLOBAL   ghMenuActive            AS DWORD    ' handle of the active owner-drawn menu
+
+GLOBAL   gdwADM_ALIGNCONTROLS    AS DWORD    ' identifier of registered message
+' Purpose: sent to a form or panel to reposition controls with alignment
+'          styles after the form or panel has been resized or scrolled.
+' wParam:  N/A
+' lParam:  the low-order word is the width, and the high-order word the height of the client area
+' Return:  N/A
+
+GLOBAL   gdwADM_LAYOUT           AS DWORD    ' identifier of registered message
+' Purpose: sent to a top-level window to apply layout rules when
+'          the window is resized or a splitterbar is moved.
+' wParam:  handle of window associated with the layout resource
+' lParam:  identifier of layout resource
+' Return:  N/A
+'=========================================================================================
+' >>PHNX_END_GLOBALS

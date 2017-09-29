@@ -1,0 +1,289 @@
+// Phoenix generated resource script.
+
+// NOTE: Code may be modified or placed anywhere in a file except
+//       inside a >>PHNX_BEGIN_XXX and >>PHNX_END_XXX pair of tags.
+//       The >>PHNX_XXX_LOAD code block is programmer accessible, and is
+//       only modified when a project is packaged as a custom control.
+//       DO NOT remove the >>PHNX_BEGIN_XXX/>>PHNX_END_XXX tags.
+//       The code generator modifies tagged blocks on every build.
+
+// >>PHNX_BEGIN_INCLUDES
+//========================================================================================
+#include "resource.h"
+#include "TLB_501.h"
+//========================================================================================
+// >>PHNX_END_INCLUDES
+
+// Manifest
+1 24 "TLB_501.xml"
+
+// >>PHNX_BEGIN_RESOURCE
+//========================================================================================
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Icons
+//
+
+// Icon with lowest ID value is placed first to ensure that
+// the application icon remains consistent on all systems.
+IDI_TLB_LOGO_32               ICON DISCARDABLE  "TLB_LOGO_32.ico"
+IDI_TLB_LOGO_16               ICON DISCARDABLE  "TLB_LOGO_16.ico"
+IDI_TLB_TYPELIBS_16           ICON DISCARDABLE  "TLB_TYPELIBS_16.ico"
+IDI_TLB_SPEAKER               ICON DISCARDABLE  "TLB_SPEAKER.ico"
+IDI_TLB_GRID_16               ICON DISCARDABLE  "TLB_GRID_16.ico"
+IDI_TLB_TREEVIEW_16           ICON DISCARDABLE  "TLB_TREEVIEW_16.ico"
+IDI_TLB_INTERFACES_16         ICON DISCARDABLE  "TLB_INTERFACES_16.ico"
+IDI_TLB_OPTIONS_16            ICON DISCARDABLE  "TLB_OPTIONS_16.ico"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Bitmaps
+//
+
+IDB_TLB_EXIT_24               BITMAP DISCARDABLE   "TLB_EXIT_24.bmp"
+IDB_TLB_INTERFACES_24         BITMAP DISCARDABLE   "TLB_INTERFACES_24.bmp"
+IDB_TLB_OPEN_16               BITMAP DISCARDABLE   "TLB_OPEN_16.bmp"
+IDB_TLB_SAVE_24               BITMAP DISCARDABLE   "TLB_SAVE_24.bmp"
+IDB_TLB_STOP_24               BITMAP DISCARDABLE   "TLB_STOP_24.bmp"
+IDB_TLB_EVENTS_24             BITMAP DISCARDABLE   "TLB_EVENTS_24.bmp"
+IDB_TLB_RELOAD_16             BITMAP DISCARDABLE   "TLB_RELOAD_16.bmp"
+IDB_TLB_SAVE_16               BITMAP DISCARDABLE   "TLB_SAVE_16.bmp"
+IDB_TLB_EXIT_16               BITMAP DISCARDABLE   "TLB_EXIT_16.bmp"
+IDB_TLB_RELOAD_24             BITMAP DISCARDABLE   "TLB_RELOAD_24.bmp"
+IDB_TLB_HELP_24               BITMAP DISCARDABLE   "TLB_HELP_24.bmp"
+IDB_TLB_INTERFACES_D_24       BITMAP DISCARDABLE   "TLB_INTERFACES_D_24.bmp"
+IDB_TLB_EVENTS_D_24           BITMAP DISCARDABLE   "TLB_EVENTS_D_24.bmp"
+IDB_TLB_STOP_D_24             BITMAP DISCARDABLE   "TLB_STOP_D_24.bmp"
+IDB_TLB_SAVE_D_24             BITMAP DISCARDABLE   "TLB_SAVE_D_24.bmp"
+IDB_TLB_RELOAD_D_24           BITMAP DISCARDABLE   "TLB_RELOAD_D_24.bmp"
+IDB_TLB_HELP_D_24             BITMAP DISCARDABLE   "TLB_HELP_D_24.bmp"
+IDB_TLB_EXIT_D_24             BITMAP DISCARDABLE   "TLB_EXIT_D_24.bmp"
+IDB_TLB_HELP_16               BITMAP DISCARDABLE   "TLB_HELP_16.bmp"
+IDB_TLB_ABOUT_16              BITMAP DISCARDABLE   "TLB_ABOUT_16.bmp"
+IDB_TLB_INTERFACES_16         BITMAP DISCARDABLE   "TLB_INTERFACES_16.bmp"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Menus
+//
+
+// Dialog1
+
+IDR_DIALOG1_MAINMENU MENUEX DISCARDABLE
+BEGIN
+   POPUP "&File",                           IDM_FILE
+   BEGIN
+      MENUITEM "&Open...\tCtrl+O",          IDM_OPEN
+      MENUITEM "&Save...\tCtrl+S",          IDM_SAVE
+      MENUITEM "&Reload\tCtrl+R",           IDM_RELOAD
+      MENUITEM MFT_SEPARATOR
+      MENUITEM "E&xit\tAlt+F4",             IDM_EXIT
+   END
+   POPUP "&Code",                           IDM_CODE
+   BEGIN
+      MENUITEM "&Identifiers\tF2",          IDM_IDENTIFIERS
+      MENUITEM "&Enumerations\tF3",         IDM_ENUMERATIONS
+      MENUITEM "&Modules\tF4",              IDM_MODULES
+      MENUITEM "&Structures\tF5",           IDM_RECORDS
+      MENUITEM "&Direct Interfaces\tF6",    IDM_INTERFACES
+      MENUITEM "ID&BIND Interfaces\tF7",    IDM_DISPINTERFACES
+   END
+   POPUP "&Help",                           IDM_HELPMENU
+   BEGIN
+      MENUITEM "&Help\tF1",                 IDM_HELP
+      MENUITEM "&About...",                 IDM_ABOUT
+   END
+END
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Accelerators
+//
+
+// Dialog1
+
+IDR_DIALOG1_MAINMENU ACCELERATORS DISCARDABLE
+BEGIN
+   "R",              IDM_RELOAD,          VIRTKEY, CONTROL, NOINVERT
+   "O",              IDM_OPEN,            VIRTKEY, CONTROL, NOINVERT
+   VK_F1,            IDM_HELP,            VIRTKEY, NOINVERT
+   VK_F2,            IDM_IDENTIFIERS,     VIRTKEY, NOINVERT
+   VK_F3,            IDM_ENUMERATIONS,    VIRTKEY, NOINVERT
+   VK_F4,            IDM_MODULES,         VIRTKEY, NOINVERT
+   VK_F5,            IDM_RECORDS,         VIRTKEY, NOINVERT
+   VK_F6,            IDM_INTERFACES,      VIRTKEY, NOINVERT
+   VK_F7,            IDM_DISPINTERFACES,  VIRTKEY, NOINVERT
+   "S",              IDM_SAVE,            VIRTKEY, CONTROL, NOINVERT
+END
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Toolbar tooltip string table
+//
+
+STRINGTABLE DISCARDABLE
+BEGIN
+   IDM_FILE                   ""
+   IDM_RELOAD                 "Reload typelibs"
+   IDM_OPEN                   ""
+   IDM_IDENTIFIERS            ""
+   IDM_ENUMERATIONS           ""
+   IDM_EXIT                   "Exit"
+   IDM_MODULES                ""
+   IDM_RECORDS                ""
+   IDM_EVENTS                 "Events"
+   IDM_CODE                   "Code"
+   IDM_INTERFACES             ""
+   IDM_DISPINTERFACES         ""
+   IDM_HELPMENU               ""
+   IDM_HELP                   "Help"
+   IDM_ABOUT                  ""
+   IDM_SAVE                   "Save"
+   IDM_STOP                   "Stop"
+   IDM_TOOLBAR_HELP           "Help"
+END
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Control data string table
+//
+
+// Dialog1
+
+// Tab1 tooltips
+STRINGTABLE DISCARDABLE
+BEGIN
+   O_T_IDS_STRING3            "List of registered typelibs"
+   O_T_IDS_STRING4            "TreeViews displaying the typelib information"
+   O_T_IDS_STRING5            "RichEdit box with the generated code"
+   O_T_IDS_STRING15           "Custom options"
+END
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Menu Button Bitmap Data
+//
+
+// Dialog1
+
+IDR_DIALOG1_MAINMENU RCDATA DISCARDABLE
+BEGIN
+   // flat flag, right-align flag
+   // item bitmap index, button bitmap index, left-margin bitamp ID
+   1, 0
+   IDM_FILE,             -1, -1, 0
+   IDM_OPEN,             -1, 0,  0
+   IDM_SAVE,             -1, 1,  0
+   IDM_RELOAD,           -1, 2,  0
+   IDM_EXIT,             -1, 3,  0
+   IDM_CODE,             -1, -1, 0
+   IDM_IDENTIFIERS,      -1, 6,  0
+   IDM_ENUMERATIONS,     -1, 6,  0
+   IDM_MODULES,          -1, 6,  0
+   IDM_RECORDS,          -1, 6,  0
+   IDM_INTERFACES,       -1, 6,  0
+   IDM_DISPINTERFACES,   -1, 6,  0
+   IDM_HELPMENU,         -1, -1, 0
+   IDM_HELP,             -1, 4,  0
+   IDM_ABOUT,            -1, 5,  0
+END
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Layout Rules
+//
+
+// Dialog1
+
+IDD_DIALOG1 RCDATA DISCARDABLE
+BEGIN
+//Action                    Act On                                   Relative To
+//-------  ----------------------------------------  -------------------------------------------
+// Macro    Part         Widget(First, Last)          Part            Widget           %  Offset
+//-------  ------  --------------------------------  ------  ------------------------  -  ------
+  STRETCH, LEFT,   IDC_DIALOG1_TAB1,              0, LEFT,   IDD_DIALOG1,              0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_TAB1,              0, RIGHT,  IDD_DIALOG1,              0,      0
+  STRETCH, TOP,    IDC_DIALOG1_TAB1,              0, BOTTOM, IDC_DIALOG1_TOOLBAR1,     0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_TAB1,              0, TOP,    IDC_DIALOG1_STATUSBAR1,   0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_GRID,              0, LEFT,   IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_GRID,              0, RIGHT,  IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_GRID,              0, TOP,    IDC_DIALOG1_TAB1,         0,     23
+  STRETCH, BOTTOM, IDC_DIALOG1_GRID,              0, TOP,    IDC_DIALOG1_STATUSBAR1,   0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_LISTVIEW1,         0, LEFT,   IDC_DIALOG1_GRID,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_LISTVIEW1,         0, RIGHT,  IDC_DIALOG1_GRID,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_LISTVIEW1,         0, TOP,    IDC_DIALOG1_GRID,         0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_LISTVIEW1,         0, BOTTOM, IDC_DIALOG1_GRID,         0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_TREES,             0, LEFT,   IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_TREES,             0, RIGHT,  IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_TREES,             0, TOP,    IDC_DIALOG1_TAB1,         0,     23
+  STRETCH, BOTTOM, IDC_DIALOG1_TREES,             0, TOP,    IDC_DIALOG1_STATUSBAR1,   0,      0
+  STRETCH, TOP,    IDC_DIALOG1_SPLITTERBAR1,      0, TOP,    IDC_DIALOG1_TREES,        0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_SPLITTERBAR1,      0, BOTTOM, IDC_DIALOG1_TREES,        0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_TREEVIEW1,         0, LEFT,   IDC_DIALOG1_TREES,        0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_TREEVIEW1,         0, LEFT,   IDC_DIALOG1_SPLITTERBAR1, 0,      0
+  STRETCH, TOP,    IDC_DIALOG1_TREEVIEW1,         0, TOP,    IDC_DIALOG1_TREES,        0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_TREEVIEW1,         0, BOTTOM, IDC_DIALOG1_TREES,        0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_TREEVIEW2,         0, RIGHT,  IDC_DIALOG1_SPLITTERBAR1, 0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_TREEVIEW2,         0, RIGHT,  IDC_DIALOG1_TREES,        0,     -2
+  STRETCH, TOP,    IDC_DIALOG1_TREEVIEW2,         0, TOP,    IDC_DIALOG1_TREES,        0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_TREEVIEW2,         0, BOTTOM, IDC_DIALOG1_TREES,        0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_RICHEDIT_VIEWCODE, 0, LEFT,   IDC_DIALOG1_CODE,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_RICHEDIT_VIEWCODE, 0, RIGHT,  IDC_DIALOG1_CODE,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_RICHEDIT_VIEWCODE, 0, TOP,    IDC_DIALOG1_CODE,         0,      0
+  STRETCH, BOTTOM, IDC_DIALOG1_RICHEDIT_VIEWCODE, 0, BOTTOM, IDC_DIALOG1_CODE,         0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_CODE,              0, LEFT,   IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_CODE,              0, RIGHT,  IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_CODE,              0, TOP,    IDC_DIALOG1_TAB1,         0,     23
+  STRETCH, BOTTOM, IDC_DIALOG1_CODE,              0, TOP,    IDC_DIALOG1_STATUSBAR1,   0,      0
+  STRETCH, LEFT,   IDC_DIALOG1_OPTIONS,           0, LEFT,   IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, RIGHT,  IDC_DIALOG1_OPTIONS,           0, RIGHT,  IDC_DIALOG1_TAB1,         0,      0
+  STRETCH, TOP,    IDC_DIALOG1_OPTIONS,           0, TOP,    IDC_DIALOG1_TAB1,         0,     23
+  STRETCH, BOTTOM, IDC_DIALOG1_OPTIONS,           0, TOP,    IDC_DIALOG1_STATUSBAR1,   0,      0
+END
+//========================================================================================
+// >>PHNX_END_RESOURCE
+
+// >>PHNX_BEGIN_VERSION
+//========================================================================================
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//  Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 5,0,1,0
+PRODUCTVERSION 5,0,1,0
+FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+FILEFLAGS 0x0L
+FILESUBTYPE 0x0L
+BEGIN
+   BLOCK "StringFileInfo"
+   BEGIN
+      BLOCK "040904E4"  // Lang=English (United States), CharSet=Windows, Multilingual
+      BEGIN
+         VALUE "Comments", "Developed by Josep Roca\r\nXirivella (València)\r\nSpain\r\n\0"
+         VALUE "CompanyName", "Josep Roca Software\0"
+         VALUE "FileDescription", "Typelib browser and interface generator\0"
+         VALUE "FileVersion", "5.0.1.0\0"
+         VALUE "InternalName", "TLB_501\0"
+         VALUE "LegalCopyright", "Copyright © 2011\0"
+         VALUE "LegalTrademarks", "  \0"
+         VALUE "OriginalFilename", "TLB_501.EXE\0"
+         VALUE "ProductName", "TypeLib Browser\0"
+         VALUE "ProductVersion", "5.0.1.0\0"
+         VALUE "Email", "JRoca@com.it-berater.org\0"
+      END
+   END
+   BLOCK "VarFileInfo"
+   BEGIN
+      VALUE "Translation", 0x409, 1252
+   END
+END
+//========================================================================================
+// >>PHNX_END_VERSION
+
+// >>PHNX_BEGIN_MANIFEST
+//========================================================================================
+//========================================================================================
+// >>PHNX_END_MANIFEST
