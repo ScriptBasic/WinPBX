@@ -1,0 +1,50 @@
+#include "resource.h"
+
+#define WS_CAPTION          0x00C00000L     /* WS_BORDER | WS_DLGFRAME  */
+#define WS_SYSMENU          0x00080000L
+#define WS_GROUP            0x00020000L
+#define IDOK                1
+
+#define IDM_ABOUT   100
+
+#define IDM_MASK1   200
+#define IDM_MASK2   201
+#define IDM_MASK3   202
+
+#define IDM_BLACK   300
+#define IDM_RED     301
+#define IDM_DRED    302
+#define IDM_GREEN   303
+#define IDM_CYAN    304
+
+transbltMenu MENU
+BEGIN
+    POPUP        "&Samples"
+    BEGIN
+        MENUITEM "&True Mask",                IDM_MASK1
+        MENUITEM "&Color Trans/True",         IDM_MASK2
+        MENUITEM "&Color Trans/Black-Source", IDM_MASK3
+    END
+    POPUP        "&Colors"
+    BEGIN
+        MENUITEM "&Black",   IDM_BLACK
+        MENUITEM "&Red",     IDM_RED
+        MENUITEM "&Dark Red",IDM_DRED
+        MENUITEM "&Green",   IDM_GREEN
+        MENUITEM "&Cyan",    IDM_CYAN
+    END
+    POPUP        "&Help"
+    BEGIN
+        MENUITEM "&About transblt...", IDM_ABOUT
+    END
+END
+
+AboutBox DIALOG 22, 17, 144, 75
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "About transblt"
+BEGIN
+    CTEXT "Microsoft Windows"     -1,       0,  5, 144,  8
+    CTEXT "transblt Application"  -1,       0, 14, 144,  8
+    CTEXT "Version 3.0"           -1,       0, 34, 144,  8
+    DEFPUSHBUTTON "OK"          IDOK,      53, 59,  32, 14,      WS_GROUP
+END
