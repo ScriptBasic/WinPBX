@@ -1,0 +1,83 @@
+#include "resource.h"
+
+//=============================================================================
+// Manifest
+//=============================================================================
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "..\Resources\MDIBrowser.xml"
+
+//=============================================================================
+// Icon identifiers for image list
+//=============================================================================
+
+#define IDI_INTERNET32                       100
+#define IDI_INTERNET                         101
+#define IDI_BACK                             102
+#define IDI_FORWARD                          103
+#define IDI_NEW                              104
+#define IDI_FIND                             105
+#define IDI_PRINTPREV                        106
+#define IDI_PAGESETUP                        107
+#define IDI_PRINT                            108
+#define IDI_PROPERTIES                       109
+#define IDI_SAVE                             110
+#define IDI_REFRESH                          111
+#define IDI_STOP                             112
+#define IDI_ZOOMIN                           113
+#define IDI_ZOOMOUT                          114
+#define IDI_EXIT                             115
+
+//=============================================================================
+// Icons
+//=============================================================================
+
+IDI_INTERNET32 ICON DISCARDABLE  "..\Resources\Icons\Internet32.ico"
+IDI_INTERNET   ICON DISCARDABLE  "..\Resources\Icons\Internet.ico"
+IDI_BACK       ICON DISCARDABLE  "..\Resources\Icons\Back.ico"
+IDI_FORWARD    ICON DISCARDABLE  "..\Resources\Icons\Forward.ico"
+IDI_NEW        ICON DISCARDABLE  "..\Resources\Icons\New.ico"
+IDI_FIND       ICON DISCARDABLE  "..\Resources\Icons\Find.ico"
+IDI_PRINTPREV  ICON DISCARDABLE  "..\Resources\Icons\PrintPrev.ico"
+IDI_PAGESETUP  ICON DISCARDABLE  "..\Resources\Icons\PageSetup.ico"
+IDI_PRINT      ICON DISCARDABLE  "..\Resources\Icons\Print.ico"
+IDI_PROPERTIES ICON DISCARDABLE  "..\Resources\Icons\Properties.ico"
+IDI_SAVE       ICON DISCARDABLE  "..\Resources\Icons\Save.ico"
+IDI_REFRESH    ICON DISCARDABLE  "..\Resources\Icons\Refresh.ico"
+IDI_STOP       ICON DISCARDABLE  "..\Resources\Icons\Stop.ico"
+IDI_ZOOMIN     ICON DISCARDABLE  "..\Resources\Icons\Zoomin.ico"
+IDI_ZOOMOUT    ICON DISCARDABLE  "..\Resources\Icons\Zoomout.ico"
+IDI_EXIT       ICON DISCARDABLE  "..\Resources\Icons\Exit.ico"
+
+//=============================================================================
+// Version iInformation.
+//=============================================================================
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+FILEFLAGS 0x0L
+FILESUBTYPE 0x0L
+BEGIN
+   BLOCK "StringFileInfo"
+   BEGIN
+      BLOCK "040904E4"  // Lang=English (United States), CharSet=Windows, Multilingual
+      BEGIN
+         VALUE "Comments", "Developed by Josep Roca\r\nXirivella (València)\r\nSpain\r\n\0"
+         VALUE "CompanyName", "Josep Roca Software\0"
+         VALUE "FileDescription", "MDI Browser\0"
+         VALUE "FileVersion", "1.0.0.0\0"
+         VALUE "InternalName", "MDIBrowser\0"
+         VALUE "LegalCopyright", "Copyright © 2011\0"
+         VALUE "LegalTrademarks", "  \0"
+         VALUE "OriginalFilename", "MDIBrowser.EXE\0"
+         VALUE "ProductName", "MDI Browser\0"
+         VALUE "ProductVersion", "1.0.0.0\0"
+         VALUE "Email", "JRoca@com.it-berater.org\0"
+      END
+   END
+   BLOCK "VarFileInfo"
+   BEGIN
+      VALUE "Translation", 0x409, 1252
+   END
+END
