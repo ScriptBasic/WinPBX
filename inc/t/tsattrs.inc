@@ -1,0 +1,103 @@
+' ########################################################################################
+' Microsoft Windows
+' File: tsattrs.inc
+' Contents: List of ITextStore standard attributes
+' Copyright (c) 2011 José Roca
+' Portions Copyright (c) Microsoft Corporation.
+' All Rights Reserved.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#INCLUDE THIS ONCE
+%TSATTRS_INC = 1
+
+$TSATTRID_OTHERS = GUID$("{b3c32af9-57d0-46a9-bca8-dac238a13057}")
+
+$TSATTRID_Font = GUID$("{573ea825-749b-4f8a-9cfd-21c3605ca828}")
+$TSATTRID_Font_FaceName = GUID$("{b536aeb6-053b-4eb8-b65a-50da1e81e72e}")
+$TSATTRID_Font_SizePts = GUID$("{c8493302-a5e9-456d-af04-8005e4130f03}")
+$TSATTRID_Font_Style = GUID$("{68b2a77f-6b0e-4f28-8177-571c2f3a42b1}")
+$TSATTRID_Font_Style_Bold = GUID$("{48813a43-8a20-4940-8e58-97823f7b268a}")
+$TSATTRID_Font_Style_Italic = GUID$("{8740682a-a765-48e1-acfc-d22222b2f810}")
+$TSATTRID_Font_Style_SmallCaps = GUID$("{facb6bc6-9100-4cc6-b969-11eea45a86b4}")
+$TSATTRID_Font_Style_Capitalize = GUID$("{7d85a3ba-b4fd-43b3-befc-6b985c843141}")
+$TSATTRID_Font_Style_Uppercase = GUID$("{33a300e8-e340-4937-b697-8f234045cd9a}")
+$TSATTRID_Font_Style_Lowercase = GUID$("{76d8ccb5-ca7b-4498-8ee9-d5c4f6f74c60}")
+$TSATTRID_Font_Style_Animation = GUID$("{dcf73d22-e029-47b7-bb36-f263a3d004cc}")
+$TSATTRID_Font_Style_Animation_LasVegasLights = GUID$("{f40423d5-0f87-4f8f-bada-e6d60c25e152}")
+$TSATTRID_Font_Style_Animation_BlinkingBackground = GUID$("{86e5b104-0104-4b10-b585-00f2527522b5}")
+$TSATTRID_Font_Style_Animation_SparkleText = GUID$("{533aad20-962c-4e9f-8c09-b42ea4749711}")
+$TSATTRID_Font_Style_Animation_MarchingBlackAnts = GUID$("{7644e067-f186-4902-bfc6-ec815aa20e9d}")
+$TSATTRID_Font_Style_Animation_MarchingRedAnts = GUID$("{78368dad-50fb-4c6f-840b-d486bb6cf781}")
+$TSATTRID_Font_Style_Animation_Shimmer = GUID$("{2ce31b58-5293-4c36-8809-bf8bb51a27b3}")
+$TSATTRID_Font_Style_Animation_WipeDown = GUID$("{5872e874-367b-4803-b160-c90ff62569d0}")
+$TSATTRID_Font_Style_Animation_WipeRight = GUID$("{b855cbe3-3d2c-4600-b1e9-e1c9ce02f842}")
+$TSATTRID_Font_Style_Emboss = GUID$("{bd8ed742-349e-4e37-82fb-437979cb53a7}")
+$TSATTRID_Font_Style_Engrave = GUID$("{9c3371de-8332-4897-be5d-89233223179a}")
+$TSATTRID_Font_Style_Hidden = GUID$("{b1e28770-881c-475f-863f-887a647b1090}")
+$TSATTRID_Font_Style_Kerning = GUID$("{cc26e1b4-2f9a-47c8-8bff-bf1eb7cce0dd}")
+$TSATTRID_Font_Style_Outlined = GUID$("{10e6db31-db0d-4ac6-a7f5-9c9cff6f2ab4}")
+$TSATTRID_Font_Style_Position = GUID$("{15cd26ab-f2fb-4062-b5a6-9a49e1a5cc0b}")
+$TSATTRID_Font_Style_Protected = GUID$("{1c557cb2-14cf-4554-a574-ecb2f7e7efd4}")
+$TSATTRID_Font_Style_Shadow = GUID$("{5f686d2f-c6cd-4c56-8a1a-994a4b9766be}")
+$TSATTRID_Font_Style_Spacing = GUID$("{98c1200d-8f06-409a-8e49-6a554bf7c153}")
+$TSATTRID_Font_Style_Weight = GUID$("{12f3189c-8bb0-461b-b1fa-eaf907047fe0}")
+$TSATTRID_Font_Style_Height = GUID$("{7e937477-12e6-458b-926a-1fa44ee8f391}")
+$TSATTRID_Font_Style_Underline = GUID$("{c3c9c9f3-7902-444b-9a7b-48e70f4b50f7}")
+$TSATTRID_Font_Style_Underline_Single = GUID$("{1b6720e5-0f73-4951-a6b3-6f19e43c9461}")
+$TSATTRID_Font_Style_Underline_Double = GUID$("{74d24aa6-1db3-4c69-a176-31120e7586d5}")
+$TSATTRID_Font_Style_Strikethrough = GUID$("{0c562193-2d08-4668-9601-ced41309d7af}")
+$TSATTRID_Font_Style_Strikethrough_Single = GUID$("{75d736b6-3c8f-4b97-ab78-1877cb990d31}")
+$TSATTRID_Font_Style_Strikethrough_Double = GUID$("{62489b31-a3e7-4f94-ac43-ebaf8fcc7a9f}")
+$TSATTRID_Font_Style_Overline = GUID$("{e3989f4a-992b-4301-8ce1-a5b7c6d1f3c8}")
+$TSATTRID_Font_Style_Overline_Single = GUID$("{8440d94c-51ce-47b2-8d4c-15751e5f721b}")
+$TSATTRID_Font_Style_Overline_Double = GUID$("{dc46063a-e115-46e3-bcd8-ca6772aa95b4}")
+$TSATTRID_Font_Style_Blink = GUID$("{bfb2c036-7acf-4532-b720-b416dd7765a8}")
+$TSATTRID_Font_Style_Subscript = GUID$("{5774fb84-389b-43bc-a74b-1568347cf0f4}")
+$TSATTRID_Font_Style_Superscript = GUID$("{2ea4993c-563c-49aa-9372-0bef09a9255b}")
+$TSATTRID_Font_Style_Color = GUID$("{857a7a37-b8af-4e9a-81b4-acf700c8411b}")
+$TSATTRID_Font_Style_BackgroundColor = GUID$("{b50eaa4e-3091-4468-81db-d79ea190c7c7}")
+
+$TSATTRID_Text = GUID$("{7edb8e68-81f9-449d-a15a-87a8388faac0}")
+$TSATTRID_Text_VerticalWriting = GUID$("{6bba8195-046f-4ea9-b311-97fd66c4274b}")
+$TSATTRID_Text_RightToLeft = GUID$("{ca666e71-1b08-453d-bfdd-28e08c8aaf7a}")
+$TSATTRID_Text_Orientation = GUID$("{6bab707f-8785-4c39-8b52-96f878303ffb}")
+$TSATTRID_Text_Language = GUID$("{d8c04ef1-5753-4c25-8887-85443fe5f819}")
+$TSATTRID_Text_ReadOnly = GUID$("{85836617-de32-4afd-a50f-a2db110e6e4d}")
+$TSATTRID_Text_EmbeddedObject = GUID$("{7edb8e68-81f9-449d-a15a-87a8388faac0}")
+$TSATTRID_Text_Alignment = GUID$("{139941e6-1767-456d-938e-35ba568b5cd4}")
+$TSATTRID_Text_Alignment_Left = GUID$("{16ae95d3-6361-43a2-8495-d00f397f1693}")
+$TSATTRID_Text_Alignment_Right = GUID$("{b36f0f98-1b9e-4360-8616-03fb08a78456}")
+$TSATTRID_Text_Alignment_Center = GUID$("{a4a95c16-53bf-4d55-8b87-4bdd8d4275fc}")
+$TSATTRID_Text_Alignment_Justify = GUID$("{ed350740-a0f7-42d3-8ea8-f81b6488faf0}")
+$TSATTRID_Text_Link = GUID$("{47cd9051-3722-4cd8-b7c8-4e17ca1759f5}")
+$TSATTRID_Text_Hyphenation = GUID$("{dadf4525-618e-49eb-b1a8-3b68bd7648e3}")
+$TSATTRID_Text_Para = GUID$("{5edc5822-99dc-4dd6-aec3-b62baa5b2e7c}")
+$TSATTRID_Text_Para_FirstLineIndent = GUID$("{07c97a13-7472-4dd8-90a9-91e3d7e4f29c}")
+$TSATTRID_Text_Para_LeftIndent = GUID$("{fb2848e9-7471-41c9-b6b3-8a1450e01897}")
+$TSATTRID_Text_Para_RightIndent = GUID$("{2c7f26f9-a5e2-48da-b98a-520cb16513bf}")
+$TSATTRID_Text_Para_SpaceAfter = GUID$("{7b0a3f55-22dc-425f-a411-93da1d8f9baa}")
+$TSATTRID_Text_Para_SpaceBefore = GUID$("{8df98589-194a-4601-b251-9865a3e906dd}")
+$TSATTRID_Text_Para_LineSpacing = GUID$("{699b380d-7f8c-46d6-a73b-dfe3d1538df3}")
+$TSATTRID_Text_Para_LineSpacing_Single = GUID$("{ed350740-a0f7-42d3-8ea8-f81b6488faf0}")
+$TSATTRID_Text_Para_LineSpacing_OnePtFive = GUID$("{0428a021-0397-4b57-9a17-0795994cd3c5}")
+$TSATTRID_Text_Para_LineSpacing_Double = GUID$("{82fb1805-a6c4-4231-ac12-6260af2aba28}")
+$TSATTRID_Text_Para_LineSpacing_AtLeast = GUID$("{adfedf31-2d44-4434-a5ff-7f4c4990a905}")
+$TSATTRID_Text_Para_LineSpacing_Exactly = GUID$("{3d45ad40-23de-48d7-a6b3-765420c620cc}")
+$TSATTRID_Text_Para_LineSpacing_Multiple = GUID$("{910f1e3c-d6d0-4f65-8a3c-42b4b31868c5}")
+
+$TSATTRID_List = GUID$("{436d673b-26f1-4aee-9e65-8f83a4ed4884}")
+$TSATTRID_List_LevelIndel = GUID$("{7f7cc899-311f-487b-ad5d-e2a459e12d42}")
+$TSATTRID_List_Type = GUID$("{ae3e665e-4bce-49e3-a0fe-2db47d3a17ae}")
+$TSATTRID_List_Type_Bullet = GUID$("{bccd77c5-4c4d-4ce2-b102-559f3b2bfcea}")
+$TSATTRID_List_Type_Arabic = GUID$("{1338c5d6-98a3-4fa3-9bd1-7a60eef8e9e0}")
+$TSATTRID_List_Type_LowerLetter = GUID$("{96372285-f3cf-491e-a925-3832347fd237}")
+$TSATTRID_List_Type_UpperLetter = GUID$("{7987b7cd-ce52-428b-9b95-a357f6f10c45}")
+$TSATTRID_List_Type_LowerRoman = GUID$("{90466262-3980-4b8e-9368-918bd1218a41}")
+$TSATTRID_List_Type_UpperRoman = GUID$("{0f6ab552-4a80-467f-b2f1-127e2aa3ba9e}")
+
+$TSATTRID_App = GUID$("{a80f77df-4237-40e5-849c-b5fa51c13ac7}")
+$TSATTRID_App_IncorrectSpelling = GUID$("{f42de43c-ef12-430d-944c-9a08970a25d2}")
+$TSATTRID_App_IncorrectGrammar = GUID$("{bd54e398-ad03-4b74-b6b3-5edb19996388}")
