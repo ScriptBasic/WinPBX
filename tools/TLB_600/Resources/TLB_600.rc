@@ -1,0 +1,86 @@
+#include "resource.h"
+
+// Icon Identifiers
+#define IDI_TLB_LOGO_32       100
+#define IDI_TLB_LOGO_16       101
+
+//=============================================================================
+// Application icons
+//=============================================================================
+
+// Icon with lowest ID value is placed first to ensure that
+// the application icon remains consistent on all systems.
+IDI_TLB_LOGO_32               ICON "TLB_LOGO_32.ico"
+IDI_TLB_LOGO_16               ICON "TLB_LOGO_16.ico"
+
+//=============================================================================
+// Bitmaps
+//=============================================================================
+
+#define IDB_TLB_RELOAD_24     101
+#define IDB_TLB_RELOAD_D_24   102
+#define IDB_TLB_COLLAPSE_24   103
+#define IDB_TLB_COLLAPSE_D_24 104
+#define IDB_TLB_EXPAND_24     105
+#define IDB_TLB_EXPAND_D_24   106
+#define IDB_TLB_CODEGEN_24    107
+#define IDB_TLB_CODEGEN_D_24  108
+#define IDB_TLB_EVENTS_24     109
+#define IDB_TLB_EVENTS_D_24   110
+#define IDB_TLB_SAVE_24       111
+#define IDB_TLB_SAVE_D_24     112
+#define IDB_TLB_HELP_24       113
+#define IDB_TLB_HELP_D_24     114
+#define IDB_TLB_EXIT_24       115
+#define IDB_TLB_EXIT_D_24     116
+
+IDB_TLB_RELOAD_24             BITMAP "TLB_RELOAD_24.bmp"
+IDB_TLB_RELOAD_D_24           BITMAP "TLB_RELOAD_D_24.bmp"
+IDB_TLB_COLLAPSE_24           BITMAP "TLB_COLLAPSE_24.bmp"
+IDB_TLB_COLLAPSE_D_24         BITMAP "TLB_COLLAPSE_D_24.bmp"
+IDB_TLB_EXPAND_24             BITMAP "TLB_EXPAND_24.bmp"
+IDB_TLB_EXPAND_D_24           BITMAP "TLB_EXPAND_D_24.bmp"
+IDB_TLB_CODEGEN_24            BITMAP "TLB_CODEGEN_24.bmp"
+IDB_TLB_CODEGEN_D_24          BITMAP "TLB_CODEGEN_D_24.bmp"
+IDB_TLB_EVENTS_24             BITMAP "TLB_EVENTS_24.bmp"
+IDB_TLB_EVENTS_D_24           BITMAP "TLB_EVENTS_D_24.bmp"
+IDB_TLB_SAVE_24               BITMAP "TLB_SAVE_24.bmp"
+IDB_TLB_SAVE_D_24             BITMAP "TLB_SAVE_D_24.bmp"
+IDB_TLB_HELP_24               BITMAP "TLB_HELP_24.bmp"
+IDB_TLB_HELP_D_24             BITMAP "TLB_HELP_D_24.bmp"
+IDB_TLB_EXIT_24               BITMAP "TLB_EXIT_24.bmp"
+IDB_TLB_EXIT_D_24             BITMAP "TLB_EXIT_D_24.bmp"
+
+//=============================================================================
+// Manifest
+//=============================================================================
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "TLB_600.xml"
+
+//=============================================================================
+// Application Version Information.
+//=============================================================================
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 6, 0, 0, 0
+PRODUCTVERSION 6, 0, 0, 0
+FILEOS VOS_WINDOWS32
+FILETYPE VFT_APP
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    BEGIN
+      VALUE "CompanyName",      "José Roca\0"
+      VALUE "FileDescription",  "Application\0"
+      VALUE "FileVersion",      "Version 6.00\0"
+      VALUE "InternalName",     "TLB_600"
+      VALUE "OriginalFilename", "TLB_600.EXE\0"
+      VALUE "LegalCopyright",   "Coded in 2011 by José Roca\0"
+      VALUE "LegalTrademarks",  "\0"
+      VALUE "ProductName",      "TypeLib Browser\0"
+      VALUE "ProductVersion",   "6.00\0"
+      VALUE "Comments",         "Typelib browser and interface generator\0"
+    END
+  END
+END
