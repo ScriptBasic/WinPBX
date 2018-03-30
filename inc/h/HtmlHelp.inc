@@ -175,7 +175,7 @@ TYPE HH_POPUP DWORD
    clrForeground AS DWORD      ' COLORREF  clrForeground; // use -1 [BITS(DWORD, -1)] for default
    clrBackground AS DWORD      ' COLORREF  clrBackground; // use -1 [BITS(DWORD, -1)] for default
    rcMargins     AS RECT       ' RECT      rcMargins;     // amount of space between edges of window and text, -1 for each member to ignore
-   pszFont       AS ASCIIZ PTR ' fLPCTSTR   pszFont;       // facename, point size, char set, BOLD ITALIC UNDERLINE
+   pszFont       AS ASCIIZ PTR ' LPCTSTR   pszFont;       // facename, point size, char set, BOLD ITALIC UNDERLINE
 END TYPE
 
 ' // Size = 32 bytes
