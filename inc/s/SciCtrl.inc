@@ -5353,6 +5353,7 @@ END FUNCTION
 ' and as 8 bit otherwise. Set this property to always treat as Unicode. This option is
 ' needed for Delphi.
 ' ========================================================================================
+#IF %DEF(%INCLUDE_DEPRECATED_FEATURES)
 ' ========================================================================================
 FUNCTION SCI_SetKeysUnicode (BYVAL hSci AS DWORD, BYVAL keysUnicode AS BYTE) AS LONG
    FUNCTION = SendMessageA(hSci, %SCI_SETKEYSUNICODE, keysUnicode, 0)
@@ -5373,6 +5374,7 @@ FUNCTION SCIP_GetKeysUnicode (BYVAL pSci AS DWORD) AS LONG
    FUNCTION = Scintilla_DirectFunction(pSci, %SCI_GETKEYSUNICODE, 0, 0)
 END FUNCTION
 ' ========================================================================================
+#ENDIF
 
 ' ========================================================================================
 ' SCI_SETWORDCHARS(<unused>, const char *chars)

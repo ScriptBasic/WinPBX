@@ -6112,6 +6112,7 @@ INTERFACE ITaskbarList $IID_ITaskbarList
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD AddTab ( _                                    ' VTable offset = 16
+     BYVAL hwnd AS DWORD _                              ' __in HWND hwnd
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD DeleteTab ( _                                 ' VTable offset = 20
@@ -6154,6 +6155,7 @@ INTERFACE ITaskbarList2 $IID_ITaskbarList2
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD AddTab ( _                                    ' VTable offset = 16
+     BYVAL hwnd AS DWORD _                              ' __in HWND hwnd
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD DeleteTab ( _                                 ' VTable offset = 20
@@ -6240,6 +6242,7 @@ INTERFACE ITaskbarList3 $IID_ITaskbarList3
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD AddTab ( _                                    ' VTable offset = 16
+     BYVAL hwnd AS DWORD _                              ' __in HWND hwnd
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD DeleteTab ( _                                 ' VTable offset = 20
@@ -6365,6 +6368,7 @@ INTERFACE ITaskbarList4 $IID_ITaskbarList4
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD AddTab ( _                                    ' VTable offset = 16
+     BYVAL hwnd AS DWORD _                              ' __in HWND hwnd
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
    METHOD DeleteTab ( _                                 ' VTable offset = 20
