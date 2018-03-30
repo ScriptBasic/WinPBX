@@ -321,7 +321,7 @@ INTERFACE IUIFramework $IID_IUIFramework
    ' =====================================================================================
    METHOD SetUICommandProperty ( _                      ' VTable offset = 32
      BYVAL commandId AS DWORD _                         ' __in UINT32 commandId
-   , BYREF key AS PROPERTYKEY _                         ' __in PROPVARIANT *key
+   , BYREF key AS PROPERTYKEY _                         ' __in REFPROPERTYKEY *key
    , BYREF value AS PROPVARIANT _                       ' __in PROPVARIANT *value
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
