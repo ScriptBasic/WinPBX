@@ -188,7 +188,7 @@ INTERFACE IMFSourceResolver $IID_IMFSourceResolver
      BYREF pwszURL AS WSTRINGZ _                        ' __in LPCWSTR pwszURL
    , BYVAL dwFlags AS DWORD _                           ' __in DWORD dwFlags
    , BYVAL pProps AS IPropertyStore _                   ' __in IPropertyStore *pProps
-   , BYVAL pObjectType AS LONG _                        ' __out MF_OBJECT_TYPE *pObjectType
+   , BYREF pObjectType AS LONG _                        ' __out MF_OBJECT_TYPE *pObjectType
    , BYREF ppObject AS IUnknown _                       ' __out IUnknown **ppObject
    ) AS LONG                                            ' HRESULT
    ' =====================================================================================
