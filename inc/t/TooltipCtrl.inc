@@ -358,7 +358,7 @@ FUNCTION Tooltip_AddA (BYVAL hwndCtrl AS DWORD, BYVAL strTooltipText AS STRING, 
    tti.hwnd = GetParent(hwndCtrl)
    tti.hinst = GetModuleHandleA(BYVAL %NULL)
    ' // The length of the string must not exceed of 80 characters, including the terminating null
-   IF LEN(strTooltipText) > 79 THEN strTooltipText = LEFT$(strTooltipText, 79)
+'   IF LEN(strTooltipText) > 79 THEN strTooltipText = LEFT$(strTooltipText, 79)
    tti.lpszText = STRPTR(strTooltipText)
    tti.uId = hwndCtrl
    SendMessageA hwndTT, %TTM_ADDTOOLA, 0, VARPTR(tti)
@@ -411,7 +411,7 @@ FUNCTION Tooltip_AddW (BYVAL hwndCtrl AS DWORD, BYVAL bstrTooltipText AS WSTRING
    tti.hwnd = GetParent(hwndCtrl)
    tti.uId = hwndCtrl
    ' // The length of the string must not exceed of 80 characters, including the terminating null
-   IF LEN(bstrTooltipText) > 79 THEN bstrTooltipText = LEFT$(bstrTooltipText, 79)
+'   IF LEN(bstrTooltipText) > 79 THEN bstrTooltipText = LEFT$(bstrTooltipText, 79)
    tti.lpszText = STRPTR(bstrTooltipText)
    SendMessageW hwndTT, %TTM_ADDTOOLW, 0, VARPTR(tti)
    FUNCTION = hwndTT
