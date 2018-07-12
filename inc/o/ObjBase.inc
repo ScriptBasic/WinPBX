@@ -684,7 +684,7 @@ DECLARE FUNCTION StringFromIID IMPORT "OLE32.DLL" ALIAS "StringFromIID" ( _
  , BYREF lplpsz AS DWORD _                              ' __out LPOLESTR * lplpsz
  ) AS LONG                                              ' HRESULT
 
-DECLARE FUNCTION IIDFromString IMPORT "OLE32.DLL" ALIAS "IIDFromtString" ( _
+DECLARE FUNCTION IIDFromString IMPORT "OLE32.DLL" ALIAS "IIDFromString" ( _
    BYREF lpsz AS WSTRINGZ _                             ' __in LPCOLESTR lpsz
  , BYREF lpiid AS GUID _                                ' __out LPIID lpiid
  ) AS LONG                                              ' HRESULT
