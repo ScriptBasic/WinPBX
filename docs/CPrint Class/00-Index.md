@@ -23,9 +23,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [PixelsToPointsY](#PixelsToPointsY) | Converts pixels to point size (1/72 of an inch) (vertical resolution). |
 | [PointsToPixelsX](#PointsToPixelsX) | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
 | [PointsToPixelsY](#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
-| GetDocumentProperties   | Retrieves printer initialization information. |
-| SetPrinterInfo          | Sets printer data. |
-| GetPaperNames           | Returns a list of supported paper names. |
+| [GetPaperNames](#GetPaperNames) | Returns a list of supported paper names. |
 | PrintBitmap             | Prints a Windows bitmap in the attached printer. |
 | PrintBitmapToFile       | Prints a Windows bitmap in the specified file. |
 
@@ -272,4 +270,16 @@ FUNCTION PointsToPixelsY (BYVAL pts AS LONG) AS LONG
 #### Return value
 
 LONG. The number of pixels. If there is not a printer attached, it returns 0.
+
+# <a name="GetPaperNames"></a>GetPaperNames
+
+Returns a list of supported paper names (for example, Letter or Legal).
+
+```
+FUNCTION GetPaperNames () AS CWSTR
+```
+
+#### Return value
+
+CWSTR. A list of supported paper names on success, or an empty string on failure. The names are separated by a carriage return and a line feed characters.
 
