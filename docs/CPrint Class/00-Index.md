@@ -12,7 +12,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [ChoosePrinter](#ChoosePrinter) | Displays the printer dialog to select a printer. |
 | [PageSetup](#PageSetup) | Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. |
 | [GetPrinterName](#GetPrinterName) | Returns the name of the attached printer. |
-| GetDC                   | Returns the handle of the device context of the attached printer. |
+| [GetDC](#GetDC) | Returns the handle of the device context of the attached printer. |
 | GetPPIX                 | Returns the number of pixels per inch of the page (horizontal resolution). |
 | GetPPIY                 | Returns the number of pixels per inch of the page (vertical resolution). |
 | GetHorizontalUnits      | Returns the width, in world units, of the printable area of the page. |
@@ -124,3 +124,16 @@ FUNCTION GetPrinterName () AS CWSTR
 #### Return value
 
 CWSTR. The name of the attached printer. If there is not a printer attached, it returns an empty string.
+
+
+# <a name="GetDC"></a>GetDC
+
+Returns the name of the attached printer.
+
+```
+FUNCTION GetDC () AS HDC
+```
+
+#### Return value
+
+HDC. The handle of the device context of the attached printer. If there is not a printer attached, it returns NULL.
