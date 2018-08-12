@@ -285,7 +285,7 @@ FUNCTION WriteTextA (BYREF strText AS STRING) AS ULONG
 
 #### Return value
 
-STRING. The characters written.
+ULONG. The characters written.
 
 # <a name="WriteTextW"></a>WriteTextW
 
@@ -301,4 +301,23 @@ FUNCTION WriteTextW (BYREF wszText AS WSTRING) AS ULONG
 
 #### Return value
 
-CWSTR. The characters written.
+ULONG. The characters written.
+
+# <a name="Seek"></a>Seek
+
+Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer.
+
+```
+FUNCTION Seek (BYVAL dlibMove AS ULONGINT, BYVAL dwOrigin AS DWORD, BYVAL plibNewPosition AS ULONGINT PTR = NULL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dlibMove* | ULONGINT. The displacement to be added to the location indicated by the dwOrigin parameter. If *dwOrigin* is **STREAM_SEEK_SET**, this is interpreted as an unsigned value rather than a signed value. |
+| *dwOrigin* | DWORD. The origin for the displacement specified in *dlibMove*. The origin can be the beginning of the file (**STREAM_SEEK_SET**), the current seek pointer (**STREAM_SEEK_CUR**), or the end of the file (**STREAM_SEEK_END**).<br>**_STREAM_SEEK_SET_** : The new seek pointer is an offset relative to the beginning of the stream. In this case, the *dlibMove* parameter is the new seek position relative to the beginning of the stream.<br>**_STREAM_SEEK_CUR_** The new seek pointer is an offset relative to the current seek pointer location. In this case, the *dlibMove* parameter is the signed displacement from the current seek position.<br>**_STREAM_SEEK_END_** The new seek pointer is an offset relative to the end of the stream. In this case, the *dlibMove* parameter is the new seek position relative to the end of the stream. |
+| *plibNewPosition* | ULONGINT PTR. A pointer to the location where this method writes the value of the new seek pointer from the beginning of the stream. You can set this pointer to NULL. In this case, this method does not provide the new seek pointer. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
