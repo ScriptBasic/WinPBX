@@ -11,7 +11,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [AttachPrinter](#AttachPrinter) | Attaches the specified printer to the class. |
 | [ChoosePrinter](#ChoosePrinter) | Displays the printer dialog to select a printer. |
 | [PageSetup](#PageSetup) | Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. |
-| GetPrinterName          | Returns the name of the attached printer. |
+| [GetPrinterName](#GetPrinterName) | Returns the name of the attached printer. |
 | GetDC                   | Returns the handle of the device context of the attached printer. |
 | GetPPIX                 | Returns the number of pixels per inch of the page (horizontal resolution). |
 | GetPPIY                 | Returns the number of pixels per inch of the page (vertical resolution). |
@@ -112,3 +112,15 @@ BOOLEAN. If the user clicks the OK button, the return value is true. If the user
 DIM pPrint AS CPrint
 pPrint.PageSetup
 ```
+
+# <a name="GetPrinterName"></a>GetPrinterName
+
+Returns the name of the attached printer.
+
+```
+FUNCTION GetPrinterName () AS CWSTR
+```
+
+#### Return value
+
+CWSTR. The name of the attached printer. If there is not a printer attached, it returns an empty string.
