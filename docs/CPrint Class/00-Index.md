@@ -36,7 +36,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [Copies](#Copies) | Gets/sets the number of copies to print if the device supports multiple-page copies. |
 | [Duplex](#Duplex) | Checks if the printer supports duplex printing. |
 | [DuplexMode](#DuplexMode)  | Gets/sets the current duplex mode. |
-| Orientation            | Gets/sets the printer orientation. |
+| [Orientation](#Orientation) | Gets/sets the printer orientation. |
 | PaperSize              | Gets/sets the printer paper size. |
 | Quality                | Gets/sets the printer print quality mode. |
 | Scale                  | Gets/sets the factor by which the printed output is to be scaled. |
@@ -407,9 +407,27 @@ PROPERTY DuplexMode (BYVAL nMode AS LONG)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nMode* | LONG. The duplex mode.<br>*DMDUP_SIMPLEX* = Single sided printing.<br>*DMDUP_VERTICAL* = Page flipped on the vertical edge. <br>*DMDUP_HORIZONTAL* = Page flipped on the horizontal edge. |
+| *nMode* | LONG. The duplex mode.<br>*DMDUP_SIMPLEX* = Single sided printing.<br>*DMDUP_VERTICAL* = Page flipped on the vertical edge.<br>*DMDUP_HORIZONTAL* = Page flipped on the horizontal edge. |
 
 #### Return value
 
 LONG. If the printer supports duplex printing, returns the current duplex mode
+
+# <a name="Orientation"></a>Orientation
+
+Gets/sets the printer orientation.
+
+```
+PROPERTY Orientation () AS LONG
+PROPERTY Orientation (BYVAL nOrientation AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nOrientation* | LONG. The printer orientation.<br>*DMORIENT_PORTRAIT* = Portrait.<br>*DMORIENT_LANDSCAPE* = Landscape. |
+
+#### Return value
+
+LONG. The printer orientation.
+
 
