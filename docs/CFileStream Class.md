@@ -31,3 +31,19 @@ CONSTRUCTOR CFileStream (BYVAL pstm AS IStream PTR)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pstm* | A pointer to the IStream interface of an existing stream object that will be attached to the class. |
+
+### Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| LET | Initializes an instance of the class from an existing Stream object and attaches it. |
+| CAST | Returns a pointer to the underlying IStream interface of the Stream object. |
+
+```
+OPERATOR LET (BYVAL pstm AS IStream PTR)
+OPERATOR CAST () AS IStream PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pstm* | A pointer to the IStream interface of an existing stream object that will be attached to the class. |
