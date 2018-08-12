@@ -38,7 +38,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [DuplexMode](#DuplexMode)  | Gets/sets the current duplex mode. |
 | [Orientation](#Orientation) | Gets/sets the printer orientation. |
 | [PaperSize](#PaperSize) | Gets/sets the printer paper size. |
-| Quality                | Gets/sets the printer print quality mode. |
+| [Quality](#Quality) | Gets/sets the printer print quality mode. |
 | Scale                  | Gets/sets the factor by which the printed output is to be scaled. |
 | Tray                   | Specifies the paper source. |
 
@@ -447,3 +447,19 @@ PROPERTY PaperSize (BYVAL nSize AS LONG)
 
 LONG. The printer paper size.
 
+# <a name="Quality"></a>Quality
+
+Gets/sets the printer print quality mode.
+
+```
+PROPERTY Quality () AS LONG
+PROPERTY Quality (BYVAL nMode AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMode* | LONG. The printer print quality mode.<br>There are four predefined device-independent values:<br>*DMRES_DRAFT* (-1) = Draft.<br>*DMRES_LOW* (-2) = Low<br>*DMRES_MEDIUM* (-3) = Medium<br>*DMRES_HIGH* (-4) = High<br>If a positive value is specified, it represents the number of pixels per inch (PPI) for the x resolution.. |
+
+#### Return value
+
+LONG. The printer print quality mode.
