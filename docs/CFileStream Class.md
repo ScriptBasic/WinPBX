@@ -47,3 +47,32 @@ OPERATOR CAST () AS IStream PTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pstm* | A pointer to the IStream interface of an existing stream object that will be attached to the class. |
+
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| Attach | Attaches the passed stream object to the class. |
+| Detach | Detaches the stream object from the class. |
+| Open | Opens or creates a file and retrieves a stream to read or write to that file. |
+| Close | Releases the stream object. |
+| Read | Reads a specified number of bytes from the stream object into memory, starting at the current seek pointer. |
+| ReadTextA | Reads a specified number of characters from the stream object into memory, starting at the current seek pointer, and returns then as an ansi string. |
+| ReadTextW | Reads a specified number of characters from the stream object into memory, starting at the current seek pointer, and returns then as a unicode string. |
+| Write | Writes a specified number of bytes into the stream object starting at the current seek pointer. |
+| WriteTextA | Writes a ansi string into the stream object starting at the current seek pointer. |
+| WriteTextW | Writes a unicode string into the stream object starting at the current seek pointer. |
+| Seek | Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer. |
+| GetSeekPosition | Returns the seek position. |
+| ResetSeekPosition | Sets the seek position at the beginning of the stream. |
+| SeekAtEndOfFile | Sets the seek position at the end of the stream. |
+| GetSize | Returns the size of the stream. |
+| SetSize | Changes the size of the stream object. |
+| CopyTo | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
+| Commit | Ensures that any changes made to a stream object open in transacted mode are reflected in the parent storage. |
+| Revert | Discards all changes that have been made to a transacted stream since the last *Commit* call. On streams open in direct mode this method has no effect. |
+| LockRegion | Restricts access to a specified range of bytes in the stream. |
+| UnlockRegion | Removes the access restriction on a range of bytes previously restricted with *LockRegion*. |
+| Stat | Retrieves the STATSTG structure for this stream. |
+| Clone | Creates a new stream object with its own seek pointer that references the same bytes as the original stream. |
+| GetLastResult | Returns the last result code. |
