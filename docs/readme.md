@@ -1,6 +1,6 @@
 # CPrint Class
 
-Allows to attach/choose a printer and get/set its properties.
+Allows to attach/choose a printer and get/set its setting values.
 
 ### Methods
 
@@ -11,8 +11,8 @@ Allows to attach/choose a printer and get/set its properties.
 | PageSetup               | Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. |
 | GetPrinterName          | Returns the name of the attached printer. |
 | GetDC                   | Returns the handle of the device context of the attached printer. |
-| GetPPIX                 | Returns the number of pixels per inch of the specified host printer page (horizontal resolution). |
-| GetPPIY                 | Returns the number of pixels per inch of the specified host printer page (vertical resolution). |
+| GetPPIX                 | Returns the number of pixels per inch of the page (horizontal resolution). |
+| GetPPIY                 | Returns the number of pixels per inch of the page (vertical resolution). |
 | GetHorizontalUnits      | Returns the width, in world units, of the printable area of the page. |
 | GetVerticalUnits        | Returns the height, in world units, of the printable area of the page. |
 | GetHorizontalResolution | Returns the width, in pixels, of the printable area of the page. |
@@ -24,7 +24,7 @@ Allows to attach/choose a printer and get/set its properties.
 | GetDocumentProperties   | Retrieves printer initialization information. |
 | SetPrinterInfo          | Sets printer data. |
 | GetPaperNames           | Returns a list of supported paper names. |
-| PrintBitmap             | Prints a Windows bitmap in the selected printer. |
+| PrintBitmap             | Prints a Windows bitmap in the attached printer. |
 | PrintBitmapToFile       | Prints a Windows bitmap in the specified file. |
 
 ### Properties
