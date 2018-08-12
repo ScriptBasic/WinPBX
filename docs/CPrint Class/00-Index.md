@@ -22,7 +22,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [PixelsToPointsX](#PixelsToPointsX) | Converts pixels to point size (1/72 of an inch) (horizontal resolution). |
 | [PixelsToPointsY](#PixelsToPointsY) | Converts pixels to point size (1/72 of an inch) (vertical resolution). |
 | [PointsToPixelsX](#PointsToPixelsX) | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
-| [PointsToPixelsY] (#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
+| [PointsToPixelsY](#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
 | GetDocumentProperties   | Retrieves printer initialization information. |
 | SetPrinterInfo          | Sets printer data. |
 | GetPaperNames           | Returns a list of supported paper names. |
