@@ -36,7 +36,7 @@ CONSTRUCTOR CFileStream (BYVAL pstm AS IStream PTR)
 
 | Name       | Description |
 | ---------- | ----------- |
-| LET | Initializes an instance of the class from an existing stream and attaches it. |
+| LET | Initializes the class from an existing stream and attaches it. |
 | CAST | Returns a pointer to the underlying IStream interface of the stream object. |
 
 ```
