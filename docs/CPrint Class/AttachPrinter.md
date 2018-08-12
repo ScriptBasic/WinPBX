@@ -8,7 +8,7 @@ AttachPrinter (BYREF wszPrinterName AS WSTRING) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszPrinterName* | The name of the printer to attach. |
+| *wszPrinterName* | The name of the printer to attach (as shown in the Devices and Printers applet of the Control Panel). |
 
 ### Return value
 
