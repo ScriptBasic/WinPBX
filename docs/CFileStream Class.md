@@ -52,7 +52,7 @@ OPERATOR CAST () AS IStream PTR
 
 | Name       | Description |
 | ---------- | ----------- |
-| Attach | Attaches the passed stream object to the class. |
+| [Attach](#Attach) | Attaches the passed stream object to the class. |
 | Detach | Detaches the stream object from the class. |
 | Open | Opens or creates a file and retrieves a stream to read or write to that file. |
 | Close | Releases the stream object. |
@@ -76,3 +76,20 @@ OPERATOR CAST () AS IStream PTR
 | Stat | Retrieves the STATSTG structure for this stream. |
 | Clone | Creates a new stream object with its own seek pointer that references the same bytes as the original stream. |
 | GetLastResult | Returns the last result code. |
+
+# <a name="Attach"></a>Attach
+
+Attaches the passed stream object to the class.
+
+```
+FUNCTION Attach (BYVAL pstm AS IStream PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pstm* | A pointer to the IStream interface of an existing stream object that will be attached to the class. |
+
+#### Return value
+
+HRESULT. Returns S_OK (0) on success, or an HRESULT error code on failure.
+
