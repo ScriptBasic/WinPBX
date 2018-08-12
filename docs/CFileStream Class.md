@@ -55,7 +55,7 @@ OPERATOR CAST () AS IStream PTR
 | [Attach](#Attach) | Attaches the passed stream to the class. |
 | [Detach](#Detach) | Detaches the stream from the class. |
 | [Open](#Open) | Opens or creates a file and retrieves a stream to read or write to that file. |
-| Close | Releases the stream object. |
+| [Close](#Close) | Releases the stream object. |
 | Read | Reads a specified number of bytes from the stream into memory, starting at the current seek pointer. |
 | ReadTextA | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as an ansi string. |
 | ReadTextW | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as a unicode string. |
@@ -169,3 +169,41 @@ The *grfMode* and *fCreate* parameters work together to specify how the function
 | STGM_FAILIFTHERE | TRUE    | Yes          | The call fails. |
 | STGM_FAILIFTHERE | TRUE    | No           | The file is created. |
 
+# <a name="Close"></a>Close
+
+Releases the stream object.
+
+```
+FUNCTION Close
+```
+
+# <a name="Read"></a>Read
+
+Reads a specified number of bytes from the stream object into memory, starting at the current seek pointer.
+
+```
+FUNCTION Read (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG, BYVAL pcbRead AS ULONG PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | A pointer to the buffer which the stream data is read into. |
+| *cb* | The number of bytes of data to read from the stream object. |
+| *pcbRead* | A pointer to a ULONG variable that receives the actual number of bytes read from the stream. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+```
+FUNCTION Read (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | A pointer to the buffer which the stream data is read into. |
+| *cb* | The number of bytes of data to read from the stream object. |
+
+#### Return value
+
+ULONG. actual number of bytes read from the stream object. Note: The number of bytes read may be zero.
