@@ -56,12 +56,12 @@ OPERATOR CAST () AS IStream PTR
 | [Detach](#Detach) | Detaches the stream from the class. |
 | [Open](#Open) | Opens or creates a file and retrieves a stream to read or write to that file. |
 | [Close](#Close) | Releases the stream object. |
-| Read | Reads a specified number of bytes from the stream into memory, starting at the current seek pointer. |
-| ReadTextA | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as an ansi string. |
-| ReadTextW | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as a unicode string. |
-| Write | Writes a specified number of bytes into the stream starting at the current seek pointer. |
-| WriteTextA | Writes a ansi string into the stream starting at the current seek pointer. |
-| WriteTextW | Writes a unicode string into the stream starting at the current seek pointer. |
+| [Read](#Read) | Reads a specified number of bytes from the stream into memory, starting at the current seek pointer. |
+| [ReadTextA](*ReadTextA) | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as an ansi string. |
+| [ReadTextW](*ReadTextW) | Reads a specified number of characters from the stream into memory, starting at the current seek pointer, and returns then as a unicode string. |
+| [Write](*Write) | Writes a specified number of bytes into the stream starting at the current seek pointer. |
+| [WriteTextA](*WriteTextA) | Writes a ansi string into the stream starting at the current seek pointer. |
+| [WriteTextW](*WriteTextW) | Writes a unicode string into the stream starting at the current seek pointer. |
 | Seek | Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer. |
 | GetSeekPosition | Returns the seek position. |
 | ResetSeekPosition | Sets the seek position at the beginning of the stream. |
@@ -179,7 +179,7 @@ FUNCTION Close
 
 # <a name="Read"></a>Read
 
-Reads a specified number of bytes from the stream object into memory, starting at the current seek pointer.
+Reads a specified number of bytes from the stream into memory, starting at the current seek pointer.
 
 ```
 FUNCTION Read (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG, BYVAL pcbRead AS ULONG PTR) AS HRESULT
@@ -188,7 +188,7 @@ FUNCTION Read (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG, BYVAL pcbRead AS ULONG PT
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pv* | A pointer to the buffer which the stream data is read into. |
-| *cb* | The number of bytes of data to read from the stream object. |
+| *cb* | The number of bytes of data to read from the stream. |
 | *pcbRead* | A pointer to a ULONG variable that receives the actual number of bytes read from the stream. |
 
 #### Return value
@@ -202,8 +202,71 @@ FUNCTION Read (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG) AS ULONG
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pv* | A pointer to the buffer which the stream data is read into. |
-| *cb* | The number of bytes of data to read from the stream object. |
+| *cb* | The number of bytes of data to read from the stream. |
 
 #### Return value
 
-ULONG. actual number of bytes read from the stream object. Note: The number of bytes read may be zero.
+ULONG. The actual number of bytes read from the stream. Note: The number of bytes read may be zero.
+
+# <a name="ReadTextA"></a>ReadTextA
+
+Reads a specified number of characters from the stream into memory, starting at the current seek pointer. Ansio version.
+
+```
+FUNCTION ReadTextA (BYVAL numChars AS LONG) AS STRING
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *numChars* | The number of characters to read from the stream.<br>Pass -1 to read all the characters from the current seek position. |
+
+#### Return value
+
+STRING. The characters read.
+
+# <a name="ReadTextW"></a>ReadTextW
+
+Reads a specified number of characters from the stream into memory, starting at the current seek pointer. Unicode version.
+
+```
+FUNCTION ReadTextW (BYVAL numChars AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *numChars* | The number of characters to read from the stream.<br>Pass -1 to read all the characters from the current seek position. |
+
+#### Return value
+
+CWSTR. The characters read.
+
+# <a name="Write"></a>Write
+
+Writes a specified number of bytes into the stream starting at the current seek pointer.
+
+```
+FUNCTION Write (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG, BYVAL pcbWritten AS ULONG PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | A pointer to the buffer that contains the data that is to be written to the stream. A valid pointer must be provided for this parameter even when cb is zero. |
+| *cb* | The number of bytes of data to attempt to write into the stream. This value can be zero. |
+| *pcbWritten* | A pointer to a ULONG variable where this method writes the actual number of bytes written to the stream. The caller can set this pointer to NULL, in which case this method does not provide the actual number of bytes written. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+```
+FUNCTION Write (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | A pointer to the buffer that contains the data that is to be written to the stream. A valid pointer must be provided for this parameter even when cb is zero. |
+| *cb* | The number of bytes of data to attempt to write into the stream. This value can be zero. |
+
+#### Return value
+
+ULONG. The actual number of bytes written to the stream. Note: The number of bytes read may be zero.
