@@ -24,7 +24,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [PointsToPixelsX](#PointsToPixelsX) | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
 | [PointsToPixelsY](#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
 | [GetPaperNames](#GetPaperNames) | Returns a list of supported paper names. |
-| PrintBitmap             | Prints a Windows bitmap in the attached printer. |
+| [PrintBitmap](#PrintBitmap) | Prints a Windows bitmap in the attached printer. |
 | PrintBitmapToFile       | Prints a Windows bitmap in the specified file. |
 
 ### Properties
@@ -301,7 +301,7 @@ FUNCTION PrintBitmap ( _
 | *wszDocName* | WSTRING. The document name. |
 | *hbmp* | HBITMAP. Handle to the bitmap. |
 | *bStretch* | BOOLEAN. Optional. True to strech the image or false. Defaults to False. |
-| *nStretchMode* | LONG. Optional. Stretching mode. Defaults to InterpolationModeHighQualityBicubic. |
+| *nStretchMode* | LONG. Optional. Stretching mode. Defaults to InterpolationModeHighQualityBicubic.<br>Predefined constants:<br>*InterpolationModeLowQuality* = Specifies a low-quality mode.<br>*InterpolationModeHighQuality* = Specifies a high-quality mode.<br>*InterpolationModeBilinear* = Specifies bilinear interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 50 percent of its original size.<br>*InterpolationModeBicubic* = Specifies bicubic interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 25 percent of its original size.<br>*InterpolationModeNearestNeighbor* = Specifies nearest-neighbor interpolation.<br>*InterpolationModeHighQualityBilinear* = Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking.<br>*InterpolationModeHighQualityBicubic* = Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
 
 #### Return value
 
