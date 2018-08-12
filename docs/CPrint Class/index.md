@@ -8,7 +8,7 @@ Allows to attach/choose a printer and get/set its setting values.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AttachPrinter           | Attaches the specified printer to the class. |
+| [AttachPrinter](./AttachPrinter.md)           | Attaches the specified printer to the class. |
 | ChoosePrinter           | Displays the printer dialog to select a printer. |
 | PageSetup               | Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. |
 | GetPrinterName          | Returns the name of the attached printer. |
