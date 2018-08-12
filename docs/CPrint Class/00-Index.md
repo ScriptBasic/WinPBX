@@ -33,9 +33,9 @@ Allows to attach/choose a printer and get/set its setting values.
 | ---------- | ----------- |
 | [Collate](#Collate) | Gets/sets the collate setting value. |
 | [ColorMode](#ColorMode) | Switches between color and monochrome on color printers. |
-| Copies                 | Gets/sets the number of copies to print if the device supports multiple-page copies. |
-| Duplex                 | Checks if the printer supports duplex printing. |
-| DuplexMode             | Gets/sets the current duplex mode. |
+| [Copies](#Copies) | Gets/sets the number of copies to print if the device supports multiple-page copies. |
+| [Duplex](#Duplex) | Checks if the printer supports duplex printing. |
+| [DuplexMode](#DuplexMode)  | Gets/sets the current duplex mode. |
 | Orientation            | Gets/sets the printer orientation. |
 | PaperSize              | Gets/sets the printer paper size. |
 | Quality                | Gets/sets the printer print quality mode. |
@@ -344,7 +344,7 @@ PROPERTY Collate (BYVAL nMode AS LONG)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nMode* | LONG. The collating mode. Possible values: DMCOLLATE_TRUE, DMCOLLATE_FALSE |
+| *nMode* | LONG. The collating mode. Possible values: DMCOLLATE_TRUE, DMCOLLATE_FALSE. |
 
 #### Return value
 
@@ -352,17 +352,64 @@ BOOLEAN. If the printer supports collating, the return value is TRUE; otherwise,
 
 # <a name="ColorMode"></a>ColorMode
 
-Switches between color and monochrome on color printers.
+Switches between color and monochrome on color printers. Some color printers have the capability to print using true black instead of a combination of cyan, magenta, and yellow (CMY). This usually creates darker and sharper text for documents. This option is only useful for color printers that support true black printing.
 
 ```
-PROPERTY ColorMode () AS BOOLEAN
+PROPERTY ColorMode () AS LONG
 PROPERTY ColorMode (BYVAL nMode AS LONG)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nMode* | LONG. The color mode. Possible values: DMCOLOR_MONOCHROME, DMCOLOR_COLOR |
+| *nMode* | LONG. The color mode. Possible values: DMCOLOR_MONOCHROME, DMCOLOR_COLOR. |
 
 #### Return value
 
-BOOLEAN. If the printer supports color printing, the return value is TRUE; otherwise, the return value is FALSE. Some color printers have the capability to print using true black instead of a combination of cyan, magenta, and yellow (CMY). This usually creates darker and sharper text for documents. This option is only useful for color printers that support true black printing.
+LONG. Returns the printer color mode: DMCOLOR_MONOCHROME or DMCOLOR_COLOR.
+
+# <a name="Copies"></a>Copies
+
+Gets/sets the number of copies to print if the device supports multiple-page copies.
+
+```
+PROPERTY Copies () AS BOOLEAN
+PROPERTY Copies (BYVAL nCopies AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nCopies* | LONG. The number of copies to print if the device supports multiple-page copies. |
+
+#### Return value
+
+LONG. The number of copies
+
+# <a name="Duplex"></a>Duplex
+
+Checks if the printer supports duplex printing.
+
+```
+PROPERTY Duplex () AS BOOLEAN
+```
+
+#### Return value
+
+BOOLEAN. If the printer supports duplex printing, the return value is TRUE; otherwise, the return value is FALSE.
+
+# <a name="DuplexMode"></a>DuplexMode
+
+Gets/sets the current duplex mode.
+
+```
+PROPERTY DuplexMode () AS LONG
+PROPERTY DuplexMode (BYVAL nMode AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMode* | LONG. The duplex mode.<br>*DMDUP_SIMPLEX* = Single sided printing.<br>*DMDUP_VERTICAL* = Page flipped on the vertical edge. <br>*DMDUP_HORIZONTAL* = Page flipped on the horizontal edge. |
+
+#### Return value
+
+LONG. If the printer supports duplex printing, returns the current duplex mode
+
