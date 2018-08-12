@@ -323,3 +323,39 @@ FUNCTION Seek (BYVAL dlibMove AS ULONGINT, _
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
+# <a name="GetSeekPosition"></a>GetSeekPosition
+
+Returns the current seek position.
+
+```
+FUNCTION GetSeekPosition () AS ULONGINT
+```
+
+#### Return value
+
+ULONGINT. The current seek position.
+
+# <a name="ResetSeekPosition"></a>ResetSeekPosition
+
+Sets the seek position at the beginning of the stream.
+
+```
+FUNCTION ResetSeekPosition () AS ULONGINT
+```
+
+#### Return value
+
+ULONGINT. The new seek position.
+
+# <a name="SeekAtEndOfFile"></a>SeekAtEndOfFile
+
+Sets the seek position at the end of the stream.
+
+```
+FUNCTION SeekAtEndOfFile () AS ULONGINT
+```
+
+#### Return value
+
+ULONGINT. The new seek position.
+
