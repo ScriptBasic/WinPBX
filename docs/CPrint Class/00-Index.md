@@ -19,10 +19,10 @@ Allows to attach/choose a printer and get/set its setting values.
 | [GetVerticalUnits](#GetVerticalUnits) | Returns the height, in world units, of the printable area of the page. |
 | [GetHorizontalResolution](#GetHorizontalResolution) | Returns the width, in pixels, of the printable area of the page. |
 | [GetVerticalResolution](#GetVerticalResolution) | Returns the height, in pixels, of the printable area of the page. |
-| PixelsToPointsX         | Converts pixels to point size (1/72 of an inch) (horizontal resolution). |
-| PixelsToPointsY         | Converts pixels to point size (1/72 of an inch) (vertical resolution). |
-| PointsToPixelsX         | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
-| PointsToPixelsY         | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
+| [PixelsToPointsX](#PixelsToPointsX) | Converts pixels to point size (1/72 of an inch) (horizontal resolution). |
+| [PixelsToPointsY](#PixelsToPointsY) | Converts pixels to point size (1/72 of an inch) (vertical resolution). |
+| [PointsToPixelsX](#PointsToPixelsX) | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
+| [PointsToPixelsY] (#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
 | GetDocumentProperties   | Retrieves printer initialization information. |
 | SetPrinterInfo          | Sets printer data. |
 | GetPaperNames           | Returns a list of supported paper names. |
@@ -208,3 +208,68 @@ FUNCTION GetVerticalResolution () AS LONG
 #### Return value
 
 LONG. The height, in pixels, of the printable area of the page. If there is not a printer attached, it returns 0.
+
+# <a name="PixelsToPointsX"></a>PixelsToPointsX
+
+Converts pixels to point size (1/72 of an inch) according to the PPI of the printer (horizontal resolution).
+
+```
+FUNCTION PixelsToPointsX (BYVAL pix AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pix* | The number of pixels to convert. |
+
+#### Return value
+
+LONG. The number of points. If there is not a printer attached, it returns 0.
+
+# <a name="PixelsToPointsY"></a>PixelsToPointsY
+
+Converts pixels to point size (1/72 of an inch) according to the PPI of the printer (vertical resolution).
+
+```
+FUNCTION PixelsToPointsY (BYVAL pix AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pix* | The number of pixels to convert. |
+
+#### Return value
+
+LONG. The number of points. If there is not a printer attached, it returns 0.
+
+# <a name="PointsToPixelsX"></a>PointsToPixelsX
+
+Converts a point size (1/72 of an inch) to pixels according to the PPI of the printer (horizontal resolution).
+
+```
+FUNCTION PointsToPixelsX (BYVAL pts AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pts* | The number of points to convert. |
+
+#### Return value
+
+LONG. The number of pixels. If there is not a printer attached, it returns 0.
+
+# <a name="PointsToPixelsY"></a>PointsToPixelsY
+
+Converts a point size (1/72 of an inch) to pixels according to the PPI of the printer (vertical resolution).
+
+```
+FUNCTION PointsToPixelsY (BYVAL pts AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pts* | The number of points to convert. |
+
+#### Return value
+
+LONG. The number of pixels. If there is not a printer attached, it returns 0.
+
