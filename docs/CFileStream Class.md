@@ -63,9 +63,10 @@ OPERATOR CAST () AS IStream PTR
 | [WriteTextA](#WriteTextA) | Writes a ansi string into the stream starting at the current seek pointer. |
 | [WriteTextW](#WriteTextW) | Writes a unicode string into the stream starting at the current seek pointer. |
 | [Seek](#Seek) | Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer. |
-| GetSeekPosition | Returns the seek position. |
-| ResetSeekPosition | Sets the seek position at the beginning of the stream. |
-| SeekAtEndOfFile | Sets the seek position at the end of the stream. |
+| [GetSeekPosition](#GetSeekPosition) | Returns the seek position. |
+| [ResetSeekPosition](#ResetSeekPosition) | Sets the seek position at the beginning of the stream. |
+| [SeekAtEndOfFile](#SeekAtEndOfFile) | Sets the seek position at the end of the stream. |
+| [SeekAtEndOfStream](#SeekAtEndOfStream) | Sets the seek position at the end of the stream. |
 | GetSize | Returns the size of the stream. |
 | SetSize | Changes the size of the stream. |
 | CopyTo | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
