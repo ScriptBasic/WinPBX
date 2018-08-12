@@ -10,11 +10,11 @@ ChoosePrinter (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
 | ---------- | ----------- |
 | *hwndOwner* | Optional. A handle to the window that owns the dialog box. This member can be any valid window handle, or it can be NULL if the dialog box has no owner. |
 
-### Return value
+#### Return value
 
 BOOLEAN. If the user clicks the OK button, the return value is true. If the user canceled or closed the Print dialog box or an error occurred, the return value is false.
 
-### Example
+#### Example
 
 ```
 DIM pPrint AS CPrint
