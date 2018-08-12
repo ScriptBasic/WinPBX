@@ -10,11 +10,11 @@ AttachPrinter (BYREF wszPrinterName AS WSTRING) AS BOOLEAN
 | ---------- | ----------- |
 | *wszPrinterName* | The name of the printer to attach (as shown in the Devices and Printers applet of the Control Panel). |
 
-### Return value
+#### Return value
 
 BOOLEAN. True of false.
 
-### Example
+#### Example
 
 ```
 DIM pPrint AS CPrint
