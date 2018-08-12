@@ -49,7 +49,7 @@ Allows to attach/choose a printer and get/set its setting values.
 Creates a device context (DC) for the specified printer and attaches it to the class.
 
 ```
-AttachPrinter (BYREF wszPrinterName AS WSTRING) AS BOOLEAN
+FUNCTION AttachPrinter (BYREF wszPrinterName AS WSTRING) AS BOOLEAN
 ```
 
 | Parameter  | Description |
@@ -72,7 +72,7 @@ pPrint.AttachPrinter("OKI DATA CORP B410")
 Displays a Print Dialog Box to select a printer.
 
 ```
-ChoosePrinter (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
+FUNCTION ChoosePrinter (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
 ```
 
 | Parameter  | Description |
@@ -95,7 +95,7 @@ pPrint.ChoosePrinter
 Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. These attributes include the paper size and source, the page orientation (portrait or landscape), and the width of the page margins.
 
 ```
-PageSetup (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
+FUNCTION PageSetup (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
 ```
 
 | Parameter  | Description |
