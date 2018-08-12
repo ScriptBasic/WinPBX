@@ -25,7 +25,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | [PointsToPixelsY](#PointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
 | [GetPaperNames](#GetPaperNames) | Returns a list of supported paper names. |
 | [PrintBitmap](#PrintBitmap) | Prints a Windows bitmap in the attached printer. |
-| PrintBitmapToFile       | Prints a Windows bitmap in the specified file. |
+| [PrintBitmapToFile](#PrintBitmapToFile) | Prints a Windows bitmap in the specified file. |
 
 ### Properties
 
@@ -285,7 +285,7 @@ CWSTR. A list of supported paper names on success, or an empty string on failure
 
 # <a name="PrintBitmap"></a>PrintBitmap
 
-Prints a Windows bitmap in the attached printer.
+Prints a Windows bitmap to the attached printer.
 
 ```
 FUNCTION PrintBitmap ( _
@@ -299,6 +299,32 @@ FUNCTION PrintBitmap ( _
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszDocName* | WSTRING. The document name. |
+| *hbmp* | HBITMAP. Handle to the bitmap. |
+| *bStretch* | BOOLEAN. Optional. True to strech the image or false. Defaults to False. |
+| *nStretchMode* | LONG. Optional. Stretching mode. Defaults to InterpolationModeHighQualityBicubic.<br>Predefined constants:<br>*InterpolationModeLowQuality* = Specifies a low-quality mode.<br>*InterpolationModeHighQuality* = Specifies a high-quality mode.<br>*InterpolationModeBilinear* = Specifies bilinear interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 50 percent of its original size.<br>*InterpolationModeBicubic* = Specifies bicubic interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 25 percent of its original size.<br>*InterpolationModeNearestNeighbor* = Specifies nearest-neighbor interpolation.<br>*InterpolationModeHighQualityBilinear* = Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking.<br>*InterpolationModeHighQualityBicubic* = Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
+
+#### Return value
+
+BOOLEAN. Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
+
+# <a name="PrintBitmapToFile"></a>PrintBitmapToFile
+
+Prints a Windows bitmap to the specified output file.
+
+```
+FUNCTION PrintBitmapToFile ( _
+   BYREF wszDocName AS WSTRING, _
+   BYREF wszOutputFileName AS WSTRING, _
+   BYVAL hbmp AS HBITMAP, _
+   BYVAL bStretch AS BOOLEAN = FALSE, _
+   BYVAL nStretchMode AS LONG = InterpolationModeHighQualityBicubic _
+) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszDocName* | WSTRING. The document name. |
+| *wszOutputFileName* | WSTRING. The output file name. |
 | *hbmp* | HBITMAP. Handle to the bitmap. |
 | *bStretch* | BOOLEAN. Optional. True to strech the image or false. Defaults to False. |
 | *nStretchMode* | LONG. Optional. Stretching mode. Defaults to InterpolationModeHighQualityBicubic.<br>Predefined constants:<br>*InterpolationModeLowQuality* = Specifies a low-quality mode.<br>*InterpolationModeHighQuality* = Specifies a high-quality mode.<br>*InterpolationModeBilinear* = Specifies bilinear interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 50 percent of its original size.<br>*InterpolationModeBicubic* = Specifies bicubic interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 25 percent of its original size.<br>*InterpolationModeNearestNeighbor* = Specifies nearest-neighbor interpolation.<br>*InterpolationModeHighQualityBilinear* = Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking.<br>*InterpolationModeHighQualityBicubic* = Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
