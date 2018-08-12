@@ -53,7 +53,7 @@ OPERATOR CAST () AS IStream PTR
 | Name       | Description |
 | ---------- | ----------- |
 | [Attach](#Attach) | Attaches the passed stream object to the class. |
-| Detach | Detaches the stream object from the class. |
+| [Detach](#Detach) | Detaches the stream object from the class. |
 | Open | Opens or creates a file and retrieves a stream to read or write to that file. |
 | Close | Releases the stream object. |
 | Read | Reads a specified number of bytes from the stream object into memory, starting at the current seek pointer. |
@@ -91,5 +91,18 @@ FUNCTION Attach (BYVAL pstm AS IStream PTR) AS HRESULT
 
 #### Return value
 
-HRESULT. Returns S_OK (0) on success, or an HRESULT error code on failure.
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="Detach"></a>Detach
+
+Detaches the stream object from the class.
+
+```
+FUNCTION Detach () AS IStream PTR
+```
+
+#### Return value
+
+IStream PTR. A pointer to the IStream interface of the stream object.
+
 
