@@ -283,3 +283,27 @@ FUNCTION GetPaperNames () AS CWSTR
 
 CWSTR. A list of supported paper names on success, or an empty string on failure. The names are separated by a carriage return and a line feed characters.
 
+# <a name="PrintBitmap"></a>PrintBitmap
+
+Prints a Windows bitmap in the attached printer.
+
+```
+FUNCTION PrintBitmap ( _
+   BYREF wszDocName AS WSTRING, _
+   BYVAL hbmp AS HBITMAP, _
+   BYVAL bStretch AS BOOLEAN = FALSE, _
+   BYVAL nStretchMode AS LONG = InterpolationModeHighQualityBicubic _
+) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszDocName* | WSTRING. The document name. |
+| *hbmp* | HBITMAP. Handle to the bitmap. |
+| *bStretch* | BOOLEAN. Optional. True to strech the image or false. Defaults to False. |
+| *nStretchMode* | LONG. Optional. Stretching mode. Defaults to InterpolationModeHighQualityBicubic. |
+
+#### Return value
+
+BOOLEAN. Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
+
