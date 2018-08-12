@@ -6,8 +6,8 @@ Allows to work with binary file streams. A binary stream consists of one or more
 
 | Name       | Description |
 | ---------- | ----------- |
-| Constructor(File Name) | Opens or creates a file and retrieves a stream to read or write to that file. |
-| Constructor(Stream) | Initializes an instance of the class from an existing stream and attaches it. |
+| Constructor (File Name) | Opens or creates a file and retrieves a stream to read or write to that file. |
+| Constructor (Stream) | Initializes an instance of the class from an existing stream and attaches it. |
 
 ```
 CONSTRUCTOR CFileStream ( _
