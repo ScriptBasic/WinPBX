@@ -15,8 +15,8 @@ Allows to attach/choose a printer and get/set its setting values.
 | [GetDC](#GetDC) | Returns the handle of the device context of the attached printer. |
 | [GetPPIX](#GetPPIX) | Returns the number of pixels per inch of the page (horizontal resolution). |
 | [GetPPIY](#GetPPIY) | Returns the number of pixels per inch of the page (vertical resolution). |
-| GetHorizontalUnits      | Returns the width, in world units, of the printable area of the page. |
-| GetVerticalUnits        | Returns the height, in world units, of the printable area of the page. |
+| [GetHorizontalUnits](#GetHorizontalUnits) | Returns the width, in world units, of the printable area of the page. |
+| [GetVerticalUnits](#GetVerticalUnits) | Returns the height, in world units, of the printable area of the page. |
 | GetHorizontalResolution | Returns the width, in pixels, of the printable area of the page. |
 | GetVerticalResolution   | Returns the height, in pixels, of the printable area of the page. |
 | PixelsToPointsX         | Converts pixels to point size (1/72 of an inch) (horizontal resolution). |
@@ -147,7 +147,7 @@ FUNCTION GetPPIX () AS LONG
 
 #### Return value
 
-LONG. number of pixels per inch of the specified host printer page. If there is not a printer attached, it returns 0.
+LONG. The number of pixels per inch of the specified host printer page. If there is not a printer attached, it returns 0.
 
 # <a name="GetPPIY"></a>GetPPIY
 
@@ -159,4 +159,28 @@ FUNCTION GetPPIY () AS LONG
 
 #### Return value
 
-LONG. number of pixels per inch of the specified host printer page. If there is not a printer attached, it returns 0.
+LONG. The number of pixels per inch of the specified host printer page. If there is not a printer attached, it returns 0.
+
+# <a name="GetHorizontalUnits"></a>GetHorizontalUnits
+
+Returns the width, in world units, of the printable area of the page.
+
+```
+FUNCTION GetHorizontalUnits () AS LONG
+```
+
+#### Return value
+
+LONG. The width, in world units, of the printable area of the page.. If there is not a printer attached, it returns 0.
+
+# <a name="GetVerticalUnits"></a>GetVerticalUnits
+
+Returns the height, in world units, of the printable area of the page.
+
+```
+FUNCTION GetVerticalUnits () AS LONG
+```
+
+#### Return value
+
+LONG. The height, in world units, of the printable area of the page.. If there is not a printer attached, it returns 0.
