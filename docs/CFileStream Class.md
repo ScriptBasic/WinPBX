@@ -270,3 +270,35 @@ FUNCTION Write (BYVAL pv AS ANY PTR, BYVAL cb AS ULONG) AS ULONG
 #### Return value
 
 ULONG. The actual number of bytes written to the stream. Note: The number of bytes read may be zero.
+
+# <a name="WriteTextA"></a>WriteTextA
+
+Writes a string at the current seek position. Ansi version.
+
+```
+FUNCTION WriteTextA (BYREF strText AS STRING) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *strText* | STRING. The string to write. |
+
+#### Return value
+
+STRING. The characters written.
+
+# <a name="WriteTextW"></a>WriteTextW
+
+Writes a string at the current seek position. Unicode version.
+
+```
+FUNCTION WriteTextW (BYREF wszText AS WSTRING) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszText* | WSTRING. The string to write. |
+
+#### Return value
+
+CWSTR. The characters written.
