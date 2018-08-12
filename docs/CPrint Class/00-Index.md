@@ -9,7 +9,7 @@ Allows to attach/choose a printer and get/set its setting values.
 | Name       | Description |
 | ---------- | ----------- |
 | [AttachPrinter](#AttachPrinter) | Attaches the specified printer to the class. |
-| [ChoosePrinter](./ChoosePrinter.md) | Displays the printer dialog to select a printer. |
+| [ChoosePrinter](#ChoosePrinter) | Displays the printer dialog to select a printer. |
 | [PageSetup](./PageSetup.md) | Displays a Page Setup dialog box that enables the user to specify the attributes of a printed page. |
 | GetPrinterName          | Returns the name of the attached printer. |
 | GetDC                   | Returns the handle of the device context of the attached printer. |
@@ -65,4 +65,27 @@ BOOLEAN. True of false.
 ```
 DIM pPrint AS CPrint
 pPrint.AttachPrinter("OKI DATA CORP B410")
+```
+
+# <a name="ChoosePrinter"></a>ChoosePrinter
+
+Displays a Print Dialog Box to select a printer.
+
+```
+ChoosePrinter (BYVAL hwndOwner AS HWND = NULL) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwndOwner* | Optional. A handle to the window that owns the dialog box. This member can be any valid window handle, or it can be NULL if the dialog box has no owner. |
+
+#### Return value
+
+BOOLEAN. If the user clicks the OK button, the return value is true. If the user canceled or closed the Print dialog box or an error occurred, the return value is false.
+
+#### Example
+
+```
+DIM pPrint AS CPrint
+pPrint.ChoosePrinter
 ```
