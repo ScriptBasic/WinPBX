@@ -127,9 +127,6 @@ FUNCTION Open (BYVAL pwszFile AS WSTRING PTR, _
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
-
-
-
 ### <a name="STGM_Constants"></a>STGM Constants
 
 The STGM constants are flags that indicate conditions for creating and deleting the object and access modes for the object. These elements are often combined using an **OR** operator. They are interpreted in groups as listed in the following table. It is not valid to use more than one element from a single group.
@@ -156,7 +153,7 @@ The STGM constants are flags that indicate conditions for creating and deleting 
 | **STGM_SHARE_DENY_READ** | Prevents others from subsequently opening the object in **STGM_READ** mode. |
 | **STGM_SHARE_DENY_WRITE** | Prevents others from subsequently opening the object for **STGM_WRITE** or **STGM_READWRITE** access. In transacted mode, sharing of **STGM_SHARE_DENY_WRITE** or **STGM_SHARE_EXCLUSIVE** can significantly improve performance because they do not require snapshots. |
 | **STGM_SHARE_EXCLUSIVE** | Prevents others from subsequently opening the object in **STGM_READ** mode. |
-| **STGM_CREATE** | Indicates that an existing storage object or stream should be removed before the new object replaces it. A new object is created when this flag is specified only if the existing object has been successfully removed.<br> This flag is used when attempting to create:<br>- A storage object on a disk, but a file of that name exists.<br>- An object inside a storage object, but an object with the specified name exists.<br>- A byte array object, but one with the specified name exists.<br>This flag cannot be used with open operations. |
+| **STGM_CREATE** | Indicates that an existing stream should be removed before the new stream replaces it. A new stream is created when this flag is specified only if the existing stream has been successfully removed.<br>This flag cannot be used with open operations. |
 | **STGM_FAILIFTHERE** | Causes the create operation to fail if an existing object with the specified name exists. In this case, **STG_E_FILEALREADYEXISTS** is returned. This is the default creation mode; that is, if no other create flag is specified, **STGM_FAILIFTHERE** is implied. |
 | **STGM_DIRECT** | Indicates that, in direct mode, each change to a stream element is written as it occurs. This is the default if neither **STGM_DIRECT** nor **STGM_TRANSACTED** is specified. |
 | **STGM_TRANSACTED** | Indicates that, in transacted mode, changes are buffered and written only if an explicit commit operation is called. To ignore the changes, call the **Revert** method. |
