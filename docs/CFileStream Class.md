@@ -127,7 +127,7 @@ FUNCTION Open (BYVAL pwszFile AS WSTRING PTR, _
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
-### <a name="STGM_Constants"></a>STGM Constants
+### STGM Constants
 
 The STGM constants are flags that indicate conditions for creating and deleting the stream and access modes for the stream. These elements are often combined using an **OR** operator. They are interpreted in groups as listed in the following table. It is not valid to use more than one element from a single group.
 
