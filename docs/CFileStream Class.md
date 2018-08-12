@@ -67,8 +67,8 @@ OPERATOR CAST () AS IStream PTR
 | [ResetSeekPosition](#ResetSeekPosition) | Sets the seek position at the beginning of the stream. |
 | [SeekAtEndOfFile](#SeekAtEndOfFile) | Sets the seek position at the end of the stream. |
 | [SeekAtEndOfStream](#SeekAtEndOfStream) | Sets the seek position at the end of the stream. |
-| GetSize | Returns the size of the stream. |
-| SetSize | Changes the size of the stream. |
+| [GetSize](#GetSize) | Returns the size of the stream. |
+| [SetSize](#SetSize) | Changes the size of the stream. |
 | CopyTo | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
 | Commit | Ensures that any changes made to a stream open in transacted mode are reflected in the parent storage. |
 | Revert | Discards all changes that have been made to a transacted stream since the last *Commit* call. On streams open in direct mode this method has no effect. |
@@ -371,4 +371,32 @@ FUNCTION SeekAtEndOfStream () AS ULONGINT
 #### Return value
 
 ULONGINT. The new seek position.
+
+# <a name="GetSize"></a>GetSize
+
+Returns the size of the stream in bytes.
+
+```
+FUNCTION GetSize () AS ULONGINT
+```
+
+#### Return value
+
+ULONGINT. The size of the stream in bytes.
+
+# <a name="SetSize"></a>SetSize
+
+Changes the size of the stream object.
+
+```
+FUNCTION SetSize (BYVAL libNewSize AS ULONGINT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *libNewSize* | ULONGINT. Specifies the new size, in bytes, of the stream. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
 
