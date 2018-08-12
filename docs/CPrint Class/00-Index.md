@@ -31,8 +31,8 @@ Allows to attach/choose a printer and get/set its setting values.
 
 | Name       | Description |
 | ---------- | ----------- |
-| Collate                | Gets/sets the collate setting value. |
-| ColorMode              | Switches between color and monochrome on color printers. |
+| [Collate](#Collate) | Gets/sets the collate setting value. |
+| [ColorMode](#ColorMode) | Switches between color and monochrome on color printers. |
 | Copies                 | Gets/sets the number of copies to print if the device supports multiple-page copies. |
 | Duplex                 | Checks if the printer supports duplex printing. |
 | DuplexMode             | Gets/sets the current duplex mode. |
@@ -333,3 +333,36 @@ FUNCTION PrintBitmapToFile ( _
 
 BOOLEAN. Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
 
+# <a name="Collate"></a>Collate
+
+Gets/sets the printer collating mode.
+
+```
+PROPERTY Collate () AS BOOLEAN
+PROPERTY Collate (BYVAL nMode AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMode* | LONG. The collating mode. Possible values: DMCOLLATE_TRUE, DMCOLLATE_FALSE |
+
+#### Return value
+
+BOOLEAN. If the printer supports collating, the return value is TRUE; otherwise, the return value is FALSE. If TRUE, the pages that are printed should be collated. To collate is to print out the entire document before printing the next copy, as opposed to printing out each page of the document the required number of times.
+
+# <a name="ColorMode"></a>ColorMode
+
+Switches between color and monochrome on color printers.
+
+```
+PROPERTY ColorMode () AS BOOLEAN
+PROPERTY ColorMode (BYVAL nMode AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMode* | LONG. The color mode. Possible values: DMCOLOR_MONOCHROME, DMCOLOR_COLOR |
+
+#### Return value
+
+BOOLEAN. If the printer supports color printing, the return value is TRUE; otherwise, the return value is FALSE. Some color printers have the capability to print using true black instead of a combination of cyan, magenta, and yellow (CMY). This usually creates darker and sharper text for documents. This option is only useful for color printers that support true black printing.
