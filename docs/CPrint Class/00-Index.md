@@ -39,8 +39,8 @@ Allows to attach/choose a printer and get/set its setting values.
 | [Orientation](#Orientation) | Gets/sets the printer orientation. |
 | [PaperSize](#PaperSize) | Gets/sets the printer paper size. |
 | [Quality](#Quality) | Gets/sets the printer print quality mode. |
-| Scale                  | Gets/sets the factor by which the printed output is to be scaled. |
-| Tray                   | Specifies the paper source. |
+| [Scale](#Scale) | Gets/sets the factor by which the printed output is to be scaled. |
+| [Tray](#Tray) | Specifies the paper source. |
 
 # <a name="AttachPrinter"></a>AttachPrinter
 
@@ -458,8 +458,42 @@ PROPERTY Quality (BYVAL nMode AS LONG)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nMode* | LONG. The printer print quality mode.<br>There are four predefined device-independent values:<br>*DMRES_DRAFT* (-1) = Draft.<br>*DMRES_LOW* (-2) = Low<br>*DMRES_MEDIUM* (-3) = Medium<br>*DMRES_HIGH* (-4) = High<br>If a positive value is specified, it represents the number of pixels per inch (PPI) for the x resolution.. |
+| *nMode* | LONG. The printer print quality mode.<br>There are four predefined device-independent values:<br>*DMRES_DRAFT* (-1) = Draft.<br>*DMRES_LOW* (-2) = Low<br>*DMRES_MEDIUM* (-3) = Medium<br>*DMRES_HIGH* (-4) = High<br>If a positive value is specified, it represents the number of pixels per inch (PPI) for the x resolution. |
 
 #### Return value
 
 LONG. The printer print quality mode.
+
+# <a name="Scale"></a>Scale
+
+Gets/sets the factor by which the printed output is to be scaled.
+
+```
+PROPERTY Scale () AS LONG
+PROPERTY Scale (BYVAL nScale AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nScale* | LONG. The factor by which the printed output is to be scaled. The apparent page size is scaled from the physical page size by a factor of nScale / 100. For example, a letter-sized page with a nScale value of 50 would contain as much data as a page of 17- by 22-inches because the output text and graphics would be half their original height and width. |
+
+#### Return value
+
+LONG. The printer scaling factor.
+
+# <a name="Tray"></a>Tray
+
+Gets/sets the paper source.
+
+```
+PROPERTY Tray () AS LONG
+PROPERTY Tray (BYVAL nTray AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTray* | LONG. The paper source. Can be one of the following values, or it can be a device-specific value greater than or equal to DMBIN_USER (256).<br>*DMBIN_UPPER* = Select the upper paper bin. This value is also used for the paper source for printers that only have one paper bin.<br>*DMBIN_LOWER* = Select the lower bin.<br>*DMBIN_MIDDLE* = Select the middle paper bin.<br>*DMBIN_MANUAL* = Manually select the paper bin.<br>*DMBIN_ENVELOPE* = Select the auto envelope bin.<br>*DMBIN_ENVMANUAL* = Select the manual envelope bin.<br>*DMBIN_AUTO* = Auto-select the bin.<br>*DMBIN_TRACTOR* = Select the bin with the tractor paper.<br>*DMBIN_SMALLFMT* = Select the bin with the smaller paper format.<br>*DMBIN_LARGEFMT* = Select the bin with the larger paper format.<br>*DMBIN_LARGECAPACITY* = Select the bin with large capacity.<br>*DMBIN_CASSETTE* = Select the cassette bin.<br>*DMBIN_FORMSOURCE* = Select the bin with the required form. |
+
+#### Return value
+
+LONG. The paper source.
