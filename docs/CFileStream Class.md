@@ -360,3 +360,15 @@ FUNCTION SeekAtEndOfFile () AS ULONGINT
 
 ULONGINT. The new seek position.
 
+# <a name="SeekAtEndOfStream"></a>SeekAtEndOfFile
+
+Sets the seek position at the end of the stream.
+
+```
+FUNCTION SeekAtEndOfStream () AS ULONGINT
+```
+
+#### Return value
+
+ULONGINT. The new seek position.
+
