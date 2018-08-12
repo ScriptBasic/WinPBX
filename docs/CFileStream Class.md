@@ -54,7 +54,7 @@ OPERATOR CAST () AS IStream PTR
 | ---------- | ----------- |
 | [Attach](#Attach) | Attaches the passed stream object to the class. |
 | [Detach](#Detach) | Detaches the stream object from the class. |
-| Open | Opens or creates a file and retrieves a stream to read or write to that file. |
+| [Open](#Open) | Opens or creates a file and retrieves a stream to read or write to that file. |
 | Close | Releases the stream object. |
 | Read | Reads a specified number of bytes from the stream object into memory, starting at the current seek pointer. |
 | ReadTextA | Reads a specified number of characters from the stream object into memory, starting at the current seek pointer, and returns then as an ansi string. |
@@ -128,3 +128,35 @@ FUNCTION Open (BYVAL pwszFile AS WSTRING PTR, _
 HRESULT. S_OK (0) on success, or an error code on failure.
 
 
+
+
+### <a name="STGM_Constants"></a>STGM Constants
+
+The STGM constants are flags that indicate conditions for creating and deleting the object and access modes for the object. These elements are often combined using an **OR** operator. They are interpreted in groups as listed in the following table. It is not valid to use more than one element from a single group.
+
+| Group                       | Flag                  | Value      |
+| --------------------------- | --------------------- | ---------- |
+| Access                      | STGM_READ             | &h00000000 |
+|                             | STGM_WRITE            | &h00000001 |
+|                             | STGM_READWRITE        | &h00000002 |
+| Sharing                     | STGM_SHARE_DENY_NONE  | &h00000040 |
+|                             | STGM_SHARE_DENY_READ  | &h00000030 |
+|                             | STGM_SHARE_DENY_WRITE | &h00000020 |
+|                             | STGM_SHARE_EXCLUSIVE  | &h00000010 |
+| Creation                    | STGM_CREATE           | &h00001000 |
+|                             | STGM_FAILIFTHERE      | &h00000000 |
+| Transactioning              | STGM_DIRECT           | &h00000000 |
+|                             | STGM_TRANSACTED       | &h00010000 |
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| **STGM_READ** | Indicates that the object is read-only, meaning that modifications cannot be made. For example, if a stream object is opened with **STGM_READ**, the **Read** method may be called, but the **Write** method may not. |
+| **STGM_WRITE** | Enables you to save changes to the object, but does not permit access to its data. |
+| **STGM_SHARE_DENY_NONE** | Specifies that subsequent openings of the object are not denied read or write access. If no flag from the sharing group is specified, this flag is assumed. |
+| **STGM_SHARE_DENY_READ** | Prevents others from subsequently opening the object in **STGM_READ** mode. |
+| **STGM_SHARE_DENY_WRITE** | Prevents others from subsequently opening the object for **STGM_WRITE** or **STGM_READWRITE** access. In transacted mode, sharing of **STGM_SHARE_DENY_WRITE** or **STGM_SHARE_EXCLUSIVE** can significantly improve performance because they do not require snapshots. |
+| **STGM_SHARE_EXCLUSIVE** | Prevents others from subsequently opening the object in **STGM_READ** mode. |
+| **STGM_CREATE** | Indicates that an existing storage object or stream should be removed before the new object replaces it. A new object is created when this flag is specified only if the existing object has been successfully removed.<br> This flag is used when attempting to create:<br>- A storage object on a disk, but a file of that name exists.<br>- An object inside a storage object, but an object with the specified name exists.<br>-A byte array object, but one with the specified name exists.<br>This flag cannot be used with open operations. |
+| **STGM_FAILIFTHERE** | Causes the create operation to fail if an existing object with the specified name exists. In this case, **STG_E_FILEALREADYEXISTS** is returned. This is the default creation mode; that is, if no other create flag is specified, **STGM_FAILIFTHERE** is implied. |
+| **STGM_DIRECT** | Indicates that, in direct mode, each change to a stream element is written as it occurs. This is the default if neither **STGM_DIRECT** nor **STGM_TRANSACTED** is specified. |
+| **STGM_TRANSACTED** | Indicates that, in transacted mode, changes are buffered and written only if an explicit commit operation is called. To ignore the changes, call the **Revert** method. |
