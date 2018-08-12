@@ -62,7 +62,7 @@ OPERATOR CAST () AS IStream PTR
 | [Write](*Write) | Writes a specified number of bytes into the stream starting at the current seek pointer. |
 | [WriteTextA](*WriteTextA) | Writes a ansi string into the stream starting at the current seek pointer. |
 | [WriteTextW](*WriteTextW) | Writes a unicode string into the stream starting at the current seek pointer. |
-| Seek | Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer. |
+| [Seek](*Seek) | Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer. |
 | GetSeekPosition | Returns the seek position. |
 | ResetSeekPosition | Sets the seek position at the beginning of the stream. |
 | SeekAtEndOfFile | Sets the seek position at the end of the stream. |
@@ -308,7 +308,9 @@ ULONG. The characters written.
 Changes the seek pointer to a new location. The new location is relative to either the beginning of the stream, the end of the stream, or the current seek pointer.
 
 ```
-FUNCTION Seek (BYVAL dlibMove AS ULONGINT, BYVAL dwOrigin AS DWORD, BYVAL plibNewPosition AS ULONGINT PTR = NULL) AS HRESULT
+FUNCTION Seek (BYVAL dlibMove AS ULONGINT, _
+   BYVAL dwOrigin AS DWORD, _
+   BYVAL plibNewPosition AS ULONGINT PTR = NULL) AS HRESULT
 ```
 
 | Parameter  | Description |
