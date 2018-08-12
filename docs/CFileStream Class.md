@@ -121,7 +121,7 @@ FUNCTION Open (BYVAL pwszFile AS WSTRING PTR, _
 | *pwszFile* | A pointer to a unicode null-terminated string that specifies the file name. |
 | *grfMode* | One or more STGM values that are used to specify the file access mode and how the stream is created and deleted. The STGM constants are flags that indicate conditions for creating and deleting the stream and access modes for the stream. These elements are often combined using an ORoperator. They are interpreted in groups as listed in the following table. It is not valid to use more than one element from a single group. |
 | *dwAttributes* | One or more flag values that specify file attributes in the case that a new file is created.<br>**_0_** = Prevents other processes from opening a file or device if they request delete, read, or write access.<br>**_FILE_SHARE_DELETE_** = Enables subsequent open operations on a file or device to request delete access. Otherwise, other processes cannot open the file or device if they request delete access. If this flag is not specified, but the file or device has been opened for delete access, the function fails. Delete access allows both delete and rename operations.<br>**_FILE_SHARE_READ_** = Enables subsequent open operations on a file or device to request read access. Otherwise, other processes cannot open the file or device if they request read access. If this flag is not specified, but the file or device has been opened for read access, the function fails.<br>**_FILE_SHARE_WRITE_** = Enables subsequent open operations on a file or device to request write access. Otherwise, other processes cannot open the file or device if they request write access. If this flag is not specified, but the file or device has been opened for write access or has a file mapping with write access, the function fails. |
-| *fCreate* | BOOL value that helps specify, in conjunction with grfMode, how existing files should be treated when creating the stream |
+| *fCreate* | BOOL value that helps specify, in conjunction with *grfMode*, how existing files should be treated when creating the stream |
 
 #### Return value
 
@@ -157,3 +157,15 @@ The STGM constants are flags that indicate conditions for creating and deleting 
 | **STGM_FAILIFTHERE** | Causes the create operation to fail if an existing stream with the specified name exists. In this case, **STG_E_FILEALREADYEXISTS** is returned. This is the default creation mode; that is, if no other create flag is specified, **STGM_FAILIFTHERE** is implied. |
 | **STGM_DIRECT** | Indicates that, in direct mode, each change to a stream element is written as it occurs. This is the default if neither **STGM_DIRECT** nor **STGM_TRANSACTED** is specified. |
 | **STGM_TRANSACTED** | Indicates that, in transacted mode, changes are buffered and written only if an explicit commit operation is called. To ignore the changes, call the **Revert** method. |
+
+The *grfMode* and *fCreate* parameters work together to specify how the function should behave with respect to existing files.
+
+| grfMode          | fCreate | File exists? | Behavior |
+| ---------------- | ------- | ------------ | -------- |
+| STGM_CREATE      | Ignored | Yes          | The file is recreated. |
+| STGM_CREATE      | Ignored | No           | The file is created. |
+| STGM_FAILIFTHERE | FALSE   | Yes          | The file is opened. |
+| STGM_FAILIFTHERE | FALSE   | No           | The call fails. |
+| STGM_FAILIFTHERE | TRUE    | Yes          | The call fails. |
+| STGM_FAILIFTHERE | TRUE    | No           | The file is created. |
+
