@@ -441,7 +441,7 @@ PROPERTY PaperSize (BYVAL nSize AS LONG)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nSize* | LONG. Specifies the printer paper size.<br>For a list of paper sizes see [Paper Sizes](https://docs.microsoft.com/en-us/windows/desktop/intl/paper-sizes). |
+| *nSize* | LONG. Specifies the printer paper size, with DMPAPER_LETTER, DMPAPER_LEGAL, DMPAPER_A3, and DMPAPER_A4 being the most typical. Note that the paper size types cannot be combined with one another.<br>For a list of paper sizes see [Paper Sizes](https://docs.microsoft.com/en-us/windows/desktop/intl/paper-sizes). |
 
 #### Return value
 
