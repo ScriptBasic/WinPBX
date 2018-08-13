@@ -98,9 +98,349 @@ The *IOMode argument can have any of the following settings:
 | Constant | Value | Description |
 | -------- | ----- | ----------- |
 | IOMode_ForReading   | 1 | Open a file for reading only. You can't write to this file. |
-| IOMode_ForWriting^  | 2 | Open a file for writing. |
+| IOMode_ForWriting   | 2 | Open a file for writing. |
 | IOMode_ForAppending | 8 | Open a file and write to the end of the file. |
 
 #### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file as a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Open(cbsFile, IOMode_ForReading)
+' // Read the file sequentially
+DIM s AS STRING
+DO UNTIL pTxtStm.EOS
+   s = pTxtStm.ReadLine
+   PRINT s
+LOOP
+pTxtStm.Close
+
+PRINT "Press any key..."
+SLEEP
+```
+
+# <a name="OpenUnicode"></a>OpenUnicode
+
+Opens a specified file and returns a TextStream object that can be used to read from, write to, or append to the file.
+
+```
+FUNCTION OpenUnicode (BYREF cbsFileName AS CBSTR, _
+   BYVAL IOMode AS LONG = 1, _
+   BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *IOMode* | LONG. Can be one of three constants: IOMode_ForReading, IOMode_ForWriting, or IOMode_ForAppending. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+The *IOMode argument can have any of the following settings:
+
+| Constant | Value | Description |
+| -------- | ----- | ----------- |
+| IOMode_ForReading   | 1 | Open a file for reading only. You can't write to this file. |
+| IOMode_ForWriting   | 2 | Open a file for writing. |
+| IOMode_ForAppending | 8 | Open a file and write to the end of the file. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file as a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.OpenUnicode(cbsFile, IOMode_ForReading)
+' // Read the file sequentially
+DIM cbs AS CBSTRING
+DO UNTIL pTxtStm.EOS
+   cbs = pTxtStm.ReadLine
+   PRINT cbs
+LOOP
+pTxtStm.Close
+
+PRINT "Press any key..."
+SLEEP
+```
+
+# <a name="OpenForInputA"></a>OpenForInputA
+
+Opens a file for input and returns a TextStream object that can be used to read from the file. (Ansi version.)
+
+```
+FUNCTION OpenForInputA (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // ' // Open file for input as a text stream
+pTxtStm.OpenForInputA(ExePath & "\Test.txt")
+' // Read the file sequentially
+DIM s AS STRING
+DO UNTIL pTxtStm.EOS
+   s = pTxtStm.ReadLine
+   PRINT s
+LOOP
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="OpenForInputW"></a>OpenForInputW
+
+Opens a file for input and returns a TextStream object that can be used to read from the file. (Unicode version.)
+
+```
+FUNCTION OpenForInputW (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // ' // Open file for input as a text stream
+pTxtStm.OpenForInputW(ExePath & "\Test.txt")
+' // Read the file sequentially
+DIM cbs AS CBSTRING
+DO UNTIL pTxtStm.EOS
+   cbs = pTxtStm.ReadLine
+   PRINT cbs
+LOOP
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="OpenForOutputA"></a>OpenForOutputA
+
+Opens a file for output and returns a TextStream object that can be used to write to the file. (Ansi version.)
+
+```
+FUNCTION OpenForOutputA (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file for output as a text stream
+pTxtStm.OpenForOutputA(ExePath & "\Test.txt")
+' // Write a string and an end of line to the stream
+pTxtStm.WriteLine "This is a test."
+'// Close the file
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="OpenForOutputW"></a>OpenForOutputW
+
+Opens a file for output and returns a TextStream object that can be used to write to the file. (Unicode version.)
+
+```
+FUNCTION OpenForOutputW (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file for output as a text stream
+pTxtStm.OpenForOutputA(ExePath & "\Test.txt")
+' // Write a string and an end of line to the stream
+pTxtStm.WriteLine "This is a test."
+'// Close the file
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+
+# <a name="OpenForAppendA"></a>OpenForAppendA
+
+Opens a file for append and returns a TextStream object that can be used to write to the file. (Ansi version.)
+
+```
+FUNCTION OpenForOutputA (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file for output as a text stream
+pTxtStm.OpenForAppendA(ExePath & "\Test.txt")
+' // Write a string and an end of line to the stream
+pTxtStm.WriteLine "This is a test."
+'// Close the file
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="OpenForAppendW"></a>OpenForAppendW
+
+Opens a file for append and returns a TextStream object that can be used to write to the file. (Unicode version.)
+
+```
+FUNCTION OpenForAppendW (BYREF cbsFileName AS CBSTR, BYVAL bCreate AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+```
+'#CONSOLE ON
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file for output as a text stream
+pTxtStm.OpenForAppendW(ExePath & "\Test.txt")
+' // Write a string and an end of line to the stream
+pTxtStm.WriteLine "This is a test."
+'// Close the file
+pTxtStm.Close
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+
+
+#### Example
+
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file as a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Open(cbsFile, IOMode_ForReading)
+' // Read the file sequentially
+DO
+  ' // Ext if we are at the end of the stream
+  IF pTxtStm.EOS THEN EXIT DO
+  ' // Current line
+  DIM curLine AS LONG = pTxtStm.Line
+  ' // Skip the 3rd line
+  IF curLine = 3 THEN
+     pTxtStm.SkipLine
+     curLine + = 1
+  END IF
+  ' // Skip 10 characters
+  pTxtStm.Skip 10
+  ' // Current column
+  DIM curColumn AS LONG = pTxtStm.Column
+  ' // Read 5 characters
+  DIM cbsText AS CBSTR = pTxtStm.Read(5)
+  ' // Skip the rest of the line
+  pTxtStm.SkipLine
+  PRINT "Line " + WSTR(curLine) + ", Column " +  WSTR(curColumn) & ": " + cbsText
+LOOP
+
+PRINT "Press any key to end..."
+SLEEP
