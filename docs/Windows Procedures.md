@@ -97,6 +97,25 @@
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
 | AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
+| AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
+| AfxSetWindowExStyle | Sets the font that a control is to use when drawing text. |
+| AfxSetWindowIcon | Associates a new large icon with a window. |
+| AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
+| AfxSetWindowSize | Sets the size of the specified window, in pixels. |
+| AfxSetWindowStyle | Sets the style(s) of the specified window. |
+| AfxSetWindowText | Sets the text of a window. |
+| AfxShowSysInfo | Displays the Windows Information System dialog. |
+| AfxShowWindowState | Sets the specified window's show state. |
+| AfxTwipsPerPixelX | Returns the width of a pixel in twips (horizontal resolution). |
+| AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
+| AfxTwipsToPixelsX | Converts twips to pixels. Horizontal resolution. |
+| AfxTwipsToPixelsY | Converts twips to pixels. Vertical resolution. |
+| AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| AfxWindowsBuild | Returns the Windows build number. |
+| AfxWindowsPlatform | Returns the Windows platform. |
+| AfxWindowsVersion | Returns the Windows version. |
 
 
 # Clipboard
