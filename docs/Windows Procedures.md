@@ -4,13 +4,9 @@
 | ---------- | ----------- |
 | AfxAddWindowExStyle | Adds a new extended style to the specified window. |
 | AfxAddWindowStyle | Adds a new style to the specified window. |
-| AfxBrowseForFolder | Displays a dialog box that enables the user to select a folder. |
 | AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
-| AfxChooseColorDialog | Displays the Windows choose color dialog. |
-| AfxChooseColorDialog | Displays the Windows choose color dialog. |
 | AfxComCtlVersion | Returns the version of CommCtl32.dll. |
-| AfxControlRunDLL | Launches control panel applications. |
 | AfxCreateFont | Creates a logical font. |
 | AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
@@ -95,7 +91,6 @@
 | AfxSetWindowSize | Sets the size of the specified window, in pixels. |
 | AfxSetWindowStyle | Sets the style(s) of the specified window. |
 | AfxSetWindowText | Sets the text of a window. |
-| AfxShowSysInfo | Displays the Windows Information System dialog. |
 | AfxShowWindowState | Sets the specified window's show state. |
 | AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
@@ -103,6 +98,15 @@
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
+
+# Dialogs
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxChooseColorDialog | Displays the Windows choose color dialog. |
+| AfxBrowseForFolder | Displays a dialog box that enables the user to select a folder. |
+| AfxControlRunDLL | Launches control panel applications. |
+| AfxShowSysInfo | Displays the Windows Information System dialog. |
 
 # Clipboard
 
