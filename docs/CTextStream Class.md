@@ -325,7 +325,7 @@ using Afx
 ' // Create an instance of the CTextStream class
 DIM pTxtStm AS CTextStream
 ' // Open file for output as a text stream
-pTxtStm.OpenForOutputA(ExePath & "\Test.txt")
+pTxtStm.OpenForOutputW(ExePath & "\Test.txt")
 ' // Write a string and an end of line to the stream
 pTxtStm.WriteLine "This is a test."
 '// Close the file
@@ -408,10 +408,30 @@ PRINT "Press any key to end..."
 SLEEP
 ```
 
+# <a name="Close"></a>Close
+
+Closes an open TextStream file.
+
+```
+FUNCTION Close () AS HRESULT
+```
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+
+
+
+
+
+
+
 
 
 #### Example
 
+```
 #include "Afx/CTextStream.inc"
 using Afx
 
@@ -444,3 +464,4 @@ LOOP
 
 PRINT "Press any key to end..."
 SLEEP
+```
