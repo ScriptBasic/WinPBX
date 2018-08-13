@@ -72,7 +72,7 @@ OPERATOR CAST () AS IStream PTR
 | [CopyTo](#CopyTo) | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
 | [LockRegion](#LockRegion) | Restricts access to a specified range of bytes in the stream. |
 | [UnlockRegion](#UnlockRegion) | Removes the access restriction on a range of bytes previously restricted with *LockRegion*. |
-| Stat | Retrieves the STATSTG structure for this stream. |
+| [Stat](#Stat) | Retrieves the STATSTG structure for this stream. |
 | Clone | Creates a new stream with its own seek pointer that references the same bytes as the original stream. |
 | GetLastResult | Returns the last result code. |
 
@@ -455,4 +455,33 @@ FUNCTION UnlockRegion (BYVAL libOffset AS ULONGINT, BYVAL cb AS ULONGINT, BYVAL 
 #### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="Stat"></a>Stat
+
+Retrieves the **STATSTG** structure for this stream.
+
+```
+FUNCTION Stat (BYVAL pstatstg AS STATSTG PTR, BYVAL grfStatFlag AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pstatstg* | Pointer to a **STATSTG** structure where this method places information about this stream. |
+| *grfStatFlag* | DWORD. Specifies that this method does not return some of the members in the **STATSTG** structure, thus saving a memory allocation operation. Values are taken from the **STATFLAG** enumeration.<br>- **_STATFLAG_DEFAULT_** : Requests that the statistics include the pwcsName member of the **STATSTG** structure.<br>- **_STATFLAG_NONAME_** : Requests that the statistics not include the *pwcsName* member of the **STATSTG structure**. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+```
+FUNCTION Stat (BYVAL grfStatFlag AS DWORD) AS STATSTG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *grfStatFlag* | DWORD. Specifies that this method does not return some of the members in the **STATSTG** structure, thus saving a memory allocation operation. Values are taken from the **STATFLAG** enumeration.<br>- **_STATFLAG_DEFAULT_** : Requests that the statistics include the pwcsName member of the **STATSTG** structure.<br>- **_STATFLAG_NONAME_** : Requests that the statistics not include the *pwcsName* member of the **STATSTG structure**. |
+
+#### Return value
+
+STATFLAG. The **STATSTG** structure for this stream.
 
