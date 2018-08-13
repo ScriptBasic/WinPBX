@@ -21,10 +21,6 @@
 | AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
 | AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
-| AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
-| AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
-| AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
-| AfxGetMonitorLogicalWidth | Returns the logical width of the monitor that the window is currently displayed on. |
 | AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 | AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
@@ -46,24 +42,13 @@
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
-| AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware such that it adjusts the sizes of UI elements to compensate for the dpi setting. |
-| AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
-| AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
-| AfxLogPixelsX | Retrieves the number of pixels per logical inch along the screen width. |
-| AfxLogPixelsY | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxMsg | Displays an application modal message box. |
 | AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
 | AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
 | AfxRemoveWindowStyle | Removes a style from the specified window. |
-| AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
-| AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
-| AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxScaleY | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
-| AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
@@ -72,9 +57,6 @@
 | AfxSetWindowStyle | Sets the style(s) of the specified window. |
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
-| AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 
 # Versioning
 
@@ -94,6 +76,29 @@
 | AfxBrowseForFolder | Displays a dialog box that enables the user to select a folder. |
 | AfxControlRunDLL | Launches control panel applications. |
 | AfxShowSysInfo | Displays the Windows Information System dialog. |
+
+# High DPI
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
+| AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
+| AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
+| AfxGetMonitorLogicalWidth | Returns the logical width of the monitor that the window is currently displayed on. |
+| AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
+| AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
+| AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
+| AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
+| AfxLogPixelsX | Retrieves the number of pixels per logical inch along the screen width. |
+| AfxLogPixelsY | Retrieves the number of pixels per logical inch along the screen height. |
+| AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
+| AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
+| AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxScaleY | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
+| AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 
 # Fonts
 
@@ -128,7 +133,7 @@
 | AfxDibLoadImage | Loads a DIB in memory and returns a pointer to it. |
 | AfxDibSaveImage | Saves a DIB to a file. |
 
-# Conversions
+# Metric conversions
 
 | Name       | Description |
 | ---------- | ----------- |
