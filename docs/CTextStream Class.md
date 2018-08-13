@@ -105,6 +105,10 @@ The *IOMode argument can have any of the following settings:
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
+#### Remarks
+
+After a file is initially opened and before anything is written, Line is equal to 1.
+
 #### Example
 
 ```
@@ -508,14 +512,135 @@ FUNCTION ReadAll  () AS CBSTR
 
 CBSTR. A string with the content of all the file.
 
+#### Example
 
+```
+#include "Afx/CTextStream.inc"
+using Afx
 
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file as a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Open(cbsFile, IOMode_ForReading)
+' // Read all the contents of the file
+DIM cbsText AS CBSTR = pTxtStm.ReadAll
+PRINT cbsText
 
+PRINT "Press any key to end..."
+SLEEP
+```
 
+# <a name="Write"></a>Write
 
-#### Remarks
+Writes a specified string to a TextStream file.
 
-After a file is initially opened and before anything is written, Line is equal to 1.
+```
+FUNCTION Write (BYREF cbsText AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsText* | CBSTR. The text you want to write to the file. |
+
+#### Return value
+
+CBSTR. The text you want to write to the file.
+
+#### Example
+
+```
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Create a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Create(cbsFile, TRUE)
+' // Write strings
+pTxtStm.Write "This is a string."
+pTxtStm.Write "This is a second string."
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="WriteLine"></a>WriteLine
+
+Writes a specified string and newline character to a TextStream file.
+
+```
+FUNCTION WriteLine (BYREF cbsText AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsText* | CBSTR. The text you want to write to the file. If omitted, a newline character is written to the file. |
+
+#### Return value
+
+CBSTR. The text you want to write to the file.
+
+#### Example
+
+```
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Create a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Create(cbsFile, TRUE)
+' // Write strings
+pTxtStm.WriteLine "This is a string."
+pTxtStm.WriteLine "This is a second string."
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="WriteBlankLines"></a>WriteBlankLines
+
+Writes a specified string and newline character to a TextStream file.
+
+```
+FUNCTION WriteBlankLines (BYVAL numLines AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *numLines* | LONG. Number of newline characters you want to write to the file. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Example
+
+```
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Create a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Create(cbsFile, TRUE)
+' // Write a string and an end of line to the stream
+pTxtStm.WriteLine "This is a test."
+' // Write more strings
+pTxtStm.Write "This is a string."
+pTxtStm.Write "This is a second string."
+' // Write two blank lines (the first will serve as an end of line for the previous write instructions)
+pTxtStm.WriteBlankLines 2
+pTxtStm.WriteLine "This is the end line."
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
 
 
 
