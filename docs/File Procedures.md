@@ -1,4 +1,4 @@
-# File and folders Procedures
+# File and Folder Procedures
 
 | Name       | Description |
 | ---------- | ----------- |
