@@ -6,7 +6,6 @@
 | AfxAddWindowStyle | Adds a new style to the specified window. |
 | AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
-| AfxComCtlVersion | Returns the version of CommCtl32.dll. |
 | AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxForceVisibleDisplay | Force visibility of an off-screen window. |
@@ -83,6 +82,12 @@
 | AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+
+# Versioning
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxComCtlVersion | Returns the version of CommCtl32.dll. |
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
