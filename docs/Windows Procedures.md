@@ -76,15 +76,6 @@
 | AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
 | AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
 | AfxMsg | Displays an application modal message box. |
-| AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
-| AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
-| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch). Horizontal resolution. |
-| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch). Vertical resolution. |
-| AfxPixelsToTwipsX | Converts pixels to twips. Horizontal resolution. |
-| AfxPixelsToTwipsY | Converts pixels to twips. Vertical resolution. |
-| AfxPointSizeToDip | Converts point size to DIP (device independent pixel). DIP is defined as 1/96 of an inch and a point is 1/72 of an inch. |
-| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels. Horizontal resolution. |
-| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels. Vertical resolution. |
 | AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
@@ -106,17 +97,12 @@
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowSysInfo | Displays the Windows Information System dialog. |
 | AfxShowWindowState | Sets the specified window's show state. |
-| AfxTwipsPerPixelX | Returns the width of a pixel in twips (horizontal resolution). |
-| AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
-| AfxTwipsToPixelsX | Converts twips to pixels. Horizontal resolution. |
-| AfxTwipsToPixelsY | Converts twips to pixels. Vertical resolution. |
 | AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
-
 
 # Clipboard
 
@@ -135,3 +121,21 @@
 | AfxCreateDIBSection | Creates a DIB section. |
 | AfxDibLoadImage | Loads a DIB in memory and returns a pointer to it. |
 | AfxDibSaveImage | Saves a DIB to a file. |
+
+# Conversions
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
+| AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
+| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch). Horizontal resolution. |
+| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch). Vertical resolution. |
+| AfxPixelsToTwipsX | Converts pixels to twips. Horizontal resolution. |
+| AfxPixelsToTwipsY | Converts pixels to twips. Vertical resolution. |
+| AfxPointSizeToDip | Converts point size to DIP (device independent pixel). |
+| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels. Horizontal resolution. |
+| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels. Vertical resolution. |
+| AfxTwipsPerPixelX | Returns the width of a pixel in twips (horizontal resolution). |
+| AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
+| AfxTwipsToPixelsX | Converts twips to pixels. Horizontal resolution. |
+| AfxTwipsToPixelsY | Converts twips to pixels. Vertical resolution. |
