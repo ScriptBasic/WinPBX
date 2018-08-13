@@ -1,4 +1,4 @@
-# Windows Procedures
+# Window Procedures
 
 | Name       | Description |
 | ---------- | ----------- |
