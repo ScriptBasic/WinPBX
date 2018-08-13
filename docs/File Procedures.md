@@ -45,6 +45,8 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
 | AfxOpenFileDialog | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. The dialog box uses the Explorer-style user interface. |
+| AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save.  The dialog box uses the Explorer-style user interface. |
+| AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
 
 ## File Path Procedures
 
@@ -108,4 +110,21 @@
 | AfxPathUnExpandEnvStrings | Replaces certain folder names in a fully-qualified path with their associated environment string. |
 | AfxPathUnmakeSystemFolder | Removes the attributes from a folder that make it a system folder. This folder must actually exist in the file system. |
 | AfxPathUnquoteSpaces | Removes quotes from the beginning and end of a path. |
+| AfxUrlApplyScheme | Determines a scheme for a specified URL string, and returns a string with an appropriate prefix. |
+| AfxUrlCanonicalize | Converts a URL string into canonical form. |
+| AfxUrlCombine | When provided with a relative URL and its base, returns a URL in canonical form. |
+| AfxUrlCompare | Makes a case-sensitive comparison of two URL strings. |
+| AfxUrlCreateFromPath | Converts a Microsoft MS-DOS path to a canonicalized URL. |
+| AfxUrlEscape | Converts characters in a URL that might be altered during transport across the Internet ("unsafe" characters) into their corresponding escape sequences. |
+| AfxUrlEscapeSpaces | Converts space characters into their corresponding escape sequence. |
+| AfxUrlFixup | Attempts to correct a URL whose protocol identifier is incorrect. For example, htttp will be changed to http. |
+| AfxUrlGetLocation | Retrieves the location from a URL. |
+| AfxUrlGetPart | Accepts a URL string and returns a specified part of that URL. |
+| AfxUrlHash | Hashes a URL string. |
+| AfxUrlIs | Tests whether or not a URL is a specified type. |
+| AfxUrlIsFileUrl | Tests a URL to determine if it is a file URL. |
+| AfxUrlIsNoHistory | Returns whether a URL is a URL that browsers typically do not include in navigation history. |
+| AfxUrlIsOpaque | Returns whether a URL is opaque. |
+| AfxUrlUnescape | Converts escape sequences back into ordinary characters. |
+| AfxUrlUnescapeInPlace | Converts escape sequences back into ordinary characters and overwrites the original string. |
 
