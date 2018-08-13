@@ -46,6 +46,57 @@
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
 | AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
 | AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
+| AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
+| AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
+| AfxGetWindowClientWidth | Returns the width of the client area of a window, in pixels. |
+| AfxGetWindowExStyle | Retrieves the extended window styles. |
+| AfxGetWindowFont | Retrieves the font with which the control is currently drawing its text. |
+| AfxGetWindowHeight | Returns the height of a window, in pixels. |
+| AfxGetWindowLocation | Returns the location of the top left corner of the window, in pixels. |
+| AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
+| AfxGetWindowsFontInfo | Retrieves information about the fonts used by Windows. |
+| AfxGetWindowsFontPointSize | Retrieves the point size of the fonts used by Windows. |
+| AfxGetWindowStyle | Retrieves the window styles. |
+| AfxGetWindowText | Gets the text of a window. |
+| AfxGetWindowTextLength | Gets the length of the text of a window. |
+| AfxGetWindowWidth | Returns the width of a window, in pixels. |
+| AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
+| AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
+| AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
+| AfxHiMetricToPixelsX | Converts from HiMetric to Pixels (horizontal resolution). |
+| AfxHiMetricToPixelsY | Converts from HiMetric to Pixels (vertical resolution). |
+| AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
+| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware such that it adjusts the sizes of UI elements to compensate for the dpi setting. |
+| AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
+| AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
+| AfxLogPixelsX | Retrieves the number of pixels per logical inch along the screen width. |
+| AfxLogPixelsY | Retrieves the number of pixels per logical inch along the screen height. |
+| AfxModifyFontFaceName | Modifies the face name of the font of a window or control. |
+| AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
+| AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
+| AfxMsg | Displays an application modal message box. Helper proceudre to display feedback and errors. |
+| AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
+| AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
+| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch). Horizontal resolution. |
+| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch). Vertical resolution. |
+| AfxPixelsToTwipsX | Converts pixels to twips. Horizontal resolution. |
+| AfxPixelsToTwipsY | Converts pixels to twips. Vertical resolution. |
+| AfxPointSizeToDip | Converts point size to DIP (device independent pixel). DIP is defined as 1/96 of an inch and a point is 1/72 of an inch. |
+| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels. Horizontal resolution. |
+| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels. Vertical resolution. |
+| AfxPumpMessages | Processes pending Windows messages. |
+| AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
+| AfxRedrawWindow | Redraws the specified window. |
+| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
+| AfxRemoveWindowStyle | Removes a style from the specified window. |
+| AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
+| AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
+| AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxScaleY | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
+| AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
+| AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 
 
 # Clipboard
@@ -55,6 +106,8 @@
 | AfxClearClipboard | Clears the contents of the clipboard. |
 | AfxGetClipboardData | Retrieves data from the clipboard in the specified format. |
 | AfxGetClipboardText | Returns a text string from the clipboard. |
+| AfxSetClipboardData | Places data on the clipboard in a specified clipboard format. |
+| AfxSetClipboardText | Places a text string into the clipboard. |
 
 # Device Independent Bitmap (DIB)
 
