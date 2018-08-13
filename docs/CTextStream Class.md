@@ -93,7 +93,7 @@ FUNCTION Open (BYREF cbsFileName AS CBSTR, _
 | *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
 | *bUnicode* | Boolean value that indicates whether the file is created as a Unicode or ASCII file. The value is true if the file is created as a Unicode file, false if it's created as an ASCII file. If omitted, an ASCII file is assumed. |
 
-The *IOMode argument can have any of the following settings:
+The *IOMode* argument can have any of the following settings:
 
 | Constant | Value | Description |
 | -------- | ----- | ----------- |
@@ -149,7 +149,7 @@ FUNCTION OpenUnicode (BYREF cbsFileName AS CBSTR, _
 | *IOMode* | LONG. Can be one of three constants: IOMode_ForReading, IOMode_ForWriting, or IOMode_ForAppending. |
 | *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
 
-The *IOMode argument can have any of the following settings:
+The *IOMode* argument can have any of the following settings:
 
 | Constant | Value | Description |
 | -------- | ----- | ----------- |
