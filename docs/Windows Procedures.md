@@ -9,7 +9,6 @@
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxForceVisibleDisplay | Force visibility of an off-screen window. |
 | AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
-| AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetControlHandle | Returns the handle of the control with the specified identifier. |
 | AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
 | AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
@@ -17,13 +16,10 @@
 | AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
 | AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
 | AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
-| AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 | AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
 | AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
-| AfxGetUserName | Retrieves the name of the user associated with the current thread. |
-| AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
 | AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
 | AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
 | AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
@@ -39,13 +35,11 @@
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxMsg | Displays an application modal message box. |
 | AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
 | AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
 | AfxRemoveWindowStyle | Removes a style from the specified window. |
-| AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
@@ -161,7 +155,7 @@
 | AfxTwipsToPixelsX | Converts twips to pixels (horizontal resolution). |
 | AfxTwipsToPixelsY | Converts twips to pixels (vertical resolution). |
 
-# Internet
+# Mail and Internet
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -171,3 +165,14 @@
 | AfxGetDefaultMailClientName | Retrieves the name of the default client mail application. |
 | AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
 | AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
+
+# Miscellaous procedures
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
+| AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
+| AfxGetUserName | Retrieves the name of the user associated with the current thread. |
+| AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
+| AfxMsg | Displays an application modal message box. |
+| AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
