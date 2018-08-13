@@ -69,5 +69,43 @@
 | AfxPathFindSuffixArray | Determines whether a given file name has one of a list of suffixes. |
 | AfxPathGetArgs | Finds the command line arguments within a given path. |
 | AfxPathGetCharType | Determines the type of character in relation to a path. |
-| AfxPathGetDriveNumber | Searches a path for a drive letter within the range of 'A' to 'Z' and returns the corresponding drive number. | AfxPathIsContentType | Determines if a file's registered content type matches the specified content type. |
-|
+| AfxPathGetDriveNumber | Searches a path for a drive letter within the range of 'A' to 'Z' and returns the corresponding drive number. |
+| AfxPathIsContentType | Determines if a file's registered content type matches the specified content type. |
+| AfxPathIsDirectory | Verifies that a path is a valid directory. |
+| AfxPathIsDirectoryEmpty | Determines whether a specified path is an empty directory. |
+| AfxPathIsFileSpec | Searches a path for any path-delimiting characters (for example, ':' or '\' ). If there are no path-delimiting characters present, the path is considered to be a File Spec path. |
+| AfxPathIsHTMLFile | Determines if a file is an HTML file. The determination is made based on the content type that is registered for the file's extension. |
+| AfxPathIsLFNFileSpec | Determines whether a file name is in long format. |
+| AfxPathIsNetworkPath | Determines whether a path string represents a network resource. |
+| AfxPathIsPrefix | Searches a path to determine if it contains a valid prefix of the type passed by wszPrefix. A prefix is one of these types: "C:\", ".", "..", "..\". |
+| AfxPathIsRelative | Searches a path and determines if it is relative. |
+| AfxPathIsRoot | Parses a path to determine if it is a directory root. |
+| AfxPathIsSameRoot | Compares two paths to determine if they have a common root component. |
+| AfxPathIsSystemFolder | Determines if an existing folder contains the attributes that make it a system folder. Alternately, this function indicates if certain attributes qualify a folder to be a system folder. |
+| AfxPathIsUNC | Determines if the string is a valid Universal Naming Convention (UNC) for a server and share path. |
+| AfxPathIsUNCServer | Determines if a string is a valid Universal Naming Convention (UNC) for a server path only. |
+| AfxPathIsUNCServerShare | Determines if a string is a valid Universal Naming Convention (UNC) share path, \\*server*\*share*. |
+| AfxPathIsURL | Tests a given string to determine if it conforms to a valid URL format. |
+| AfxPathMakePretty | Converts a path to all lowercase characters to give the path a consistent appearance. |
+| AfxPathMakeSystemFolder | Gives an existing folder the proper attributes to become a system folder. |
+| AfxPathMatchSpec | Searches a string using a Microsoft MS-DOS wild card match type. |
+| AfxPathMatchSpecEx | Searches a path to determine whether it contains a file of a specified file type extension. |
+| AfxPathParseIconLocation | Parses a file location string that contains a file location and icon index, and returns separate values. |
+| AfxPathQuoteSpaces | Searches a path for spaces. If spaces are found, the entire path is enclosed in quotation marks. |
+| AfxPathRelativePathTo | Creates a relative path from one file or folder to another. |
+| AfxPathRemoveArgs | Removes any arguments from a given path. |
+| AfxPathRemoveBackslash | Removes the trailing backslash from a given path. |
+| AfxPathRemoveBlanks | Removes all leading and trailing spaces from a string. |
+| AfxPathRemoveExtension | Removes the file name extension from a path, if one is present. |
+| AfxPathRemoveFileSpec | Removes the trailing file name and backslash from a path, if they are present. |
+| AfxPathRenameExtension | Replaces the extension of a file name with a new extension. If the file name does not contain an extension, the extension will be attached to the end of the string. |
+| AfxPathSearchAndQualify | Determines if a given path is correctly formatted and fully qualified. |
+| AfxPathSetDlgItemPath | Sets the text of a child control in a window or dialog box, using AfxCompactPath to ensure the path fits in the control. |
+| AfxPathSkipRoot | Parses a path, ignoring the drive letter or Universal Naming Convention (UNC) server/share path elements. |
+| AfxPathStripPath | Removes the path portion of a fully qualified path and file. |
+| AfxPathStripToRoot | Removes all parts of the path except for the root information. |
+| AfxPathUndecorate | Removes the decoration from a path string. |
+| AfxPathUnExpandEnvStrings | Replaces certain folder names in a fully-qualified path with their associated environment string. |
+| AfxPathUnmakeSystemFolder | Removes the attributes from a folder that make it a system folder. This folder must actually exist in the file system. |
+| AfxPathUnquoteSpaces | Removes quotes from the beginning and end of a path. |
+
