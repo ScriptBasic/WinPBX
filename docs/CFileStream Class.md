@@ -524,5 +524,5 @@ FUNCTION GetErrorInfo () AS CWSTR
 
 #### Return value
 
-CWSTR. A description the last result code.  If the result code is S_OK or an unknown error, it returns an empty string.
+CWSTR. A description the last result code.
 
