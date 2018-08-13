@@ -1,3 +1,10 @@
+# Dialogs
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxOpenFileDialog | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. |
+| AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save. |
+
 # File and Folder Procedures
 
 | Name       | Description |
@@ -58,12 +65,10 @@
 | AfxMkDir | Creates a new directory. |
 | AfxMoveFile | Moves an existing file or a directory, including its children. |
 | AfxName | Moves an existing file or a directory, including its children. |
-| AfxOpenFileDialog | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. The dialog box uses the Explorer-style user interface. |
 | AfxRemoveDirectory | Deletes an existing empty directory. |
 | AfxRemoveDir | Deletes an existing empty directory. |
 | AfxRenameFile | Moves an existing file or a directory, including its children. |
 | AfxRmDir | Deletes an existing empty directory. |
-| AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save.  The dialog box uses the Explorer-style user interface. |
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
 | AfxSetCurDir | Changes the current directory for the current process. |
 | AfxSetCurrentDirectory | Changes the current directory for the current process. |
