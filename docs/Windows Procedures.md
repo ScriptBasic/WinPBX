@@ -128,14 +128,14 @@
 | ---------- | ----------- |
 | AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
 | AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
-| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch). Horizontal resolution. |
-| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch). Vertical resolution. |
-| AfxPixelsToTwipsX | Converts pixels to twips. Horizontal resolution. |
-| AfxPixelsToTwipsY | Converts pixels to twips. Vertical resolution. |
+| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch) (horizontal resolution). |
+| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch) (vertical resolution). |
+| AfxPixelsToTwipsX | Converts pixels to twips (horizontal resolution). |
+| AfxPixelsToTwipsY | Converts pixels to twips (vertical resolution). |
 | AfxPointSizeToDip | Converts point size to DIP (device independent pixel). |
-| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels. Horizontal resolution. |
-| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels. Vertical resolution. |
+| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
+| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
 | AfxTwipsPerPixelX | Returns the width of a pixel in twips (horizontal resolution). |
 | AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
-| AfxTwipsToPixelsX | Converts twips to pixels. Horizontal resolution. |
-| AfxTwipsToPixelsY | Converts twips to pixels. Vertical resolution. |
+| AfxTwipsToPixelsX | Converts twips to pixels (horizontal resolution). |
+| AfxTwipsToPixelsY | Converts twips to pixels (vertical resolution). |
