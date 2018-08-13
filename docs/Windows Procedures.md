@@ -4,14 +4,11 @@
 | ---------- | ----------- |
 | AfxAddWindowExStyle | Adds a new extended style to the specified window. |
 | AfxAddWindowStyle | Adds a new style to the specified window. |
-| AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
 | AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxForceVisibleDisplay | Force visibility of an off-screen window. |
 | AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
-| AfxGetBitmapHeight | Retrieves the height of the specified bitmap. |
-| AfxGetBitmapWidth | Retrieves the width of the specified bitmap. |
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetControlHandle | Returns the handle of the control with the specified identifier. |
 | AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
@@ -127,6 +124,14 @@
 | AfxGetClipboardText | Returns a text string from the clipboard. |
 | AfxSetClipboardData | Places data on the clipboard in a specified clipboard format. |
 | AfxSetClipboardText | Places a text string into the clipboard. |
+
+# Bitmap
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
+| AfxGetBitmapHeight | Retrieves the height of the specified bitmap. |
+| AfxGetBitmapWidth | Retrieves the width of the specified bitmap. |
 
 # Device Independent Bitmap (DIB)
 
