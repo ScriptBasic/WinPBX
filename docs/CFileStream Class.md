@@ -69,7 +69,7 @@ OPERATOR CAST () AS IStream PTR
 | [SeekAtEndOfStream](#SeekAtEndOfStream) | Sets the seek position at the end of the stream. |
 | [GetSize](#GetSize) | Returns the size of the stream. |
 | [SetSize](#SetSize) | Changes the size of the stream. |
-| CopyTo | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
+| [CopyTo](#CopyTo) | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
 | Commit | Ensures that any changes made to a stream open in transacted mode are reflected in the parent storage. |
 | Revert | Discards all changes that have been made to a transacted stream since the last *Commit* call. On streams open in direct mode this method has no effect. |
 | LockRegion | Restricts access to a specified range of bytes in the stream. |
@@ -395,6 +395,28 @@ FUNCTION SetSize (BYVAL libNewSize AS ULONGINT) AS HRESULT
 | Parameter  | Description |
 | ---------- | ----------- |
 | *libNewSize* | ULONGINT. Specifies the new size, in bytes, of the stream. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="CopyTo"></a>CopyTo
+
+Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream.
+
+```
+FUNCTION CopyTo (BYVAL pstm AS IStream PTR, _
+   BYVAL cb AS ULONGINT, _
+   BYVAL pcbRead AS ULONGINT PTR = NULL, _
+   BYVAL pcbWritten AS ULONGINT PTR = NULL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pstm* | A pointer to the destination stream. The stream pointed to by *pstm* can be a new stream or a clone of the source stream. |
+| *cb* | The number of bytes of data to attempt to copy into the stream. |
+| *pcbRead* | A pointer to the location where this method writes the actual number of bytes read from the source. You can set this pointer to NULL. In this case, this method does not provide the actual number of bytes read. |
+| *pcbWritten* | A pointer to the location where this method writes the actual number of bytes written to the destination. You can set this pointer to NULL. In this case, this method does not provide the actual number of bytes written. |
 
 #### Return value
 
