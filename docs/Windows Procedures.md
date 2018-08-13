@@ -2,8 +2,6 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxAddWindowExStyle | Adds a new extended style to the specified window. |
-| AfxAddWindowStyle | Adds a new style to the specified window. |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
 | AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
@@ -24,11 +22,9 @@
 | AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
 | AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
 | AfxGetWindowClientWidth | Returns the width of the client area of a window, in pixels. |
-| AfxGetWindowExStyle | Retrieves the extended window styles. |
 | AfxGetWindowHeight | Returns the height of a window, in pixels. |
 | AfxGetWindowLocation | Returns the location of the top left corner of the window, in pixels. |
 | AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
-| AfxGetWindowStyle | Retrieves the window styles. |
 | AfxGetWindowText | Gets the text of a window. |
 | AfxGetWindowTextLength | Gets the length of the text of a window. |
 | AfxGetWindowWidth | Returns the width of a window, in pixels. |
@@ -38,14 +34,10 @@
 | AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
-| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
-| AfxRemoveWindowStyle | Removes a style from the specified window. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
-| AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
 | AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
 | AfxSetWindowSize | Sets the size of the specified window, in pixels. |
-| AfxSetWindowStyle | Sets the style(s) of the specified window. |
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
 
@@ -58,6 +50,19 @@
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
+| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
+| AfxRemoveWindowStyle | Removes a style from the specified window. |
+
+# Window styles
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxAddWindowExStyle | Adds a new extended style to the specified window. |
+| AfxAddWindowStyle | Adds a new style to the specified window. |
+| AfxGetWindowExStyle | Retrieves the extended window styles. |
+| AfxGetWindowStyle | Retrieves the window styles. |
+| AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
+| AfxSetWindowStyle | Sets the style(s) of the specified window. |
 
 # Dialogs
 
