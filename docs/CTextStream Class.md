@@ -75,3 +75,32 @@ PRINT
 PRINT "Press any key o end..."
 SLEEP
 ```
+# <a name="Open"></a>Open
+
+Opens a specified file and returns a TextStream object that can be used to read from, write to, or append to the file.
+
+```
+FUNCTION Open (BYREF cbsFileName AS CBSTR, _
+   BYVAL IOMode AS LONG = 1, _
+   BYVAL bCreate AS BOOLEAN = FALSE, _
+   BYVAL bUnicode AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | CBSTR. String expression that identifies the file to open. |
+| *IOMode* | LONG. Can be one of three constants: IOMode_ForReading, IOMode_ForWriting, or IOMode_ForAppending. |
+| *bCreate* | Boolean value that indicates whether a new file can be created if the specified filename doesn't exist. The value is True if a new file is created, False if it isn't created. If omitted, a new file isn't created. |
+| *bUnicode* | Boolean value that indicates whether the file is created as a Unicode or ASCII file. The value is true if the file is created as a Unicode file, false if it's created as an ASCII file. If omitted, an ASCII file is assumed. |
+
+The *IOMode argument can have any of the following settings:
+
+| Constant | Value | Description |
+| -------- | ----- | ----------- |
+| IOMode_ForReading   | 1 | Open a file for reading only. You can't write to this file. |
+| IOMode_ForWriting^  | 2 | Open a file for writing. |
+| IOMode_ForAppending | 8 | Open a file and write to the end of the file. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
