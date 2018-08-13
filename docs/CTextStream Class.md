@@ -105,10 +105,6 @@ The *IOMode* argument can have any of the following settings:
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
-#### Remarks
-
-After a file is initially opened and before anything is written, Line is equal to 1.
-
 #### Example
 
 ```
