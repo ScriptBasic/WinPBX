@@ -481,7 +481,7 @@ HRESULT. S_OK (0) on success, or an error code on failure.
 
 # <a name="Stat"></a>Stat
 
-Retrieves the **STATSTG** structure for this stream.
+Retrieves the **STATSTG** structure for this stream. For a detailed description of this structure see [STATSTG structure](https://docs.microsoft.com/en-us/windows/desktop/api/objidl/ns-objidl-tagstatstg).
 
 ```
 FUNCTION Stat (BYVAL pstatstg AS STATSTG PTR, BYVAL grfStatFlag AS DWORD) AS HRESULT
