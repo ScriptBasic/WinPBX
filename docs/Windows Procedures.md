@@ -59,8 +59,6 @@
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxHiMetricToPixelsX | Converts from HiMetric to Pixels (horizontal resolution). |
-| AfxHiMetricToPixelsY | Converts from HiMetric to Pixels (vertical resolution). |
 | AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
 | AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware such that it adjusts the sizes of UI elements to compensate for the dpi setting. |
@@ -130,6 +128,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
+| AfxHiMetricToPixelsX | Converts from HiMetric to Pixels (horizontal resolution). |
+| AfxHiMetricToPixelsY | Converts from HiMetric to Pixels (vertical resolution). |
 | AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
 | AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
 | AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch) (horizontal resolution). |
