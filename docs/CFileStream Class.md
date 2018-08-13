@@ -75,6 +75,7 @@ OPERATOR CAST () AS IStream PTR
 | [Stat](#Stat) | Retrieves the STATSTG structure for this stream. |
 | [Clone](#Clone) | Creates a new stream with its own seek pointer that references the same bytes as the original stream. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
+| [GetErrorInfo](#GetErrorInfo) | Returns a description of the last result code. |
 
 # <a name="Attach"></a>Attach
 
@@ -512,3 +513,16 @@ FUNCTION GetLastResult () AS HRESULT
 #### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="GetErrorInfo"></a>GetErrorInfo
+
+Returns a description the last result code.
+
+```
+FUNCTION GetErrorInfo () AS CWSTR
+```
+
+#### Return value
+
+CWSTR. A description the last result code.  If the result code is S_OK, it returns an empty string.
+
