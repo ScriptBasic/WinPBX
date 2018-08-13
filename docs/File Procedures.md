@@ -2,13 +2,22 @@
 
 | Name       | Description |
 | ---------- | ----------- |
+| AfxChDir | Changes the current directory for the current process. |
+| AfxCopyFile | Copies an existing file to a new file. |
+| AfxCreateDirectory | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
+| AfxEnviron | Retrieves the contents of the specified variable from the environment block of the calling process. |
+| AfxFileCopy | Copies an existing file to a new file. |
+| AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxDeleteFile | Deletes the specified file. |
+| AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file ans returns the number of occurrences of the specified delimiter. |
 | AfxFolderExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxGetCurDir | Retrieves the current directory for the current process. |
+| AfxGetCurrentDirectory | Retrieves the current directory for the current process. |
+| AfxGetDriveType | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
 | AfxGetExeFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetExeFileName | Returns the file name of the program which is currently executing. |
 | AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
@@ -44,9 +53,21 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
+| AfxKill | Deletes the specified file. |
+| AfxMakeDir | Creates a new directory. |
+| AfxMkDir | Creates a new directory. |
+| AfxMoveFile | Moves an existing file or a directory, including its children. |
+| AfxName | Moves an existing file or a directory, including its children. |
 | AfxOpenFileDialog | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. The dialog box uses the Explorer-style user interface. |
+| AfxRemoveDirectory | Deletes an existing empty directory. |
+| AfxRemoveDir | Deletes an existing empty directory. |
+| AfxRenameFile | Moves an existing file or a directory, including its children. |
+| AfxRmDir | Deletes an existing empty directory. |
 | AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save.  The dialog box uses the Explorer-style user interface. |
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
+| AfxSetCurDir | Changes the current directory for the current process. |
+| AfxSetCurrentDirectory | Changes the current directory for the current process. |
+| AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
 
 ## File Path Procedures
 
