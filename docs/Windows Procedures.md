@@ -3,18 +3,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
-| AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
-| AfxForceVisibleDisplay | Force visibility of an off-screen window. |
-| AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
-| AfxGetControlHandle | Returns the handle of the control with the specified identifier. |
-| AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
-| AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
-| AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
-| AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
-| AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
-| AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
-| AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 | AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
 | AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
@@ -31,7 +20,6 @@
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
@@ -41,17 +29,22 @@
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
 
-# Versioning
+# Messages
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxComCtlVersion | Returns the version of CommCtl32.dll. |
-| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
-| AfxWindowsBuild | Returns the Windows build number. |
-| AfxWindowsPlatform | Returns the Windows platform. |
-| AfxWindowsVersion | Returns the Windows version. |
-| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
-| AfxRemoveWindowStyle | Removes a style from the specified window. |
+| AfxDoEvents | Processes pending Windows messages. |
+| AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
+| AfxPumpMessages | Processes pending Windows messages. |
+
+# Handles
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxGetControlHandle | Returns the handle of the control with the specified identifier. |
+| AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
+| AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
+| AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 
 # Window styles
 
@@ -61,8 +54,20 @@
 | AfxAddWindowStyle | Adds a new style to the specified window. |
 | AfxGetWindowExStyle | Retrieves the extended window styles. |
 | AfxGetWindowStyle | Retrieves the window styles. |
+| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
+| AfxRemoveWindowStyle | Removes a style from the specified window. |
 | AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
 | AfxSetWindowStyle | Sets the style(s) of the specified window. |
+
+# Display
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxForceVisibleDisplay | Force visibility of an off-screen window. |
+| AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
+| AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
+| AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
+| AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
 
 # Dialogs
 
@@ -181,3 +186,13 @@
 | AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
 | AfxMsg | Displays an application modal message box. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
+
+# Versioning
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxComCtlVersion | Returns the version of CommCtl32.dll. |
+| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| AfxWindowsBuild | Returns the Windows build number. |
+| AfxWindowsPlatform | Returns the Windows platform. |
+| AfxWindowsVersion | Returns the Windows version. |
