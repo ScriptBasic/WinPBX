@@ -12,13 +12,8 @@
 | AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
 | AfxGetBitmapHeight | Retrieves the height of the specified bitmap. |
 | AfxGetBitmapWidth | Retrieves the width of the specified bitmap. |
-| AfxGetBrowserHandle | Retrieves the handle of the top level window of the web browser. |
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetControlHandle | Returns the handle of the control with the specified identifier. |
-| AfxGetDefaultBrowserName | Retrieves the name of the default browser. |
-| AfxGetDefaultBrowserPath | Retrieves the path of the default browser. |
-| AfxGetDefaultMailClientName | Retrieves the name of the default client mail application. |
-| AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
 | AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
 | AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
 | AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
@@ -53,7 +48,6 @@
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
-| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware such that it adjusts the sizes of UI elements to compensate for the dpi setting. |
 | AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
@@ -88,6 +82,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | AfxComCtlVersion | Returns the version of CommCtl32.dll. |
+| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
@@ -153,3 +148,13 @@
 | AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
 | AfxTwipsToPixelsX | Converts twips to pixels (horizontal resolution). |
 | AfxTwipsToPixelsY | Converts twips to pixels (vertical resolution). |
+
+# Internet
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxGetBrowserHandle | Retrieves the handle of the top level window of the web browser. |
+| AfxGetDefaultBrowserName | Retrieves the name of the default browser. |
+| AfxGetDefaultBrowserPath | Retrieves the path of the default browser. |
+| AfxGetDefaultMailClientName | Retrieves the name of the default client mail application. |
+| AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
