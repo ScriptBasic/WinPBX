@@ -75,7 +75,7 @@
 | AfxModifyFontFaceName | Modifies the face name of the font of a window or control. |
 | AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
 | AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
-| AfxMsg | Displays an application modal message box. Helper proceudre to display feedback and errors. |
+| AfxMsg | Displays an application modal message box. |
 | AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
 | AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
 | AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch). Horizontal resolution. |
