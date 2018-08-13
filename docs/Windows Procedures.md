@@ -7,7 +7,6 @@
 | AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
 | AfxCenterWindow | Centers a window on the screen or over another window. |
 | AfxComCtlVersion | Returns the version of CommCtl32.dll. |
-| AfxCreateFont | Creates a logical font. |
 | AfxDoEvents | Processes pending Windows messages. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxForceVisibleDisplay | Force visibility of an off-screen window. |
@@ -25,8 +24,6 @@
 | AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
 | AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
 | AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
-| AfxGetFontHeight | Returns the logical height of a font given its point size. |
-| AfxGetFontPointSize | Returns the point size of a font given its logical height. |
 | AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
 | AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
 | AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
@@ -46,12 +43,9 @@
 | AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
 | AfxGetWindowClientWidth | Returns the width of the client area of a window, in pixels. |
 | AfxGetWindowExStyle | Retrieves the extended window styles. |
-| AfxGetWindowFont | Retrieves the font with which the control is currently drawing its text. |
 | AfxGetWindowHeight | Returns the height of a window, in pixels. |
 | AfxGetWindowLocation | Returns the location of the top left corner of the window, in pixels. |
 | AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
-| AfxGetWindowsFontInfo | Retrieves information about the fonts used by Windows. |
-| AfxGetWindowsFontPointSize | Retrieves the point size of the fonts used by Windows. |
 | AfxGetWindowStyle | Retrieves the window styles. |
 | AfxGetWindowText | Gets the text of a window. |
 | AfxGetWindowTextLength | Gets the length of the text of a window. |
@@ -66,9 +60,6 @@
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
 | AfxLogPixelsX | Retrieves the number of pixels per logical inch along the screen width. |
 | AfxLogPixelsY | Retrieves the number of pixels per logical inch along the screen height. |
-| AfxModifyFontFaceName | Modifies the face name of the font of a window or control. |
-| AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
-| AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
 | AfxMsg | Displays an application modal message box. |
 | AfxPumpMessages | Processes pending Windows messages. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
@@ -83,7 +74,6 @@
 | AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
-| AfxSetWindowExStyle | Sets the font that a control is to use when drawing text. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
 | AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
 | AfxSetWindowSize | Sets the size of the specified window, in pixels. |
@@ -105,6 +95,21 @@
 | AfxBrowseForFolder | Displays a dialog box that enables the user to select a folder. |
 | AfxControlRunDLL | Launches control panel applications. |
 | AfxShowSysInfo | Displays the Windows Information System dialog. |
+
+# Fonts
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxCreateFont | Creates a logical font. |
+| AfxGetFontHeight | Returns the logical height of a font given its point size. |
+| AfxGetFontPointSize | Returns the point size of a font given its logical height. |
+| AfxGetWindowFont | Retrieves the font with which the control is currently drawing its text. |
+| AfxGetWindowsFontInfo | Retrieves information about the fonts used by Windows. |
+| AfxGetWindowsFontPointSize | Retrieves the point size of the fonts used by Windows. |
+| AfxModifyFontFaceName | Modifies the face name of the font of a window or control. |
+| AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
+| AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
+| AfxSetWindowFont | Sets the font that a control is to use when drawing text. |
 
 # Clipboard
 
