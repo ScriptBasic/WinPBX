@@ -181,7 +181,9 @@ SCOPE
    IF pStream.Open("binary.txt", STGM_CREATE OR STGM_WRITE) = S_OK then
       DIM s AS STRING = "This is a test"
       pStream.Write(STRPTR(s), LEN(s))
-      pStream.Close
+      ' // Because we are using a scope, we don't need to call the Close method,
+      ' // since the stream will be released when pStream goes out of scope.
+      ' pStream.Close
    END IF
 END SCOPE
 
