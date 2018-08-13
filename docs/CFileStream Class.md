@@ -73,7 +73,7 @@ OPERATOR CAST () AS IStream PTR
 | [LockRegion](#LockRegion) | Restricts access to a specified range of bytes in the stream. |
 | [UnlockRegion](#UnlockRegion) | Removes the access restriction on a range of bytes previously restricted with *LockRegion*. |
 | [Stat](#Stat) | Retrieves the STATSTG structure for this stream. |
-| Clone | Creates a new stream with its own seek pointer that references the same bytes as the original stream. |
+| [Clone](#Clone) | Creates a new stream with its own seek pointer that references the same bytes as the original stream. |
 | GetLastResult | Returns the last result code. |
 
 # <a name="Attach"></a>Attach
@@ -485,3 +485,18 @@ FUNCTION Stat (BYVAL grfStatFlag AS DWORD) AS STATSTG
 
 STATFLAG. The **STATSTG** structure for this stream.
 
+# <a name="Clone"></a>Clone
+
+Creates a new stream with its own seek pointer that references the same bytes as the original stream. The **Clone** method creates a new stream for accessing the same bytes but using a separate seek pointer. The new stream sees the same data as the source-stream. Changes written to one stream are immediately visible in the other. Range locking is shared between the streams. The initial setting of the seek pointer in the cloned stream instance is the same as the current setting of the seek pointer in the original stream at the time of the clone operation.
+
+```
+FUNCTION Clone (BYVAL ppstm AS IStream PTR PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ppstm* | When successful, pointer to the location of an IStream pointer to the new stream. If an error occurs, this parameter is NULL. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
