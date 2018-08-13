@@ -20,7 +20,6 @@
 | AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
 | AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
 | AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
-| AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
@@ -158,3 +157,4 @@
 | AfxGetDefaultBrowserPath | Retrieves the path of the default browser. |
 | AfxGetDefaultMailClientName | Retrieves the name of the default client mail application. |
 | AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
+| AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
