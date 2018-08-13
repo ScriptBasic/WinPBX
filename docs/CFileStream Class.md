@@ -169,6 +169,26 @@ The *grfMode* and *fCreate* parameters work together to specify how the function
 | STGM_FAILIFTHERE | TRUE    | Yes          | The call fails. |
 | STGM_FAILIFTHERE | TRUE    | No           | The file is created. |
 
+#### Example
+
+```
+'#CONSOLE ON
+#INCLUDE ONCE "\Afx\CStream.inc"
+USING Afx
+
+SCOPE
+   DIM pStream AS CFileStream
+   IF pStream.Open("binary.txt", STGM_CREATE OR STGM_WRITE) = S_OK then
+      DIM s AS STRING = "This is a test"
+      pStream.Write(STRPTR(s), LEN(s))
+      pStream.Close
+   END IF
+END SCOPE
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
 # <a name="Close"></a>Close
 
 Releases the stream object.
