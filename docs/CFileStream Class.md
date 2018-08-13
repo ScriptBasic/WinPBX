@@ -70,8 +70,8 @@ OPERATOR CAST () AS IStream PTR
 | [GetSize](#GetSize) | Returns the size of the stream. |
 | [SetSize](#SetSize) | Changes the size of the stream. |
 | [CopyTo](#CopyTo) | Copies a specified number of bytes from the current seek pointer in the stream to the current seek pointer in another stream. |
-| LockRegion | Restricts access to a specified range of bytes in the stream. |
-| UnlockRegion | Removes the access restriction on a range of bytes previously restricted with *LockRegion*. |
+| [LockRegion](#LockRegion) | Restricts access to a specified range of bytes in the stream. |
+| [UnlockRegion](#UnlockRegion) | Removes the access restriction on a range of bytes previously restricted with *LockRegion*. |
 | Stat | Retrieves the STATSTG structure for this stream. |
 | Clone | Creates a new stream with its own seek pointer that references the same bytes as the original stream. |
 | GetLastResult | Returns the last result code. |
@@ -432,14 +432,25 @@ FUNCTION LockRegion (BYVAL libOffset AS ULONGINT, BYVAL cb AS ULONGINT, BYVAL dw
 | ---------- | ----------- |
 | *libOffset* | ULONGINT. Specifies the byte offset for the beginning of the range. |
 | *cb* | ULONGINT. Specifies the length of the range, in bytes, to be restricted. |
-| *dwLockType* | DWORD. Specifies the restrictions being requested on accessing the range.<br>- **_LOCK_WRITE_**: If this lock is granted, the specified range of bytes can be opened and
-'     read any number of times, but writing to the locked range is prohibited except for the
-'     owner that was granted this lock.
-'   - LOCK_EXCLUSIVE : If this lock is granted, writing to the specified range of bytes is
-'     prohibited except by the owner that was granted this lock.
-'   - LOCK_ONLYONCE: If this lock is granted, no other LOCK_ONLYONCE lock can be obtained
-'     on the range. Usually this lock type is an alias for some other lock type. Thus,
-'     specific implementations can have additional behavior associated with this lock type.|
+| *dwLockType* | DWORD. Specifies the restrictions being requested on accessing the range.<br>- **_LOCK_WRITE_**: If this lock is granted, the specified range of bytes can be opened and read any number of times, but writing to the locked range is prohibited except for the owner that was granted this lock.<br>- **_LOCK_EXCLUSIVE_** : If this lock is granted, writing to the specified range of bytes is prohibited except by the owner that was granted this lock.<br>- **_LOCK_ONLYONCE_**: If this lock is granted, no other LOCK_ONLYONCE lock can be obtained on the range. Usually this lock type is an alias for some other lock type. Thus, specific implementations can have additional behavior associated with this lock type.|
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="UnlockRegion"></a>UnlockRegion
+
+Unlocks a region previously locked with the **LockRegion** method. Locked regions must later be explicitly unlocked by calling **UnlockRegion** with exactly the same values for the *libOffset*, *cb*, and *dwLockType* parameters. The region must be unlocked before the stream is released. Two adjacent regions cannot be locked separately and then unlocked with a single unlock call.
+
+```
+FUNCTION UnlockRegion (BYVAL libOffset AS ULONGINT, BYVAL cb AS ULONGINT, BYVAL dwLockType AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *libOffset* | ULONGINT. Specifies the byte offset for the beginning of the range. |
+| *cb* | ULONGINT. Specifies the length of the range, in bytes, to be restricted. |
+| *dwLockType* | DWORD. Specifies the access restrictions previously placed on the range.|
 
 #### Return value
 
