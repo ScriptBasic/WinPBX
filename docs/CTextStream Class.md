@@ -420,8 +420,29 @@ FUNCTION Close () AS HRESULT
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
+# <a name="EOL"></a>EOL
 
+Returns TRUE if the file pointer is positioned immediately before the end-of-line marker in a TextStream file; FALSE if it is not.
 
+```
+FUNCTION EOL () AS BOOLEAN
+```
+
+#### Remark
+
+The EOL (End of Line) property applies only to TextStream files that are open for reading; otherwise, an error occurs.
+
+# <a name="EOS"></a>EOS
+
+Returns TRUE if the file pointer is at the end of a TextStream file; FALSE if it is not.
+
+```
+FUNCTION EOS () AS BOOLEAN
+```
+
+#### Remark
+
+The EOS (End os Stream) property applies only to TextStream files that are open for reading, otherwise, an error occurs.
 
 
 
