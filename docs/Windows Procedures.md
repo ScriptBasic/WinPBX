@@ -81,6 +81,9 @@
 
 | Name       | Description |
 | ---------- | ----------- |
+| AfxGetDpi | Retrieves the number of pixels per logical inch. |
+| AfxGetDpiX | Retrieves the number of pixels per logical inch along the screen width. |
+| AfxGetDpiY | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
