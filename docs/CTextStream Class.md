@@ -445,8 +445,77 @@ FUNCTION EOS () AS BOOLEAN
 The EOS (End os Stream) property applies only to TextStream files that are open for reading, otherwise, an error occurs.
 
 
+# <a name="Read"></a>Read
+
+Reads a specified number of characters from a TextStream file and returns the resulting string.
+
+```
+FUNCTION Read (BYVAL numChars AS LONG) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *numChars* | LONG. Number of characters you want to read from the file. |
+
+#### Return value
+
+CBSTR. A string with the characters read.
+
+# <a name="ReadLine"></a>ReadLine
+
+Reads an entire line (up to, but not including, the newline character) from a TextStream file and returns the resulting string.
+
+```
+FUNCTION ReadLine  () AS CBSTR
+```
+
+#### Return value
+
+CBSTR. A string with the content of the line read.
+
+#### Example
+
+```
+#include "Afx/CTextStream.inc"
+using Afx
+
+' // Create an instance of the CTextStream class
+DIM pTxtStm AS CTextStream
+' // Open file as a text stream
+DIM cbsFile AS CBSTR = ExePath & "\Test.txt"
+pTxtStm.Open(cbsFile, IOMode_ForReading)
+' // Read the file sequentially
+DO
+  IF pTxtStm.EOS THEN EXIT DO
+  DIM curLine AS LONG = pTxtStm.Line
+  DIM cbsText AS CBSTR = pTxtStm.ReadLine
+  PRINT "Line " & STR(curLine) & ": " & cbsText
+LOOP
+
+PRINT "Press any key to end..."
+SLEEP
+```
+
+# <a name="ReadAll"></a>ReadAll
+
+Reads an entire TextStream file and returns the resulting string.
+
+```
+FUNCTION ReadAll  () AS CBSTR
+```
+
+#### Return value
+
+CBSTR. A string with the content of all the file.
 
 
+
+
+
+
+#### Remarks
+
+After a file is initially opened and before anything is written, Line is equal to 1.
 
 
 
