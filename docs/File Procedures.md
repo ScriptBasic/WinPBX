@@ -69,7 +69,7 @@
 | AfxSetCurrentDirectory | Changes the current directory for the current process. |
 | AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
 
-## File Path Procedures
+## Path and Url Procedures
 
 | Name       | Description |
 | ---------- | ----------- |
