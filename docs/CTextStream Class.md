@@ -641,8 +641,21 @@ PRINT "Press any key to end..."
 SLEEP
 ```
 
+# <a name="Skip"></a>Skip
 
+Skips a specified number of characters when reading a TextStream file.
 
+```
+FUNCTION Skip (BYVAL numChars AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *numChars* | LONG. Number of characters  to skip when reading a file. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
 
 #### Example
 
@@ -680,3 +693,59 @@ LOOP
 PRINT "Press any key to end..."
 SLEEP
 ```
+
+# <a name="SkipLine"></a>SkipLine
+
+Skips the next line when reading a TextStream file.
+
+```
+FUNCTION SkipLine () AS HRESULT
+```
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="Line"></a>Line
+
+Read-only property that returns the current line number in a TextStream file.
+
+```
+PROPERTY Line  () AS LONG
+```
+
+#### Return value
+
+LONG. The current line number.
+
+### Remarks
+
+After a file is initially opened and before anything is written, Line is equal to 1.
+
+# <a name="Column"></a>Column
+
+Read-only property that returns the column number of the current character position in a TextStream file.
+
+```
+PROPERTY Column  () AS LONG
+```
+
+#### Return value
+
+LONG. The current column number.
+
+#### Remarks
+
+After a newline character has been written, but before any other character is written, Column is equal to 1.
+
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
