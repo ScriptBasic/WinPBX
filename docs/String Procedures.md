@@ -762,7 +762,7 @@ FUNCTION AfxStrRemain (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The string to search for. |
-| *wszMatchStr* | Optional. Starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+| *wszMatchStr* | Optional. Starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -783,7 +783,7 @@ FUNCTION AfxStrRemainI (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The string to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -804,7 +804,7 @@ FUNCTION AfxStrRemainAny (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The characters to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -825,7 +825,7 @@ FUNCTION AfxStrRemainAnyI (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The characters to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
