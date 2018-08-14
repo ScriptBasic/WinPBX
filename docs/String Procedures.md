@@ -17,7 +17,7 @@
 | [AfxStrExtractI](#AfxStrExtractI) | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
 | [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
 | [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
-| AfxStrFormatByteSize | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
+| [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | AfxStrFormatKBSize | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | AfxStrFromTimeInterval | Converts a time interval, specified in milliseconds, to a string. |
 | AfxStrInsert | Inserts a string at a specified position within another string expression. |
@@ -357,7 +357,7 @@ DIM cws AS CWSTR = AfxStrCSet("FreeBasic", 20, "*")
 Deletes a specified number of characters from a string expression.
 
 ```
-FUNCTION FUNCTION AfxStrDelete (BYREF wszMainStr AS CONST WSTRING, _
+FUNCTION AfxStrDelete (BYREF wszMainStr AS CONST WSTRING, _
    BYVAL nStart AS LONG, BYVAL nCount AS LONG) AS CWSTR
 ```
 
@@ -378,7 +378,7 @@ DIM cws AS CWSTR = AfxStrDelete("1234567890", 4, 3)   ' Returns 1234890"
 Extracts characters from a string up to (but not including) a substring. Case sensitive.
 
 ```
-FUNCTION FUNCTION FUNCTION AfxStrExtract (BYVAL nStart AS LONG, _
+FUNCTION AfxStrExtract (BYVAL nStart AS LONG, _
    BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
 ```
@@ -438,7 +438,7 @@ FUNCTION AfxStrExtract (BYVAL nStart AS LONG, BYREF wszMainStr AS CONST WSTRING,
 Extracts characters from a string up to (but not including) a substring. Case insensitive.
 
 ```
-FUNCTION FUNCTION FUNCTION AfxStrExtractI (BYVAL nStart AS LONG, _
+FUNCTION AfxStrExtractI (BYVAL nStart AS LONG, _
    BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
 ```
@@ -460,7 +460,7 @@ DIM cws AS CWSTR = AfxStrExtractI(1, "abacadabra","CaD")
 Extracts characters from a string up to (but not including) a group of characters. Case sensitive.
 
 ```
-FUNCTION FUNCTION FUNCTION AfxStrExtractAny (BYVAL nStart AS LONG, _
+FUNCTION AfxStrExtractAny (BYVAL nStart AS LONG, _
    BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
 ```
@@ -482,7 +482,7 @@ DIM cws AS CWSTR = AfxStrExtractAny(1, "abacadabra","cd")
 Extracts characters from a string up to (but not including) a group of characters. Case insensitive.
 
 ```
-FUNCTION FUNCTION FUNCTION AfxStrExtractAnyI (BYVAL nStart AS LONG, _
+FUNCTION AfxStrExtractAnyI (BYVAL nStart AS LONG, _
    BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
 ```
@@ -499,3 +499,15 @@ FUNCTION FUNCTION FUNCTION AfxStrExtractAnyI (BYVAL nStart AS LONG, _
 The following line returns "aba" (match on "c")
 DIM cws AS CWSTR = AfxStrExtractAnyI(1, "abacadabra","Cd")
 ```
+
+# <a name="AfxStrFormatByteSize"></a>AfxStrFormatByteSize
+
+Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
+
+```
+FUNCTION AfxStrFormatByteSize (BYVAL ull AS ULONGLONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ull* | he numeric value to be converted. |
