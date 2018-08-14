@@ -206,7 +206,7 @@ Retuns TRUE if the found file is an encrypted file. Otherwise FALSE.
 FUNCTION IsEncryptedFile () AS BOOLEAN
 ```
 
-# <a name="IsFile "></a>IsFile 
+# <a name="IsFile"></a>IsFile 
 
 Retuns TRUE if the found file is a file and not a folder. Otherwise FALSE.
 
@@ -214,7 +214,7 @@ Retuns TRUE if the found file is a file and not a folder. Otherwise FALSE.
 FUNCTION IsFile () AS BOOLEAN
 ```
 
-# <a name="IsFolder "></a>IsFolder 
+# <a name="IsFolder"></a>IsFolder 
 
 Retuns TRUE if the found file is a folder. Otherwise FALSE.
 
@@ -222,7 +222,7 @@ Retuns TRUE if the found file is a folder. Otherwise FALSE.
 FUNCTION IsFolder () AS BOOLEAN
 ```
 
-# <a name="IsHiddenFile "></a>IsHiddenFile 
+# <a name="IsHiddenFile"></a>IsHiddenFile 
 
 Retuns TRUE if the found file is a hidden file. Otherwise FALSE.
 
@@ -230,7 +230,7 @@ Retuns TRUE if the found file is a hidden file. Otherwise FALSE.
 FUNCTION IsHiddenFile  () AS BOOLEAN
 ```
 
-# <a name="IsNormalFile "></a>IsNormalFile 
+# <a name="IsNormalFile"></a>IsNormalFile 
 
 Retuns TRUE if the found file is a normal file. Otherwise FALSE.
 
@@ -238,7 +238,7 @@ Retuns TRUE if the found file is a normal file. Otherwise FALSE.
 FUNCTION IsNormalFile () AS BOOLEAN
 ```
 
-# <a name="IsNotContentIndexedFile "></a>IsNotContentIndexedFile 
+# <a name="IsNotContentIndexedFile"></a>IsNotContentIndexedFile 
 
 Retuns TRUE if the found file is not to be indexed by the content indexing service.. Otherwise FALSE.
 
@@ -246,7 +246,7 @@ Retuns TRUE if the found file is not to be indexed by the content indexing servi
 FUNCTION IsNotContentIndexedFile () AS BOOLEAN
 ```
 
-# <a name="IsOffLineFile "></a>IsOffLineFile 
+# <a name="IsOffLineFile"></a>IsOffLineFile 
 
 Retuns TRUE if the found file is not available immediately. Otherwise FALSE.
 
@@ -254,7 +254,7 @@ Retuns TRUE if the found file is not available immediately. Otherwise FALSE.
 FUNCTION IsOffLineFile () AS BOOLEAN
 ```
 
-# <a name="IsReadOnlyFile "></a>IsReadOnlyFile 
+# <a name="IsReadOnlyFile"></a>IsReadOnlyFile 
 
 Retuns TRUE if the found file is a read only file. Otherwise FALSE.
 
@@ -262,7 +262,7 @@ Retuns TRUE if the found file is a read only file. Otherwise FALSE.
 FUNCTION IsReadOnlyFile () AS BOOLEAN
 ```
 
-# <a name="IsReparsePointFile "></a>IsReparsePointFile 
+# <a name="IsReparsePointFile"></a>IsReparsePointFile 
 
 Retuns TRUE if the found file is a file or directory that has an associated reparse point, or a file that is a symbolic link. Otherwise FALSE.
 
@@ -270,7 +270,7 @@ Retuns TRUE if the found file is a file or directory that has an associated repa
 FUNCTION IsReparsePointFile () AS BOOLEAN
 ```
 
-# <a name="IsSparseFile "></a>IsSparseFile 
+# <a name="IsSparseFile"></a>IsSparseFile 
 
 Retuns TRUE if the found file is a sparse file. Otherwise FALSE.
 
@@ -278,7 +278,7 @@ Retuns TRUE if the found file is a sparse file. Otherwise FALSE.
 FUNCTION IsSparseFile () AS BOOLEAN
 ```
 
-# <a name="IsSystemFile "></a>IsSystemFile 
+# <a name="IsSystemFile"></a>IsSystemFile 
 
 Retuns TRUE if the found file is a system file. Otherwise FALSE.
 
@@ -286,7 +286,7 @@ Retuns TRUE if the found file is a system file. Otherwise FALSE.
 FUNCTION IsSystemFile () AS BOOLEAN
 ```
 
-# <a name="IsTemporaryFile "></a>IsTemporaryFile 
+# <a name="IsTemporaryFile"></a>IsTemporaryFile 
 
 Retuns TRUE if the found file is a temporary file. Otherwise FALSE.
 
@@ -294,7 +294,7 @@ Retuns TRUE if the found file is a temporary file. Otherwise FALSE.
 FUNCTION IsTemporaryFile () AS BOOLEAN
 ```
 
-# <a name="LastAccessTime "></a>LastAccessTime 
+# <a name="LastAccessTime"></a>LastAccessTime 
 
 Returns the time the file was last accessed, in local time format.
 
@@ -302,7 +302,7 @@ Returns the time the file was last accessed, in local time format.
 FUNCTION LastAccessTime () AS FILETIME
 ```
 
-# <a name="LastWriteTime "></a>LastWriteTime 
+# <a name="LastWriteTime"></a>LastWriteTime 
 
 Returns the time the file was written to, truncated, or overwritten, in local time format.
 
@@ -310,7 +310,7 @@ Returns the time the file was written to, truncated, or overwritten, in local ti
 FUNCTION LastWriteTime () AS FILETIME
 ```
 
-# <a name="MatchesMask "></a>MatchesMask 
+# <a name="MatchesMask"></a>MatchesMask 
 
 Call this method to test the file attributes on the found file.
 
@@ -339,7 +339,7 @@ Any combination of the following attributes is acceptable:
 
 TRUE if successful; otherwise FALSE.
 
-# <a name="Root "></a>Root 
+# <a name="Root"></a>Root 
 
 Call this method to get the root of the found file.
 
@@ -351,3 +351,14 @@ FUNCTION Root () AS CWSTR
 
 This method returns the drive specifier and path name used to start a search. For example, calling **FindFile** with \*.dat results in **Root** returning an empty string. Passing a path, such as c:\windows\system\*.dll, to FindFile results **Root** returning c:\windows\system\.
 
+# <a name="ShortFileName"></a>ShortFileName 
+
+Call this method to get an alternative name for the file. This name is in the classic 8.3 file name format.
+
+```
+FUNCTION ShortFileName () AS CWSTR
+```
+
+#### Return value
+
+The alternate name of the most-recently-found file, including the extension.
