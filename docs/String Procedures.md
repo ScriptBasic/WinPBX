@@ -13,10 +13,10 @@
 | [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters characters removed from the right side of the string. |
 | [AfxStrCSet](#AfxStrCSet) | Returns a string containing a centered string. |
 | [AfxStrDelete](#AfxStrDelete) | Deletes a specified number of characters from a string expression. |
-| AfxStrExtract | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
-| AfxStrExtractI | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
-| AfxStrExtractAny | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
-| AfxStrExtractAnyI | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
+| [AfxStrExtract](#AfxStrExtract) | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
+| [AfxStrExtractI](#AfxStrExtractI) | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
+| [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
+| [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
 | AfxStrFormatByteSize | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | AfxStrFormatKBSize | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | AfxStrFromTimeInterval | Converts a time interval, specified in milliseconds, to a string. |
@@ -365,10 +365,133 @@ FUNCTION FUNCTION AfxStrDelete (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *nStart* | The one-based starting position. |
-| *wszPadCharacter* | The number of characters to be removed. |
+| *nCount* | The number of characters to be removed. |
 
 #### Usage example
 
 ```
 DIM cws AS CWSTR = AfxStrDelete("1234567890", 4, 3)   ' Returns 1234890"
+```
+
+# <a name="AfxStrExtract"></a>AfxStrExtract
+
+Extracts characters from a string up to (but not including) a substring. Case sensitive.
+
+```
+FUNCTION FUNCTION FUNCTION AfxStrExtract (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The one-based starting position. |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string to be searched. |
+
+#### Usage example
+
+```
+The following line returns "aba" (match on "cad")
+DIM cws AS CWSTR = AfxStrExtract(1, "abacadabra","cad")
+```
+
+```
+FUNCTION AfxStrExtract (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelim1 AS WSTRING, BYREF wszDelim2 AS WSTRING) AS CWSTR
+```
+
+Extracts the portion of a string following the occurrence of a specified delimiter up to the second delimiter. If one or both of the delimiters aren't found, it returns an empty string.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszDelim1* | The first delimiter. |
+| *wszDelim2* | The second delimiter. |
+
+#### Usage example
+
+```
+The following lines return "text between parentheses" (text delimited by "(" and ")")
+DIM cws AS CWSTR = "blah blah (text beween parentheses) blah blah"
+PRINT AfxStrExtract(cws, "(", ")")
+```
+
+```
+FUNCTION AfxStrExtract (BYVAL nStart AS LONG, BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelim1 AS WSTRING, BYREF wszDelim2 AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The one-based starting position. |
+| *wszMainStr* | The main string. |
+| *wszDelim1* | The first delimiter. |
+| *wszDelim2* | The second delimiter. |
+
+# <a name="AfxStrExtractI"></a>AfxStrExtractI
+
+Extracts characters from a string up to (but not including) a substring. Case insensitive.
+
+```
+FUNCTION FUNCTION FUNCTION AfxStrExtractI (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The one-based starting position. |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string to be searched. |
+
+#### Usage example
+
+```
+The following line returns "aba" (match on "CaD")
+DIM cws AS CWSTR = AfxStrExtractI(1, "abacadabra","CaD")
+```
+# <a name="AfxStrExtractAny"></a>AfxStrExtractAny
+
+Extracts characters from a string up to (but not including) a group of characters. Case sensitive.
+
+```
+FUNCTION FUNCTION FUNCTION AfxStrExtractAny (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The one-based starting position. |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The characters to be searched individually. A match on any one of which will cause the extract operation to be performed up to that character. |
+
+#### Usage example
+
+```
+The following line returns "aba" (match on "c")
+DIM cws AS CWSTR = AfxStrExtractAny(1, "abacadabra","cd")
+```
+# <a name="AfxStrExtractAnyI"></a>AfxStrExtractAnyI
+
+Extracts characters from a string up to (but not including) a group of characters. Case insensitive.
+
+```
+FUNCTION FUNCTION FUNCTION AfxStrExtractAnyI (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The one-based starting position. |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The characters to be searched individually. A match on any one of which will cause the extract operation to be performed up to that character. |
+
+#### Usage example
+
+```
+The following line returns "aba" (match on "c")
+DIM cws AS CWSTR = AfxStrExtractAnyI(1, "abacadabra","Cd")
 ```
