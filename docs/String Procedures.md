@@ -50,7 +50,7 @@
 | [AfxStrRSet](#AfxStrRSet) | Returns a string containing a right justified string. |
 | [AfxStrShrink](#AfxStrShrink) | Shrinks a string to use a consistent single character delimiter. |
 | [AfxStrSplit](#AfxStrSplit) | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
-| AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
+| [AfxStrSpn](#AfxStrSpn) | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
 | AfxStrTally | Count the number of occurrences of a string within a string. Case sensitive. |
 | AfxStrTallyI | Count the number of occurrences of a string within a string. Case insensitive. |
 | AfxStrTallyAny | Count the number of occurrences of a list of characters within a string. Case sensitive. |
@@ -1229,5 +1229,27 @@ DIM cwsa AS CSafeArray = AfxStrSplit(cws, " ,.-")
 FOR i AS LONG = cwsa.LBound TO cwsa.UBound
   PRINT cwsa.GetStr(i)
 NEXT
+```
+
+# <a name="AfxStrSpn"></a>AfxStrSpn
+
+Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters.
+
+```
+FUNCTION AfxStrSpn (BYREF wszText AS CONST WSTRING, BYREF wszSet AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszText* | The string to be searched. |
+| *wszSet* | The set of characters for which to search. |
+
+#### Usage example
+
+```
+DIM wszText AS WSTRING * 260 = "129th"
+DIM wszSet AS WSTRING * 260 = "1234567890"
+DIM n AS LONG = StrSpnW(@wszText, @wszSet)
+printf(!"The initial number has %d digits.\n", n)
 ```
 
