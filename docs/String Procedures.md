@@ -24,8 +24,8 @@
 | [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | [AfxStrLCase](#AfxStrLCase) | Returns a lowercased version of a string. |
 | [AfxStrLSet](#AfxStrLSet) | Returns a string containing a left justified string. |
-| AfxStrParse | Returns a delimited field from a string expression. |
-| AfxStrParseAny | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
+| [AfxStrParse]/#AfxStrParse) | Returns a delimited field from a string expression. |
+| [AfxStrParseAny](#AfxStrParseAny) | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
 | AfxStrParseCount | Returns the count of delimited fields from a string expression. |
 | AfxStrParseCountAny | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
 | AfxStrPathName | Parses a path to extract component parts. |
@@ -644,4 +644,47 @@ FUNCTION AfxStrLSet (BYREF wszMainStr AS CONST WSTRING, _
 
 ```
 DIM cws AS CWSTR = AfxStrLSet("FreeBasic", 20, "*")
+```
+
+# <a name="AfxStrParse "></a>AfxStrParse 
+
+Returns a delimited field from a string expression.
+
+```
+FUNCTION AfxStrParse (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nPosition AS LONG = 1, BYREF wszDelimiter AS CONST WSTRING = ",") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be justified. |
+| *nPosition* | If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
+| *wszDelimiter* | A string of one or more characters that must be fully matched to be successful. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrParse("one,two,three", 2)   ' Returns "two"
+DIM cws AS CWSTR = AfxStrParse("one;two,three", 1, ";")   ' Returns "one"
+```
+
+# <a name="AfxStrParseAny "></a>AfxStrParseAny 
+
+Returns a delimited field from a string expression.
+
+```
+FUNCTION AfxStrParse (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nPosition AS LONG = 1, BYREF wszDelimiter AS CONST WSTRING = ",") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be justified. |
+| *nPosition* | If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
+| *wszDelimiter* | A string of one or more characters any of which may act as a delimiter character. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrParseAny("1;2,3", 2, ",;")   ' Returns "2"
 ```
