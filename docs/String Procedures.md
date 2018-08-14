@@ -1438,7 +1438,7 @@ DIM nCount AS LONG = AfxStrVerify(5, "123.65,22.5", "0123456789")   ' Returns 7
 
 #### Remark
 
-Returns 7 since 5 starts it past the first non-digit "." at position 4)
+Returns 7 since 5 starts it past the first non-digit "." at position 4.
 
 # <a name="AfxStrVerifyI"></a>AfxStrVerifyI
 
@@ -1461,11 +1461,6 @@ Returns zero if each character in wszMainStr is present in *wszMatchStr*; otherw
 #### Usage example
 
 ```
-DIM nCount AS LONG = AfxStrVerify(5, "123.65,22.5", "0123456789")   ' Returns 7
+DIM nCount AS LONG = AfxStrVerifyI(5, "123.65abcx22.5", "0123456789ABC")   ' -> 10
 ```
-
-#### Remark
-
-Returns 7 since 5 starts it past the first non-digit "." at position 4)
-
 
