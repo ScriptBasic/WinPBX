@@ -2,8 +2,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [AfxAcode](*AfxAcode) | Translates unicode bytes to ansi bytes. |
-| [AfxBase64Decode](*AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
+| [AfxAcode](#AfxAcode) | Translates unicode bytes to ansi bytes. |
+| [AfxBase64Decode](#AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | AfxBase64Encode | Converts the contents of a string to Base64 mime encoding. |
 | AfxCryptBinaryToString | Converts an array of bytes into a formatted string. |
 | AfxCryptStringToBinary | Converts a formatted string into an array of bytes. |
