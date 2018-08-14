@@ -10,7 +10,7 @@
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
 | [AfxStrClipLeft](#AfxStrClipLeft) | Returns a string with the specified number of characters removed from the left side of the string. |
 | [AfxStrClipMid](#AfxStrClipMid) | Returns a string with the specified number of characters removed starting at the specified position. |
-| [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters characters removed from the right side of the string. |
+| [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters removed from the right side of the string. |
 | [AfxStrCSet](#AfxStrCSet) | Returns a string containing a centered string. |
 | [AfxStrDelete](#AfxStrDelete) | Deletes a specified number of characters from a string expression. |
 | [AfxStrExtract](#AfxStrExtract) | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
