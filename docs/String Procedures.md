@@ -49,7 +49,7 @@
 | [AfxStrReverse](#AfxStrReverse) | Reverses the contents of a string expression. |
 | [AfxStrRSet](#AfxStrRSet) | Returns a string containing a right justified string. |
 | [AfxStrShrink](#AfxStrShrink) | Shrinks a string to use a consistent single character delimiter. |
-| AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
+| [AfxStrSplit](#AfxStrSplit) | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
 | AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
 | AfxStrTally | Count the number of occurrences of a string within a string. Case sensitive. |
 | AfxStrTallyI | Count the number of occurrences of a string within a string. Case insensitive. |
@@ -1203,3 +1203,31 @@ This function creates a string with consecutive words separated by a consistent 
 ```
 DIM cws AS CWSTR = AfxStrShrink(",,, one , two     three, four,", " ,")  ' Returns "one two three four"
 ```
+
+# <a name="AfxStrSplit"></a>AfxStrSplit
+
+Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters.
+
+```
+FUNCTION AfxStrSplit (BYREF wszStr AS CONST WSTRING, BYREF wszDelimiters AS WSTRING = " ") AS CSafeArray
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszStr* | The string to split. |
+| *wszDelimiters* | The delimiter characters. |
+
+#### Return value
+
+A CSafeArray containing a token in each element.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = "- This, a sample string."
+DIM cwsa AS CSafeArray = AfxStrSplit(cws, " ,.-")
+FOR i AS LONG = cwsa.LBound TO cwsa.UBound
+  PRINT cwsa.GetStr(i)
+NEXT
+```
+
