@@ -180,7 +180,7 @@ FUNCTION FindNext () AS LONG
 
 #### Return value
 
-Nonzero if there are more files; zero if the file found is the last one in the directory or if an error occurred. To get extended error information, call **GetLastError**. If the file found is the last file in the directory, or if no matching files can be  found, the GetLastError function returns ERROR_NO_MORE_FILES.
+Nonzero if there are more files; zero if the file found is the last one in the directory or if an error occurred. To get extended error information, call **GetLastError**. If the file found is the last file in the directory, or if no matching files can be  found, the **GetLastError** function returns ERROR_NO_MORE_FILES.
 
 # <a name="IsCompressedFile"></a>IsCompressedFile
 
