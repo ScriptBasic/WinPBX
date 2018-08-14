@@ -1196,7 +1196,7 @@ FUNCTION AfxStrShrink (BYREF wszMainStr AS CONST WSTRING, BYREF wszMask AS CONST
 
 #### Remarks
 
-This function creates a string with consecutive words separated by a consistent single character, making it easier to parse. If wszMask is not specified, all leading and trailing spaces are removed and all occurrences of two or more spaces are changed to a single space. If wszMask contains one or more characters to shrink, all the leading and trailing occurences of them are removes and all occurrences of one or more characters of the mask are replaced with the first character of the mask.
+This function creates a string with consecutive words separated by a consistent single character, making it easier to parse. If *wszMask* is not specified, all leading and trailing spaces are removed and all occurrences of two or more spaces are changed to a single space. If *wszMask* contains one or more characters to shrink, all the leading and trailing occurences of them are removes and all occurrences of one or more characters of the mask are replaced with the first character of the mask.
 
 #### Usage example
 
