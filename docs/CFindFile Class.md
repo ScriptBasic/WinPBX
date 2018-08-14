@@ -65,7 +65,7 @@ FUNCTION FileAttributes () AS DWORD
 
 #### File Attribute Constants
 
-File attributes are metadata values stored by the file system on disk and are used by the system and are available to developers via various file I/O APIs. For a list of related APIs and topics, see the See Also section.
+File attributes are metadata values stored by the file system on disk and are used by the system and are available to developers via various file I/O APIs.
 
 | Attribute  | Description |
 | ---------- | ----------- |
