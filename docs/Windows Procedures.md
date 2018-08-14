@@ -74,7 +74,6 @@
 | Name       | Description |
 | ---------- | ----------- |
 | AfxChooseColorDialog | Displays the Windows choose color dialog. |
-| AfxBrowseForFolder | Displays a dialog box that enables the user to select a folder. |
 | AfxControlRunDLL | Launches control panel applications. |
 | AfxShowSysInfo | Displays the Windows Information System dialog. |
 
