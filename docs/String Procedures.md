@@ -11,8 +11,8 @@
 | [AfxStrClipLeft](#AfxStrClipLeft) | Returns a string with the specified number of characters removed from the left side of the string. |
 | [AfxStrClipMid](#AfxStrClipMid) | Returns a string with the specified number of characters removed starting at the specified position. |
 | [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters characters removed from the right side of the string. |
-| AfxStrCSet | Returns a string containing a centered string. |
-| AfxStrDelete | Deletes a specified number of characters from a string expression. |
+| [AfxStrCSet](#AfxStrCSet) | Returns a string containing a centered string. |
+| [AfxStrDelete](#AfxStrDelete) | Deletes a specified number of characters from a string expression. |
 | AfxStrExtract | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
 | AfxStrExtractI | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
 | AfxStrExtractAny | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
@@ -330,3 +330,45 @@ FUNCTION AfxStrClipRight  (BYREF wszMainStr AS CONST WSTRING, BYVAL nCount AS LO
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *nCount* | The number of characters to be removed. |
+
+# <a name="AfxStrCSet"></a>AfxStrCSet
+
+Returns a string containing a centered string.
+
+```
+FUNCTION AfxStrCSet (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nStringLength AS LONG, BYREF wszPadCharacter AS CONST WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be justified. |
+| *nStringLength* | The length of the new string. |
+| *wszPadCharacter* | The character to be used for padding. If it is not specified, the string will be padded with spaces. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrCSet("FreeBasic", 20, "*")
+```
+
+# <a name="AfxStrDelete"></a>AfxStrDelete
+
+Deletes a specified number of characters from a string expression.
+
+```
+FUNCTION FUNCTION AfxStrDelete (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nStart AS LONG, BYVAL nCount AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *nStart* | The one-based starting position. |
+| *wszPadCharacter* | The number of characters to be removed. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrDelete("1234567890", 4, 3)   ' Returns 1234890"
+```
