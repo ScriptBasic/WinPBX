@@ -23,7 +23,7 @@
 | [AfxStrInsert](#AfxStrInsert) | Inserts a string at a specified position within another string expression. |
 | [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | [AfxStrLCase](#AfxStrLCase) | Returns a lowercased version of a string. |
-| AfxStrLSet | Returns a string containing a left justified string. |
+| [AfxStrLSet](#AfxStrLSet) | Returns a string containing a left justified string. |
 | AfxStrParse | Returns a delimited field from a string expression. |
 | AfxStrParseAny | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
 | AfxStrParseCount | Returns the count of delimited fields from a string expression. |
@@ -624,3 +624,24 @@ The string conversion functions available in FreeBasic are not fully suitable fo
 #### Return value
 
 The lowercased string.
+
+# <a name="AfxStrLSet"></a>AfxStrLSet
+
+Returns a string containing a left justified string.
+
+```
+FUNCTION AfxStrLSet (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nStringLength AS LONG, BYREF wszPadCharacter AS CONST WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be justified. |
+| *nStringLength* | The length of the new string. |
+| *wszPadCharacter* | The character to be used for padding. If it is not specified, the string will be padded with spaces. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrLSet("FreeBasic", 20, "*")
+```
