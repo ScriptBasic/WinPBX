@@ -7,9 +7,9 @@
 | [Close](#Close) | Ends the search, resets the context and releases all resources. |
 | [CreationTime](#CreationTime) | Returns the time, in local time format, the file was created. |
 | [FileAttributes](#FileAttributes) | Returns the attributes of the last found file. |
-| FileExt | Returns the extesion of the found file. |
-| FileName | Returns the name of the found file. |
-| FileNameX | Returns the name and extension of the found file. |
+| [FileExt](#FileExt) | Returns the extesion of the found file. |
+| [FileName](#FileName) | Returns the name of the found file. |
+| [FileNameX](#FileNameX) | Returns the name and extension of the found file. |
 | FilePath | Returns the full path of the found file. |
 | FileSize | Returns the size of the found file, in bytes. |
 | FileURL | Returns the file URL. |
@@ -89,3 +89,39 @@ File attributes are metadata values stored by the file system on disk and are us
 #### Remarks
 
 The FILE_ATTRIBUTE_SPARSE_FILE attribute on the file is set if any of the streams of the file have ever been sparse.
+
+# <a name="FileExt"></a>FileExt
+
+Call this method to get the extesion of the found file.
+
+```
+FUNCTION FileExt () AS CWSTR
+```
+
+#### Return value
+
+The extension of the most-recently-found filen. For example, calling FileExt to generate a user message about the file c:\myhtml\myfile.txt returns txt.
+
+# <a name="FileName"></a>FileName
+
+Call this method to get the title of the found file.
+
+```
+FUNCTION FileName () AS CWSTR
+```
+
+#### Return value
+
+The name of the most-recently-found file, including the extension. For example, calling FileName to generate a user message about the file c:\myhtml\myfile.txt returns the file name myfile.txt.
+
+# <a name="FileNameX"></a>FileNameX
+
+Call this method to get the name of the found file.
+
+```
+FUNCTION FileNameX () AS CWSTR
+```
+
+#### Return value
+
+The name of the most-recently-found file, excluding the extension. For example, calling FileNameX to generate a user message about the file c:\myhtml\myfile.txt returns the file name myfile.
