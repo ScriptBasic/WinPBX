@@ -15,8 +15,8 @@
 | [AfxStrDelete](#AfxStrDelete) | Deletes a specified number of characters from a string expression. |
 | [AfxStrExtract](#AfxStrExtract) | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
 | [AfxStrExtractI](#AfxStrExtractI) | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
-| [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
-| [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
+| [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a string. Case sensitive. |
+| [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a string. Case insensitive. |
 | [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
@@ -29,17 +29,17 @@
 | [AfxStrParseCount](#AfxStrParseCount) | Returns the count of delimited fields from a string expression. |
 | [AfxStrParseCountAny](#AfxStrParseCountAny) | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
 | [AfxStrPathName](#AfxStrPathName) | Parses a path to extract component parts. |
-| AfxStrRemain | Returns the portion of a string following the first occurrence of a substring. Case sensitive. |
-| AfxStrRemainI | Returns the portion of a string following the first occurrence of a substring. Case insensitive. |
-| AfxStrRemainAny | Returns the portion of a string following the first occurrence of a group of characters. Case sensitive. |
-| AfxStrRemainAnyI | Returns the portion of a string following the first occurrence of a group of characters. Case insensitive. |
+| [AfxStrRemain](#AfxStrRemain) | Returns the portion of a string following the first occurrence of a string. Case sensitive. |
+| [AfxStrRemainI](#AfxStrRemainI) | Returns the portion of a string following the first occurrence of a string. Case insensitive. |
+| [AfxStrRemainAny](#AfxStrRemainAny) | Returns the portion of a string following the first occurrence of a group of characters. Case sensitive. |
+| [AfxStrRemainAnyI](#AfxStrRemainAnyI) | Returns the portion of a string following the first occurrence of a group of characters. Case insensitive. |
 | AfxStrRemove | Returns a new string with substrings removed. Case sesnsitive. |
 | AfxStrRemoveI | Returns a new string with substrings removed. Case insensitive. |
 | AfxStrRemoveAny | Returns a new string with characters removed. Case sesnsitive. |
 | AfxStrRemoveAnyI | Returns a new string with characters removed. Case insesnsitive. |
 | AfxStrRepeat | Returns a string consisting of multiple copies of the specified string. |
-| AfxStrReplace | Replaces all the occurrences of a substring with another string. Case sensitive. |
-| AfxStrReplaceI | Replaces all the occurrences of a substring with another string. Case insensitive. |
+| AfxStrReplace | Replaces all the occurrences of a string with another string. Case sensitive. |
+| AfxStrReplaceI | Replaces all the occurrences of a string with another string. Case insensitive. |
 | AfxStrReplaceAny | Replaces all the occurrences of a group of characters with another character. Case sensitive. |
 | AfxStrReplaceAnyI | Replaces all the occurrences of a group of characters with another character. Case insensitive. |
 | AfxStrRetain | Returns a string containing only the characters contained in a specified match string. Case sensitive. |
@@ -51,8 +51,8 @@
 | AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
 | AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
 | AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
-| AfxStrTally | Count the number of occurrences of a substring within a string. Case sensitive. |
-| AfxStrTallyI | Count the number of occurrences of a substring within a string. Case insensitive. |
+| AfxStrTally | Count the number of occurrences of a string within a string. Case sensitive. |
+| AfxStrTallyI | Count the number of occurrences of a string within a string. Case insensitive. |
 | AfxStrTallyAny | Count the number of occurrences of a list of characters within a string. Case sensitive. |
 | AfxStrTallyAnyI | Count the number of occurrences of a list of characters within a string. Case insensitive. |
 | AfxStrUCase | Returns an uppercased version of a string. |
@@ -375,7 +375,7 @@ DIM cws AS CWSTR = AfxStrDelete("1234567890", 4, 3)   ' Returns 1234890"
 
 # <a name="AfxStrExtract"></a>AfxStrExtract
 
-Extracts characters from a string up to (but not including) a substring. Case sensitive.
+Extracts characters from a string up to (but not including) a string. Case sensitive.
 
 ```
 FUNCTION AfxStrExtract (BYVAL nStart AS LONG, _
@@ -435,7 +435,7 @@ FUNCTION AfxStrExtract (BYVAL nStart AS LONG, BYREF wszMainStr AS CONST WSTRING,
 
 # <a name="AfxStrExtractI"></a>AfxStrExtractI
 
-Extracts characters from a string up to (but not including) a substring. Case insensitive.
+Extracts characters from a string up to (but not including) a string. Case insensitive.
 
 ```
 FUNCTION AfxStrExtractI (BYVAL nStart AS LONG, _
@@ -739,7 +739,7 @@ FUNCTION AfxStrPathName (BYREF wszOption AS CONST WSTRING, BYREF wszFileSpec AS 
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszOption* | One of the following words which is used to specify the requested part: PATH, NAME, EXTN, NAMEX |
+| *wszOption* | One of the following words which is used to specify the requested part: PATH, NAME, EXTN, NAMEX. |
 | *wszFileSpec* | The path to be scanned. |
 
 | Keyword    | Action      |
@@ -748,3 +748,87 @@ FUNCTION AfxStrPathName (BYREF wszOption AS CONST WSTRING, BYREF wszFileSpec AS 
 | **NAME** | Returns the name portion of the path/file Name. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
 | **EXTN** | Returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | **NAMEX** | Returns the name and the extension parts combined. |
+
+# <a name="AfxStrRemain"></a>AfxStrRemain
+
+Returns the portion of a string following the first occurrence of a string. Case sensitive.
+
+```
+FUNCTION AfxStrRemain (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYVAL nStart AS LONG = 1) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string to search for. |
+| *wszMatchStr* | Optional. Starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemain("Brevity is the soul of wit", "is ")   ' Returns "the soul of wit"
+```
+
+# <a name="AfxStrRemainI"></a>AfxStrRemainI
+
+Returns the portion of a string following the first occurrence of a string. Case insensitive.
+
+```
+FUNCTION AfxStrRemainI (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYVAL nStart AS LONG = 1) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string to search for. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemain("Brevity is the soul of wit", "Is ")   ' Returns "the soul of wit"
+```
+
+# <a name="AfxStrRemainAny"></a>AfxStrRemainAny
+
+Returns the portion of a string following the first occurrence of a list of characters. Case sensitive.
+
+```
+FUNCTION AfxStrRemainAny (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYVAL nStart AS LONG = 1) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The characters to search for. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemainAny("I think, therefore I am", ",")   ' Returns "therefore I am"
+```
+
+# <a name="AfxStrRemainAnyI"></a>AfxStrRemainAnyI
+
+Returns the portion of a string following the first occurrence of a list of characters. Case insensitive.
+
+```
+FUNCTION AfxStrRemainAnyI (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYVAL nStart AS LONG = 1) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The characters to search for. |
+| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: .1 for the last character, -2 for the second to last, etc. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemainAnyI("I think, therefore I am", "E")   ' -> "refore I am"
+```
