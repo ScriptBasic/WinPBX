@@ -10,11 +10,11 @@
 | [FileExt](#FileExt) | Returns the extesion of the found file. |
 | [FileName](#FileName) | Returns the name of the found file. |
 | [FileNameX](#FileNameX) | Returns the name and extension of the found file. |
-| FilePath | Returns the full path of the found file. |
-| FileSize | Returns the size of the found file, in bytes. |
-| FileURL | Returns the file URL. |
-| FindFile | Opens a file search. |
-| FindNext | Searches the next file. |
+| [FilePath](#FilePath) | Returns the full path of the found file. |
+| [FileSize](#FileSize) | Returns the size of the found file, in bytes. |
+| [FileURL](#FileURL) | Returns the file URL. |
+| [FindFile](#FindFile) | Opens a file search. |
+| [FindNext](#FindNext) | Searches the next file. |
 | IsCompressedFile | Checks if the found file is a compressed file. |
 | IsDots | Call this method to test for the current directory and parent directory markers while iterating through files. |
 | IsEncryptedFile | Checks if the found file is an encrypted file. |
@@ -125,3 +125,59 @@ FUNCTION FileNameX () AS CWSTR
 #### Return value
 
 The name of the most-recently-found file, excluding the extension. For example, calling FileNameX to generate a user message about the file c:\myhtml\myfile.txt returns the file name myfile.
+
+# <a name="FilePath"></a>FilePath
+
+Call this method to get the entire path of the found file.
+
+```
+FUNCTION FilePath () AS CWSTR
+```
+
+# <a name="FileSize"></a>FileSize
+
+Call this method to get the size of the found file, in bytes.
+
+```
+FUNCTION FileSize  () AS ULONGLONG
+```
+
+# <a name="FileURL"></a>FileURL
+
+Call this member function to retrieve the URL of the file.
+
+```
+FUNCTION FileURL () AS CWSTR
+```
+
+#### Remark
+
+**FileURL** is similar to the member function **FilePath**, except that it returns the URL in the form file:\//path. For example, calling FileURL to get the complete URL for myfile.txt returns the URL file:\//c:\myhtml\myfile.txt.
+
+# <a name="FindFile"></a>FindFile
+
+Call this function to open a file search.
+
+```
+UNCTION FindFile (BYREF wszFileSpec AS WSTRING) AS LONG_PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | A string containing the name of the file to find (must not end in a trailing backslash). If you pass an empty string, FindFile does a wildcard (*.*) search.<br>If the string ends with a wildcard, period (.), or directory name, the user must have access permissions to the root and all subdirectories on the path.<br>To extend the MAX_PATH limit to 32,767 wide characters, prepend "\\?\" to the path. |
+
+#### Return value
+
+S_OK on success or an error code on failure. To get extended error information, call **GetLastError**. If the function fails because no matching files can be found, the GetLastError function returns ERROR_FILE_NOT_FOUND.
+
+# <a name="FindNext"></a>FindNext
+
+Call this method to continue a file search from a previous call to FindFile.
+
+```
+FUNCTION FindNext () AS LONG
+```
+
+#### Return value
+
+Nonzero if there are more files; zero if the file found is the last one in the directory or if an error occurred. To get extended error information, call GetLastError. If the file found is the last file in the directory, or if no matching files can be  found, the GetLastError function returns ERROR_NO_MORE_FILES.
