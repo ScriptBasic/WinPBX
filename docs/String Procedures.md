@@ -57,8 +57,8 @@
 | [AfxStrTallyAnyI](#AfxStrTallyAnyI) | Count the number of occurrences of a list of characters within a string. Case insensitive. |
 | [AfxStrUCase](#AfxStrUCase) | Returns an uppercased version of a string. |
 | [AfxStrUnWrap](#AfxStrUnWrap) | Removes paired characters to the beginning and end of a string. |
-| AfxStrVerify | Determine whether each character of a string is present in another string. Case sensitive. |
-| AfxStrVerifyI | Determine whether each character of a string is present in another string. Case insensitive. |
+| [AfxStrVerify](#AfxStrVerify) | Determine whether each character of a string is present in another string. Case sensitive. |
+| [AfxStrVerifyI](#AfxStrVerifyI) | Determine whether each character of a string is present in another string. Case insensitive. |
 | AfxStrWrap | Adds paired characters to the beginning and end of a string. |
 | AfxUcode | Translates ansi bytes to unicode bytes. |
 | AfxXmlBase64Decode | Converts the contents of a Base64 mime encoded string to an ascii string. |
@@ -1410,4 +1410,39 @@ If only one wrap character/string is specified then that character or string is 
 AfxStrUnWrap("<Paul>", "<", ">") results in Paul
 AfxStrUnWrap("'Paul'", "'") results in Paul
 AfxStrUnWrap("""Paul""") results in Paul
+```
+
+# <a name="AfxStrVerify"></a>AfxStrVerify
+
+Determine whether each character of a string is present in another string.
+
+```
+FUNCTION AfxStrVerify (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be searched. |
+
+```
+FUNCTION AfxStrVerifyI (BYVAL nStart AS LONG, _
+   BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The starting position to begin searching. |
+| *wszMainStr* | The main string. |
+| *wszChar* | The same character for both the left and right sides. |
+
+#### Return value
+
+Returns zero if each character in wszMainStr is present in *wszMatchStr*; otherwise, it returns the position of the first non-matching character in *wszMainStr*. If *nStart* is zero, a negative number of a value greater that the length of wszMainstr, zero is returned.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrVerify(5, "123.65,22.5", "0123456789")   ' Returns 7
 ```
