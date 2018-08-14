@@ -59,7 +59,7 @@
 | [AfxStrUnWrap](#AfxStrUnWrap) | Removes paired characters to the beginning and end of a string. |
 | [AfxStrVerify](#AfxStrVerify) | Determine whether each character of a string is present in another string. Case sensitive. |
 | [AfxStrVerifyI](#AfxStrVerifyI) | Determine whether each character of a string is present in another string. Case insensitive. |
-| AfxStrWrap | Adds paired characters to the beginning and end of a string. |
+| [AfxStrWrap](#AfxStrWrap) | Adds paired characters to the beginning and end of a string. |
 | AfxUcode | Translates ansi bytes to unicode bytes. |
 | AfxXmlBase64Decode | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | AfxXmlBase64Encode | Converts the contents of a string to Base64 mime encoding. |
@@ -1462,5 +1462,41 @@ Returns zero if each character in wszMainStr is present in *wszMatchStr*; otherw
 
 ```
 DIM nCount AS LONG = AfxStrVerifyI(5, "123.65abcx22.5", "0123456789ABC")   ' -> 10
+```
+
+# <a name="AfxStrWrap"></a>AfxStrWrap
+
+Adds paired characters to the beginning and end of a string.
+
+```
+FUNCTION AfxStrWrap (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszLeftChar AS CONST WSTRING, BYREF wszRightChar AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszLeftChar* | The left character. |
+| *wszRightChar* | The right character. |
+
+```
+FUNCTION AfxStrWrap (BYREF wszMainStr AS CONST WSTRING, BYREF wszChar AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszChar* | The same character for both the left and right sides. |
+
+#### Remarks
+
+If only one wrap character/string is specified then that character or string is used for both sides. If no wrap character/string is specified then double quotes are used.
+
+#### Usage examples
+
+```
+AfxStrWrap("Paul", "<", ">") results in <Paul>
+AfxStrWrap("Paul", "'") results in 'Paul'
+AfxStrWrap("Paul") results in "Paul"
 ```
 
