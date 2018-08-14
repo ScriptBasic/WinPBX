@@ -396,7 +396,7 @@ The following line returns "aba" (match on "cad")
 DIM cws AS CWSTR = AfxStrExtract(1, "abacadabra","cad")
 ```
 
-# <a name="AfxStrExtract"></a>AfxStrExtract
+# AfxStrExtract (Overload)
 
 ```
 FUNCTION AfxStrExtract (BYREF wszMainStr AS CONST WSTRING, _
@@ -419,7 +419,7 @@ DIM cws AS CWSTR = "blah blah (text beween parentheses) blah blah"
 PRINT AfxStrExtract(cws, "(", ")")
 ```
 
-# <a name="AfxStrExtract"></a>AfxStrExtract
+# AfxStrExtract (Overload)
 
 ```
 FUNCTION AfxStrExtract (BYVAL nStart AS LONG, BYREF wszMainStr AS CONST WSTRING, _
