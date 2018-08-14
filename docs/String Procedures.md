@@ -19,7 +19,7 @@
 | [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
 | [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
-| AfxStrFromTimeInterval | Converts a time interval, specified in milliseconds, to a string. |
+| [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
 | AfxStrInsert | Inserts a string at a specified position within another string expression. |
 | AfxStrJoin | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | AfxStrLCase | Returns a lowercased version of a string. |
@@ -523,3 +523,27 @@ FUNCTION AfxStrFormatKBSize (BYVAL ull AS ULONGLONG) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *ull* | The numeric value to be converted. |
+
+# <a name="AfxStrFromTimeInterval"></a>AfxStrFromTimeInterval
+
+Converts a time interval, specified in milliseconds, to a string.
+
+```
+FUNCTION AfxStrFromTimeInterval (BYVAL dwTimeMS AS DWORD, BYVAL digits AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwTimeMS* | The time interval, in milliseconds. |
+| *digits* | The maximum number of significant digits to be represented in the output string. |
+
+Some examples for *digits*:
+
+| dwTimeMS   | digits      | cwsOut      |
+| ---------- | ----------- | ----------- |
+| 34000 | 3 | 34 sec |
+| 34000 | 2 | 34 sec |
+| 34000 | 1 | 30 sec |
+| 74000 | 3 | 1 min 14 sec |
+| 74000 | 2 | 1 min 10 sec |
+| 74000 | 2 | 1 min |
