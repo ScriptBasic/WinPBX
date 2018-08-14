@@ -694,7 +694,8 @@ DIM cws AS CWSTR = AfxStrParseAny("1;2,3", 2, ",;")   ' Returns "2"
 Returns the count of delimited fields from a string expression.
 
 ```
-FUNCTION AfxStrParseCount (BYREF wszMainStr AS CONST WSTRING, BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
+FUNCTION AfxStrParseCount (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
 ```
 
 | Parameter  | Description |
@@ -713,7 +714,8 @@ DIM nCount AS LONG = AfxStrParseCount("one,two,three", ",")   ' Returns 3
 Returns the count of delimited fields from a string expression.
 
 ```
-FUNCTION AfxStrParseCountAny (BYREF wszMainStr AS CONST WSTRING, BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
+FUNCTION AfxStrParseCountAny (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
 ```
 
 | Parameter  | Description |
