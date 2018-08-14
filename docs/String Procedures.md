@@ -7,7 +7,7 @@
 | [AfxBase64Encode](#AfxBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
 | [AfxCryptBinaryToString](#AfxCryptBinaryToString) | Converts an array of bytes into a formatted string. |
 | [AfxCryptStringToBinary](#AfxCryptStringToBinary) | Converts a formatted string into an array of bytes. |
-| AfxIsBstr | Checks if the passed pointer is a BSTR. |
+| [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
 | AfxStrClipLeft | Returns a string with the specified number of characters removed from the left side of the string. |
 | AfxStrClipMid | Returns a string with the specified number of characters removed starting at the specified position. |
 | AfxStrClipRight | Returns a string with the specified number of characters characters removed from the right side of the string. |
@@ -272,3 +272,23 @@ Values available for the *pdwFlags* parameter:
 | CRYPT_STRING_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64, CRYPT_STRING_BINARY. |
 | CRYPT_STRING_BASE64_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64. |
 | CRYPT_STRING_HEX_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_HEXADDR, CRYPT_STRING_HEXASCIIADDR, CRYPT_STRING_HEX, CRYPT_STRING_HEXRAW, CRYPT_STRING_HEXASCII. |
+
+# <a name="AfxIsBstr"></a>AfxIsBstr
+
+Checks if the passed pointer is a BSTR.
+
+```
+FUNCTION AfxIsBstr (BYVAL pv AS ANY PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | Pointer to the string. |
+
+#### Remarks
+
+Will return FALSE if it is a null pointer.
+If it is an OLE string it must have a descriptor; otherwise, don't.
+Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
+
+
