@@ -26,8 +26,8 @@
 | [AfxStrLSet](#AfxStrLSet) | Returns a string containing a left justified string. |
 | [AfxStrParse](#AfxStrParse) | Returns a delimited field from a string expression. |
 | [AfxStrParseAny](#AfxStrParseAny) | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
-| AfxStrParseCount | Returns the count of delimited fields from a string expression. |
-| AfxStrParseCountAny | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
+| [AfxStrParseCount](#AfxStrParseCount) | Returns the count of delimited fields from a string expression. |
+| [AfxStrParseCountAny](#AfxStrParseCountAny) | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
 | AfxStrPathName | Parses a path to extract component parts. |
 | AfxStrRemain | Returns the portion of a string following the first occurrence of a substring. Case sensitive. |
 | AfxStrRemainI | Returns the portion of a string following the first occurrence of a substring. Case insensitive. |
@@ -687,4 +687,42 @@ FUNCTION AfxStrParse (BYREF wszMainStr AS CONST WSTRING, _
 
 ```
 DIM cws AS CWSTR = AfxStrParseAny("1;2,3", 2, ",;")   ' Returns "2"
+```
+
+# <a name="AfxStrParseCount"></a>AfxStrParseCount 
+
+Returns the count of delimited fields from a string expression.
+
+```
+FUNCTION AfxStrParseCount (BYREF wszMainStr AS CONST WSTRING, BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. If wszMainStr is empty (a null string) or contains no delimiter character(s), the string is considered to contain exactly one sub-field. |
+| *wszDelimiter* | One or more character delimiters that must be fully matched. Delimiters are case-sensitive. |
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrParseCount("one,two,three", ",")   ' Returns 3
+```
+
+# <a name="AfxStrParseCountAny"></a>AfxStrParseCountAny 
+
+Returns the count of delimited fields from a string expression.
+
+```
+FUNCTION AfxStrParseCountAny (BYREF wszMainStr AS CONST WSTRING, BYREF wszDelimiter AS CONST WSTRING = ",") AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. If wszMainStr is empty (a null string) or contains no delimiter character(s), the string is considered to contain exactly one sub-field. |
+| *wszDelimiter* | A set of characters (one or more), any of which may act as a delimiter character. Delimiters are case-sensitive. |
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrParseCountAny("1;2,3", ",;")   ' Returns 3
 ```
