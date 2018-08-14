@@ -44,7 +44,7 @@
 | [AfxStrReplaceAnyI](#AfxStrReplaceAnyI) | Replaces all the occurrences of a group of characters with another character. Case insensitive. |
 | [AfxStrRetain](#AfxStrRetain) | Returns a string containing only the characters contained in a specified match string. Case sensitive. |
 | [AfxStrRetainI](#AfxStrRetainI) | Returns a string containing only the characters contained in a specified match string. Case insensitive. |
-| [AfxStrRetainAny](#AfxStrRetainAny( | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
+| [AfxStrRetainAny](#AfxStrRetainAny) | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
 | [AfxStrRetainAnyI](#AfxStrRetainAnyI) | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
 | AfxStrReverse | Reverses the contents of a string expression. |
 | AfxStrRSet | Returns a string containing a right justified string. |
@@ -700,7 +700,7 @@ FUNCTION AfxStrParseCount (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The main string. If wszMainStr is empty (a null string) or contains no delimiter character(s), the string is considered to contain exactly one sub-field. |
+| *wszMainStr* | The main string. If *wszMainStr* is empty (a null string) or contains no delimiter character(s), the string is considered to contain exactly one subfield. |
 | *wszDelimiter* | One or more character delimiters that must be fully matched. Delimiters are case-sensitive. |
 
 #### Usage example
