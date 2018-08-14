@@ -24,7 +24,7 @@
 | [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | [AfxStrLCase](#AfxStrLCase) | Returns a lowercased version of a string. |
 | [AfxStrLSet](#AfxStrLSet) | Returns a string containing a left justified string. |
-| [AfxStrParse]/#AfxStrParse) | Returns a delimited field from a string expression. |
+| [AfxStrParse](#AfxStrParse) | Returns a delimited field from a string expression. |
 | [AfxStrParseAny](#AfxStrParseAny) | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
 | AfxStrParseCount | Returns the count of delimited fields from a string expression. |
 | AfxStrParseCountAny | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
