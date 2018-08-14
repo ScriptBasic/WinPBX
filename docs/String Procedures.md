@@ -1376,7 +1376,7 @@ The string conversion functions available in FreeBasic are not fully suitable fo
 
 The uppercased string.
 
-# <a name="AfxStrUnWrap "></a>AfxStrUnWrap 
+# <a name="AfxStrUnWrap"></a>AfxStrUnWrap
 
 Removes paired characters to the beginning and end of a string.
 
