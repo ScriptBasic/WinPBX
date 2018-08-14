@@ -28,7 +28,7 @@
 | [AfxStrParseAny](#AfxStrParseAny) | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
 | [AfxStrParseCount](#AfxStrParseCount) | Returns the count of delimited fields from a string expression. |
 | [AfxStrParseCountAny](#AfxStrParseCountAny) | Returns the count of delimited fields from a string expression. Supports more than one character for the delimiter. |
-| AfxStrPathName | Parses a path to extract component parts. |
+| [AfxStrPathName](#AfxStrPathName) | Parses a path to extract component parts. |
 | AfxStrRemain | Returns the portion of a string following the first occurrence of a substring. Case sensitive. |
 | AfxStrRemainI | Returns the portion of a string following the first occurrence of a substring. Case insensitive. |
 | AfxStrRemainAny | Returns the portion of a string following the first occurrence of a group of characters. Case sensitive. |
@@ -728,3 +728,23 @@ FUNCTION AfxStrParseCountAny (BYREF wszMainStr AS CONST WSTRING, _
 ```
 DIM nCount AS LONG = AfxStrParseCountAny("1;2,3", ",;")   ' Returns 3
 ```
+
+# <a name="AfxStrPathName"></a>AfxStrPathName 
+
+Parses a path to extract component parts.
+
+```
+FUNCTION AfxStrPathName (BYREF wszOption AS CONST WSTRING, BYREF wszFileSpec AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszOption* | One of the following words which is used to specify the requested part: PATH, NAME, EXTN, NAMEX |
+| *wszFileSpec* | The path to be scanned. |
+
+| Keyword    | Action      |
+| ---------- | ----------- |
+| *PATH* | Returns the path portion of the path/file Name. That is the text up to and including the last backslash (\) or colon (:). |
+| *NAME* | Returns the name portion of the path/file Name. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
+| *EXTN* | Returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
+| *NAMEX* | Returns the name and the extension parts combined. |
