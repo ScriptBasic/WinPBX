@@ -47,3 +47,19 @@
 | AfxStrRetainAny | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
 | AfxStrRetainAnyI | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
 | AfxStrReverse | Reverses the contents of a string expression. |
+| AfxStrRSet | Returns a string containing a right justified string. |
+| AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
+| AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
+| AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
+| AfxStrTally | Count the number of occurrences of a substring within a string. Case sensitive. |
+| AfxStrTallyI | Count the number of occurrences of a substring within a string. Case insensitive. |
+| AfxStrTallyAny | Count the number of occurrences of a list of characters within a string. Case sensitive. |
+| AfxStrTallyAnyI | Count the number of occurrences of a list of characters within a string. Case insensitive. |
+| AfxStrUCase | Returns an uppercased version of a string. |
+| AfxStrUnWrap | Removes paired characters to the beginning and end of a string. |
+| AfxStrVerify | Determine whether each character of a string is present in another string. Case sensitive. |
+| AfxStrVerifyI | Determine whether each character of a string is present in another string. Case insensitive. |
+| AfxStrWrap | Adds paired characters to the beginning and end of a string. |
+| AfxUcode | Translates ansi bytes to unicode bytes. |
+| AfxXmlBase64Decode | Converts the contents of a Base64 mime encoded string to an ascii string. |
+| AfxXmlBase64Encode | Converts the contents of a string to Base64 mime encoding. |
