@@ -18,7 +18,7 @@
 | [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a substring. Case sensitive. |
 | [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a substring. Case insensitive. |
 | [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
-| AfxStrFormatKBSize | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
+| [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | AfxStrFromTimeInterval | Converts a time interval, specified in milliseconds, to a string. |
 | AfxStrInsert | Inserts a string at a specified position within another string expression. |
 | AfxStrJoin | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
