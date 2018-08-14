@@ -48,7 +48,7 @@
 | [AfxStrRetainAnyI](#AfxStrRetainAnyI) | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
 | [AfxStrReverse](#AfxStrReverse) | Reverses the contents of a string expression. |
 | [AfxStrRSet](#AfxStrRSet) | Returns a string containing a right justified string. |
-| AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
+| [AfxStrShrink](#AfxStrShrink) | Shrinks a string to use a consistent single character delimiter. |
 | AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
 | AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
 | AfxStrTally | Count the number of occurrences of a string within a string. Case sensitive. |
@@ -1179,4 +1179,27 @@ FUNCTION AfxStrRSet (BYREF wszMainStr AS CONST WSTRING, _
 
 ```
 DIM cws AS CWSTR = AfxStrRSet("FreeBasic", 20, "*")
+```
+
+# <a name="AfxStrShrink"></a>AfxStrShrink
+
+Shrinks a string to use a consistent single character delimiter.
+
+```
+FUNCTION AfxStrShrink (BYREF wszMainStr AS CONST WSTRING, BYREF wszMask AS CONST WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMask* | One or more character delimiters to shrink. |
+
+#### Remarks
+
+This function creates a string with consecutive words separated by a consistent single character, making it easier to parse. If wszMask is not specified, all leading and trailing spaces are removed and all occurrences of two or more spaces are changed to a single space. If wszMask contains one or more characters to shrink, all the leading and trailing occurences of them are removes and all occurrences of one or more characters of the mask are replaced with the first character of the mask.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrShrink(",,, one , two     three, four,", " ,")  ' Returns "one two three four"
 ```
