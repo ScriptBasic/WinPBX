@@ -596,6 +596,9 @@ csa.PutStr(3, "Three")
 DIM cws AS CWSTR = AfxStrJoin(csa, ",")
 PRINT cws   ' ouput: One,Two,Three
 ```
+#### Include file
+
+CSafeArray.inc
 
 # <a name="AfxStrLCase"></a>AfxStrLCase
 
@@ -1230,6 +1233,9 @@ FOR i AS LONG = cwsa.LBound TO cwsa.UBound
   PRINT cwsa.GetStr(i)
 NEXT
 ```
+#### Include file
+
+CSafeArray.inc
 
 # <a name="AfxStrSpn"></a>AfxStrSpn
 
@@ -1553,6 +1559,10 @@ Base64 encoding schemes are commonly used when there is a need to encode binary 
 
 Because it uses COM, you must initialize the COM library before calling this function.
 
+#### Include file
+
+CSafeArray.inc
+
 # <a name="AfxXmlBase64Encode"></a>AfxXmlBase64Encode
 
 Converts the contents of a string to Base64 mime encoding.
@@ -1577,3 +1587,7 @@ Base64 encoding schemes are commonly used when there is a need to encode binary 
 #### Important note
 
 Because it uses COM, you must initialize the COM library before calling this function.
+
+#### Include file
+
+CSafeArray.inc
