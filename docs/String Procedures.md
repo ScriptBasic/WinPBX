@@ -1384,6 +1384,13 @@ Removes paired characters to the beginning and end of a string.
 FUNCTION AfxStrUnWrap (BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszLeftChar AS CONST WSTRING, BYREF wszRightChar AS CONST WSTRING) AS CWSTR
 ```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszLeftChar* | The left character. |
+| *wszRightChar* | The right character. |
+
 ```
 FUNCTION AfxStrUnWrap (BYREF wszMainStr AS CONST WSTRING, BYREF wszChar AS CONST WSTRING) AS CWSTR
 ```
@@ -1391,8 +1398,7 @@ FUNCTION AfxStrUnWrap (BYREF wszMainStr AS CONST WSTRING, BYREF wszChar AS CONST
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
-| *wszLeftChar* | The left character. |
-| *wszRightChar* | The right character. |
+| *wszChar* | The same character for both the left and right sides. |
 
 #### Remarks
 
