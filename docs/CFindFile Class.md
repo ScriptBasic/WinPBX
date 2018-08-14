@@ -86,7 +86,6 @@ File attributes are metadata values stored by the file system on disk and are us
 | FILE_ATTRIBUTE_TEMPORARY | A file that is being used for temporary storage. File systems avoid writing data back to mass storage if sufficient cache memory is available, because typically, an application deletes a temporary file after the handle is closed. In that scenario, the system can entirely avoid writing the data. Otherwise, the data is written after the handle is closed. |
 | FILE_ATTRIBUTE_VIRTUAL | This value is reserved for system use. |
 
+#### Remarks
 
-
-
-Remarks: The FILE_ATTRIBUTE_SPARSE_FILE attribute on the file is set if any of the streams of the file have ever been sparse.
+The FILE_ATTRIBUTE_SPARSE_FILE attribute on the file is set if any of the streams of the file have ever been sparse.
