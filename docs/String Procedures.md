@@ -646,7 +646,7 @@ FUNCTION AfxStrLSet (BYREF wszMainStr AS CONST WSTRING, _
 DIM cws AS CWSTR = AfxStrLSet("FreeBasic", 20, "*")
 ```
 
-# <a name="AfxStrParse "></a>AfxStrParse 
+# <a name="AfxStrParse"></a>AfxStrParse 
 
 Returns a delimited field from a string expression.
 
@@ -668,7 +668,7 @@ DIM cws AS CWSTR = AfxStrParse("one,two,three", 2)   ' Returns "two"
 DIM cws AS CWSTR = AfxStrParse("one;two,three", 1, ";")   ' Returns "one"
 ```
 
-# <a name="AfxStrParseAny "></a>AfxStrParseAny 
+# <a name="AfxStrParseAny"></a>AfxStrParseAny 
 
 Returns a delimited field from a string expression.
 
