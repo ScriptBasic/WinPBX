@@ -15,25 +15,25 @@
 | [FileURL](#FileURL) | Returns the file URL. |
 | [FindFile](#FindFile) | Opens a file search. |
 | [FindNext](#FindNext) | Searches the next file. |
-| IsCompressedFile | Checks if the found file is a compressed file. |
-| IsDots | Call this method to test for the current directory and parent directory markers while iterating through files. |
-| IsEncryptedFile | Checks if the found file is an encrypted file. |
-| IsFile | Checks if the found file is a file and not a folder. |
-| IsFolder | Checks if the found file is a folder. |
-| IsHiddenFile | Checks if the found file is a hidden file. |
-| IsNormalFile | Checks if the found file is a normal file. |
-| IsNotContentIndexedFile | Checks if the found file is not to be indexed by the content indexing service.. |
-| IsOffLineFile | Checks if the found file is not available immediately. |
-| IsReadOnlyFile | Checks if the found file is a read only file. |
-| IsReparsePointFile | Checks if the found file is is file or directory that has an associated reparse point, or a file that is a symbolic link. |
-| IsSparseFile | Checks if the found file is a sparse file. |
-| IsSystemFile | Checks if the found file is a system file. |
-| IsTemporaryFile | Checks if the found file is a temporary file. |
-| LastAccessTime | Returns the time the file was last accessed, in local time format. |
-| LastWriteTime | Returns the time the file was written to, truncated, or overwritten, in local time format. |
-| MatchesMask | Tests the file attributes on the found file. |
-| Root | Returns the root of the found file. |
-| ShortFileName | Returns an alternative name for the file. This name is in the classic 8.3 file name format. |
+| [IsCompressedFile](#IsCompressedFile) | Checks if the found file is a compressed file. |
+| [IsDots](#IsDots) | Call this method to test for the current directory and parent directory markers while iterating through files. |
+| [IsEncryptedFile](#IsEncryptedFile) | Checks if the found file is an encrypted file. |
+| [IsFile](#IsFile) | Checks if the found file is a file and not a folder. |
+| [IsFolder](#IsFolder) | Checks if the found file is a folder. |
+| [IsHiddenFile](#IsHiddenFile) | Checks if the found file is a hidden file. |
+| [IsNormalFile](#IsNormalFile) | Checks if the found file is a normal file. |
+| [IsNotContentIndexedFile](#IsNotContentIndexedFile) | Checks if the found file is not to be indexed by the content indexing service.. |
+| [IsOffLineFile](#IsOffLineFile) | Checks if the found file is not available immediately. |
+| [IsReadOnlyFile](#IsReadOnlyFile) | Checks if the found file is a read only file. |
+| [IsReparsePointFile](#IsReparsePointFile) | Checks if the found file is is file or directory that has an associated reparse point, or a file that is a symbolic link. |
+| [IsSparseFile](#IsSparseFile) | Checks if the found file is a sparse file. |
+| [IsSystemFile](#IsSystemFile) | Checks if the found file is a system file. |
+| [IsTemporaryFile](#IsTemporaryFile) | Checks if the found file is a temporary file. |
+| [LastAccessTime](#LastAccessTime) | Returns the time the file was last accessed, in local time format. |
+| [LastWriteTime](#LastWriteTime) | Returns the time the file was written to, truncated, or overwritten, in local time format. |
+| [MatchesMask](#MatchesMask) | Tests the file attributes on the found file. |
+| [Root](#Root) | Returns the root of the found file. |
+| [ShortFileName](#ShortFileName) | Returns an alternative name for the file. This name is in the classic 8.3 file name format. |
 
 #### Include file
 
@@ -180,4 +180,100 @@ FUNCTION FindNext () AS LONG
 
 #### Return value
 
-Nonzero if there are more files; zero if the file found is the last one in the directory or if an error occurred. To get extended error information, call GetLastError. If the file found is the last file in the directory, or if no matching files can be  found, the GetLastError function returns ERROR_NO_MORE_FILES.
+Nonzero if there are more files; zero if the file found is the last one in the directory or if an error occurred. To get extended error information, call **GetLastError**. If the file found is the last file in the directory, or if no matching files can be  found, the GetLastError function returns ERROR_NO_MORE_FILES.
+
+# <a name="IsCompressedFile"></a>IsCompressedFile
+
+Retuns TRUE if the found file is a compressed file. Otherwise FALSE.
+
+```
+FUNCTION IsCompressedFile () AS BOOLEAN
+```
+
+# <a name="IsDots"></a>IsDots
+
+Returns TRUE if the found file has the name "." or "..", which indicates that the found file is actually a directory. Otherwise FALSE.
+
+```
+FUNCTION IsDots () AS BOOLEAN
+```
+
+# <a name="IsEncryptedFile"></a>IsEncryptedFile
+
+Retuns TRUE if the found file is an encrypted file. Otherwise FALSE.
+
+```
+FUNCTION IsEncryptedFile () AS BOOLEAN
+```
+
+# <a name="IsFile "></a>IsFile 
+
+Retuns TRUE if the found file is a file and not a folder. Otherwise FALSE.
+
+```
+FUNCTION IsFile () AS BOOLEAN
+```
+
+# <a name="IsFolder "></a>IsFolder 
+
+Retuns TRUE if the found file is a folder. Otherwise FALSE.
+
+```
+FUNCTION IsFolder () AS BOOLEAN
+```
+
+# <a name="IsHiddenFile "></a>IsHiddenFile 
+
+Retuns TRUE if the found file is a hidden file. Otherwise FALSE.
+
+```
+FUNCTION IsHiddenFile  () AS BOOLEAN
+```
+
+# <a name="IsNormalFile "></a>IsNormalFile 
+
+Retuns TRUE if the found file is a normal file. Otherwise FALSE.
+
+```
+FUNCTION IsNormalFile () AS BOOLEAN
+```
+
+# <a name="IsNotContentIndexedFile "></a>IsNotContentIndexedFile 
+
+Retuns TRUE if the found file is not to be indexed by the content indexing service.. Otherwise FALSE.
+
+```
+FUNCTION IsNotContentIndexedFile () AS BOOLEAN
+```
+
+# <a name="IsOffLineFile "></a>IsOffLineFile 
+
+Retuns TRUE if the found file is not available immediately. Otherwise FALSE.
+
+```
+FUNCTION IsOffLineFile () AS BOOLEAN
+```
+
+# <a name="IsReadOnlyFile "></a>IsReadOnlyFile 
+
+Retuns TRUE if the found file is a read only file. Otherwise FALSE.
+
+```
+FUNCTION IsReadOnlyFile () AS BOOLEAN
+```
+
+# <a name="IsReparsePointFile "></a>IsReparsePointFile 
+
+Retuns TRUE if the found file is a file or directory that has an associated reparse point, or a file that is a symbolic link. Otherwise FALSE.
+
+```
+FUNCTION IsReparsePointFile () AS BOOLEAN
+```
+
+# <a name="IsSparseFile "></a>IsSparseFile 
+
+Retuns TRUE if the found file is a sparse file. Otherwise FALSE.
+
+```
+FUNCTION IsSparseFile () AS BOOLEAN
+```
