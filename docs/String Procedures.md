@@ -1024,7 +1024,7 @@ FUNCTION AfxStrReplaceI (BYREF wszMainStr AS CONST WSTRING, _
 DIM cws AS CWSTR = AfxStrReplaceI("Hello world", "World", "Earth")   ' -> "Hello Earth"
 ```
 
-# <a name="AfxStrReplaceAny "></a>AfxStrReplaceAny
+# <a name="AfxStrReplaceAny"></a>AfxStrReplaceAny
 
 Replaces all the occurrences of any of the individual characters *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. *wszReplaceWith* must be a single character (this function does not replace words; therefore, *wszMatchStr* will not shrink or grow). Case sensitive. 
 
@@ -1045,7 +1045,7 @@ FUNCTION AfxStrReplaceAny  (BYREF wszMainStr AS CONST WSTRING, _
 DIM cws AS CWSTR = AfxStrReplaceAny("abacadabra", "bac", "*")   ' -> *****d**r*
 ```
 
-# <a name="AfxStrReplaceAnyI "></a>AfxStrReplaceAnyI
+# <a name="AfxStrReplaceAnyI"></a>AfxStrReplaceAnyI
 
 Replaces all the occurrences of any of the individual characters *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. *wszReplaceWith* must be a single character (this function does not replace words; therefore, *wszMatchStr* will not shrink or grow). Case insensitive. 
 
