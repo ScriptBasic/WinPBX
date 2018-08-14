@@ -1241,7 +1241,7 @@ FUNCTION AfxStrSpn (BYREF wszText AS CONST WSTRING, BYREF wszSet AS CONST WSTRIN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszText* | The string to be scaned. |
+| *wszText* | The string to be scanned. |
 | *wszSet* | The set of characters for which to search. |
 
 #### Usage example
