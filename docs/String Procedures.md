@@ -56,7 +56,7 @@
 | [AfxStrTallyAny](#AfxStrTallyAny) | Count the number of occurrences of a list of characters within a string. Case sensitive. |
 | [AfxStrTallyAnyI](#AfxStrTallyAnyI) | Count the number of occurrences of a list of characters within a string. Case insensitive. |
 | [AfxStrUCase](#AfxStrUCase) | Returns an uppercased version of a string. |
-| AfxStrUnWrap | Removes paired characters to the beginning and end of a string. |
+| [AfxStrUnWrap](#AfxStrUnWrap) | Removes paired characters to the beginning and end of a string. |
 | AfxStrVerify | Determine whether each character of a string is present in another string. Case sensitive. |
 | AfxStrVerifyI | Determine whether each character of a string is present in another string. Case insensitive. |
 | AfxStrWrap | Adds paired characters to the beginning and end of a string. |
@@ -611,7 +611,7 @@ FUNCTION AfxStrLCase (BYVAL pwszStr AS WSTRING PTR, _
 | ---------- | ----------- |
 | *pwszStr* | The string. |
 | *pwszLocaleName* | Optional. Pointer to a locale name or one of these pre-defined values: LOCALE_NAME_INVARIANT, LOCALE_NAME_SYSTEM_DEFAULT, LOCALE_NAME_USER_DEFAULT |
-| *dwMapFlags* | Flag specifying the type of transformation to use during string mapping or the type of sort key to generate. |
+| *dwMapFlags* | Optional. Flag specifying the type of transformation to use during string mapping or the type of sort key to generate. |
 
 For a table of language culture names see: [Table of Language Culture Names, Codes, and ISO Values](https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20))
 
@@ -1362,7 +1362,7 @@ FUNCTION AfxStrUCase (BYVAL pwszStr AS WSTRING PTR, _
 | ---------- | ----------- |
 | *pwszStr* | The main string. |
 | *pwszLocaleName* | Optional. Pointer to a locale name or one of these pre-defined values: LOCALE_NAME_INVARIANT, LOCALE_NAME_SYSTEM_DEFAULT, LOCALE_NAME_USER_DEFAULT |
-| *dwMapFlags* | Flag specifying the type of transformation to use during string mapping or the type of sort key to generate. |
+| *dwMapFlags* | Optional. Flag specifying the type of transformation to use during string mapping or the type of sort key to generate. |
 
 For a table of language culture names see: [Table of Language Culture Names, Codes, and ISO Values](https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20))
 
@@ -1375,3 +1375,33 @@ The string conversion functions available in FreeBasic are not fully suitable fo
 #### Return value
 
 The uppercased string.
+
+# <a name="AfxStrUnWrap "></a>AfxStrUnWrap 
+
+Removes paired characters to the beginning and end of a string.
+
+```
+FUNCTION AfxStrUnWrap (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszLeftChar AS CONST WSTRING, BYREF wszRightChar AS CONST WSTRING) AS CWSTR
+```
+```
+FUNCTION AfxStrUnWrap (BYREF wszMainStr AS CONST WSTRING, BYREF wszChar AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszLeftChar* | The left character. |
+| *wszRightChar* | The right character. |
+
+#### Remarks
+
+If only one wrap character/string is specified then that character or string is used for both sides. If no wrap character/string is specified then double quotes are used.
+
+#### Usage examples
+
+```
+AfxStrUnWrap("<Paul>", "<", ">") results in Paul
+AfxStrUnWrap("'Paul'", "'") results in Paul
+AfxStrUnWrap("""Paul""") results in Paul
+```
