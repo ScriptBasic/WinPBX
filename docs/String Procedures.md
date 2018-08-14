@@ -565,4 +565,6 @@ FUNCTION AfxStrInsert (BYREF wszMainStr AS CONST WSTRING, _
 
 #### Usage example
 
+```
 DIM cws AS CWSTR = AfxStrInsert("1234567890", "--", 6)   ' Returns "123456--7890"
+```
