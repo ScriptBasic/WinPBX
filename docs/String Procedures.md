@@ -744,7 +744,7 @@ FUNCTION AfxStrPathName (BYREF wszOption AS CONST WSTRING, BYREF wszFileSpec AS 
 
 | Keyword    | Action      |
 | ---------- | ----------- |
-| *PATH* | Returns the path portion of the path/file Name. That is the text up to and including the last backslash (\) or colon (:). |
-| *NAME* | Returns the name portion of the path/file Name. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
-| *EXTN* | Returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
-| *NAMEX* | Returns the name and the extension parts combined. |
+| **PATH** | Returns the path portion of the path/file Name. That is the text up to and including the last backslash (\) or colon (:). |
+| **NAME** | Returns the name portion of the path/file Name. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
+| **EXTN** | Returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
+| **NAMEX** | Returns the name and the extension parts combined. |
