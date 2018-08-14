@@ -510,4 +510,16 @@ FUNCTION AfxStrFormatByteSize (BYVAL ull AS ULONGLONG) AS CWSTR
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *ull* | he numeric value to be converted. |
+| *ull* | The numeric value to be converted. |
+
+# <a name="AfxStrFormatKBSize"></a>AfxStrFormatKBSize
+
+Converts a numeric value into a string that represents the number expressed as a size value in kilobytes.
+
+```
+FUNCTION AfxStrFormatKBSize (BYVAL ull AS ULONGLONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ull* | The numeric value to be converted. |
