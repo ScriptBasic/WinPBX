@@ -46,7 +46,7 @@
 | [AfxStrRetainI](#AfxStrRetainI) | Returns a string containing only the characters contained in a specified match string. Case insensitive. |
 | [AfxStrRetainAny](#AfxStrRetainAny) | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
 | [AfxStrRetainAnyI](#AfxStrRetainAnyI) | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
-| AfxStrReverse | Reverses the contents of a string expression. |
+| [AfxStrReverse](#AfxStrReverse) | Reverses the contents of a string expression. |
 | AfxStrRSet | Returns a string containing a right justified string. |
 | AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
 | AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
@@ -1140,4 +1140,22 @@ FUNCTION AfxStrRetainAnyI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr 
 
 ```
 DIM cws AS CWSTR = AfxStrRetainAnyI("<p>1234567890<ak;lk;l>1234567890</p>", "<;/P>")
+```
+
+# <a name="AfxStrReverse"></a>AfxStrReverse
+
+Reverses the contents of a string expression.
+
+```
+FUNCTION AfxStrReverse (BYREF wszMainStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be reversed. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrReverse("garden")   ' Returns "nedrag"
 ```
