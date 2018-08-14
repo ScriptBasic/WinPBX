@@ -6,7 +6,7 @@
 | [AfxBase64Decode](#AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | [AfxBase64Encode](#AfxBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
 | [AfxCryptBinaryToString](#AfxCryptBinaryToString) | Converts an array of bytes into a formatted string. |
-| [AfxCryptStringToBinary(#AfxCryptStringToBinary) | Converts a formatted string into an array of bytes. |
+| [AfxCryptStringToBinary](#AfxCryptStringToBinary) | Converts a formatted string into an array of bytes. |
 | AfxIsBstr | Checks if the passed pointer is a BSTR. |
 | AfxStrClipLeft | Returns a string with the specified number of characters removed from the left side of the string. |
 | AfxStrClipMid | Returns a string with the specified number of characters removed starting at the specified position. |
