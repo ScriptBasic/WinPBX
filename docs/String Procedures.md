@@ -22,7 +22,7 @@
 | [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
 | [AfxStrInsert](#AfxStrInsert) | Inserts a string at a specified position within another string expression. |
 | [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
-| AfxStrLCase | Returns a lowercased version of a string. |
+| [AfxStrLCase](#AfxStrLCase) | Returns a lowercased version of a string. |
 | AfxStrLSet | Returns a string containing a left justified string. |
 | AfxStrParse | Returns a delimited field from a string expression. |
 | AfxStrParseAny | Returns a delimited field from a string expression. Supports more than one character for the delimiter. |
@@ -596,3 +596,31 @@ csa.PutStr(3, "Three")
 DIM cws AS CWSTR = AfxStrJoin(csa, ",")
 PRINT cws   ' ouput: One,Two,Three
 ```
+
+# <a name="AfxStrLCase"></a>AfxStrLCase
+
+Returns a lowercased version of a string.
+
+```
+FUNCTION AfxStrLCase (BYVAL pwszStr AS WSTRING PTR, _
+   BYVAL pwszLocaleName AS WSTRING PTR = LOCALE_NAME_USER_DEFAULT, _
+   BYVAL dwMapFlags AS DWORD = 0) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszStr* | The string. |
+| *pwszLocaleName* | Optional. Pointer to a locale name or one of these pre-defined values: LOCALE_NAME_INVARIANT, LOCALE_NAME_SYSTEM_DEFAULT, LOCALE_NAME_USER_DEFAULT |
+| *dwMapFlags* | Flag specifying the type of transformation to use during string mapping or the type of sort key to generate. |
+
+For a table of language culture names see: [Table of Language Culture Names, Codes, and ISO Values](https://docs.microsoft.com/en-us/previous-versions/commerce-server/ee825488(v=cs.20))
+
+For a complete list see: [LCMapStringEx function](https://docs.microsoft.com/en-us/windows/desktop/api/winnls/nf-winnls-lcmapstringex)
+
+#### Remarks
+
+The string conversion functions available in FreeBasic are not fully suitable for some languages. For example, the Turkish word "karışıklığı" is uppercased as "KARıŞıKLıĞı" instead of "KARIŞIKLIĞI", and "KARIŞIKLIĞI" is lowercased to "karişikliği" instead of "karışıklığı". Notice the "ı", that is not an "i".
+
+#### Return value
+
+The lowercased string.
