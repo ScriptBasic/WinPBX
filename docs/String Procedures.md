@@ -33,10 +33,10 @@
 | [AfxStrRemainI](#AfxStrRemainI) | Returns the portion of a string following the first occurrence of a string. Case insensitive. |
 | [AfxStrRemainAny](#AfxStrRemainAny) | Returns the portion of a string following the first occurrence of a group of characters. Case sensitive. |
 | [AfxStrRemainAnyI](#AfxStrRemainAnyI) | Returns the portion of a string following the first occurrence of a group of characters. Case insensitive. |
-| AfxStrRemove | Returns a new string with substrings removed. Case sesnsitive. |
-| AfxStrRemoveI | Returns a new string with substrings removed. Case insensitive. |
-| AfxStrRemoveAny | Returns a new string with characters removed. Case sesnsitive. |
-| AfxStrRemoveAnyI | Returns a new string with characters removed. Case insesnsitive. |
+| [AfxStrRemove](#AfxStrRemove) | Returns a new string with substrings removed. Case sesnsitive. |
+| [AfxStrRemoveI](#AfxStrRemoveI) | Returns a new string with substrings removed. Case insensitive. |
+| [AfxStrRemoveAny](#AfxStrRemoveAny) | Returns a new string with characters removed. Case sesnsitive. |
+| [AfxStrRemoveAnyI](#AfxStrRemoveAnyI) | Returns a new string with characters removed. Case insesnsitive. |
 | AfxStrRepeat | Returns a string consisting of multiple copies of the specified string. |
 | AfxStrReplace | Replaces all the occurrences of a string with another string. Case sensitive. |
 | AfxStrReplaceI | Replaces all the occurrences of a string with another string. Case insensitive. |
@@ -762,7 +762,7 @@ FUNCTION AfxStrRemain (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The string to search for. |
-| *wszMatchStr* | Optional. Starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
+| *nStart* | Optional. Starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -783,7 +783,7 @@ FUNCTION AfxStrRemainI (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The string to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
+| *nStart* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -804,7 +804,7 @@ FUNCTION AfxStrRemainAny (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The characters to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
+| *nStart* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
@@ -825,10 +825,140 @@ FUNCTION AfxStrRemainAnyI (BYREF wszMainStr AS CONST WSTRING, _
 | ---------- | ----------- |
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The characters to search for. |
-| *wszMatchStr* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
+| *nStart* | Optional. starting position to begin the search. If *nStart* is not specified, the search will begin at position 1. If nStart is zero, a nul string is returned. If *nStart* is negative, the starting position is counted from right to left: -1 for the last character, -2 for the second to last, etc. |
 
 #### Usage example
 
 ```
 DIM cws AS CWSTR = AfxStrRemainAnyI("I think, therefore I am", "E")   ' -> "refore I am"
+```
+
+# <a name="AfxStrRemove"></a>AfxStrRemove
+
+Returns a new string with strings removed. Case sensitive.
+
+```
+FUNCTION AfxStrRemove (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be removed. If *wszMatchStr* is not present in *wszMainStr*, all of *wszMainStr* is returned intact. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemove("Hello World. Welcome to the Freebasic World", "World")
+```
+
+# AfxStrRemove (Overload)
+
+Returns a copy of a string with a substring enclosed between the specified delimiters removed. Cse sensitive.
+
+```
+FUNCTION AfxStrRemove (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelim1 AS CONST WSTRING, BYREF wszDelim2 AS CONST WSTRING, _
+   BYVAL fRemoveAll AS BOOLEAN = FALSE) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszDelim1* | The first delimiter |
+| *wszDelim2* | The second delimiter |
+| *fRemoveAll* | Recursively remove all the occurrences. |
+
+#### Usage examples
+
+```
+DIM cwsText AS CWSTR = "blah blah (text beween parentheses) blah blah"
+DIM cws AS CWSTR = AfxStrRemove(cwsText, "(", ")")   ' Returns "blah blah  blah blah"
+```
+
+```
+DIM cwsText AS CWSTR = "As Long var1(34), var2(  73 ), var3(any)"
+DIM cws AS CWSTR = AfxStrRemove(cwsText, "(", ")", TRUE)   ' Returns "As Long var1, var2, var3"
+```
+
+# AfxStrRemove (Overload)
+
+Returns a copy of a string with a substring enclosed between the specified delimiters removed. Cse sensitive.
+
+```
+FUNCTION AfxStrRemove (BYVAL nSart AS LONG = 1, BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszDelim1 AS CONST WSTRING, BYREF wszDelim2 AS CONST WSTRING, _
+   BYVAL fRemoveAll AS BOOLEAN = FALSE) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSart* | Optional. The one-based starting position where to start the search. |
+| *wszMainStr* | The main string. |
+| *wszDelim1* | The first delimiter |
+| *wszDelim2* | The second delimiter |
+| *fRemoveAll* | Recursively remove all the occurrences. |
+
+#### Usage examples
+
+```
+DIM cwsText AS CWSTR = "blah blah (text beween parentheses) blah blah"
+DIM cws AS CWSTR = AfxStrRemove(cwsText, "(", ")")   ' Returns "blah blah  blah blah"
+```
+
+# <a name="AfxStrRemoveI"></a>AfxStrRemoveI
+
+Returns a new string with strings removed. Case insensitive.
+
+```
+FUNCTION AfxStrRemoveI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be removed. If *wszMatchStr* is not present in *wszMainStr*, all of *wszMainStr* is returned intact. |
+
+#### Usage example
+
+```
+AfxStrRemoveI("Hello World. Welcome to the Freebasic World", "world")
+```
+
+# <a name="AfxStrRemoveAny"></a>AfxStrRemoveAny
+
+Returns a new string with characters removed. Case sensitive.
+
+```
+FUNCTION AfxStrRemoveAny (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be removed. If *wszMatchStr* is not present in *wszMainStr*, all of *wszMainStr* is returned intact. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemoveAny("abacadabra", "bac")   ' -> "dr"
+```
+
+# <a name="AfxStrRemoveAnyI"></a>AfxStrRemoveAnyI
+
+Returns a new string with characters removed. Case insensitive.
+
+```
+FUNCTION AfxStrRemoveAnyI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be removed. If *wszMatchStr* is not present in *wszMainStr*, all of *wszMainStr* is returned intact. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRemoveAnyI("abacadabra", "BaC")   ' -> "dr"
 ```
