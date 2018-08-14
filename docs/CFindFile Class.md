@@ -339,3 +339,15 @@ Any combination of the following attributes is acceptable:
 
 TRUE if successful; otherwise FALSE.
 
+# <a name="Root "></a>Root 
+
+Call this method to get the root of the found file.
+
+```
+FUNCTION Root () AS CWSTR
+```
+
+#### Return value
+
+This method returns the drive specifier and path name used to start a search. For example, calling **FindFile** with \*.dat results in **Root** returning an empty string. Passing a path, such as c:\windows\system\*.dll, to FindFile results **Root** returning c:\windows\system\.
+
