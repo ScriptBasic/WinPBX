@@ -277,3 +277,65 @@ Retuns TRUE if the found file is a sparse file. Otherwise FALSE.
 ```
 FUNCTION IsSparseFile () AS BOOLEAN
 ```
+
+# <a name="IsSystemFile "></a>IsSystemFile 
+
+Retuns TRUE if the found file is a system file. Otherwise FALSE.
+
+```
+FUNCTION IsSystemFile () AS BOOLEAN
+```
+
+# <a name="IsTemporaryFile "></a>IsTemporaryFile 
+
+Retuns TRUE if the found file is a temporary file. Otherwise FALSE.
+
+```
+FUNCTION IsTemporaryFile () AS BOOLEAN
+```
+
+# <a name="LastAccessTime "></a>LastAccessTime 
+
+Returns the time the file was last accessed, in local time format.
+
+```
+FUNCTION LastAccessTime () AS FILETIME
+```
+
+# <a name="LastWriteTime "></a>LastWriteTime 
+
+Returns the time the file was written to, truncated, or overwritten, in local time format.
+
+```
+FUNCTION LastWriteTime () AS FILETIME
+```
+
+# <a name="MatchesMask "></a>MatchesMask 
+
+Call this method to test the file attributes on the found file.
+
+```
+FUNCTION MatchesMask (BYVAL dwMask AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwMask* | Specifies one or more file attributes, identified in the WIN32_FIND_DATAW structure, for the found file. To search for multiple attributes, use the bitwise OR operator. |
+
+Any combination of the following attributes is acceptable:
+
+| Attribute  | Description |
+| ---------- | ----------- |
+| FILE_ATTRIBUTE_ARCHIVE | The file is an archive file. Applications use this attribute to mark files for backup or removal. |
+| FILE_ATTRIBUTE_COMPRESSED | The file or directory is compressed. For a file, this means that all of the data in the file is compressed. For a directory, this means that compression is the default for newly created files and subdirectories. |
+| FILE_ATTRIBUTE_DIRECTORY | The file is a directory. |
+| FILE_ATTRIBUTE_NORMAL | The file has no other attributes set. This attribute is valid only if used alone. All other file attributes override this attribute. |
+| FILE_ATTRIBUTE_HIDDEN | The file is hidden. It is not to be included in an ordinary directory listing. |
+| FILE_ATTRIBUTE_READONLY | The file is read only. Applications can read the file but cannot write to it or delete it. |
+| FILE_ATTRIBUTE_SYSTEM | The file is part of or is used exclusively by the operating system. |
+| FILE_ATTRIBUTE_TEMPORARY | The file is being used for temporary storage. Applications should write to the file only if absolutely necessary. Most of the file's data remains in memory without being flushed to the media because the file will soon be deleted. |
+
+#### Return value
+
+TRUE if successful; otherwise FALSE.
+
