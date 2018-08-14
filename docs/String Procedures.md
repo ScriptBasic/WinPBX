@@ -854,7 +854,7 @@ DIM cws AS CWSTR = AfxStrRemove("Hello World. Welcome to the Freebasic World", "
 
 # AfxStrRemove (Overload)
 
-Returns a copy of a string with a substring enclosed between the specified delimiters removed. Cse sensitive.
+Returns a copy of a string with a substring enclosed between the specified delimiters removed. Case sensitive.
 
 ```
 FUNCTION AfxStrRemove (BYREF wszMainStr AS CONST WSTRING, _
@@ -883,7 +883,7 @@ DIM cws AS CWSTR = AfxStrRemove(cwsText, "(", ")", TRUE)   ' Returns "As Long va
 
 # AfxStrRemove (Overload)
 
-Returns a copy of a string with a substring enclosed between the specified delimiters removed. Cse sensitive.
+Returns a copy of a string with a substring enclosed between the specified delimiters removed. Case sensitive.
 
 ```
 FUNCTION AfxStrRemove (BYVAL nSart AS LONG = 1, BYREF wszMainStr AS CONST WSTRING, _
