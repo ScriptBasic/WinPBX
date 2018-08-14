@@ -6,7 +6,7 @@
 | [AfxBase64Decode](#AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | [AfxBase64Encode](#AfxBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
 | [AfxCryptBinaryToString](#AfxCryptBinaryToString) | Converts an array of bytes into a formatted string. |
-| AfxCryptStringToBinary | Converts a formatted string into an array of bytes. |
+| [AfxCryptStringToBinary(#AfxCryptStringToBinary) | Converts a formatted string into an array of bytes. |
 | AfxIsBstr | Checks if the passed pointer is a BSTR. |
 | AfxStrClipLeft | Returns a string with the specified number of characters removed from the left side of the string. |
 | AfxStrClipMid | Returns a string with the specified number of characters removed starting at the specified position. |
@@ -205,3 +205,70 @@ If the function fails, it returns zero (FALSE).
 #### Remarks
 
 With the exception of when **CRYPT_STRING_BINARY** encoding is used, all strings are appended with a new line sequence. By default, the new line sequence is a CR/LF pair (0x0D/0x0A). If the *dwFlags* parameter contains the **CRYPT_STRING_NOCR** flag, then the new line sequence is a LF character (0x0A). If the dwFlags parameter contains the **CRYPT_STRING_NOCRLF** flag, then no new line sequence is appended to the string.
+
+# <a name="AfxCryptStringToBinary"></a>AfxCryptStringToBinary
+
+Converts a formatted string into an array of bytes.
+
+```
+FUNCTION AfxCryptStringToBinaryA ( _
+   BYVAL pszString AS LPCSTR, _
+   BYVAL cchString AS DWORD, _
+   BYVAL dwFlags AS DWORD, _
+   BYVAL pbBinary AS UBYTE PTR, _
+   BYVAL pcbBinary AS DWORD PTR, _
+   BYVAL pdwSkip AS DWORD PTR, _
+   BYVAL pdwFlags AS DWORD PTR _
+) AS WINBOOL
+```
+
+```
+FUNCTION AfxCryptStringToBinaryW ( _
+   BYVAL pszString AS LPCWSTR, _
+   BYVAL cchString AS DWORD, _
+   BYVAL dwFlags AS DWORD, _
+   BYVAL pbBinary AS UBYTE PTR, _
+   BYVAL pcbBinary AS DWORD PTR, _
+   BYVAL pdwSkip AS DWORD PTR, _
+   BYVAL pdwFlags AS DWORD PTR _
+) AS WINBOOL
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pszString* | A pointer to a string that contains the formatted string to be converted. |
+| *cchString* | The number of characters of the formatted string to be converted, not including the terminating NULL character. If this parameter is zero, pszString is considered to be a null-terminated string. |
+| *dwFlags* | Indicates the format of the string to be converted. |
+| *pbBinary* | A pointer to a buffer that receives the returned sequence of bytes. If this parameter is NULL, the function calculates the length of the buffer needed and returns the size, in bytes, of required memory in the DWORD pointed to by *pcbBinary*. |
+| *pcbBinary* | A pointer to a DWORD variable that, on entry, contains the size, in bytes, of the *pbBinary* buffer. After the function returns, this variable contains the number of bytes copied to the buffer. If this value is not large enough to contain all of the data, the function fails and GetLastError returns **ERROR_MORE_DATA**. If *pbBinary* is NULL, the DWORD pointed to by *pcbBinary* is ignored. |
+| *pdwSkip* | A pointer to a DWORD value that receives the number of characters skipped to reach the beginning of the actual base64 or hexadecimal strings. This parameter is optional and can be NULL if it is not needed. |
+| *pdwFlags* | A pointer to a DWORD value that receives the flags actually used in the conversion. These are the same flags used for the *dwFlags* parameter. In many cases, these will be the same flags that were passed in the dwFlags parameter. If *dwFlags* contains one of the flags inicated below, this value will receive a flag that indicates the actual format of the string. This parameter is optional and can be NULL if it is not needed. |
+
+Values available for the *dwFlags* parameter:
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| CRYPT_STRING_BASE64HEADER | Base64, with certificate beginning and ending headers. |
+| CRYPT_STRING_BASE64 | Base64, without headers. |
+| CRYPT_STRING_BINARY | Pure binary copy. |
+| CRYPT_STRING_BASE64REQUESTHEADER | Base64, with request beginning and ending headers. |
+| CRYPT_STRING_BASE64 | Base64, without headers. |
+| CRYPT_STRING_HEX | Hexadecimal only. |
+| CRYPT_STRING_HEXASCII | Hexadecimal, with ASCII character display. |
+| CRYPT_STRING_BASE64_ANY | Tries the following, in order: CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64. |
+| CRYPT_STRING_ANY | Tries the following, in order: CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64, CRYPT_STRING_BINARY. |
+| CRYPT_STRING_HEX_ANY | Tries the following, in order: CRYPT_STRING_HEXADDR, CRYPT_STRING_HEXASCIIADDR, CRYPT_STRING_HEX, CRYPT_STRING_HEXRAW, CRYPT_STRING_HEXASCII. |
+| CRYPT_STRING_HEX | Hexadecimal only. |
+| CRYPT_STRING_BASE64X509CRLHEADER | Base64, with X.509 CRL beginning and ending headers. |
+| CRYPT_STRING_HEXADDR | Hexadecimal, with address display. |
+| CRYPT_STRING_HEXASCIIADDR | Hexadecimal, with ASCII character and address display. |
+| CRYPT_STRING_HEXRAW | A raw hexadecimal string. Not supported in Windows Server 2003 and Windows XP. |
+| CRYPT_STRING_STRICT | Enforce strict decoding of ASN.1 text formats. Some ASN.1 binary BLOBS can have the first few bytes of the BLOB incorrectly interpreted as Base64 text. In this case, the rest of the text is ignored. Use this flag to enforce complete decoding of the BLOB. Not suported in Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP. |
+
+Values available for the *pdwFlags* parameter:
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| CRYPT_STRING_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64, CRYPT_STRING_BINARY. |
+| CRYPT_STRING_BASE64_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_BASE64HEADER, CRYPT_STRING_BASE64. |
+| CRYPT_STRING_HEX_ANY | This variable will receive one of the following values. Each value indicates the actual format of the string. CRYPT_STRING_HEXADDR, CRYPT_STRING_HEXASCIIADDR, CRYPT_STRING_HEX, CRYPT_STRING_HEXRAW, CRYPT_STRING_HEXASCII. |
