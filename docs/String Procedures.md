@@ -2,8 +2,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxAcode | Translates unicode bytes to ansi bytes. |
-| AfxBase64Decode | Converts the contents of a Base64 mime encoded string to an ascii string. |
+| [AfxAcode](*AfxAcode) | Translates unicode bytes to ansi bytes. |
+| [AfxBase64Decode](*AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | AfxBase64Encode | Converts the contents of a string to Base64 mime encoding. |
 | AfxCryptBinaryToString | Converts an array of bytes into a formatted string. |
 | AfxCryptStringToBinary | Converts a formatted string into an array of bytes. |
@@ -95,4 +95,26 @@ MessageBoxW 0, cws, "", MB_OK
 DIM s AS STRING
 s = AfxAcode(cws, 1251)
 MessageBoxW 0, s, "", MB_OK
+
 ```
+# <a name="AfxBase64Decode"></a>AfxBase64Decode
+
+Converts the contents of a Base64 mime encoded string to an ascii string.
+
+```
+FUNCTION AfxBase64Decode (BYREF strData AS STRING) AS STRING
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *strData* | [in] The string to decode. |
+
+#### Return value
+
+The decoded string on success, or a null string on failure.
+
+####Remaks
+
+Base64 is a group of similar encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The Base64 term originates from a specific MIME content transfer encoding.
+
+Base64 encoding schemes are commonly used when there is a need to encode binary data that needs be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is used commonly in a number of applications including email via MIME, and storing complex data in XML.
