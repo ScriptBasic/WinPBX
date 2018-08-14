@@ -8,9 +8,9 @@
 | [AfxCryptBinaryToString](#AfxCryptBinaryToString) | Converts an array of bytes into a formatted string. |
 | [AfxCryptStringToBinary](#AfxCryptStringToBinary) | Converts a formatted string into an array of bytes. |
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
-| AfxStrClipLeft | Returns a string with the specified number of characters removed from the left side of the string. |
-| AfxStrClipMid | Returns a string with the specified number of characters removed starting at the specified position. |
-| AfxStrClipRight | Returns a string with the specified number of characters characters removed from the right side of the string. |
+| [AfxStrClipLeft](#AfxStrClipLeft) | Returns a string with the specified number of characters removed from the left side of the string. |
+| [AfxStrClipMid](#AfxStrClipMid) | Returns a string with the specified number of characters removed starting at the specified position. |
+| [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters characters removed from the right side of the string. |
 | AfxStrCSet | Returns a string containing a centered string. |
 | AfxStrDelete | Deletes a specified number of characters from a string expression. |
 | AfxStrExtract | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
@@ -78,8 +78,8 @@ FUNCTION AfxAcode (BYVAL pwszStr AS WSTRING PTR, BYVAL nCodePage AS LONG = 0) AS
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszStr* | [in] The WSTRING or CWSTR to convert. |
-| *nCodePage* | [in, opt] The code page used in the conversion, e.g. 1251 for Russian. If you specify CP_UTF8, the returned string will be UTF8 encoded. If you don't pass an unicode page, the function will use CP_ACP (0), which is the system default Windows ANSI code page. |
+| *pwszStr* | The WSTRING or CWSTR to convert. |
+| *nCodePage* | Optional. The code page used in the conversion, e.g. 1251 for Russian. If you specify CP_UTF8, the returned string will be UTF8 encoded. If you don't pass an unicode page, the function will use CP_ACP (0), which is the system default Windows ANSI code page. |
 
 #### Return value
 
@@ -107,7 +107,7 @@ FUNCTION AfxBase64Decode (BYREF strData AS STRING) AS STRING
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *strData* | [in] The string to decode. |
+| *strData* | The string to decode. |
 
 #### Return value
 
@@ -129,7 +129,7 @@ FUNCTION AfxBase64Encode (BYREF strData AS STRING) AS STRING
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *strData* | [in] The string to encode. |
+| *strData* | The string to encode. |
 
 #### Return value
 
@@ -291,4 +291,42 @@ Will return FALSE if it is a null pointer.
 If it is an OLE string it must have a descriptor; otherwise, don't.
 Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
 
+# <a name="AfxStrClipLeft"></a>AfxStrClipLeft
 
+Returns a string with *nCount* characters removed from the left side of the string.
+
+```
+FUNCTION AfxStrClipLeft (BYREF wszMainStr AS CONST WSTRING, BYVAL nCount AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *nCount* | The number of characters to be removed. |
+
+# <a name="AfxStrClipLeft"></a>AfxStrClipLeft
+
+Returns a string with *nCount* characters removed from the left side of the string.
+
+```
+FUNCTION AfxStrClipMid (BYREF wszMainStr AS CONST WSTRING, BYVAL nStart AS LONG, BYVAL nCount AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *nStart* | The one-based starting position. |
+| *nCount* | The number of characters to be removed. |
+
+# <a name="AfxStrClipRight"></a>AfxStrClipRight
+
+Returns a string with *nCount* characters removed from the right side of the string.
+
+```
+FUNCTION AfxStrClipRight  (BYREF wszMainStr AS CONST WSTRING, BYVAL nCount AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *nCount* | The number of characters to be removed. |
