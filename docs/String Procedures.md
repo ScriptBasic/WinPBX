@@ -1414,7 +1414,7 @@ AfxStrUnWrap("""Paul""") results in Paul
 
 # <a name="AfxStrVerify"></a>AfxStrVerify
 
-Determine whether each character of a string is present in another string.
+Determine whether each character of a string is present in another string. Case sensitive.
 
 ```
 FUNCTION AfxStrVerify (BYVAL nStart AS LONG, _
@@ -1426,6 +1426,24 @@ FUNCTION AfxStrVerify (BYVAL nStart AS LONG, _
 | *wszMainStr* | The main string. |
 | *wszMatchStr* | The string expression to be searched. |
 
+#### Return value
+
+Returns zero if each character in wszMainStr is present in *wszMatchStr*; otherwise, it returns the position of the first non-matching character in *wszMainStr*. If *nStart* is zero, a negative number of a value greater that the length of wszMainstr, zero is returned.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrVerify(5, "123.65,22.5", "0123456789")   ' Returns 7
+```
+
+#### Remark
+
+Returns 7 since 5 starts it past the first non-digit "." at position 4)
+
+# <a name="AfxStrVerifyI"></a>AfxStrVerifyI
+
+Determine whether each character of a string is present in another string. Case insensitive.
+
 ```
 FUNCTION AfxStrVerifyI (BYVAL nStart AS LONG, _
    BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
@@ -1433,9 +1451,8 @@ FUNCTION AfxStrVerifyI (BYVAL nStart AS LONG, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nStart* | The starting position to begin searching. |
 | *wszMainStr* | The main string. |
-| *wszChar* | The same character for both the left and right sides. |
+| *wszMatchStr* | The string expression to be searched. |
 
 #### Return value
 
@@ -1446,3 +1463,9 @@ Returns zero if each character in wszMainStr is present in *wszMatchStr*; otherw
 ```
 DIM nCount AS LONG = AfxStrVerify(5, "123.65,22.5", "0123456789")   ' Returns 7
 ```
+
+#### Remark
+
+Returns 7 since 5 starts it past the first non-digit "." at position 4)
+
+
