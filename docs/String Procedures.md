@@ -21,7 +21,7 @@
 | [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
 | [AfxStrInsert](#AfxStrInsert) | Inserts a string at a specified position within another string expression. |
-| AfxStrJoin | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
+| [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | AfxStrLCase | Returns a lowercased version of a string. |
 | AfxStrLSet | Returns a string containing a left justified string. |
 | AfxStrParse | Returns a delimited field from a string expression. |
@@ -567,4 +567,32 @@ FUNCTION AfxStrInsert (BYREF wszMainStr AS CONST WSTRING, _
 
 ```
 DIM cws AS CWSTR = AfxStrInsert("1234567890", "--", 6)   ' Returns "123456--7890"
+```
+
+# <a name="AfxStrJoin"></a>AfxStrJoin
+
+Returns a string consisting of all of the strings in an array, each separated by a delimiter. If the delimiter is a null (zero-length) string then no separators are inserted between the string sections. If the delimiter expression is the 3-byte value of "," which may be expressed in your source code as the string literal """,""" or as Chr(34,44,34) then a leading and trailing double-quote is added to each string section. This ensures that the returned string contains standard comma-delimited quoted fields that can be easily parsed.
+
+```
+FUNCTION AfxStrJoin (BYREF cwsa AS CSafeArray, BYREF wszDelimiter AS WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsa* | The one-dimensional VT_BSTR CSafeArray to join. |
+| *wszDelimiter* | The delimiter character. |
+
+#### Return value
+
+A CWSTR containing the joined string.
+
+#### Usage example
+
+```
+DIM csa AS CSafeArray = CSafeArray("STRING", 3, 1)
+csa.PutStr(1, "One")
+csa.PutStr(2, "Two")
+csa.PutStr(3, "Three")
+DIM cws AS CWSTR = AfxStrJoin(csa, ",")
+PRINT cws   ' ouput: One,Two,Three
 ```
