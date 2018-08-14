@@ -20,7 +20,7 @@
 | [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
-| AfxStrInsert | Inserts a string at a specified position within another string expression. |
+| [AfxStrInsert](#AfxStrInsert) | Inserts a string at a specified position within another string expression. |
 | AfxStrJoin | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | AfxStrLCase | Returns a lowercased version of a string. |
 | AfxStrLSet | Returns a string containing a left justified string. |
@@ -547,3 +547,22 @@ Some examples for *digits*:
 | 74000 | 3 | 1 min 14 sec |
 | 74000 | 2 | 1 min 10 sec |
 | 74000 | 2 | 1 min |
+
+# <a name="AfxStrInsert"></a>AfxStrInsert
+
+Inserts a string at a specified position within another string expression.
+
+```
+FUNCTION AfxStrInsert (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszInsertString AS CONST WSTRING, BYVAL nPosition AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszInsertString* | The string to be inserted. |
+| *nPosition* | The one-based starting position. If *nPosition* is greater than the length of *wszMainStr* or <= zero then *wszInsertString* is appended to *wszMainStr*. |
+
+#### Usage example
+
+DIM cws AS CWSTR = AfxStrInsert("1234567890", "--", 6)   ' Returns "123456--7890"
