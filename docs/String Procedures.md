@@ -5,7 +5,7 @@
 | [AfxAcode](#AfxAcode) | Translates unicode bytes to ansi bytes. |
 | [AfxBase64Decode](#AfxBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | [AfxBase64Encode](#AfxBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
-| AfxCryptBinaryToString | Converts an array of bytes into a formatted string. |
+| [AfxCryptBinaryToString](#AfxCryptBinaryToString) | Converts an array of bytes into a formatted string. |
 | AfxCryptStringToBinary | Converts a formatted string into an array of bytes. |
 | AfxIsBstr | Checks if the passed pointer is a BSTR. |
 | AfxStrClipLeft | Returns a string with the specified number of characters removed from the left side of the string. |
@@ -141,3 +141,67 @@ Base64 is a group of similar encoding schemes that represent binary data in an A
 
 Base64 encoding schemes are commonly used when there is a need to encode binary data that needs be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is used commonly in a number of applications including email via MIME, and storing complex data in XML.
 
+# <a name="AfxCryptBinaryToString"></a>AfxCryptBinaryToString
+
+Converts an array of bytes into a formatted string.
+
+```
+FUNCTION FUNCTION AfxCryptBinaryToStringA ( _
+   BYVAL pbBinary AS CONST UBYTE PTR, _
+   BYVAL cbBinary AS DWORD, _
+   BYVAL dwFlags AS DWORD, _
+   BYVAL pszString AS LPSTR, _
+   BYVAL pcchString AS DWORD PTR _
+) AS WINBOOL
+```
+
+```
+FUNCTION AfxCryptBinaryToStringW ( _
+   BYVAL pbBinary AS CONST UBYTE PTR, _
+   BYVAL cbBinary AS DWORD, _
+   BYVAL dwFlags AS DWORD, _
+   BYVAL pszString AS LPWSTR, _
+   BYVAL pcchString AS DWORD PTR _
+) AS WINBOOL
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pbBinary* | A pointer to the array of bytes to be converted into a string. |
+| *cbBinary* | The number of elements in the *pbBinary* array. |
+| *dwFlags* | Specifies the format of the resulting formatted string. |
+| *pszString* | A pointer to a buffer that receives the converted string. To calculate the number of characters that must be allocated to hold the returned string, set this parameter to NULL. The function will place the required number of characters, including the terminating NULL character, in the value pointed to by *pcchString*. |
+| *pcchString* | A pointer to a DWORD variable that contains the size, in characters, of the *pszString* buffer. If *pszString* is NULL, the function calculates the length of the return string (including the terminating null character) in characters and returns it in this parameter. If *pszString* is not NULL and big enough, the function converts the binary data into a specified string format including the terminating null character, but *pcchString* receives the length in characters, not including the terminating null character. |
+
+Values available for the *dwFlags* parameter:
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| CRYPT_STRING_BASE64HEADER | Base64, with certificate beginning and ending headers. |
+| CRYPT_STRING_BASE64 | Base64, without headers. |
+| CRYPT_STRING_BINARY | Pure binary copy. |
+| CRYPT_STRING_BASE64REQUESTHEADER | Base64, with request beginning and ending headers. |
+| CRYPT_STRING_HEX | Hexadecimal only. |
+| CRYPT_STRING_HEXASCII | Hexadecimal, with ASCII character display. |
+| CRYPT_STRING_BASE64X509CRLHEADER | Base64, with X.509 CRL beginning and ending headers. |
+| CRYPT_STRING_HEXADDR | Hexadecimal, with address display. |
+| CRYPT_STRING_HEXASCIIADDR | Hexadecimal, with ASCII character and address display. |
+| CRYPT_STRING_HEXRAW | A raw hexadecimal string. Not supported in Windows Server 2003 and Windows XP. |
+| CRYPT_STRING_STRICT | Enforce strict decoding of ASN.1 text formats. Some ASN.1 binary BLOBS can have the first few bytes of the BLOB incorrectly interpreted as Base64 text. In this case, the rest of the text is ignored. Use this flag to enforce complete decoding of the BLOB. Not suported in Windows Server 2008, Windows Vista, Windows Server 2003 and Windows XP. |
+
+In addition to the values above, one or more of the following values can be specified to modify the behavior of the function.
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| CRYPT_STRING_NOCRLF | Do not append any new line characters to the encoded string. The default behavior is to use a carriage return/line feed (CR/LF) pair (0x0D/0x0A) to represent a new line. Not supported in Windows Server 2003 and Windows XP. |
+| CRYPT_STRING_NOCR | Only use the line feed (LF) character (0x0A) for a new line. The default behavior is to use a CR/LF pair (0x0D/0x0A) to represent a new line. |
+
+
+#### Return value
+
+If the function succeeds, the function returns nonzero (CTRUE).
+If the function fails, it returns zero (FALSE).
+
+#### Remarks
+
+With the exception of when **CRYPT_STRING_BINARY** encoding is used, all strings are appended with a new line sequence. By default, the new line sequence is a CR/LF pair (0x0D/0x0A). If the *dwFlags* parameter contains the **CRYPT_STRING_NOCR** flag, then the new line sequence is a LF character (0x0A). If the dwFlags parameter contains the **CRYPT_STRING_NOCRLF** flag, then no new line sequence is appended to the string.
