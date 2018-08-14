@@ -37,11 +37,11 @@
 | [AfxStrRemoveI](#AfxStrRemoveI) | Returns a new string with substrings removed. Case insensitive. |
 | [AfxStrRemoveAny](#AfxStrRemoveAny) | Returns a new string with characters removed. Case sesnsitive. |
 | [AfxStrRemoveAnyI](#AfxStrRemoveAnyI) | Returns a new string with characters removed. Case insesnsitive. |
-| AfxStrRepeat | Returns a string consisting of multiple copies of the specified string. |
-| AfxStrReplace | Replaces all the occurrences of a string with another string. Case sensitive. |
-| AfxStrReplaceI | Replaces all the occurrences of a string with another string. Case insensitive. |
-| AfxStrReplaceAny | Replaces all the occurrences of a group of characters with another character. Case sensitive. |
-| AfxStrReplaceAnyI | Replaces all the occurrences of a group of characters with another character. Case insensitive. |
+| [AfxStrRepeat](#AfxStrRepeat) | Returns a string consisting of multiple copies of the specified string. |
+| [AfxStrReplace](#AfxStrReplace) | Replaces all the occurrences of a string with another string. Case sensitive. |
+| [AfxStrReplaceI](#AfxStrReplaceI) | Replaces all the occurrences of a string with another string. Case insensitive. |
+| [AfxStrReplaceAny](#AfxStrReplaceAny) | Replaces all the occurrences of a group of characters with another character. Case sensitive. |
+| [AfxStrReplaceAnyI](#AfxStrReplaceAnyI) | Replaces all the occurrences of a group of characters with another character. Case insensitive. |
 | AfxStrRetain | Returns a string containing only the characters contained in a specified match string. Case sensitive. |
 | AfxStrRetainI | Returns a string containing only the characters contained in a specified match string. Case insensitive. |
 | AfxStrRetainAny | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
@@ -961,4 +961,23 @@ FUNCTION AfxStrRemoveAnyI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr 
 
 ```
 DIM cws AS CWSTR = AfxStrRemoveAnyI("abacadabra", "BaC")   ' -> "dr"
+```
+
+# <a name="AfxStrRepeat"></a>AfxStrRepeat
+
+Returns a string consisting of multiple copies of the specified string. This function is similar to STRING, but STRING only makes multiple copies of a single character.
+
+```
+FUNCTION AfxStrRepeat (BYVAL nCount AS LONG, BYREF wszStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nCount* | The number of copies. |
+| *wszStr* | The string to be copied. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRepeat(5, "Paul")
 ```
