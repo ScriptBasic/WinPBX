@@ -396,6 +396,8 @@ The following line returns "aba" (match on "cad")
 DIM cws AS CWSTR = AfxStrExtract(1, "abacadabra","cad")
 ```
 
+# <a name="AfxStrExtract"></a>AfxStrExtract
+
 ```
 FUNCTION AfxStrExtract (BYREF wszMainStr AS CONST WSTRING, _
    BYREF wszDelim1 AS WSTRING, BYREF wszDelim2 AS WSTRING) AS CWSTR
@@ -416,6 +418,8 @@ The following lines return "text between parentheses" (text delimited by "(" and
 DIM cws AS CWSTR = "blah blah (text beween parentheses) blah blah"
 PRINT AfxStrExtract(cws, "(", ")")
 ```
+
+# <a name="AfxStrExtract"></a>AfxStrExtract
 
 ```
 FUNCTION AfxStrExtract (BYVAL nStart AS LONG, BYREF wszMainStr AS CONST WSTRING, _
