@@ -657,8 +657,8 @@ FUNCTION AfxStrParse (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The string to be justified. |
-| *nPosition* | If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
+| *wszMainStr* | The string to be parsed. |
+| *nPosition* | Starting position. If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
 | *wszDelimiter* | A string of one or more characters that must be fully matched to be successful. |
 
 #### Usage example
@@ -679,8 +679,8 @@ FUNCTION AfxStrParse (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The string to be justified. |
-| *nPosition* | If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
+| *wszMainStr* | The string to be parsed. |
+| *nPosition* | Starting position. If *nPosition* is zero or is outside of the actual field count, an empty string is returned. If *nPosition* is negative, fields are searched from the right to left of the *wszMainStr*. |
 | *wszDelimiter* | A string of one or more characters any of which may act as a delimiter character. |
 
 #### Usage example
