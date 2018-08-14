@@ -981,3 +981,87 @@ FUNCTION AfxStrRepeat (BYVAL nCount AS LONG, BYREF wszStr AS CONST WSTRING) AS C
 ```
 DIM cws AS CWSTR = AfxStrRepeat(5, "Paul")
 ```
+
+# <a name="AfxStrReplace"></a>AfxStrReplace
+
+Replaces all the occurrences of *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. Case sensitive.
+
+```
+FUNCTION AfxStrReplace (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYREF wszReplaceWith AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMatchStr* | The string expression to be replaced. |
+| *wszReplaceWith* | The replacement string. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrReplace("Hello World", "World", "Earth")   ' Returns "Hello Earth"
+```
+
+# <a name="AfxStrReplaceI"></a>AfxStrReplaceI
+
+Replaces all the occurrences of *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. Case insensitive.
+
+```
+FUNCTION AfxStrReplaceI (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYREF wszReplaceWith AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMatchStr* | The string expression to be replaced. |
+| *wszReplaceWith* | The replacement string. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrReplaceI("Hello world", "World", "Earth")   ' -> "Hello Earth"
+```
+
+# <a name="AfxStrReplaceAny "></a>AfxStrReplaceAny
+
+Replaces all the occurrences of any of the individual characters *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. *wszReplaceWith* must be a single character (this function does not replace words; therefore, *wszMatchStr* will not shrink or grow). Case sensitive. 
+
+```
+FUNCTION AfxStrReplaceAny  (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYREF wszReplaceWith AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMatchStr* | The characters to be replaced. |
+| *wszReplaceWith* | The replacement character. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrReplaceAny("abacadabra", "bac", "*")   ' -> *****d**r*
+```
+
+# <a name="AfxStrReplaceAnyI "></a>AfxStrReplaceAnyI
+
+Replaces all the occurrences of any of the individual characters *wszMatchStr* in *wszMainstr* with the contents of *wszReplaceWith*. *wszReplaceWith* must be a single character (this function does not replace words; therefore, *wszMatchStr* will not shrink or grow). Case insensitive. 
+
+```
+FUNCTION AfxStrReplaceAnyI  (BYREF wszMainStr AS CONST WSTRING, _
+   BYREF wszMatchStr AS CONST WSTRING, BYREF wszReplaceWith AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMatchStr* | The characters to be replaced. |
+| *wszReplaceWith* | The replacement character. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrReplaceAnyI("abacadabra", "BaC", "*")   ' -> *****d**r*
+```
