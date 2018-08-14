@@ -54,7 +54,7 @@
 | [AfxStrTally](#AfxStrTally) | Count the number of occurrences of a string within a string. Case sensitive. |
 | [AfxStrTallyI](#AfxStrTallyI) | Count the number of occurrences of a string within a string. Case insensitive. |
 | [AfxStrTallyAny](#AfxStrTallyAny) | Count the number of occurrences of a list of characters within a string. Case sensitive. |
-| [AfxStrTallyAnyI(#AfxStrTallyAnyI) | Count the number of occurrences of a list of characters within a string. Case insensitive. |
+| [AfxStrTallyAnyI](#AfxStrTallyAnyI) | Count the number of occurrences of a list of characters within a string. Case insensitive. |
 | AfxStrUCase | Returns an uppercased version of a string. |
 | AfxStrUnWrap | Removes paired characters to the beginning and end of a string. |
 | AfxStrVerify | Determine whether each character of a string is present in another string. Case sensitive. |
