@@ -13,10 +13,10 @@
 | [AfxStrClipRight](#AfxStrClipRight) | Returns a string with the specified number of characters removed from the right side of the string. |
 | [AfxStrCSet](#AfxStrCSet) | Returns a string containing a centered string. |
 | [AfxStrDelete](#AfxStrDelete) | Deletes a specified number of characters from a string expression. |
-| [AfxStrExtract](#AfxStrExtract) | Extracts characters from a string up to (but not including) a string or group of characters. Case sensitive. |
-| [AfxStrExtractI](#AfxStrExtractI) | Extracts characters from a string up to (but not including) a string or group of characters. Case insensitive. |
-| [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in a string. Case sensitive. |
-| [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in a string. Case insensitive. |
+| [AfxStrExtract](#AfxStrExtract) | Extracts characters from a string up to (but not including) the specified matching. Case sensitive. |
+| [AfxStrExtractI](#AfxStrExtractI) | Extracts characters from a string up to (but not including) the specified matching string. Case insensitive. |
+| [AfxStrExtractAny](#AfxStrExtractAny) | Extracts characters from a string up to (but not including) any character in the matching string. Case sensitive. |
+| [AfxStrExtractAnyI](#AfxStrExtractAnyI) | Extracts characters from a string up to (but not including) any character in the matching string. Case insensitive. |
 | [AfxStrFormatByteSize](#AfxStrFormatByteSize) | Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size. |
 | [AfxStrFormatKBSize](#AfxStrFormatKBSize) | Converts a numeric value into a string that represents the number expressed as a size value in kilobytes. |
 | [AfxStrFromTimeInterval](#AfxStrFromTimeInterval) | Converts a time interval, specified in milliseconds, to a string. |
