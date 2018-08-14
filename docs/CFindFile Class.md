@@ -4,7 +4,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Close](#CLose) | Ends the search, resets the context and releases all resources. |
+| [Close](#Close) | Ends the search, resets the context and releases all resources. |
 | [CreationTime](#CreationTime) | Returns the time, in local time format, the file was created. |
 | [FileAttributes](#FileAttributes) | Returns the attributes of the last found file. |
 | FileExt | Returns the extesion of the found file. |
