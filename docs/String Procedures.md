@@ -42,10 +42,10 @@
 | [AfxStrReplaceI](#AfxStrReplaceI) | Replaces all the occurrences of a string with another string. Case insensitive. |
 | [AfxStrReplaceAny](#AfxStrReplaceAny) | Replaces all the occurrences of a group of characters with another character. Case sensitive. |
 | [AfxStrReplaceAnyI](#AfxStrReplaceAnyI) | Replaces all the occurrences of a group of characters with another character. Case insensitive. |
-| AfxStrRetain | Returns a string containing only the characters contained in a specified match string. Case sensitive. |
-| AfxStrRetainI | Returns a string containing only the characters contained in a specified match string. Case insensitive. |
-| AfxStrRetainAny | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
-| AfxStrRetainAnyI | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
+| [AfxStrRetain](#AfxStrRetain) | Returns a string containing only the characters contained in a specified match string. Case sensitive. |
+| [AfxStrRetainI](#AfxStrRetainI) | Returns a string containing only the characters contained in a specified match string. Case insensitive. |
+| [AfxStrRetainAny](#AfxStrRetainAny( | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
+| [AfxStrRetainAnyI](#AfxStrRetainAnyI) | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
 | AfxStrReverse | Reverses the contents of a string expression. |
 | AfxStrRSet | Returns a string containing a right justified string. |
 | AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
@@ -993,7 +993,7 @@ FUNCTION AfxStrReplace (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMainStr* | The main string from which you want to replace the specified string. |
 | *wszMatchStr* | The string expression to be replaced. |
 | *wszReplaceWith* | The replacement string. |
 
@@ -1014,7 +1014,7 @@ FUNCTION AfxStrReplaceI (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMainStr* | The main string from which you want to replace the specified string. |
 | *wszMatchStr* | The string expression to be replaced. |
 | *wszReplaceWith* | The replacement string. |
 
@@ -1035,7 +1035,7 @@ FUNCTION AfxStrReplaceAny  (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMainStr* | The main string from which you want to replace the specified characters. |
 | *wszMatchStr* | The characters to be replaced. |
 | *wszReplaceWith* | The replacement character. |
 
@@ -1056,7 +1056,7 @@ FUNCTION AfxStrReplaceAnyI  (BYREF wszMainStr AS CONST WSTRING, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszMainStr* | The main string from which you want to replace the specified string or characters. |
+| *wszMainStr* | The main string from which you want to replace the specified characters. |
 | *wszMatchStr* | The characters to be replaced. |
 | *wszReplaceWith* | The replacement character. |
 
@@ -1064,4 +1064,23 @@ FUNCTION AfxStrReplaceAnyI  (BYREF wszMainStr AS CONST WSTRING, _
 
 ```
 DIM cws AS CWSTR = AfxStrReplaceAnyI("abacadabra", "BaC", "*")   ' -> *****d**r*
+```
+
+# <a name="AfxStrRetain"></a>AfxStrRetain
+
+Returns a string containing only the characters contained in a specified match string.
+
+```
+FUNCTION AfxStrRetain (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string from which you want to replace the specified string. |
+| *wszMatchStr* | The string expression to be replaced. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRetain("abacadabra","b")   ' -> "bb"
 ```
