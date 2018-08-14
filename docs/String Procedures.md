@@ -88,19 +88,23 @@ An ansi or UTF8 encoded string.
 #### Usage example
 (Russian bytes to unicode string and then to ansi):
 
+```
 DIM cws AS CWSTR
 cws = AfxUcode(CHR(209, 229, 236, 229, 237), 1251)
 MessageBoxW 0, cws, "", MB_OK
 DIM s AS STRING
 s = AfxAcode(cws, 1251)
 MessageBoxW 0, s, "", MB_OK
+```
 
 #### Usage example
 (Russian utf8 string to to unicode and back to utf8)
 
+```
 DIM cws AS CWSTR
 cws = AfxUcode("Ð”Ð¼Ð¸ÌÑ‚Ñ€Ð¸Ð¹ Ð”Ð¼Ð¸ÌÑ‚Ñ€Ð¸ÐµÐ²Ð¸Ñ‡", CP_UTF8)
 MessageBoxW 0, cws, "", MB_OK
 DIM s AS STRING
 s = AfxAcode(cws, CP_UTF8)
 MessageBoxW 0, s, "", MB_OK
+```
