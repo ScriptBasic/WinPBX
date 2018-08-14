@@ -41,7 +41,7 @@ CFindFile.inc
 
 # <a name="Close"></a>Close
 
-Call this method to end the search, reset the context, and release all resources. After calling **Close**, you do not have to create a new **CFindFile** instance before calling FindFile to begin a new search.
+Call this method to end the search, reset the context, and release all resources. After calling **Close**, you do not have to create a new **CFindFile** instance before calling **FindFile** to begin a new search.
 
 ```
 SUB Close
