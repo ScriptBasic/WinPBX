@@ -47,7 +47,7 @@
 | [AfxStrRetainAny](#AfxStrRetainAny) | Returns a string containing only the characters contained in a specified group of characters. Case sensitive. |
 | [AfxStrRetainAnyI](#AfxStrRetainAnyI) | Returns a string containing only the characters contained in a specified group of characters. Case insensitive. |
 | [AfxStrReverse](#AfxStrReverse) | Reverses the contents of a string expression. |
-| AfxStrRSet | Returns a string containing a right justified string. |
+| [AfxStrRSet](#AfxStrRSet) | Returns a string containing a right justified string. |
 | AfxStrShrink | Shrinks a string to use a consistent single character delimiter. |
 | AfxStrSplit | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
 | AfxStrSpn | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
@@ -1158,4 +1158,25 @@ FUNCTION AfxStrReverse (BYREF wszMainStr AS CONST WSTRING) AS CWSTR
 
 ```
 DIM cws AS CWSTR = AfxStrReverse("garden")   ' Returns "nedrag"
+```
+
+# <a name="AfxStrRSet"></a>AfxStrRSet
+
+Returns a string containing a right justified string.
+
+```
+FUNCTION AfxStrRSet (BYREF wszMainStr AS CONST WSTRING, _
+   BYVAL nStringLength AS LONG, BYREF wszPadCharacter AS CONST WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The string to be justified. |
+| *nStringLength* | The length of the new string. |
+| *wszPadCharacter* | The character to be used for padding. If it is not specified, the string will be padded with spaces. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxStrRSet("FreeBasic", 20, "*")
 ```
