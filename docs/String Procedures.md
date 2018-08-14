@@ -51,10 +51,10 @@
 | [AfxStrShrink](#AfxStrShrink) | Shrinks a string to use a consistent single character delimiter. |
 | [AfxStrSplit](#AfxStrSplit) | Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters. |
 | [AfxStrSpn](#AfxStrSpn) | Returns the length of the initial portion of a string which consists only of characters that are part of a specified set of characters. |
-| AfxStrTally | Count the number of occurrences of a string within a string. Case sensitive. |
-| AfxStrTallyI | Count the number of occurrences of a string within a string. Case insensitive. |
-| AfxStrTallyAny | Count the number of occurrences of a list of characters within a string. Case sensitive. |
-| AfxStrTallyAnyI | Count the number of occurrences of a list of characters within a string. Case insensitive. |
+| [AfxStrTally](#AfxStrTally) | Count the number of occurrences of a string within a string. Case sensitive. |
+| [AfxStrTallyI](#AfxStrTallyI) | Count the number of occurrences of a string within a string. Case insensitive. |
+| [AfxStrTallyAny](#AfxStrTallyAny) | Count the number of occurrences of a list of characters within a string. Case sensitive. |
+| [AfxStrTallyAnyI(#AfxStrTallyAnyI) | Count the number of occurrences of a list of characters within a string. Case insensitive. |
 | AfxStrUCase | Returns an uppercased version of a string. |
 | AfxStrUnWrap | Removes paired characters to the beginning and end of a string. |
 | AfxStrVerify | Determine whether each character of a string is present in another string. Case sensitive. |
@@ -1251,5 +1251,101 @@ DIM wszText AS WSTRING * 260 = "129th"
 DIM wszSet AS WSTRING * 260 = "1234567890"
 DIM n AS LONG = StrSpnW(@wszText, @wszSet)
 printf(!"The initial number has %d digits.\n", n)
+```
+
+# <a name="AfxStrTally"></a>AfxStrTally
+
+Count the number of occurrences of a string or a list of characters within a string. Case sensitive.
+
+```
+FUNCTION AfxStrTally (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be searched. |
+
+
+#### Return value
+
+The number of occurrences of *wszMatchStr* in *wszMainStr*.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrTally("abacadabra", "ab")   ' Returns 2
+```
+
+# <a name="AfxStrTallyI"></a>AfxStrTallyI
+
+Count the number of occurrences of a string or a list of characters within a string. Case insensitive.
+
+```
+FUNCTION AfxStrTallyI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | The string expression to be searched. |
+
+
+#### Return value
+
+The number of occurrences of *wszMatchStr* in *wszMainStr*.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrTallyI("abacadabra", "Ab")   ' -> 2
+```
+
+# <a name="AfxStrTallyAny"></a>AfxStrTallyAny
+
+Count the number of occurrences of a string or a list of characters within a string. Case sensitive.
+
+```
+FUNCTION AfxStrTallyAny (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | A list of single characters to be searched for individually. A match on any one of which will cause the count to be incremented for each occurrence of that character. Note that repeated characters in *wszMatchStr* will not increase the count. |
+
+
+#### Return value
+
+The number of occurrences of *wszMatchStr* in *wszMainStr*.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrTallyAny("abacadabra", "bac")   ' -> 8
+```
+
+# <a name="AfxStrTallyAnyI"></a>AfxStrTallyAnyI
+
+Count the number of occurrences of a string or a list of characters within a string. Case insensitive.
+
+```
+FUNCTION AfxStrTallyAnyI (BYREF wszMainStr AS CONST WSTRING, BYREF wszMatchStr AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMainStr* | The main string. |
+| *wszMatchStr* | A list of single characters to be searched for individually. A match on any one of which will cause the count to be incremented for each occurrence of that character. Note that repeated characters in *wszMatchStr* will not increase the count. |
+
+
+#### Return value
+
+The number of occurrences of *wszMatchStr* in *wszMainStr*.
+
+#### Usage example
+
+```
+DIM nCount AS LONG = AfxStrTallyAnyI("abacadabra", "bAc")   ' -> 8
 ```
 
