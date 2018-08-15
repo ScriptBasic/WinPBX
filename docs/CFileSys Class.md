@@ -30,9 +30,9 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetFileDateCreated](#GetFileDateCreated) | Returns the date and time that the specified file was created. |
 | [GetFileDateLastAccessed](#GetFileDateLastAccessed) | Returns the date and time that the specified file was accessed. |
 | [GetFileDateLastModified](#GetFileDateLastModified) | Returns the date and time that the specified file was modified. |
-| GetFileName | Returns a string containing the name of the file for a specified path. |
-| GetFileShortName | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
-| GetFileShortPath | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
+| [GetFileName](#GetFileName) | Returns a string containing the name of the file for a specified path. |
+| [GetFileShortName](#GetFileShortName) | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
+| [GetFileShortPath](#GetFileShortPath) | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
 | GetFileSize | Returns the size, in bytes, of the specified file. |
 | GetFileType | Returns information about the type of a file. |
 | GetFileVersion | Returns the version number of a specified file. |
@@ -743,4 +743,76 @@ DATE_. that the file was last modified.. This is a *Date Serial* number that can
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM nDate AS DATE_ = pFileSys.GetFileDateLastModified("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileName"></a>GetFileName
+
+Returns a string containing the name of the file for a specified path.
+
+```
+FUNCTION GetFileName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+CBSTR. The file name.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetFileName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetFileShortName"></a>GetFileShortName
+
+Returns the short name used by programs that require the earlier 8.3 file naming convention.
+
+```
+FUNCTION GetFileShortName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+CBSTR. The short name for the specified file.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetFileShortName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetFileShortPath"></a>GetFileShortPath
+
+Returns the short path used by programs that require the earlier 8.3 file naming convention.
+
+```
+FUNCTION GetFileShortPath (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+CBSTR. The short path to a specific file.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetFileShortPath("C:\MyFolder\Test.txt")
 ```
