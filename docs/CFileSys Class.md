@@ -40,10 +40,10 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetFolderDateCreated](#GetFolderDateCreated) | Returns the date and time that the specified folder was created. |
 | [GetFolderDateLastAccessed](#GetFolderDateLastAccessed) | Returns the date and time that the specified folder was last accessed. |
 | [GetFolderDateLastModified](#GetFolderDateLastModified) | Returns the date and time that the specified folder was last modified. |
-| GetFolderDriveLetter | Returns a string containing the drive letter for a specified folder. |
-| GetFolderName | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
-| GetFolderShortName | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
-| GetFolderShortPath | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
+| [GetFolderDriveLetter](#GetFolderDriveLetter) | Returns a string containing the drive letter for a specified folder. |
+| [GetFolderName](#GetFolderName) | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
+| [GetFolderShortName](#GetFolderShortName) | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
+| [GetFolderShortPath](#GetFolderShortPath) | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
 | GetFolderSize | Returns the size, in bytes, of all files and subfolders contained in the folder. |
 | GetFolderType | Returns information about the type of a folder. |
 | GetLastResult | Returns the last result code. |
@@ -1006,4 +1006,100 @@ DATE_. The date and time that the folder was last modified. This is a *Date Seri
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM nDate AS DATE_ = pFileSys.GetFolderDateLastModified("C:\MyPath)
+```
+
+# <a name="GetFolderDriveLetter"></a>GetFolderDriveLetter
+
+Returns a string containing the drive letter for a specified folder.
+
+```
+FUNCTION GetFolderDriveLetter (BYREF cbsFolder AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The drive letter of the folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsDriveLetter AS CBSTR = pFileSys.GetFolderDriveLetter("c:\MyFolder)
+```
+
+# <a name="GetFolderName"></a>GetFolderName
+
+Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name.
+
+```
+FUNCTION GetFolderName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The name of the folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetFolderName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetFolderShortName"></a>GetFolderShortName
+
+Returns the short name used by programs that require the earlier 8.3 file naming convention.
+
+```
+FUNCTION GetFolderShortName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The short name for the specified folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsFolderShortPath AS CBSTR = pFileSys.GetFolderShortName("c:\MyFolder)
+```
+
+# <a name="GetFolderShortPath"></a>GetFolderShortPath
+
+Returns the short path used by programs that require the earlier 8.3 file naming convention.
+
+```
+FUNCTION GetFolderShortPath (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The short path for the specified folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsFolderShortPath AS CBSTR = pFileSys.GetFolderShortPath("c:\MyFolder)
 ```
