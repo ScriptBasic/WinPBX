@@ -82,15 +82,15 @@ FUNCTION BuildPath (BYREF cbsPath AS CBSTR, BYREF cbsName AS CBSTR) AS CWSTR
 | *cbsPath* | CBSTR. Existing path to which name is appended. Path can be absolute or relative and need not specify an existing folder. |
 | *cbsName* | CBSTR. Name being appended to the existing path. |
 
-### Return value
+#### Return value
 
 CBSTR. The new path.
 
-### Remarks
+#### Remarks
 
 The **BuildPath** method inserts an additional path separator between the existing path and the name, only if necessary.
 
-### Usage example
+#### Usage example
 
 ```
 #INCLUDE ONCE "Afx/CFileSys.inc"
@@ -113,15 +113,15 @@ FUNCTION CopyFile (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR, _
 | *cbsDestination* | CBSTR. Character string destination where the file or files from source are to be copied. Wildcard characters are not allowed. |
 | *OverWriteFiles* | Boolean value that indicates if existing files are to be overwritten. If true, files are overwritten; if false, they are not. The default is true. Note that **CopyFile** will fail if destination has the read-only attribute set, regardless of the value of overwrite. |
 
-### Return value
+#### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
-### Remarks
+#### Remarks
 
 Wildcard characters can only be used in the last path component of the *cbSource* argument.
 
-### Usage example
+#### Usage example
 
 ```
 #INCLUDE ONCE "Afx/CFileSys.inc"
