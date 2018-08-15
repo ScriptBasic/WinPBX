@@ -27,7 +27,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveType](#GetDriveType) | Returns a value indicating the type of a specified drive. |
 | [GetExtensionName](#GetExtensionName) | Returns a string containing the extension name of the file for a specified path. |
 | [GetFileAttributes](#GetFileAttributes) | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
-| GetFileDateCreated | Returns the date and time that the specified file was created. |
+| [GetFileDateCreated](#GetFileDateCreated) | Returns the date and time that the specified file was created. |
 | GetFileDateLastAccessed | Returns the date and time that the specified file was accessed. |
 | GetFileDateLastModified | Returns the date and time that the specified file was modified. |
 | GetFileName | Returns a string containing the name of the file for a specified path. |
@@ -665,11 +665,34 @@ The file attributes. Can be any of the following values or any logical combinati
 | FileAttribute_Alias   | 1024 | Link or shortcut. Attribute is read-only. |
 | FileAttribute_Compressed | 2048 | Compressed file. Attribute is read-only. |
 
-
 #### Usage example
 
 ```
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM lAttr FILEATTRIBUTE = pFileSys.GetFileAttributes("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileDateCreated"></a>GetFileDateCreated
+
+Returns the date and time that the specified file was created.
+
+```
+FUNCTION GetFileDateCreated (BYREF cbsFile AS CBSTR) AS DATE_
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+DATE_. The date and time of the file creation. This is a *Date Serial* number that can be formatted using the Free Basic's **Format** function.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nDate AS DATE_ = pFileSys.GetFileDateCreated("C:\MyPath\MyFile.txt")
 ```
