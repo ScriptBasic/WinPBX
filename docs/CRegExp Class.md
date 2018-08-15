@@ -58,7 +58,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [MatchCount](#MatchCount) | Returns the number of matches found. |
 | [RegExpPtr](#RegExpPtr) | Returns a direct pointer to the **Afx_IRegExp2** interface. |
 | [Remove](#Remove) | Returns a copy of a string with text removed using a regular expression as the search string. |
-| Replace | Replaces text found in a regular expression search. |
+| [Replace](#Replace) | Replaces text found in a regular expression search. |
 | SubMatchValue | Retrieves the content of the specified submatch. |
 | Test | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
 
@@ -349,3 +349,90 @@ PRINT CRegExp("ab").Remove("abacadabra") ' - prints "acadra"
 PRINT CRegExp("[bAc]").Remove("abacadabra", TRUE) ' - prints "dr"
 PRINT CRegExp($"\bworld\b").Remove("World, worldx, world", TRUE) ' prints ", worldx,"
 ```
+
+# <a name="Replace"></a>Replace
+
+Replaces text found in a regular expression search.
+
+```
+FUNCTION Replace (BYREF cbsSourceString AS CBSTR, BYREF cvReplaceString AS CVAR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = TRUE, _
+   BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+```
+FUNCTION Replace (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYREF cvReplaceString AS CVAR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsSourceString* | The main string. |
+| *cvReplaceString* | The replacement text string. |
+| *cbsPattern* | The pattern to be removes. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+CBSTR. The resulting string.
+
+#### Remarks
+
+In the first overloaded function, the actual pattern for the text being replaced is set using the Pattern property.
+
+The **Replace** method returns a copy of *cbsSourceString* with the text of *cbsPattern* replaced with *cvsReplaceString*. If no match is found, a copy of *cbsSourceString* is returned unchanged.
+
+#### Examples
+
+```
+'#CONSOLE ON
+#INCLUDE ONCE "Afx/CRegExp.inc"
+USING Afx
+
+DIM pRegExp AS CRegExp
+pRegExp.Pattern = "fox"
+pRegExp.IgnoreCase = TRUE
+DIM cbsText AS CBSTR = "The quick brown fox jumped over the lazy dog."
+' Make replacement
+DIM cbsRes AS CBSTR = pRegExp.Replace(cbsText, "cat")
+print cbsRes
+' Output: The quick brown cat jumped over the lazy dog.
+```
+In addition, the **Replace** method can replace subexpressions in the pattern.
+
+The following call to the function shown in the previous example swaps the first pair of words in the original string:
+
+```
+DIM pRegExp AS CRegExp
+pRegExp.Pattern = "(\S+)(\s+)(\S+)"
+pRegExp.IgnoreCase = TRUE
+DIM cbsText AS CBSTR = "The quick brown fox jumped over the lazy dog."
+' Make replacement
+DIM cbsRes AS CBSTR = pRegExp.Replace(cbsText, "$3$2$1")
+print cbsRes
+```
+
+Suppose that you have a telephone directory, and all the phone numbers are formatted like this:
+555-123-4567. Now, you decide that all the phone numbers should be formatted to look like this: (555) 123-4567.
+
+```
+DIM pRegExp AS CRegExp
+pRegExp.Global = TRUE
+pRegExp.Pattern = "(\d{3})-(\d{3})-(\d{4})"
+DIM cbsText AS CBSTR = "555-123-4567"
+DIM cbsRes AS CBSTR = pRegExp.Replace(cbsText, "($1) $2-$3")
+print cbsRes
+```
+--or--
+
+```
+DIM cbsText AS CBSTR = "555-123-4567"
+DIM cbsPattern AS CBSTR = "(\d{3})-(\d{3})-(\d{4})"
+DIM cbsRes AS CBSTR = CRegExp(cbsPattern).Replace(cbsText, "($1) $2-$3")
+print cbsRes
+```
+
+What we have done is to search for 3 digits (\d{3}) followed by a dash, followed by 3 more digits and a dash, followed by 4 digits and add () to the first three digits and change the first dash with a space.  $1, $2, and $3 are examples of a regular expression "back reference." A back reference is simply a portion of the found text that can be saved and then reused.
+
