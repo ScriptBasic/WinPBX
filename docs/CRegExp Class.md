@@ -103,6 +103,34 @@ In the first overloaded method, the actual pattern for the regular expression se
 
 BOOLEAN. True on success or False on failure.
 
+#### Example
+
+```
+'#CONSOLE ON
+#INCLUDE ONCE "Afx/CRegExp.inc"
+USING Afx
+
+DIM pRegExp AS CRegExp
+pRegExp.Pattern = "(\w+)@(\w+)\.(\w+)"
+pRegExp.IgnoreCase = TRUE
+DIM cbsText AS CBSTR = "Please send mail to dragon@xyzzy.com. Thanks!"
+IF pRegExp.Execute(cbsText) = FALSE THEN
+   print "No match found"
+ELSE
+   ' Get the number of submatches
+   DIM nCount AS LONG = pRegExp.SubMatchesCount(0)
+   print "Sub matches: ", nCount
+   FOR i AS LONG = 0 TO nCount - 1
+      print pRegExp.SubMatchValue(0, i)
+   NEXT
+END IF
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+
 # <a name="Extract"></a>Extract
 
 Extracts a substring using VBScript regular expressions search patterns.
