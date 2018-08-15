@@ -33,10 +33,10 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetFileName](#GetFileName) | Returns a string containing the name of the file for a specified path. |
 | [GetFileShortName](#GetFileShortName) | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
 | [GetFileShortPath](#GetFileShortPath) | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
-| GetFileSize | Returns the size, in bytes, of the specified file. |
-| GetFileType | Returns information about the type of a file. |
-| GetFileVersion | Returns the version number of a specified file. |
-| GetFolderAttributes | Returns the attributes of folders. |
+| [GetFileSize](#GetFileSize) | Returns the size, in bytes, of the specified file. |
+| [GetFileType](#GetFileType) | Returns information about the type of a file. |
+| [GetFileVersion](#GetFileVersion) | Returns the version number of a specified file. |
+| [GetFolderAttributes](#GetFolderAttributes) | Returns the attributes of folders. |
 | GetFolderDateCreated | Returns the date and time that the specified folder was created. |
 | GetFolderDateLastAccessed | Returns the date and time that the specified folder was last accessed. |
 | GetFolderDateLastModified | Returns the date and time that the specified folder was last modified. |
@@ -815,4 +815,123 @@ CBSTR. The short path to a specific file.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsName AS CBSTR = pFileSys.GetFileShortPath("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetFileSize"></a>GetFileSize
+
+Returns the size, in bytes, of the specified file.
+
+```
+FUNCTION GetFileSize (BYREF cbsFile AS CBSTR) AS LONG
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+LONG. The size, in bytes, of the file.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nFileSize AS LONG = pFileSys.GetFileSize("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileType"></a>GetFileType
+
+Returns information about the type of a file. For example, for files ending in .TXT, "Text Document" is returned.
+
+```
+FUNCTION GetFileType (BYREF cbsFile AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+CBSTR. The type of file.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsFileType AS CBSTR = pFileSys.FileType("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileVersion"></a>GetFileVersion
+
+Returns the version number of a specified file.
+
+```
+FUNCTION GetFileVersion (BYREF cbsFile AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path (absolute or relative) to a specific file. |
+
+#### Return value
+
+CBSTR. The version number.
+
+#### Remarks
+
+The **GetFileVersion** method returns a zero-length string ("") if *cbsFile* does not end with the named component. 
+
+Note: The **GetFileVersion** method works only on the provided path string. It does not attempt to resolve the path, nor does it check for the existence of the specified path.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsVersion AS CBSTR = pFileSys.GetFileVersion("C:\MyFolder\MyFile.doc")
+IF LEN(cbsVersion) THEN
+   MSGBOX "File version: " & cbsVersion
+ELSE
+   MSGBOX "No version information available"
+END IF
+```
+
+# <a name="GetFolderAttributes"></a>GetFolderAttributes
+
+Returns the attributes of folders.
+
+```
+FUNCTION GetFolderAttributes (BYREF cbsFolder AS CBSTR) AS FILEATTRIBUTE
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+The attributes. Can be any of the following values or any logical combination of the following values:
+
+| Constant   | Value       | Description |
+| ---------- | ----------- | ----------- |
+| FileAttribute_Normal     | 0 | Normal file. No attributes are set. |
+| FileAttribute_ReadOnly   | 1 | Read-only file. Attribute is read/write. |
+| FileAttribute_Hidden     | 2 | Hidden file. Attribute is read/write. |
+| FileAttribute_System     | 4 | System file. Attribute is read/write. |
+| FileAttribute_Volume     | 8 | Disk drive volume label. Attribute is read-only. |
+| FileAttribute_Directory | 16 | Folder or directory. Attribute is read-only. |
+| FileAttribute_Archive |   32 | File has changed since last backup. Attribute is read/write. |
+| FileAttribute_Alias   | 1024 | Link or shortcut. Attribute is read-only. |
+| FileAttribute_Compressed | 2048 | Compressed file. Attribute is read-only. |
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM lAttr FILEATTRIBUTE = pFileSys.GetFolderAttributes("C:\MyPath")
 ```
