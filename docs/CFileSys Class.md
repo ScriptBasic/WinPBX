@@ -21,8 +21,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveAvailableSpace](#GetDriveAvailableSpace) | Returns the amount of space available to a user on the specified drive or network share. |
 | [GetDriveFileSystem](#GetDriveFileSystem) | Returns the type of file system in use for the specified drive or network share. |
 | [GetDriveFreeSpace](#GetDriveFreeSpace) | Returns the amount of free space available to a user on the specified drive or network share. |
-| GetDriveName | Returns a string containing the name of the drive for a specified path. |
-| GetDriveShareName | Returns the network share name for a specified drive. |
+| [GetDriveName](#GetDriveName) | Returns a string containing the name of the drive for a specified path. |
+| [GetDriveShareName](#GetDriveShareName) | Returns the network share name for a specified drive. |
 | GetDriveTotalSize | Returns the total space, in bytes, of a drive or network share. |
 | GetDriveType | Returns a value indicating the type of a specified drive. |
 | GetExtesionName | Returns a string containing the extension name of the file for a specified path. |
@@ -498,4 +498,56 @@ The value returned by the **GetDriveFreeSpace** property is typically the same a
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 PRINT pFileSys.GetDriveFreeSpace("C:")
+```
+
+# <a name="GetDriveName"></a>GetDriveName
+
+Returns a string containing the name of the drive for a specified path.
+
+```
+FUNCTION GetDriveName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The path. |
+
+#### Return value
+
+CBSTR. The drive name.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetDriveName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetDriveShareName"></a>GetDriveShareName
+
+Returns the network share name for a specified drive.
+
+```
+FUNCTION GetDriveShareName (BYREF cbsDrive AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+CBSTR. The share name.
+
+#### Remarks
+
+If object is not a network drive, the *GetDriveShareName* method returns a zero-length string ("").
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsShareName AS CBSTR = pFileSys.GetDriveShareName("H:")
 ```
