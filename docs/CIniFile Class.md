@@ -106,4 +106,23 @@ FUNCTION GetDouble (BYREF wszSectionName AS WSTRING, _
 
 DOUBLE. The retrieved value. If the key key cannot be found in the initialization file, the default value is returned.
 
+# <a name="GetInt"></a>GetInt
+
+Retrieves a numeric value from the specified section in an initialization file.
+
+```
+FUNCTION GetInt (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYVAL nDefaultValue AS LONG = 0) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *wszKeyName* | The name of the key. |
+| *nDefaultValue* | A default value to be returned if the key key cannot be found in the initialization file. |
+
+#### Return value
+
+LONG. The retrieved value. If the key key cannot be found in the initialization file, the default value is returned.
+
 
