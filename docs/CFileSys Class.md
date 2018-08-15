@@ -61,9 +61,9 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [MoveFolder](#MoveFolder) | Moves one or more folders from one location to another. |
 | [SetFileAttributes](#SetFileAttributes) | Sets the attributes of files. |
 | [SetFileName](#SetFileName) | Sets the name of a specified file. |
-| SetFolderAttributes | Sets the attributes of folders. |
-| SetFolderName | Sets the name of a specified folder. |
-| SetVolumeName | Sets the volume name of the specified drive. |
+| [SetFolderAttributes](#SetFolderAttributes) | Sets the attributes of folders. |
+| [SetFolderName](#SetFolderName) | Sets the name of a specified folder. |
+| [SetVolumeName](#SetVolumeName) | Sets the volume name of the specified drive. |
 
 #### Include File:
 
@@ -1533,4 +1533,95 @@ You only have to pass the new name of the file, not the full path.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 pFileSys.SetFileName("c:\MyFolder\Test.txt", "NewName")
+```
+
+# <a name="SetFolderAttributes"></a>SetFolderAttributes
+
+Sets the attributes of folders.
+
+```
+FUNCTION SetFolderAttributes (BYREF cbsFolder AS CBSTR, BYVAL lAttr AS FILEATTRIBUTE) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+| *lAttr* | LONG. The new value for the attributes of the specified folder. |
+
+#### Return value
+
+The *lAttr* argument can have any of the following values or any logical combination of the following values:
+
+| Constant   | Value       | Description |
+| ---------- | ----------- | ----------- |
+| FileAttribute_Normal     | 0 | Normal file. No attributes are set. |
+| FileAttribute_ReadOnly   | 1 | Read-only file. Attribute is read/write. |
+| FileAttribute_Hidden     | 2 | Hidden file. Attribute is read/write. |
+| FileAttribute_System     | 4 | System file. Attribute is read/write. |
+| FileAttribute_Volume     | 8 | Disk drive volume label. Attribute is read-only. |
+| FileAttribute_Directory | 16 | Folder or directory. Attribute is read-only. |
+| FileAttribute_Archive |   32 | File has changed since last backup. Attribute is read/write. |
+| FileAttribute_Alias   | 1024 | Link or shortcut. Attribute is read-only. |
+| FileAttribute_Compressed | 2048 | Compressed file. Attribute is read-only. |
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.SetFolderAttributes("C:\MyPath\MyFile.txt", 17)   ¡ FileAttribute_Directory OR FileAttribute_ReadOnly
+```
+
+# <a name="SetFolderName"></a>SetFolderName
+
+Sets the name of a specified folder.
+
+```
+FUNCTION SetFolderName (BYREF cbsFolder AS CBSTR, BYREF cbsName AS CBSTR) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+| *cbsName* | CBSTR. The new name of the folder. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Remarks
+
+You only have to pass the new name of the folder, not the full path.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.SetFolderName("c:\MyFolder", "NewName")
+```
+
+# <a name="SetVolumeName"></a>SetVolumeName
+
+Sets the name of a specified drive.
+
+```
+FUNCTION SetVolumeName (BYREF cbsDrive AS CBSTR, BYREF cbsName AS CBSTR) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+| *cbsName* | CBSTR. The volume name. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.SetVolumeName("C:", "VolumeName")
 ```
