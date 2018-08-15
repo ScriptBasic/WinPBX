@@ -426,7 +426,7 @@ FUNCTION GetDriveAvailableSpace (BYREF cbsDrive AS CBSTR) AS DOUBLE
 
 | Name       | Description |
 | ---------- | ----------- |
-| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\. |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
 
 #### Return value
 
@@ -454,7 +454,7 @@ FUNCTION GetDriveFileSystem (BYREF cbsDrive AS CBSTR) AS CBSTR
 
 | Name       | Description |
 | ---------- | ----------- |
-| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\. |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
 
 #### Return value
 
