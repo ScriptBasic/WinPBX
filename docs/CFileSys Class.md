@@ -24,7 +24,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveName](#GetDriveName) | Returns a string containing the name of the drive for a specified path. |
 | [GetDriveShareName](#GetDriveShareName) | Returns the network share name for a specified drive. |
 | [GetDriveTotalSize](#GetDriveTotalSize) | Returns the total space, in bytes, of a drive or network share. |
-| GetDriveType | Returns a value indicating the type of a specified drive. |
+| [GetDriveType](#GetDriveType) | Returns a value indicating the type of a specified drive. |
 | GetExtesionName | Returns a string containing the extension name of the file for a specified path. |
 | GetFileAttributes | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
 | GetFileDateCreated | Returns the date and time that the specified file was created. |
@@ -574,4 +574,44 @@ DOUBLE. The total space in bytes.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 PRINT pFileSys.GetDriveTotalSize("C:")
+```
+
+# <a name="GetDriveType"></a>GetDriveType
+
+Returns a value indicating the type of a specified drive.
+
+```
+FUNCTION GetDriveType (BYREF cbsDrive AS CBSTR) AS DRIVETYPECONST
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+The type of the specified drive.
+
+DriveType_UnknownType = 0
+DriveType_Removable = 1
+DriveType_Fixed = 2
+DriveType_Remote = 3
+DriveType_CDRom = 4
+DriveType_RamDisk = 5
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nDriveType AS DRIVETYPECONST = pFileSys.GetDriveType("C:")
+DIM t AS CBSTR
+SELECT CASE pDrive.DriveType
+   CASE 0 : t = "Unknown"
+   CASE 1 : t = "Removable"
+   CASE 2 : t = "Fixed"
+   CASE 3 : t = "Network"
+   CASE 4 : t = "CD-ROM"
+   CASE 5 : t = "RAM Disk"
+END SELECT
 ```
