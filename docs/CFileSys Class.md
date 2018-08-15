@@ -26,7 +26,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveTotalSize](#GetDriveTotalSize) | Returns the total space, in bytes, of a drive or network share. |
 | [GetDriveType](#GetDriveType) | Returns a value indicating the type of a specified drive. |
 | [GetExtensionName](#GetExtensionName) | Returns a string containing the extension name of the file for a specified path. |
-| GetFileAttributes | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
+| [GetFileAttributes](#GetFileAttributes) | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
 | GetFileDateCreated | Returns the date and time that the specified file was created. |
 | GetFileDateLastAccessed | Returns the date and time that the specified file was accessed. |
 | GetFileDateLastModified | Returns the date and time that the specified file was modified. |
@@ -635,4 +635,41 @@ FUNCTION GetExtensionName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsName AS CBSTR = pFileSys.GetExtensionName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetFileAttributes"></a>GetFileAttributes
+
+Returns the attributes of files.
+
+```
+FUNCTION GetFileAttributes (BYREF cbsFile AS CBSTR) AS FILEATTRIBUTE
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+The file attributes. Can be any of the following values or any logical combination of the following values:
+
+| Constant   | Value       | Description |
+| ---------- | ----------- | ----------- |
+| FileAttribute_Normal     | 0 | Normal file. No attributes are set. |
+| FileAttribute_ReadOnly   | 1 | Read-only file. Attribute is read/write. |
+| FileAttribute_Hidden     | 2 | Hidden file. Attribute is read/write. |
+| FileAttribute_System     | 4 | System file. Attribute is read/write. |
+| FileAttribute_Volume     | 8 | Disk drive volume label. Attribute is read-only. |
+| FileAttribute_Directory | 16 | Folder or directory. Attribute is read-only. |
+| FileAttribute_Archive |   32 | File has changed since last backup. Attribute is read/write. |
+| FileAttribute_Alias   | 1024 | Link or shortcut. Attribute is read-only. |
+| FileAttribute_Compressed | 2048 | Compressed file. Attribute is read-only. |
+
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM lAttr FILEATTRIBUTE = pFileSys.GetFileAttributes("C:\MyPath\MyFile.txt")
 ```
