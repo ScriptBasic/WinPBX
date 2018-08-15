@@ -56,7 +56,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [FindEx](#FindEx) | Global, multiline find function with VBScript regular expressions search patterns. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [MatchCount](#MatchCount) | Returns the number of matches found. |
-| RegExpPtr | Returns a direct pointer to the **Afx_IRegExp2** interface. |
+| [RegExpPtr](#RegExpPtr) | Returns a direct pointer to the **Afx_IRegExp2** interface. |
 | Remove | Returns a copy of a string with text removed using a regular expression as the search string. |
 | Replace | Replaces text found in a regular expression search. |
 | SubMatchValue | Retrieves the content of the specified submatch. |
@@ -294,3 +294,21 @@ FUNCTION MatchCount () AS LONG
 #### Return value
 
 LONG. The number of matches found.
+
+# <a name="RegExpPtr"></a>RegExpPtr
+
+Returns a direct pointer to the Afx_IRegExp2 interface.
+
+```
+FUNCTION RegExpPtr () AS Afx_IRegExp2 PTR
+```
+#### Return value
+
+A pointer to the Afx_IRegExp2 interface.
+
+#### Remarks
+
+Since it is a direct pointer, you don't have to release it calling the **Release** method.
+
+
+
