@@ -11,7 +11,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [CopyFolder](#CopyFolder) | Recursively copies a folder from one location to another. |
 | [CreateFolder](#CreateFolder) | Creates a folder. |
 | [DeleteFile](#DeleteFile) | Deletes a specified file. |
-| DeleteFolder | Deletes a specified folder and its contents. |
+| [DeleteFolder](#DeleteFolder) | Deletes a specified folder and its contents. |
 | DriveExists | Checks if the specified drive exists. |
 | DriveLetters | Returns a semicolon separated list with the driver letters. |
 | FileExists | Checks for the existence of the specified file. |
@@ -220,4 +220,35 @@ An error occurs if no matching files are found. The **DeleteFile** method stops 
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 pFileSys.DeleteFile("C:\MyFolder\MyFile.txt")
+```
+
+# <a name="DeleteFolder"></a>DeleteFolder
+
+Deletes a specified folder and its contents.
+
+```
+FUNCTION DeleteFolder (BYREF cbsFolderSpec AS CBSTR, BYVAL bForce AS VARIANT_BOOL = FALSE) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolderSpec* | CBSTR. The name of the folder to delete. cbsFolderSpec can contain wildcard characters in the last path component. |
+| *bForce* | Boolean value that is true if folders with the read-only attribute set are to be deleted; false (default) if they are not. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Remarks
+
+The **DeleteFolder** method does not distinguish between folders that have contents and those that do not. The specified folder is deleted regardless of whether or not it has contents. 
+
+An error occurs if no matching folders are found. The **DeleteFolder** method stops on the first error it encounters. No attempt is made to roll back or undo any changes that were made before an error occurred.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.DeleteFolder("C:\MyFolder")
 ```
