@@ -50,9 +50,9 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetNumDrives](#GetNumDrives) | Returns the number of drives. |
 | [GetNumFiles](#GetNumFiles) | Returns the number of files contained in a specified folder, including those with hidden and system file attributes set. |
 | [GetNumSubFolders](#GetNumSubFolders) | Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set. |
-| GetParentFolderName | Returns the folder name for the parent of the specified folder. |
-| GetSerialNumber | Returns the decimal serial number used to uniquely identify a disk volume. |
-| GetStandardStream | Returns a TextStream object corresponding to the standard input, output, or error stream. |
+| [GetParentFolderName](#GetParentFolderName) | Returns the folder name for the parent of the specified folder. |
+| [GetSerialNumber](#GetSerialNumber) | Returns the decimal serial number used to uniquely identify a disk volume. |
+| [GetStandardStream](#GetStandardStream) | Returns a TextStream object corresponding to the standard input, output, or error stream. |
 | GetTempName | Returns a randomly generated temporary file or folder name that is useful for performing operations that require a temporary file or folder. |
 | GetVolumeName | Returns the volume name of the specified drive. |
 | IsDriveReady | Returns True if the specified drive is ready; False if it is not. |
@@ -1230,4 +1230,92 @@ LONG. The number of subfolders.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM numSubFolders AS LONG = pFileSys.GetNumSubFolders("C:\MyFolder")
+```
+
+# <a name="GetParentFolderName"></a>GetParentFolderName
+
+Returns the folder name for the parent of the specified folder.
+
+```
+FUNCTION GetParentFolderName (BYREF cbsFolder AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The name of the parent folder, or a empty string if the folder has no parent.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsParentFolderName AS CBSTR = pFileSys.GetParentFolderName("C:\MyFolder\MySubfolder")
+```
+
+# <a name="GetSerialNumber"></a>GetSerialNumber
+
+Returns the decimal serial number used to uniquely identify a disk volume.
+
+```
+FUNCTION GetSerialNumber (BYREF cbsDrive AS CBSTR) AS LONG
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+LONG. The serial number.
+
+#### Remarks
+
+You can use the **GetSerialNumber** method to ensure that the correct disk is inserted in a drive with removable media. 
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nSerialNumber AS LONG = pFileSys.GetSerialNumber("C:")
+```
+
+# <a name="GetStandardStream"></a>GetStandardStream
+
+Returns a TextStream object corresponding to the standard input, output, or error stream.
+
+```
+FUNCTION GetStandardStream (BYVAL nStreamType AS STANDARDSTREAMTYPES, _
+   BYVAL bUnicode AS VARIANT_BOOL = FALSE) AS Afx_ITextStream PTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *nStreamType* | LONG. Can be one of three constants: *StandardStreamTypes_StdErr*, *StandardStreamTypes_StdIn*, or *StandardStreamTypes_StdOut*. |
+| *bUnicode* | Boolean value that indicates whether the file is created as a Unicode or ASCII file. The value is true if the file is created as a Unicode file, false if it is created as an ASCII file. If omitted, an ASCII file is assumed. |
+
+#### Return value
+
+A pointer to the *ITextStream* interface of the requested standard stream.
+
+#### Settings
+
+The nStreamType argument can have any of the following settings:
+
+| Constant   | Constant    | Description |
+| ---------- | ----------- | ----------- |
+| StandardStreamTypes_StdIn  | 0 | Returns a TextStream object corresponding to the standard input stream. |
+| StandardStreamTypes_StdOut | 1 | Returns a TextStream object corresponding to the standard output stream. |
+| StandardStreamTypes_StdErr | 2 | Returns a TextStream object corresponding to the standard error stream. |
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM pStm AS Afx_ITextStream PTR = pFileSys.GetStandardStream(StandardStreamTypes_StdOut)
 ```
