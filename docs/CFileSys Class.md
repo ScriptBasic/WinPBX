@@ -1213,7 +1213,7 @@ DIM numFiles AS LONG = pFileSys.GetNumFiles("C:\MyFolder")
 Returns the number of files contained in a specified folder, including those with hidden and system file attributes set.
 
 ```
-Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set.
+FUNCTION GetNumSubFolders (BYREF cbsFolder AS CBSTR) AS LONG
 ```
 
 | Name       | Description |
