@@ -200,3 +200,21 @@ FUNCTION GetSectionValues (BYREF wszSectionName AS WSTRING, BYREF pDic AS CDicOb
 
 BOOLEAN. True on success or False on failure.
 
+# <a name="GetString"></a>GetString
+
+Retrieves a numeric value from the specified section in an initialization file.
+
+```
+FUNCTION GetString (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYVAL wszDefaultValue AS WSTRING = "") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *wszKeyName* | The name of the key. |
+| *wszDefaultValue* | A default string. If the key key cannot be found in the initialization file, the default string is returned. Avoid specifying a default string with trailing blank characters. The function inserts a null character in the returned buffer to strip any trailing blanks. |
+
+#### Return value
+
+DOUBLE. The retrieved string. If the key key cannot be found in the initialization file, the default value is returned.
