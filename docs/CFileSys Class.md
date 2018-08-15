@@ -16,7 +16,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [DriveLetters](#DriveLetters) | Returns a semicolon separated list with the driver letters. |
 | [FileExists](#FileExists) | Checks for the existence of the specified file. |
 | [FolderExists](#FolderExists) | Checks for the existence of the specified folder. |
-| GetAbsolutePathName | Returns complete and unambiguous path from a provided path specification. |
+| [GetAbsolutePathName](#GetAbsolutePathName) | Returns complete and unambiguous path from a provided path specification. |
 | GetBaseName | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | GetDriveAvailableSpace | Returns the amount of space available to a user on the specified drive or network share. |
 | GetDriveFileSystem | Returns the type of file system in use for the specified drive or network share. |
@@ -347,4 +347,43 @@ Boolean. True if the specified folder exists; False if it does not.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM fExists AS BOOLEAN = pFileSys.FolderExists("C:\MyFolder")
+```
+
+# <a name="GetAbsolutePathName"></a>GetAbsolutePathName
+
+Returns complete and unambiguous path from a provided path specification.
+
+```
+FUNCTION GetAbsolutePathName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. Path specification to change to a complete and unambiguous path. |
+
+#### Return value
+
+Boolean. The path name.
+
+#### Remarks
+
+A path is complete and unambiguous if it provides a complete reference from the root of the specified drive. A complete path can only end with a path separator character (\) if it specifies the root folder of a mapped drive.
+
+Assuming the current directory is c:\mydocuments\reports, the following table illustrates the behavior of the **GetAbsolutePathName** method.
+
+| pathspec   | Returned path |
+| ---------- | ------------- |
+| "c:" | "c:\mydocuments\reports" |
+| "c:.." | "c:\mydocuments" |
+| "c:\" | "c:\" |
+| "c:*.*\may97" | "c:\mydocuments\reports\\*.*\may97" |
+| "region1" | "c:\mydocuments\reports\region1" |
+| "c:\..\..\mydocuments" | "c:\mydocuments" |
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetAbsolutePathName("C:\MyFolder\Test.txt")
 ```
