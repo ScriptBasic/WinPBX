@@ -1,3 +1,5 @@
+# CIniFile Class
+
 **CIniFile** is a wrapper class to ease the use of .ini files.
 
 Pass the path and name of the .ini file to read or write to when you create an instance of the **CIniFile** class. If you omit the path, the class will use the current directory. If the .ini file does not exist, it will create it.
