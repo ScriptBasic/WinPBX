@@ -47,9 +47,9 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetFolderSize](#GetFolderSize) | Returns the size, in bytes, of all files and subfolders contained in the folder. |
 | [GetFolderType](#GetFolderType) | Returns information about the type of a folder. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
-| GetNumDrives | Returns the number of drives. |
-| GetNumFiles | Returns the number of files contained in a specified folder, including those with hidden and system file attributes set. |
-| GetNumSubFolders | Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set. |
+| [GetNumDrives](#GetNumDrives) | Returns the number of drives. |
+| [GetNumFiles](#GetNumFiles) | Returns the number of files contained in a specified folder, including those with hidden and system file attributes set. |
+| [GetNumSubFolders](#GetNumSubFolders) | Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set. |
 | GetParentFolderName | Returns the folder name for the parent of the specified folder. |
 | GetSerialNumber | Returns the decimal serial number used to uniquely identify a disk volume. |
 | GetStandardStream | Returns a TextStream object corresponding to the standard input, output, or error stream. |
@@ -1163,3 +1163,71 @@ FUNCTION GetLastResult () AS HRESULT
 #### Return value
 
 HRESULT. The result code returned by the last executed method.
+
+# <a name="GetNumDrives"></a>GetNumDrives
+
+Returns the number of drives.
+
+```
+FUNCTION GetNumDrives () AS LONG
+```
+
+#### Return value
+
+LONG. The number of drives.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM numDrives AS LONG = pFileSys.GetNumDrives
+```
+
+# <a name="GetNumFiles"></a>GetNumFiles
+
+Returns the number of files contained in a specified folder, including those with hidden and system file attributes set.
+
+```
+FUNCTION GetNumFiles (BYREF cbsFolder AS CBSTR) AS LONG
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+LONG. The number of files.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM numFiles AS LONG = pFileSys.GetNumFiles("C:\MyFolder")
+```
+
+# <a name="GetNumSubFolders"></a>GetNumSubFolders
+
+Returns the number of files contained in a specified folder, including those with hidden and system file attributes set.
+
+```
+Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set.
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+LONG. The number of subfolders.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM numSubFolders AS LONG = pFileSys.GetNumSubFolders("C:\MyFolder")
+```
