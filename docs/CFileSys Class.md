@@ -13,7 +13,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [DeleteFile](#DeleteFile) | Deletes a specified file. |
 | [DeleteFolder](#DeleteFolder) | Deletes a specified folder and its contents. |
 | [DriveExists](#DriveExists) | Checks if the specified drive exists. |
-| DriveLetters | Returns a semicolon separated list with the driver letters. |
+| [DriveLetters](#DriveLetters) | Returns a semicolon separated list with the driver letters. |
 | FileExists | Checks for the existence of the specified file. |
 | FolderExists | Checks for the existence of the specified folder. |
 | GetAbsolutePathName | Returns complete and unambiguous path from a provided path specification. |
@@ -279,4 +279,24 @@ For drives with removable media, the **DriveExists** method returns true even if
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM fExists AS BOOLEAN = pFileSys.DriveExists("C:")
+```
+
+# <a name="DriveLetters"></a>DriveLetters
+
+Returns a semicolon separated list with the driver letters.
+
+```
+FUNCTION DriveLetters () AS CBSTR
+```
+
+#### Return value
+
+CBSTR. A semicolon separated list with the driver letters.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsLetters AS CBSTR = pFileSys.DriveLetters
 ```
