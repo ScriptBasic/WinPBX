@@ -7,7 +7,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | Name       | Description |
 | ---------- | ----------- |
 | [BuildPath](#BuildPath) | Appends a name to an existing path. |
-| CopyFile | Copies one or more files from one location to another. |
+| [CopyFile](#CopyFile) | Copies one or more files from one location to another. |
 | CopyFolder | Recursively copies a folder from one location to another. |
 | CreateFolder | Creates a folder. |
 | DeleteFile | Deletes a specified file. |
@@ -111,7 +111,7 @@ FUNCTION CopyFile (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR, _
 | ---------- | ----------- |
 | *cbsSource* | CBSTR. Character string file specification, which can include wildcard characters, for one or more files to be copied. |
 | *cbsDestination* | CBSTR. Character string destination where the file or files from source are to be copied. Wildcard characters are not allowed. |
-| *OverWriteFiles* | Boolean value that indicates if existing files are to be overwritten. If true, files are overwritten; if false, they are not. The default is true. Note that CopyFile will fail if destination has the read-only attribute set, regardless of the value of overwrite. |
+| *OverWriteFiles* | Boolean value that indicates if existing files are to be overwritten. If true, files are overwritten; if false, they are not. The default is true. Note that **CopyFile** will fail if destination has the read-only attribute set, regardless of the value of overwrite. |
 
 ### Return value
 
