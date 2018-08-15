@@ -12,7 +12,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [CreateFolder](#CreateFolder) | Creates a folder. |
 | [DeleteFile](#DeleteFile) | Deletes a specified file. |
 | [DeleteFolder](#DeleteFolder) | Deletes a specified folder and its contents. |
-| DriveExists | Checks if the specified drive exists. |
+| [DriveExists](#DriveExists) | Checks if the specified drive exists. |
 | DriveLetters | Returns a semicolon separated list with the driver letters. |
 | FileExists | Checks for the existence of the specified file. |
 | FolderExists | Checks for the existence of the specified folder. |
@@ -232,7 +232,7 @@ FUNCTION DeleteFolder (BYREF cbsFolderSpec AS CBSTR, BYVAL bForce AS VARIANT_BOO
 
 | Name       | Description |
 | ---------- | ----------- |
-| *cbsFolderSpec* | CBSTR. The name of the folder to delete. cbsFolderSpec can contain wildcard characters in the last path component. |
+| *cbsFolderSpec* | CBSTR. The name of the folder to delete. *cbsFolderSpec* can contain wildcard characters in the last path component. |
 | *bForce* | Boolean value that is true if folders with the read-only attribute set are to be deleted; false (default) if they are not. |
 
 #### Return value
@@ -251,4 +251,32 @@ An error occurs if no matching folders are found. The **DeleteFolder** method st
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 pFileSys.DeleteFolder("C:\MyFolder")
+```
+
+# <a name="DriveExists"></a>DriveExists
+
+Returns True if the specified drive exists; False if it does not.
+
+```
+FUNCTION DriveExists (BYREF cbsDriveSpec AS CBSTR) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDriveSpec* | CBSTR. A drive letter or a complete path specification. |
+
+#### Return value
+
+BOOLEAN. True if the specified drive exists; False if it does not.
+
+#### Remarks
+
+For drives with removable media, the **DriveExists** method returns true even if there are no media present. Use the **IsDriveReady** method to determine if a drive is ready.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM fExists AS BOOLEAN = pFileSys.DriveExists("C:")
 ```
