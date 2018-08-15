@@ -27,7 +27,8 @@ CONSTRUCTOR CIniFIle ((BYREF wszFileName AS WSTRING)
 
 #### Example
 
-#include once "AFx/CInifile.inc"
+```
+#include once "Afx/CInifile.inc"
 USING Afx
 
 DIM cIni AS CInifile = "Test.ini"
@@ -38,6 +39,7 @@ print wszName
 
 PRINT "Press any key..."
 SLEEP
+```
 
 ### Methods
 
