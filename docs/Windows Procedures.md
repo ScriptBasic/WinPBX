@@ -198,4 +198,4 @@
 
 #### Include file
 
-AfxStr.inc
+AfxWin.inc
