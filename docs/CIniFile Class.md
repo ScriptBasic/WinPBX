@@ -87,4 +87,23 @@ FUNCTION DeleteSection (BYREF wszSectionName AS WSTRING) AS BOOLEAN
 
 BOOLEAN. True on success or False on failure.
 
+# <a name="GetDouble"></a>GetDouble
+
+Retrieves a numeric value from the specified section in an initialization file.
+
+```
+FUNCTION GetDouble (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYVAL nDefaultValue AS DOUBLE = 0) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *wszKeyName* | The name of the key. |
+| *nDefaultValue* | A default value to be returned if the key key cannot be found in the initialization file. |
+
+#### Return value
+
+DOUBLE. The retrieved value. If the key key cannot be found in the initialization file, the default value is returned.
+
 
