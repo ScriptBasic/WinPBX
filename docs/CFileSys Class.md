@@ -1455,7 +1455,7 @@ FUNCTION MoveFolder (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR) AS
 | Name       | Description |
 | ---------- | ----------- |
 | *cbsSource* | CBSTR. The path to the folder or folders to be moved. The *cbsSource* argument string can contain wildcard characters in the last path component only. |
-| *cbsDestination* | CBSTR. Destination where the folder is to be moved (must end with a "\"). Wildcard characters are not allowed. |
+| *cbsDestination* | CBSTR. Destination where the folder is to be moved (must end with a "\\"). Wildcard characters are not allowed. |
 
 #### Return value
 
