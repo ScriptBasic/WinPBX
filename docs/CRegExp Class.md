@@ -54,7 +54,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [Extract](#Extract) | Extracts a substring using VBScript regular expressions search patterns. |
 | [Find](#Find) | Find function with VBScript regular expressions search patterns. |
 | [FindEx](#FindEx) | Global, multiline find function with VBScript regular expressions search patterns. |
-| GetLastResult | Returns the last result code. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
 | MatchCount | Returns the number of matches found. |
 | RegExpPtr | Returns a direct pointer to the **Afx_IRegExp2** interface. |
 | Remove | Returns a copy of a string with text removed using a regular expression as the search string. |
@@ -273,3 +273,13 @@ DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
 DIM cbsOut AS CBSTR = CRegExp(cbsPattern).FindEx(cbsText)
 ' Output: 11,4;26,4
 ```
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
