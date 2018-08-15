@@ -8,7 +8,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | ---------- | ----------- |
 | [BuildPath](#BuildPath) | Appends a name to an existing path. |
 | [CopyFile](#CopyFile) | Copies one or more files from one location to another. |
-| CopyFolder | Recursively copies a folder from one location to another. |
+| [CopyFolder](#CopyFolder) | Recursively copies a folder from one location to another. |
 | CreateFolder | Creates a folder. |
 | DeleteFile | Deletes a specified file. |
 | DeleteFolder | Deletes a specified folder and its contents. |
@@ -127,5 +127,36 @@ Wildcard characters can only be used in the last path component of the *cbSource
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 pFileSys.CopyFile("C:\MyFolder\MyFile.txt", "C:\MyOtherFolder\MyFile.txt")
+```
+
+# <a name="CopyFolder"></a>CopyFolder
+
+Recursively copies a folder from one location to another.
+
+```
+FUNCTION CopyFolder (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR, _
+   BYVAL OverWriteFiles AS VARIANT_BOOL = -1) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsSource* | CBSTR. Character string file specification, which can include wildcard characters, for one or more folders to be copied. |
+| *cbsDestination* | CBSTR. Character string destination where the folder and subfolders from source are to be copied (must end with a "\"). Wildcard characters are not allowed.  |
+| *OverWriteFiles* | Boolean value that indicates if existing folders are to be overwritten. If true, files are overwritten; if false, they are not. The default is true. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Remarks
+
+Wildcard characters can only be used in the last path component of the *cbSource* argument.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.CopyFolder("C:\MyFolder", "C:\MyOtherFolder\")
 ```
 
