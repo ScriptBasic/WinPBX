@@ -19,7 +19,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetAbsolutePathName](#GetAbsolutePathName) | Returns complete and unambiguous path from a provided path specification. |
 | [GetBaseName](#GetBaseName) | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | [GetDriveAvailableSpace](#GetDriveAvailableSpace) | Returns the amount of space available to a user on the specified drive or network share. |
-| GetDriveFileSystem | Returns the type of file system in use for the specified drive or network share. |
+| [GetDriveFileSystem](#GetDriveFileSystem) | Returns the type of file system in use for the specified drive or network share. |
 | GetDriveFreeSpace | Returns the amount of free space available to a user on the specified drive or network share. |
 | GetDriveName | Returns a string containing the name of the drive for a specified path. |
 | GetDriveShareName | Returns the network share name for a specified drive. |
@@ -442,4 +442,32 @@ The value returned by the **GetDriveAvailableSpace** method is typically the sam
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 PRINT pFileSys.GetDriveAvailableSpace("C:")
+```
+
+# <a name="GetDriveFileSystem"></a>GetDriveFileSystem
+
+Returns the type of file system in use for the specified drive or network share.
+
+```
+FUNCTION GetDriveFileSystem (BYREF cbsDrive AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\. |
+
+#### Return value
+
+CBSTR. The type of file system in use.
+
+#### Remarks
+
+Available return types include FAT, NTFS, and CDFS.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsFileSystem AS CBSTR = pFileSys.GetDriveFileSystem("C:")
 ```
