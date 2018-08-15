@@ -146,3 +146,15 @@ FOR i AS LONG = csa.LBound TO csa.UBound
    print csa.GetStr(i)
 NEXT
 ```
+
+# <a name="GetPath"></a>GetPath
+
+Returns the full path of the initialization file this object instance is operating on.
+
+```
+FUNCTION GetPath () AS CWSTR
+```
+
+#### Return value
+
+CWSTR. The path of the initialization file.
