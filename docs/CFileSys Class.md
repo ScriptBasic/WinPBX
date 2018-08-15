@@ -15,7 +15,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [DriveExists](#DriveExists) | Checks if the specified drive exists. |
 | [DriveLetters](#DriveLetters) | Returns a semicolon separated list with the driver letters. |
 | [FileExists](#FileExists) | Checks for the existence of the specified file. |
-| [FolderExists](#FolderExists= | Checks for the existence of the specified folder. |
+| [FolderExists](#FolderExists) | Checks for the existence of the specified folder. |
 | GetAbsolutePathName | Returns complete and unambiguous path from a provided path specification. |
 | GetBaseName | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | GetDriveAvailableSpace | Returns the amount of space available to a user on the specified drive or network share. |
