@@ -50,7 +50,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 
 | Name  | Description |
 | ---------- | ----------- |
-| Execute | Executes a regular expression search against a specified string. |
+| [Execute](#Execute) | Executes a regular expression search against a specified string. |
 | Extract | Extracts a substring using VBScript regular expressions search patterns. |
 | Find | Find function with VBScript regular expressions search patterns. |
 | FindEx | Global, multiline find function with VBScript regular expressions search patterns. |
@@ -75,9 +75,9 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | Pattern | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
 | SubMatchCount | Returns the number of submatches. |
 
-# <a name="DeleteKey"></a>DeleteKey
+# <a name="Execute"></a>Execute
 
-Deletes a key from the specified section of an initialization file.
+Executes a regular expression search against a specified string.
 
 ```
 FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
@@ -98,6 +98,10 @@ FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cvReplaceString AS CVAR,
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not.  |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Remarks
+
+In the second overloaded method, the actual pattern for the regular expression search is set using the **Pattern** property.
 
 #### Return value
 
