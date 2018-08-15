@@ -48,28 +48,29 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 
 ### Methods
 
-| Parameter  | Description |
+| Name  | Description |
 | ---------- | ----------- |
-| *Execute* | Executes a regular expression search against a specified string. |
-| *Extract* | Extracts a substring using VBScript regular expressions search patterns. |
-| *Find* | Find function with VBScript regular expressions search patterns. |
-| *FindEx* | Global, multiline find function with VBScript regular expressions search patterns. |
-| *GetLastResult* | Returns the last result code. |
-| *MatchCount* | Returns the number of matches found. |
-| *RegExpPtr* | Returns a direct pointer to the **Afx_IRegExp2** interface. |
-| *Remove* | Returns a copy of a string with text removed using a regular expression as the search string. |
-| *Remove* | Returns a copy of a string with text removed using a regular expression as the search string. |
-| *Replace* | Replaces text found in a regular expression search. |
-| *SubMatchValue* | Retrieves the content of the specified submatch. |
-| *Test* | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
+| Execute | Executes a regular expression search against a specified string. |
+| Extract | Extracts a substring using VBScript regular expressions search patterns. |
+| Find | Find function with VBScript regular expressions search patterns. |
+| FindEx | Global, multiline find function with VBScript regular expressions search patterns. |
+| GetLastResult | Returns the last result code. |
+| MatchCount | Returns the number of matches found. |
+| RegExpPtr | Returns a direct pointer to the **Afx_IRegExp2** interface. |
+| Remove | Returns a copy of a string with text removed using a regular expression as the search string. |
+| Replace | Replaces text found in a regular expression search. |
+| SubMatchValue | Retrieves the content of the specified submatch. |
+| Test | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
 
 ### Properties
 
-| *Global* | Sets or returns a boolean value that indicates if a pattern should match all occurrences in an entire search string or just the first one. |
-| *IgnoreCase* | Sets or returns a boolean value that indicates if a pattern search is case-sensitive or not. |
-| *MatchLen* | Returns the length of a match found in a search string. |
-| *MatchPos* | Returns the position in a search string where a match occurs. |
-| *MatchValue* | Returns the value or text of a match found in a search string. |
-| *Multiline* | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
-| *Pattern* | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
-| *SubMatchCount* | Returns the number of submatches. |
+| Name  | Description |
+| ---------- | ----------- |
+| Global | Sets or returns a boolean value that indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| IgnoreCase | Sets or returns a boolean value that indicates if a pattern search is case-sensitive or not. |
+| MatchLen | Returns the length of a match found in a search string. |
+| MatchPos | Returns the position in a search string where a match occurs. |
+| MatchValue | Returns the value or text of a match found in a search string. |
+| Multiline | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
+| Pattern | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
+| SubMatchCount | Returns the number of submatches. |
