@@ -53,8 +53,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetParentFolderName](#GetParentFolderName) | Returns the folder name for the parent of the specified folder. |
 | [GetSerialNumber](#GetSerialNumber) | Returns the decimal serial number used to uniquely identify a disk volume. |
 | [GetStandardStream](#GetStandardStream) | Returns a TextStream object corresponding to the standard input, output, or error stream. |
-| GetTempName | Returns a randomly generated temporary file or folder name that is useful for performing operations that require a temporary file or folder. |
-| GetVolumeName | Returns the volume name of the specified drive. |
+| [GetTempName](#GetTempName) | Returns a randomly generated temporary file or folder name that is useful for performing operations that require a temporary file or folder. |
+| [GetVolumeName](#GetVolumeName) | Returns the volume name of the specified drive. |
 | IsDriveReady | Returns True if the specified drive is ready; False if it is not. |
 | IsRootFolder | Returns True(-1) if the specified folder is the root folder; False(0) if it is not. |
 | MoveFile | Moves one or more files from one location to another. |
@@ -1318,4 +1318,51 @@ The nStreamType argument can have any of the following settings:
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM pStm AS Afx_ITextStream PTR = pFileSys.GetStandardStream(StandardStreamTypes_StdOut)
+```
+
+# <a name="GetTempName"></a>GetTempName
+
+Returns a randomly generated temporary file or folder name that is useful for performing operations that require a temporary file or folder.
+
+```
+FUNCTION GetTempName () AS CBSTR
+```
+
+#### Return value
+
+CBSTR. The temporary name.
+
+#### Remarks
+The **GetTempName** method does not create a file. It provides only a temporary file name that can be used with **CreateTextFile** to create a file.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetTempName
+```
+
+# <a name="GetVolumeName"></a>GetVolumeName
+
+Returns the volume name of the specified drive.
+
+```
+FUNCTION GetVolumeName (BYREF cbsDrive AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+CBSTR. The volume name.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsVolumeName AS CBSTR = pFileSys.GetVolumeName("C:")
 ```
