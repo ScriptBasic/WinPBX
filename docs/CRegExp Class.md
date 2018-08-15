@@ -74,3 +74,31 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | Multiline | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
 | Pattern | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
 | SubMatchCount | Returns the number of submatches. |
+
+# <a name="DeleteKey"></a>DeleteKey
+
+Deletes a key from the specified section of an initialization file.
+
+```
+FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYREF cvReplaceString AS CVAR,BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
+```
+```
+FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cvReplaceString AS CVAR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = TRUE, _
+   BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsSourceString* | The main string. |
+| *cbsPattern* | The regular string expression being searched for. |
+| *cvReplaceString* | The replacement text string. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not.  |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+BOOLEAN. True on success or False on failure.
