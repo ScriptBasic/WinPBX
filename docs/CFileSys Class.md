@@ -376,7 +376,7 @@ Assuming the current directory is c:\mydocuments\reports, the following table il
 | "c:" | "c:\mydocuments\reports" |
 | "c:.." | "c:\mydocuments" |
 | "c:\" | "c:\" |
-| "c:*.*\may97" | "c:\mydocuments\reports\\*.*\may97" |
+| "c:*.*\may97" | "c:\mydocuments\reports\\\*\.\*\may97" |
 | "region1" | "c:\mydocuments\reports\region1" |
 | "c:\..\..\mydocuments" | "c:\mydocuments" |
 
