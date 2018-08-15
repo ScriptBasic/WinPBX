@@ -9,7 +9,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [BuildPath](#BuildPath) | Appends a name to an existing path. |
 | [CopyFile](#CopyFile) | Copies one or more files from one location to another. |
 | [CopyFolder](#CopyFolder) | Recursively copies a folder from one location to another. |
-| CreateFolder | Creates a folder. |
+| [CreateFolder](#CreateFolder) | Creates a folder. |
 | DeleteFile | Deletes a specified file. |
 | DeleteFolder | Deletes a specified folder and its contents. |
 | DriveExists | Checks if the specified drive exists. |
@@ -160,3 +160,35 @@ DIM pFileSys AS CFileSys
 pFileSys.CopyFolder("C:\MyFolder", "C:\MyOtherFolder\")
 ```
 
+# <a name="CreateFolder"></a>CreateFolder
+
+Creates a folder.
+
+```
+FUNCTION CreateFolder (BYREF cbsFolderSpec AS CBSTR) AS Afx_IFolder PTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolderSpec* | CBSTR. String expression that identifies the folder to create. |
+
+#### Return value
+
+IDispatch. Reference to a **IFolder** object.
+
+#### Remarks
+
+An error occurs if the specified folder already exists.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM pFolder AS Afx_Folder PTR
+pFolder = pFileSys.CreateFolder("C:\MyNewFolder")
+IF pFolder THEN
+   ' ....
+   pFolder.Release
+END IF
+```
