@@ -18,7 +18,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [FolderExists](#FolderExists) | Checks for the existence of the specified folder. |
 | [GetAbsolutePathName](#GetAbsolutePathName) | Returns complete and unambiguous path from a provided path specification. |
 | [GetBaseName](#GetBaseName) | Returns a string containing the base name of the last component, less any file extension, in a path. |
-| GetDriveAvailableSpace | Returns the amount of space available to a user on the specified drive or network share. |
+| [GetDriveAvailableSpace](#GetDriveAvailableSpace) | Returns the amount of space available to a user on the specified drive or network share. |
 | GetDriveFileSystem | Returns the type of file system in use for the specified drive or network share. |
 | GetDriveFreeSpace | Returns the amount of free space available to a user on the specified drive or network share. |
 | GetDriveName | Returns a string containing the name of the drive for a specified path. |
@@ -414,5 +414,32 @@ The **GetBaseName** method returns a zero-length string ("") if no component mat
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cwsName AS CWSTR = pFileSys.GetBaseName("C:\MyFolder\Test.txt")
+```
 
+# <a name="GetDriveAvailableSpace"></a>GetDriveAvailableSpace
+
+Returns the amount of space available to a user on the specified drive or network share.
+
+```
+FUNCTION GetDriveAvailableSpace (BYREF cbsDrive AS CBSTR) AS DOUBLE
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\. |
+
+#### Return value
+
+DOUBLE. The amount of available space.
+
+#### Remarks
+
+The value returned by the **GetDriveAvailableSpace** method is typically the same as that returned by the **GetDriveFreeSpace** method. Differences may occur between the two for computer systems that support quotas. 
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+PRINT pFileSys.GetDriveAvailableSpace("C:")
 ```
