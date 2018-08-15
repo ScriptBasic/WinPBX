@@ -53,7 +53,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [Execute](#Execute) | Executes a regular expression search against a specified string. |
 | [Extract](#Extract) | Extracts a substring using VBScript regular expressions search patterns. |
 | [Find](#Find) | Find function with VBScript regular expressions search patterns. |
-| FindEx | Global, multiline find function with VBScript regular expressions search patterns. |
+| [FindEx](#FindEx) | Global, multiline find function with VBScript regular expressions search patterns. |
 | GetLastResult | Returns the last result code. |
 | MatchCount | Returns the number of matches found. |
 | RegExpPtr | Returns a direct pointer to the **Afx_IRegExp2** interface. |
@@ -230,4 +230,46 @@ DIM nPos AS LONG = CRegExp(cbsPattern).Find(cbsText)
 ```
 DIM nPos AS LONG = CRegExp("[a-z][0-9][0-9][0-9]").Find("blah blah a234 blah blah x345 blah blah")
 ' Output: 11
+```
+
+# <a name="FindEx"></a>FindEx
+
+Global, multiline find function with VBScript regular expressions search patterns.
+
+```
+FUNCTION FindEx (BYREF cbsSourceString AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = TRUE) AS CBSTR
+```
+```
+FUNCTION FindEx (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = TRUE, _
+   BYVAL bMultiline AS BOOLEAN = TRUE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsSourceString* | The text to be parsed. |
+| *cbsPattern* | The pattern to match. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+Returns a list of comma separated "index, length" value pairs. The pairs are separated by a semicolon.
+
+#### Usage example
+
+```
+DIM pRegExp AS CRegExp
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbsOut AS CBSTR = pRegExp.FindEx(cbsText, cbsPattern)
+' Output: 11,4;26,4
+```
+```
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbsOut AS CBSTR = CRegExp(cbsPattern).FindEx(cbsText)
+' Output: 11,4;26,4
 ```
