@@ -174,7 +174,7 @@ FUNCTION CreateFolder (BYREF cbsFolderSpec AS CBSTR) AS Afx_IFolder PTR
 
 #### Return value
 
-IDispatch. Reference to a **IFolder** object.
+IDispatch. Reference to an **IFolder** object.
 
 #### Remarks
 
