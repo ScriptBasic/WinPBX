@@ -55,8 +55,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetStandardStream](#GetStandardStream) | Returns a TextStream object corresponding to the standard input, output, or error stream. |
 | [GetTempName](#GetTempName) | Returns a randomly generated temporary file or folder name that is useful for performing operations that require a temporary file or folder. |
 | [GetVolumeName](#GetVolumeName) | Returns the volume name of the specified drive. |
-| IsDriveReady | Returns True if the specified drive is ready; False if it is not. |
-| IsRootFolder | Returns True(-1) if the specified folder is the root folder; False(0) if it is not. |
+| [IsDriveReady](#IsDriveReady) | Returns True if the specified drive is ready; False if it is not. |
+| [IsRootFolder](#IsRootFolder) | Returns True(-1) if the specified folder is the root folder; False(0) if it is not. |
 | MoveFile | Moves one or more files from one location to another. |
 | MoveFolder | Moves one or more folders from one location to another. |
 | SetFileAttributes | Sets the attributes of files. |
@@ -1365,4 +1365,56 @@ CBSTR. The volume name.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsVolumeName AS CBSTR = pFileSys.GetVolumeName("C:")
+```
+
+# <a name="IsDriveReady"></a>IsDriveReady
+
+Returns True if the specified drive is ready; False if it is not.
+
+```
+FUNCTION IsDriveReady (BYREF cbsDrive AS CBSTR) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+BOOLEAN. True if the specified drive is ready; False if it is not.
+
+#### Remarks
+
+For removable-media drives and CD-ROM drives, **IsDriveReady** returns True only when the appropriate media is inserted and ready for access. 
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM bIsReady AS BOOLEAN = pFileSys.IsDriveReady("C:")
+```
+
+# <a name="IsRootFolder"></a>IsRootFolder
+
+Returns True(-1) if the specified folder is the root folder; False(0) if it is not.
+
+```
+FUNCTION IsRootFolder (BYREF cbsFolder AS CBSTR) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+BOOLEAN. True(-1) if the specified folder is the root folder; False(0) if it is not.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM bIsRoot AS BOOLEAN = pFileSys.IsRootFolder("C:\MyFolder")
 ```
