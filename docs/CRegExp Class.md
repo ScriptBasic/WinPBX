@@ -51,7 +51,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | Name  | Description |
 | ---------- | ----------- |
 | [Execute](#Execute) | Executes a regular expression search against a specified string. |
-| Extract | Extracts a substring using VBScript regular expressions search patterns. |
+| [Extract](#Extract) | Extracts a substring using VBScript regular expressions search patterns. |
 | Find | Find function with VBScript regular expressions search patterns. |
 | FindEx | Global, multiline find function with VBScript regular expressions search patterns. |
 | GetLastResult | Returns the last result code. |
@@ -80,14 +80,14 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 Executes a regular expression search against a specified string.
 
 ```
-FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
-   BYREF cvReplaceString AS CVAR,BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
-   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
-```
-```
 FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cvReplaceString AS CVAR, _
    BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = TRUE, _
    BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
+```
+```
+FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYREF cvReplaceString AS CVAR,BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
 ```
 
 | Parameter  | Description |
@@ -101,8 +101,69 @@ FUNCTION Execute (BYREF cbsSourceString AS CBSTR, BYREF cvReplaceString AS CVAR,
 
 #### Remarks
 
-In the second overloaded method, the actual pattern for the regular expression search is set using the **Pattern** property.
+In the first overloaded method, the actual pattern for the regular expression search is set using the **Pattern** property.
 
 #### Return value
 
 BOOLEAN. True on success or False on failure.
+
+# <a name="Extract"></a>Extract
+
+Extracts a substring using VBScript regular expressions search patterns.
+
+```
+FUNCTION Extract (BYREF cbsSourceString AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = FALSE, BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+```
+FUNCTION Extract (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = FALSE, _
+   BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+```
+FUNCTION Extract (BYVAL nStart AS LONG, BYREF cbsSourceString AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS CBSTR
+```
+```
+FUNCTION Extract (BYVAL nStart AS LONG, BYREF cbsSourceString AS CBSTR, _
+   BYREF cbsPattern AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The position in the string at which the search will begin. The first character starts at position 1. |
+| *cbsSourceString* | The text to be parsed. |
+| *cbsPattern* | The pattern to match. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+CBSTR. The retrieved string.
+
+#### Usage examples
+
+```
+DIM pRegExp AS CRegExp
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbs AS CBSTR = pRegExp.Extract(cbsText, cbsPattern)
+```
+```
+DIM pRegExp AS CRegExp
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbs AS CBSTR = pRegExp.Extract(15, cbsText, cbsPattern)
+```
+```
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbs AS CBSTR = CRegExp(cbsPattern).Extract(cbsText)
+```
+```
+' // Ignore case
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbsText AS CBSTR = "blah blah A234 blah blah x345 blah blah"
+DIM cbs AS CBSTR = CRegExp(cbsPattern).Extract(cbsText, TRUE)
+```
