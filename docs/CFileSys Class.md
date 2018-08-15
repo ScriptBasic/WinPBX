@@ -10,7 +10,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [CopyFile](#CopyFile) | Copies one or more files from one location to another. |
 | [CopyFolder](#CopyFolder) | Recursively copies a folder from one location to another. |
 | [CreateFolder](#CreateFolder) | Creates a folder. |
-| DeleteFile | Deletes a specified file. |
+| [DeleteFile](#DeleteFile) | Deletes a specified file. |
 | DeleteFolder | Deletes a specified folder and its contents. |
 | DriveExists | Checks if the specified drive exists. |
 | DriveLetters | Returns a semicolon separated list with the driver letters. |
@@ -191,4 +191,33 @@ IF pFolder THEN
    ' ....
    pFolder.Release
 END IF
+```
+
+# <a name="DeleteFile"></a>DeleteFile
+
+Deletes a specified file.
+
+```
+FUNCTION DeleteFile (BYREF cbsFileSpec AS CBSTR, BYVAL bForce AS VARIANT_BOOL = FALSE) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFileSpec* | CBSTR. The name of the file to delete. cbsFileSpec can contain wildcard characters in the last path component. |
+| *bForce* | Boolean value that is true if files with the read-only attribute set are to be deleted; false (default) if they are not. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Remarks
+
+An error occurs if no matching files are found. The **DeleteFile** method stops on the first error it encounters. No attempt is made to roll back or undo any changes that were made before an error occurred.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.DeleteFile("C:\MyFolder\MyFile.txt")
 ```
