@@ -25,7 +25,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveShareName](#GetDriveShareName) | Returns the network share name for a specified drive. |
 | [GetDriveTotalSize](#GetDriveTotalSize) | Returns the total space, in bytes, of a drive or network share. |
 | [GetDriveType](#GetDriveType) | Returns a value indicating the type of a specified drive. |
-| GetExtesionName | Returns a string containing the extension name of the file for a specified path. |
+| [GetExtesionName](#GetExtesionName) | Returns a string containing the extension name of the file for a specified path. |
 | GetFileAttributes | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
 | GetFileDateCreated | Returns the date and time that the specified file was created. |
 | GetFileDateLastAccessed | Returns the date and time that the specified file was accessed. |
@@ -615,4 +615,24 @@ SELECT CASE pDrive.DriveType
    CASE 4 : t = "CD-ROM"
    CASE 5 : t = "RAM Disk"
 END SELECT
+```
+
+# <a name="GetExtensionName"></a>GetExtensionName
+
+Returns a string containing the extension name of the file for a specified path.
+
+```
+FUNCTION GetExtensionName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The extension name. |
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsName AS CBSTR = pFileSys.GetExtensionName("C:\MyFolder\Test.txt")
 ```
