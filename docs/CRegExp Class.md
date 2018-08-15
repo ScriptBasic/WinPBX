@@ -55,7 +55,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [Find](#Find) | Find function with VBScript regular expressions search patterns. |
 | [FindEx](#FindEx) | Global, multiline find function with VBScript regular expressions search patterns. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
-| MatchCount | Returns the number of matches found. |
+| [MatchCount](#MatchCount) | Returns the number of matches found. |
 | RegExpPtr | Returns a direct pointer to the **Afx_IRegExp2** interface. |
 | Remove | Returns a copy of a string with text removed using a regular expression as the search string. |
 | Replace | Replaces text found in a regular expression search. |
@@ -283,3 +283,14 @@ FUNCTION GetLastResult () AS HRESULT
 #### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="MatchCount"></a>MatchCount
+
+Returns the number of matches found.
+
+```
+FUNCTION MatchCount () AS LONG
+```
+#### Return value
+
+LONG. The number of matches found.
