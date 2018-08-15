@@ -145,7 +145,7 @@ CSAFEARRAY. The names of all the keys of the specified section.
 DIM cIni AS CInifile = "Test.ini"
 DIM csa AS CSafeArray = GetKeyNames("Startup")
 FOR i AS LONG = csa.LBound TO csa.UBound
-   print csa.GetStr(i)
+   print csa.GetString(i)
 NEXT
 ```
 
@@ -160,3 +160,25 @@ FUNCTION GetPath () AS CWSTR
 #### Return value
 
 CWSTR. The path of the initialization file.
+
+# <a name="GetSectionNames"></a>GetSectionNames
+
+Returns a safe array with the names of all sections in the initialization file.
+
+```
+FUNCTION GetSectionNames () AS CSafeArray
+```
+
+#### Return value
+
+CSAFEARRAY. The names of all the sections of the file.
+
+#### Example
+
+```
+DIM cIni AS CInifile = "Test.ini"
+DIM csa AS CSafeArray = cIni.GetSectionNames
+FOR i AS LONG = csa.LBound TO csa.UBound
+   print csa.GetString(i)
+NEXT
+```
