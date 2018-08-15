@@ -17,7 +17,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [FileExists](#FileExists) | Checks for the existence of the specified file. |
 | [FolderExists](#FolderExists) | Checks for the existence of the specified folder. |
 | [GetAbsolutePathName](#GetAbsolutePathName) | Returns complete and unambiguous path from a provided path specification. |
-| GetBaseName | Returns a string containing the base name of the last component, less any file extension, in a path. |
+| [GetBaseName](#GetBaseName) | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | GetDriveAvailableSpace | Returns the amount of space available to a user on the specified drive or network share. |
 | GetDriveFileSystem | Returns the type of file system in use for the specified drive or network share. |
 | GetDriveFreeSpace | Returns the amount of free space available to a user on the specified drive or network share. |
@@ -386,4 +386,33 @@ Assuming the current directory is c:\mydocuments\reports, the following table il
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsName AS CBSTR = pFileSys.GetAbsolutePathName("C:\MyFolder\Test.txt")
+```
+
+# <a name="GetBaseName"></a>GetBaseName
+
+Returns a string containing the base name of the last component, less any file extension, in a path
+
+```
+FUNCTION GetBaseName (BYREF cbsPathSpec AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPathSpec* | CBSTR. The path specification for the component whose base name is to be returned. |
+
+#### Return value
+
+Boolean. The base name.
+
+#### Remarks
+
+The **GetBaseName** method returns a zero-length string ("") if no component matches the path argument. The **GetBaseName** method works only on the provided path string. It does not attempt to resolve the path, nor does it check for the existence of the specified path.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cwsName AS CWSTR = pFileSys.GetBaseName("C:\MyFolder\Test.txt")
+
 ```
