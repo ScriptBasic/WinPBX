@@ -125,4 +125,24 @@ FUNCTION GetInt (BYREF wszSectionName AS WSTRING, _
 
 LONG. The retrieved value. If the key key cannot be found in the initialization file, the default value is returned.
 
+# <a name="GetKeyNames"></a>GetKeyNames
 
+Returns a safe array with the names of all the keys of the specified section.
+
+```
+FUNCTION GetKeyNames () AS CSafeArray
+```
+
+#### Return value
+
+CSAFEARRAY. The names of all the keys of the specified section.
+
+#### Example
+
+```
+DIM cIni AS CInifile = "Test.ini"
+DIM csa AS CSafeArray = GetKeyNames("Startup")
+FOR i AS LONG = csa.LBound TO csa.UBound
+   print csa.GetStr(i)
+NEXT
+```
