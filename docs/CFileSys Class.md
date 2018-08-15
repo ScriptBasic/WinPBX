@@ -20,7 +20,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetBaseName](#GetBaseName) | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | [GetDriveAvailableSpace](#GetDriveAvailableSpace) | Returns the amount of space available to a user on the specified drive or network share. |
 | [GetDriveFileSystem](#GetDriveFileSystem) | Returns the type of file system in use for the specified drive or network share. |
-| GetDriveFreeSpace | Returns the amount of free space available to a user on the specified drive or network share. |
+| [GetDriveFreeSpace](#GetDriveFreeSpace) | Returns the amount of free space available to a user on the specified drive or network share. |
 | GetDriveName | Returns a string containing the name of the drive for a specified path. |
 | GetDriveShareName | Returns the network share name for a specified drive. |
 | GetDriveTotalSize | Returns the total space, in bytes, of a drive or network share. |
@@ -470,4 +470,32 @@ Available return types include FAT, NTFS, and CDFS.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsFileSystem AS CBSTR = pFileSys.GetDriveFileSystem("C:")
+```
+
+# <a name="GetDriveFreeSpace"></a>GetDriveFreeSpace
+
+Returns the amount of free space available to a user on the specified drive or network share
+
+```
+FUNCTION GetDriveFreeSpace (BYREF cbsDrive AS CBSTR) AS DOUBLE
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+DOUBLE. The amount of free space.
+
+#### Remarks
+
+The value returned by the **GetDriveFreeSpace** property is typically the same as that returned by the **GetDriveAvailableSpace** property. Differences may occur between the two for computer systems that support quotas. 
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+PRINT pFileSys.GetDriveFreeSpace("C:")
 ```
