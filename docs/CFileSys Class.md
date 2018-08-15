@@ -23,7 +23,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetDriveFreeSpace](#GetDriveFreeSpace) | Returns the amount of free space available to a user on the specified drive or network share. |
 | [GetDriveName](#GetDriveName) | Returns a string containing the name of the drive for a specified path. |
 | [GetDriveShareName](#GetDriveShareName) | Returns the network share name for a specified drive. |
-| GetDriveTotalSize | Returns the total space, in bytes, of a drive or network share. |
+| [GetDriveTotalSize](#GetDriveTotalSize) | Returns the total space, in bytes, of a drive or network share. |
 | GetDriveType | Returns a value indicating the type of a specified drive. |
 | GetExtesionName | Returns a string containing the extension name of the file for a specified path. |
 | GetFileAttributes | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
@@ -550,4 +550,28 @@ If object is not a network drive, the **GetDriveShareName** method returns a zer
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsShareName AS CBSTR = pFileSys.GetDriveShareName("H:")
+```
+
+# <a name="GetDriveTotalSize"></a>GetDriveTotalSize
+
+Returns the total space, in bytes, of a drive or network share.
+
+```
+FUNCTION GetDriveTotalSize (BYREF cbsDrive AS CBSTR) AS DOUBLE
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsDrive* | CBSTR. The drive letter. For drive letters, the root drive is not included. For example, the path for the C drive is C:, not C:\\. |
+
+#### Return value
+
+DOUBLE. The total space in bytes.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+PRINT pFileSys.GetDriveTotalSize("C:")
 ```
