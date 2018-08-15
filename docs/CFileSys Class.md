@@ -28,8 +28,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetExtensionName](#GetExtensionName) | Returns a string containing the extension name of the file for a specified path. |
 | [GetFileAttributes](#GetFileAttributes) | Returns the attributes of files. Read/write or read-only, depending on the attribute. |
 | [GetFileDateCreated](#GetFileDateCreated) | Returns the date and time that the specified file was created. |
-| GetFileDateLastAccessed | Returns the date and time that the specified file was accessed. |
-| GetFileDateLastModified | Returns the date and time that the specified file was modified. |
+| [GetFileDateLastAccessed](#GetFileDateLastAccessed) | Returns the date and time that the specified file was accessed. |
+| [GetFileDateLastModified](#GetFileDateLastModified) | Returns the date and time that the specified file was modified. |
 | GetFileName | Returns a string containing the name of the file for a specified path. |
 | GetFileShortName | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
 | GetFileShortPath | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
@@ -687,7 +687,7 @@ FUNCTION GetFileDateCreated (BYREF cbsFile AS CBSTR) AS DATE_
 
 #### Return value
 
-DATE_. The date and time of the file creation. This is a *Date Serial* number that can be formatted using the Free Basic's **Format** function.
+DATE_. The date and time of the file creation. This is a *Date Serial* number that can be formatted using the Free Basic's **Format** function. You can also use the wrapper function **AfxVariantDateTimeToStr**.
 
 #### Usage example
 
@@ -695,4 +695,52 @@ DATE_. The date and time of the file creation. This is a *Date Serial* number th
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM nDate AS DATE_ = pFileSys.GetFileDateCreated("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileDateLastAccessed"></a>GetFileDateLastAccessed
+
+Returns the date and time that the specified file was accesed.
+
+```
+FUNCTION GetFileDateLastAccessed (BYREF cbsFile AS CBSTR) AS DATE_
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+DATE_. that the file was last accessed. This is a *Date Serial* number that can be formatted using the Free Basic's **Format** function. You can also use the wrapper function **AfxVariantDateTimeToStr**.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nDate AS DATE_ = pFileSys.GetFileDateLastAccessed("C:\MyPath\MyFile.txt")
+```
+
+# <a name="GetFileDateLastModified"></a>GetFileDateLastModified
+
+Returns the date and time that the specified file was accesed.
+
+```
+FUNCTION GetFileDateLastModified (BYREF cbsFile AS CBSTR) AS DATE_
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFile* | CBSTR. The path to a specific file. |
+
+#### Return value
+
+DATE_. that the file was last modified.. This is a *Date Serial* number that can be formatted using the Free Basic's **Format** function. You can also use the wrapper function **AfxVariantDateTimeToStr**.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nDate AS DATE_ = pFileSys.GetFileDateLastModified("C:\MyPath\MyFile.txt")
 ```
