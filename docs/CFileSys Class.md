@@ -57,8 +57,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetVolumeName](#GetVolumeName) | Returns the volume name of the specified drive. |
 | [IsDriveReady](#IsDriveReady) | Returns True if the specified drive is ready; False if it is not. |
 | [IsRootFolder](#IsRootFolder) | Returns True(-1) if the specified folder is the root folder; False(0) if it is not. |
-| MoveFile | Moves one or more files from one location to another. |
-| MoveFolder | Moves one or more folders from one location to another. |
+| [MoveFile](#MoveFile) | Moves one or more files from one location to another. |
+| [MoveFolder](#MoveFolder) | Moves one or more folders from one location to another. |
 | SetFileAttributes | Sets the attributes of files. |
 | SetFileName | Sets the name of a specified file. |
 | SetFolderAttributes | Sets the attributes of folders. |
@@ -1417,4 +1417,54 @@ BOOLEAN. True(-1) if the specified folder is the root folder; False(0) if it is 
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM bIsRoot AS BOOLEAN = pFileSys.IsRootFolder("C:\MyFolder")
+```
+
+# <a name="MoveFile"></a>MoveFile
+
+Moves one or more files from one location to another.
+
+```
+FUNCTION MoveFile (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsSource* | CBSTR. The path to the file or files to be moved. The *cbsSource* argument string can contain wildcard characters in the last path component only. |
+| *cbsDestination* | CBSTR. Destination where the file is to be moved. Wildcard characters are not allowed. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.MoveFile("C:\MyFolder\MyFile.txt", "C:\MyOtherFolder\")
+```
+
+# <a name="MoveFolder"></a>MoveFolder
+
+Moves one or more folders from one location to another.
+
+```
+FUNCTION MoveFolder (BYREF cbsSource AS CBSTR, BYREF cbsDestination AS CBSTR) AS HRESULT
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsSource* | CBSTR. The path to the folder or folders to be moved. The *cbsSource* argument string can contain wildcard characters in the last path component only. |
+| *cbsDestination* | CBSTR. Destination where the folder is to be moved (must end with a "\"). Wildcard characters are not allowed. |
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+pFileSys.MoveFolder("C:\MyFolder", "C:\MyNewFolder\")
 ```
