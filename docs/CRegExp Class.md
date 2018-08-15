@@ -52,7 +52,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | ---------- | ----------- |
 | [Execute](#Execute) | Executes a regular expression search against a specified string. |
 | [Extract](#Extract) | Extracts a substring using VBScript regular expressions search patterns. |
-| Find | Find function with VBScript regular expressions search patterns. |
+| [Find](#Find) | Find function with VBScript regular expressions search patterns. |
 | FindEx | Global, multiline find function with VBScript regular expressions search patterns. |
 | GetLastResult | Returns the last result code. |
 | MatchCount | Returns the number of matches found. |
@@ -170,4 +170,64 @@ DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
 DIM cbsText AS CBSTR = "blah blah A234 blah blah x345 blah blah"
 DIM cbs AS CBSTR = CRegExp(cbsPattern).Extract(cbsText, TRUE)
 ' Output: A234
+```
+
+# <a name="Find"></a>Find
+
+Find function with VBScript regular expressions search patterns.
+
+```
+FUNCTION Find (BYREF cbsSourceString AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS LONG
+```
+```
+FUNCTION Find (BYREF cbsSourceString AS CBSTR, _
+   BYREF cbsPattern AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS LONG
+```
+```
+FUNCTION Find (BYVAL nStart AS LONG, BYREF cbsSourceString AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS LONG
+```
+```
+FUNCTION Find (BYVAL nStart AS LONG, BYREF cbsSourceString AS CBSTR, _
+   BYREF cbsPattern AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The position in the string at which the search will begin. The first character starts at position 1. |
+| *cbsSourceString* | The text to be parsed. |
+| *cbsPattern* | The pattern to match. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+Returns the position of the match or 0 if not found. The length of the match can be retrieved calling the **MatchLen** property.
+
+#### Usage examples
+
+```
+DIM pRegExp AS CRegExp
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM nPos AS LONG = pRegExp.Find(cbsText, cbsPattern)
+' Output: 11
+```
+```
+DIM pRegExp AS CRegExp
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM nPos AS LONG = pRegExp.Find(15, cbsText, cbsPattern)
+' Output: 26
+```
+```
+DIM cbsPattern AS CBSTR = "[a-z][0-9][0-9][0-9]"
+DIM cbsText AS CBSTR = "blah blah a234 blah blah x345 blah blah"
+DIM nPos AS LONG = CRegExp(cbsPattern).Find(cbsText)
+' Output: 11
+```
+```
+DIM nPos AS LONG = CRegExp("[a-z][0-9][0-9][0-9]").Find("blah blah a234 blah blah x345 blah blah")
+' Output: 11
 ```
