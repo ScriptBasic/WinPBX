@@ -59,8 +59,8 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [RegExpPtr](#RegExpPtr) | Returns a direct pointer to the **Afx_IRegExp2** interface. |
 | [Remove](#Remove) | Returns a copy of a string with text removed using a regular expression as the search string. |
 | [Replace](#Replace) | Replaces text found in a regular expression search. |
-| SubMatchValue | Retrieves the content of the specified submatch. |
-| Test | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
+| [SubMatchValue](#SubMatchValue) | Retrieves the content of the specified submatch. |
+| [Test](#Test) | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
 
 ### Properties
 
@@ -436,3 +436,42 @@ print cbsRes
 
 What we have done is to search for 3 digits (\d{3}) followed by a dash, followed by 3 more digits and a dash, followed by 4 digits and add () to the first three digits and change the first dash with a space.  $1, $2, and $3 are examples of a regular expression "back reference." A back reference is simply a portion of the found text that can be saved and then reused.
 
+# <a name="SubMatchValue"></a>SubMatchValue
+
+Retrieves the content of the specified submatch.
+
+```
+FUNCTION SubMatchValue (BYVAL MatchIndex AS LONG = 0, BYVAL SubMatchIndex AS LONG = 0) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *MatchIndex* | 0-based index of the match to retrieve. |
+| *SubMatchIndex* | 0-based index of the submatch to retrieve. |
+
+#### Return value
+
+CBSTR. The content of the specified submatch.
+
+#### Example
+
+```
+'#CONSOLE ON
+#INCLUDE ONCE "Afx/CRegExp.inc"
+USING Afx
+
+DIM pRegExp AS CRegExp
+pRegExp.Pattern = "(\w+)@(\w+)\.(\w+)"
+pRegExp.IgnoreCase = TRUE
+DIM cbsText AS CBSTR = "Please send mail to dragon@xyzzy.com. Thanks!"
+DIM pRegExp2 AS CRegExp = pRegExp.Execute(cbsText)
+' Get the number of submatches
+DIM nCount AS LONG = pRegExp2.SubMatchesCount(0)
+print "Sub matches: ", nCount
+FOR i AS LONG = 0 TO nCount - 1
+   print pRegExp2.SubMatchValue(0, i)
+NEXT
+
+PRINT "Press any key..."
+SLEEP
+```
