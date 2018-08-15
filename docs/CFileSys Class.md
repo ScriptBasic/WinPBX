@@ -14,8 +14,8 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [DeleteFolder](#DeleteFolder) | Deletes a specified folder and its contents. |
 | [DriveExists](#DriveExists) | Checks if the specified drive exists. |
 | [DriveLetters](#DriveLetters) | Returns a semicolon separated list with the driver letters. |
-| FileExists | Checks for the existence of the specified file. |
-| FolderExists | Checks for the existence of the specified folder. |
+| [FileExists](#FileExists) | Checks for the existence of the specified file. |
+| [FolderExists](#FolderExists= | Checks for the existence of the specified folder. |
 | GetAbsolutePathName | Returns complete and unambiguous path from a provided path specification. |
 | GetBaseName | Returns a string containing the base name of the last component, less any file extension, in a path. |
 | GetDriveAvailableSpace | Returns the amount of space available to a user on the specified drive or network share. |
@@ -299,4 +299,52 @@ CBSTR. A semicolon separated list with the driver letters.
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
 DIM cbsLetters AS CBSTR = pFileSys.DriveLetters
+```
+
+# <a name="FileExists"></a>FileExists
+
+Returns True if the specified file exists; False if it does not.
+
+```
+FUNCTION FileExists (BYREF cbsFileSpec AS CBSTR) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFileSpec* | CBSTR. The name of the file whose existence is to be determined. A complete path specification (either absolute or relative) must be provided if the file isn't expected to exist in the current folder. |
+
+#### Return value
+
+Boolean. True if the specified file exists; False if it does not.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM fExists AS BOOLEAN = pFileSys.FileExists("C:\MyFolder\Test.txt")
+```
+
+# <a name="FolderExists"></a>FolderExists
+
+Returns True if the specified folder exists; False if it does not.
+
+```
+FUNCTION FolderExists (BYREF cbsFolderSpec AS CBSTR) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolderSpec* | CBSTR. The name of the folder whose existence is to be determined. A complete path specification (either absolute or relative) must be provided if the folder isn't expected to exist in the current folder. |
+
+#### Return value
+
+Boolean. True if the specified folder exists; False if it does not.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM fExists AS BOOLEAN = pFileSys.FolderExists("C:\MyFolder")
 ```
