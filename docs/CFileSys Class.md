@@ -542,7 +542,7 @@ CBSTR. The share name.
 
 #### Remarks
 
-If object is not a network drive, the *GetDriveShareName* method returns a zero-length string ("").
+If object is not a network drive, the **GetDriveShareName** method returns a zero-length string ("").
 
 #### Usage example
 
