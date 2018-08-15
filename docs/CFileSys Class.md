@@ -6,7 +6,7 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 
 | Name       | Description |
 | ---------- | ----------- |
-| BuildPath | Appends a name to an existing path. |
+| [BuildPath](#BuildPath) | Appends a name to an existing path. |
 | CopyFile | Copies one or more files from one location to another. |
 | CopyFolder | Recursively copies a folder from one location to another. |
 | CreateFolder | Creates a folder. |
