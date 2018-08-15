@@ -1569,7 +1569,7 @@ The *lAttr* argument can have any of the following values or any logical combina
 ```
 #INCLUDE ONCE "Afx/CFileSys.inc"
 DIM pFileSys AS CFileSys
-pFileSys.SetFolderAttributes("C:\MyPath\MyFile.txt", 17)   ¡ FileAttribute_Directory OR FileAttribute_ReadOnly
+pFileSys.SetFolderAttributes("C:\MyPath\MyFile.txt", 17)   ' FileAttribute_Directory OR FileAttribute_ReadOnly
 ```
 
 # <a name="SetFolderName"></a>SetFolderName
