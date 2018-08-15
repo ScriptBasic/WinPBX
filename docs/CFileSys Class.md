@@ -44,9 +44,9 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | [GetFolderName](#GetFolderName) | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
 | [GetFolderShortName](#GetFolderShortName) | Returns the short name used by programs that require the earlier 8.3 file naming convention. |
 | [GetFolderShortPath](#GetFolderShortPath) | Returns the short path used by programs that require the earlier 8.3 file naming convention. |
-| GetFolderSize | Returns the size, in bytes, of all files and subfolders contained in the folder. |
-| GetFolderType | Returns information about the type of a folder. |
-| GetLastResult | Returns the last result code. |
+| [GetFolderSize](#GetFolderSize) | Returns the size, in bytes, of all files and subfolders contained in the folder. |
+| [GetFolderType](#GetFolderType) | Returns information about the type of a folder. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
 | GetNumDrives | Returns the number of drives. |
 | GetNumFiles | Returns the number of files contained in a specified folder, including those with hidden and system file attributes set. |
 | GetNumSubFolders | Returns the number of folders contained in a specified folder, including those with hidden and system file attributes set. |
@@ -1103,3 +1103,63 @@ CBSTR. The short path for the specified folder.
 DIM pFileSys AS CFileSys
 DIM cbsFolderShortPath AS CBSTR = pFileSys.GetFolderShortPath("c:\MyFolder)
 ```
+
+# <a name="GetFolderSize"></a>GetFolderSize
+
+Returns the size, in bytes, of all files and subfolders contained in the folder.
+
+```
+FUNCTION GetFolderSize (BYREF cbsFolder AS CBSTR) AS LONG
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+LONG. The size, in bytes, of all files and subfolders contained in the folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM nFolderSize AS LONG = pFileSys.GetFolderSize("C:\MyPath")
+```
+
+# <a name="GetFolderType"></a>GetFolderType
+
+Returns information about the type of a folder.
+
+```
+FUNCTION GetFolderType (BYREF cbsFolder AS CBSTR) AS CBSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsFolder* | CBSTR. The path to a specific folder. |
+
+#### Return value
+
+CBSTR. The type of folder.
+
+#### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsFolderType AS CBSTR = pFileSys.GetFolderType("c:\MyFolder)
+```
+
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+#### Return value
+
+HRESULT. The result code returned by the last executed method.
