@@ -68,3 +68,33 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 #### Include File:
 
 CFileSys.inc
+
+# <a name="BuildPath"></a>BuildPath
+
+Appends a name to an existing path.
+
+```
+FUNCTION BuildPath (BYREF cbsPath AS CBSTR, BYREF cbsName AS CBSTR) AS CWSTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *cbsPath* | CBSTR. Existing path to which name is appended. Path can be absolute or relative and need not specify an existing folder. |
+| *cbsName* | CBSTR. Name being appended to the existing path. |
+
+### Return value
+
+CBSTR. The new path.
+
+### Remarks
+
+The **BuildPath** method inserts an additional path separator between the existing path and the name, only if necessary.
+
+### Usage example
+
+```
+#INCLUDE ONCE "Afx/CFileSys.inc"
+DIM pFileSys AS CFileSys
+DIM cbsNewPath AS CBSTR = pFileSys.BuildPath ("C:\MyFolder", "Text.txt")
+```
+
