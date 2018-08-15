@@ -592,13 +592,14 @@ FUNCTION GetDriveType (BYREF cbsDrive AS CBSTR) AS DRIVETYPECONST
 
 The type of the specified drive.
 
+```
 DriveType_UnknownType = 0
 DriveType_Removable = 1
 DriveType_Fixed = 2
 DriveType_Remote = 3
 DriveType_CDRom = 4
 DriveType_RamDisk = 5
-
+```
 #### Usage example
 
 ```
