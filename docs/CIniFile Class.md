@@ -114,7 +114,7 @@ Retrieves a numeric value from the specified section in an initialization file.
 
 ```
 FUNCTION GetInt (BYREF wszSectionName AS WSTRING, _
-   BYREF wszKeyName AS WSTRING, BYVAL nDefaultValue AS LONG = 0) AS DOUBLE
+   BYREF wszKeyName AS WSTRING, BYVAL nDefaultValue AS LONG = 0) AS LONG
 ```
 
 | Parameter  | Description |
