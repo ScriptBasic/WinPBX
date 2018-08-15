@@ -65,3 +65,6 @@ The **CFileSys** class wraps the Microsoft File System Object and provides metho
 | SetFolderName | Sets the name of a specified folder. |
 | SetVolumeName | Sets the volume name of the specified drive. |
 
+#### Include File:
+
+CFileSys.inc
