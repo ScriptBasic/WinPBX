@@ -54,4 +54,37 @@ SLEEP
 | [GetString](#GetString) | Retrieves a string from the specified section in an initialization file. |
 | [WriteValue](#WriteValue) | Writes a value into the specified section of an initialization file. |
 
+# <a name="DeleteKey"></a>DeleteKey
+
+Deletes a key from the specified section of an initialization file.
+
+```
+FUNCTION DeleteKey (BYREF wszSectionName AS WSTRING, BYREF wszKeyName AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *wszKeyName* | The name of the key to delete. |
+
+#### Return value
+
+BOOLEAN. True on success or False on failure.
+
+# <a name="DeleteSection"></a>DeleteSection
+
+Deletes a section from an initialization file.
+
+```
+FUNCTION DeleteSection (BYREF wszSectionName AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section to delete. |
+
+#### Return value
+
+BOOLEAN. True on success or False on failure.
+
 
