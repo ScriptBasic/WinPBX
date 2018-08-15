@@ -26,10 +26,6 @@ CONSTRUCTOR CRegExp (BYREF pRegExp AS CRegExp)
 | ---------- | ----------- |
 | *pRegExp* | Reference to an instance of a **CRegExp** class to be cloned. |
 
-#### Remarks
-
-This constructor clones the passed object and is used internally by the Execute method.
-
 ```
 CONSTRUCTOR CRegExp (BYREF cbsPattern AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
    BYVAL bGlobal AS BOOLEAN = FALSE, BYVAL bMultiline AS BOOLEAN = FALSE)
