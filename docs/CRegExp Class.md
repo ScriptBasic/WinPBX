@@ -57,7 +57,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [MatchCount](#MatchCount) | Returns the number of matches found. |
 | [RegExpPtr](#RegExpPtr) | Returns a direct pointer to the **Afx_IRegExp2** interface. |
-| Remove | Returns a copy of a string with text removed using a regular expression as the search string. |
+| [Remove](#Remove) | Returns a copy of a string with text removed using a regular expression as the search string. |
 | Replace | Replaces text found in a regular expression search. |
 | SubMatchValue | Retrieves the content of the specified submatch. |
 | Test | Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found. |
@@ -310,5 +310,42 @@ A pointer to the Afx_IRegExp2 interface.
 
 Since it is a direct pointer, you don't have to release it calling the **Release** method.
 
+# <a name="Remove"></a>Remove
 
+Returns a copy of a string with text removed using a regular expression as the search string
 
+```
+FUNCTION Remove (BYREF cbsSourceString AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bGlobal AS BOOLEAN = TRUE, BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+```
+FUNCTION Remove (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bGlobal AS BOOLEAN = TRUE, _
+   BYVAL bMultiline AS BOOLEAN = FALSE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsSourceString* | The main string. |
+| *cbsPattern* | The pattern to be removes. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+CBSTR. The resulting string.
+
+#### Usage examples
+
+```
+DIM pRegExp AS CRegExp
+PRINT pRegExp.Remove("abacadabra", "ab") ' - prints "acadra"
+PRINT pRegExp.Remove("abacadabra", "[bAc]", TRUE) ' - prints "dr"
+PRINT pRegExp.Remove("World, worldx, world", $"\bworld\b", TRUE) ' prints ", worldx,"
+```
+```
+PRINT CRegExp("ab").Remove("abacadabra") ' - prints "acadra"
+PRINT CRegExp("[bAc]").Remove("abacadabra", TRUE) ' - prints "dr"
+PRINT CRegExp($"\bworld\b").Remove("World, worldx, world", TRUE) ' prints ", worldx,"
+```
