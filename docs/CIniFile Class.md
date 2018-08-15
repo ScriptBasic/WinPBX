@@ -206,7 +206,7 @@ Retrieves a numeric value from the specified section in an initialization file.
 
 ```
 FUNCTION GetString (BYREF wszSectionName AS WSTRING, _
-   BYREF wszKeyName AS WSTRING, BYVAL wszDefaultValue AS WSTRING = "") AS CWSTR
+   BYREF wszKeyName AS WSTRING, BYREF wszDefaultValue AS WSTRING = "") AS CWSTR
 ```
 
 | Parameter  | Description |
@@ -217,4 +217,31 @@ FUNCTION GetString (BYREF wszSectionName AS WSTRING, _
 
 #### Return value
 
-DOUBLE. The retrieved string. If the key key cannot be found in the initialization file, the default value is returned.
+CWSTR. The retrieved string. If the key key cannot be found in the initialization file, the default value is returned.
+
+# <a name="WriteValue"></a>WriteValue
+
+Writes a value into the specified section of an initialization file.
+
+```
+FUNCTION WriteValue (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYREF wszValue AS WSTRING) AS BOOLEAN
+```
+```
+FUNCTION WriteValue (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYVAL dblValue AS DOUBLE) AS BOOLEAN
+```
+```
+FUNCTION WriteValue (BYREF wszSectionName AS WSTRING, _
+   BYREF wszKeyName AS WSTRING, BYVAL intValue AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *wszKeyName* | The name of the key. |
+| *wszValue* / *dblValue* / *intValue* | The value to write. |
+
+#### Return value
+
+BOOLEAN. True on success or False on failure.
