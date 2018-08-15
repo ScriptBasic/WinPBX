@@ -182,3 +182,21 @@ FOR i AS LONG = csa.LBound TO csa.UBound
    print csa.GetString(i)
 NEXT
 ```
+
+# <a name="GetSectionValues"></a>GetSectionValues
+
+Returns the keys and values of the specified section as a dictionary object.
+
+```
+FUNCTION GetSectionValues (BYREF wszSectionName AS WSTRING, BYREF pDic AS CDicObj) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszSectionName* | The name of the section. |
+| *pDic* | A reference to an instance of the *CDicObj* class. |
+
+#### Return value
+
+BOOLEAN. True on success or False on failure.
+
