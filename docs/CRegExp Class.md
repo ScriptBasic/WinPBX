@@ -351,7 +351,7 @@ FUNCTION Remove (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
 | Parameter  | Description |
 | ---------- | ----------- |
 | *cbsSourceString* | The main string. |
-| *cbsPattern* | The pattern to be removes. |
+| *cbsPattern* | The pattern to be removed. |
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
@@ -393,7 +393,7 @@ FUNCTION Replace (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
 | ---------- | ----------- |
 | *cbsSourceString* | The main string. |
 | *cvReplaceString* | The replacement text string. |
-| *cbsPattern* | The pattern to be removes. |
+| *cbsPattern* | The regular string expression being searched for. |
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
@@ -503,3 +503,31 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="Test"></a>Test
+
+Executes a regular expression search against a specified string and returns a boolean value that indicates if a pattern match was found.
+
+```
+FUNCTION Test (BYREF cbsSourceString AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
+   BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
+```
+```
+FUNCTION Test (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
+   BYVAL bIgnoreCase AS BOOLEAN = FALSE, BYVAL bMultiline AS BOOLEAN = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsSourceString* | The main string. |
+| *cbsPattern* | The regular string expression being searched for. |
+| *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
+| *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+#### Return value
+
+BOOLEAN. True if a pattern match is found; False if no match is found.
+
+#### Remarks
+
+In the first overloaded method, the actual pattern for the regular expression search is set using the **Pattern** property. The **Global** property has no effect on the **Test** method.
