@@ -596,7 +596,7 @@ PROPERTY MatchLen (BYVAL index AS LONG = 0) AS LONG
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *index* | LONG. The 0-based index od the matches collection. |
+| *index* | LONG. The 0-based index of the matches collection. |
 
 # <a name="MatchPos"></a>MatchPos
 
@@ -608,7 +608,7 @@ PROPERTY MatchPos (BYVAL index AS LONG = 0) AS LONG
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *index* | LONG. The 0-based index od the matches collection. |
+| *index* | LONG. The 0-based index of the matches collection. |
 
 #### Remarks
 
