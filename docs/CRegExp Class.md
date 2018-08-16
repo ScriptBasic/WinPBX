@@ -306,7 +306,7 @@ FUNCTION GetLastResult () AS HRESULT
 ```
 #### Return value
 
-HRESULT. S_OK (0) on success, or an error code on failure.
+S_OK (0) on success, or an error code on failure.
 
 # <a name="MatchCount"></a>MatchCount
 
