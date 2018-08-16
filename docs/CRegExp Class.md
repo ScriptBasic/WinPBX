@@ -598,5 +598,20 @@ PROPERTY MatchLen (BYVAL index AS LONG = 0) AS LONG
 | ---------- | ----------- |
 | *index* | LONG. The 0-based index od the matches collection. |
 
+# <a name="MatchPos"></a>MatchPos
+
+Returns the position in a search string where a match occurs.
+
+```
+PROPERTY MatchPos (BYVAL index AS LONG = 0) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *index* | LONG. The 0-based index od the matches collection. |
+
+#### Remarks
+
+The **MatchPos** property uses a zero-based offset from the beginning of the search string. In other words, the first character in the string is identified as character zero (0).
 
 
