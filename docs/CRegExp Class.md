@@ -69,7 +69,7 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | [MatchValue](#MatchValue) | Returns the value or text of a match found in a search string. |
 | [Multiline](#Multiline) | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
 | [Pattern](#Pattern) | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
-| [SubMatchCount](#SubMatchCount) | Returns the number of submatches. |
+| [SubMatchesCount](#SubMatchesCount) | Returns the number of submatches. |
 
 # <a name="Execute"></a>Execute
 
