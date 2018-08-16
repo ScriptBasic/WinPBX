@@ -315,9 +315,6 @@ Returns the number of matches found.
 ```
 FUNCTION MatchCount () AS LONG
 ```
-#### Return value
-
-LONG. The number of matches found.
 
 # <a name="RegExpPtr"></a>RegExpPtr
 
@@ -326,10 +323,6 @@ Returns a direct pointer to the Afx_IRegExp2 interface.
 ```
 FUNCTION RegExpPtr () AS Afx_IRegExp2 PTR
 ```
-#### Return value
-
-A pointer to the Afx_IRegExp2 interface.
-
 #### Remarks
 
 Since it is a direct pointer, you don't have to release it calling the **Release** method.
@@ -355,10 +348,6 @@ FUNCTION Remove (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
-
-#### Return value
-
-CBSTR. The resulting string.
 
 #### Usage examples
 
@@ -397,10 +386,6 @@ FUNCTION Replace (BYREF cbsSourceString AS CBSTR, BYREF cbsPattern AS CBSTR, _
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
-
-#### Return value
-
-CBSTR. The resulting string.
 
 #### Remarks
 
@@ -472,10 +457,6 @@ FUNCTION SubMatchValue (BYVAL MatchIndex AS LONG = 0, BYVAL SubMatchIndex AS LON
 | ---------- | ----------- |
 | *MatchIndex* | 0-based index of the match to retrieve. |
 | *SubMatchIndex* | 0-based index of the submatch to retrieve. |
-
-#### Return value
-
-CBSTR. The content of the specified submatch.
 
 #### Example
 
