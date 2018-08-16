@@ -581,8 +581,22 @@ Sets or returns a boolean value that indicates if a pattern search is case-sensi
 PROPERTY IgnoreCase () AS BOOLEAN
 PROPERTY IgnoreCase (BYVAL bIgnoreCase AS BOOLEAN)
 ```
+
 | Parameter  | Description |
 | ---------- | ----------- |
-| *bIgnoreCase* | False if the search is case-sensitive, True if it is not. Default is False.
+| *bIgnoreCase* | False if the search is case-sensitive, True if it is not. Default is False. |
+
+# <a name="MatchLen"></a>MatchLen
+
+Returns the length of a match found in a search string.
+
+```
+PROPERTY MatchLen (BYVAL index AS LONG = 0) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *index* | LONG. The 0-based index od the matches collection. |
+
 
 
