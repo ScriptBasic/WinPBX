@@ -19,14 +19,6 @@ CRegExp.inc
 ### Constructors
 
 ```
-CONSTRUCTOR CRegExp (BYREF pRegExp AS CRegExp)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pRegExp* | Reference to an instance of a **CRegExp** class to be cloned. |
-
-```
 CONSTRUCTOR CRegExp (BYREF cbsPattern AS CBSTR, BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
    BYVAL bGlobal AS BOOLEAN = FALSE, BYVAL bMultiline AS BOOLEAN = FALSE)
 ```
@@ -41,6 +33,14 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 | *bIgnoreCase* | TRUE or FALSE. Indicates if a pattern search is case-sensitive or not. |
 | *bGlobal* | TRUE or FALSE. Indicates if a pattern should match all occurrences in an entire search string or just the first one. |
 | *bMultiline* | TRUE or FALSE. Whether or not to search in strings across multiple lines. |
+
+```
+CONSTRUCTOR CRegExp (BYREF pRegExp AS CRegExp)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pRegExp* | Reference to an instance of a **CRegExp** class to be cloned. |
 
 ### Methods
 
