@@ -62,14 +62,14 @@ CONSTRUCTOR CRegExp (BYVAL bIgnoreCase AS BOOLEAN = FALSE, _
 
 | Name  | Description |
 | ---------- | ----------- |
-| Global | Sets or returns a boolean value that indicates if a pattern should match all occurrences in an entire search string or just the first one. |
-| IgnoreCase | Sets or returns a boolean value that indicates if a pattern search is case-sensitive or not. |
-| MatchLen | Returns the length of a match found in a search string. |
-| MatchPos | Returns the position in a search string where a match occurs. |
-| MatchValue | Returns the value or text of a match found in a search string. |
-| Multiline | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
-| Pattern | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
-| SubMatchCount | Returns the number of submatches. |
+| [Global](#Global) | Sets or returns a boolean value that indicates if a pattern should match all occurrences in an entire search string or just the first one. |
+| [IgnoreCase](#IgnoreCase) | Sets or returns a boolean value that indicates if a pattern search is case-sensitive or not. |
+| [MatchLen](#MatchLen) | Returns the length of a match found in a search string. |
+| [MatchPos](#MatchPos) | Returns the position in a search string where a match occurs. |
+| [MatchValue](#MatchValue) | Returns the value or text of a match found in a search string. |
+| [Multiline](#Multiline) | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
+| [Pattern](#Pattern) | Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines. |
+| [SubMatchCount](#SubMatchCount) | Returns the number of submatches. |
 
 # <a name="Execute"></a>Execute
 
@@ -531,3 +531,39 @@ BOOLEAN. True if a pattern match is found; False if no match is found.
 #### Remarks
 
 In the first overloaded method, the actual pattern for the regular expression search is set using the **Pattern** property. The **Global** property has no effect on the **Test** method.
+
+# <a name="Global"></a>Global
+
+Sets or returns a boolean value that indicates if a pattern should match all occurrences in an entire search string or just the first one.
+
+```
+PROPERTY Global () AS BOOLEAN
+PROPERTY Global (BYVAL bGlobal AS BOOLEAN)
+```
+#### Example
+
+```
+'#CONSOLE ON
+#INCLUDE ONCE "Afx/CRegExp.inc"
+USING Afx
+
+DIM pRegExp AS CRegExp
+pRegExp.Pattern = "is."
+pRegExp.IgnoreCase = TRUE
+pRegExp.Global = TRUE
+IF pRegExp.Execute("IS1 is2 IS3 is4") = FALSE THEN
+   print "No match found"
+ELSE
+   DIM nCount AS LONG = pRegExp.MatchesCount
+   FOR i AS LONG = 0 TO nCount - 1
+      print "Value: ", pRegExp.MatchValue(i)
+      print "Position: ", pRegExp.MatchPos(i)
+      print "Length: ", pRegExp.MatchLen(i)
+      print
+   NEXT
+END IF
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
