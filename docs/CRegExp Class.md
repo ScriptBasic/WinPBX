@@ -625,3 +625,16 @@ PROPERTY MatchValue (BYVAL index AS LONG = 0) AS CBSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *index* | 0-based index of the match to retrieve. |
+
+# <a name="Multiline"></a>Multiline
+
+Sets or returns a boolean value that indicates whether or not to search in strings across multiple lines.
+
+```
+PROPERTY Multiline () AS BOOLEAN
+PROPERTY Multiline (BYVAL bMultiline AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bMultiline* | True if the search is performed across multiple lines, False if it is not. Default is False. |
