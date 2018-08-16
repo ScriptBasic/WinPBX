@@ -540,6 +540,11 @@ Sets or returns a boolean value that indicates if a pattern should match all occ
 PROPERTY Global () AS BOOLEAN
 PROPERTY Global (BYVAL bGlobal AS BOOLEAN)
 ```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bGlobal* | True if the search applies to the entire string, False if it does not. Default is False. |
+
 #### Example
 
 ```
@@ -567,3 +572,17 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="IgnoreCase"></a>IgnoreCase
+
+Sets or returns a boolean value that indicates if a pattern search is case-sensitive or not.
+
+```
+PROPERTY IgnoreCase () AS BOOLEAN
+PROPERTY IgnoreCase (BYVAL bIgnoreCase AS BOOLEAN)
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bIgnoreCase* | False if the search is case-sensitive, True if it is not. Default is False.
+
+
