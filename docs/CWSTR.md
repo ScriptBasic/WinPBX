@@ -23,7 +23,7 @@ Quirks:
 | cbstr | Returns the contents of the CWSTR as a CBSTR. |
 | wchar | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | Utf8 | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| Let | Assigns a string to the CWSTR. |
+| Let | Assigns a string to the CWSTR. It implements the = operator. |
 | Capacity | Gets/sets the size of the internal buffer. |
 | GrowSize | Gets/sets the grow size value, in characters. |
 | Add | The passed string parameter is appended to the string starting at the specified position. |
