@@ -15,10 +15,10 @@ Quirks:
 | [sptr](#sptr) | Returns the address of the string data. Same as \*. |
 | [vptr](#vptr) | Returns the address of the CWSTR buffer. Same as \* |
 | [wstr](#wstr) | Returns the string data. Same as \*\*. |
-| Operator & | Concatenates stings. |
-| Operator += | Appends a string to the CWSTR. |
-| Operator &= | Appends a string to the CWSTR. |
-| Operator \[] | Gets the corresponding unicode integer representation of the character at the specified position. |
+| [Operator &](#Operator&) | Concatenates strings. |
+| [Operator +=](#Operator+=) | Appends a string to the CWSTR. |
+| [Operator &=](#Operator&=) | Appends a string to the CWSTR. |
+| [Operator \[]](#Operator[]) | Gets the corresponding unicode integer representation of the character at the specified position. |
 | Operator Cast | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
 | bstr | Returns the contents of the CWSTR as a BSTR. |
 | cbstr | Returns the contents of the CWSTR as a CBSTR. |
@@ -85,18 +85,36 @@ CONSTRUCTOR CWstr (BYREF n AS DOUBLE)
 
 For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
 
-# <a name="Operator*"></a>Operator *
+# Operators
+
+#### <a name="Operator*"></a>Operator *
 
 Deferences the CWSTR.<br>One * returns the address of the CWSTR buffer.<br>Two ** returns the address of the start of the string data.
 
-# <a name="sptr"></a>sptr
+#### <a name="sptr"></a>sptr
 
 Returns the address of the string data. Same as *.
 
-# <a name="vptr"></a>vptr
+#### <a name="vptr"></a>vptr
 
 Returns the address of the string buffer. Same as *.
 
-# <a name="wstr"></a>wstr
+#### <a name="wstr"></a>wstr
 
 Returns the string data. Same as **.
+
+#### <a name="Operator&"></a>Operator &
+
+Concatenates strings.
+
+#### <a name="Operator+="></a>Operator +=
+
+Appends a string to the CWSTR.
+
+#### <a name="Operator&="></a>Operator &=
+
+Appends a string to the CWSTR.
+
+#### <a name="Operator[]="></a>Operator []
+
+Appends a string to the CWSTR.
