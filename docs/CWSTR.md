@@ -31,9 +31,9 @@ Quirks:
 | Clear | Erases all the data in the class object. |
 | DelChars | Deletes the specified number of characters starting at the specified position. |
 | Insert | The passed string parameter is inserted in the string starting at the specified position. |
-| LeftChars | Returns the leftmost substring of the string. |
-| MidChars | Returns a substring of the string. |
-| RightChars | Returns the rightmost substring of the string. |
+| LeftChars | Returns the leftmost substring of the string. Same as LEFT. |
+| MidChars | Returns a substring of the string. Same as MID. |
+| RightChars | Returns the rightmost substring of the string. Same as RIGHT. |
 | Resize | Resizes the string to a length of the specified number of characters. |
 | SizeAlloc | Sets the capacity of the buffer in characters. |
 | SizeOf | Returns the capacity of the buffer in characters. |
