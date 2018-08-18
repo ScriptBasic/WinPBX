@@ -11,7 +11,7 @@ Quirks:
 | Name       | Description |
 | ---------- | ----------- |
 | [Constructors](#Constructors) | Initialize the class with the specified value. |
-| \* | One * returns the address of the CWSTR buffer.<br> Two ** returns the address of the start of the string data. |
+| [Operator \*](#Operator*) | One * returns the address of the CWSTR buffer.<br> Two ** returns the address of the start of the string data. |
 | sptr | Returns the address of the string data. Same as \*. |
 | vptr | Returns the address of the CWSTR buffer. Same as \* |
 | wstr | Returns the string data. Same as \*\*. |
@@ -84,3 +84,5 @@ CONSTRUCTOR CWstr (BYREF n AS DOUBLE)
 | *n* | A number. |
 
 For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
+
+# <a name="Operator*"></a>Operator *
