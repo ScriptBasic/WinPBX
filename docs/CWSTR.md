@@ -59,6 +59,8 @@ Quirks:
 
 # <a name="Constructors"></a>Constructors
 
+Initialize the class with the specified value.
+
 ```
 CONSTRUCTOR CWStr
 CONSTRUCTOR CWStr (BYVAL nChars AS UINT, BYVAL bClear AS BOOLEAN)
