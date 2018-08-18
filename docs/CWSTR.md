@@ -15,11 +15,11 @@ Quirks:
 | sptr | Returns the address of the string data. Same as \*. |
 | vptr | Returns the address of the CWSTR buffer. Same as \* |
 | wstr | Returns the string data. Same as \*\*. |
-| & | Concatenates stings. |
-| += | Appends a string to the CWSTR. |
-| &= | Appends a string to the CWSTR. |
-| \[] | Gets the corresponding unicode integer representation of the character at the specified position. |
-| Cast | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
+| Operator & | Concatenates stings. |
+| Operator += | Appends a string to the CWSTR. |
+| Operator &= | Appends a string to the CWSTR. |
+| Operator \[] | Gets the corresponding unicode integer representation of the character at the specified position. |
+| Operator Cast | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
 | bstr | Returns the contents of the CWSTR as a BSTR. |
 | cbstr | Returns the contents of the CWSTR as a CBSTR. |
 | wchar | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
@@ -86,3 +86,5 @@ CONSTRUCTOR CWstr (BYREF n AS DOUBLE)
 For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
 
 # <a name="Operator*"></a>Operator *
+
+Deferences the CWSTR. One * returns the address of the CWSTR buffer. Two ** returns the address of the start of the string data.
