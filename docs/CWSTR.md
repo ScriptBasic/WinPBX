@@ -27,7 +27,7 @@ Quirks:
 | Capacity | Gets/sets the size of the internal buffer. |
 | GrowSize | Gets/sets the grow size value, in characters. |
 | Add | The passed string parameter is appended to the string starting at the specified position. |
-| Char | RGets or sets the corresponding unicode integer representation of the character at the specified position. |
+| Char | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
 | Clear | Erases all the data in the class object. |
 | DelChars | Deletes the specified number of characters starting at the specified position. |
 | Insert | The passed string parameter is inserted in the string starting at the specified position. |
@@ -53,3 +53,28 @@ Quirks:
 | AfxCWstrLogicalSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 | AfxCWstrSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 
+# Constructors
+
+```
+CONSTRUCTOR CWStr
+CONSTRUCTOR CWStr (BYVAL nChars AS UINT, BYVAL bClear AS BOOLEAN)
+CONSTRUCTOR CWStr (BYVAL pwszStr AS WSTRING PTR)
+CONSTRUCTOR CWStr (BYREF cws AS CWSTR)
+CONSTRUCTOR CWstr (BYREF cbs AS CBSTR)
+CONSTRUCTOR CWStr (BYREF ansiStr AS STRING, BYVAL nCodePage AS UINT = 0)
+CONSTRUCTOR CWstr (BYREF n AS LONGINT)
+CONSTRUCTOR CWstr (BYREF n AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nChars* | The number of characters to be pre-allocated. |
+| *bClear* | The newly allocated memory is initialized (TRUE) or not (FALSE). |
+| *pwszStr* | A WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
+| *nCodePage* | The code page to be used for ansi to unicode conversions. |
+| *n* | A number. |
+
+For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
