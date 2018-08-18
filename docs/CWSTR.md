@@ -13,7 +13,7 @@ Quirks:
 | Constructors | Initialize the class with the specified value. |
 | \* | One * returns the address of the CWSTR buffer.<br> Two ** returns the address of the start of the string data. |
 | sptr | Returns the address of the string data. Same as \*. |
-| vptr | Returns the address of the CWSTR buffer. |
+| vptr | Returns the address of the CWSTR buffer. Same as \* |
 | wstr | Returns the string data. Same as \*\*. |
 | += | Appends a string to the CWSTR. |
 | &= | Appends a string to the CWSTR. |
