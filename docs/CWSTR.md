@@ -57,7 +57,7 @@ Quirks:
 | AfxCWstrLogicalSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 | AfxCWstrSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 
-# Constructors
+# <a name="Constructors"></a>Constructors
 
 ```
 CONSTRUCTOR CWStr
