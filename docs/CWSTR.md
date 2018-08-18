@@ -12,9 +12,9 @@ Quirks:
 | ---------- | ----------- |
 | [Constructors](#Constructors) | Initialize the class with the specified value. |
 | [Operator \*](#Operator*) | One * returns the address of the CWSTR buffer.<br> Two ** returns the address of the start of the string data. |
-| sptr | Returns the address of the string data. Same as \*. |
-| vptr | Returns the address of the CWSTR buffer. Same as \* |
-| wstr | Returns the string data. Same as \*\*. |
+| [sptr](#sptr) | Returns the address of the string data. Same as \*. |
+| [vptr](#vptr) | Returns the address of the CWSTR buffer. Same as \* |
+| [wstr](#wstr) | Returns the string data. Same as \*\*. |
 | Operator & | Concatenates stings. |
 | Operator += | Appends a string to the CWSTR. |
 | Operator &= | Appends a string to the CWSTR. |
@@ -87,4 +87,16 @@ For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com
 
 # <a name="Operator*"></a>Operator *
 
-Deferences the CWSTR. One * returns the address of the CWSTR buffer. Two ** returns the address of the start of the string data.
+Deferences the CWSTR.<br>One * returns the address of the CWSTR buffer.<br>Two ** returns the address of the start of the string data.
+
+# <a name="sptr"></a>sptr
+
+Returns the address of the string data. Same as *.
+
+# <a name="vptr"></a>vptr
+
+Returns the address of the string buffer. Same as *.
+
+# <a name="wstr"></a>wstr
+
+Returns the string data. Same as **.
