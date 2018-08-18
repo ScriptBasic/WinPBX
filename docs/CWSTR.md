@@ -18,7 +18,7 @@ Quirks:
 | += | Appends a string to the CWSTR. |
 | &= | Appends a string to the CWSTR. |
 | \[] | Gets the corresponding unicode integer representation of the character at the specified position. |
-| Cast | Returns a pointer to the CWSTR buffer or the string data. |
+| Cast | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
 | bstr | Returns the contents of the CWSTR as a BSTR. |
 | cbstr | Returns the contents of the CWSTR as a CBSTR. |
 | wchar | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
