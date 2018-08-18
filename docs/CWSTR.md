@@ -15,6 +15,7 @@ Quirks:
 | sptr | Returns the address of the string data. Same as \*. |
 | vptr | Returns the address of the CWSTR buffer. Same as \* |
 | wstr | Returns the string data. Same as \*\*. |
+| & | Concatenates stings. |
 | += | Appends a string to the CWSTR. |
 | &= | Appends a string to the CWSTR. |
 | \[] | Gets the corresponding unicode integer representation of the character at the specified position. |
@@ -31,12 +32,15 @@ Quirks:
 | Clear | Erases all the data in the class object. |
 | DelChars | Deletes the specified number of characters starting at the specified position. |
 | Insert | The passed string parameter is inserted in the string starting at the specified position. |
-| LeftChars | Returns the leftmost substring of the string. Same as LEFT. |
-| MidChars | Returns a substring of the string. Same as MID. |
-| RightChars | Returns the rightmost substring of the string. Same as RIGHT. |
+| Left | Returns the leftmost substring of the string. Same as LEFT. |
+| Right | Returns the rightmost substring of the string. Same as RIGHT. |
+| LeftChars | Returns the leftmost substring of the string. Same as Left. |
+| MidChars | Returns a substring of the string. Same as Mid. |
+| RightChars | Returns the rightmost substring of the string. Same as Right. |
 | Resize | Resizes the string to a length of the specified number of characters. |
 | SizeAlloc | Sets the capacity of the buffer in characters. |
 | SizeOf | Returns the capacity of the buffer in characters. |
+| Val | Converts the string to a floating point number (DOUBLE). |
 | ValDouble | Converts the string to a floating point number (DOUBLE). |
 | ValInt | Converts the string to a signed 32-bit integer (LONG). |
 | ValLong | Converts the string to a signed 32-bit integer (LONG). |
