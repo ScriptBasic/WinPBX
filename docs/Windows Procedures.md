@@ -179,12 +179,15 @@
 
 | Name       | Description |
 | ---------- | ----------- |
+| AfxCommand | Returns command line parameters used to call the program. |
+| AfxEnviron | etrieves the contents of the specified variable from the environment block of the calling process. |
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
 | AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
 | AfxMsg | Displays an application modal message box. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
+| AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
 
 # Versioning
 
