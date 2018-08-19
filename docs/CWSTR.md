@@ -42,15 +42,15 @@ Quirks:
 | [Resize](#Resize) | Resizes the string to a length of the specified number of characters. |
 | [SizeAlloc](#SizeAlloc) | Sets the capacity of the buffer in characters. |
 | [SizeOf](#SizeOf) | Returns the capacity of the buffer in characters. |
-| Val | Converts the string to a floating point number (DOUBLE). |
-| ValDouble | Converts the string to a floating point number (DOUBLE). |
-| ValInt | Converts the string to a signed 32-bit integer (LONG). |
-| ValLong | Converts the string to a signed 32-bit integer (LONG). |
-| ValLongInt | Converts the string to a signed 64-bit integer (LONGINT). |
-| Value | Converts the string to a floating point number (DOUBLE). |
-| ValUInt | Converts the string to a 32.bit unsigned integer (ULONG). |
-| ValULong | Converts the string to a 32-bit unsigned integer (ULONG). |
-| ValULongInt | Converts the string to a 64-bit unsigned integer (ULONGINT). |
+| [Val](#Val) | Converts the string to a floating point number (DOUBLE). |
+| [ValDouble](#ValDouble) | Converts the string to a floating point number (DOUBLE). |
+| [ValInt](#ValInt) | Converts the string to a signed 32-bit integer (LONG). |
+| [ValLong](#ValLong) | Converts the string to a signed 32-bit integer (LONG). |
+| [ValLongInt](#ValLongInt) | Converts the string to a signed 64-bit integer (LONGINT). |
+| [Value](#Value) | Converts the string to a floating point number (DOUBLE). |
+| [ValUInt](#ValUInt) | Converts the string to a 32.bit unsigned integer (ULONG). |
+| [ValULong](#ValULong) | Converts the string to a 32-bit unsigned integer (ULONG). |
+| [ValULongInt](#ValULongInt) | Converts the string to a 64-bit unsigned integer (ULONGINT). |
 | AfxCWstrArrayAppend | Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array. |
 | AfxCWstrArrayInsert | Inserts a new CWSTR element before the specified position in a not fixed one-dimensional CWSTR array. |
 | AfxCWstrArrayRemove | Removes the specified element of a not fixed one-dimensional CWSTR array. |
@@ -495,4 +495,80 @@ Returns the capacity of the buffer in characters.
 
 ```
 PROPERTY SizeOf() AS UINT
+```
+
+#### <a name="Val"></a>Val
+
+Converts the string to a floating point number (DOUBLE).
+
+```
+FUNCTION Val OVERLOAD (BYREF cws AS CWSTR) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cws* | The source CWSTR. |
+
+#### <a name="ValDouble"></a>ValDouble
+
+Converts the string to a floating point number (DOUBLE).
+
+```
+FUNCTION ValDouble () AS DOUBLE
+```
+
+#### <a name="ValInt"></a>ValInt
+
+Converts the string to a signed 32-bit integer (LONG).
+
+```
+FUNCTION ValInt () AS LONG
+```
+
+#### <a name="ValLong"></a>ValLong
+
+Converts the string to a signed 32-bit integer (LONG).
+
+```
+FUNCTION ValLong () AS LONG
+```
+
+#### <a name="ValLongInt"></a>ValLongInt
+
+Converts the string to a signed 64-bit integer (LONGINT).
+
+```
+FUNCTION ValLongInt () AS LONGINT
+```
+
+#### <a name="Value"></a>Value
+
+Converts the string to a floating point number (DOUBLE).
+
+```
+FUNCTION Value () AS DOUBLE
+```
+
+#### <a name="ValUInt"></a>ValUInt
+
+Converts the string to a 32.bit unsigned integer (ULONG).
+
+```
+FUNCTION ValUInt () AS ULONG
+```
+
+#### <a name="ValULong"></a>ValULong
+
+Converts the string to a 32-bit unsigned integer (ULONG).
+
+```
+FUNCTION ValULong () AS ULONG
+```
+
+#### <a name="ValULongInt"></a>ValULongInt
+
+Converts the string to a 64-bit unsigned integer (ULONGINT).
+
+```
+FUNCTION ValULongInt () AS ULONGINT
 ```
