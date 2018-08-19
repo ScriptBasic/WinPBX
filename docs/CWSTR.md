@@ -20,11 +20,11 @@ Quirks:
 | [Operator &=](#Operator&=) | Appends a string to the CWSTR. |
 | [Operator []](#Operator[]) | Gets the corresponding unicode integer representation of the character at the specified position. |
 | [Operator Cast](#OperatorCast) | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
-| bstr | Returns the contents of the CWSTR as a BSTR. |
-| cbstr | Returns the contents of the CWSTR as a CBSTR. |
-| wchar | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
-| Utf8 | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| Let | Assigns a string to the CWSTR. It implements the = operator. |
+| [bstr](#bstr) | Returns the contents of the CWSTR as a BSTR. |
+| [cbstr](#cbstr) | Returns the contents of the CWSTR as a CBSTR. |
+| [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
+| [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
+| [Operator Let](#OperatorLet) | Assigns a string to the CWSTR. It implements the = operator. |
 | Capacity | Gets/sets the size of the internal buffer. |
 | GrowSize | Gets/sets the grow size value, in characters. |
 | Add | The passed string parameter is appended to the string starting at the specified position. |
@@ -242,3 +242,24 @@ OPERATOR CAST () AS ANY PTR
 
 Returns a pointer to the CWSTR buffer or the string data. These operators aren't called directly.
 
+#### <a name="bstr"></a>bstr
+
+Returns the contents of the CWSTR as a BSTR.
+
+#### <a name="bstr"></a>bstr
+
+Returns the contents of the CWSTR as a CBSTR.
+
+#### <a name="wchar"></a>wchar
+
+Returns the string data as a new unicode string allocated with CoTaskMemAlloc.
+Useful when we need to pass a pointer to a null terminated wide string to a function or method that will release it. If we pass a WSTRING it will GPF. If the length of the input string is 0, CoTaskMemAlloc allocates a zero-length item and returns a valid pointer to that item. If there is insufficient memory available, CoTaskMemAlloc returns NULL.
+
+#### <a name="Utf8"></a>Utf8
+
+Converts from UTF8 to Unicode and from Unicode to UTF8.
+
+```
+PROPERTY Utf8() AS STRING
+PROPERTY Utf8 (BYREF utf8String AS STRING)
+```
