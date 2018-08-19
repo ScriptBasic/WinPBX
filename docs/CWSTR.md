@@ -25,9 +25,9 @@ Quirks:
 | [cbstr](#cbstr) | Returns the contents of the CWSTR as a CBSTR. |
 | [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| Capacity | Gets/sets the size of the internal buffer. |
-| GrowSize | Gets/sets the grow size value, in characters. |
-| Add | The passed string parameter is appended to the string starting at the specified position. |
+| [Capacity](#Capacity) | Gets/sets the size of the internal buffer. |
+| [GrowSize](#GrowSize) | Gets/sets the grow size value, in characters. |
+| [Add](#Add( | The passed string parameter is appended to the string starting at the specified position. |
 | Char | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
 | Clear | Erases all the data in the class object. |
 | DelChars | Deletes the specified number of characters starting at the specified position. |
@@ -287,6 +287,32 @@ PROPERTY Utf8 (BYREF utf8String AS STRING)
 ```
 
 # Methods
+
+#### <a name="Capacity"></a>Capacity
+
+Gets/sets the size of the internal buffer. The size is the number of bytes which can be stored without further expansion.
+
+```
+PROPERTY Capacity() AS UINT
+PROPERTY Capacity (BYVAL nValue AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nValue* | The new capacity value, in bytes. If the new capacity is equal to the current capacity, no operation is performed; is it is smaller, the buffer is shortened and the contents that exceed the new capacity are lost. If you pass an odd number, 1 is added to the value to make it even. |
+
+#### <a name="GrowSize"></a>GrowSize
+
+Gets/sets the size of the internal buffer. The size is the number of bytes which can be stored without further expansion.
+
+```
+PROPERTY GrowSize () AS LONG
+PROPERTY GrowSize (BYVAL nChars AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nChars* | The new grow size value, in characters.  A value of less than 0 indicates that it must double the capacity each time that the buffer needs to be resized. |
 
 #### <a name="Add"></a>Add
 
