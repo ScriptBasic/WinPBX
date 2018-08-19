@@ -352,11 +352,13 @@ PROPERTY Char (BYVAL nIndex AS UINT, BYVAL nValue AS USHORT)
 
 #### <a name="Clear"></a>Clear
 
-Gets or sets the corresponding unicode integer representation of the character at the position specified by the *nIndex* parameter.
+Erases all the data in the class object.
 
 ```
 SUB Clear
 ```
+
+Actually, this method only sets the buffer length to zero, indicating no string in the buffer. The allocated memory for the buffer is deallocated when the class is destroyed.
 
 #### <a name="DelChars"></a>DelChars
 
