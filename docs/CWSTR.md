@@ -246,7 +246,7 @@ Returns a pointer to the CWSTR buffer or the string data. These operators aren't
 
 Returns the contents of the CWSTR as a BSTR.
 
-#### <a name="bstr"></a>bstr
+#### <a name="cbstr"></a>cbstr
 
 Returns the contents of the CWSTR as a CBSTR.
 
