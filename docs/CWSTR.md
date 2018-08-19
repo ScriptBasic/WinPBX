@@ -51,13 +51,13 @@ Quirks:
 | [ValUInt](#ValUInt) | Converts the string to a 32.bit unsigned integer (ULONG). |
 | [ValULong](#ValULong) | Converts the string to a 32-bit unsigned integer (ULONG). |
 | [ValULongInt](#ValULongInt) | Converts the string to a 64-bit unsigned integer (ULONGINT). |
-| AfxCWstrArrayAppend | Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array. |
-| AfxCWstrArrayInsert | Inserts a new CWSTR element before the specified position in a not fixed one-dimensional CWSTR array. |
-| AfxCWstrArrayRemove | Removes the specified element of a not fixed one-dimensional CWSTR array. |
-| AfxCWstrArraySort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
-| AfxCWstrArrayLogicalSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
-| AfxCWstrLogicalSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
-| AfxCWstrSort | Sorts a one-dimensional CWSTR array calling the C qsort function. |
+| [AfxCWstrArrayAppend](#AfxCWstrArrayAppend) | Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array. |
+| [AfxCWstrArrayInsert](#AfxCWstrArrayInsert) | Inserts a new CWSTR element before the specified position in a not fixed one-dimensional CWSTR array. |
+| [AfxCWstrArrayRemove](#AfxCWstrArrayRemove) | Removes the specified element of a not fixed one-dimensional CWSTR array. |
+| [AfxCWstrArraySort](AfxCWstrArraySort~) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
+| [AfxCWstrArrayLogicalSort](#AfxCWstrArrayLogicalSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
+| [AfxCWstrLogicalSort](#AfxCWstrLogicalSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
+| [AfxCWstrSort](#AfxCWstrSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 
 # <a name="Constructors"></a>Constructors
 
@@ -571,4 +571,178 @@ Converts the string to a 64-bit unsigned integer (ULONGINT).
 
 ```
 FUNCTION ValULongInt () AS ULONGINT
+```
+
+# Helper Functions
+
+#### <a name="AfxCWstrArrayAppend"></a>AfxCWstrArrayAppend
+
+Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array.
+
+```
+FUNCTION AfxCWstrArrayAppend (rgwstr() AS CWSTR, BYREF cws AS CWSTR) AS BOOLEAN
+```
+#### Example
+
+```
+REDIM rg(1 TO 10) AS CWSTR
+FOR i AS LONG = 1 TO 10
+   rg(i) = "string " & i
+NEXT
+AfxCwstrArrayAppend(rg(), "string 11")
+FOR i AS LONG = LBOUND(rg) TO UBOUND(rg)
+   print rg(i)
+NEXT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | THe array. |
+| *cws* | The string to append. |
+
+#### <a name="AfxCWstrArrayInsert"></a>AfxCWstrArrayInsert
+
+Inserts a new CWSTR element before the specified position in a not fixed one-dimensional CWSTR array.
+
+```
+FUNCTION AfxCWstrArrayInsert (rgwstr() AS CWSTR, BYVAL nPos AS LONG, BYREF cws AS CWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | THe array. |
+| *nPos* | The position in the array where the new element will be added. This position is relative to the lower bound of the array. |
+| *cws* | The string to append. |
+
+#### Example
+
+```
+REDIM rg(1 TO 10) AS CWSTR
+FOR i AS LONG = 1 TO 10
+   rg(i) = "string " & i
+NEXT
+AfxCwstrArrayInsert(rg(), 3, "Inserted element")
+FOR i AS LONG = LBOUND(rg) TO UBOUND(rg)
+   print rg(i)
+NEXT
+```
+
+#### <a name="AfxCWstrArrayRemove"></a>AfxCWstrArrayRemove
+
+Removes the specified element of a not fixed one-dimensional CWSTR array.
+
+```
+FUNCTION AfxCWstrArrayRemove (rgwstr() AS CWSTR, BYVAL nPos AS LONG) AS BOOLEAN
+FUNCTION AfxCWstrArrayRemoveFirst (rgwstr() AS CWSTR) AS BOOLEAN
+FUNCTION AfxCWstrArrayRemoveLast (rgwstr() AS CWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | THe array. |
+| *nPos* | The position in the array of the element to remove. This position is relative to the lower bound of the array. |
+
+#### Remarks
+
+*AfxCWstrArrayRemoveFirst* removes the first element of the array
+*AfxCWstrArrayRemoveLast* removes the last element of the array
+
+#### Example
+
+```
+REDIM rg(1 TO 10) AS CWSTR
+FOR i AS LONG = 1 TO 10
+   rg(i) = "string " & i
+NEXT
+AfxCwstrArrayRemove(rg(), 3)
+FOR i AS LONG = LBOUND(rg) TO UBOUND(rg)
+   print rg(i)
+NEXT
+```
+
+#### <a name="AfxCWstrArraySort"></a>AfxCWstrArraySort
+
+Sorts a one-dimensional CWSTR array calling the C qsort function.
+
+```
+SUB AfxCWstrArraySort (rgwstr() AS CWSTR, BYVAL bAscend AS BOOLEAN = TRUE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | THe array to sort. |
+| *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+#### <a name="AfxCWstrArrayLogicalSort"></a>AfxCWstrArrayLogicalSort
+
+Sorts a one-dimensional CWSTR array calling the C qsort function. Digits in the strings are considered as numerical content rather than text. This test is not case-sensitive.
+
+```
+SUB AfxCWstrArrayLogicalSort (rgwstr() AS CWSTR, BYVAL bAscend AS BOOLEAN = TRUE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | THe array to sort. |
+| *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+```
+DIM rg(1 TO 9) AS CWSTR
+rg(1) = "20string"
+rg(2) = "2string"
+rg(3) = "3string"
+rg(4) = "st20ring"
+rg(5) = "st2ring"
+rg(6) = "st3ring"
+rg(7) = "string2"
+rg(8) = "string20"
+rg(9) = "string3"
+
+print "---- after sorting ----"
+
+AfxCWstrArrayLogicalSort rg()
+FOR i AS LONG = 1 TO 9
+  print rg(i)
+NEXT
+
+' -- Output:
+---- after sorting ----
+2string
+3string
+20string
+st2ring
+st3ring
+st20ring
+string2
+string3
+string20
+```
+
+#### <a name="AfxCWstrSort"></a>AfxCWstrSort
+
+Sorts a one-dimensional CWSTR array calling the C qsort function.
+
+```
+SUB AfxCWstrSort (BYVAL rgwstr AS ANY PTR, BYVAL numElm AS LONG, BYVAL bAscend AS BOOLEAN = TRUE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgwstr* | Pointer to the start of target array. |
+| *numElm* | Number of elements in the array. |
+| *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+```
+DIM rg(1 TO 10) AS CWSTR
+FOR i AS LONG = 1 TO 10
+   rg(i) = "string " & i
+NEXT
+FOR i AS LONG = 1 TO 10
+  print rg(i)
+NEXT
+print "---- after sorting ----"
+AfxCWstrSort @rg(1), 10
+FOR i AS LONG = 1 TO 10
+   print rg(i)
+NEXT
 ```
