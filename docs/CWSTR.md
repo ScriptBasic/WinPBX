@@ -701,7 +701,7 @@ SUB AfxCWstrArrayLogicalSort (rgwstr() AS CWSTR, BYVAL bAscend AS BOOLEAN = TRUE
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *rgwstr()* | THe array to sort. |
+| *rgwstr()* | The array to sort. |
 | *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
 
 ```
