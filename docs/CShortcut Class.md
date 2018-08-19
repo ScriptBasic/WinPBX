@@ -4,7 +4,7 @@
 
 **CURLShortcut** allows to create a URL shortcut programmatically.
 
-# Constructors
+### Constructors
 
 ```
 CONSTRUCTOR CShortcut (BYREF cbsPathName AS CBSTR)
@@ -50,8 +50,8 @@ pURLShortcut.Save
 
 | Name       | Description |
 | ---------- | ----------- |
-| *Save* | Saves a shortcut object to disk. |
-| *GetLastResult* | Returns the last result code. |
+| [Save](#Save1) | Saves a shortcut object to disk. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
 
 # CShortcut Properties
 
@@ -71,8 +71,8 @@ pURLShortcut.Save
 
 | Name       | Description |
 | ---------- | ----------- |
-| *Save* | Saves a shortcut object to disk. |
-| *GetLastResult* | Returns the last result code. |
+| [Save](#Save2) | Saves a URL shortcut object to disk. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
 
 # CShortcut Properties
 
@@ -80,3 +80,47 @@ pURLShortcut.Save
 | ---------- | ----------- |
 | *FullName* | Returns the fully qualified path of the shortcut object's target. |
 | *TargetPath* | Gets/sets the path of the shortcut's executable. |
+
+# <a name="Save1"></a>Save (CShortcut)
+
+Saves a shortcut object to disk.
+
+```
+FUNCTION Save () AS HRESULT
+```
+
+#### Remarks
+
+After creating an instance of the *CShortcut* class to create to create a shortcut object and set the shortcut object's properties, the Save method must be used to save the shortcut object to disk. The **Save** method uses the information in the shortcut object's **FullName** property to determine where to save the shortcut object on a disk. You can only create shortcuts to system objects. This includes files, directories, and drives (but does not include printer links or scheduled tasks).
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="Save1"></a>Save (CURLShortcut)
+
+Saves a URL shortcut object to disk.
+
+```
+FUNCTION Save () AS HRESULT
+```
+
+#### Remarks
+
+After creating an instance of the *CURLShortcut* class to create to create a shortcut object and set the shortcut object's properties, the Save method must be used to save the shortcut object to disk. The **Save** method uses the information in the shortcut object's **FullName** property to determine where to save the shortcut object on a disk. You can only create shortcuts to system objects. This includes files, directories, and drives (but does not include printer links or scheduled tasks).
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+#### Return value
+
+HRESULT. S_OK (0) on success, or an error code on failure.
