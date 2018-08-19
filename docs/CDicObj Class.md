@@ -13,7 +13,7 @@
 | [DispPtr](#DispPtr) | Returns the underlying dispatch pointer. |
 | [Exists](#Exists) | Checks if a specified key exists in the associative array. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
-| [HashVal](#HashVal | Returns the hash value for a specified key in the associative array. |
+| [HashVal](#HashVal) | Returns the hash value for a specified key in the associative array. |
 | Item | Sets or returns an item for a specified key in associative array. |
 | Items | Returns a safe array containing all the items in the associative array. |
 | Key | Sets or returns an item for a specified key in the associative array. |
@@ -77,9 +77,9 @@ Returns the last result code.
 FUNCTION GetLastResult () AS HRESULT
 ```
 
-Returns the hash value for a specified key in the associative array.
+# <a name="HashVal"></a>HashVal
 
-Returns the last result code.
+Returns the hash value for a specified key in the associative array.
 
 ```
 FUNCTION HashVal (BYREF cvKey AS CVAR) AS CVAR
