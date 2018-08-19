@@ -19,12 +19,12 @@ Quirks:
 | [Operator +=](#Operator+=) | Appends a string to the CWSTR. |
 | [Operator &=](#Operator&=) | Appends a string to the CWSTR. |
 | [Operator []](#Operator[]) | Gets the corresponding unicode integer representation of the character at the specified position. |
+| [Operator Let](#OperatorLet) | Assigns a string to the CWSTR. It implements the = operator. |
 | [Operator Cast](#OperatorCast) | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
 | [bstr](#bstr) | Returns the contents of the CWSTR as a BSTR. |
 | [cbstr](#cbstr) | Returns the contents of the CWSTR as a CBSTR. |
 | [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| [Operator Let](#OperatorLet) | Assigns a string to the CWSTR. It implements the = operator. |
 | Capacity | Gets/sets the size of the internal buffer. |
 | GrowSize | Gets/sets the grow size value, in characters. |
 | Add | The passed string parameter is appended to the string starting at the specified position. |
@@ -233,6 +233,28 @@ Appends a string to the CWSTR.
 
 Appends a string to the CWSTR.
 
+#### <a name="OperatorLet"></a>Operator Let
+
+Assigns a string to the CWSTR.
+
+```
+OPERATOR LET (BYREF wszStr AS CONST WSTRING)
+OPERATOR LET (BYVAL pwszStr AS WSTRING PTR)
+OPERATOR LET (BYREF cws AS CWStr)
+OPERATOR LET (BYREF cbs AS CBStr)
+OPERATOR LET (BYREF ansiStr AS STRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszStr* | A WSTRING. |
+| *pwszStr* | A pointer to a WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
+
+# Casting and Conversions
+
 #### <a name="OperatorCast"></a>Operator Cast
 
 ```
@@ -263,23 +285,3 @@ Converts from UTF8 to Unicode and from Unicode to UTF8.
 PROPERTY Utf8() AS STRING
 PROPERTY Utf8 (BYREF utf8String AS STRING)
 ```
-
-#### <a name="OperatorLet"></a>Operator Let
-
-Assigns a string to the CWSTR.
-
-```
-OPERATOR LET (BYREF wszStr AS CONST WSTRING)
-OPERATOR LET (BYVAL pwszStr AS WSTRING PTR)
-OPERATOR LET (BYREF cws AS CWStr)
-OPERATOR LET (BYREF cbs AS CBStr)
-OPERATOR LET (BYREF ansiStr AS STRING)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *wszStr* | A WSTRING. |
-| *pwszStr* | A pointer to a WSTRING. |
-| *cws* | A CWSTR. |
-| *cbs* | A CBSTR. |
-| *ansiStr* | An ansi string or string literal. |
