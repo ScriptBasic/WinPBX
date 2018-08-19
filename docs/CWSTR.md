@@ -446,12 +446,13 @@ MidChars (BYVAL nStart AS LONG, BYVAL nChars AS LONG = 0) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nStart* | The start position in CWSTR of the substring. The first character starts at position 1. |
-| *nChars* | The substring length, in characters. |
+| *nChars* | The substring length, in characters. If nChard < 0 or nChars >= LEN(CWSTR) then all of the remaining characters are returned. |
+
+If CWSTR is empty then the null string ("") is returned. If *nStart* <= 0 then the null string ("") is returned.
 
 #### <a name="RightChars"></a>RightChars
 
 Returns the rightmost substring of the string.
-
 ```
 FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
 ```
@@ -459,3 +460,4 @@ FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nChars* | The substring length, in characters. |
+
