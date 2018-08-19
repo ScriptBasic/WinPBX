@@ -582,6 +582,12 @@ Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array.
 ```
 FUNCTION AfxCWstrArrayAppend (rgwstr() AS CWSTR, BYREF cws AS CWSTR) AS BOOLEAN
 ```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr()* | The array. |
+| *cws* | The string to append. |
+
 #### Example
 
 ```
@@ -594,11 +600,6 @@ FOR i AS LONG = LBOUND(rg) TO UBOUND(rg)
    print rg(i)
 NEXT
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *rgwstr()* | THe array. |
-| *cws* | The string to append. |
 
 #### <a name="AfxCWstrArrayInsert"></a>AfxCWstrArrayInsert
 
