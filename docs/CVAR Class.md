@@ -133,7 +133,7 @@ CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
 
 # <a name="Operators"></a>Operators
 
-Procedures that perform a certain function with their operands.
+Procedures that perform a certain function with their operands. They do the same actions that the native FreeBasic operators but with variants. For detailed descriptions see the FreeBasic documentation.
 
 ```
 OPERATOR & (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
