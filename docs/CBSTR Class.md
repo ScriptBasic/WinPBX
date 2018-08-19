@@ -128,7 +128,7 @@ OPERATOR += (BYREF ansiStr AS STRING)
 
 #### <a name="Operator&="></a>Operator &=
 
-Appends a string to the CWSTR.
+Appends a string to the CBSTR.
 
 ```
 OPERATOR &= (BYREF wszStr AS CONST WSTRING)
@@ -146,7 +146,7 @@ OPERATOR &= (BYREF ansiStr AS STRING)
 
 #### <a name="OperatorLet"></a>Operator Let
 
-Assigns a string to the CWSTR.
+Assigns a string to the CBSTR.
 
 ```
 OPERATOR LET (BYREF wszStr AS CONST WSTRING)
@@ -206,7 +206,7 @@ Appends a string to the CBSTR.
 SUB Append (BYREF wszStr AS CONST WSTRING)
 ```
 
-The string can be a literal or a FB STRING, a WSTRING, a CWSTR or a CBSTR variable.
+*Remark*: The string can be a literal or a FB STRING, a WSTRING, a CWSTR or a CBSTR variable.
 
 #### <a name="Clear"></a>Clear
 
@@ -229,7 +229,7 @@ SUB Empty
 Returns the leftmost substring of the string.
 
 ```
-FUNCTION Left OVERLOAD (BYREF cws AS CBSTR, BYVAL nChars AS INTEGER) AS CWSTR
+FUNCTION Left OVERLOAD (BYREF cws AS CBSTR, BYVAL nChars AS INTEGER) AS CBSTR
 ```
 
 | Parameter  | Description |
@@ -242,7 +242,7 @@ FUNCTION Left OVERLOAD (BYREF cws AS CBSTR, BYVAL nChars AS INTEGER) AS CWSTR
 Returns the rightmost substring of the string.
 
 ```
-FUNCTION Right OVERLOAD (BYREF cbs AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
+FUNCTION Right OVERLOAD (BYREF cbs AS CBSTR, BYVAL nChars AS INTEGER) AS CBSTR
 ```
 
 | Parameter  | Description |
