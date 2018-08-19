@@ -57,4 +57,18 @@ FUNCTION Exists (BYREF cvKey AS CVAR) AS BOOLEAN
 
 #### Return value
 
-TRUE if a specified key exists in the associative array; FALSE if it does not.
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+Returns the hash value for a specified key in the associative array.
+
+Returns the last result code.
+
+```
+FUNCTION HashVal (BYREF cvKey AS CVAR) AS CVAR
+```
