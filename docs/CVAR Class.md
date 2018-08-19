@@ -8,23 +8,28 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | ---------- | ----------- |
 | [Constructors](#Constructor) | Initialize the class with the specified value. |
 | [Operators](#Operators) | Procedures that perform a certain function with their operands. |
+| [vtType](#vtType) | Returns the VARIANT type. |
+| [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
+| [sptr](#sptr) | Returns the address of the underlying variant. Same as vptr but without clearing the variant. |
+| [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
+| [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr. |
 | [Attach](#Attach) | Attaches a variant to the class. |
 | [Detach](#Detach) | Detaches the variant data from this class and transfers ownership to the passed variant. |
 | [ChangeType](#ChangeType) | Converts the variant from one type to another. |
 | [ChangeTypeEx](#ChangeTypeEx) | Converts the variant from one type to another. |
+| [GetDim](#GetDim) | Gets the number of dimensions in the array. |
+| [GetLBound](#GetLBound) | Gets the lower bound for the specified dimension of the safe array. |
+| [GetUBound](#GetUBound) | Gets the upper bound for the specified dimension of the safe array. |
 | [DecToCY](#DecToCY) | Converts a CVAR of type decimal to a CY structure. |
 | [DecToDouble](#DecToDouble) | Converts a CVAR of type decimal to a double. |
 | [FormatNumber](#FormatNumber) | Formats a CVAR containing numbers into a string form. |
 | [GetBooleanElem](#GetBooleanElem) | Extracts a single boolean element from a safe array of booleans. |
-| [GetDim](#GetDim) | Gets the number of dimensions in the array. |
 | [GetDoubleElem](#GetDoubleElem) | Extracts a single DOUBLE element from a safe array of doubles. |
 | [GetElementCount](#GetElementCount) | Gets the number of elements in the array. |
-| [GetLBound](#GetLBound) | Gets the lower bound for the specified dimension of the safe array. |
 | [GetLongElem](#GetLongElem) | Extracts a single LONG element from a safe array of longs. |
 | [GetLongIntElem](#GetLongIntElem) | Extracts a single LONGINT element from a safe array of long integers. |
 | [GetShortElem](#GetShortElem) | Extracts a single SHORT element from a safe array of shorts. |
 | [GetStringElem](#GetStringElem) | Extracts a single BSTR element from a safe array of unicode strings. |
-| [GetUBound](#GetUBound) | Gets the upper bound for the specified dimension of the safe array. |
 | [GetULongElem](#GetULongElem) | Extracts a single ULONG element from a safe array of unsigned longs. |
 | [GetULongIntElem](#GetULongIntElem) | Extracts a single ULONGINT element from a safe array of unsigned long integers. |
 | [GetUShortElem](#GetUShortElem) | Extracts a single USHORT element from a safe array of unsigned shorts. |
@@ -101,11 +106,6 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ValUInt](#ValUInt) | Converts the variant to a 32.bit unsigned integer (ULONG). |
 | [ValULong](#ValULong) | Converts the variant to a 32-bit unsigned integer (ULONG). |
 | [ValULongInt](#ValULongInt) | Converts the variant to a 64-bit unsigned integer (ULONGINT). |
-| [vtType](#vtType) | Returns the VARIANT type. |
-| [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
-| [sptr](#sptr) | Returns the address of the underlying variant. Same as vptr but without clearing the variant. |
-| [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
-| [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr. |
 
 # <a name="Constructors"></a>Constructors
 
