@@ -229,12 +229,12 @@ SUB Empty
 Returns the leftmost substring of the string.
 
 ```
-FUNCTION Left OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
+FUNCTION Left OVERLOAD (BYREF cws AS CBSTR, BYVAL nChars AS INTEGER) AS CWSTR
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cws* | The source CWSTR. |
+| *cbs* | The source CBSTR. |
 | *nChars* | The number of characters to return from the source string. |
 
 #### <a name="Right"></a>Right
@@ -242,12 +242,12 @@ FUNCTION Left OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
 Returns the rightmost substring of the string.
 
 ```
-FUNCTION Right OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
+FUNCTION Right OVERLOAD (BYREF cbs AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cws* | The source CWSTR. |
+| *cbs* | The source CBSTR. |
 | *nChars* | The substring length, in characters. |
 
 #### <a name="LeftChars"></a>LeftChars
@@ -255,7 +255,7 @@ FUNCTION Right OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
 Returns the leftmost substring of the string.
 
 ```
-FUNCTION LeftChars (BYVAL nChars AS LONG) AS CWSTR
+FUNCTION LeftChars (BYVAL nChars AS LONG) AS CBSTR
 ```
 
 | Parameter  | Description |
@@ -267,74 +267,39 @@ FUNCTION LeftChars (BYVAL nChars AS LONG) AS CWSTR
 Returns a substring of the string.
 
 ```
-MidChars (BYVAL nStart AS LONG, BYVAL nChars AS LONG = 0) AS CWSTR
+MidChars (BYVAL nStart AS LONG, BYVAL nChars AS LONG = 0) AS CBSTR
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nStart* | The start position in CWSTR of the substring. The first character starts at position 1. |
-| *nChars* | The substring length, in characters. If nChard < 0 or nChars >= length of the CWSTR then all of the remaining characters are returned. |
+| *nStart* | The start position in CBSTR of the substring. The first character starts at position 1. |
+| *nChars* | The substring length, in characters. If nChars < 0 or nChars >= length of the CBSTR then all of the remaining characters are returned. |
 
-If CWSTR is empty then the null string ("") is returned. If *nStart* <= 0 then the null string ("") is returned.
+If CBSTR is empty then the null string ("") is returned. If *nStart* <= 0 then the null string ("") is returned.
 
 #### <a name="RightChars"></a>RightChars
 
 Returns the rightmost substring of the string.
 
 ```
-FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
+FUNCTION RightChars (BYVAL nChars AS LONG) AS CBSTR
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nChars* | The substring length, in characters. |
 
-#### <a name="Resize"></a>Resize
-
-Resizes the string to a length of *nSize* characters.
-
-```
-FUNCTION Resize (BYVAL nSize AS UINT, BYREF ch AS WSTRING = "")
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nSize* | New string length, expressed in number of characters. |
-| *ch* | Character used to fill the new character space added to the string (in case the string is expanded). |
-
-If *nSize* is smaller than the current string length, the current value is shortened to its first *nSize* characters. If *nSize* is greater than the current string length, the current content is extended by inserting at the end as many characters as needed to reach a size of *nSize*. If *ch* is specified, the new elements are initialized as copies of *ch*, otherwise, spaces are added.
-
-#### <a name="SizeAlloc"></a>SizeAlloc
-
-Resizes the string to a length of *nSize* characters.Sets the capacity of the buffer in characters.
-
-```
-PROPERTY SizeAlloc (BYVAL nChars AS UINT)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nChars* | The new capacity value, in characters. If the new capacity is equal to the current capacity, no operation is performed; is it is smaller, the buffer is shortened and the contents that exceed the new capacity are lost. |
-
-#### <a name="SizeOf"></a>SizeOf
-
-Returns the capacity of the buffer in characters.
-
-```
-PROPERTY SizeOf() AS UINT
-```
-
 #### <a name="Val"></a>Val
 
 Converts the string to a floating point number (DOUBLE).
 
 ```
-FUNCTION Val OVERLOAD (BYREF cws AS CWSTR) AS DOUBLE
+FUNCTION Val OVERLOAD (BYREF cbs AS CBSTR) AS DOUBLE
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cws* | The source CWSTR. |
+| *cbs* | The source CBSTR. |
 
 #### <a name="ValDouble"></a>ValDouble
 
