@@ -371,7 +371,7 @@ FUNCTION DelChars (BYVAL nIndex AS UINT, BYVAL nCount AS UINT) AS BOOLEAN
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
-| *nValue* | The number of characters to delete. |
+| *nCount* | The number of characters to delete. |
 
 #### <a name="Insert"></a>Insert
 
