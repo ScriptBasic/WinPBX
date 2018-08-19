@@ -50,3 +50,30 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutResource](#PutResource) | Initializes the CVAR based on a string resource imbedded in an executable file. |
 | [PutSafeArray](#PutSafeArray) | Initializes CVAR from a safe array. |
 | [PutStringArray](#PutStringArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
+| [PutShortArray](#PutShortArray) | Initializes CVAR from an array of signed 16-bit integer values. |
+| [PutStrRet](#PutStrRet) | Initializes CVAR with string stored in a STRRET structure. |
+| [PutSystemTime](#PutSystemTime) | Initializes CVAR with the contents of a SYSTEMTIME structure. |
+| [PutULongArray](#PutULongArray) | Initializes CVAR from an array of 32-bit unsigned integer values. |
+| [PutULongInt](#PutULongInt) | Initialies a CVAR from am ULONGINT. |
+| [PutULongArray](#PutULongArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
+| [PutUshortArray](#PutUshortArray) | Initializes CVAR from an array of 16-bit integer values. |
+| [PutUtf8](#PutUtf8) | Initializes CVAR with the contents of an UTF-8 string. |
+| [PutVariantArrayElem](#PutVariantArrayElem) | Initializes CVAR with a value stored in another VARIANT structure. |
+| [PutVbDate](#PutVbDate) | Initializes CVAR with the contents of a DATE value. |
+| [Round](#Round) | Rounds a variant to the specified number of decimal places. |
+| [ToBooleanArray](#ToBooleanArray) | Extracts an array of boolean values from CVAR. |
+| [ToBooleanArrayAlloc](#ToBooleanArrayAlloc) | Extracts an array of boolean values from CVAR. |
+| [ToBstr](#ToBstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as bstr. |
+| [ToBuffer](#ToBuffer) | Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a buffer. |
+| [ToDosDateTime](#ToDosDateTime) | Extracts a date and time value in Microsoft MS-DOS format from a CVAR of type VT_DATE. |
+| [ToDoubleArray](#ToDoubleArray) | Extracts an array of DOUBLE values from CVAR. |
+| [ToDoubleArrayAlloc](#ToDoubleArrayAlloc) | Extracts an array of DOUBLE values from CVAR. |
+| [ToFileTime](#ToFileTime) | Returns the contents of a CVAR of type VT_DATE as a FILETIME structure. |
+| [ToGuid](#ToGuid) | Returns the contents of a CVAR containing a GUID string as a GUID structure. |
+| [ToGuidBStr](#ToGuidBStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr. |
+| [ToGuidStr](#ToGuidStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr. |
+| [ToGuidWStr](#ToGuidWStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidStr. |
+| [ToLongArray](#ToLongArray) | Extracts an array of LONG values from CVAR. |
+| [ToLongArrayAlloc](#ToLongArrayAlloc) | Extracts an array of LONG values from CVAR. |
+| [ToLongIntArray](#ToLongIntArray) | Extracts an array of LONGINT values from CVAR. |
+| [ToLongIntArrayAlloc](#ToLongIntArrayAlloc) | Extracts an array of LONGINT values from CVAR. |
