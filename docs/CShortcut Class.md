@@ -1,6 +1,7 @@
 # Shortcut Classes
 
 **CShortcut** allows to create a shortcut programmatically.
+
 **CURLShortcut** allows to create a URL shortcut programmatically.
 
 #Constructors
