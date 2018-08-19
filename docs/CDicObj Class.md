@@ -9,9 +9,9 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [Add](#Add) | Adds a key and item pair to the associtive array. |
-| Count | Returns the number of items in the associative array. |
-| DispPtr | Returns the underlying dispatch pointer. |
-| Exists | Checks if a specified key exists in the associative array. |
+| [Count](#Count) | Returns the number of items in the associative array. |
+| [DispPtr](#DispPtr) | Returns the underlying dispatch pointer. |
+| [Exists](#Exists) | Checks if a specified key exists in the associative array. |
 | GetLastResult | Returns the last result code. |
 | HashVal | Returns the hash value for a specified key in the associative array. |
 | Item | Sets or returns an item for a specified key in associative array. |
@@ -38,3 +38,23 @@ FUNCTION Add (BYREF cbKey AS CVAR, BYREF cvItem AS CVAR) AS HRESULT
 #### Return value
 
 An error occurs if the key already exists.
+
+# <a name="Count"></a>Count
+
+Returns the number of items in the associative array.
+
+```
+FUNCTION Count () AS LONG
+```
+
+# <a name="Exists"></a>Exists
+
+Checks if a specified key exists in the associative array.
+
+```
+FUNCTION Exists (BYREF cvKey AS CVAR) AS BOOLEAN
+```
+
+#### Return value
+
+TRUE if a specified key exists in the associative array; FALSE if it does not.
