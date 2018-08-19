@@ -77,35 +77,72 @@ For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com
 
 #### <a name="Operator*"></a>Operator *
 
-Deferences the CWSTR.<br>One * returns the address of the CWSTR buffer.<br>Two ** returns the address of the start of the string data.
+Deferences the CBSTR.<br>One * returns the address of the underlying BSTR pointer.<br>Two ** returns the address of the start of the string data.
+
+```
+OPERATOR * (BYREF cbs AS CBSTR) AS AFX_BSTR
+```
 
 #### <a name="sptr"></a>sptr
 
-Returns the address of the string data. Same as *.
+Returns the address of the CBSTR string data (same as **)
+
+```
+FUNCTION sptr () AS WSTRING PTR
+```
 
 #### <a name="vptr"></a>vptr
 
-Returns the address of the string buffer. Same as *.
+Frees the underlying BSTR and returns the BSTR pointer.
+
+```
+FUNCTION vptr () AS AFX_BSTR PTR
+```
 
 #### <a name="wstr"></a>wstr
 
 Returns the string data. Same as **.
 
+```
+FUNCTION wstr () BYREF AS CONST WSTRING
+```
+
 #### <a name="Operator&"></a>Operator &
 
 Concatenates strings.
 
+```
+OPERATOR & (BYREF cbs1 AS CBSTR, BYREF cbs2 AS CBSTR) AS CBSTR
+```
+
 #### <a name="Operator+="></a>Operator +=
 
-Appends a string to the CWSTR.
+Appends a string to the CBSTR.
+
+```
+OPERATOR += (BYREF wszStr AS CONST WSTRING)
+OPERATOR += (BYREF cws AS CWStr)
+OPERATOR += (BYREF cbs AS CBStr)
+OPERATOR += (BYREF ansiStr AS STRING)
+```
 
 #### <a name="Operator&="></a>Operator &=
 
 Appends a string to the CWSTR.
 
-#### <a name="Operator[]"></a>Operator []
+```
+OPERATOR &= (BYREF wszStr AS CONST WSTRING)
+OPERATOR &= (BYREF cws AS CWStr)
+OPERATOR &= (BYREF cbs AS CBStr)
+OPERATOR &= (BYREF ansiStr AS STRING)
+```
 
-Appends a string to the CWSTR.
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszStr* | A WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
 
 #### <a name="OperatorLet"></a>Operator Let
 
@@ -113,19 +150,22 @@ Assigns a string to the CWSTR.
 
 ```
 OPERATOR LET (BYREF wszStr AS CONST WSTRING)
-OPERATOR LET (BYVAL pwszStr AS WSTRING PTR)
 OPERATOR LET (BYREF cws AS CWStr)
 OPERATOR LET (BYREF cbs AS CBStr)
-OPERATOR LET (BYREF ansiStr AS STRING)
+OPERATOR LEY (BYREF ansiStr AS STRING)
+OPERATOR LET (BYVAL n AS LONGINT)
+OPERATOR LET (BYVAL n AS DOUBLE)
+OPERATOR LET (BYREF bstrHandle AS AFX_BSTR)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszStr* | A WSTRING. |
-| *pwszStr* | A pointer to a WSTRING. |
 | *cws* | A CWSTR. |
 | *cbs* | A CBSTR. |
 | *ansiStr* | An ansi string or string literal. |
+| *n* | A number. |
+| *bstrHandle* | A handle to a BSTR. Don't free it, because it will be attached. |
 
 # Casting and Conversions
 
