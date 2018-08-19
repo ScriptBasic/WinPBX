@@ -1,4 +1,10 @@
-# Window Procedures
+# Windows Procedures
+
+Assorted Windows procedures.
+
+**Include File**: AfxWin.inc.
+
+# Window
 
 | Name       | Description |
 | ---------- | ----------- |
