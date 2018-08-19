@@ -83,6 +83,14 @@ Deferences the CBSTR.<br>One * returns the address of the underlying BSTR pointe
 OPERATOR * (BYREF cbs AS CBSTR) AS AFX_BSTR
 ```
 
+#### <a name="bptr"></a>bptr
+
+Returns the underlying BSTR pointer.
+
+```
+FUNCTION bptr () BYREF AS AFX_BSTR
+```
+
 #### <a name="sptr"></a>sptr
 
 Returns the address of the CBSTR string data (same as **)
