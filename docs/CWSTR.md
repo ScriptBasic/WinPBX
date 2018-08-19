@@ -1,3 +1,5 @@
+# CWSTR Class
+
 The **CWSTR** class implements a dynamic unicode null terminated string. Free Basic has a dynamic string data type (STRING) and a fixed length unicode data type (WSTRING), but it lacks a dynamic unicode string. **CWSTR** behaves as if it was a native data type, working directly with the intrinsic Free Basic string functions and operators.
 
 **Include file**: CWSTR.INC.
