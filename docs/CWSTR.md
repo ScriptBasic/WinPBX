@@ -407,7 +407,7 @@ FUNCTION Left OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cws* | The source CWST. |
+| *cws* | The source CWSTR. |
 | *nChars* | The number of characters to return from the source string. |
 
 #### <a name="Right"></a>Right
@@ -420,7 +420,7 @@ FUNCTION Right OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cws* | The source CWST. |
+| *cws* | The source CWSTR. |
 | *nChars* | The substring length, in characters. |
 
 #### <a name="LeftChars"></a>LeftChars
