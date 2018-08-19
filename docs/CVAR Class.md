@@ -31,7 +31,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetVariantElem](#GetVariantElem) | Extracts a single Variant element from a safe array of variants. |
 | [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [Put](#Put) | Assigns values to a CVAR. |
-| [Put <numeric value>](#PutNumber) | Assigns numeric values to a CVAR. |
+| [Put \<numeric value>](#PutNumber) | Assigns numeric values to a CVAR. |
 | [PutBuffer](#PutBuffer) | Initializes CVAR with the contents of a buffer. |
 | [PutDateString](#PutDateString) | Initializes CVAR VT_DATE from a string. |
 | [PutDec](#PutDec) | Initializes CVAR with the contents of a DECIMAL structure. |
@@ -107,3 +107,97 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
 | [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr. |
 
+# <a name="Constructors"></a>Constructors
+
+Creates a an instance of the CVAR class.
+
+```
+CONSTRUCTOR
+CONSTRUCTOR (BYREF cv AS CVAR)
+CONSTRUCTOR (BYVAL v AS VARIANT)
+CONSTRUCTOR (BYREF wsz AS WSTRING)
+CONSTRUCTOR (BYREF cws AS CWSTR)
+CONSTRUCTOR (BYREF cbs AS CBSTR)
+CONSTRUCTOR (BYVAL pvar AS VARIANT PTR)
+CONSTRUCTOR (BYVAL cy AS CURRENCY)
+CONSTRUCTOR (BYVAL dec AS DECIMAL)
+CONSTRUCTOR (BYREF pDisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+CONSTRUCTOR (BYREF pUnk AS IUnknown PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+CONSTRUCTOR (BYVAL _value AS LONGINT, BYVAL _vType AS WORD = VT_I4)
+CONSTRUCTOR (BYVAL _value AS DOUBLE, BYVAL _vType AS WORD = VT_R8)
+CONSTRUCTOR (BYVAL _value AS LONGINT, BYREF strType AS STRING)
+CONSTRUCTOR (BYVAL _value AS DOUBLE, BYREF strType AS STRING)
+CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYVAL _vType AS WORD)
+CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
+```
+
+# <a name="Operators"></a>Operators
+
+Procedures that perform a certain function with their operands.
+
+```
+OPERATOR & (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR * (BYREF cv AS CVAR) AS VARIANT PTR
+OPERATOR Cast () AS VARIANT
+OPERATOR Cast () AS VARIANT PTR
+OPERATOR Let (BYREF cv AS CVAR)
+OPERATOR Let (BYVAL v AS VARIANT)
+OPERATOR Let (BYVAL pvar AS VARIANT PTR)
+OPERATOR Let (BYVAL cy AS CURRENCY)
+OPERATOR Let (BYVAL dec AS DECIMAL)
+OPERATOR Let (BYREF cbs AS CBSTR)
+OPERATOR Let (BYREF cws AS CWSTR)
+OPERATOR Let (BYREF pDisp AS IDispatch PTR)
+OPERATOR Let (BYREF pUnk AS IUnknown PTR)
+OPERATOR Let (BYVAL _value AS LONGINT)
+OPERATOR Let (BYVAL _value AS DOUBLE)
+```
+
+Assignment operators
+
+```
+OPERATOR += (BYREF cv AS CVAR)
+OPERATOR -= (BYREF cv AS CVAR)
+OPERATOR *= (BYREF cv AS CVAR)
+OPERATOR /= (BYREF cv AS CVAR)
+OPERATOR \= (BYREF cv AS CVAR)
+OPERATOR Mod= (BYREF cv AS CVAR)
+OPERATOR Imp= (BYREF cv AS CVAR)
+OPERATOR Eqv= (BYREF cv AS CVAR)
+OPERATOR ^= (BYREF cv AS CVAR)
+```
+
+Arithmetic operators
+
+```
+OPERATOR + (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR - (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR * (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR / (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR \ (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
+OPERATOR ^ (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS DOUBLE
+OPERATOR Mod (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+OPERATOR - (BYREF cv AS CVAR) AS CVAR
+```
+
+Relational operators
+
+```
+OPERATOR = (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+OPERATOR <> (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+OPERATOR < (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+OPERATOR > (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+OPERATOR <= (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+OPERATOR >= (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS BOOLEAN
+```
+
+Bitwise operators
+
+```
+OPERATOR And (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+OPERATOR Eqv (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+OPERATOR Imp (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+OPERATOR Not (BYREF cv AS CVAR) AS INTEGER
+OPERATOR Or (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+OPERATOR Xor (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+```
