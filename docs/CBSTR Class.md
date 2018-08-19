@@ -25,9 +25,9 @@ Quirks:
 | [wstr](#wstr) | Returns the string data. Same as \*\*. |
 | [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| [Append](#Append) | Appends a string to the CBSTR. |
 | [Attach](#Attach) | Attaches a BSTR to the CBSTR class. |
 | [Detach](#Detach) | Detaches the underlying BSTR from the CBSTR class and returns it as the result of the function. |
+| [Append](#Append) | Appends a string to the CBSTR. |
 | [Clear](#Clear) | Frees the underlying BSTR. |
 | [Empty](#Clear) | Frees the underlying BSTR. |
 | [Left](#Left) | Returns the leftmost substring of the string. Same as LEFT. |
@@ -205,6 +205,24 @@ PROPERTY Utf8 (BYREF utf8String AS STRING)
 ```
 
 # Methods
+
+#### <a name="Attach"></a>Attach
+
+Attaches a BSTR to the CBSTR class.
+
+```
+SUB Attach (BYVAL pbstrSrc AS AFX_BSTR)
+```
+
+#### <a name="Detach"></a>Detach
+
+Detaches the underlying BSTR from the CBSTR class and returns it as the result of the function. The returned pointer must be freed by SysFreeString.
+
+```
+FUNCTION Detach () AS AFX_BSTR
+```
+
+This method frees the *m_bstr* member of the CBSTR class and returns it as the result of the function. Because it no longer belongs to the class, it must be freed by SysFreeString.
 
 #### <a name="Append"></a>Append
 
