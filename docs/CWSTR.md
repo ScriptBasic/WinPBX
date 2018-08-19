@@ -115,6 +115,6 @@ Appends a string to the CWSTR.
 
 Appends a string to the CWSTR.
 
-#### <a name="Operator[]="></a>Operator []
+#### <a name="Operator[]"></a>Operator []
 
 Appends a string to the CWSTR.
