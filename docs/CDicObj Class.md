@@ -106,3 +106,88 @@ The item value.
 #### Remarks
 
 If key is not found when changing an item, a new key is created with the specified *cvNewvItem*. If key is not found when attempting to return an existing item, a new key is created and its corresponding item is left empty.
+
+# <a name="Items"></a>Items
+
+Returns a safe array containing all the items in the associative array.
+
+```
+FUNCTION Items () AS CVAR
+```
+
+#### Return value
+
+A CVAR containing all the items in a safe array.
+
+# <a name="Key"></a>Key
+
+Sets or returns an item for a specified key in the associative array.
+
+```
+PROPERTY Key (BYREF cvKey AS CVAR, BYREF cvNewKey AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvKey* | Key value being changed. |
+| *cvNewKey* | New value that replaces the specified key. |
+
+#### Remarks
+
+If key is not found when changing a key, a new key is created and its associated item is left empty.
+
+#### Return value
+
+The item value.
+
+# <a name="Keys"></a>Keys
+
+Returns an array containing all the keys in the associative array.
+
+```
+FUNCTION Keys () AS CVAR
+```
+
+#### Return value
+
+A CVAR containing all the keys in a safe array.
+
+# <a name="NewEnum"></a>NewEnum
+
+Returns a reference to the standard enumerator.
+
+```
+FUNCTION NewEnum () AS IUnknown PTR
+```
+
+#### Return value
+
+IUnknown pointer that must be cast to an **IEnumVARIANT** interface.
+
+# <a name="Remove"></a>Remove
+
+Removes a key, item pair from the associative array.
+
+```
+FUNCTION Remove (BYREF cvKey AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvKey* | Key associated with the key, item pair you want to remove from the associative array. |
+
+#### Return value
+
+An error occurs if the specified key, item pair does not exist.
+
+# <a name="RemoveAll"></a>RemoveAll
+
+Removes all key, item pairs from the associative array.
+
+```
+FUNCTION RemoveAll() AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) or an HRESULT error code.
