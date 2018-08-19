@@ -28,10 +28,10 @@ Quirks:
 | [Capacity](#Capacity) | Gets/sets the size of the internal buffer. |
 | [GrowSize](#GrowSize) | Gets/sets the grow size value, in characters. |
 | [Add](#Add) | The passed string parameter is appended to the string starting at the specified position. |
-| Char | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
-| Clear | Erases all the data in the class object. |
-| DelChars | Deletes the specified number of characters starting at the specified position. |
-| Insert | The passed string parameter is inserted in the string starting at the specified position. |
+| [Char](#Char) | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
+| [Clear](#Clear) | Erases all the data in the class object. |
+| [DelChars](#DelChars) | Deletes the specified number of characters starting at the specified position. |
+| [Insert](#Insert) | The passed string parameter is inserted in the string starting at the specified position. |
 | Left | Returns the leftmost substring of the string. Same as LEFT. |
 | Right | Returns the rightmost substring of the string. Same as RIGHT. |
 | LeftChars | Returns the leftmost substring of the string. Same as Left. |
@@ -333,3 +333,62 @@ SUB Add (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage AS UINT 
 | *ansiStr* | An ansi string or string literal. |
 | *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
 | *nCodePage* | The code page to be used for ansi to unicode conversions. |
+
+For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
+
+#### <a name="Char"></a>Char
+
+Gets or sets the corresponding unicode integer representation of the character at the position specified by the *nIndex* parameter.
+
+```
+PROPERTY Char (BYVAL nIndex AS UINT) AS USHORT
+PROPERTY Char (BYVAL nIndex AS UINT, BYVAL nValue AS USHORT)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nIndex* | The one based index of the character in the string (1 for the first character, 2 for the second, etc.). If nIndex is beyond the current length of the string, a 0 is returned. |
+| *nValue* | The unicode integer representation of the character. |
+
+#### <a name="Clear"></a>Clear
+
+Gets or sets the corresponding unicode integer representation of the character at the position specified by the *nIndex* parameter.
+
+```
+SUB Clear
+```
+
+#### <a name="DelChars"></a>DelChars
+
+Deletes the specified number of characters starting at the specified position.
+
+```
+FUNCTION DelChars (BYVAL nIndex AS UINT, BYVAL nCount AS UINT) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
+| *nValue* | The number of characters to delete. |
+
+#### <a name="Insert"></a>Insert
+
+The passed string parameter is inserted in the string starting at the specified position.
+
+```
+FUNCTION Insert (BYVAL pwszStr AS WSTRING PTR, BYVAL nIndex AS UINT) AS BOOLEAN
+FUNCTION Insert (BYREF cws AS CWSTR, BYVAL nIndex AS UINT) AS BOOLEAN
+FUNCTION Insert (BYREF cbs AS CBSTR, BYVAL nIndex AS UINT) AS BOOLEAN
+FUNCTION Insert (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage AS UINT = 0) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszStr* | A WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
+| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
+| *nCodePage* | The code page to be used for ansi to unicode conversions. |
+
+For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
