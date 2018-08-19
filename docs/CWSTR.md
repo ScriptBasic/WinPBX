@@ -39,9 +39,9 @@ Quirks:
 | [LeftChars](#LeftChars) | Returns the leftmost substring of the string. Same as Left. |
 | [MidChars](#MidChars) | Returns a substring of the string. Same as Mid. |
 | [RightChars](#RightChars) | Returns the rightmost substring of the string. Same as Right. |
-| Resize | Resizes the string to a length of the specified number of characters. |
-| SizeAlloc | Sets the capacity of the buffer in characters. |
-| SizeOf | Returns the capacity of the buffer in characters. |
+| [Resize](#Resize) | Resizes the string to a length of the specified number of characters. |
+| [SizeAlloc](#SizeAlloc) | Sets the capacity of the buffer in characters. |
+| [SizeOf](#SizeOf) | Returns the capacity of the buffer in characters. |
 | Val | Converts the string to a floating point number (DOUBLE). |
 | ValDouble | Converts the string to a floating point number (DOUBLE). |
 | ValInt | Converts the string to a signed 32-bit integer (LONG). |
@@ -453,6 +453,7 @@ If CWSTR is empty then the null string ("") is returned. If *nStart* <= 0 then t
 #### <a name="RightChars"></a>RightChars
 
 Returns the rightmost substring of the string.
+
 ```
 FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
 ```
@@ -461,3 +462,18 @@ FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
 | ---------- | ----------- |
 | *nChars* | The substring length, in characters. |
 
+#### <a name="Resize"></a>Resize
+
+Resizes the string to a length of *nSize* characters.
+
+```
+FUNCTION Resize (BYVAL nSize AS UINT, BYREF ch AS WSTRING = "")
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSize* | New string length, expressed in number of characters. |
+| *ch* | Character used to fill the new character space added to the string (in case the string is expanded). |
+
+If *nSize* is smaller than the current string length, the current value is shortened to its first *nSize characters.
+If *nSize* is greater than the current string length, the current content is extended by inserting at the end as many characters as needed to reach a size of *nSize*. If *ch* is specified, the new elements are initialized as copies of *ch*, otherwise, spaces are added.
