@@ -736,6 +736,54 @@ string3
 string20
 ```
 
+#### <a name="AfxCWstrLogicalSort"></a>AfxCWstrLogicalSort
+
+Sorts a one-dimensional CWSTR array calling the C qsort function. Digits in the strings are considered as numerical content rather than text. This test is not case-sensitive.
+
+```
+SUB AfxCWstrLogicalSort (BYVAL rgwstr AS ANY PTR, BYVAL numElm AS LONG, BYVAL bAscend AS BOOLEAN = TRUE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rgwstr* | Pointer to the start of target array. |
+| *numElm* | Number of elements in the array. |
+| *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+#### Example
+
+```
+DIM rg(1 TO 9) AS CWSTR
+rg(1) = "20string"
+rg(2) = "2string"
+rg(3) = "3string"
+rg(4) = "st20ring"
+rg(5) = "st2ring"
+rg(6) = "st3ring"
+rg(7) = "string2"
+rg(8) = "string20"
+rg(9) = "string3"
+
+print "---- after sorting ----"
+
+AfxCWstrLogicalSort @rg(1), 9
+FOR i AS LONG = 1 TO 9
+  print rg(i)
+NEXT
+
+' -- Output:
+---- after sorting ----
+2string
+3string
+20string
+st2ring
+st3ring
+st20ring
+string2
+string3
+string20
+```
+
 #### <a name="AfxCWstrSort"></a>AfxCWstrSort
 
 Sorts a one-dimensional CWSTR array calling the C qsort function.
@@ -746,9 +794,11 @@ SUB AfxCWstrSort (BYVAL rgwstr AS ANY PTR, BYVAL numElm AS LONG, BYVAL bAscend A
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *prgwstr* | Pointer to the start of target array. |
+| *rgwstr* | Pointer to the start of target array. |
 | *numElm* | Number of elements in the array. |
 | *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+#### Example
 
 ```
 DIM rg(1 TO 10) AS CWSTR
