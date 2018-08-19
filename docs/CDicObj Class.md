@@ -90,7 +90,7 @@ FUNCTION HashVal (BYREF cvKey AS CVAR) AS CVAR
 Sets or returns an item for a specified key in associative array.
 
 ```
-PROPERTY Item (BYREF cvKey AS CVAR) AS CBSTR
+PROPERTY Item (BYREF cvKey AS CVAR) AS CVAR it returns
 PROPERTY Item (BYREF cvKey AS CVAR, BYREF cvNewItem AS CVAR)
 ```
 
@@ -105,7 +105,7 @@ The item value.
 
 #### Remarks
 
-If key is not found when changing an item, a new key is created with the specified *cvNewvItem*. If key is not found when attempting to return an existing item, a new key is created and its corresponding item is left empty.
+If key is not found when changing an item, a new key is created with the specified *cvNewvItem*. Contrarily to the Dictionary object, if key is not found when attempting to return an existing item, it returns and empty variant and sets the last result code to E_INVALIDARG, instead of creating a new key with its corresponding item empty.
 
 # <a name="Items"></a>Items
 
@@ -134,7 +134,7 @@ PROPERTY Key (BYREF cvKey AS CVAR, BYREF cvNewKey AS CVAR)
 
 #### Remarks
 
-If key is not found when changing a key, a new key is created and its associated item is left empty.
+Contrarily to the Dictionary object, if key is not found when changing a key, this method sets the last result code to E_INVALIDARG and exits, instead of creating a new key with its associated item empty.
 
 #### Return value
 
