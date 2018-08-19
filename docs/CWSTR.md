@@ -285,3 +285,25 @@ Converts from UTF8 to Unicode and from Unicode to UTF8.
 PROPERTY Utf8() AS STRING
 PROPERTY Utf8 (BYREF utf8String AS STRING)
 ```
+
+# Methods
+
+#### <a name="Add"></a>Add
+
+The passed string parameter is appended to the string starting at the specified position.
+
+```
+SUB Add (BYREF cws AS CWSTR, BYVAL nIndex AS UINT)
+SUB Add (BYREF cbs AS CBSTR, BYVAL nIndex AS UINT)
+SUB Add (BYVAL pwszStr AS WSTRING PTR, BYVAL nIndex AS UINT)
+SUB Add (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage AS UINT = 0)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszStr* | A WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
+| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
+| *nCodePage* | The code page to be used for ansi to unicode conversions. |
