@@ -39,14 +39,6 @@ FUNCTION Add (BYREF cbKey AS CVAR, BYREF cvItem AS CVAR) AS HRESULT
 
 An error occurs if the key already exists.
 
-# <a name="DispPtr"></a>DispPtr
-
-Returns the underlying dispatch pointer.
-
-```
-FUNCTION DispPtr () AS ANY PTR
-```
-
 #### Remark
 
 As it is a raw pointer, don't call IUnknown_Release on it.
@@ -57,6 +49,14 @@ Returns the number of items in the associative array.
 
 ```
 FUNCTION Count () AS LONG
+```
+
+# <a name="DispPtr"></a>DispPtr
+
+Returns the underlying dispatch pointer.
+
+```
+FUNCTION DispPtr () AS ANY PTR
 ```
 
 # <a name="Exists"></a>Exists
