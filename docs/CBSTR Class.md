@@ -29,7 +29,7 @@ Quirks:
 | [Detach](#Detach) | Detaches the underlying BSTR from the CBSTR class and returns it as the result of the function. |
 | [Append](#Append) | Appends a string to the CBSTR. |
 | [Clear](#Clear) | Frees the underlying BSTR. |
-| [Empty](#Clear) | Frees the underlying BSTR. |
+| [Empty](#Empty) | Frees the underlying BSTR. |
 | [Left](#Left) | Returns the leftmost substring of the string. Same as LEFT. |
 | [Right](#Right) | Returns the rightmost substring of the string. Same as RIGHT. |
 | [LeftChars](#LeftChars) | Returns the leftmost substring of the string. Same as Left. |
