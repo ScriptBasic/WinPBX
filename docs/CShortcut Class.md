@@ -63,7 +63,7 @@ pURLShortcut.Save
 | [Hotkey](#Hotkey) | Assigns a key-combination to a shortcut, or identifies the key-combination assigned to a shortcut. |
 | [IconLocation](#IconLocation) | Assigns a an icon to a shortcut, or identifies the icon assigned to a shortcut. |
 | [RelativePath](#RelativePath) | Assigns a relative path to a shortcut. |
-| [TargetPath](#TargetPath) | Gets/sets the path of the shortcut's executable. |
+| [TargetPath](#TargetPath1) | Gets/sets the path of the shortcut's executable. |
 | [WindowStyle](#WindowStyle) | Assigns a window style to a shortcut, or identifies the type of window style used by a shortcut. |
 | [WorkingDirectory](#WorkingDirectory) | Assigns a working directory to a shortcut, or identifies the working directory used by a shortcut. |
 
@@ -79,7 +79,7 @@ pURLShortcut.Save
 | Name       | Description |
 | ---------- | ----------- |
 | [FullName](#FullName2) | Returns the fully qualified path of the shortcut object's target. |
-| [TargetPath](#TargetPath) | Gets/sets the path of the shortcut's executable. |
+| [TargetPath](#TargetPath2) | Gets/sets the path of the shortcut's executable. |
 
 # <a name="Save1"></a>Save (CShortcut)
 
