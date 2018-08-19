@@ -263,3 +263,23 @@ Converts from UTF8 to Unicode and from Unicode to UTF8.
 PROPERTY Utf8() AS STRING
 PROPERTY Utf8 (BYREF utf8String AS STRING)
 ```
+
+#### <a name="OperatorLet"></a>Operator Let
+
+Assigns a string to the CWSTR.
+
+```
+OPERATOR LET (BYREF wszStr AS CONST WSTRING)
+OPERATOR LET (BYVAL pwszStr AS WSTRING PTR)
+OPERATOR LET (BYREF cws AS CWStr)
+OPERATOR LET (BYREF cbs AS CBStr)
+OPERATOR LET (BYREF ansiStr AS STRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszStr* | A WSTRING. |
+| *pwszStr* | A pointer to a WSTRING. |
+| *cws* | A CWSTR. |
+| *cbs* | A CBSTR. |
+| *ansiStr* | An ansi string or string literal. |
