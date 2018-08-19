@@ -475,5 +475,24 @@ FUNCTION Resize (BYVAL nSize AS UINT, BYREF ch AS WSTRING = "")
 | *nSize* | New string length, expressed in number of characters. |
 | *ch* | Character used to fill the new character space added to the string (in case the string is expanded). |
 
-If *nSize* is smaller than the current string length, the current value is shortened to its first *nSize characters.
-If *nSize* is greater than the current string length, the current content is extended by inserting at the end as many characters as needed to reach a size of *nSize*. If *ch* is specified, the new elements are initialized as copies of *ch*, otherwise, spaces are added.
+If *nSize* is smaller than the current string length, the current value is shortened to its first *nSize* characters. If *nSize* is greater than the current string length, the current content is extended by inserting at the end as many characters as needed to reach a size of *nSize*. If *ch* is specified, the new elements are initialized as copies of *ch*, otherwise, spaces are added.
+
+#### <a name="SizeAlloc"></a>SizeAlloc
+
+Resizes the string to a length of *nSize* characters.Sets the capacity of the buffer in characters.
+
+```
+PROPERTY SizeAlloc (BYVAL nChars AS UINT)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nChars* | The new capacity value, in characters. If the new capacity is equal to the current capacity, no operation is performed; is it is smaller, the buffer is shortened and the contents that exceed the new capacity are lost. |
+
+#### <a name="SizeOf"></a>SizeOf
+
+Returns the capacity of the buffer in characters.
+
+```
+PROPERTY SizeOf() AS UINT
+```
