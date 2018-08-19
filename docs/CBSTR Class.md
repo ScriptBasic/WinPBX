@@ -107,6 +107,8 @@ Frees the underlying BSTR and returns the BSTR pointer.
 FUNCTION vptr () AS AFX_BSTR PTR
 ```
 
+Must be used to pass the underlying BSTR to an OUT BYVAL BSTR PTR parameter. If we pass a CBSTR to a function with an OUT BSTR parameter without first freeing it we will have a memory leak.
+
 #### <a name="wstr"></a>wstr
 
 Returns the string data. Same as **.
