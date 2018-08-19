@@ -97,7 +97,7 @@ After creating an instance of the *CShortcut* class to create to create a shortc
 
 HRESULT. S_OK (0) on success, or an error code on failure.
 
-# <a name="Save1"></a>Save (CURLShortcut)
+# <a name="Save2"></a>Save (CURLShortcut)
 
 Saves a URL shortcut object to disk.
 
