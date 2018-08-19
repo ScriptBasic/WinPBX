@@ -4,7 +4,7 @@
 
 **CURLShortcut** allows to create a URL shortcut programmatically.
 
-#Constructors
+# Constructors
 
 ```
 CONSTRUCTOR CShortcut (BYREF cbsPathName AS CBSTR)
