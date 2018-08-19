@@ -14,13 +14,13 @@
 | [Exists](#Exists) | Checks if a specified key exists in the associative array. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [HashVal](#HashVal) | Returns the hash value for a specified key in the associative array. |
-| Item | Sets or returns an item for a specified key in associative array. |
-| Items | Returns a safe array containing all the items in the associative array. |
-| Key | Sets or returns an item for a specified key in the associative array. |
-| Keys | Returns an array containing all the keys in the associative array. |
-| NewEnum | Returns a reference to the standard enumerator. |
-| Remove | FUNCTION Remove (BYREF cvKey AS CVAR) AS HRESULT |
-| RemoveAll | Removes all key, item pairs from the associative array. |
+| [Item](#Item) | Sets or returns an item for a specified key in associative array. |
+| [Items](#Items) | Returns a safe array containing all the items in the associative array. |
+| [Key](#Key) | Sets or returns an item for a specified key in the associative array. |
+| [Keys](#Keys) | Returns an array containing all the keys in the associative array. |
+| [NewEnum](#NewEnum) | Returns a reference to the standard enumerator. |
+| [Remove](#Remove) | FUNCTION Remove (BYREF cvKey AS CVAR) AS HRESULT |
+| [RemoveAll](#RemoveAll) | Removes all key, item pairs from the associative array. |
 
 # <a name="Add"></a>Add
 
@@ -84,3 +84,25 @@ Returns the hash value for a specified key in the associative array.
 ```
 FUNCTION HashVal (BYREF cvKey AS CVAR) AS CVAR
 ```
+
+# <a name="Item"></a>Item
+
+Sets or returns an item for a specified key in associative array.
+
+```
+PROPERTY Item (BYREF cvKey AS CVAR) AS CBSTR
+PROPERTY Item (BYREF cvKey AS CVAR, BYREF cvNewItem AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvKey* | Key associated with the item being retrieved or added. |
+| *cvNewvItem* | The new value associated with the specified key. |
+
+#### Return value
+
+The item value.
+
+#### Remarks
+
+If key is not found when changing an item, a new key is created with the specified *cvNewvItem*. If key is not found when attempting to return an existing item, a new key is created and its corresponding item is left empty.
