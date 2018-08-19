@@ -157,8 +157,12 @@ A CVAR containing all the keys in a safe array.
 Returns a reference to the standard enumerator.
 
 ```
-FUNCTION NewEnum () AS IUnknown PTR
+FUNCTION NewEnum () AS IEnumVARIANT PTR
 ```
+
+#### Return value
+
+A pointer to the standard IEnumVARIANT interface.
 
 #### Return value
 
