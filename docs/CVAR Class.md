@@ -77,3 +77,33 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToLongArrayAlloc](#ToLongArrayAlloc) | Extracts an array of LONG values from CVAR. |
 | [ToLongIntArray](#ToLongIntArray) | Extracts an array of LONGINT values from CVAR. |
 | [ToLongIntArrayAlloc](#ToLongIntArrayAlloc) | Extracts an array of LONGINT values from CVAR. |
+| [ToShortArray](#ToShortArray) | Extracts an array of Int16 values from CVAR. |
+| [ToShortArrayAlloc](#ToShortArrayAlloc) | Extracts an array of SHORT values from CVAR. |
+| [ToStr](#ToStr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as wstr and ToWStr. |
+| [ToStringArray](#ToStringArray) | Extracts data from a vector structure into a PWSTR array. |
+| [ToStringArrayAlloc](#ToStringArrayAlloc) | Extracts an array of PWSTR values from CVAR. |
+| [ToStrRet](#ToStrRet) | Returns the contents of a CVAR of type VT_BSTR to a STRRET stucture. |
+| [ToSystemTime](#ToSystemTime) | Returns the contents of CVAR of type VT_DATE as a FILETIME structure. |
+| [ToULongArray](#ToULongArray) | Extracts an array of ULONG values from CVAR. |
+| [ToULongArrayAlloc](#ToULongArrayAlloc) | Extracts an array of ULONG values from CVAR. |
+| [ToULongIntArray](#ToULongIntArray) | Extracts an array of ULONGINT values from CVAR. |
+| [ToULongIntArrayAlloc](#ToULongIntArrayAlloc) | Extracts an array of ULONGINT values from CVAR. |
+| [ToUShortArray](#ToUShortArray) | Extracts an array of USHORT values from CVAR. |
+| [ToUShortArrayAlloc](#ToUShortArrayAlloc) | Extracts an array of USHORT values from CVAR. |
+| [ToUtf8](#ToUtf8) | Returns the contents of a CVAR containing a BSTR as an UTF-8 encoded string. |
+| [ToVbDate](#ToVbDate) | Returns the contents of a CVAR of type VT_DATE as a DATE value. |
+| [ToWStr](#ToWStr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as wstr and ToStr. |
+| [ValDouble](#ValDouble) | Converts the variant to a floating point number (DOUBLE). |
+| [ValInt](#ValInt) | Converts the variant to a signed 32-bit integer (LONG). |
+| [ValLong](#ValLong) | Converts the variant to a signed 32-bit integer (LONG). |
+| [ValLongInt](#ValLongInt) | Converts the variant to a signed 64-bit integer (LONGINT). |
+| [Value](#Value) | Converts the variant to a floating point number (DOUBLE). |
+| [ValUInt](#ValUInt) | Converts the variant to a 32.bit unsigned integer (ULONG). |
+| [ValULong](#ValULong) | Converts the variant to a 32-bit unsigned integer (ULONG). |
+| [ValULongInt](#ValULongInt) | Converts the variant to a 64-bit unsigned integer (ULONGINT). |
+| [vtType](#vtType) | Returns the VARIANT type. |
+| [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
+| [sptr](#sptr) | Returns the address of the underlying variant. Same as vptr but without clearing the variant. |
+| [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
+| [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr. |
+
