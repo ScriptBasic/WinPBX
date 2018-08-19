@@ -674,6 +674,23 @@ SUB AfxCWstrArraySort (rgwstr() AS CWSTR, BYVAL bAscend AS BOOLEAN = TRUE)
 | *rgwstr()* | The array to sort. |
 | *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
 
+#### Example
+
+```
+DIM rg(1 TO 10) AS CWSTR
+FOR i AS LONG = 1 TO 10
+   rg(i) = "string " & i
+NEXT
+FOR i AS LONG = 1 TO 10
+  print rg(i)
+NEXT
+print "---- after sorting ----"
+AfxCWstrArraySort rg()
+FOR i AS LONG = 1 TO 10
+   print rg(i)
+NEXT
+```
+
 #### <a name="AfxCWstrArrayLogicalSort"></a>AfxCWstrArrayLogicalSort
 
 Sorts a one-dimensional CWSTR array calling the C qsort function. Digits in the strings are considered as numerical content rather than text. This test is not case-sensitive.
