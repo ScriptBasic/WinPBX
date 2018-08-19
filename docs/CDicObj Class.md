@@ -6,9 +6,9 @@
 
 ### Methods and Properties
 
-| Name  | Description |
+| Name       | Description |
 | ---------- | ----------- |
-| Add | Adds a key and item pair to the associtive array. |
+| [Add](#Add) | Adds a key and item pair to the associtive array. |
 | Count | Returns the number of items in the associative array. |
 | DispPtr | Returns the underlying dispatch pointer. |
 | Exists | Checks if a specified key exists in the associative array. |
@@ -21,3 +21,20 @@
 | NewEnum | Returns a reference to the standard enumerator. |
 | Remove | FUNCTION Remove (BYREF cvKey AS CVAR) AS HRESULT |
 | RemoveAll | Removes all key, item pairs from the associative array. |
+
+# <a name="Add"></a>Add
+
+Adds a key and item pair to the associtive array.
+
+```
+FUNCTION Add (BYREF cbKey AS CVAR, BYREF cvItem AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvKey* | The key associated with the item being added. |
+| *cvItem* | The item associated with the key being added. |
+
+#### Return value
+
+An error occurs if the key already exists.
