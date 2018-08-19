@@ -645,8 +645,8 @@ FUNCTION AfxCWstrArrayRemoveLast (rgwstr() AS CWSTR) AS BOOLEAN
 
 #### Remarks
 
-*AfxCWstrArrayRemoveFirst* removes the first element of the array
-*AfxCWstrArrayRemoveLast* removes the last element of the array
+**AfxCWstrArrayRemoveFirst** removes the first element of the array
+**AfxCWstrArrayRemoveLast** removes the last element of the array
 
 #### Example
 
