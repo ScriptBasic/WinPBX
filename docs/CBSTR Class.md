@@ -13,15 +13,16 @@ Quirks:
 | ---------- | ----------- |
 | [Constructors](#Constructors) | Initialize the class with the specified value. |
 | [Operator \*](#Operator*) | One * returns the address of the CBSTR buffer.<br> Two ** returns the address of the start of the string data. |
-| [sptr](#sptr) | Returns the address of the string data. Same as \*. |
-| [vptr](#vptr) | Returns the address of the CWSTR buffer. Same as \* |
+| [bptr](#bptr) | Returns the underlying BSTR pointer. |
+| [sptr](#sptr) | Returns the address of the string data. Same as \*\*. |
+| [vptr](#vptr) | Frees the underlying BSTR and returns the BSTR pointer. |
 | [wstr](#wstr) | Returns the string data. Same as \*\*. |
 | [Operator &](#Operator&) | Concatenates strings. |
-| [Operator +=](#Operator+=) | Appends a string to the CWSTR. |
-| [Operator &=](#Operator&=) | Appends a string to the CWSTR. |
-| [Operator Let](#OperatorLet) | Assigns a string to the CWSTR. It implements the = operator. |
-| [Operator Cast](#OperatorCast) | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
-| [wstr](#wstr) | Returns the string data. Same as **. |
+| [Operator +=](#Operator+=) | Appends a string to the CBSTR. |
+| [Operator &=](#Operator&=) | Appends a string to the CBSTR. |
+| [Operator Let](#OperatorLet) | Assigns a string to the CBSTR. It implements the = operator. |
+| [Operator Cast](#OperatorCast) | Returns a pointer to the CBSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
+| [wstr](#wstr) | Returns the string data. Same as \*\*. |
 | [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
 | [Append](#Append) | Appends a string to the CBSTR. |
@@ -34,9 +35,6 @@ Quirks:
 | [LeftChars](#LeftChars) | Returns the leftmost substring of the string. Same as Left. |
 | [MidChars](#MidChars) | Returns a substring of the string. Same as Mid. |
 | [RightChars](#RightChars) | Returns the rightmost substring of the string. Same as Right. |
-| [Resize](#Resize) | Resizes the string to a length of the specified number of characters. |
-| [SizeAlloc](#SizeAlloc) | Sets the capacity of the buffer in characters. |
-| [SizeOf](#SizeOf) | Returns the capacity of the buffer in characters. |
 | [Val](#Val) | Converts the string to a floating point number (DOUBLE). |
 | [ValDouble](#ValDouble) | Converts the string to a floating point number (DOUBLE). |
 | [ValInt](#ValInt) | Converts the string to a signed 32-bit integer (LONG). |
