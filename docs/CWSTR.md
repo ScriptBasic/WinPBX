@@ -27,7 +27,7 @@ Quirks:
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
 | [Capacity](#Capacity) | Gets/sets the size of the internal buffer. |
 | [GrowSize](#GrowSize) | Gets/sets the grow size value, in characters. |
-| [Add](#Add( | The passed string parameter is appended to the string starting at the specified position. |
+| [Add](#Add) | The passed string parameter is appended to the string starting at the specified position. |
 | Char | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
 | Clear | Erases all the data in the class object. |
 | DelChars | Deletes the specified number of characters starting at the specified position. |
