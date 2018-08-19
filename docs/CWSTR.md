@@ -610,7 +610,7 @@ FUNCTION AfxCWstrArrayInsert (rgwstr() AS CWSTR, BYVAL nPos AS LONG, BYREF cws A
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *rgwstr()* | THe array. |
+| *rgwstr()* | The array. |
 | *nPos* | The position in the array where the new element will be added. This position is relative to the lower bound of the array. |
 | *cws* | The string to append. |
 
@@ -639,7 +639,7 @@ FUNCTION AfxCWstrArrayRemoveLast (rgwstr() AS CWSTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *rgwstr()* | THe array. |
+| *rgwstr()* | The array. |
 | *nPos* | The position in the array of the element to remove. This position is relative to the lower bound of the array. |
 
 #### Remarks
@@ -670,7 +670,7 @@ SUB AfxCWstrArraySort (rgwstr() AS CWSTR, BYVAL bAscend AS BOOLEAN = TRUE)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *rgwstr()* | THe array to sort. |
+| *rgwstr()* | The array to sort. |
 | *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
 
 #### <a name="AfxCWstrArrayLogicalSort"></a>AfxCWstrArrayLogicalSort
