@@ -34,11 +34,11 @@ Quirks:
 | [Clear](#Clear) | Erases all the data in the class object. |
 | [DelChars](#DelChars) | Deletes the specified number of characters starting at the specified position. |
 | [Insert](#Insert) | The passed string parameter is inserted in the string starting at the specified position. |
-| Left | Returns the leftmost substring of the string. Same as LEFT. |
-| Right | Returns the rightmost substring of the string. Same as RIGHT. |
-| LeftChars | Returns the leftmost substring of the string. Same as Left. |
-| MidChars | Returns a substring of the string. Same as Mid. |
-| RightChars | Returns the rightmost substring of the string. Same as Right. |
+| [Left](#Left) | Returns the leftmost substring of the string. Same as LEFT. |
+| [Right](#Right) | Returns the rightmost substring of the string. Same as RIGHT. |
+| [LeftChars](#LeftChars) | Returns the leftmost substring of the string. Same as Left. |
+| [MidChars](#MidChars) | Returns a substring of the string. Same as Mid. |
+| [RightChars](#RightChars) | Returns the rightmost substring of the string. Same as Right. |
 | Resize | Resizes the string to a length of the specified number of characters. |
 | SizeAlloc | Sets the capacity of the buffer in characters. |
 | SizeOf | Returns the capacity of the buffer in characters. |
@@ -396,3 +396,66 @@ FUNCTION Insert (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage 
 | *nCodePage* | The code page to be used for ansi to unicode conversions. |
 
 For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
+
+#### <a name="Left"></a>Left
+
+Returns the leftmost substring of the string.
+
+```
+FUNCTION Left OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cws* | The source CWST. |
+| *nChars* | The number of characters to return from the source string. |
+
+#### <a name="Right"></a>Right
+
+Returns the rightmost substring of the string.
+
+```
+FUNCTION Right OVERLOAD (BYREF cws AS CWSTR, BYVAL nChars AS INTEGER) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cws* | The source CWST. |
+| *nChars* | The substring length, in characters. |
+
+#### <a name="LeftChars"></a>LeftChars
+
+Returns the leftmost substring of the string.
+
+```
+FUNCTION LeftChars (BYVAL nChars AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nChars* | The number of characters to return from the source string. |
+
+#### <a name="MidChars"></a>MidChars
+
+Returns a substring of the string.
+
+```
+MidChars (BYVAL nStart AS LONG, BYVAL nChars AS LONG = 0) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStart* | The start position in CWSTR of the substring. The first character starts at position 1. |
+| *nChars* | The substring length, in characters. |
+
+#### <a name="RightChars"></a>RightChars
+
+Returns the rightmost substring of the string.
+
+```
+FUNCTION RightChars (BYVAL nChars AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nChars* | The substring length, in characters. |
