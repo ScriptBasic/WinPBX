@@ -171,25 +171,21 @@ OPERATOR LET (BYREF bstrHandle AS AFX_BSTR)
 
 #### <a name="OperatorCast"></a>Operator Cast
 
+Return a pointer to the underlying BSTR or the string data. These operators aren't called directly.
+
 ```
-OPERATOR CAST () BYREF AS WSTRING
+OPERATOR CAST () BYREF AS CONST WSTRING
 OPERATOR CAST () AS ANY PTR
 ```
-
-Returns a pointer to the CWSTR buffer or the string data. These operators aren't called directly.
-
-#### <a name="bstr"></a>bstr
-
-Returns the contents of the CWSTR as a BSTR.
-
-#### <a name="cbstr"></a>cbstr
-
-Returns the contents of the CWSTR as a CBSTR.
 
 #### <a name="wchar"></a>wchar
 
 Returns the string data as a new unicode string allocated with CoTaskMemAlloc.
 Useful when we need to pass a pointer to a null terminated wide string to a function or method that will release it. If we pass a WSTRING it will GPF. If the length of the input string is 0, CoTaskMemAlloc allocates a zero-length item and returns a valid pointer to that item. If there is insufficient memory available, CoTaskMemAlloc returns NULL.
+
+```
+FUNCTION wchar () AS WSTRING PTR
+```
 
 #### <a name="Utf8"></a>Utf8
 
@@ -202,112 +198,31 @@ PROPERTY Utf8 (BYREF utf8String AS STRING)
 
 # Methods
 
-#### <a name="Capacity"></a>Capacity
+#### <a name="Append"></a>Append
 
-Gets/sets the size of the internal buffer. The size is the number of bytes which can be stored without further expansion.
-
-```
-PROPERTY Capacity() AS UINT
-PROPERTY Capacity (BYVAL nValue AS LONG)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nValue* | The new capacity value, in bytes. If the new capacity is equal to the current capacity, no operation is performed; is it is smaller, the buffer is shortened and the contents that exceed the new capacity are lost. If you pass an odd number, 1 is added to the value to make it even. |
-
-#### <a name="GrowSize"></a>GrowSize
-
-Gets/sets the size of the internal buffer. The size is the number of bytes which can be stored without further expansion.
+Appends a string to the CBSTR. 
 
 ```
-PROPERTY GrowSize () AS LONG
-PROPERTY GrowSize (BYVAL nChars AS LONG)
+SUB Append (BYREF wszStr AS CONST WSTRING)
 ```
 
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nChars* | The new grow size value, in characters.  A value of less than 0 indicates that it must double the capacity each time that the buffer needs to be resized. |
-
-#### <a name="Add"></a>Add
-
-The passed string parameter is appended to the string starting at the specified position.
-
-```
-SUB Add (BYREF cws AS CWSTR, BYVAL nIndex AS UINT)
-SUB Add (BYREF cbs AS CBSTR, BYVAL nIndex AS UINT)
-SUB Add (BYVAL pwszStr AS WSTRING PTR, BYVAL nIndex AS UINT)
-SUB Add (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage AS UINT = 0)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pwszStr* | A WSTRING. |
-| *cws* | A CWSTR. |
-| *cbs* | A CBSTR. |
-| *ansiStr* | An ansi string or string literal. |
-| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
-| *nCodePage* | The code page to be used for ansi to unicode conversions. |
-
-For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
-
-#### <a name="Char"></a>Char
-
-Gets or sets the corresponding unicode integer representation of the character at the position specified by the *nIndex* parameter.
-
-```
-PROPERTY Char (BYVAL nIndex AS UINT) AS USHORT
-PROPERTY Char (BYVAL nIndex AS UINT, BYVAL nValue AS USHORT)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nIndex* | The one based index of the character in the string (1 for the first character, 2 for the second, etc.). If nIndex is beyond the current length of the string, a 0 is returned. |
-| *nValue* | The unicode integer representation of the character. |
+The string can be a literal or a FB STRING, a WSTRING, a CWSTR or a CBSTR variable.
 
 #### <a name="Clear"></a>Clear
 
-Erases all the data in the class object.
+Frees the underlying BSTR.
 
 ```
 SUB Clear
 ```
 
-Actually, this method only sets the buffer length to zero, indicating no string in the buffer. The allocated memory for the buffer is deallocated when the class is destroyed.
+#### <a name="Empty"></a>Empty
 
-#### <a name="DelChars"></a>DelChars
-
-Deletes the specified number of characters starting at the specified position.
+Frees the underlying BSTR.
 
 ```
-FUNCTION DelChars (BYVAL nIndex AS UINT, BYVAL nCount AS UINT) AS BOOLEAN
+SUB Empty
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
-| *nCount* | The number of characters to delete. |
-
-#### <a name="Insert"></a>Insert
-
-The passed string parameter is inserted in the string starting at the specified position.
-
-```
-FUNCTION Insert (BYVAL pwszStr AS WSTRING PTR, BYVAL nIndex AS UINT) AS BOOLEAN
-FUNCTION Insert (BYREF cws AS CWSTR, BYVAL nIndex AS UINT) AS BOOLEAN
-FUNCTION Insert (BYREF cbs AS CBSTR, BYVAL nIndex AS UINT) AS BOOLEAN
-FUNCTION Insert (BYREF ansiStr AS STRING, BYVAL nIndex AS UINT, BYVAL nCodePage AS UINT = 0) AS BOOLEAN
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pwszStr* | A WSTRING. |
-| *cws* | A CWSTR. |
-| *cbs* | A CBSTR. |
-| *ansiStr* | An ansi string or string literal. |
-| *nIndex* | The starting position (1 for the first character, 2 for the second, etc.). |
-| *nCodePage* | The code page to be used for ansi to unicode conversions. |
-
-For a list of code pages see: [Code Page Identifiers](https://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx)
 
 #### <a name="Left"></a>Left
 
