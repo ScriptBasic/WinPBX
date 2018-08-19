@@ -57,15 +57,15 @@ pURLShortcut.Save
 
 | Name       | Description |
 | ---------- | ----------- |
-| *Arguments* | Gets/sets the arguments for a shortcut, or identifies a shortcut's arguments. |
-| *Description* | Returns or sets a shortcut's description. |
-| *FullName* | Returns the fully qualified path of the shortcut object's target. |
-| *Hotkey* | Assigns a key-combination to a shortcut, or identifies the key-combination assigned to a shortcut. |
-| *IconLocation* | Assigns a an icon to a shortcut, or identifies the icon assigned to a shortcut. |
-| *RelativePath* | Assigns a relative path to a shortcut. |
-| *TargetPath* | Gets/sets the path of the shortcut's executable. |
-| *WindowStyle* | Assigns a window style to a shortcut, or identifies the type of window style used by a shortcut. |
-| *WorkingDirectory* | Assigns a working directory to a shortcut, or identifies the working directory used by a shortcut. |
+| [Arguments](#Arguments) | Gets/sets the arguments for a shortcut, or identifies a shortcut's arguments. |
+| [Description](#Description) | Returns or sets a shortcut's description. |
+| [FullName](#FullName1) | Returns the fully qualified path of the shortcut object's target. |
+| Hotkey | Assigns a key-combination to a shortcut, or identifies the key-combination assigned to a shortcut. |
+| IconLocation | Assigns a an icon to a shortcut, or identifies the icon assigned to a shortcut. |
+| RelativePath | Assigns a relative path to a shortcut. |
+| TargetPath | Gets/sets the path of the shortcut's executable. |
+| WindowStyle | Assigns a window style to a shortcut, or identifies the type of window style used by a shortcut. |
+| WorkingDirectory | Assigns a working directory to a shortcut, or identifies the working directory used by a shortcut. |
 
 # CURLShortcut Methods
 
@@ -78,8 +78,8 @@ pURLShortcut.Save
 
 | Name       | Description |
 | ---------- | ----------- |
-| *FullName* | Returns the fully qualified path of the shortcut object's target. |
-| *TargetPath* | Gets/sets the path of the shortcut's executable. |
+| [FullName](#FullName2) | Returns the fully qualified path of the shortcut object's target. |
+| TargetPath | Gets/sets the path of the shortcut's executable. |
 
 # <a name="Save1"></a>Save (CShortcut)
 
@@ -124,3 +124,61 @@ FUNCTION GetLastResult () AS HRESULT
 #### Return value
 
 HRESULT. S_OK (0) on success, or an error code on failure.
+
+# <a name="Arguments"></a>Arguments
+
+Gets/sets the arguments for a shortcut, or identifies a shortcut's arguments.
+
+```
+PROPERTY Arguments () AS CBSTR
+PROPERTY Arguments (BYREF cbsArguments AS CBSTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsArguments* | The arguments for the shortcut. |
+
+#### Return value
+
+CBSTR. The arguments of the shortcut.
+
+# <a name="Description"></a>Description
+
+Returns or sets a shortcut's description.
+
+```
+PROPERTY Description () AS CBSTR
+PROPERTY Description (BYREF cbsDescription AS CBSTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsDescription* | A string value describing a shortcut. |
+
+#### Return value
+
+CBSTR. The description the shortcut.
+
+# <a name="FullName1"></a>FullName (CShortcut)
+
+Returns the fully qualified path of the shortcut object's target.
+
+```
+PROPERTY FullName () AS CBSTR
+```
+
+#### Remarks
+
+The **FullName** property contains a read-only string value indicating the fully qualified path to the shortcut's target.
+
+# <a name="FullName2"></a>FullName (CURLShortcut)
+
+Returns the fully qualified path of the shortcut object's target.
+
+```
+PROPERTY FullName () AS CBSTR
+```
+
+#### Remarks
+
+The **FullName** property contains a read-only string value indicating the fully qualified path to the shortcut's target.
