@@ -1,6 +1,6 @@
 # CBSTR Class
 
-The **CBSTR** class implements a dynamic unicode null terminated string. Free Basic has a dynamic string data type (STRING) and a fixed length unicode data type (WSTRING), but it lacks a dynamic unicode string. **CWSTR** behaves as if it was a native data type, working directly with the intrinsic Free Basic string functions and operators.
+The **CBSTR** class implements a dynamic unicode null terminated string. Free Basic has a dynamic string data type (STRING) and a fixed length unicode data type (WSTRING), but it lacks a dynamic unicode string. **CBSTR** behaves as if it was a native data type, working directly with the intrinsic Free Basic string functions and operators.
 
 **Include file**: CWSTR.INC.
 
@@ -19,20 +19,16 @@ Quirks:
 | [Operator &](#Operator&) | Concatenates strings. |
 | [Operator +=](#Operator+=) | Appends a string to the CWSTR. |
 | [Operator &=](#Operator&=) | Appends a string to the CWSTR. |
-| [Operator []](#Operator[]) | Gets the corresponding unicode integer representation of the character at the specified position. |
 | [Operator Let](#OperatorLet) | Assigns a string to the CWSTR. It implements the = operator. |
 | [Operator Cast](#OperatorCast) | Returns a pointer to the CWSTR buffer or the string data.<br>Casting is automatic. You don't have to call this operator. |
-| [bstr](#bstr) | Returns the contents of the CWSTR as a BSTR. |
-| [cbstr](#cbstr) | Returns the contents of the CWSTR as a CBSTR. |
+| [wstr](#wstr) | Returns the string data. Same as **. |
 | [wchar](#wchar) | Returns the string data as a new unicode string allocated with CoTaskMemAlloc. |
 | [Utf8](#Utf8) | Converts from UTF8 to Unicode and from Unicode to UTF8. |
-| [Capacity](#Capacity) | Gets/sets the size of the internal buffer. |
-| [GrowSize](#GrowSize) | Gets/sets the grow size value, in characters. |
-| [Add](#Add) | The passed string parameter is appended to the string starting at the specified position. |
-| [Char](#Char) | Gets or sets the corresponding unicode integer representation of the character at the specified position. |
-| [Clear](#Clear) | Erases all the data in the class object. |
-| [DelChars](#DelChars) | Deletes the specified number of characters starting at the specified position. |
-| [Insert](#Insert) | The passed string parameter is inserted in the string starting at the specified position. |
+| [Append](#Append) | Appends a string to the CBSTR. |
+| [Attach](#Attach) | Attaches a BSTR to the CBSTR class. |
+| [Detach](#Detach) | Detaches the underlying BSTR from the CBSTR class and returns it as the result of the function. |
+| [Clear](#Clear) | Frees the underlying BSTR. |
+| [Empty](#Clear) | Frees the underlying BSTR. |
 | [Left](#Left) | Returns the leftmost substring of the string. Same as LEFT. |
 | [Right](#Right) | Returns the rightmost substring of the string. Same as RIGHT. |
 | [LeftChars](#LeftChars) | Returns the leftmost substring of the string. Same as Left. |
