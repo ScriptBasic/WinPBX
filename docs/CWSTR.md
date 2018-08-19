@@ -54,7 +54,7 @@ Quirks:
 | [AfxCWstrArrayAppend](#AfxCWstrArrayAppend) | Appends a CWSTR at the end of a not fixed one-dimensional CWSTR array. |
 | [AfxCWstrArrayInsert](#AfxCWstrArrayInsert) | Inserts a new CWSTR element before the specified position in a not fixed one-dimensional CWSTR array. |
 | [AfxCWstrArrayRemove](#AfxCWstrArrayRemove) | Removes the specified element of a not fixed one-dimensional CWSTR array. |
-| [AfxCWstrArraySort](AfxCWstrArraySort~) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
+| [AfxCWstrArraySort](#AfxCWstrArraySort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 | [AfxCWstrArrayLogicalSort](#AfxCWstrArrayLogicalSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 | [AfxCWstrLogicalSort](#AfxCWstrLogicalSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
 | [AfxCWstrSort](#AfxCWstrSort) | Sorts a one-dimensional CWSTR array calling the C qsort function. |
