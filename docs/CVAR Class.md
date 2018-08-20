@@ -408,7 +408,7 @@ FUNCTION ChangeType (BYVAL vtNew AS VARTYPE, BYVAL wFlags AS USHORT = 0) AS HRES
 | Parameter  | Description |
 | ---------- | ----------- |
 | *vtNew* | The new variant type. |
-| *wFlags* | VARIANT_NOVALUEPROP : Prevents the function from attempting to coerce an object to a fundamental type by getting the Value property. Applications should set this flag only if necessary, because it makes their behavior inconsistent with other applications.<br>VARIANT_ALPHABOOL : Converts a VT_BOOL value to a string containing either "True" or "False".<br>VARIANT_NOUSEROVERRIDE : For conversions to or from VT_BSTR, passes LOCALE_NOUSEROVERRIDE to the core coercion routines.<br>VARIANT_LOCALBOOL : For conversions from VT_BOOL to VT_BSTR and back, uses the language specified by the locale in use on the local computer. |
+| *wFlags* | *VARIANT_NOVALUEPROP* : Prevents the function from attempting to coerce an object to a fundamental type by getting the Value property. Applications should set this flag only if necessary, because it makes their behavior inconsistent with other applications.<br>*VARIANT_ALPHABOOL* : Converts a VT_BOOL value to a string containing either "True" or "False".<br>*VARIANT_NOUSEROVERRIDE* : For conversions to or from VT_BSTR, passes LOCALE_NOUSEROVERRIDE to the core coercion routines.<br>*VARIANT_LOCALBOOL* : For conversions from VT_BOOL to VT_BSTR and back, uses the language specified by the locale in use on the local computer. |
 
 #### Return value
 
