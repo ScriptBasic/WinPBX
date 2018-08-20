@@ -267,58 +267,58 @@ For a list of data types, see For a list of data types, see [VARENUM Enumeration
 
 | Type                | Description                              | VARIANT | Typedesc | Property set | Safe array |
 | ------------------- | ---------------------------------------- | ------- | -------- | ------------ | ---------- |
-| VT_EMPTY            | Not specified. |
-| VT_NULL             | Null. |
-| VT_I2               | A 2-byte integer. |
-| VT_I4               | A 4-byte integer. |
-| VT_R4               | A 4-byte real. |
-| VT_R8               | A 8-byte real. |
-| VT_CY               | Currency. |
-| VT_DATE             | A date. |
-| VT_BSTR             | A string. |
-| VT_DISPATCH         | An IDispatch pointer. |
-| VT_ERROR            | An SCODE value. |
-| VT_BOOL             | A Boolean value (True = -1, False = 0) |
-| VT_VARIANT          | A variant pointer. |
-| VT_UNKNOWN          | An IUnknown pointer. |
-| VT_DECIMAL          | A 16-byte fixed-pointer value. |
-| VT_I1               | A character. |
-| VT_UI1              | An unsigned character. |
-| VT_UI2              | An unsigned short. |
-| VT_UI4              | An unsigned long. |
-| VT_I8               | A 64-bit integer. |
-| VT_UI8              | A 64-bit unsigned integer. |
-| VT_INT              | An integer. |
-| VT_UINT             | An unsigned integer. |
-| VT_VOID             | A C-style void. |
-| VT_HRESULT          | An HRESULT value. |
-| VT_PTR              | A pointer type. |
-| VT_SAFEARRAY        | A safe array. Use VT_ARRAY in VARIANT. |
-| VT_CARRAY           | A C-style array. |
-| VT_USERDEFINED      | A user-defined type. |
-| VT_LPSTR            | A null-terminated string. |
-| VT_LPWSTR           | A wide null-terminated string. |
-| VT_RECORD           | A user-defined type. |
-| VT_INT_PTR          | A signed machine register size width. |
-| VT_UINT_PTR         | An unsigned machine register size width. |
-| VT_FILETIME         | A FILETIME value. |
-| VT_BLOB             | Length-prefixed bytes. |
-| VT_STREAM           | The name of the stream follows. |
-| VT_STORAGE          | The name of the storage follows. |
-| VT_STREAMED_OBJECT  | The stream contains an object. |
-| VT_STORED_OBJECT    | The storage contains an object. |
-| VT_BLOB_OBJECT      | The blob contains an object. |
-| VT_CF               | A clipboard format. |
-| VT_CLSID            | A class ID. |
-| VT_VERSIONED_STREAM | A stream with a GUID version. |
-| VT_BSTR_BLOB        | Reserved. |
-| VT_VECTOR           | A simple counted array. |
-| VT_ARRAY            | A SAFEARRAY pointer. |
-| VT_BYREF            | A void pointer for local use. |
-| VT_RESERVED         | Reserved. |
-| VT_ILLEGAL          |  |
-| VT_ILLEGALMASKED    |  |
-| VT_TYPEMASK         |  |
+| VT_EMPTY            | Not specified.                           |    X    |          |      X       |            |
+| VT_NULL             | Null.                                    |    X    |          |      X       |            |
+| VT_I2               | A 2-byte integer.                        |    X    |    X     |      X       |     X      |
+| VT_I4               | A 4-byte integer.                        |    X    |    X     |      X       |     X      |
+| VT_R4               | A 4-byte real.                           |    X    |    X     |      X       |     X      |
+| VT_R8               | A 8-byte real.                           |    X    |    X     |      X       |     X      |
+| VT_CY               | Currency.                                |    X    |    X     |      X       |     X      |
+| VT_DATE             | A date.                                  |    X    |    X     |      X       |     X      |
+| VT_BSTR             | A string.                                |    X    |    X     |      X       |     X      |
+| VT_DISPATCH         | An IDispatch pointer.                    |    X    |    X     |              |     X      |
+| VT_ERROR            | An SCODE value.                          |    X    |    X     |      X       |     X      |
+| VT_BOOL             | A Boolean value (True = -1, False = 0)   |    X    |    X     |      X       |     X      |
+| VT_VARIANT          | A variant pointer.                       |    X    |    X     |      X       |     X      |
+| VT_UNKNOWN          | An IUnknown pointer.                     |    X    |    X     |              |     X      |
+| VT_DECIMAL          | A 16-byte fixed-pointer value.           |    X    |    X     |              |     X      |
+| VT_I1               | A character.                             |    X    |    X     |      X       |     X      |
+| VT_UI1              | An unsigned character.                   |    X    |    X     |      X       |     X      |
+| VT_UI2              | An unsigned short.                       |    X    |    X     |      X       |     X      |
+| VT_UI4              | An unsigned long.                        |    X    |    X     |      X       |     X      |
+| VT_I8               | A 64-bit integer.                        |         |    X     |      X       |            |
+| VT_UI8              | A 64-bit unsigned integer.               |         |    X     |      X       |            |
+| VT_INT              | An integer.                              |    X    |    X     |      X       |     X      |
+| VT_UINT             | An unsigned integer.                     |    X    |    X     |              |     X      |
+| VT_VOID             | A C-style void.                          |         |          |      X       |            |
+| VT_HRESULT          | An HRESULT value.                        |         |          |      X       |            |
+| VT_PTR              | A pointer type.                          |         |          |      X       |            |
+| VT_SAFEARRAY        | A safe array. Use VT_ARRAY in VARIANT.   |         |    X     |              |            |
+| VT_CARRAY           | A C-style array.                         |         |    X     |              |            |
+| VT_USERDEFINED      | A user-defined type.                     |         |          |      X       |            |
+| VT_LPSTR            | A null-terminated string.                |         |    X     |      X       |            |
+| VT_LPWSTR           | A wide null-terminated string.           |         |    X     |      X       |            |
+| VT_RECORD           | A user-defined type.                     |    X    |    X     |              |     X      |
+| VT_INT_PTR          | A signed machine register size width.    |         |          |      X       |            |
+| VT_UINT_PTR         | An unsigned machine register size width. |         |          |      X       |            |
+| VT_FILETIME         | A FILETIME value.                        |         |          |      X       |            |
+| VT_BLOB             | Length-prefixed bytes.                   |         |          |      X       |            |
+| VT_STREAM           | The name of the stream follows.          |         |          |      X       |            |
+| VT_STORAGE          | The name of the storage follows.         |         |          |      X       |            |
+| VT_STREAMED_OBJECT  | The stream contains an object.           |         |          |      X       |            |
+| VT_STORED_OBJECT    | The storage contains an object.          |         |          |      X       |            |
+| VT_BLOB_OBJECT      | The blob contains an object.             |         |          |      X       |            |
+| VT_CF               | A clipboard format.                      |         |          |      X       |            |
+| VT_CLSID            | A class ID.                              |         |          |      X       |            |
+| VT_VERSIONED_STREAM | A stream with a GUID version.            |         |          |      X       |            |
+| VT_BSTR_BLOB        | Reserved for system use.                 |         |          |              |            |
+| VT_VECTOR           | A simple counted array.                  |         |          |      X       |            |
+| VT_ARRAY            | A SAFEARRAY pointer.                     |    X    |          |              |            |
+| VT_BYREF            | A void pointer for local use.            |    X    |          |              |            |
+| VT_RESERVED         | Reserved.                                |         |          |              |            |
+| VT_ILLEGAL          |                                          |         |          |              |            |
+| VT_ILLEGALMASKED    |                                          |         |          |              |            |
+| VT_TYPEMASK         |                                          |         |          |              |            |
 
 
 # <a name="bstr"></a>bstr
