@@ -778,7 +778,7 @@ SUB PutByte (BYVAL _value AS BYTE)
 
 # <a name="PutUByte"></a>PutUByte
 
-Assigns an ubyte value to the CVAR.
+Assigns an unsigned ubyte value to the CVAR.
 
 ```
 SUB PutUByte (BYVAL _value AS UBYTE)
@@ -786,7 +786,7 @@ SUB PutUByte (BYVAL _value AS UBYTE)
 
 # <a name="PutShort"></a>PutShort
 
-Assigns an short integer value to the CVAR.
+Assigns a short integer value to the CVAR.
 
 ```
 SUB PutShort (BYVAL _value AS SHORT)
@@ -802,7 +802,7 @@ SUB PutUShort (BYVAL _value AS USHORT)
 
 # <a name="PutInt"></a>PutInt
 
-Assigns an INT_ value to the CVAR.
+Assigns an INT_ (long) value to the CVAR.
 
 ```
 SUB PutInt (BYVAL _value AS INT_)
@@ -814,7 +814,7 @@ Don't confuse an INT_ (LONG) with the Free Basic INTEGER data type.
 
 # <a name="PutUInt"></a>PutUInt
 
-Assigns an UINT value to the CVAR.
+Assigns an UINT (unsigned long) value to the CVAR.
 
 ```
 SUB PutUInt (BYVAL _value AS UINT)
