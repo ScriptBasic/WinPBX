@@ -14,7 +14,6 @@
 | AfxCopyFile | Copies an existing file to a new file. |
 | AfxCreateDirectory | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
-| AfxEnviron | Retrieves the contents of the specified variable from the environment block of the calling process. |
 | AfxFileCopy | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
@@ -73,7 +72,6 @@
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
 | AfxSetCurDir | Changes the current directory for the current process. |
 | AfxSetCurrentDirectory | Changes the current directory for the current process. |
-| AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
 
 ## Path and Url Procedures
 
