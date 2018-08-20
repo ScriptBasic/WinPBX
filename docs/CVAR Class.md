@@ -2018,7 +2018,7 @@ This helper function is used when the calling application expects a VARIANT to h
 
 If the source VARIANT is of type VT_ARRAY OR VT_UI4, this function extracts up to *crgn* UInt32 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
 
-# <a name="ToShortArrayAlloc"></a>ToShortArrayAlloc
+# <a name="ToULongArrayAlloc"></a>ToULongArrayAlloc
 
 Extracts an array of ULONG values from CVAR.
 
