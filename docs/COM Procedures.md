@@ -1,5 +1,7 @@
 # COM Procedures
 
+Assorted COM procedures.
+
 **Include file**: AfxCOM.inc
 
 | Name       | Description |
