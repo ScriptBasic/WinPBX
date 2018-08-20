@@ -1886,3 +1886,25 @@ The count of Int16 elements extracted from the CVAR.
 This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of Int16 values.
 
 If the source VARIANT is of type VT_ARRAY OR VT_I2, this function extracts up to *crgn* Int16 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToShortArrayAlloc"></a>ToShortArrayAlloc
+
+Extracts an array of SHORT values from CVAR.
+
+```
+FUNCTION ToShortArrayAlloc (BYVAL pprgn AS SHORT PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a SHORT PTR variable that will recive a pointer to an array of SHORT values extracted from the source CVAR. |
+
+#### Return value
+
+The count of SHORT elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of SHORT values.
+
+If CVAR is of type VT_ARRAY OR VT_I2, this function extracts an array of SHORT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
