@@ -1938,7 +1938,7 @@ FUNCTION ToStringArray (BYVAL prgsz AS PWSTR, BYVAL crgsz AS ULONG) AS ULONG
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *prgsz* | Pointer to a buffer that contains crgn PWSTR values. When this function returns, the buffer has been initialized with elements extracted from the source VARIANT structure. |
+| *prgsz* | Pointer to a buffer that contains *crgn* PWSTR values. When this function returns, the buffer has been initialized with elements extracted from the source VARIANT structure. |
 | *crgsz* | The number of elements in the buffer pointed to by *prgsz*. |
 
 #### Return value
