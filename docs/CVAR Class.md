@@ -1434,3 +1434,24 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 Creates a VT_BSTR variant. This function frees the resources used for the STRRET contents.
 
 
+# <a name="PutSystemTime"></a>PutSystemTime
+
+Initializes CVAR with the contents of a SYSTEMTIME structure.
+
+```
+FUNCTION PutSystemTime (BYVAL pst AS SYSTEMTIME PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pst* | Pointer to a SYSTEMTIME structure. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_DATE variant.
+
+
