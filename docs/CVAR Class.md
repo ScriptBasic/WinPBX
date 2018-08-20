@@ -1981,5 +1981,61 @@ FUNCTION ToStrRet () AS STRRET
 
 #### Return value
 
-The STRRET structure.
+A STRRET structure.
 
+# <a name="ToSystemTime"></a>ToSystemTime
+
+Returns the contents of CVAR of type VT_DATE as a FILETIME structure.
+
+```
+FUNCTION ToSystemTime () AS SYSTEMTIME
+```
+
+#### Return value
+
+A SYSTEMTIME structure.
+
+# <a name="ToULongArray"></a>ToULongArray
+
+Extracts an array of ULONG values from CVAR.
+
+```
+FUNCTION ToULongArray (BYVAL prgn AS ULONG PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains crgn ULONG variables. When this function returns, the buffer has been initialized with UInt32 elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+The count of UInt32 elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of UInt32 values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_UI4, this function extracts up to *crgn* UInt32 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToShortArrayAlloc"></a>ToShortArrayAlloc
+
+Extracts an array of ULONG values from CVAR.
+
+```
+FUNCTION ToULongArrayAlloc (BYVAL pprgn AS ULONG PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a ULONG PTR variable that will recive a pointer to an array of ULONG values extracted from the source CVAR. |
+
+#### Return value
+
+The count of ULONG elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of ULONG values.
+
+If CVAR is of type VT_ARRAY OR VT_UI4, this function extracts an array of ULONG values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
