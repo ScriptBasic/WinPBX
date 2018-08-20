@@ -1650,3 +1650,47 @@ FUNCTION ToBuffer () AS STRING
 #### Return value
 
 A string with the contents of the array.
+
+# <a name="ToDosDateTime"></a>ToDosDateTime
+
+Extracts a date and time value in Microsoft MS-DOS format from a CVAR of type VT_DATE.
+
+```
+FUNCTION ToDosDateTime (BYVAL pwDate AS USHORT PTR, BYVAL pwTime AS USHORT PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwDate* | When this function returns, contains the extracted USHORT that represents a MS-DOS date. |
+| *pwTime* | When this function returns, contains the extracted contains the extracted WORD that represents a MS-DOS time. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold a datetime value.
+
+If CVAR is of type VT_DATE, this function extracts the datetime value.
+
+If CVAR is not of type VT_DATE, the function attempts to convert the value in the VARIANT structure into the right format. If a conversion is not possible, it returns a failure code.
+
+# <a name="ToDoubleArray"></a>ToDoubleArray
+
+Extracts an array of DOUBLE values from CVAR.
+
+```
+FUNCTION ToDoubleArray (BYVAL prgn AS DOUBLE PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains crgn DOUBLE variables. When this function returns, the buffer has been initialized with DOUBLE elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of DOUBLE values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_R8, this function extracts up to crgn DOUBLE values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
