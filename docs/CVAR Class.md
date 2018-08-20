@@ -2039,3 +2039,48 @@ The count of ULONG elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of ULONG values.
 
 If CVAR is of type VT_ARRAY OR VT_UI4, this function extracts an array of ULONG values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
+# <a name="ToULongIntArray"></a>ToULongIntArray
+
+Extracts an array of ULONGINT values from CVAR.
+
+```
+FUNCTION ToULongIntArray (BYVAL prgn AS ULONGINT PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains *crgn* ULONGINT variables. When this function returns, the buffer has been initialized with UInt64 elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+The count of UInt64 elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of UInt64 values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_UI8, this function extracts up to *crgn* UInt64 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToULongIntArrayAlloc"></a>ToULongIntArrayAlloc
+
+Extracts an array of ULONGINT values from CVAR.
+
+```
+FUNCTION ToULongIntArrayAlloc (BYVAL pprgn AS ULONGINT PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a ULONGINT PTR variable that will recive a pointer to an array of ULONGINT values extracted from the source CVAR. |
+
+#### Return value
+
+The count of ULONGINT elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of ULONGINT values.
+
+If CVAR is of type VT_ARRAY OR VT_UI8, this function extracts an array of ULONGINT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
