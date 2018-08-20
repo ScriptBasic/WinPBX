@@ -2084,3 +2084,48 @@ The count of ULONGINT elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of ULONGINT values.
 
 If CVAR is of type VT_ARRAY OR VT_UI8, this function extracts an array of ULONGINT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
+# <a name="ToUShortArray"></a>ToUShortArray
+
+Extracts an array of UInt16 values from CVAR.
+
+```
+FUNCTION ToUShortArray (BYVAL prgn AS USHORT PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains *crgn* UInt16 variables. When this function returns, the buffer has been initialized with UInt16 elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+The count of UInt16 elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of UInt16 values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_I2, this function extracts up to *crgn* UInt16 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToUShortArrayAlloc"></a>ToUShortArrayAlloc
+
+Extracts an array of USHORT values from CVAR.
+
+```
+FUNCTION ToUShortArrayAlloc (BYVAL pprgn AS USHORT PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a USHORT PTR variable that will recive a pointer to an array of USHORT values extracted from the source CVAR. |
+
+#### Return value
+
+The count of USHORT elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of USHORT values.
+
+If CVAR is of type VT_ARRAY OR VT_UI2, this function extracts an array of SHORT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
