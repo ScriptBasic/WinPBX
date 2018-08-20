@@ -1206,7 +1206,7 @@ FUNCTION PutDecFromStr (BYVAL pwszIn AS WSTRING PTR, BYVAL lcid AS LCID = 0, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszIn* | The string value to convert |
+| *pwszIn* | The string value to convert. |
 | *lcid* | The locale identifier. |
 | *dwFlags* | One or more of the following flags.<br>*LOCALE_NOUSEROVERRIDE* : Uses the system default locale settings, rather than custom locale settings.<br>*VAR_TIMEVALUEONLY* : Omits the date portion of a VT_DATE and returns only the time. Applies to conversions to or from dates.<br>*VAR_DATEVALUEONLY* : Omits the time portion of a VT_DATE and returns only the date. Applies to conversions to or from dates. |
 
@@ -1225,4 +1225,105 @@ This function can return one of these values.
 
 Creates a VT_DECIMAL variant.
 
+# <a name="PutFileTime"></a>PutFileTime
+
+Initializes CVAR with the contents of a FILETIME structure.
+
+```
+FUNCTION PutFileTime (BYVAL pft AS FILETIME PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pft* | Pointer to a FILETIME structure. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_DATE variant.
+
+# <a name="PutFileTimeArray"></a>PutFileTimeArray
+
+Initializes CVAR with an array of FILETIME structures.
+
+```
+FUNCTION PutFileTimeArray (BYVAL prgft AS FILETIME PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgft* | Pointer to an array of FILETIME structures. |
+| *cElems* | The number of elements in the array pointed to by *prgft*. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_DATE variant.
+
+# <a name="PutGuid"></a>PutGuid
+
+Initializes CVAR from a GUID.
+
+```
+FUNCTION PutGuid (BYVAL rguid AS GUID PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rguid* | Reference to the source GUID. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_UI1 variant.
+
+# <a name="PutPropVariant"></a>PutPropVariant
+
+Initializes CVAR from the contents of a PROPVARIANT structure.
+
+```
+FUNCTION PutPropVariant (BYVAL pPropVar AS PROPVARIANT PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pPropVar* | Pointer to a source PROPVARIANT structure. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Normally, the data stored in the PROPVARIANT is copied to the VARIANT without a datatype change. However, in the following cases, there is no direct VARIANT support for the datatype, and they are converted as shown.
+
+VT_BLOB, VT_STREAM<br>
+Converted to VT_UNKNOWN. The punkVal member will contain a pointer to an IStream that contains the source data.
+
+VT_LPSTR, VT_LPWSTR, VT_CLSID<br>
+Converted to VT_BSTR,
+
+VT_FILETIME<br>
+Converted to VT_DATE.
+
+VT_VECTOR|x<br>
+Converted to VT_ARRAY|y
+
+The following types cannot be converted with this function.
+
+VT_STORAGE<br>
+VT_BLOB_OBJECT<br>
+VT_STREAMED_OBJECT<br>
+VT_STORED_OBJECT<br>
+VT_CF<br>
+VT_VECTOR | VT_CF
 
