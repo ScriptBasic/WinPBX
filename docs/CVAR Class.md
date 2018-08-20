@@ -34,9 +34,9 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetULongIntElem](#GetULongIntElem) | Extracts a single ULONGINT element from a safe array of unsigned long integers. |
 | [GetUShortElem](#GetUShortElem) | Extracts a single USHORT element from a safe array of unsigned shorts. |
 | [GetVariantElem](#GetVariantElem) | Extracts a single Variant element from a safe array of variants. |
-| [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [Put](#Put) | Assigns values to a CVAR. |
 | [Put \<numeric value>](#PutNumber) | Assigns numeric values to a CVAR. |
+| [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [PutBuffer](#PutBuffer) | Initializes CVAR with the contents of a buffer. |
 | [PutDateString](#PutDateString) | Initializes CVAR VT_DATE from a string. |
 | [PutDec](#PutDec) | Initializes CVAR with the contents of a DECIMAL structure. |
