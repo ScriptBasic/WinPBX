@@ -122,6 +122,14 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ValULong](#ValULong) | Converts the variant to a 32-bit unsigned integer (ULONG). |
 | [ValULongInt](#ValULongInt) | Converts the variant to a 64-bit unsigned integer (ULONGINT). |
 
+#### Helper Procedures
+
+| Name       | Description |
+| ---------- | ----------- |
+| *AfxCVarToStr* | Extracts the contents of a CVAR to a CWSTR. |
+| *AfxCVarOptPrm* | Returns a CVAR suitable to be used with optional parameters. |
+| *AfxCVariantToBuffer* | Extracts the contents of a variant that contains an array of bytes. |
+
 # <a name="Constructors"></a>Constructors
 
 Creates a an instance of the CVAR class.
