@@ -9,10 +9,10 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [Constructors](#Constructors) | Initialize the class with the specified value. |
 | [Operators](#Operators) | Procedures that perform a certain function with their operands. |
 | [vType](#vType) | Returns the VARIANT type. |
-| [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
+| [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. |
 | [sptr](#sptr) | Returns the address of the underlying variant. Same as vptr but without clearing the variant. |
 | [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
-| [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr. |
+| [wstr](#wstr) | Extracts the content of the underlying variant and returns it as a CWSTR. |
 | [Attach](#Attach) | Attaches a variant to the class. |
 | [Detach](#Detach) | Detaches the variant data from this class and transfers ownership to the passed variant. |
 | [ChangeType](#ChangeType) | Converts the variant from one type to another. |
@@ -82,7 +82,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutVbDate](#PutVbDate) | Initializes CVAR with the contents of a DATE value. |
 | [ToBooleanArray](#ToBooleanArray) | Extracts an array of boolean values from CVAR. |
 | [ToBooleanArrayAlloc](#ToBooleanArrayAlloc) | Extracts an array of boolean values from CVAR. |
-| [ToBstr](#ToBstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as bstr. |
+| [ToBstr](#ToBstr) | Extracts the content of the underlying variant and returns it as a CBSTR. |
 | [ToBuffer](#ToBuffer) | Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a buffer. |
 | [ToBuffer (STRING)](#ToBufferString) | Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a string used as a buffer. |
 | [ToDosDateTime](#ToDosDateTime) | Extracts a date and time value in Microsoft MS-DOS format from a CVAR of type VT_DATE. |
@@ -99,7 +99,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToLongIntArrayAlloc](#ToLongIntArrayAlloc) | Extracts an array of LONGINT values from CVAR. |
 | [ToShortArray](#ToShortArray) | Extracts an array of Int16 values from CVAR. |
 | [ToShortArrayAlloc](#ToShortArrayAlloc) | Extracts an array of SHORT values from CVAR. |
-| [ToStr](#ToStr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as wstr and ToWStr. |
+| [ToStr](#ToStr) | Extracts the content of the underlying variant and returns it as a CWSTR. |
 | [ToStringArray](#ToStringArray) | Extracts data from a vector structure into a PWSTR array. |
 | [ToStringArrayAlloc](#ToStringArrayAlloc) | Extracts an array of PWSTR values from CVAR. |
 | [ToStrRet](#ToStrRet) | Returns the contents of a CVAR of type VT_BSTR to a STRRET stucture. |
@@ -112,7 +112,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToUShortArrayAlloc](#ToUShortArrayAlloc) | Extracts an array of USHORT values from CVAR. |
 | [ToUtf8](#ToUtf8) | Returns the contents of a CVAR containing a BSTR as an UTF-8 encoded string. |
 | [ToVbDate](#ToVbDate) | Returns the contents of a CVAR of type VT_DATE as a DATE value. |
-| [ToWStr](#ToWStr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as wstr and ToStr. |
+| [ToWStr](#ToWStr) | Extracts the content of the underlying variant and returns it as a CWSTR. |
 
 #### Numeric Conversions
 
@@ -323,7 +323,7 @@ The following table shows the available data types and where these values can be
 
 # <a name="bstr"></a>bstr
 
-Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr.
+Extracts the content of the underlying variant and returns it as a CBSTR.
 
 ```
 FUNCTION bstr () AS CBSTR
@@ -331,7 +331,7 @@ FUNCTION bstr () AS CBSTR
 
 # <a name="sptr"></a>sptr
 
-Returns the address of the underlying variant. Same as vptr but without clearing the variant.
+Returns the address of the underlying variant. Same as **vptr** but without clearing the variant.
 
 ```
 FUNCTION sptr () AS VARIANT PTR
@@ -347,7 +347,7 @@ FUNCTION vptr () AS VARIANT PTR
 
 # <a name="wstr"></a>wstr
 
-Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr.
+Extracts the content of the underlying variant and returns it as a CWSTR.
 
 ```
 FUNCTION wstr () AS CWSTR
@@ -1595,7 +1595,7 @@ FUNCTION ToBstr () AS CBSTR
 
 #### Return value
 
-The contents of the variant as a CBSTR. Same as *bstr*.
+The contents of the variant as a CBSTR.
 
 #### Example
 
@@ -1747,7 +1747,7 @@ Returns the contents of a CVAR containing a GUID string as an unicode GUID strin
 
 # <a name="ToGuidBStr"></a>ToGuidBStr
 
-Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr.
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string.
 
 ```
 FUNCTION ToGuidBStr () AS CBSTR
@@ -1759,7 +1759,7 @@ A GUID string.
 
 # <a name="ToGuidStr"></a>ToGuidStr
 
-Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr.
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string.
 
 ```
 FUNCTION ToGuidStr () AS CWSTR
@@ -1908,3 +1908,23 @@ The count of SHORT elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of SHORT values.
 
 If CVAR is of type VT_ARRAY OR VT_I2, this function extracts an array of SHORT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
+# <a name="ToStr"></a>ToStr
+
+Extracts the content of the underlying variant and returns it as a CWSTR.
+
+```
+FUNCTION ToStr () AS CWSTR
+```
+
+#### Return value
+
+The contents of the variant as a CWSTR.
+
+#### Example
+
+```
+DIM cv AS CVAR = "Test string"
+DIM cws AS CWSTR = cv.ToStr
+```
+
