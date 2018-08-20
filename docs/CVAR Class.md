@@ -269,8 +269,16 @@ The following table shows the available data types and where these values can be
 | ------------------- | ---------------------------------------- | ------- | -------- | ------------ | ---------- |
 | VT_EMPTY            | Not specified.                           |    X    |          |      X       |            |
 | VT_NULL             | Null.                                    |    X    |          |      X       |            |
+| VT_I1               | BYTE. A character.                       |    X    |    X     |      X       |     X      |
+| VT_UI1              | UBYTE. An unsigned character.            |    X    |    X     |      X       |     X      |
 | VT_I2               | SHORT. A 2-byte integer.                 |    X    |    X     |      X       |     X      |
+| VT_UI2              | USHORT. An unsigned short.               |    X    |    X     |      X       |     X      |
 | VT_I4               | LONG. A 4-byte integer.                  |    X    |    X     |      X       |     X      |
+| VT_UI4              | ULONG. An unsigned long.                 |    X    |    X     |      X       |     X      |
+| VT_I8               | LONGINT. A 64-bit integer.               |         |    X     |      X       |            |
+| VT_UI8              | ULONGINT. A 64-bit unsigned integer.     |         |    X     |      X       |            |
+| VT_INT              | LONG. An integer.                        |    X    |    X     |      X       |     X      |
+| VT_UINT             | ULOG. An unsigned integer.               |    X    |    X     |              |     X      |
 | VT_R4               | SINGLE. A 4-byte real.                   |    X    |    X     |      X       |     X      |
 | VT_R8               | DOUBLE. A 8-byte real.                   |    X    |    X     |      X       |     X      |
 | VT_CY               | CY. Currency.                            |    X    |    X     |      X       |     X      |
@@ -282,14 +290,6 @@ The following table shows the available data types and where these values can be
 | VT_VARIANT          | VARIANT PTR. A variant pointer.          |    X    |    X     |      X       |     X      |
 | VT_UNKNOWN          | IUnknown PTR. An IUnknown pointer.       |    X    |    X     |              |     X      |
 | VT_DECIMAL          | DECIMAL PTR. A 16-byte fixed-pointer value.           |    X    |    X     |              |     X      |
-| VT_I1               | BYTE. A character.                       |    X    |    X     |      X       |     X      |
-| VT_UI1              | UBYTE. An unsigned character.            |    X    |    X     |      X       |     X      |
-| VT_UI2              | USHORT. An unsigned short.               |    X    |    X     |      X       |     X      |
-| VT_UI4              | ULONG. An unsigned long.                 |    X    |    X     |      X       |     X      |
-| VT_I8               | LONGINT. A 64-bit integer.               |         |    X     |      X       |            |
-| VT_UI8              | ULONGINT. A 64-bit unsigned integer.     |         |    X     |      X       |            |
-| VT_INT              | LONG. An integer.                        |    X    |    X     |      X       |     X      |
-| VT_UINT             | ULOG. An unsigned integer.               |    X    |    X     |              |     X      |
 | VT_VOID             | NULL. A C-style void.                    |         |          |      X       |            |
 | VT_HRESULT          | HRESULT. An HRESULT value.               |         |          |      X       |            |
 | VT_PTR              | A pointer type.                          |         |          |      X       |            |
