@@ -6,7 +6,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructors](#Constructor) | Initialize the class with the specified value. |
+| [Constructors](#Constructors) | Initialize the class with the specified value. |
 | [Operators](#Operators) | Procedures that perform a certain function with their operands. |
 | [vtType](#vtType) | Returns the VARIANT type. |
 | [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
