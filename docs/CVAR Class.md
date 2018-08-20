@@ -1595,7 +1595,7 @@ FUNCTION ToBstr () AS CBSTR
 
 #### Return value
 
-The contents of the variant as a CBSTR.
+The contents of the variant as a CBSTR. Same as *bstr*.
 
 #### Example
 
