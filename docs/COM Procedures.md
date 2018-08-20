@@ -6,6 +6,7 @@
 | ---------- | ----------- |
 | [AfxAcode](#AfxAcode) | Translates unicode bytes to ansi bytes. |
 | [AfxUcode](#AfxUcode) | Translates ansi bytes to unicode bytes. |
+| [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
 
 # <a name="AfxAcode"></a>AfxAcode
 
@@ -64,3 +65,21 @@ DIM s AS STRING
 s = AfxAcode(cws, 1251)
 MessageBoxW 0, s, "", MB_OK```
 ```
+
+# <a name="AfxIsBstr"></a>AfxIsBstr
+
+Checks if the passed pointer is a BSTR.
+
+```
+FUNCTION AfxIsBstr (BYVAL pv AS ANY PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | Pointer to the string. |
+
+#### Remarks
+
+Will return FALSE if it is a null pointer.
+If it is an OLE string it must have a descriptor; otherwise, don't.
+Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
