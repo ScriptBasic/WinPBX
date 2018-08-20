@@ -443,3 +443,35 @@ FUNCTION GetDim () AS ULONG
 #### Return value
 
 Returns the number of dimensions for variants of type VT_ARRAY; returns 0 otherwise.
+
+# <a name="GetLBound"></a>GetLBound
+
+Gets the lower bound for the specified dimension of the safe array.
+
+```
+FUNCTION GetLBound (BYVAL nDim AS UINT = 1) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDim* | The dimension of the array. |
+
+#### Return value
+
+Returns the lower bound for the specified dimension of the safe array for variants of type VT_ARRAY; returns 0 otherwise.
+
+# <a name="GetUBound"></a>GetUBound
+
+Gets the upper bound for the specified dimension of the safe array.
+
+```
+FUNCTION GetUBound (BYVAL nDim AS UINT = 1) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDim* | The dimension of the array. |
+
+#### Return value
+
+Returns the upper bound for the specified dimension of the safe array for variants of type VT_ARRAY; returns 0 otherwise.
