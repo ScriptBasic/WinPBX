@@ -1639,7 +1639,7 @@ If the value has more than *cb* bytes, then function succeeds and truncates the 
 
 To retrieve the size of the array call **GetElementCount**.
 
-# <a name="ToBuffer"></a>ToBuffer
+# <a name="ToBufferString"></a>ToBuffer (STRING)
 
 Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a string used as a buffer.
 
