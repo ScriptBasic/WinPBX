@@ -181,7 +181,7 @@ Assorted Windows procedures.
 | AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
 | AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
 
-# Miscellaous procedures
+# Miscellaneous procedures
 
 | Name       | Description |
 | ---------- | ----------- |
