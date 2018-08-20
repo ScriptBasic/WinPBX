@@ -1731,7 +1731,7 @@ FUNCTION ToFileTime (BYVAL stfOut AS AFX_PSTIME_FLAGS) AS FILETIME
 
 #### Return value
 
-Returns the contents of a CVAR containing a GUID string as a GUID structure.
+A FILETIME structure.
 
 # <a name="ToGuid"></a>ToGuid
 
