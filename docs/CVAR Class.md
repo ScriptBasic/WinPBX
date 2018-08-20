@@ -132,8 +132,8 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxCVarToStr](#AfxCVarToStr) | Extracts the contents of a CVAR to a CWSTR. |
-| [AfxCVarOptPrm](#AfxCVarOptPrm) | Returns a CVAR suitable to be used with optional parameters. |
 | [AfxCVariantToBuffer](#AfxCVariantToBuffer) | Extracts the contents of a variant that contains an array of bytes. |
+| [AfxCVarOptPrm](#AfxCVarOptPrm) | Returns a CVAR suitable to be used with optional parameters. |
 
 # <a name="Constructors"></a>Constructors
 
@@ -1614,8 +1614,8 @@ FUNCTION ToBuffer (BYVAL pv AS VOID PTR, BYVAL cb AS UINT) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pv* | Pointer to a buffer of length cb bytes. When this function returns, contains the first cb bytes of the extracted buffer value. |
-| *cb* | The size of the pv buffer, in bytes. The buffer should be the same size as the data to be extracted, or smaller. |
+| *pv* | Pointer to a buffer of length *cb* bytes. When this function returns, contains the first *cb* bytes of the extracted buffer value. |
+| *cb* | The size of the *pv* buffer, in bytes. The buffer should be the same size as the data to be extracted, or smaller. |
 
 #### Return value
 
@@ -2235,4 +2235,44 @@ Converts the variant to a 64-bit unsigned integer (ULONGINT).
 
 ```
 FUNCTION ValULongInt () AS ULONGINT
+```
+
+FUNCTION ValULong () AS ULONG
+```
+
+# <a name="AfxCVarToStr"></a>AfxCVarToStr
+
+Extracts the contents of a CVAR to a CWSTR.
+
+```
+FUNCTION AfxCVarToStr OVERLOAD (BYREF cv AS CVAR) AS CWSTR
+```
+
+# <a name="AfxCVarToStr"></a>AfxCVarToStr
+
+Extracts the contents of a CVAR to a CWSTR.
+
+```
+FUNCTION AfxCVarToStr OVERLOAD (BYVAL pcv AS CVAR PTR) AS CWSTR
+```
+
+# <a name="AfxCVariantToBuffer"></a>AfxCVariantToBuffer
+
+Extracts the contents of a variant that contains an array of bytes.
+
+```
+FUNCTION AfxCVariantToBuffer (BYREF cvIn AS CVAR, BYVAL pv AS LPVOID, BYVAL cb AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | Pointer to a buffer of length *cb* bytes. When this function returns, contains the first *cb* bytes of the extracted buffer value. |
+| *cb* | The size of the *pv* buffer, in bytes. The buffer should be the same size as the data to be extracted, or smaller. |
+
+# <a name="AfxCVarOptPrm"></a>AfxCVarOptPrm
+
+Returns a CVAR suitable to be used with optional parameters.
+
+```
+FUNCTION AfxCVarOptPrm () AS CVAR
 ```
