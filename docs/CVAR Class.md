@@ -1727,8 +1727,7 @@ FUNCTION ToFileTime (BYVAL stfOut AS AFX_PSTIME_FLAGS) AS FILETIME
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *stfOut* | Specifies one of the following time flags:<br>*STF_UTC (0)* : Indicates coordinated universal time.<br>*PSTF_LOCAL (1)* : 
-Indicates local time. |
+| *stfOut* | Specifies one of the following time flags:<br>*PSTF_UTC (0)* : Indicates coordinated universal time.<br>*PSTF_LOCAL (1)* : Indicates local time. |
 
 #### Return value
 
