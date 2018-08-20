@@ -2005,7 +2005,7 @@ FUNCTION ToULongArray (BYVAL prgn AS ULONG PTR, BYVAL crgn AS ULONG) AS ULONG
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *prgn* | Pointer to a buffer that contains crgn ULONG variables. When this function returns, the buffer has been initialized with UInt32 elements extracted from CVAR. |
+| *prgn* | Pointer to a buffer that contains *crgn* ULONG variables. When this function returns, the buffer has been initialized with UInt32 elements extracted from CVAR. |
 | *crgn* | The number of elements in the buffer pointed to by *prgn*. |
 
 #### Return value
