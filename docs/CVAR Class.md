@@ -2273,3 +2273,13 @@ Returns a CVAR suitable to be used with optional parameters.
 ```
 FUNCTION AfxCVarOptPrm () AS CVAR
 ```
+
+#### Remarks
+
+If you want to call a method that has optional variant parameters, you still have to pass the parameters, but in a way That the methods knows that they were omitted. Specifically, you have to pass them as type VT_ERROR, code DISP_E_PARAM_NOT_FOUND.
+
+```
+DIM v AS VARIANT = TYPE(VT_ERROR, 0, 0, 0, DISP_E_PARAMNOTFOUND)
+```
+
+
