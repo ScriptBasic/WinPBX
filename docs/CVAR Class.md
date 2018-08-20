@@ -971,6 +971,27 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_ARRAY OR VT_I4 variant.
 
+# <a name="PutULongArray"></a>PutULongArray
+
+Initializes CVAR from an array of 32-bit unsigned integer values.
+
+```
+FUNCTION PutULongArray (BYVAL prgf AS ULONG PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of ULONG values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_UI4 variant.
+
 # <a name="PutLongIntArray"></a>PutLongIntArray
 
 Initializes CVAR from an array of signed 64-bit integer values.
