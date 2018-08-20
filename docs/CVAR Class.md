@@ -573,7 +573,7 @@ The retrieved value.
 
 # <a name="GetDoubleElem"></a>GetDoubleElem
 
-Extracts a single DOUBLE element from a safe array of booleans.
+Extracts a single DOUBLE element from a safe array of doubles.
 
 ```
 FUNCTION GetDoubleElem (BYVAL iElem AS ULONG) AS DOUBLE
@@ -589,7 +589,7 @@ The retrieved value.
 
 # <a name="GetLongElem"></a>GetLongElem
 
-Extracts a single LONG element from a safe array of booleans.
+Extracts a single LONG element from a safe array of longs.
 
 ```
 FUNCTION GetLongElem (BYVAL iElem AS ULONG) AS LONG
@@ -605,7 +605,7 @@ The retrieved value.
 
 # <a name="GetLongIntElem"></a>GetLongIntElem
 
-Extracts a single LONGINT element from a safe array of longs.
+Extracts a single LONGINT element from a safe array of long integers.
 
 ```
 FUNCTION GetLongIntElem (BYVAL iElem AS ULONG) AS LONGINT
@@ -621,7 +621,7 @@ The retrieved value.
 
 # <a name="GetShortElem"></a>GetShortElem
 
-Extracts a single SHORT element from a safe array of short inegers.
+Extracts a single SHORT element from a safe array of short integers.
 
 ```
 FUNCTION GetShortElem (BYVAL iElem AS ULONG) AS SHORT
