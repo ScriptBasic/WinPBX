@@ -35,7 +35,6 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetUShortElem](#GetUShortElem) | Extracts a single USHORT element from a safe array of unsigned shorts. |
 | [GetVariantElem](#GetVariantElem) | Extracts a single Variant element from a safe array of variants. |
 | [Put](#Put) | Assigns values to a CVAR. |
-| [Put \<numeric value>](#PutNumber) | Assigns numeric values to a CVAR. |
 | [PutBool](#PutBool) | Assigns a boolean value. |
 | [PutBoolean](#PutBoolean) | Assigns a boolean value. |
 | [PutByte](#PutByte) | Assigns a byte value. |
