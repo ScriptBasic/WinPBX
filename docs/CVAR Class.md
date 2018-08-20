@@ -1475,3 +1475,48 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_BSTR variant.
 
+# <a name="PutVariantArrayElem"></a>PutVariantArrayElem
+
+Initializes CVAR with a value stored in another VARIANT structure.
+
+```
+FUNCTION PutVariantArrayElem (BYVAL pvarIn AS VARIANT PTR, BYVAL iElem AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvarIn* | Reference to the source VARIANT structure. |
+| *iElem* | Index of one of the source VARIANT structure elements. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+This helper function works for VARIANT structures of the following types: 
+
+    VT_BSTR<br>
+    VT_BOOL<br>
+    VT_I2<br>
+    VT_I4<br>
+    VT_I8<br>
+    VT_U12<br>
+    VT_U14<br>
+    VT_U18<br>
+    VT_DATE<br>
+    VT_ARRAY | (any one of VT_BSTR, VT_BOOL, VT_I2, VT_I4, VT_I8, VT_U12, VT_U14, VT_U18, VT_DATE)
+
+Additional types may be supported in the future.
+
+This function extracts a single value from the source VARIANT structure and uses that value to initialize the output VARIANT structure. The calling application must use VariantClear to free the VARIANT referred to by pvar when it is no longer needed.
+
+If the source VARIANT is an array, iElem must be less than the number of elements in the array.
+
+If the source VARIANT has a single value, iElem must be 0.
+
+If the source VARIANT is empty, this function always returns an error code.
+
+You can use VariantGetElementCount to obtain the number of elements in the array or array.
+
+
