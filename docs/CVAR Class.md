@@ -274,8 +274,8 @@ The following table shows the available data types and where these values can be
 | VT_UI2              | USHORT. An unsigned short.               |    X    |    X     |      X       |     X      |
 | VT_I4               | LONG. A 4-byte integer.                  |    X    |    X     |      X       |     X      |
 | VT_UI4              | ULONG. An unsigned long.                 |    X    |    X     |      X       |     X      |
-| VT_I8               | LONGINT. A 64-bit integer.               |         |    X     |      X       |            |
-| VT_UI8              | ULONGINT. A 64-bit unsigned integer.     |         |    X     |      X       |            |
+| VT_I8               | LONGINT. A 64-bit integer.               |    X    |    X     |      X       |     X      |
+| VT_UI8              | ULONGINT. A 64-bit unsigned integer.     |    X    |    X     |      X       |     X      |
 | VT_INT              | LONG. An integer.                        |    X    |    X     |      X       |     X      |
 | VT_UINT             | ULOG. An unsigned integer.               |    X    |    X     |              |     X      |
 | VT_R4               | SINGLE. A 4-byte real.                   |    X    |    X     |      X       |     X      |
@@ -949,3 +949,109 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 #### Remarks
 
 Creates a VT_ARRAY OR VT_UI2 variant.
+
+# <a name="PutLongArray"></a>PutLongArray
+
+Initializes CVAR from an array of signed 32-bit integer values.
+
+```
+FUNCTION PutLongArray (BYVAL prgf AS LONG PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of LONG values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_I4 variant.
+
+# <a name="PutLongIntArray"></a>PutLongIntArray
+
+Initializes CVAR from an array of signed 64-bit integer values.
+
+```
+FUNCTION PutLongIntArray (BYVAL prgf AS LONGINT PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of LONGINT values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_I8 variant.
+
+# <a name="PutULongArray"></a>PutULongArray
+
+Initializes CVAR from an array of unsigned 64-bit integer values.
+
+```
+FUNCTION PutULongArray (BYVAL prgf AS ULONGINT PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of ULONGINT values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_UI8 variant.
+
+# <a name="PutDoubleArray"></a>PutDoubleArray
+
+Initializes CVAR from an array of unsigned 64-bit integer values.
+
+```
+FUNCTION PutDoubleArray (BYVAL prgf AS DOUBLE PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of DOUBLE values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_R8 variant.
+
+# <a name="PutStringArray"></a>PutStringArray
+
+Initializes CVAR from an array of unicode strings.
+
+```
+FUNCTION PutStringArray (BYVAL prgsz AS PCWSTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgsz* | Pointer to source array of unicode strings. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_BSTR variant.
+
