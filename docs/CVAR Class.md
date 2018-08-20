@@ -181,11 +181,23 @@ CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
 
 Procedures that perform a certain function with their operands. They do the same actions that the native FreeBasic operators but with variants. For detailed descriptions see the FreeBasic documentation.
 
+Global Operators
+
 ```
 OPERATOR & (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS CVAR
 OPERATOR * (BYREF cv AS CVAR) AS VARIANT PTR
+```
+
+Cast Operators
+
+```
 OPERATOR Cast () AS VARIANT
 OPERATOR Cast () AS VARIANT PTR
+```
+
+Assignment operators
+
+```
 OPERATOR Let (BYREF cv AS CVAR)
 OPERATOR Let (BYVAL v AS VARIANT)
 OPERATOR Let (BYVAL pvar AS VARIANT PTR)
@@ -197,11 +209,6 @@ OPERATOR Let (BYREF pDisp AS IDispatch PTR)
 OPERATOR Let (BYREF pUnk AS IUnknown PTR)
 OPERATOR Let (BYVAL _value AS LONGINT)
 OPERATOR Let (BYVAL _value AS DOUBLE)
-```
-
-Assignment operators
-
-```
 OPERATOR += (BYREF cv AS CVAR)
 OPERATOR -= (BYREF cv AS CVAR)
 OPERATOR *= (BYREF cv AS CVAR)
