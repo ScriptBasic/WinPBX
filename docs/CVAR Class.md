@@ -160,6 +160,7 @@ CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
 ```
 
 | Parameter  | Description |
+| ---------- | ----------- |
 | *cv* | A CVAR. |
 | *v* | A VARIANT. |
 | *pvar* | Pointer to a VARIANT. |
