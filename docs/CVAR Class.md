@@ -39,6 +39,18 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutBool](#PutBool) | Assigns a boolean value. |
 | [PutBoolean](#PutBoolean) | Assigns a boolean value. |
 | [PutByte](#PutByte) | Assigns a byte value. |
+| [PutUByte](#PutUByte) | Assigns an ubyte value. |
+| [PutShort](#PutShort) | Assigns a short value. |
+| [PutUShort](#PutUShort) | Assigns an ushort value. |
+| [PutInt](#PutInt) | Assigns an int_ value. |
+| [PutUInt](#PutUInt) | Assigns an uint value. |
+| [PutLong](#PutLong) | Assigns a long value. |
+| [PutULong](#PutULong) | Assigns an ulong value. |
+| [PutLongInt](#PutLongInt) | Assigns a longint value. |
+| [PutULongInt](#PutULongInt) | Assigns an ulongint value. |
+| [PutSingle](#PutSingle) | Assigns a single value. |
+| [PutFloat](#PutFloat) | Assigns a single value. |
+| [PutDouble](#PutDouble) | Assigns a double value. |
 | [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [PutBuffer](#PutBuffer) | Initializes CVAR with the contents of a buffer. |
 | [PutDateString](#PutDateString) | Initializes CVAR VT_DATE from a string. |
@@ -46,17 +58,12 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutDecFromCY](#PutDecFromCY) | Converts a currency value to a variant of type VT_DECIMAL. |
 | [PutDecFromDouble](#PutDecFromDouble) | Converts a double value to a variant of type VT_DECIMAL. |
 | [PutDecFromStr](#PutDecFromStr) | Initializes CVAR as VT_DECIMAL from a string. |
-| [PutDouble](#PutDouble) | Assigns a double value. |
 | [PutDoubleArray](#PutDoubleArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
 | [PutFileTime](#PutFileTime) | Initializes CVAR with the contents of a FILETIME structure. |
 | [PutFileTimeArray](#PutFileTimeArray) | Initializes CVAR with an array of FILETIME structures. |
-| [PutFloat](#PutFloat) | Assigns a single value. |
 | [PutGuid](#PutGuid) | Initializes CVAR from a GUID. |
-| [PutInt](#PutInt) | Assigns an int_ value. |
-| [PutLong](#PutLong) | Assigns a long value. |
 | [PutLongArray](#PutLongArray) | Initializes CVAR from an array of signed 32-bit integer values. |
 | [PutLongIntArray](#PutLongIntArray) | Initializes CVAR from an array of signed 64-bit integer values. |
-| [PutLongInt](#PutLongInt) | Assigns a longint value. |
 | [PutNull](#PutNull) | Assigns a null value. |
 | [PutPropVariant](#PutPropVariant) | Initializes CVAR from the contents of a PROPVARIANT structure. |
 | [PutRecord](#PutRecord) | Initializes CVAR with a reference to an UDT. |
@@ -64,19 +71,12 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutResource](#PutResource) | Initializes the CVAR based on a string resource imbedded in an executable file. |
 | [PutSafeArray](#PutSafeArray) | Initializes CVAR from a safe array. |
 | [PutStringArray](#PutStringArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
-| [PutUInt](#PutUInt) | Assigns an uint value. |
-| [PutShort](#PutShort) | Assigns a short value. |
 | [PutShortArray](#PutShortArray) | Initializes CVAR from an array of signed 16-bit integer values. |
-| [PutSingle](#PutSingle) | Assigns a single value. |
 | [PutStrRet](#PutStrRet) | Initializes CVAR with string stored in a STRRET structure. |
 | [PutSystemTime](#PutSystemTime) | Initializes CVAR with the contents of a SYSTEMTIME structure. |
-| [PutUByte](#PutUByte) | Assigns an ubyte value. |
-| [PutULong](#PutULong) | Assigns an ulong value. |
 | [PutULongArray](#PutULongArray) | Initializes CVAR from an array of 32-bit unsigned integer values. |
 | [PutULongInt](#PutULongInt) | Initialies a CVAR from am ULONGINT. |
 | [PutULongArray](#PutULongArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
-| [PutULongInt](#PutULongInt) | Assigns an ulongint value. |
-| [PutUShort](#PutUShort) | Assigns an ushort value. |
 | [PutUshortArray](#PutUshortArray) | Initializes CVAR from an array of 16-bit integer values. |
 | [PutUtf8](#PutUtf8) | Initializes CVAR with the contents of an UTF-8 string. |
 | [PutVariantArrayElem](#PutVariantArrayElem) | Initializes CVAR with a value stored in another VARIANT structure. |
