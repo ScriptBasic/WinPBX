@@ -1519,4 +1519,22 @@ If the source VARIANT is empty, this function always returns an error code.
 
 You can use **GetElementCount** to obtain the number of elements in the array or array.
 
+# <a name="PutVbDate"></a>PutVbDate
 
+Initializes CVAR with the contents of a DATE value.
+
+```
+FUNCTION PutVbDate (BYREF vbDate AS DATE_) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vbDate* | The DATE value. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_DATE variant.
