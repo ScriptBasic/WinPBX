@@ -1348,3 +1348,26 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_RECORD variant.
 
+# <a name="PutRef"></a>PutRef
+
+Assigns a value by reference (a pointer to a variable).
+
+```
+FUNCTION PutRef (BYVAL _pvar AS ANY PTR, BYVAL _vType AS WORD) AS HRESULT
+FUNCTION PutRef (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *_pvar* | Pointer to a variable. |
+| *_vType* | Type of the variant: VT_BOOL, VT_I1, VT_UI1, VT_I2, VT_UI2, VT_INT, VT_UINT, VT_I4, VT_UI4, VT_I8, VT_UI8, VT_R4, VT_R8, VT_BSTR, VT_UNKNOWN, VT_DISPATCH, VT_DECIMAL, VT_CY, VT_DATE, VT_VARIANT, VT_SAFEARRAY, VT_ERROR. |
+| *strType* | Type of the variant: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT", "INT", "UINT", "LONG", "ULONG", "LONGINT", "ULONGINT", "SINGLE", "DOUBLE", "BSTR", "UNKNOWN", "DISPATCH", "DECIMAL", "CY", "DATE", "VARIANT", "SAFEARRAY", "ERROR". |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_BYREF variant of the sepecified type.
+
