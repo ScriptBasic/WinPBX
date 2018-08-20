@@ -1841,3 +1841,25 @@ This helper function is used when the calling application expects a VARIANT to h
 
 If the source VARIANT is of type VT_ARRAY OR VT_UI4, this function extracts up to *crgn* Int64 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
 
+# <a name="ToLongIntArrayAlloc"></a>ToLongIntArrayAlloc
+
+Extracts an array of LONGINT values from CVAR.
+
+```
+FUNCTION ToLongIntArrayAlloc (BYVAL pprgn AS LONGINT PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a LONGINT PTR variable that will recive a pointer to an array of LONGINT values extracted from the source CVAR.
+ |
+
+#### Return value
+
+The count of LONGINT elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of LONGINT values.
+
+If CVAR is of type VT_ARRAY OR VT_I8, this function extracts an array of LONGINT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
