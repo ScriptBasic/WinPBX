@@ -1412,3 +1412,25 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_ARRAY variant.
 
+# <a name="PutStrRet"></a>PutStrRet
+
+Initializes CVAR with the string stored in a STRRET structure.
+
+```
+FUNCTION PutStrRet (BYVAL pstrret AS STRRET PTR, BYVAL pidl AS PCUITEMID_CHILD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pstrret* | Pointer to a STRRET structure. |
+| *pidl* | PIDL of the item whose details are being retrieved. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_BSTR variant. This function frees the resources used for the STRRET contents.
+
+
