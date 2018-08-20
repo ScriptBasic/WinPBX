@@ -2237,9 +2237,6 @@ Converts the variant to a 64-bit unsigned integer (ULONGINT).
 FUNCTION ValULongInt () AS ULONGINT
 ```
 
-FUNCTION ValULong () AS ULONG
-```
-
 # <a name="AfxCVarToStr"></a>AfxCVarToStr
 
 Extracts the contents of a CVAR to a CWSTR.
