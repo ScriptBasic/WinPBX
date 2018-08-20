@@ -555,3 +555,162 @@ A CWSTR containing the formatted value.
 
 This function uses the user's default locale while calling VarTokenizeFormatString and VarFormatFromTokens.
 
+# <a name="GetBooleanElem"></a>GetBooleanElem
+
+Extracts a single boolean element from a safe array of booleans.
+
+```
+FUNCTION GetBooleanElem (BYVAL iElem AS ULONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetDoubleElem"></a>GetDoubleElem
+
+Extracts a single DOUBLE element from a safe array of booleans.
+
+```
+FUNCTION GetDoubleElem (BYVAL iElem AS ULONG) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetLongElem"></a>GetLongElem
+
+Extracts a single LONG element from a safe array of booleans.
+
+```
+FUNCTION GetLongElem (BYVAL iElem AS ULONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetLongIntElem"></a>GetLongIntElem
+
+Extracts a single LONGINT element from a safe array of longs.
+
+```
+FUNCTION GetLongIntElem (BYVAL iElem AS ULONG) AS LONGINT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetShortElem"></a>GetShortElem
+
+Extracts a single SHORT element from a safe array of short inegers.
+
+```
+FUNCTION GetShortElem (BYVAL iElem AS ULONG) AS SHORT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetStringElem"></a>GetStringElem
+
+Extracts a single BSTR element from a safe array of unicode strings.
+
+```
+FUNCTION GetStringElem (BYVAL iElem AS ULONG) AS BSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetULongElem"></a>GetULongElem
+
+Extracts a single ULONG element from a safe array of unsigned longs.
+
+```
+FUNCTION GetULongElem (BYVAL iElem AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetULongIntElem"></a>GetULongIntElem
+
+Extracts a single ULONGINT element from a safe array of unsigned long integers.
+
+```
+FUNCTION GetULongIntElem (BYVAL iElem AS ULONG) AS ULONGINT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetUShortElem"></a>GetUShortElem
+
+Extracts a single USHORT element from a safe array of unsigned shorts.
+
+```
+FUNCTION GetUShortElem (BYVAL iElem AS ULONG) AS USHORT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
+
+# <a name="GetVariantElem"></a>GetVariantElem
+
+Extracts a single Variant element from a safe array of variants.
+
+```
+FUNCTION GetVariantElem (BYVAL iElem AS ULONG) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iElem* | The index of the element of the array. |
+
+#### Return value
+
+The retrieved value.
