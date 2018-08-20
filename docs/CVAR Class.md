@@ -929,7 +929,7 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_ARRAY OR VT_I2 variant.
 
-# <a name="PutUshortArray"></a>PutUshortArray
+# <a name="PutUShortArray"></a>PutUshortArray
 
 Initializes CVAR from an array of 16-bit unsigned integer values.
 
