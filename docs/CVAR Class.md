@@ -352,3 +352,47 @@ Extracts the content of the underlying variant and returns it as a CWSTR. Same a
 ```
 FUNCTION wstr () AS CWSTR
 ```
+
+# <a name="Attach"></a>Attach
+
+Attaches a variant to the class.
+
+```
+FUNCTION Attach (BYVAL pvar AS VARIANT PTR) AS HRESULT
+FUNCTION Attach (BYREF v AS VARIANT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvar* | Pointer to the variant to attach. |
+| *v* | The variant to attach. |
+
+#### Remark
+
+Marks the source variant as VT_EMPTY instead of clearing it with VariantClear because we aren't making a duplicate of the contents, but transfering ownership.
+
+#### Return value
+
+Returns S_OK (0) or an HRESULT error code.
+
+# <a name="Detach"></a>Detach
+
+Detaches the variant data from this class and transfers ownership to the passed variant.
+
+```
+FUNCTION Detach (BYVAL pvar AS VARIANT PTR) AS HRESULT
+FUNCTION Detach (BYREF v AS VARIANT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvar* | Pointer to the variant where the contents of the variant data will be moved. |
+| *v* | Variant where the contents of the variant data will be moved. |
+
+#### Remark
+
+This method transfers ownership of the underlying variant and marks it as empty.
+
+#### Return value
+
+Returns S_OK (0) or an HRESULT error code.
