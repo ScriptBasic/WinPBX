@@ -2129,3 +2129,16 @@ The count of USHORT elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of USHORT values.
 
 If CVAR is of type VT_ARRAY OR VT_UI2, this function extracts an array of SHORT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
+# <a name="ToUtf8"></a>ToUtf8
+
+Returns the contents of a CVAR containing a BSTR as an UTF-8 encoded string.
+
+```
+FUNCTION ToUtf8 () AS STRING
+```
+
+#### Return value
+
+The UTF-8 string.
+
