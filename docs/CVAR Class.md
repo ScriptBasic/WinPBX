@@ -51,7 +51,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutSingle](#PutSingle) | Assigns a single value. |
 | [PutFloat](#PutFloat) | Assigns a single value. |
 | [PutDouble](#PutDouble) | Assigns a double value. |
-| [PutNull](#PutBool) | Assigns a null value. |
+| [PutNull](#PutNull) | Assigns a null value. |
 | [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [PutBuffer](#PutBuffer) | Initializes CVAR with the contents of a buffer. |
 | [PutDateString](#PutDateString) | Initializes CVAR VT_DATE from a string. |
