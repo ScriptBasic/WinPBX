@@ -1780,3 +1780,45 @@ FUNCTION ToGuidWStr () AS CWSTR
 #### Return value
 
 A GUID string.
+
+# <a name="ToLongArray"></a>ToLongArray
+
+Extracts an array of LONG values from CVAR.
+
+```
+FUNCTION ToLongArray (BYVAL prgn AS LONG PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains crgn LONG variables. When this function returns, the buffer has been initialized with Int32 elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of Int32 values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_I4, this function extracts up to crgn Int32 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToLongArrayAlloc"></a>ToLongArrayAlloc
+
+Extracts an array of LONG values from CVAR.
+
+```
+FUNCTION ToLongArrayAlloc (BYVAL pprgn AS LONG PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgn* | Pointer to a LONG PTR variable that will recive a pointer to an array of LONG values extracted from the source CVAR. |
+
+#### Return value
+
+The count of LONG elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of LONG values.
+
+If CVAR is of type VT_ARRAY OR VT_I4, this function extracts an array of LONG values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
