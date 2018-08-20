@@ -1863,3 +1863,26 @@ The count of LONGINT elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of LONGINT values.
 
 If CVAR is of type VT_ARRAY OR VT_I8, this function extracts an array of LONGINT values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer needed.
+
+# <a name="ToShortArray"></a>ToShortArray
+
+Extracts an array of Int16 values from CVAR.
+
+```
+FUNCTION ToShortArray (BYVAL prgn AS SHORT PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgn* | Pointer to a buffer that contains *crgn* Int16 variables. When this function returns, the buffer has been initialized with Int16 elements extracted from CVAR. |
+| *crgn* | The number of elements in the buffer pointed to by *prgn*. |
+
+#### Return value
+
+The count of Int16 elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of Int16 values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_I2, this function extracts up to *crgn* Int16 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
