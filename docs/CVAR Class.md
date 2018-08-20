@@ -8,7 +8,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | ---------- | ----------- |
 | [Constructors](#Constructors) | Initialize the class with the specified value. |
 | [Operators](#Operators) | Procedures that perform a certain function with their operands. |
-| [vtType](#vtType) | Returns the VARIANT type. |
+| [vType](#vType) | Returns the VARIANT type. |
 | [bstr](#bstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr. |
 | [sptr](#sptr) | Returns the address of the underlying variant. Same as vptr but without clearing the variant. |
 | [vptr](#vptr) | Clears the CVAR and returns the address of the underlying variant. |
@@ -253,4 +253,46 @@ OPERATOR Imp (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
 OPERATOR Not (BYREF cv AS CVAR) AS INTEGER
 OPERATOR Or (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
 OPERATOR Xor (BYREF cv1 AS CVAR, BYREF cv2 AS CVAR) AS INTEGER
+```
+
+# <a name="vType"></a>vType
+
+Returns the VARIANT type.
+
+```
+FUNCTION vType () AS VARTYPE
+```
+
+For a list of data types, see For a list of data types, see [VARENUM Enumeration](https://msdn.microsoft.com/en-us/library/windows/desktop/ms221170(v=vs.85).aspx)
+
+# <a name="bstr"></a>bstr
+
+Extracts the content of the underlying variant and returns it as a CBSTR. Same as ToBStr.
+
+```
+FUNCTION bstr () AS CBSTR
+```
+
+# <a name="sptr"></a>sptr
+
+Returns the address of the underlying variant. Same as vptr but without clearing the variant.
+
+```
+FUNCTION sptr () AS VARIANT PTR
+```
+
+# <a name="vptr"></a>vptr
+
+Clears the CVAR and returns the address of the underlying variant. Can be used to pass the variant to an OUT BYVAL VARIANT PTR parameter. If we pass a CVAR to a function with an OUT variant parameter without first clearing the contents of the CVAR, we may have a memory leak.
+
+```
+FUNCTION vptr () AS VARIANT PTR
+```
+
+# <a name="wstr"></a>wstr
+
+Extracts the content of the underlying variant and returns it as a CWSTR. Same as ToStr.
+
+```
+FUNCTION wstr () AS CWSTR
 ```
