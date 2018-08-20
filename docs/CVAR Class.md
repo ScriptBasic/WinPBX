@@ -1371,3 +1371,44 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_BYREF variant of the sepecified type.
 
+# <a name="PutResource"></a>PutResource
+
+Initializes the CVAR based on a string resource imbedded in an executable file.
+
+```
+FUNCTION PutResource (BYVAL hinst AS HINSTANCE, BYVAL id AS UINT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hinst* | The instance handle. |
+| *id* | Integer identifier of the string to be loaded. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_BSTR variant. If the resource does not exist, this function initializes the VARIANT as VT_EMPTY and returns a failure code.
+
+# <a name="PutSafeArray"></a>PutSafeArray
+
+Initializes CVAR from a safe array.
+
+```
+FUNCTION PutSafeArray (BYVAL parray AS SAFEARRAY PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *parray* | Pointer to safe array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY variant.
+
