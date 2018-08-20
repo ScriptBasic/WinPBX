@@ -1315,8 +1315,8 @@ Converted to VT_BSTR,
 VT_FILETIME<br>
 Converted to VT_DATE.
 
-VT_VECTOR|x<br>
-Converted to VT_ARRAY|y
+VT_VECTOR OR x<br>
+Converted to VT_ARRAY OR x
 
 The following types cannot be converted with this function.
 
@@ -1325,5 +1325,5 @@ VT_BLOB_OBJECT<br>
 VT_STREAMED_OBJECT<br>
 VT_STORED_OBJECT<br>
 VT_CF<br>
-VT_VECTOR | VT_CF
+VT_VECTOR OR VT_CF
 
