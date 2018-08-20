@@ -1327,3 +1327,24 @@ VT_STORED_OBJECT<br>
 VT_CF<br>
 VT_VECTOR OR VT_CF
 
+# <a name="PutRecord"></a>PutRecord
+
+Initializes CVAR with a reference to an UDT.
+
+```
+FUNCTION PutRecord (BYVAL pIRecordInfo AS IRecordInfo PTR, BYVAL pRec AS VOID PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pIRecordInfo* | Pointer to the IRecordInfo interface. |
+| *pRec* | Pointer to the UDT. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_RECORD variant.
+
