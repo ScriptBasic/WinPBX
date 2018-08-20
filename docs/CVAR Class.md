@@ -263,57 +263,57 @@ Returns the VARIANT type.
 FUNCTION vType () AS VARTYPE
 ```
 
-For a list of data types, see For a list of data types, see [VARENUM Enumeration](https://msdn.microsoft.com/en-us/library/windows/desktop/ms221170(v=vs.85).aspx)
+The following table shows the available data types and where these values can be used.
 
 | Type                | Description                              | VARIANT | Typedesc | Property set | Safe array |
 | ------------------- | ---------------------------------------- | ------- | -------- | ------------ | ---------- |
 | VT_EMPTY            | Not specified.                           |    X    |          |      X       |            |
 | VT_NULL             | Null.                                    |    X    |          |      X       |            |
-| VT_I2               | A 2-byte integer.                        |    X    |    X     |      X       |     X      |
-| VT_I4               | A 4-byte integer.                        |    X    |    X     |      X       |     X      |
-| VT_R4               | A 4-byte real.                           |    X    |    X     |      X       |     X      |
-| VT_R8               | A 8-byte real.                           |    X    |    X     |      X       |     X      |
-| VT_CY               | Currency.                                |    X    |    X     |      X       |     X      |
-| VT_DATE             | A date.                                  |    X    |    X     |      X       |     X      |
-| VT_BSTR             | A string.                                |    X    |    X     |      X       |     X      |
-| VT_DISPATCH         | An IDispatch pointer.                    |    X    |    X     |              |     X      |
-| VT_ERROR            | An SCODE value.                          |    X    |    X     |      X       |     X      |
-| VT_BOOL             | A Boolean value (True = -1, False = 0)   |    X    |    X     |      X       |     X      |
-| VT_VARIANT          | A variant pointer.                       |    X    |    X     |      X       |     X      |
-| VT_UNKNOWN          | An IUnknown pointer.                     |    X    |    X     |              |     X      |
-| VT_DECIMAL          | A 16-byte fixed-pointer value.           |    X    |    X     |              |     X      |
-| VT_I1               | A character.                             |    X    |    X     |      X       |     X      |
-| VT_UI1              | An unsigned character.                   |    X    |    X     |      X       |     X      |
-| VT_UI2              | An unsigned short.                       |    X    |    X     |      X       |     X      |
-| VT_UI4              | An unsigned long.                        |    X    |    X     |      X       |     X      |
-| VT_I8               | A 64-bit integer.                        |         |    X     |      X       |            |
-| VT_UI8              | A 64-bit unsigned integer.               |         |    X     |      X       |            |
-| VT_INT              | An integer.                              |    X    |    X     |      X       |     X      |
-| VT_UINT             | An unsigned integer.                     |    X    |    X     |              |     X      |
-| VT_VOID             | A C-style void.                          |         |          |      X       |            |
-| VT_HRESULT          | An HRESULT value.                        |         |          |      X       |            |
+| VT_I2               | SHORT. A 2-byte integer.                 |    X    |    X     |      X       |     X      |
+| VT_I4               | LONG. A 4-byte integer.                  |    X    |    X     |      X       |     X      |
+| VT_R4               | SINGLE. A 4-byte real.                   |    X    |    X     |      X       |     X      |
+| VT_R8               | DOUBLE. A 8-byte real.                   |    X    |    X     |      X       |     X      |
+| VT_CY               | CY. Currency.                            |    X    |    X     |      X       |     X      |
+| VT_DATE             | DOUBLE. A date.                          |    X    |    X     |      X       |     X      |
+| VT_BSTR             | BSTR. A string.                          |    X    |    X     |      X       |     X      |
+| VT_DISPATCH         | IDispatch PTR. An IDispatch pointer.     |    X    |    X     |              |     X      |
+| VT_ERROR            | SCODE. An SCODE value.                   |    X    |    X     |      X       |     X      |
+| VT_BOOL             | BOOLEAN. A Boolean value (True = -1, False = 0)   |    X    |    X     |      X       |     X      |
+| VT_VARIANT          | VARIANT PTR. A variant pointer.          |    X    |    X     |      X       |     X      |
+| VT_UNKNOWN          | IUnknown PTR. An IUnknown pointer.       |    X    |    X     |              |     X      |
+| VT_DECIMAL          | DECIMAL PTR. A 16-byte fixed-pointer value.           |    X    |    X     |              |     X      |
+| VT_I1               | BYTE. A character.                       |    X    |    X     |      X       |     X      |
+| VT_UI1              | UBYTE. An unsigned character.            |    X    |    X     |      X       |     X      |
+| VT_UI2              | USHORT. An unsigned short.               |    X    |    X     |      X       |     X      |
+| VT_UI4              | ULONG. An unsigned long.                 |    X    |    X     |      X       |     X      |
+| VT_I8               | LONGINT. A 64-bit integer.               |         |    X     |      X       |            |
+| VT_UI8              | ULONGINT. A 64-bit unsigned integer.     |         |    X     |      X       |            |
+| VT_INT              | LONG. An integer.                        |    X    |    X     |      X       |     X      |
+| VT_UINT             | ULOG. An unsigned integer.               |    X    |    X     |              |     X      |
+| VT_VOID             | NULL. A C-style void.                    |         |          |      X       |            |
+| VT_HRESULT          | HRESULT. An HRESULT value.               |         |          |      X       |            |
 | VT_PTR              | A pointer type.                          |         |          |      X       |            |
-| VT_SAFEARRAY        | A safe array. Use VT_ARRAY in VARIANT.   |         |    X     |              |            |
+| VT_SAFEARRAY        | SAFEARRAY PTR. A safe array. Use VT_ARRAY in VARIANT.   |         |    X     |              |            |
 | VT_CARRAY           | A C-style array.                         |         |    X     |              |            |
 | VT_USERDEFINED      | A user-defined type.                     |         |          |      X       |            |
-| VT_LPSTR            | A null-terminated string.                |         |    X     |      X       |            |
-| VT_LPWSTR           | A wide null-terminated string.           |         |    X     |      X       |            |
+| VT_LPSTR            | ZSTRING. A null-terminated string.       |         |    X     |      X       |            |
+| VT_LPWSTR           | WSTRING. A wide null-terminated string.  |         |    X     |      X       |            |
 | VT_RECORD           | A user-defined type.                     |    X    |    X     |              |     X      |
 | VT_INT_PTR          | A signed machine register size width.    |         |          |      X       |            |
 | VT_UINT_PTR         | An unsigned machine register size width. |         |          |      X       |            |
-| VT_FILETIME         | A FILETIME value.                        |         |          |      X       |            |
+| VT_FILETIME         | FILETIME. A FILETIME value.              |         |          |      X       |            |
 | VT_BLOB             | Length-prefixed bytes.                   |         |          |      X       |            |
-| VT_STREAM           | The name of the stream follows.          |         |          |      X       |            |
+| VT_STREAM           | IStream PTR. The name of the stream follows.          |         |          |      X       |            |
 | VT_STORAGE          | The name of the storage follows.         |         |          |      X       |            |
 | VT_STREAMED_OBJECT  | The stream contains an object.           |         |          |      X       |            |
 | VT_STORED_OBJECT    | The storage contains an object.          |         |          |      X       |            |
 | VT_BLOB_OBJECT      | The blob contains an object.             |         |          |      X       |            |
 | VT_CF               | A clipboard format.                      |         |          |      X       |            |
-| VT_CLSID            | A class ID.                              |         |          |      X       |            |
+| VT_CLSID            | CLSID. A class ID.                       |         |          |      X       |            |
 | VT_VERSIONED_STREAM | A stream with a GUID version.            |         |          |      X       |            |
 | VT_BSTR_BLOB        | Reserved for system use.                 |         |          |              |            |
 | VT_VECTOR           | A simple counted array.                  |         |          |      X       |            |
-| VT_ARRAY            | A SAFEARRAY pointer.                     |    X    |          |              |            |
+| VT_ARRAY            | SAFEARRAY PTR. A SAFEARRAY pointer.      |    X    |          |              |            |
 | VT_BYREF            | A void pointer for local use.            |    X    |          |              |            |
 | VT_RESERVED         | Reserved.                                |         |          |              |            |
 | VT_ILLEGAL          |                                          |         |          |              |            |
