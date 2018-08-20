@@ -2202,7 +2202,7 @@ FUNCTION ValLong () AS LONG
 Converts the variant to a signed 64-bit integer (LONGINT).
 
 ```
-FUNCTION ValLongInt () AS LONG
+FUNCTION ValLongInt () AS LONGINT
 ```
 
 # <a name="Value"></a>Value
