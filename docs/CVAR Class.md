@@ -113,6 +113,11 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToUtf8](#ToUtf8) | Returns the contents of a CVAR containing a BSTR as an UTF-8 encoded string. |
 | [ToVbDate](#ToVbDate) | Returns the contents of a CVAR of type VT_DATE as a DATE value. |
 | [ToWStr](#ToWStr) | Extracts the content of the underlying variant and returns it as a CWSTR. Same as wstr and ToStr. |
+
+#### Numeric Conversions
+
+| Name       | Description |
+| ---------- | ----------- |
 | [ValDouble](#ValDouble) | Converts the variant to a floating point number (DOUBLE). |
 | [ValInt](#ValInt) | Converts the variant to a signed 32-bit integer (LONG). |
 | [ValLong](#ValLong) | Converts the variant to a signed 32-bit integer (LONG). |
