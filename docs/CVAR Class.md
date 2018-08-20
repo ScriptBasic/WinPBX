@@ -53,32 +53,30 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutDouble](#PutDouble) | Assigns a double value. |
 | [PutNull](#PutNull) | Assigns a null value. |
 | [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
+| [PutShortArray](#PutShortArray) | Initializes CVAR from an array of signed 16-bit integer values. |
+| [PutUShortArray](#PutUShortArray) | Initializes CVAR from an array of unsigned 16-bit integer values. |
+| [PutLongArray](#PutLongArray) | Initializes CVAR from an array of signed 32-bit integer values. |
+| [PutULongArray](#PutULongArray) | Initializes CVAR from an array of 32-bit unsigned integer values. |
+| [PutLongIntArray](#PutLongIntArray) | Initializes CVAR from an array of signed 64-bit integer values. |
+| [PutULongIntArray](#PutULongIntArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
+| [PutDoubleArray](#PutDoubleArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
+| [PutStringArray](#PutStringArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
 | [PutBuffer](#PutBuffer) | Initializes CVAR with the contents of a buffer. |
 | [PutDateString](#PutDateString) | Initializes CVAR VT_DATE from a string. |
 | [PutDec](#PutDec) | Initializes CVAR with the contents of a DECIMAL structure. |
 | [PutDecFromCY](#PutDecFromCY) | Converts a currency value to a variant of type VT_DECIMAL. |
 | [PutDecFromDouble](#PutDecFromDouble) | Converts a double value to a variant of type VT_DECIMAL. |
 | [PutDecFromStr](#PutDecFromStr) | Initializes CVAR as VT_DECIMAL from a string. |
-| [PutDoubleArray](#PutDoubleArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
 | [PutFileTime](#PutFileTime) | Initializes CVAR with the contents of a FILETIME structure. |
 | [PutFileTimeArray](#PutFileTimeArray) | Initializes CVAR with an array of FILETIME structures. |
 | [PutGuid](#PutGuid) | Initializes CVAR from a GUID. |
-| [PutLongArray](#PutLongArray) | Initializes CVAR from an array of signed 32-bit integer values. |
-| [PutLongIntArray](#PutLongIntArray) | Initializes CVAR from an array of signed 64-bit integer values. |
-| [PutNull](#PutNull) | Assigns a null value. |
 | [PutPropVariant](#PutPropVariant) | Initializes CVAR from the contents of a PROPVARIANT structure. |
 | [PutRecord](#PutRecord) | Initializes CVAR with a reference to an UDT. |
 | [PutRef](#PutRef) | Assigns a value by reference (a pointer to a variable). |
 | [PutResource](#PutResource) | Initializes the CVAR based on a string resource imbedded in an executable file. |
 | [PutSafeArray](#PutSafeArray) | Initializes CVAR from a safe array. |
-| [PutStringArray](#PutStringArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
-| [PutShortArray](#PutShortArray) | Initializes CVAR from an array of signed 16-bit integer values. |
 | [PutStrRet](#PutStrRet) | Initializes CVAR with string stored in a STRRET structure. |
 | [PutSystemTime](#PutSystemTime) | Initializes CVAR with the contents of a SYSTEMTIME structure. |
-| [PutULongArray](#PutULongArray) | Initializes CVAR from an array of 32-bit unsigned integer values. |
-| [PutULongInt](#PutULongInt) | Initialies a CVAR from am ULONGINT. |
-| [PutULongArray](#PutULongArray) | Initializes CVAR from an array of unsigned 64-bit integer values. |
-| [PutUshortArray](#PutUshortArray) | Initializes CVAR from an array of 16-bit integer values. |
 | [PutUtf8](#PutUtf8) | Initializes CVAR with the contents of an UTF-8 string. |
 | [PutVariantArrayElem](#PutVariantArrayElem) | Initializes CVAR with a value stored in another VARIANT structure. |
 | [PutVbDate](#PutVbDate) | Initializes CVAR with the contents of a DATE value. |
@@ -888,3 +886,66 @@ Assigns a null value to the CVAR.
 ```
 SUB PutNull
 ```
+
+# <a name="PutBooleanArray"></a>PutBooleanArray
+
+Initializes CVAR from an array of Boolean values.
+
+```
+FUNCTION PutBooleanArray (BYVAL prgf AS WINBOOL PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of Boolean values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_BOOL variant.
+
+# <a name="PutShortArray"></a>PutShortArray
+
+Initializes CVAR from an array of signed 16-bit integer values.
+
+```
+FUNCTION PutShortArray (BYVAL prgf AS SHORT PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of SHORT values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_I2 variant.
+
+# <a name="PutUshortArray"></a>PutUshortArray
+
+Initializes CVAR from an array of 16-bit unsigned integer values.
+
+```
+FUNCTION PutUshortArray (BYVAL prgf AS USHORT PTR, BYVAL cElems AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to source array of USHORT values. |
+| *cElems* | The number of elements in the array. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_UI2 variant.
