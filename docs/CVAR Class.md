@@ -126,9 +126,9 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 
 | Name       | Description |
 | ---------- | ----------- |
-| *AfxCVarToStr* | Extracts the contents of a CVAR to a CWSTR. |
-| *AfxCVarOptPrm* | Returns a CVAR suitable to be used with optional parameters. |
-| *AfxCVariantToBuffer* | Extracts the contents of a variant that contains an array of bytes. |
+| [AfxCVarToStr](#AfxCVarToStr) | Extracts the contents of a CVAR to a CWSTR. |
+| [AfxCVarOptPrm](#AfxCVarOptPrm) | Returns a CVAR suitable to be used with optional parameters. |
+| [AfxCVariantToBuffer](#AfxCVariantToBuffer) | Extracts the contents of a variant that contains an array of bytes. |
 
 # <a name="Constructors"></a>Constructors
 
