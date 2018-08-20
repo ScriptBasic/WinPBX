@@ -20,12 +20,12 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetDim](#GetDim) | Gets the number of dimensions in the array. |
 | [GetLBound](#GetLBound) | Gets the lower bound for the specified dimension of the safe array. |
 | [GetUBound](#GetUBound) | Gets the upper bound for the specified dimension of the safe array. |
+| [GetElementCount](#GetElementCount) | Gets the number of elements in the array. |
 | [DecToCY](#DecToCY) | Converts a CVAR of type decimal to a CY structure. |
 | [DecToDouble](#DecToDouble) | Converts a CVAR of type decimal to a double. |
 | [FormatNumber](#FormatNumber) | Formats a CVAR containing numbers into a string form. |
 | [GetBooleanElem](#GetBooleanElem) | Extracts a single boolean element from a safe array of booleans. |
 | [GetDoubleElem](#GetDoubleElem) | Extracts a single DOUBLE element from a safe array of doubles. |
-| [GetElementCount](#GetElementCount) | Gets the number of elements in the array. |
 | [GetLongElem](#GetLongElem) | Extracts a single LONG element from a safe array of longs. |
 | [GetLongIntElem](#GetLongIntElem) | Extracts a single LONGINT element from a safe array of long integers. |
 | [GetShortElem](#GetShortElem) | Extracts a single SHORT element from a safe array of shorts. |
@@ -476,6 +476,19 @@ FUNCTION GetUBound (BYVAL nDim AS UINT = 1) AS LONG
 
 Returns the upper bound for the specified dimension of the safe array for variants of type VT_ARRAY; returns 0 otherwise.
 
+# <a name="GetElementCount"></a>GetElementCount
+
+Gets the number of elements in the array.
+
+```
+FUNCTION GetElementCount () AS ULONG
+```
+
+#### Return value
+
+Returns the number of elements for variants of type VT_ARRAY; returns 1 otherwise.
+
+
 # <a name="DecToCY"></a>DecToCY
 
 Converts a CVAR of type decimal to a CY structure.
@@ -524,3 +537,4 @@ A CWSTR containing the formatted value.
 #### Remarks
 
 This function uses the user's default locale while calling VarTokenizeFormatString and VarFormatFromTokens.
+
