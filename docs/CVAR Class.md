@@ -1693,7 +1693,7 @@ FUNCTION ToDoubleArray (BYVAL prgn AS DOUBLE PTR, BYVAL crgn AS ULONG) AS ULONG
 
 This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of DOUBLE values.
 
-If the source VARIANT is of type VT_ARRAY OR VT_R8, this function extracts up to crgn DOUBLE values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+If the source VARIANT is of type VT_ARRAY OR VT_R8, this function extracts up to *crgn* DOUBLE values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
 
 # <a name="ToDoubleArrayAlloc"></a>ToDoubleArrayAlloc
 
