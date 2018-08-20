@@ -752,3 +752,130 @@ SUB Put (BYVAL _pv AS ANY PTR, BYREF strType AS STRING)
 | *strType* | The variant type as a string: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT, "INT", UINT", "LONG", "ULONG", "LONGINT", "SINGLE, "DOUBLE", "NULL". |
 | *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count of the interface. |
 
+# <a name="PutBool"></a>PutBool
+
+Assigns a boolean value to the CVAR.
+
+```
+SUB PutBool (BYVAL _value AS BOOL)
+```
+
+# <a name="PutBoolean"></a>PutBoolean
+
+Assigns a boolean value to the CVAR.
+
+```
+SUB PutBoolean (BYVAL _value AS BOOLEAN)
+```
+
+# <a name="PutByte"></a>PutByte
+
+Assigns a byte value to the CVAR.
+
+```
+SUB PutByte (BYVAL _value AS BYTE)
+```
+
+# <a name="PutUByte"></a>PutUByte
+
+Assigns an ubyte value to the CVAR.
+
+```
+SUB PutUByte (BYVAL _value AS UBYTE)
+```
+
+# <a name="PutShort"></a>PutShort
+
+Assigns an short integer value to the CVAR.
+
+```
+SUB PutShort (BYVAL _value AS SHORT)
+```
+
+# <a name="PutUShort"></a>PutUShort
+
+Assigns an unsigned short integer value to the CVAR.
+
+```
+SUB PutUShort (BYVAL _value AS USHORT)
+```
+
+# <a name="PutInt"></a>PutInt
+
+Assigns an INT_ value to the CVAR.
+
+```
+SUB PutInt (BYVAL _value AS INT_)
+```
+
+### Remark
+
+Don't confuse an INT_ (LONG) with the Free Basic INTEGER data type.
+
+# <a name="PutUInt"></a>PutUInt
+
+Assigns an UINT value to the CVAR.
+
+```
+SUB PutUInt (BYVAL _value AS UINT)
+```
+
+### Remark
+
+Don't confuse an UINT (ULONG) with the Free Basic UINTEGER data type.
+
+# <a name="PutLong"></a>PutLong
+
+Assigns a LONG value to the CVAR.
+
+```
+SUB PutLong (BYVAL _value AS LONG)
+```
+
+# <a name="PutULong"></a>PutULong
+
+Assigns a ULONG value to the CVAR.
+
+```
+SUB PutULong (BYVAL _value AS ULONG)
+```
+
+# <a name="PutLongInt"></a>PutLongInt
+
+Assigns a LONGINT value to the CVAR.
+
+```
+SUB PutULong (BYVAL _value AS LONGINT)
+```
+
+# <a name="PutULongInt"></a>PutULongInt
+
+Assigns a ULONGINT value to the CVAR.
+
+```
+SUB PutULongInt (BYVAL _value AS ULONGINT)
+```
+
+# <a name="PutSingle"></a>PutSingle
+
+Assigns a SINGLE value to the CVAR.
+
+```
+SUB PutSingle (BYVAL _value AS SINGLE)
+```
+
+# <a name="PutFloat"></a>PutFloat
+
+Assigns a SINGLE value to the CVAR.
+
+```
+SUB PutFloat (BYVAL _value AS SINGLE)
+```
+
+# <a name="PutDouble"></a>PutDouble
+
+Assigns a DOUBLE value to the CVAR.
+
+```
+SUB PutDouble (BYVAL _value AS DOUBLE)
+```
