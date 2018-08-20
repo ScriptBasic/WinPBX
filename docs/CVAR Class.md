@@ -475,3 +475,27 @@ FUNCTION GetUBound (BYVAL nDim AS UINT = 1) AS LONG
 #### Return value
 
 Returns the upper bound for the specified dimension of the safe array for variants of type VT_ARRAY; returns 0 otherwise.
+
+# <a name="DecToCY"></a>DecToCY
+
+Converts a CVAR of type decimal to a CY structure.
+
+```
+FUNCTION DecToCY () AS CY
+```
+
+#### Return value
+
+Returns the contents of a VT_DECIMAL variant as a CY structure.
+
+# <a name="DecToDouble"></a>DecToDouble
+
+Converts a CVAR of type decimal to a double.
+
+```
+FUNCTION DecToDouble () AS DOUBLE
+```
+
+#### Return value
+
+Returns the contents of a VT_DECIMAL variant as a DOUBLE.
