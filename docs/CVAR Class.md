@@ -36,6 +36,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetUShortElem](#GetUShortElem) | Extracts a single USHORT element from a safe array of unsigned shorts. |
 | [GetVariantElem](#GetVariantElem) | Extracts a single Variant element from a safe array of variants. |
 | [Put](#Put) | Assigns values to a CVAR. |
+| [PutNull](#PutNull) | Assigns a null value. |
 | [PutBool](#PutBool) | Assigns a boolean value. |
 | [PutBoolean](#PutBoolean) | Assigns a boolean value. |
 | [PutByte](#PutByte) | Assigns a byte value. |
@@ -51,7 +52,6 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutSingle](#PutSingle) | Assigns a single value. |
 | [PutFloat](#PutFloat) | Assigns a single value. |
 | [PutDouble](#PutDouble) | Assigns a double value. |
-| [PutNull](#PutNull) | Assigns a null value. |
 | [PutBooleanArray](#PutBooleanArray) | Initializes CVAR from an array of Boolean values. |
 | [PutShortArray](#PutShortArray) | Initializes CVAR from an array of signed 16-bit integer values. |
 | [PutUShortArray](#PutUShortArray) | Initializes CVAR from an array of unsigned 16-bit integer values. |
@@ -751,6 +751,14 @@ SUB Put (BYVAL _pv AS ANY PTR, BYREF strType AS STRING)
 | *strType* | The variant type as a string: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT, "INT", UINT", "LONG", "ULONG", "LONGINT", "SINGLE, "DOUBLE", "NULL". |
 | *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count of the interface. |
 
+# <a name="PutNull"></a>PutNull
+
+Assigns a null value to the CVAR.
+
+```
+SUB PutNull
+```
+
 # <a name="PutBool"></a>PutBool
 
 Assigns a boolean value to the CVAR.
@@ -877,14 +885,6 @@ Assigns a DOUBLE value to the CVAR.
 
 ```
 SUB PutDouble (BYVAL _value AS DOUBLE)
-```
-
-# <a name="PutNull"></a>PutNull
-
-Assigns a null value to the CVAR.
-
-```
-SUB PutNull
 ```
 
 # <a name="PutBooleanArray"></a>PutBooleanArray
