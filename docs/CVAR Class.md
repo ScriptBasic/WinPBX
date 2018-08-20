@@ -1791,14 +1791,14 @@ FUNCTION ToLongArray (BYVAL prgn AS LONG PTR, BYVAL crgn AS ULONG) AS ULONG
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *prgn* | Pointer to a buffer that contains crgn LONG variables. When this function returns, the buffer has been initialized with Int32 elements extracted from CVAR. |
+| *prgn* | Pointer to a buffer that contains *crgn* LONG variables. When this function returns, the buffer has been initialized with Int32 elements extracted from CVAR. |
 | *crgn* | The number of elements in the buffer pointed to by *prgn*. |
 
 #### Return value
 
 This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of Int32 values.
 
-If the source VARIANT is of type VT_ARRAY OR VT_I4, this function extracts up to crgn Int32 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+If the source VARIANT is of type VT_ARRAY OR VT_I4, this function extracts up to *crgn* Int32 values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
 
 # <a name="ToLongArrayAlloc"></a>ToLongArrayAlloc
 
