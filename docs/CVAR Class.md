@@ -1076,3 +1076,153 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_ARRAY OR VT_BSTR variant.
 
+# <a name="PutBuffer"></a>PutBuffer
+
+Initializes CVAR with the contents of a buffer.
+
+```
+FUNCTION PutBuffer (BYVAL pv AS VOID PTR, BYVAL cb AS UINT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | Pointer to the source buffer. |
+| *cb* | The length of the buffer, in bytes. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_ARRAY OR VT_UI1 variant.
+
+# <a name="PutDateString"></a>PutDateString
+
+Initializes CVAR VT_DATE from a string.
+
+```
+FUNCTION PutDateString (BYVAL pwszDate AS WSTRING PTR, BYVAL lcid AS LCID = 0, _
+   BYVAL dwFlags AS ULONG = 0) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszDate* | The date value to convert, e.g. "2018-08-20 19:42". |
+| *lcid* | The locale identifier. |
+| *dwFlags* | One or more of the following flags.<br>*LOCALE_NOUSEROVERRIDE* : Uses the system default locale settings, rather than custom locale settings.<br>*VAR_CALENDAR_HIJRI* : If set then the Hijri calendar is used. Otherwise the calendar set in the control panel is used.<br>*VAR_TIMEVALUEONLY* : Omits the date portion of a VT_DATE and returns only the time. Applies to conversions to or from dates.<br>*VAR_DATEVALUEONLY* : Omits the time portion of a VT_DATE and returns only the date. Applies to conversions to or from dates. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_DATE variant.
+
+# <a name="PutDec"></a>PutDec
+
+Initializes CVAR with the contents of a DECIMAL structure.
+
+```
+FUNCTION PutDec (BYCAL dec AS DECIMAL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dec* | A DECIMAL structure. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_DECIMAL OR VT_BYREF variant.
+
+# <a name="PutDecFromCY"></a>PutDecFromCY
+
+Converts a currency value to a variant of type VT_DECIMAL.
+
+```
+FUNCTION PutDecFromCY (BYVAL cyIn AS CY) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cyIn* | The currency value to convert. |
+
+#### Return value
+
+This function can return one of these values.
+
+| Value      | Meaning     |
+| ---------- | ----------- |
+| *S_OK* | Success. |
+| *DISP_E_TYPEMISMATCH* | The argument could not be coerced to the specified type. |
+| *E_INVALIDARG* | One of the arguments is not valid. |
+| *E_OUTOFMEMORY* | Insufficient memory to complete the operation. |
+
+#### Remarks
+
+Creates a VT_DECIMAL variant.
+
+# <a name="PutDecFromDouble"></a>PutDecFromDouble
+
+Converts a double value to a variant of type VT_DECIMAL.
+
+```
+FUNCTION PutDecFromDouble (BYVAL dbIn AS DOUBLE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbIn* | The DOUBLE value to convert. |
+
+#### Return value
+
+This function can return one of these values.
+
+| Value      | Meaning     |
+| ---------- | ----------- |
+| *S_OK* | Success. |
+| *DISP_E_TYPEMISMATCH* | The argument could not be coerced to the specified type. |
+| *E_INVALIDARG* | One of the arguments is not valid. |
+| *E_OUTOFMEMORY* | Insufficient memory to complete the operation. |
+
+#### Remarks
+
+Creates a VT_DECIMAL variant.
+
+
+# <a name="PutDecFromStr"></a>PutDecFromStr
+
+Initializes CVAR as VT_DECIMAL from a string.
+
+```
+FUNCTION PutDecFromStr (BYVAL pwszIn AS WSTRING PTR, BYVAL lcid AS LCID = 0, _
+   BYVAL dwFlags AS ULONG = 0) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszIn* | The string value to convert |
+| *lcid* | The locale identifier. |
+| *dwFlags* | One or more of the following flags.<br>*LOCALE_NOUSEROVERRIDE* : Uses the system default locale settings, rather than custom locale settings.<br>*VAR_TIMEVALUEONLY* : Omits the date portion of a VT_DATE and returns only the time. Applies to conversions to or from dates.<br>*VAR_DATEVALUEONLY* : Omits the time portion of a VT_DATE and returns only the date. Applies to conversions to or from dates. |
+
+#### Return value
+
+This function can return one of these values.
+
+| Value      | Meaning     |
+| ---------- | ----------- |
+| *S_OK* | Success. |
+| *DISP_E_TYPEMISMATCH* | The argument could not be coerced to the specified type. |
+| *E_INVALIDARG* | One of the arguments is not valid. |
+| *E_OUTOFMEMORY* | Insufficient memory to complete the operation. |
+
+#### Remarks
+
+Creates a VT_DECIMAL variant.
+
+
