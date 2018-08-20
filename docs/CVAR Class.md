@@ -419,7 +419,7 @@ Returns S_OK (0) or an HRESULT error code.
 Converts the variant from one type to another.
 
 ```
-FUNCTION ChangeType (BYVAL vtNew AS VARTYPE, BYVAL lcid AS LCID = 0, BYVAL wFlags AS USHORT = 0) AS HRESULT
+FUNCTION ChangeTypeEx (BYVAL vtNew AS VARTYPE, BYVAL lcid AS LCID = 0, BYVAL wFlags AS USHORT = 0) AS HRESULT
 ```
 
 | Parameter  | Description |
@@ -431,3 +431,15 @@ FUNCTION ChangeType (BYVAL vtNew AS VARTYPE, BYVAL lcid AS LCID = 0, BYVAL wFlag
 #### Return value
 
 Returns S_OK (0) or an HRESULT error code.
+
+# <a name="GetDim"></a>GetDim
+
+Gets the number of dimensions in the array.
+
+```
+FUNCTION GetDim () AS ULONG
+```
+
+#### Return value
+
+Returns the number of dimensions for variants of type VT_ARRAY; returns 0 otherwise.
