@@ -7,6 +7,27 @@
 | [AfxAcode](#AfxAcode) | Translates unicode bytes to ansi bytes. |
 | [AfxUcode](#AfxUcode) | Translates ansi bytes to unicode bytes. |
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
+| [AfxNewCOM](#AfxNewCOM) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
+| [AfxGuid](#AfxGuid) | Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). |
+| [AfxGuidText](#AfxGuidText) | Returns a 38-byte human-readable guid string from a 16-byte GUID. |
+| [AfxSafeAddRef](#AfxSafeAddRef) | Increments the reference count for an interface on an object. |
+| [AfxSafeRelease](#AfxSafeRelease) | Decrements the reference count for an interface on an object. |
+| [AfxAdvise](#AfxAdvise) | Establishes a connection between the connection point object and the client's sink. |
+| [AfxUnadvise](#AfxUnadvise) | Releases the events connection identified with the cookie returned by the Advise method. |
+| [AfxGetVarType](#AfxGetVarType) | Returns the tyè of a variant. |
+| [AfxIsVarTypeFloat](#AfxIsVarTypeFloat) | Checks if a variant contains a float value. |
+| [AfxIsVariantArray](#AfxIsVariantArray) | Checks if a variant contains an array. |
+| [AfxIsVariantString](#AfxIsVariantString) | Checks if a variant contains an string. |
+| [AfxIsVarTypeSignedInteger](#AfxIsVarTypeSignedInteger) | Checks if a variant contains a signed integer. |
+| [AfxIsVarTypeUnsignedInteger](#AfxIsVarTypeUnsignedInteger) | Checks if a variant contains an unsigned integer. |
+| [AfxIsVarTypeInteger](#AfxIsVarTypeInteger) | Checks if a variant contains an integer. |
+| [AfxIsVarTypeNumber](#AfxIsVarTypeNumber) | Checks if a variant contains a number. |
+| [AfxVariantGetElementCount](#AfxVariantGetElementCount) | Retrieves the element count of a variant structure. |
+| [AfxVariantToBuffer](#AfxVariantToBuffer) | Extracts the contents of a variant that contains an array of bytes. |
+| [AfxVariantToStringAlloc](#AfxVariantToStringAlloc) | Extracts the variant value of a variant structure to a string. |
+| [AfxVarToStr](#AfxVarToStr) | Extracts the contents of a VARIANT and returns them as a CWSTR. |
+| [AfxVariantToString](#AfxVariantToString) | Extracts the variant value of a variant structure to a string. |
+| [AfxWstrAlloc](#AfxWstrAlloc) | Takes a null terminated wide string as input, and returns a pointer to a new wide string allocated with CoTaskMemAlloc. |
 
 # <a name="AfxAcode"></a>AfxAcode
 
