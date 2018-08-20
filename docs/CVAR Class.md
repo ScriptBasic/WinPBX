@@ -23,6 +23,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [GetElementCount](#GetElementCount) | Gets the number of elements in the array. |
 | [DecToCY](#DecToCY) | Converts a CVAR of type decimal to a CY structure. |
 | [DecToDouble](#DecToDouble) | Converts a CVAR of type decimal to a double. |
+| [Round](#Round) | Rounds a variant to the specified number of decimal places. |
 | [FormatNumber](#FormatNumber) | Formats a CVAR containing numbers into a string form. |
 | [GetBooleanElem](#GetBooleanElem) | Extracts a single boolean element from a safe array of booleans. |
 | [GetDoubleElem](#GetDoubleElem) | Extracts a single DOUBLE element from a safe array of doubles. |
@@ -80,7 +81,6 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [PutUtf8](#PutUtf8) | Initializes CVAR with the contents of an UTF-8 string. |
 | [PutVariantArrayElem](#PutVariantArrayElem) | Initializes CVAR with a value stored in another VARIANT structure. |
 | [PutVbDate](#PutVbDate) | Initializes CVAR with the contents of a DATE value. |
-| [Round](#Round) | Rounds a variant to the specified number of decimal places. |
 | [ToBooleanArray](#ToBooleanArray) | Extracts an array of boolean values from CVAR. |
 | [ToBooleanArrayAlloc](#ToBooleanArrayAlloc) | Extracts an array of boolean values from CVAR. |
 | [ToBstr](#ToBstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as bstr. |
@@ -512,6 +512,23 @@ FUNCTION DecToDouble () AS DOUBLE
 #### Return value
 
 Returns the contents of a VT_DECIMAL variant as a DOUBLE.
+
+# <a name="Round"></a>Round
+
+Rounds a variant to the specified number of decimal places.
+
+```
+FUNCTION Round (BYREF cv AS CVAR, BYVAL cDecimals AS LONG) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cv* | The CVAR to round. |
+| *cDecimals* | The number of decimal places. |
+
+#### Return value
+
+A CVAR containing the rounded result.
 
 # <a name="FormatNumber"></a>FormatNumber
 
