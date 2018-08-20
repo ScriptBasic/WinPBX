@@ -175,7 +175,7 @@ CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
 | *_pvar* | Pointer to a variable. This will create a VT_BYREF variant of the specified type. |
 | *_vtype* | The variant type, e.g. VT_I4, VT_UI4. |
 | *strType* | The variant type as a string: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT, "INT", UINT", "LONG", "ULONG", "LONGINT", "SINGLE, "DOUBLE", "NULL". |
-| *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count. |
+| *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count of the passed interface. |
 
 # <a name="Operators"></a>Operators
 
