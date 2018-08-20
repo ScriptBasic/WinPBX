@@ -1694,3 +1694,26 @@ FUNCTION ToDoubleArray (BYVAL prgn AS DOUBLE PTR, BYVAL crgn AS ULONG) AS ULONG
 This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of DOUBLE values.
 
 If the source VARIANT is of type VT_ARRAY OR VT_R8, this function extracts up to crgn DOUBLE values and places them into the buffer pointed to by *prgn*. If the VARIANT contains more elements than will fit into the *prgn* buffer, this function returns 0.
+
+# <a name="ToDoubleArrayAlloc"></a>ToDoubleArrayAlloc
+
+Extracts an array of DOUBLE values from CVAR.
+
+```
+FUNCTION ToDoubleArrayAlloc (BYVAL pprgn AS ULONGINT PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgf* | Pointer to a DOUBLE PTR variable that will recive a pointer to an array of DOUBLE values extracted from the source CVAR. |
+
+#### Return value
+
+The count of DOUBLE elements extracted from the CVAR.
+
+#### Remarks
+
+
+This helper function is used when the calling application expects a CVAR to hold an array of DOUBLE values.
+
+If CVAR is of type VT_ARRAY OR VT_R8, this function extracts an array of DOUBLE values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer neede
