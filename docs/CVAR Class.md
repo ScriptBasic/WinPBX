@@ -1455,3 +1455,23 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 Creates a VT_DATE variant.
 
 
+# <a name="PutUtf8"></a>PutUtf8
+
+Initializes CVAR with the contents of an UTF-8 string.
+
+```
+FUNCTION PutUtf8 (BYREF strUtf8 AS STRING) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *strUtf8* | The UTF-8 encoded string. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+Creates a VT_BSTR variant.
+
