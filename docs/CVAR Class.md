@@ -1970,3 +1970,16 @@ The count of PWSTR elements extracted from the CVAR.
 This helper function is used when the calling application expects a CVAR to hold an array of PWSTR values.
 
 This function extracts an array of PWSTR values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to free the memory used by each of the strings and to release the array pointed to by pprgn when it is no longer needed.
+
+# <a name="ToStrRet"></a>ToStrRet
+
+Returns the contents of a CVAR of type VT_BSTR to a STRRET stucture.
+
+```
+FUNCTION ToStrRet () AS STRRET
+```
+
+#### Return value
+
+The STRRET structure.
+
