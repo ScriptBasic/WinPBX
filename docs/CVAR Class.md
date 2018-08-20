@@ -278,7 +278,7 @@ The following table shows the available data types and where these values can be
 | VT_BSTR             | BSTR. A string.                          |    X    |    X     |      X       |     X      |
 | VT_DISPATCH         | IDispatch PTR. An IDispatch pointer.     |    X    |    X     |              |     X      |
 | VT_ERROR            | SCODE. An SCODE value.                   |    X    |    X     |      X       |     X      |
-| VT_BOOL             | BOOLEAN. A Boolean value (True = -1, False = 0)   |    X    |    X     |      X       |     X      |
+| VT_BOOL             | BOOLEAN. A Boolean value<br>(True = -1, False = 0)   |    X    |    X     |      X       |     X      |
 | VT_VARIANT          | VARIANT PTR. A variant pointer.          |    X    |    X     |      X       |     X      |
 | VT_UNKNOWN          | IUnknown PTR. An IUnknown pointer.       |    X    |    X     |              |     X      |
 | VT_DECIMAL          | DECIMAL PTR. A 16-byte fixed-pointer value.           |    X    |    X     |              |     X      |
@@ -293,7 +293,7 @@ The following table shows the available data types and where these values can be
 | VT_VOID             | NULL. A C-style void.                    |         |          |      X       |            |
 | VT_HRESULT          | HRESULT. An HRESULT value.               |         |          |      X       |            |
 | VT_PTR              | A pointer type.                          |         |          |      X       |            |
-| VT_SAFEARRAY        | SAFEARRAY PTR. A safe array. Use VT_ARRAY in VARIANT.   |         |    X     |              |            |
+| VT_SAFEARRAY        | SAFEARRAY PTR. A safe array.<br>Use VT_ARRAY in VARIANT.   |         |    X     |              |            |
 | VT_CARRAY           | A C-style array.                         |         |    X     |              |            |
 | VT_USERDEFINED      | A user-defined type.                     |         |          |      X       |            |
 | VT_LPSTR            | ZSTRING. A null-terminated string.       |         |    X     |      X       |            |
