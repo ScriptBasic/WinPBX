@@ -1928,3 +1928,45 @@ DIM cv AS CVAR = "Test string"
 DIM cws AS CWSTR = cv.ToStr
 ```
 
+# <a name="ToStringArray"></a>ToStringArray
+
+Extracts data from a vector structure into a PWSTR array.
+
+```
+FUNCTION ToStringArray (BYVAL prgsz AS PWSTR, BYVAL crgsz AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgsz* | Pointer to a buffer that contains crgn PWSTR values. When this function returns, the buffer has been initialized with elements extracted from the source VARIANT structure. |
+| *crgsz* | The number of elements in the buffer pointed to by *prgsz*. |
+
+#### Return value
+
+The count of PWSTR elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of PWSTR values. If the VARIANT contains more elements than will fit into the *prgsz* buffer, this function returns 0.
+
+# <a name="ToStringArrayAlloc"></a>ToStringArrayAlloc
+
+Extracts an array of PWSTR values from CVAR.
+
+```
+FUNCTION ToStringArrayAlloc (BYVAL pprgsz AS PWSTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pprgsz* | Pointer to a PWSTR PTR variable that will recive a pointer to an array of PWSTR values extracted from the source CVAR. |
+
+#### Return value
+
+The count of PWSTR elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of PWSTR values.
+
+This function extracts an array of PWSTR values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to free the memory used by each of the strings and to release the array pointed to by pprgn when it is no longer needed.
