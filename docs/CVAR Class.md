@@ -159,6 +159,23 @@ CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYVAL _vType AS WORD)
 CONSTRUCTOR (BYVAL _pvar AS ANY PTR, BYREF strType AS STRING)
 ```
 
+| Parameter  | Description |
+| *cv* | A CVAR. |
+| *v* | A VARIANT. |
+| *pvar* | Pointer to a VARIANT. |
+| *cy* | A currency structure. |
+| *dec* | A decimal structure. |
+| *pwsz* | Pointer to an unicode string. You can also pass a Free Basic ansi string or a string literal. |
+| *cbs* | A CBSTR. |
+| *cws* | A CWSTR. |
+| *pDisp* | Pointer to a DISPATCH interface. |
+| *pUnk* | Pointer to a UNKNOWN interface. |
+| *_value* | A numeric value or variable. |
+| *_pvar* | Pointer to a variable. This will create a VT_BYREF variant of the specified type. |
+| *_vtype* | The variant type, e.g. VT_I4, VT_UI4. |
+| *strType* | The variant type as a string: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT, "INT", UINT", "LONG", "ULONG", "LONGINT", "SINGLE, "DOUBLE", "NULL". |
+| *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count. |
+
 # <a name="Operators"></a>Operators
 
 Procedures that perform a certain function with their operands. They do the same actions that the native FreeBasic operators but with variants. For detailed descriptions see the FreeBasic documentation.
