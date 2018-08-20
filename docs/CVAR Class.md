@@ -2142,3 +2142,33 @@ FUNCTION ToUtf8 () AS STRING
 
 The UTF-8 string.
 
+# <a name="ToVbDate"></a>ToVbDate
+
+Returns the contents of a CVAR of type VT_DATE as a DATE value.
+
+```
+FUNCTION ToVbDate () AS DATE_
+```
+
+#### Return value
+
+A DATE_ value (double).
+
+# <a name="ToWStr"></a>ToWStr
+
+Extracts the content of the underlying variant and returns it as a CWSTR.
+
+```
+FUNCTION ToWStr () AS CWSTR
+```
+
+#### Return value
+
+The contents of the variant as a CWSTR.
+
+#### Example
+
+```
+DIM cv AS CVAR = "Test string"
+DIM cws AS CWSTR = cv.ToWStr
+```
