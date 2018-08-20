@@ -90,9 +90,9 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToDoubleArrayAlloc](#ToDoubleArrayAlloc) | Extracts an array of DOUBLE values from CVAR. |
 | [ToFileTime](#ToFileTime) | Returns the contents of a CVAR of type VT_DATE as a FILETIME structure. |
 | [ToGuid](#ToGuid) | Returns the contents of a CVAR containing a GUID string as a GUID structure. |
-| [ToGuidBStr](#ToGuidBStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr. |
-| [ToGuidStr](#ToGuidStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr. |
-| [ToGuidWStr](#ToGuidWStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidStr. |
+| [ToGuidBStr](#ToGuidBStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. |
+| [ToGuidStr](#ToGuidStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. |
+| [ToGuidWStr](#ToGuidWStr) | Returns the contents of a CVAR containing a GUID string as an unicode GUID string. |
 | [ToLongArray](#ToLongArray) | Extracts an array of LONG values from CVAR. |
 | [ToLongArrayAlloc](#ToLongArrayAlloc) | Extracts an array of LONG values from CVAR. |
 | [ToLongIntArray](#ToLongIntArray) | Extracts an array of LONGINT values from CVAR. |
@@ -1713,7 +1713,71 @@ The count of DOUBLE elements extracted from the CVAR.
 
 #### Remarks
 
-
 This helper function is used when the calling application expects a CVAR to hold an array of DOUBLE values.
 
 If CVAR is of type VT_ARRAY OR VT_R8, this function extracts an array of DOUBLE values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgn* when it is no longer neede
+
+# <a name="ToFileTime"></a>ToFileTime
+
+Returns the contents of a CVAR of type VT_DATE as a FILETIME structure.
+
+```
+FUNCTION ToFileTime (BYVAL stfOut AS AFX_PSTIME_FLAGS) AS FILETIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *stfOut* | Specifies one of the following time flags:<br>*STF_UTC (0)* : Indicates coordinated universal time.<br>*PSTF_LOCAL (1)* : 
+Indicates local time. |
+
+#### Return value
+
+Returns the contents of a CVAR containing a GUID string as a GUID structure.
+
+# <a name="ToGuid"></a>ToGuid
+
+Returns the contents of a CVAR containing a GUID string as a GUID structure.
+
+```
+FUNCTION ToGuid () AS GUID
+```
+
+#### Return value
+
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string.
+
+# <a name="ToGuidBStr"></a>ToGuidBStr
+
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr.
+
+```
+FUNCTION ToGuidBStr () AS CBSTR
+```
+
+#### Return value
+
+A GUID string.
+
+# <a name="ToGuidStr"></a>ToGuidStr
+
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string. Same as ToGuidWstr.
+
+```
+FUNCTION ToGuidStr () AS CWSTR
+```
+
+#### Return value
+
+A GUID string.
+
+# <a name="ToGuidWStr"></a>ToGuidWStr
+
+Returns the contents of a CVAR containing a GUID string as an unicode GUID string.
+
+```
+FUNCTION ToGuidWStr () AS CWSTR
+```
+
+#### Return value
+
+A GUID string.
