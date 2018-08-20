@@ -84,6 +84,7 @@ The CVar class implements a VARIANT data type. The variant data type is a tagged
 | [ToBooleanArrayAlloc](#ToBooleanArrayAlloc) | Extracts an array of boolean values from CVAR. |
 | [ToBstr](#ToBstr) | Extracts the content of the underlying variant and returns it as a CBSTR. Same as bstr. |
 | [ToBuffer](#ToBuffer) | Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a buffer. |
+| [ToBuffer (STRING)](#ToBufferString) | Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a string used as a buffer. |
 | [ToDosDateTime](#ToDosDateTime) | Extracts a date and time value in Microsoft MS-DOS format from a CVAR of type VT_DATE. |
 | [ToDoubleArray](#ToDoubleArray) | Extracts an array of DOUBLE values from CVAR. |
 | [ToDoubleArrayAlloc](#ToDoubleArrayAlloc) | Extracts an array of DOUBLE values from CVAR. |
@@ -1538,3 +1539,114 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 #### Remarks
 
 Creates a VT_DATE variant.
+
+# <a name="ToBooleanArray"></a>ToBooleanArray
+
+Extracts an array of boolean values from CVAR.
+
+```
+FUNCTION ToBooleanArray (BYVAL prgf AS WINBOOL PTR, BYVAL crgn AS ULONG) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to a buffer that contains *crgn* boolean values. When this function returns, the buffer has been initialized with elements extracted from the source VARIANT structure. |
+| *crgn* | The number of elements in the buffer pointed to by *prgf*. |
+
+#### Return value
+
+The count of WINBOOL elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a VARIANT to hold an array that consists of a fixed number of boolean values.
+
+If the source VARIANT is of type VT_ARRAY OR VT_BOOL, this function extracts up to *crgn* WINBOOL values and places them into the buffer pointed to by *prgf*. If the VARIANT contains more elements than will fit into the *prgf* buffer, this function returns 0.
+
+# <a name="ToBooleanArrayAlloc"></a>ToBooleanArrayAlloc
+
+Extracts an array of boolean values from CVAR.
+
+```
+FUNCTION ToBooleanArrayAlloc (BYVAL pprgf AS WINBOOL PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgf* | Pointer to a WINBOOL PTR variable that will recive a pointer to an array of WINBOOL values extracted from the source CVAR. |
+
+#### Return value
+
+The count of WINBOOL elements extracted from the CVAR.
+
+#### Remarks
+
+This helper function is used when the calling application expects a CVAR to hold an array of WINBOOL values.
+
+If CVAR is of type VT_ARRAY OR VT_BOOL, this function extracts an array of WINBOOL values into a newly allocated array. The calling application is responsible for using **CoTaskMemFree** to release the array pointed to by *pprgf* when it is no longer needed.
+
+# <a name="ToBstr"></a>ToBstr
+
+Extracts the content of the underlying variant and returns it as a CBSTR.
+
+```
+FUNCTION ToBstr () AS CBSTR
+```
+
+#### Return value
+
+The contents of the variant as a CBSTR.
+
+#### Example
+
+```
+DIM cv AS CVAR = "Test string"
+DIM cbs AS CBSTR = cv.ToBstr
+```
+
+# <a name="ToBuffer"></a>ToBuffer
+
+Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a buffer.
+
+```
+FUNCTION ToBuffer (BYVAL pv AS VOID PTR, BYVAL cb AS UINT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | Pointer to a buffer of length cb bytes. When this function returns, contains the first cb bytes of the extracted buffer value. |
+| *cb* | The size of the pv buffer, in bytes. The buffer should be the same size as the data to be extracted, or smaller. |
+
+#### Return value
+
+Returns one of the following values:
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| *S_OK* | Data successfully extracted. |
+| *E_INVALIDARG* | The VARIANT was not of type VT_ARRRAY OR VT_UI1. |
+| *E_FAIL* |The VARIANT buffer value had fewer than cb bytes. |
+
+#### Remarks
+
+This function is used when the calling application expects a VARIANT to hold a buffer value. The calling application should check that the value has the expected length before it calls this function.
+
+If CVAR has type VT_ARRAY OR VT_UI1, this function extracts the first *cb* bytes from the structure and places them in the buffer pointed to by *pv*.
+
+If the stored value has fewer than *cb* bytes, then function fails and the buffer is not modified.
+
+If the value has more than *cb* bytes, then function succeeds and truncates the value.
+
+To retrieve the size of the array call **GetElementCount**.
+
+# <a name="ToBuffer"></a>ToBuffer
+
+Extracts the contents of a CVAR of type VT_ARRRAY OR VT_UI1 to a string used as a buffer.
+
+```
+FUNCTION ToBuffer () AS STRING
+```
+
+#### Return value
+
+A string with the contents of the array.
