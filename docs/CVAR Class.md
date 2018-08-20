@@ -714,3 +714,41 @@ FUNCTION GetVariantElem (BYVAL iElem AS ULONG) AS CVAR
 #### Return value
 
 The retrieved value.
+
+# <a name="Put"></a>Put
+
+Assigns values to a CVAR.
+
+```
+SUB Put (BYREF wsz AS WSTRING)
+SUB Put (BYREF cws AS CWSTR)
+SUB Put (BYREF cbs AS CBSTR)
+FUNCTION Put (BYREF cv AS CVAR) AS HRESULT
+FUNCTION Put (BYVAL v AS VARIANT) AS HRESULT
+FUNCTION Put (BYVAL pvar AS VARIANT PTR) AS HRESULT
+FUNCTION Put (BYREF pDisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE) AS HRESULT
+FUNCTION Put (BYREF pUnk AS IUnknown PTR, BYVAL fAddRef AS BOOLEAN = FALSE) AS HRESULT
+SUB Put (BYVAL _value AS LONGINT, BYVAL _vType AS WORD = VT_I4)
+SUB Put (BYVAL _value AS DOUBLE, BYVAL _vType AS WORD = VT_R8)
+SUB Put (BYVAL _value AS LONGINT, BYREF strType AS STRING)
+SUB Put (BYVAL _value AS DOUBLE, BYREF strType AS STRING)
+SUB Put (BYVAL _pv AS ANY PTR, BYVAL _vType AS WORD)
+SUB Put (BYVAL _pv AS ANY PTR, BYREF strType AS STRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wsz* | An unicode string. You can also pass a Free Basic ansi string or a string literal. |
+| *cws* | A CWSTR variable. |
+| *cbs* | A CBSTR variable. |
+| *cv* | A CVAR variable. |
+| *v* | A VARIANT variable. |
+| *v* | A VARIANT variable. |
+| *pvar* | Pointer to a VARIANT variable. |
+| *pDisp* | Pointer to a DISPATCH interface. |
+| *pUnk* | Pointer to a UNKNOWN interface. |
+| *_pv* | Pointer to a variable. This will create a VT_BYREF variant of the specified type. |
+| *_vtype* | The variant type, e.g. VT_I4, VT_UI4. |
+| *strType* | The variant type as a string: "BOOL", "BYTE", "UBYTE", "SHORT", "USHORT, "INT", UINT", "LONG", "ULONG", "LONGINT", "SINGLE, "DOUBLE", "NULL". |
+| *fAddRef* | TRUE or FALSE. If TRUE, increases the reference count of the interface. |
+
