@@ -1013,12 +1013,12 @@ If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT
 
 Creates a VT_ARRAY OR VT_I8 variant.
 
-# <a name="PutULongArray"></a>PutULongArray
+# <a name="PutULongIntArray"></a>PutULongIntArray
 
 Initializes CVAR from an array of unsigned 64-bit integer values.
 
 ```
-FUNCTION PutULongArray (BYVAL prgf AS ULONGINT PTR, BYVAL cElems AS ULONG) AS HRESULT
+FUNCTION PutULongIntArray (BYVAL prgf AS ULONGINT PTR, BYVAL cElems AS ULONG) AS HRESULT
 ```
 
 | Parameter  | Description |
