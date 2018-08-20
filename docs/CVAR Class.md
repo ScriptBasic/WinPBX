@@ -2172,3 +2172,67 @@ The contents of the variant as a CWSTR.
 DIM cv AS CVAR = "Test string"
 DIM cws AS CWSTR = cv.ToWStr
 ```
+
+# <a name="ValDouble"></a>ValDouble
+
+Converts the variant to a floating point number (DOUBLE)
+
+```
+FUNCTION ValDouble () AS DOUBLE
+```
+
+# <a name="ValInt"></a>ValInt
+
+Converts the variant to a signed 32-bit integer (LONG).
+
+```
+FUNCTION ValInt () AS LONG
+```
+
+# <a name="ValLong"></a>ValLong
+
+Converts the variant to a signed 32-bit integer (LONG).
+
+```
+FUNCTION ValLong () AS LONG
+```
+
+# <a name="ValLongInt"></a>ValLongInt
+
+Converts the variant to a signed 64-bit integer (LONGINT).
+
+```
+FUNCTION ValLongInt () AS LONG
+```
+
+# <a name="Value"></a>Value
+
+Converts the variant to a floating point number (DOUBLE).
+
+```
+FUNCTION Value () AS DOUBLE
+```
+
+# <a name="ValUInt"></a>ValUInt
+
+Converts the variant to a 32.bit unsigned integer (ULONG).
+
+```
+FUNCTION ValUInt () AS ULONG
+```
+
+# <a name="ValULong"></a>ValULong
+
+Converts the variant to a 32.bit unsigned integer (ULONG).
+
+```
+FUNCTION ValULong () AS ULONG
+```
+
+# <a name="ValULongInt"></a>ValULongInt
+
+Converts the variant to a 64-bit unsigned integer (ULONGINT).
+
+```
+FUNCTION ValULongInt () AS ULONGINT
+```
