@@ -12,7 +12,7 @@
 | ---------- | ----------- |
 | [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxCopyFile](#AfxCopyFile) | Copies an existing file to a new file. |
-| [AfxCreateDirectory](#AfxMkDir) | Creates a new directory. |
+| [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
@@ -61,8 +61,8 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
 | AfxKill | Deletes the specified file. |
-| [AfxMakeDir](#AfxMkDir) | Creates a new directory. |
-| [AfxMkDir](#AfxMkDir) | Creates a new directory. |
+| [AfxMakeDir](#AfxMakeDir) | Creates a new directory. |
+| [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
 | AfxMoveFile | Moves an existing file or a directory, including its children. |
 | AfxName | Moves an existing file or a directory, including its children. |
 | AfxRemoveDirectory | Deletes an existing empty directory. |
@@ -355,7 +355,7 @@ If the function fails, the return value is FALSE. To get extended error informat
 
 **AfxFileCopy** is an unicode replacement for Free Basic's **FileCopy** and returns 0 on success, or 1 if an error occurred.
 
-# <a name="AfxMkDir"></a>AfxMkDir / AfxMaleDir / AfxCreateDirectory
+# <a name="AfxMakeDir"></a>AfxMakeDir / AfxCreateDirectory / AfxMkDir
 
 Creates a new directory.
 
