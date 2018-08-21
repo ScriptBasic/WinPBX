@@ -1088,3 +1088,62 @@ The changed path.
 DIM cws AS CWSTR = AfxPathAddBackSlash("C:\dir_name\dir_name\file_name")
 ```
 
+# <a name="AfxPathAddExtension"></a>AfxPathAddExtension
+
+Adds a file name extension to a path string.
+
+```
+FUNCTION AfxPathAddExtension (BYREF wszPath AS CONST WSTRING, BYVAL pwszExt AS WSTRING PTR = NULL) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that represents a path. |
+| *pwszExt* | A string that contains the file name extension. |
+
+#### Return value
+
+The changed path.
+
+#### Remarks
+
+If there is already a file name extension present, no extension will be added. If the *wszPath* is an empty string, the result will be the file name extension only. If *wszExtension* is an empty string, an ".exe" extension will be added.
+
+#### Usage examples
+
+```
+DIM cws AS CWSTR = AfxPathAddExtension("file") ' output: file.exe
+DIM cws AS CWSTR = AfxPathAddExtension("file.doc") ' output: file.doc
+DIM cws AS CWSTR = AfxPathAddExtension("file", ".txt") ' output: file.txt
+DIM cws AS CWSTR = AfxPathAddExtension("", ".txt") ' output: .txt
+```
+
+# <a name="AfxPathAppend"></a>AfxPathAppend
+
+Appends one path to the end of another.
+
+```
+FUNCTION AfxPathAppend (BYREF wszPath AS CONST WSTRING, BYREF wszMore AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that represents a path. |
+| *wszMore* | A string that contains the path to be appended. |
+
+#### Return value
+
+The changed path.
+
+#### Remarks
+
+This function automatically inserts a backslash between the two strings, if one is not already present.
+
+The path supplied in *wszPath* cannot begin with "..\\" or ".\\" to produce a relative path string. If present, those periods are stripped from the output string. For example, appending "path3" to "..\\path1\\path2" results in an output of "\\path1\\path2\\path3" rather than "..\\path1\\path2\\path3".
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathAppend("name_1\name_2", "name_3")
+```
+
