@@ -31,7 +31,7 @@
 | [AfxGetExeFullPath](#AfxGetExeFullPath) | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
 | [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxGetExePathName](#AfxGetExePathName) | Returns the path of the program which is currently executing. The path has a trailing backslash. |
-| AfxGetFileCreationTime | Returns the time the file was created, in FILETIME format. |
+| [AfxGetFileCreationTime](#AfxGetFileCreationTime) | Returns the time the file was created, in FILETIME format. |
 | AfxGetFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetFileLastAccessTime | Returns the time the file was last accessed, in FILETIME format. |
 | AfxGetFileLastWriteTime | Returns the time the file was last written to, truncated, or overwritten, in FILETIME format. |
@@ -653,4 +653,17 @@ Returns the complete drive, path, file name, and extension of the program which 
 ```
 FUNCTION AfxGetExeFullPath () AS CWSTR
 ```
+
+# <a name="AfxGetFileCreationTime"></a>AfxGetFileCreationTime
+
+Returns the time the file was created, in FILETIME format.
+
+```
+FUNCTION AfxGetFileCreationTime (BYREF wszFileSpec AS WSTRING, BYVAL bUTC AS BOOLEAN = TRUE) AS FILETIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The directory or path, and the file name, which can include wildcard characters, for example, an asterisk (\*) or a question mark (?). This parameter should not be NULL, an invalid string (for example, an empty string or a string that is missing the terminating null character), or end in a trailing backslash (\\). If the string ends with a wildcard, period (.), or directory name, the user must have access permissions to the root and all subdirectories on the path. To extend the limit from MAX_PATH to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+| *bUTC* | Optional. Pass FALSE if you want to get the time in local time (the NTFS file system stores time values in UTC format, so they are not affected by changes in time zone or daylight saving time). **FileTimeToLocalFileTime** uses the current settings for the time zone and daylight saving time. Therefore, if it is daylight saving time, it takes daylight saving time into account, even if the file time you are converting is in standard time. |
 
