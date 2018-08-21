@@ -1972,3 +1972,19 @@ FUNCTION AfxPathRemoveBlanks (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The changed path.
+
+# <a name="AfxPathRemoveExtension"></a>AfxPathRemoveExtension
+
+Removes the file name extension from a path, if one is present.
+
+```
+FUNCTION AfxPathRemoveExtension (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path from which to remove the extension. |
+
+#### Return value
+
+The changed path.
