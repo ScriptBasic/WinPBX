@@ -1719,3 +1719,19 @@ FUNCTION AfxPathIsUNC (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns True if the string is a valid UNC path, or False otherwise.
+
+# <a name="AfxPathIsUNCServer"></a>AfxPathIsUNCServer
+
+Determines if a string is a valid Universal Naming Convention (UNC) for a server path only.
+
+```
+FUNCTION AfxPathIsUNCServer (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains contains the path to validate. |
+
+#### Return value
+
+Returns True if the string is a valid UNC path for a server only (no share name), or False otherwise.
