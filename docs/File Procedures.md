@@ -2041,3 +2041,16 @@ FUNCTION AfxPathSearchAndQualify (BYREF wszPath AS CONST WSTRING, BYREF wszFully
 
 Returns True if the path is qualified, or False otherwise.
 
+# <a name="AfxPathSetDlgItemPath"></a>AfxPathSetDlgItemPath
+
+Sets the text of a child control in a window or dialog box, using **AfxCompactPath** to ensure the path fits in the control.
+
+```
+SUB AfxPathSetDlgItemPath (BYVAL hDlg AS HWND, BYVAL cID AS LONG, BYREF wszPath AS WSTRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hDlg* | A handle to the dialog box or window. |
+| *cID* | The identifier of the control. |
+| *wszPath* | A string that contains the path to set in the control. |
