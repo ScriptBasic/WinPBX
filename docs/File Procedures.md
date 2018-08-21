@@ -2568,3 +2568,26 @@ Returns True if the URL is opaque, or False otherwise.
 
 A URL that has a scheme that is not followed by two slashes (//) is opaque. For example, mailto:xyz@litwareinc.com is an opaque URL. Opaque URLs cannot be separated into the standard URL hierarchy. **AfxUrlIsOpaque** is equivalent to the following: AfxUrlIs(wszURL, URLIS_OPAQUE)
 
+# <a name="AfxUrlUnescape"></a>AfxUrlUnescape
+
+Converts escape sequences back into ordinary characters.
+
+```
+FUNCTION AfxUrlUnescape (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+| *dwFlags* | Flags that control which characters are unescaped. It can be the following flag:<br>*URL_DONT_UNESCAPE_EXTRA_INFO*: Do not convert the # or ? character, or any characters following them in the string. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an HRESULT otherwise.
+
+#### Remarks
+
+An escape sequence has the form "%xy".
+
+Input strings cannot be longer than INTERNET_MAX_URL_LENGTH.
+
