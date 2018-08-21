@@ -1373,3 +1373,19 @@ Note that a valid file name extension cannot contain a space.
 ```
 DIM cws AS CWSTR = AfxPathFindExtension("C:\TEST\filetxt")
 ```
+
+# <a name="AfxPathFindFileName"></a>AfxPathFindFileName
+
+Searches a path for a file name.
+
+```
+FUNCTION AfxPathFindFileName (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to search. |
+
+#### Return value
+
+The file name.
