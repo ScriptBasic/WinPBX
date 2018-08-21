@@ -1549,3 +1549,23 @@ FUNCTION AfxPathIsDirectory (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns TRUE if the path is a valid directory (FILE_ATTRIBUTE_DIRECTORY is set), or FALSE otherwise.
+
+# <a name="AfxPathIsDirectoryEmpty"></a>AfxPathIsDirectoryEmpty
+
+Determines whether a specified path is an empty directory.
+
+```
+FUNCTION AfxPathIsDirectoryEmpty (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be tested. |
+
+#### Return value
+
+Returns TRUE if wszPath is an empty directory. Returns FALSE if *wszPath* is not a directory, or if it contains at least one file other than "." or "..".
+
+#### Remarks
+
+"C:\" is considered a directory.
