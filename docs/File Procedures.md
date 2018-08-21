@@ -30,7 +30,7 @@
 | AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
 | AfxGetExeFullPath | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
 | [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
-| AfxGetExePathName | Returns the path of the program which is currently executing. The path has a trailing backslash. |
+| [AfxGetExePathName](#AfxGetExePathName) | Returns the path of the program which is currently executing. The path has a trailing backslash. |
 | AfxGetFileCreationTime | Returns the time the file was created, in FILETIME format. |
 | AfxGetFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetFileLastAccessTime | Returns the time the file was last accessed, in FILETIME format. |
@@ -589,4 +589,16 @@ FUNCTION AfxGetExePath () AS CWSTR
 #### Remarks
 
 Unicode replacement for Free Basic's **ExePath** function. The path name has not a trailing backslash, except if it is a drive, e.g. "C:\".
+
+# <a name="AfxGetExePathName"></a>AfxGetExePathName
+
+Returns the path of the program which is currently executing.
+
+```
+FUNCTION AfxGetExePathName () AS CWSTR
+```
+
+#### Remarks
+
+The path name has a trailing backslash.
 
