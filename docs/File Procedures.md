@@ -241,9 +241,9 @@ FUNCTION AfxOpenFileDialog (BYVAL hwndOwner AS HWND, BYREF wszTitle AS WSTRING, 
 | OFN_HIDEREADONLY | Hides the **Read Only** check box. |
 | OFN_NODEREFERENCELINKS | Directs the dialog box to return the path and file name of the selected shortcut (.LNK) file. If this value is not specified, the dialog box returns the path and file name of the file referenced by the shortcut. |
 | OFN_NONETWORKBUTTON | Hides and disables the **Network** button. |
-| OFN_NOREADONLYRETURN | The returned file does not have the** Read Only^^ check box selected and is not in a write-protected directory. |
+| OFN_NOREADONLYRETURN | The returned file does not have the **Read Only** check box selected and is not in a write-protected directory. |
 | OFN_PATHMUSTEXIST | The user can type only valid paths and file names. If this flag is used and the user types an invalid path and file name in the **File Name** entry field, the dialog box function displays a warning in a message box. |
-| OFN_READONLY | Causes the Read Only check box to be selected initially when the dialog box is created. This flag indicates the state of the Read Only check box when the dialog box is closed. |
+| OFN_READONLY | Causes the **Read Only** check box to be selected initially when the dialog box is created. This flag indicates the state of the **Read Only** check box when the dialog box is closed. |
 | OFN_SHOWHELP | Causes the dialog box to display the **Help** button. The *hwndOwner* member must specify the window to receive the HELPMSGSTRING registered messages that the dialog box sends when the user clicks the **Help** button. |
 
 #### Return value
