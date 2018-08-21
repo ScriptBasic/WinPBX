@@ -25,7 +25,7 @@
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetDriveType](#AfxGetDriveType) | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
-| AfxGetExeFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
+| [AfxGetExeFileExt](#AfxGetExeFileExt) | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetExeFileName | Returns the file name of the program which is currently executing. |
 | AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
 | AfxGetExeFullPath | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
