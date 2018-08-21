@@ -18,7 +18,6 @@
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
 | [AfxFileExists](#AfxFileExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
-| AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file and returns the number of occurrences of the specified delimiter. |
 | [AfxFolderExists](#AfxFolderExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
@@ -35,9 +34,10 @@
 | AfxGetFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetFileLastAccessTime | Returns the time the file was last accessed, in FILETIME format. |
 | AfxGetFileLastWriteTime | Returns the time the file was last written to, truncated, or overwritten, in FILETIME format. |
+| [AfxFileLen](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | AfxGetFileName | Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
 | AfxGetFileNameX | Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\) or colon (:). |
-| AfxGetFileSize | Returns the size in bytes of the specified file. |
+| [AfxGetFileSize](###AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | AfxGetFileVersion | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
 | AfxGetFolderName | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
 | AfxGetKnowFolderPath | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
@@ -558,3 +558,21 @@ On network shares, you can use an *pwszFileSpec* in the form of the following: "
 To examine a directory that is not a root directory, use the path to that directory, without a trailing backslash. For example, an argument of "C:\Windows" returns information about the directory "C:\Windows", not about a directory or file in "C:\Windows". To examine the files and directories in "C:\Windows", use an pwszFileSpec of "C:\Windows\\\*".
 
 Be aware that some other thread or process could create or delete a file with this name between the time you query for the result and the time you act on the information. If this is a potential concern for your application, one possible solution is to use the **CreateFile** function with CREATE_NEW (which fails if the file exists) or OPEN_EXISTING (which fails if the file does not exist).
+
+# <a name="AfxGetFileSize"></a>AfxGetFileSize / AfxFileLen
+
+Returns the size in bytes of the specified file.
+
+```
+FUNCTION AfxGetFileSize (BYREF wszFileSpec AS WSTRING) AS ULONGLONG
+FUNCTION AfxFileLen (BYREF wszFileSpec AS WSTRING) AS ULONGLONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+#### Return value
+
+The size in bytes of the file on success, or 0 on failure.
+
