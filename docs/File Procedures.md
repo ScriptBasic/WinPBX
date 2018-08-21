@@ -15,6 +15,7 @@
 | [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
 | [AfxCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
+| AfxExePath | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
 | [AfxFileExists](#AfxFileExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
