@@ -1279,3 +1279,30 @@ This function uses the font currently selected in *hDC* to calculate the width o
 DIM cws AS CWSTR = AfxPathCompactPath(NULL, "C:\path1\path2\sample.txt", 180)
 ```
 
+# <a name="AfxPathCompactPathEx"></a>AfxPathCompactPathEx
+
+Truncates a path to fit within a certain number of characters by replacing path components with ellipses.
+
+```
+FUNCTION AfxPathCompactPathEx (BYREF wszPath AS CONST WSTRING, BYVAL cchMax AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be altered. |
+| *cchMax* | The maximum number of characters to be contained in the new string, including the terminating null character. For example, if *cchMax* = 8, the resulting string can contain a maximum of 7 characters plus the terminating null character. |
+
+#### Return value
+
+The compacted path.
+
+#### Remarks
+
+The '/' separator will be used instead of '\\' if the original string used it. If *wszPath* points to a file name that is too long, instead of a path, the file name will be truncated to *cchMax* characters, including the ellipsis and the terminating NULL character. For example, if the input file name is "My Filename" and *cchMax* is 10, *AfxPathCompactPathEx* will return "My Fil...".
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCompactPathEx("c:\test\My Filename", 18)
+```
+
