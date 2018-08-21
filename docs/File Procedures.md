@@ -1,6 +1,6 @@
 # File Procedures
 
-Assorted file procedures.
+Assorted file, folder and path procedures.
 
 **Include files**: AfxWin.inc, AfxPath.inc
 
