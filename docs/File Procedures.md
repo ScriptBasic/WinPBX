@@ -26,9 +26,9 @@
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetDriveType](#AfxGetDriveType) | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
 | [AfxGetExeFileExt](#AfxGetExeFileExt) | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
-| AfxGetExeFileName | Returns the file name of the program which is currently executing. |
-| AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
-| AfxGetExeFullPath | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
+| [AfxGetExeFileName](#AfxGetExeFileName) | Returns the file name of the program which is currently executing. |
+| [AfxGetExeFileNameX])#AfxGetExeFileNameX) | Returns the file name and extension of the program which is currently executing. |
+| [AfxGetExeFullPath](#AfxGetExeFullPath) | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
 | [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxGetExePathName](#AfxGetExePathName) | Returns the path of the program which is currently executing. The path has a trailing backslash. |
 | AfxGetFileCreationTime | Returns the time the file was created, in FILETIME format. |
@@ -629,4 +629,28 @@ FUNCTION AfxGetExeFileExt () AS CWSTR
 #### Return value
 
 The extension portion of the file name. That is the last period (.) in the string plus the text to the right of it.
+
+# <a name="AfxGetExeFileName"></a>AfxGetExeFileName
+
+Returns the file name of the program which is currently executing.
+
+```
+FUNCTION AfxGetExeFileName () AS CWSTR
+```
+
+# <a name="AfxGetExeFileNameX"></a>AfxGetExeFileNameX
+
+Returns the file name and extension of the program which is currently executing.
+
+```
+FUNCTION AfxGetExeFileNameX () AS CWSTR
+```
+
+# <a name="AfxGetExeFileNameX"></a>AfxGetExeFileNameX
+
+Returns the complete drive, path, file name, and extension of the program which is currently executing.
+
+```
+FUNCTION AfxGetExeFullPath () AS CWSTR
+```
 
