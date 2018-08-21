@@ -15,7 +15,7 @@
 | [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
 | [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
-| AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
+| [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
@@ -409,3 +409,30 @@ To get extended error information, call GetLastError.<br>
 If an application attempts to delete a file that does not exist, this function fails with ERROR_FILE_NOT_FOUND. If the file is a read-only file, the function fails with ERROR_ACCESS_DENIED.
 
 **AfxKill** is an unicode replacement for Free Basic's **Kill** and returns 0 on success, or or -1 on failure.
+
+# <a name="AfxFileDateTime"></a>AfxFileDateTime
+
+Returns the file's last modified date and time as Date Serial.
+
+```
+FUNCTION AfxFileDateTime (BYREF wszFileName AS WSTRING) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Filename to retrieve date and time for. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+
+#### Return value:
+
+The date and time as a Date Serial. If it fails, it returns 0.
+
+#### Example
+
+```
+#include "windows.bi"
+#include "vbcompat.bi"
+#include "Afx/AfxWin.bi"
+DIM wszFileName AS WSTRING * MAX_PATH = ExePath & "\c2.bas"
+DIM dt AS DOUBLE = AfxFileDateTime(wszFileName)
+PRINT Format(dt, "yyyy-mm-dd hh:mm AM/PM")
+```
