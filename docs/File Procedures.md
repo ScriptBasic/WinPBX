@@ -646,7 +646,7 @@ Returns the file name and extension of the program which is currently executing.
 FUNCTION AfxGetExeFileNameX () AS CWSTR
 ```
 
-# <a name="AfxGetExeFileNameX"></a>AfxGetExeFileNameX
+# <a name="AfxGetExeFullPath"></a>AfxGetExeFullPath
 
 Returns the complete drive, path, file name, and extension of the program which is currently executing.
 
