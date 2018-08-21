@@ -1634,19 +1634,18 @@ FUNCTION AfxPathIsNetworkPath (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 
 Returns True if the string represents a network resource, or False otherwise.
 
-# <a name="AfxPathIsPrefix"></a>AfxPathIsPrefix
+# <a name="AfxPathIsRelative"></a>AfxPathIsRelative
 
-Searches a path to determine if it contains a valid prefix of the type passed by wszPrefix. A prefix is one of these types: "C:\\", ".", "..", "..\\".
+Searches a path and determines if it is relative.
 
 ```
-FUNCTION AfxPathIsPrefix (BYREF wszPrefix AS CONST WSTRING, BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+FUNCTION AfxPathIsRelative (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszPrefix* | A string that contains the prefix for which to search. |
-| *wszPath* | A string that contains contains the path to be searched. |
+| *wszPath* | A string that contains contains the path to search. |
 
 #### Return value
 
-Returns True if the compared path is the full prefix for the path, or False otherwise.
+Returns True if the path is relative, or False if it is absolute.
