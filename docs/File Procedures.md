@@ -2299,6 +2299,22 @@ FUNCTION AfxUrlCompare (BYREF wszUrl1 AS CONST WSTRING, BYREF wszUrl2 AS CONST W
 
 Returns zero if the two strings are equal. The function will also return zero if *fIgnoreSlash* is set to TRUE and one of the strings has a trailing '\\' character. The function returns a negative integer if the string pointed to by *wszUrl1* is less than the string pointed to by *wszUrl2*. Otherwise, it returns a positive integer.
 
-####Remarks
+#### Remarks
 
 For best results, you should first canonicalize the URLs with **AfxUrlCanonicalize**. Then, compare the canonicalized URLs with **AfxUrlCompare**.
+
+# <a name="AfxUrlCreateFromPath"></a>AfxUrlCreateFromPath
+
+Converts a Microsoft MS-DOS path to a canonicalized URL.
+
+```
+FUNCTION AfxUrlCreateFromPath (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the MS-DOS path. |
+
+#### Return value
+
+The canonicalized URL.
