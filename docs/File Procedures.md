@@ -1988,3 +1988,19 @@ FUNCTION AfxPathRemoveExtension (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The changed path.
+
+# <a name="AfxPathRemoveFileSpec"></a>AfxPathRemoveFileSpec
+
+Removes the trailing file name and backslash from a path, if they are present.
+
+```
+FUNCTION AfxPathRemoveFileSpec (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path from which to remove the file name. |
+
+#### Return value
+
+The changed path.
