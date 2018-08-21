@@ -2165,3 +2165,19 @@ FUNCTION AfxPathUnmakeSystemFolder (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns nonzero if successful, or zero otherwise.
+
+# <a name="AfxPathUnquoteSpaces"></a>AfxPathUnquoteSpaces
+
+Removes quotes from the beginning and end of a path.
+
+```
+FUNCTION AfxPathUnquoteSpaces (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path. |
+
+#### Return value
+
+The unquoted path.
