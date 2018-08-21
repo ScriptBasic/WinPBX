@@ -27,7 +27,7 @@
 | [AfxGetDriveType](#AfxGetDriveType) | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
 | [AfxGetExeFileExt](#AfxGetExeFileExt) | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | [AfxGetExeFileName](#AfxGetExeFileName) | Returns the file name of the program which is currently executing. |
-| [AfxGetExeFileNameX])#AfxGetExeFileNameX) | Returns the file name and extension of the program which is currently executing. |
+| [AfxGetExeFileNameX](#AfxGetExeFileNameX) | Returns the file name and extension of the program which is currently executing. |
 | [AfxGetExeFullPath](#AfxGetExeFullPath) | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
 | [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxGetExePathName](#AfxGetExePathName) | Returns the path of the program which is currently executing. The path has a trailing backslash. |
