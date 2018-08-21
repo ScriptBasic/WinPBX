@@ -20,7 +20,7 @@
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
-| AfxFileScan | Scans a text file ans returns the number of occurrences of the specified delimiter. |
+| AfxFileScan | Scans a text file and returns the number of occurrences of the specified delimiter. |
 | AfxFolderExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
