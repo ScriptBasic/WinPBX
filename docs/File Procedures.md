@@ -2054,3 +2054,20 @@ SUB AfxPathSetDlgItemPath (BYVAL hDlg AS HWND, BYVAL cID AS LONG, BYREF wszPath 
 | *hDlg* | A handle to the dialog box or window. |
 | *cID* | The identifier of the control. |
 | *wszPath* | A string that contains the path to set in the control. |
+
+# <a name="AfxPathSkipRoot"></a>AfxPathSkipRoot
+
+Parses a path, ignoring the drive letter or Universal Naming Convention (UNC) server/share path elements.
+
+```
+FUNCTION AfxPathSkipRoot (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to parse. |
+
+#### Return value
+
+The changed path.
+
