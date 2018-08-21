@@ -47,7 +47,7 @@
 | [AfxGetShortPathName](#AfxGetShortPathName) | Retrieves the short path form of the specified path. |
 | [AfxGetSpecialFolderLocation](#AfxGetSpecialFolderLocation) | Retrieves the path of an special folder. |
 | [AfxGetSystemDllPath](#AfxGetSystemDllPath) | Retrieves the fully qualified path for the file that contains the specified module. |
-| AfxGetWinDir | Retrieves the path of the Windows directory. |
+| [AfxGetWinDir](#AfxGetWinDir) | Retrieves the path of the Windows directory. |
 | AfxIsCompressedFile | Returns True if the specified file or directory is compressed; False if it is not. |
 | AfxIsEncryptedFile | Returns True if the specified file or directory is encrypted; False if it is not. |
 | AfxIsFolder | Returns True if the specified path is a folder; False if it is not. |
@@ -854,3 +854,11 @@ FUNCTION AfxGetSystemDllPath (BYREF wszDllName AS WSTRING) AS CWSTR
 #### Remarks
 
 To locate the file for a module that was loaded by another process, use the **GetModuleFileNameEx** function.
+
+# <a name="AfxGetWinDir"></a>AfxGetWinDir
+
+Retrieves the path of the Windows directory. This path does not end with a backslash unless the Windows directory is the root directory. For example, if the Windows directory is named Windows on drive C, the path of the Windows directory retrieved by this function is C:\Windows. If the system was installed in the root directory of drive C, the path retrieved is C:\.
+
+```
+FUNCTION AfxGetWinDir () AS CWSTR
+```
