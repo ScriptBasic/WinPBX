@@ -186,7 +186,7 @@ Assorted Windows procedures.
 | Name       | Description |
 | ---------- | ----------- |
 | AfxCommand | Returns command line parameters used to call the program. |
-| AfxEnviron | etrieves the contents of the specified variable from the environment block of the calling process. |
+| AfxEnviron | Retrieves the contents of the specified variable from the environment block of the calling process. |
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
