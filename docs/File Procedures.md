@@ -1585,3 +1585,19 @@ FUNCTION AfxPathIsFileSpec (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns TRUE if there are no path-delimiting characters within the path, or FALSE if there are path-delimiting characters.
+
+# <a name="AfxPathIsHTMLFile"></a>AfxPathIsHTMLFile
+
+Determines if a file is an HTML file. The determination is made based on the content type that is registered for the file's extension.
+
+```
+FUNCTION AfxPathIsHTMLFile (BYREF wszFile AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFile* | A string that contains the path and name of the file. |
+
+#### Return value
+
+Returns True if the file is an HTML file, or False otherwise.
