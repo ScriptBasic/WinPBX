@@ -1751,3 +1751,24 @@ FUNCTION AfxPathIsUNCServerShare (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns True if the string is in the form \\\\server\\share, or False otherwise.
+
+# <a name="AfxPathIsURL"></a>AfxPathIsURL
+
+Tests a given string to determine if it conforms to a valid URL format.
+
+```
+FUNCTION AfxPathIsURL (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the URL path to validate. |
+
+#### Return value
+
+Returns True if wszPath has a valid URL format, or Fañse otherwise.
+
+#### Remarks
+
+This function does not verify that the path points to an existing site—only that it has a valid URL format.
+
