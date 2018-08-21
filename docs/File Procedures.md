@@ -1228,3 +1228,26 @@ The directory path should be in the form of A:,B:, ..., Z:. The file path should
 DIM cws AS CWSTR = AfxPathCombine("C:", "One\Two\Three") ' output: C:\One\Two\Three
 ```
 
+# <a name="AfxPathCommonPrefix"></a>AfxPathCommonPrefix
+
+Compares two paths to determine if they share a common prefix. A prefix is one of these types: "C:\\", ".", "..", "..\\".
+
+```
+FUNCTION AfxPathCommonPrefix (BYREF wszFile1 AS CONST WSTRING, BYREF wszFile2 AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFile1* | A string that contains the first path name. |
+| *wszFile2* | A string that contains the second path name. |
+
+#### Return value
+
+The common prefix.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCommonPrefix("C:\win\desktop\temp.txt", "c:\win\tray\sample.txt")
+```
+
