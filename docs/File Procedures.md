@@ -2380,3 +2380,20 @@ Use of the URL_ESCAPE_SEGMENT_ONLY flag also causes the conversion of the # (%23
 By default, AfxUrlEscape ignores any text following a # or ? character. The URL_ESCAPE_SEGMENT_ONLY flag overrides this behavior by regarding the entire string as the segment. The URL_ESCAPE_SPACES_ONLY flag overrides this behavior, but only for space characters.
 
 Security Warning: This function should be called from client applications only.
+
+# <a name="AfxUrlEscapeSpaces"></a>AfxUrlEscapeSpaces
+
+Converts space characters into their corresponding escape sequence.
+
+```
+FUNCTION AfxUrlEscapeSpaces (BYREF wszUrl AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL to be corrected. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+The converted URL.
+
