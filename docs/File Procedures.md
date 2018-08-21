@@ -1349,3 +1349,27 @@ Returns TRUE if the file exists, or FALSE otherwise.
 This function tests the validity of the path.
 
 A path specified by Universal Naming Convention (UNC) is limited to a file only; that is, \\\\server\\share\file is permitted. A UNC path to a server or server share is not permitted; that is, \\\\server or \\\\server\\share. This function returns FALSE if a mounted remote drive is out of service.
+
+# <a name="AfxPathFindExtension"></a>AfxPathFindExtension
+
+Searches a path for an extension.
+
+```
+FUNCTION AfxPathFindExtension (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to search, including the extension being searched for. |
+
+#### Return value
+
+The file name extension.
+
+#### Remarks
+
+Note that a valid file name extension cannot contain a space.
+
+```
+DIM cws AS CWSTR = AfxPathFindExtension("C:\TEST\filetxt")
+```
