@@ -1439,3 +1439,26 @@ The fully-qualified path name on success or an empty string on failure.
 #### Remarks
 
 **AfxPathFindOnPath** searches for the file specified by *wszFile*. If no directories are specified in *ppwszOtherDirs*, it attempts to find the file by searching standard directories such as System32 and the directories specified in the PATH environment variable. To expedite the process or enable **AfxPathFindOnPath** to search a wider range of directories, use the *ppwszOtherDirs* parameter to specify one or more directories to be searched first. If more than one file has the name specified by *wszFile*, **AfxPathFindOnPath** returns the first instance it finds.
+
+# <a name="AfxPathFindSuffixArray"></a>AfxPathFindSuffixArray
+
+Determines whether a given file name has one of a list of suffixes.
+
+```
+FUNCTION AfxPathFindSuffixArray (BYREF wszPath AS WSTRING, BYVAL apwszSuffix AS WSTRING PTR PTR, _
+   BYVAL iArraySize AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the file name to be tested. A full path can be used. |
+| *apwszSuffix* | An array of *iArraySize* string pointers. Each string pointed to is null-terminated and contains one suffix. The strings can be of variable lengths. |
+| *iArraySize* | The number of elements in the array pointed to by *apwszSuffix*. |
+
+#### Return value
+
+The matching suffix if successful, or an empty string if bstrPath does not end with one of the specified suffixes.
+
+#### Remarks
+
+This function uses a case-sensitive comparison. The suffix must match exactly.
