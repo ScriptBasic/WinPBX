@@ -1462,3 +1462,28 @@ The matching suffix if successful, or an empty string if bstrPath does not end w
 #### Remarks
 
 This function uses a case-sensitive comparison. The suffix must match exactly.
+
+# <a name="AfxPathGetCharType"></a>AfxPathGetCharType
+
+Determines the type of character in relation to a path.
+
+```
+FUNCTION AfxPathGetCharType (BYREF wszCh AS CONST WSTRING) AS UINT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszCh* | The character for which to determine the type. |
+
+#### Return value
+
+Returns one or more of the following values that define the type of character.
+
+| Retrn code | Description |
+| ---------- | ----------- |
+| GCT_INVALID | The character is not valid in a path. |
+| GCT_LFNCHAR | The character is valid in a long file name. |
+| GCT_SEPARATOR | The character is a path separator. |
+| GCT_SHORTCHAR | The character is valid in a short (8.3) file name. |
+| GCT_WILD | The character is a wildcard character. |
+
