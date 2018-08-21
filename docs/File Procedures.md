@@ -1919,3 +1919,25 @@ Returns True if successful, or False otherwise.
 This function takes a pair of paths and generates a relative path from one to the other. The paths do not have to be fully-qualified, but they must have a common prefix, or the function will fail and return False.
 
 For example, let the starting point, *wszFrom*, be "c:\\FolderA\FolderB\\FolderC", and the ending point, *wszTo*, be "c:\\FolderA\\FolderD\\FolderE". **AfxPathRelativePathTo** will return the relative path from *wszFrom* to *wszTo* as: "..\\..\\FolderD\\FolderE". You will get the same result if you set *wszFrom* to "\\FolderA\\FolderB\\FolderC" and *wszTo* to "\\FolderA\\FolderD\\FolderE". On the other hand, "c:\\FolderA\\FolderB" and "a:\\FolderA\\FolderD do not share a common prefix, and the function will fail. Note that "\\\\" is not considered a prefix and is ignored. If you set *wszFrom* to "\\\\FolderA\\FolderB", and *wszTo* to "\\\\FolderC\\FolderD", the function will fail.
+
+
+# <a name="AfxPathRemoveArgs"></a>AfxPathRemoveArgs
+
+Removes any arguments from a given path.
+
+```
+FUNCTION AfxPathRemoveArgs (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path from which to remove arguments. |
+
+#### Return value
+
+The changed path.
+
+#### Remarks
+
+This function should not be used on generic command path templates (from users or the registry), but rather it should be used only on templates that the application knows to be well formed.
+
