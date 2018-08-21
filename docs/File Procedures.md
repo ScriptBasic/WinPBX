@@ -2527,3 +2527,24 @@ Returns True if the URL is a file URL, or False otherwise.
 #### Remarks
 
 A file URL has the form "File:// xxx".
+
+# <a name="AfxUrlIsNoHistory"></a>AfxUrlIsNoHistory
+
+Returns whether a URL is a URL that browsers typically do not include in navigation history.
+
+```
+FUNCTION AfxUrlIsNoHistory (BYREF wszUrl AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL to be corrected. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+Returns a True value if the URL is a URL that is not included in navigation history, or False otherwise.
+
+#### Remarks
+
+This function is equivalent to the following: AfxUrlIs(wszURL, URLIS_NOHISTORY)
+
