@@ -2276,6 +2276,6 @@ The canonicalized url.
 
 #### Remarks
 
-Items between slashes are treated as hierarchical identifiers; the last item specifies the document itself. You must enter a slash (/) after the document name to append more items; otherwise, **AfxxUrlCombine** changes one document for another.
+Items between slashes are treated as hierarchical identifiers; the last item specifies the document itself. You must enter a slash (/) after the document name to append more items; otherwise, **AfxUrlCombine** changes one document for another.
 
 If a URL string contains '/../' or '/./', **AfxUrlCombine** usually treats the characters as if they indicated navigation in the URL hierarchy. The function simplifies the URLs before combining them. For instance, "/hello/cruel/../world" is simplified to "/hello/world". If the URL_DONT_SIMPLIFY flag is set in dwFlags, the function does not simplify URLs. In this case, "/hello/cruel/../world" is left as it is.
