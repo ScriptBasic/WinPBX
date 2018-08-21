@@ -204,7 +204,3 @@ Assorted Windows procedures.
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
-
-#### Include file
-
-AfxWin.inc
