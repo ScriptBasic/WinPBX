@@ -442,7 +442,7 @@ DIM dt AS DOUBLE = AfxFileDateTime(wszFileName)
 PRINT Format(dt, "yyyy-mm-dd hh:mm AM/PM")
 ```
 
-# <a name="AfxCurdir"></a>AfxCurdir / AfxGetCurDir / AfxGetCurrentDirectory
+# <a name="AfxCurDir"></a>AfxCurdir / AfxGetCurDir / AfxGetCurrentDirectory
 
 Retrieves the current directory for the current process.
 
