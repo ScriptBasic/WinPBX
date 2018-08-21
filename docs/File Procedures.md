@@ -21,8 +21,9 @@
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file ans returns the number of occurrences of the specified delimiter. |
 | AfxFolderExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
-| AfxGetCurDir | Retrieves the current directory for the current process. |
-| AfxGetCurrentDirectory | Retrieves the current directory for the current process. |
+| [AfxCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
+| [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
+| [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
 | AfxGetDriveType | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
 | AfxGetExeFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetExeFileName | Returns the file name of the program which is currently executing. |
@@ -422,13 +423,13 @@ FUNCTION AfxFileDateTime (BYREF wszFileName AS WSTRING) AS DOUBLE
 | ---------- | ----------- |
 | *wszFileName* | Filename to retrieve date and time for. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
 
-#### Return value:
+#### Return value
 
 The date and time as a Date Serial. If it fails, it returns 0.
 
 #### Remark
 
-Unicode replacement for Free Basic's FileDateTime.
+Unicode replacement for Free Basic's **FileDateTime**.
 
 #### Example
 
@@ -440,3 +441,21 @@ DIM wszFileName AS WSTRING * MAX_PATH = ExePath & "\c2.bas"
 DIM dt AS DOUBLE = AfxFileDateTime(wszFileName)
 PRINT Format(dt, "yyyy-mm-dd hh:mm AM/PM")
 ```
+
+# <a name="AfxCurdir"></a>AfxCurdir / AfxGetCurDir / AfxGetCurrentDirectory
+
+Retrieves the current directory for the current process.
+
+```
+FUNCTION AfxCurDir () AS CWSTR
+FUNCTION AfxGetCurDir () AS CWSTR
+FUNCTION AfxGetCurrentDirectory () AS CWSTR
+```
+
+#### Return value
+
+The name of the current directory for the current process.
+
+#### Remark
+
+Unicode replacement for Free Basic's ^^Curdir**.
