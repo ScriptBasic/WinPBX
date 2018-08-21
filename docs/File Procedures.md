@@ -2228,7 +2228,7 @@ FUNCTION AfxUrlCanonicalize (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS
 | ---------- | ----------- |
 | URL_UNESCAPE | Un-escape any escape sequences that the URLs contain, with two exceptions. The escape sequences for "?" and "#" are not un-escaped. If one of the URL_ESCAPE_XXX flags is also set, the two URLs are first un-escaped, then combined, then escaped. |
 | URL_ESCAPE_UNSAFE | Replace unsafe characters with their escape sequences. Unsafe characters are those characters that may be altered during transport across the Internet, and include the (<, >, ", #, {, }, \|, \\, ^, \[, ], and ') characters. This flag applies to all URLs, including opaque URLs. |
-| URL_PLUGGABLE_PROTOCOL | Combine URLs with client-defined pluggable protocols, according to the W3C specification. This flag does not apply to standard protocols such as ftp, http, gopher, and so on. If this flag is set, AfxUrlCombine does not simplify URLs, so there is no need to also set URL_DONT_SIMPLIFY. |
+| URL_PLUGGABLE_PROTOCOL | Combine URLs with client-defined pluggable protocols, according to the W3C specification. This flag does not apply to standard protocols such as ftp, http, gopher, and so on. If this flag is set, **AfxUrlCombine** does not simplify URLs, so there is no need to also set URL_DONT_SIMPLIFY. |
 | URL_ESCAPE_SPACES_ONLY | Replace only spaces with escape sequences. This flag takes precedence over URL_ESCAPE_UNSAFE, but does not apply to opaque URLs. |
 | URL_DONT_SIMPLIFY | Treat "/./" and "/../" in a URL string as literal characters, not as shorthand for navigation. See Remarks for further discussion. |
 | URL_NO_META | Defined to be the same as URL_DONT_SIMPLIFY. |
