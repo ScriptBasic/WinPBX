@@ -2021,3 +2021,23 @@ FUNCTION AfxPathRenameExtension (BYREF wszPath AS CONST WSTRING, BYREF wszExt AS
 #### Return value
 
 The new path. If the new path and extension would exceed MAX_PATH characters, the path won't be changed.
+
+# <a name="AfxPathSearchAndQualify"></a>AfxPathSearchAndQualify
+
+Determines if a given path is correctly formatted and fully qualified.
+
+```
+FUNCTION AfxPathSearchAndQualify (BYREF wszPath AS CONST WSTRING, BYREF wszFullyQualifiedPath AS CONST WSTRING, _
+   BYVAL cchFullyQualifiedPath AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to search. |
+| *wszFullyQualifiedPath* | A string of length MAX_PATH that contains the path to be referenced. |
+| *cchFullyQualifiedPath* | The size of the buffer pointed to by wszFullyQualifiedPath, in characters. |
+
+#### Return value
+
+True of False.
+
