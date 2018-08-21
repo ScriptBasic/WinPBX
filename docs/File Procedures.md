@@ -2004,3 +2004,20 @@ FUNCTION AfxPathRemoveFileSpec (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The changed path.
+
+# <a name="AfxPathRenameExtension"></a>AfxPathRenameExtension
+
+Replaces the extension of a file name with a new extension. If the file name does not contain an extension, the extension will be attached to the end of the string.
+
+```
+FUNCTION AfxPathRenameExtension (BYREF wszPath AS CONST WSTRING, BYREF wszExt AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path in which to replace the extension. |
+| *wszExt* | A string that contains a '.' character followed by the new extension. |
+
+#### Return value
+
+The new path. If the new path and extension would exceed MAX_PATH characters, the path won't be changed.
