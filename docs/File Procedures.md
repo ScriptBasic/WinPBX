@@ -2087,3 +2087,19 @@ FUNCTION AfxPathStripPath (BYREF wszPath AS CONST WSTRING) AS CWSTR
 
 The changed path.
 
+# <a name="AfxPathStripToRoot"></a>AfxPathStripToRoot
+
+Removes all parts of the path except for the root information.
+
+```
+FUNCTION AfxPathStripToRoot (BYREF wszRoot AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszRoot* | A string of length MAX_PATH that contains the path to be converted. |
+
+#### Return value
+
+Returns a string that contains only the root information taken from that path.
+
