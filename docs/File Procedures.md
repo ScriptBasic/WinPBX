@@ -24,7 +24,7 @@
 | [AfxFolderExists](#AfxFolderExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
-| AfxGetDriveType | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
+| [AfxGetDriveType](#AfxGetDriveType) | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
 | AfxGetExeFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | AfxGetExeFileName | Returns the file name of the program which is currently executing. |
 | AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
@@ -601,4 +601,20 @@ FUNCTION AfxGetExePathName () AS CWSTR
 #### Remarks
 
 The path name has a trailing backslash.
+
+# <a name="AfxGetDriveType"></a>AfxGetDriveType
+
+Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive.
+
+```
+FUNCTION AfxGetDriveType (BYVAL lpRootPathName AS LPCWSTR) as UINT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpRootPathName* | The root directory for the drive. A trailing backslash is required. If this parameter is NULL, the function uses the root of the current directory. |
+
+#### Return value
+
+Return value: DRIVE_UNKNOWN (0), DRIVE_NO_ROOT_DIR (1), DRIVE_REMOVABLE (2), DRIVE_FIXED(3), DRIVE_REMOTE (4), DRIVE_CDROM (5), DRIVE_RAMDISK (6).
 
