@@ -2149,3 +2149,19 @@ FUNCTION AfxPathUnExpandEnvStrings (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The unexpanded string.
+
+# <a name="AfxPathUnmakeSystemFolder"></a>AfxPathUnmakeSystemFolder
+
+Removes the attributes from a folder that make it a system folder. This folder must actually exist in the file system.
+
+```
+FUNCTION AfxPathUnmakeSystemFolder (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the name of an existing folder that will have the system folder attributes removed. |
+
+#### Return value
+
+Returns nonzero if successful, or zero otherwise.
