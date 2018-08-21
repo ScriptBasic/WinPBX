@@ -3,7 +3,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxBrowseForFolder](#AfxBrowseForFolder) | Displays a dialog box that enables the user to select a folder. |
-| AfxOpenFileDialog | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. |
+| [AfxOpenFileDialog](#AfxOpenFileDialog) | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. |
 | AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save. |
 
 # File and Folder Procedures
@@ -199,3 +199,46 @@ The path of the selected folder.
 
 If you don't pass any flags, the function will use BIF_RETURNONLYFSDIRS OR BIF_DONTGOBELOWDOMAIN OR BIF_USENEWUI OR BIF_RETURNFSANCESTORS.
 
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxBrowseForFolder(hwnd, "C:")
+```
+
+# <a name="AfxOpenFileDialog"></a>AfxOpenFileDialog
+
+Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. The dialog box uses the Explorer-style user interface.
+
+```
+FUNCTION AfxOpenFileDialog (BYVAL hwndOwner AS HWND, BYREF wszTitle AS WSTRING, BYREF wszFile AS WSTRING, _
+   BYREF wszInitialDir AS WSTRING, BYREF wszFilter AS WSTRING, BYREF wszDefExt AS WSTRING, _
+   BYVAL pdwFlags AS DWORD PTR = NULL, BYVAL pdwBufLen AS DWORD PTR = NULL) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwndOwner* | A handle to the window that owns the dialog box. This member can be any valid window handle, or it can be NULL if the dialog box has no owner. |
+| *wszTitle* | A string to be placed in the title bar of the dialog box. If this member is NULL, the system uses the default title (that is, **Open**). |
+| *wszFile* | The file name used to initialize the *File Name* edit control. |
+| *wszInitialDir* | The initial directory.  If no initial directory is specified, the dialog will use the current directory. |
+| *wszFilter* | A buffer containing pairs of "|" separated strings. The first string in each pair is a display string that describes the filter (for example, "Text Files"), and the second string specifies the filter pattern (for example, "\*.TXT"). To specify multiple filter patterns for a single display string, use a semicolon to separate the patterns (for example, "\*.TXT;\*.DOC;\*.BAK"). A pattern string can be a combination of valid file name characters and the asterisk (\*) wildcard character. Do not include spaces in the pattern string. The system does not change the order of the filters. It displays them in the File Types combo box in the order specified in *wszFilter*. |
+| *wszDefExt* | The default extension. This extension is appended to the file name if the user fails to type an extension. This string can be any length, but only the first three characters are appended. The string should not contain a period (.). If this member is NULL and the user fails to type an extension, no extension is appended. |
+| *dwFlags* | \[in, out, optional] A set of bit flags you can use to initialize the dialog box. When the dialog box returns, it sets these flags to indicate the user's input. This member can be a combination of the following flags. |
+| *dwBufLen* | \[in, out, optional] Maximum length of the returned string containing the selected file or files. |
+
+#### Return value
+
+If the OFN_ALLOWMULTISELECT flag is set and the user selects multiple files, the returned string contains the current directory followed by the file names of the selected files. For Explorer-style dialog boxes, the directory and file name strings are separated by semicolons. If the user selects only one file, the returned string does not have a separator between the path and file name.
+
+Parse the number of ",". If only one, then the user has selected only a file and the string contains the full path. If more, The first substring contains the path and the others the files. If the user has not selected any file, an empty string is returned. On failure, an empty string is returned and, if not null, the pdwBufLen parameter will be filled by the size of the required buffer in characters.
+
+#### Usage example:
+
+```
+DIM wszFile AS WSTRING * 260 = "*.*"
+DIM wszInitialDir AS STRING * 260 = CURDIR
+DIM wszFilter AS WSTRING * 260 = "BAS files (*.BAS)|*.BAS|" & "All Files (*.*)|*.*|"
+DIM dwFlags AS DWORD = OFN_EXPLORER OR OFN_FILEMUSTEXIST OR OFN_HIDEREADONLY OR OFN_ALLOWMULTISELECT
+DIM cws AS CWSTR = AfxOpenFileDialog(hwnd, "", wszFile, wszInitialDir, wszFilter, "BAS", @dwFlags, NULL)
+AfxMsg cws
+```
