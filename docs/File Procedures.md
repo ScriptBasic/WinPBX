@@ -2488,3 +2488,22 @@ If the function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT 
 To hash a URL into a single byte, set cbHash = SIZEOF(BYTE) and pbHash = VARPTR(bHashedValue), where bHashedValue is a one-byte buffer.
 
 To hash a URL into a DWORD, set cbHash = SIZEOF(DWORD) and pbHash = VARPTR(dwHashedValue), where dwHashedValue is a DWORD buffer.
+
+# <a name="AfxUrlIs"></a>AfxUrlIs
+
+Tests whether or not a URL is a specified type.
+
+```
+FUNCTION AfxUrlIs (BYREF wszUrl AS WSTRING, BYVAL nUrlIs AS URLIS) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+| *nUrlIs* | The type of URL to be tested for. This parameter can take one of the following values:<br>*URLIS_APPLIABLE*: Attempt to determine a valid scheme for the URL.<br>*URLIS_DIRECTORY*: Does the URL string end with a directory?<br>*URLIS_FILEURL*: Is the URL a file URL?<br>*URLIS_HASQUERY*: Does the URL have an appended query string?<br>*URLIS_NOHISTORY*: Is the URL a URL that is not typically tracked in navigation history?<br>*URLIS_OPAQUE*: Is the URL opaque?<br>*URLIS_URL*: Is the URL valid? |
+
+#### Return value
+
+For all but one of the URL types, **AfxUrlIs** returns True if the URL is the specified type, or False if not.
+
+If **AfxUrlIs** is set to URLIS_APPLIABLE, **AfxUrlIs** will attempt to determine the URL scheme. If the function is able to determine a scheme, it returns True, or False otherwise.
