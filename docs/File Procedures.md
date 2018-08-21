@@ -63,11 +63,11 @@
 | [AfxKill](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxMakeDir](#AfxMakeDir) | Creates a new directory. |
 | [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
-| AfxMoveFile | Moves an existing file or a directory, including its children. |
-| AfxName | Moves an existing file or a directory, including its children. |
+| [AfxMoveFile](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
+| [AfxName](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
 | AfxRemoveDirectory | Deletes an existing empty directory. |
 | AfxRemoveDir | Deletes an existing empty directory. |
-| AfxRenameFile | Moves an existing file or a directory, including its children. |
+| [AfxRenameFile](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
 | AfxRmDir | Deletes an existing empty directory. |
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
 | [AfxSetCurDir](#AfxChDir) | Changes the current directory for the current process. |
@@ -384,7 +384,7 @@ Possible errors include the following.
 
 #### Remarks
 
-**AfxMkDir** is an unicode replacement for Free Basic's **MkDir** and returns 0 on success, or or -1 on failure.
+**AfxMkDir** is an unicode replacement for Free Basic's **MkDir** and returns 0 on success, or -1 on failure.
 
 # <a name="AfxDeleteFile"></a>AfxDeleteFile / AfxKill
 
@@ -409,7 +409,7 @@ To get extended error information, call GetLastError.<br>
 
 If an application attempts to delete a file that does not exist, this function fails with ERROR_FILE_NOT_FOUND. If the file is a read-only file, the function fails with ERROR_ACCESS_DENIED.
 
-**AfxKill** is an unicode replacement for Free Basic's **Kill** and returns 0 on success, or or -1 on failure.
+**AfxKill** is an unicode replacement for Free Basic's **Kill** and returns 0 on success, or -1 on failure.
 
 # <a name="AfxFileDateTime"></a>AfxFileDateTime
 
@@ -418,10 +418,6 @@ Returns the file's last modified date and time as Date Serial.
 ```
 FUNCTION AfxFileDateTime (BYREF wszFileName AS WSTRING) AS DOUBLE
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *wszFileName* | Filename to retrieve date and time for. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
 
 #### Return value
 
@@ -459,3 +455,28 @@ The name of the current directory for the current process.
 #### Remark
 
 Unicode replacement for Free Basic's **CurDir**.
+
+# <a name="AfxRenameFile"></a>AfxRenameFile / AfxMoveFile / AfxName
+
+Moves an existing file or a directory, including its children.
+
+```
+FUNCTION AfxRenameFile (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxMoveFile (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxName (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LPCWSTR) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpExistingFileName* | The name of an existing file. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. If *lpExistingFileName* does not exist, **AfxRenameFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
+| *lpNewFileName* | The name of the new file. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+
+#### Return value:
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call GetLastError.<br>
+
+#### Remark
+
+**AfxName** is an unicode replacement for Free Basic's **Name** and returns 0 on success, or non-zerp on failure.
