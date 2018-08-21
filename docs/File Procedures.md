@@ -1906,7 +1906,7 @@ FUNCTION AfxPathRelativePathTo (BYREF wszFrom AS CONST WSTRING, BYVAL dwAttrFrom
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszFrom* | A string that contains the path that defines the start of the relative path. |
-| *dwAttrFrom* | The file attributes of wszFrom. If this value contains FILE_ATTRIBUTE_DIRECTORY, wszFrom is assumed to be a directory; otherwise, *wszFrom* is assumed to be a file. |
+| *dwAttrFrom* | The file attributes of *wszFrom*. If this value contains FILE_ATTRIBUTE_DIRECTORY, *wszFrom* is assumed to be a directory; otherwise, *wszFrom* is assumed to be a file. |
 | *wszTo* | A string that contains the path that defines the endpoint of the relative path. |
 | *dwAttrTo* | The file attributes of wszTo. If this value contains FILE_ATTRIBUTE_DIRECTORY, wszTo is assumed to be directory; otherwise, *wszTo* is assumed to be a file. |
 
