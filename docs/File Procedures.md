@@ -111,46 +111,46 @@
 | [AfxPathIsUNC](#AfxPathIsUNC) | Determines if the string is a valid Universal Naming Convention (UNC) for a server and share path. |
 | [AfxPathIsUNCServer](#AfxPathIsUNCServer) | Determines if a string is a valid Universal Naming Convention (UNC) for a server path only. |
 | [AfxPathIsUNCServerShare](#AfxPathIsUNCServerShare) | Determines if a string is a valid Universal Naming Convention (UNC) share path, \\\\*server*\\*share*. |
-| AfxPathIsURL | Tests a given string to determine if it conforms to a valid URL format. |
-| AfxPathMakePretty | Converts a path to all lowercase characters to give the path a consistent appearance. |
-| AfxPathMakeSystemFolder | Gives an existing folder the proper attributes to become a system folder. |
-| AfxPathMatchSpec | Searches a string using a Microsoft MS-DOS wild card match type. |
-| AfxPathMatchSpecEx | Searches a path to determine whether it contains a file of a specified file type extension. |
-| AfxPathParseIconLocation | Parses a file location string that contains a file location and icon index, and returns separate values. |
-| AfxPathQuoteSpaces | Searches a path for spaces. If spaces are found, the entire path is enclosed in quotation marks. |
-| AfxPathRelativePathTo | Creates a relative path from one file or folder to another. |
-| AfxPathRemoveArgs | Removes any arguments from a given path. |
-| AfxPathRemoveBackslash | Removes the trailing backslash from a given path. |
-| AfxPathRemoveBlanks | Removes all leading and trailing spaces from a string. |
-| AfxPathRemoveExtension | Removes the file name extension from a path, if one is present. |
-| AfxPathRemoveFileSpec | Removes the trailing file name and backslash from a path, if they are present. |
-| AfxPathRenameExtension | Replaces the extension of a file name with a new extension. If the file name does not contain an extension, the extension will be attached to the end of the string. |
-| AfxPathSearchAndQualify | Determines if a given path is correctly formatted and fully qualified. |
-| AfxPathSetDlgItemPath | Sets the text of a child control in a window or dialog box, using AfxCompactPath to ensure the path fits in the control. |
-| AfxPathSkipRoot | Parses a path, ignoring the drive letter or Universal Naming Convention (UNC) server/share path elements. |
-| AfxPathStripPath | Removes the path portion of a fully qualified path and file. |
-| AfxPathStripToRoot | Removes all parts of the path except for the root information. |
-| AfxPathUndecorate | Removes the decoration from a path string. |
-| AfxPathUnExpandEnvStrings | Replaces certain folder names in a fully-qualified path with their associated environment string. |
-| AfxPathUnmakeSystemFolder | Removes the attributes from a folder that make it a system folder. This folder must actually exist in the file system. |
-| AfxPathUnquoteSpaces | Removes quotes from the beginning and end of a path. |
-| AfxUrlApplyScheme | Determines a scheme for a specified URL string, and returns a string with an appropriate prefix. |
-| AfxUrlCanonicalize | Converts a URL string into canonical form. |
-| AfxUrlCombine | When provided with a relative URL and its base, returns a URL in canonical form. |
-| AfxUrlCompare | Makes a case-sensitive comparison of two URL strings. |
-| AfxUrlCreateFromPath | Converts a Microsoft MS-DOS path to a canonicalized URL. |
-| AfxUrlEscape | Converts characters in a URL that might be altered during transport across the Internet ("unsafe" characters) into their corresponding escape sequences. |
-| AfxUrlEscapeSpaces | Converts space characters into their corresponding escape sequence. |
-| AfxUrlFixup | Attempts to correct a URL whose protocol identifier is incorrect. For example, htttp will be changed to http. |
-| AfxUrlGetLocation | Retrieves the location from a URL. |
-| AfxUrlGetPart | Accepts a URL string and returns a specified part of that URL. |
-| AfxUrlHash | Hashes a URL string. |
-| AfxUrlIs | Tests whether or not a URL is a specified type. |
-| AfxUrlIsFileUrl | Tests a URL to determine if it is a file URL. |
-| AfxUrlIsNoHistory | Returns whether a URL is a URL that browsers typically do not include in navigation history. |
-| AfxUrlIsOpaque | Returns whether a URL is opaque. |
-| AfxUrlUnescape | Converts escape sequences back into ordinary characters. |
-| AfxUrlUnescapeInPlace | Converts escape sequences back into ordinary characters and overwrites the original string. |
+| [AfxPathIsURL](#AfxPathIsURL) | Tests a given string to determine if it conforms to a valid URL format. |
+| [AfxPathMakePretty](#AfxPathMakePretty) | Converts a path to all lowercase characters to give the path a consistent appearance. |
+| [AfxPathMakeSystemFolder](#AfxPathMakeSystemFolder) | Gives an existing folder the proper attributes to become a system folder. |
+| [AfxPathMatchSpec](#AfxPathMatchSpec) | Searches a string using a Microsoft MS-DOS wild card match type. |
+| [AfxPathMatchSpecEx](#AfxPathMatchSpecEx) | Searches a path to determine whether it contains a file of a specified file type extension. |
+| [AfxPathParseIconLocation](#AfxPathParseIconLocation) | Parses a file location string that contains a file location and icon index, and returns separate values. |
+| [AfxPathQuoteSpaces](#AfxPathQuoteSpaces) | Searches a path for spaces. If spaces are found, the entire path is enclosed in quotation marks. |
+| [AfxPathRelativePathTo](#AfxPathRelativePathTo) | Creates a relative path from one file or folder to another. |
+| [AfxPathRemoveArgs](#AfxPathRemoveArgs) | Removes any arguments from a given path. |
+| [AfxPathRemoveBackslash](#AfxPathRemoveBackslash) | Removes the trailing backslash from a given path. |
+| [AfxPathRemoveBlanks](#AfxPathRemoveBlanks) | Removes all leading and trailing spaces from a string. |
+| [AfxPathRemoveExtension](#AfxPathRemoveExtension) | Removes the file name extension from a path, if one is present. |
+| [AfxPathRemoveFileSpec](#AfxPathRemoveFileSpec) | Removes the trailing file name and backslash from a path, if they are present. |
+| [AfxPathRenameExtension](#AfxPathRenameExtension) | Replaces the extension of a file name with a new extension. If the file name does not contain an extension, the extension will be attached to the end of the string. |
+| [AfxPathSearchAndQualify](#AfxPathSearchAndQualify) | Determines if a given path is correctly formatted and fully qualified. |
+| [AfxPathSetDlgItemPath](#AfxPathSetDlgItemPath) | Sets the text of a child control in a window or dialog box, using AfxCompactPath to ensure the path fits in the control. |
+| [AfxPathSkipRoot](#AfxPathSkipRoot) | Parses a path, ignoring the drive letter or Universal Naming Convention (UNC) server/share path elements. |
+| [AfxPathStripPath](#AfxPathStripPath) | Removes the path portion of a fully qualified path and file. |
+| [AfxPathStripToRoot](#AfxPathStripToRoot) | Removes all parts of the path except for the root information. |
+| [AfxPathUndecorate](#AfxPathUndecorate) | Removes the decoration from a path string. |
+| [AfxPathUnExpandEnvStrings](#AfxPathUnExpandEnvStrings) | Replaces certain folder names in a fully-qualified path with their associated environment string. |
+| [AfxPathUnmakeSystemFolder](#AfxPathUnmakeSystemFolder) | Removes the attributes from a folder that make it a system folder. This folder must actually exist in the file system. |
+| [AfxPathUnquoteSpaces](#AfxPathUnquoteSpaces) | Removes quotes from the beginning and end of a path. |
+| [AfxUrlApplyScheme](#AfxUrlApplyScheme) | Determines a scheme for a specified URL string, and returns a string with an appropriate prefix. |
+| [AfxUrlCanonicalize](#AfxUrlCanonicalize) | Converts a URL string into canonical form. |
+| [AfxUrlCombine](#AfxUrlCombine) | When provided with a relative URL and its base, returns a URL in canonical form. |
+| [AfxUrlCompare](#AfxUrlCompare) | Makes a case-sensitive comparison of two URL strings. |
+| [AfxUrlCreateFromPath](#AfxUrlCreateFromPath) | Converts a Microsoft MS-DOS path to a canonicalized URL. |
+| [AfxUrlEscape](#AfxUrlEscape) | Converts characters in a URL that might be altered during transport across the Internet ("unsafe" characters) into their corresponding escape sequences. |
+| [AfxUrlEscapeSpaces](#AfxUrlEscapeSpaces) | Converts space characters into their corresponding escape sequence. |
+| [AfxUrlFixup](#AfxUrlFixup) | Attempts to correct a URL whose protocol identifier is incorrect. For example, htttp will be changed to http. |
+| [AfxUrlGetLocation](#AfxUrlGetLocation) | Retrieves the location from a URL. |
+| [AfxUrlGetPart](#AfxUrlGetPart) | Accepts a URL string and returns a specified part of that URL. |
+| [AfxUrlHash](#AfxUrlHash) | Hashes a URL string. |
+| [AfxUrlIs](#AfxUrlIs) | Tests whether or not a URL is a specified type. |
+| [AfxUrlIsFileUrl](#AfxUrlIsFileUrl) | Tests a URL to determine if it is a file URL. |
+| [AfxUrlIsNoHistory](#AfxUrlIsNoHistory) | Returns whether a URL is a URL that browsers typically do not include in navigation history. |
+| [AfxUrlIsOpaque](#AfxUrlIsOpaque) | Returns whether a URL is opaque. |
+| [AfxUrlUnescape](#AfxUrlUnescape) | Converts escape sequences back into ordinary characters. |
+| [AfxUrlUnescapeInPlace](#AfxUrlUnescapeInPlace) | Converts escape sequences back into ordinary characters and overwrites the original string. |
 
 # <a name="AfxBrowseForFolder"></a>AfxBrowseForFolder
 
