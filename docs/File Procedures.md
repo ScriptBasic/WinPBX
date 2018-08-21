@@ -10,7 +10,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxChDir | Changes the current directory for the current process. |
+| [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
 | AfxCopyFile | Copies an existing file to a new file. |
 | AfxCreateDirectory | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
@@ -70,8 +70,8 @@
 | AfxRenameFile | Moves an existing file or a directory, including its children. |
 | AfxRmDir | Deletes an existing empty directory. |
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
-| AfxSetCurDir | Changes the current directory for the current process. |
-| AfxSetCurrentDirectory | Changes the current directory for the current process. |
+| [AfxSetCurDir](#AfxChDir) | Changes the current directory for the current process. |
+| [AfxSetCurrentDirectory](#AfxChDir) | Changes the current directory for the current process. |
 
 ## Path and Url Procedures
 
