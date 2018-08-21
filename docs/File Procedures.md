@@ -1251,3 +1251,31 @@ The common prefix.
 DIM cws AS CWSTR = AfxPathCommonPrefix("C:\win\desktop\temp.txt", "c:\win\tray\sample.txt")
 ```
 
+# <a name="AfxPathCompactPath"></a>AfxPathCompactPath
+
+Truncates a file path to fit within a given pixel width by replacing path components with ellipses.
+
+```
+FUNCTION AfxPathCompactPath (BYVAL hDC AS HDC, BYREF wszPath AS CONST WSTRING, BYVAL dx AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hDC* | A handle to the device context used for font metrics. This value can be NULL. |
+| *wszPath* | A string that contains the path to be modified. |
+| *dx* | The width, in pixels, in which the string must fit. |
+
+#### Return value
+
+The compacted path.
+
+#### Remarks
+
+This function uses the font currently selected in *hDC* to calculate the width of the text. This function will not compact the path beyond the base file name preceded by ellipses.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCompactPath(NULL, "C:\path1\path2\sample.txt", 180)
+```
+
