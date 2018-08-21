@@ -1417,3 +1417,24 @@ The truncated path.
 ```
 DIM cws AS CWSTR = AfxPathFindNextComponent("C:\TEST\file.txt")
 ```
+
+# <a name="AfxPathFindOnPath"></a>AfxPathFindOnPath
+
+Searches for a file.
+
+```
+FUNCTION AfxPathFindOnPath (BYREF wszFile AS CONST WSTRING, BYVAL ppwszOtherDirs AS WSTRING PTR PTR = NULL) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFile* | A string that contains the file name for which to search. If the search is successful, this parameter is used to return the fully-qualified path name. |
+| *ppwszOtherDirs* | An optional, null-terminated array of directories to be searched first. This value can be NULL. |
+
+#### Return value
+
+The fully-qualified path name on success or an empty string on failure.
+
+#### Remarks
+
+**AfxPathFindOnPath** searches for the file specified by *wszFile*. If no directories are specified in *ppwszOtherDirs*, it attempts to find the file by searching standard directories such as System32 and the directories specified in the PATH environment variable. To expedite the process or enable **AfxPathFindOnPath** to search a wider range of directories, use the *ppwszOtherDirs* parameter to specify one or more directories to be searched first. If more than one file has the name specified by *wszFile*, **AfxPathFindOnPath** returns the first instance it finds.
