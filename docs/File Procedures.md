@@ -2133,3 +2133,19 @@ The following table illustrates how strings are modified by **AfxPathUndecorate*
 | C:\\Path\\File\[12] | C:\\Path\\File |
 | C:\\Path\\File.txt | C:\\Path\\File.txt |
 | C:\\Path\\\[3].txt | C:\\Path\\\[3].txt |
+
+# <a name="AfxPathUnExpandEnvStrings"></a>AfxPathUnExpandEnvStrings
+
+Replaces certain folder names in a fully-qualified path with their associated environment string.
+
+```
+FUNCTION AfxPathUnExpandEnvStrings (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be unexpanded. |
+
+#### Return value
+
+The unexpanded string.
