@@ -1147,3 +1147,25 @@ The path supplied in *wszPath* cannot begin with "..\\" or ".\\" to produce a re
 DIM cws AS CWSTR = AfxPathAppend("name_1\name_2", "name_3")
 ```
 
+# <a name="AfxPathBuildRoot"></a>AfxPathBuildRoot
+
+Creates a root path from a given drive number.
+
+```
+FUNCTION AfxPathBuildRoot (BYVAL nDrive AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDrive* | A variable of type LONG that indicates the desired drive number. It should be between 0 and 25. |
+
+#### Return value
+
+The root path. If the call fails for any reason (for example, an invalid drive number), an empty string is returned.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathBuildRoot(2) ' output: C:\
+```
+
