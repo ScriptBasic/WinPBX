@@ -2330,7 +2330,7 @@ FUNCTION AfxUrlEscape (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszUrl* | A string that contains the MS-DOS path. |
-| *dwFlags* | The flags that indicate which portion of the URL is being provided in wszURL and which characters in that string should be converted to their escape sequences. |
+| *dwFlags* | The flags that indicate which portion of the URL is being provided in *wszURL* and which characters in that string should be converted to their escape sequences. |
 
 | Flag       | Description |
 | ---------- | ----------- |
