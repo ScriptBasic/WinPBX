@@ -2103,3 +2103,33 @@ FUNCTION AfxPathStripToRoot (BYREF wszRoot AS CONST WSTRING) AS CWSTR
 
 Returns a string that contains only the root information taken from that path.
 
+# <a name="AfxPathUndecorate"></a>AfxPathUndecorate
+
+Removes the decoration from a path string.
+
+```
+FUNCTION AfxPathUndecorate (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path. |
+
+#### Return value
+
+The undecorated string.
+
+#### Remarks
+
+A decoration consists of a pair of square brackets with one or more digits in between, inserted immediately after the base name and before the file name extension.
+
+#### Example
+
+The following table illustrates how strings are modified by **AfxPathUndecorate**.
+
+| Initial String | Undecorated String |
+| -------------- | ------------------ |
+| C:\\Path\\File\[5].txt | C:\\Path\\File.txt |
+| C:\\Path\\File\[12] | C:\\Path\\File |
+| C:\\Path\\File.txt | C:\\Path\\File.txt |
+| C:\\Path\\\[3].txt | C:\\Path\\\[3].txt |
