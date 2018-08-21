@@ -2181,3 +2181,32 @@ FUNCTION AfxPathUnquoteSpaces (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The unquoted path.
+
+# <a name="AfxUrlApplyScheme"></a>AfxUrlApplyScheme
+
+Determines a scheme for a specified URL string, and returns a string with an appropriate prefix.
+
+```
+FUNCTION AfxUrlApplyScheme (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains a URL. |
+| *dwFlags* | The flags that specify how to determine the scheme. The flags can be combined. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| URL_APPLY_DEFAULT | Apply the default scheme if AfxUrlApplyScheme can't determine one. The default prefix is stored in the registry but is typically "http". |
+| URL_APPLY_GUESSSCHEME | Attempt to determine the scheme by examining *wszUrl*. |
+| URL_APPLY_GUESSFILE | Attempt to determine a file URL from *wszUrl*. |
+| URL_APPLY_FORCEAPPLY | Force **AfxUrlApplyScheme** to determine a scheme for *wszUrl*. |
+| URL_APPLY_FORCEAPPLY | Force **AfxUrlApplyScheme** to determine a scheme for *wszUrl*. |
+
+#### Return value
+
+The changed url.
+
+#### Remarks
+
+If the URL has a valid scheme, the string will not be modified. However, almost any combination of two or more characters followed by a colon will be parsed as a scheme. Valid characters include some common punctuation marks, such as ".". If your input string fits this description, **AfxUrlApplyScheme** may treat it as valid and not apply a scheme. To force the function to apply a scheme to a URL, set the URL_APPLY_FORCEAPPLY and URL_APPLY_DEFAULT flags in *dwFlags*. This combination of flags forces the function to apply a scheme to the URL. Typically, the function will not be able to determine a valid scheme. The second flag guarantees that, if no valid scheme can be determined, the function will apply the default scheme to the URL.
