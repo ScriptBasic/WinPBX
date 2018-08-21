@@ -19,8 +19,8 @@
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
 | [AfxFileExists](#AfxFileExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
-| AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
-| AfxFileScan | Scans a text file and returns the number of occurrences of the specified delimiter. |
+| [AfxFileReadAllLines](#AfxFileReadAllLines) | Reads all the lines of the specified file into a safe array. |
+| [AfxFileScan](#AfxFileScan) | Scans a text file and returns the number of occurrences of the specified delimiter. |
 | [AfxFolderExists](#AfxFolderExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
@@ -1005,3 +1005,42 @@ FUNCTION AfxIsTemporaryFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxFileScan"></a>AfxFileScan
+
+Scans a text file ans returns the number of occurrences of the specified delimiter.
+
+```
+FUNCTION AfxFileScanA (BYREF wszFileName AS WSTRING, BYREF Delimiter AS ZSTRING = CHR(13, 10)) AS DWORD
+FUNCTION AfxFileScanW (BYREF wszFileName AS WSTRING, BYREF Delimiter AS WSTRING = CHR(13, 10)) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Path of the file to scan. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+| *Delimiter* | Optional. Delimiter to find. Default value is CHR(13, 10), which returns the number of lines. You can use CHR(10) for Linux files, "," for comma delimited cvs files, CHR(9) for spreadshets in tab delimited format, etc. |
+
+#### Remarks
+
+Use **AfxFileScanA** for ansi text files and **AfxFileScanW** for unicode text files.
+
+# <a name="AfxFileReadAllLines"></a>AfxFileReadAllLines
+
+Reads all the lines of the specified file into a safe array.
+
+```
+FUNCTION AfxFileReadAllLinesA (BYREF wszFileName AS WSTRING, BYREF Delimiter AS ZSTRING = CHR(13, 10)) AS CSafeArray
+FUNCTION AfxFileReadAllLinesW (BYREF wszFileName AS WSTRING, BYREF Delimiter AS WSTRING = CHR(13, 10)) AS CSafeArray
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Path of the file to scan. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+| *Delimiter* | Optional. Delimiter to find. Default value is CHR(13, 10), which returns the number of lines. You can use CHR(10) for Linux files, "," for comma delimited cvs files, CHR(9) for spreadshets in tab delimited format, etc. |
+
+#### Remarks
+
+Use **AfxFileReadAllLinesA** for ansi text files and **AfxFileReadAllLinesW** for unicode text files.
+
+Because it returns a safe array, this function is located in the CSafeArray.inc include file.
+
