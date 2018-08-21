@@ -1852,3 +1852,28 @@ Returns one of the following values:
 | TRUE | A file type extension specified in *wszSpec* was found in the path pointed to by *wszFile*. |
 | FALSE | The path pointed to by *wszFile* does not contain any file type extension specified in *wszSpec*. |
 
+# <a name="AfxPathParseIconLocation"></a>AfxPathParseIconLocation
+
+Parses a file location string that contains a file location and icon index, and returns separate values.
+
+```
+FUNCTION AfxPathParseIconLocation (BYREF wszIconFile AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszIconFile* | A string that contains a file location string. It should be in the form "*path,iconindex*". |
+
+#### Return value
+
+Returns the valid icon index value.
+
+#### Remarks
+
+This function is useful for taking a DefaultIcon value retrieved from the registry by *SHGetValue* and separating the icon index from the path.
+
+#### Usage example
+
+```
+DIM wszIconLocation AS CWSTR = AfxPathParseIconLocation("C:\TEST\sample.txt,3")
+```
