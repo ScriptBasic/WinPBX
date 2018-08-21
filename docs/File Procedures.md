@@ -1772,6 +1772,7 @@ Returns True if wszPath has a valid URL format, or Fañse otherwise.
 
 This function does not verify that the path points to an existing site—only that it has a valid URL format.
 
+
 # <a name="AfxPathMakePretty"></a>AfxPathMakePretty
 
 Converts a path to all lowercase characters to give the path a consistent appearance.
@@ -1791,4 +1792,21 @@ The changed path.
 #### Remarks
 
 This function only operates on paths that are entirely uppercase. For example: C:\WINDOWS will be converted to c:\windows, but c:\Windows will not be changed.
+
+
+# <a name="AfxPathMakeSystemFolder"></a>AfxPathMakeSystemFolder
+
+Gives an existing folder the proper attributes to become a system folder.
+
+```
+FUNCTION AfxPathMakeSystemFolder (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the name of an existing folder that will be made into a system folder. |
+
+#### Return value
+
+Returns True if successful, or False otherwise.
 
