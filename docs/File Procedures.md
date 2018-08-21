@@ -2197,7 +2197,7 @@ FUNCTION AfxUrlApplyScheme (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS 
 
 | Flag       | Description |
 | ---------- | ----------- |
-| URL_APPLY_DEFAULT | Apply the default scheme if AfxUrlApplyScheme can't determine one. The default prefix is stored in the registry but is typically "http". |
+| URL_APPLY_DEFAULT | Apply the default scheme if **AfxUrlApplyScheme** can't determine one. The default prefix is stored in the registry but is typically "http". |
 | URL_APPLY_GUESSSCHEME | Attempt to determine the scheme by examining *wszUrl*. |
 | URL_APPLY_GUESSFILE | Attempt to determine a file URL from *wszUrl*. |
 | URL_APPLY_FORCEAPPLY | Force **AfxUrlApplyScheme** to determine a scheme for *wszUrl*. |
