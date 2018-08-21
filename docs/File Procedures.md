@@ -1877,3 +1877,19 @@ This function is useful for taking a DefaultIcon value retrieved from the regist
 ```
 DIM wszIconLocation AS CWSTR = AfxPathParseIconLocation("C:\TEST\sample.txt,3")
 ```
+
+# <a name="AfxPathQuoteSpaces"></a>AfxPathQuoteSpaces
+
+Searches a path for spaces. If spaces are found, the entire path is enclosed in quotation marks.
+
+```
+FUNCTION AfxPathQuoteSpaces (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be searched. |
+
+#### Return value
+
+True if spaces were found; otherwise, False.
