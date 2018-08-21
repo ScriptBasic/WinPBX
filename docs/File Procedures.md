@@ -126,7 +126,7 @@
 | [AfxPathRemoveFileSpec](#AfxPathRemoveFileSpec) | Removes the trailing file name and backslash from a path, if they are present. |
 | [AfxPathRenameExtension](#AfxPathRenameExtension) | Replaces the extension of a file name with a new extension. If the file name does not contain an extension, the extension will be attached to the end of the string. |
 | [AfxPathSearchAndQualify](#AfxPathSearchAndQualify) | Determines if a given path is correctly formatted and fully qualified. |
-| [AfxPathSetDlgItemPath](#AfxPathSetDlgItemPath) | Sets the text of a child control in a window or dialog box, using AfxCompactPath to ensure the path fits in the control. |
+| [AfxPathSetDlgItemPath](#AfxPathSetDlgItemPath) | Sets the text of a child control in a window or dialog box, using **AfxCompactPath** to ensure the path fits in the control. |
 | [AfxPathSkipRoot](#AfxPathSkipRoot) | Parses a path, ignoring the drive letter or Universal Naming Convention (UNC) server/share path elements. |
 | [AfxPathStripPath](#AfxPathStripPath) | Removes the path portion of a fully qualified path and file. |
 | [AfxPathStripToRoot](#AfxPathStripToRoot) | Removes all parts of the path except for the root information. |
