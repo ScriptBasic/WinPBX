@@ -2071,3 +2071,19 @@ FUNCTION AfxPathSkipRoot (BYREF wszPath AS CONST WSTRING) AS CWSTR
 
 The changed path.
 
+# <a name="AfxPathStripPath"></a>AfxPathStripPath
+
+Removes the path portion of a fully qualified path and file.
+
+```
+FUNCTION AfxPathStripPath (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path and file name. When this method returns successfully, the string contains only the file name, with the path removed. |
+
+#### Return value
+
+The changed path.
+
