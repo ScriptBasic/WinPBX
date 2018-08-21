@@ -28,11 +28,11 @@ Assorted COM procedures.
 | [AfxIsVarTypeUnsignedInteger](#AfxIsVarTypeUnsignedInteger) | Checks if a variant contains an unsigned integer. |
 | [AfxIsVarTypeInteger](#AfxIsVarTypeInteger) | Checks if a variant contains an integer. |
 | [AfxIsVarTypeNumber](#AfxIsVarTypeNumber) | Checks if a variant contains a number. |
+| [AfxVarToStr](#AfxVarToStr) | Extracts the contents of a VARIANT and returns them as a CWSTR. |
 | [AfxVariantGetElementCount](#AfxVariantGetElementCount) | Retrieves the element count of a variant structure. |
 | [AfxVariantToBuffer](#AfxVariantToBuffer) | Extracts the contents of a variant that contains an array of bytes. |
-| [AfxVariantToStringAlloc](#AfxVariantToStringAlloc) | Extracts the variant value of a variant structure to a string. |
-| [AfxVarToStr](#AfxVarToStr) | Extracts the contents of a VARIANT and returns them as a CWSTR. |
 | [AfxVariantToString](#AfxVariantToString) | Extracts the variant value of a variant structure to a string. |
+| [AfxVariantToStringAlloc](#AfxVariantToStringAlloc) | Extracts the variant value of a variant structure to a string. |
 
 # <a name="AfxAcode"></a>AfxAcode
 
