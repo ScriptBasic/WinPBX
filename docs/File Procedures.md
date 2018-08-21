@@ -426,6 +426,10 @@ FUNCTION AfxFileDateTime (BYREF wszFileName AS WSTRING) AS DOUBLE
 
 The date and time as a Date Serial. If it fails, it returns 0.
 
+#### Remark
+
+Unicode replacement for Free Basic's FileDateTime.
+
 #### Example
 
 ```
