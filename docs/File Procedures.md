@@ -2210,3 +2210,37 @@ The changed url.
 #### Remarks
 
 If the URL has a valid scheme, the string will not be modified. However, almost any combination of two or more characters followed by a colon will be parsed as a scheme. Valid characters include some common punctuation marks, such as ".". If your input string fits this description, **AfxUrlApplyScheme** may treat it as valid and not apply a scheme. To force the function to apply a scheme to a URL, set the URL_APPLY_FORCEAPPLY and URL_APPLY_DEFAULT flags in *dwFlags*. This combination of flags forces the function to apply a scheme to the URL. Typically, the function will not be able to determine a valid scheme. The second flag guarantees that, if no valid scheme can be determined, the function will apply the default scheme to the URL.
+
+# <a name="AfxUrlCanonicalize"></a>AfxUrlCanonicalize
+
+Converts a URL string into canonical form.
+
+```
+FUNCTION AfxUrlCanonicalize (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains a URL. If the string does not refer to a file, it must include a valid scheme such as "http://". |
+| *dwFlags* | The flags that specify how the URL is converted to canonical form. The flags can be combined. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| URL_UNESCAPE | Un-escape any escape sequences that the URLs contain, with two exceptions. The escape sequences for "?" and "#" are not un-escaped. If one of the URL_ESCAPE_XXX flags is also set, the two URLs are first un-escaped, then combined, then escaped. |
+| URL_ESCAPE_UNSAFE | Replace unsafe characters with their escape sequences. Unsafe characters are those characters that may be altered during transport across the Internet, and include the (<, >, ", #, {, }, \|, \\, ^, \[, ], and ') characters. This flag applies to all URLs, including opaque URLs. |
+| URL_PLUGGABLE_PROTOCOL | Combine URLs with client-defined pluggable protocols, according to the W3C specification. This flag does not apply to standard protocols such as ftp, http, gopher, and so on. If this flag is set, AfxUrlCombine does not simplify URLs, so there is no need to also set URL_DONT_SIMPLIFY. |
+| URL_ESCAPE_SPACES_ONLY | Replace only spaces with escape sequences. This flag takes precedence over URL_ESCAPE_UNSAFE, but does not apply to opaque URLs. |
+| URL_DONT_SIMPLIFY | Treat "/./" and "/../" in a URL string as literal characters, not as shorthand for navigation. See Remarks for further discussion. |
+| URL_NO_META | Defined to be the same as URL_DONT_SIMPLIFY. |
+| URL_ESCAPE_PERCENT | Convert any occurrence of "%" to its escape sequence. |
+| URL_ESCAPE_AS_UTF8 | Windows 7 and later. Percent-encode all non-ASCII characters as their UTF-8 equivalents. |
+
+#### Return value
+
+The canonicalized url.
+
+#### Remarks
+
+This function performs such tasks as replacing unsafe characters with their escape sequences and collapsing sequences like "..\\...".
+
+If a URL string contains "/../" or "/./", **AfxUrlCanonicalize** normally treats the characters as indicating navigation in the URL hierarchy. The function simplifies the URLs before combining them. For instance "/hello/cruel/../world" is simplified to "/hello/world". If the URL_DONT_SIMPLIFY flag is set in *dwFlags*, the function does not simplify URLs. In this case, "/hello/cruel/../world" is left as it is.
