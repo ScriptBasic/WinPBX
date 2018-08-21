@@ -1,3 +1,9 @@
+# File Procedures
+
+Assorted file procedures.
+
+**Include file**: AfxWin.inc
+
 # Dialogs
 
 | Name       | Description |
