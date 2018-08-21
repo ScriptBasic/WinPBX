@@ -2507,3 +2507,23 @@ FUNCTION AfxUrlIs (BYREF wszUrl AS WSTRING, BYVAL nUrlIs AS URLIS) AS BOOLEAN
 For all but one of the URL types, **AfxUrlIs** returns True if the URL is the specified type, or False if not.
 
 If **AfxUrlIs** is set to URLIS_APPLIABLE, **AfxUrlIs** will attempt to determine the URL scheme. If the function is able to determine a scheme, it returns True, or False otherwise.
+
+# <a name="AfxUrlIsFileUrl"></a>AfxUrlIsFileUrl
+
+Tests a URL to determine if it is a file URL.
+
+```
+FUNCTION AfxUrlIsFileUrl (BYREF wszUrl AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL to be corrected. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+Returns True if the URL is a file URL, or False otherwise.
+
+#### Remarks
+
+A file URL has the form "File:// xxx".
