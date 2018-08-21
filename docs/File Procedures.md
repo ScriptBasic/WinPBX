@@ -13,6 +13,7 @@
 | [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxCopyFile](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
+| [AfxCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
@@ -21,7 +22,6 @@
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file ans returns the number of occurrences of the specified delimiter. |
 | AfxFolderExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
-| [AfxCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
 | AfxGetDriveType | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
