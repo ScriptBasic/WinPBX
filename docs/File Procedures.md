@@ -258,6 +258,7 @@ DIM cws AS CWSTR = AfxOpenFileDialog(hwnd, "", wszFile, wszInitialDir, wszFilter
 AfxMsg cws
 ```
 
+# <a name="AfxSaveFileDialog"></a>AfxSaveFileDialog
 
 Creates a **Save** dialog box that lets the user specify the drive, directory, and name of a file to save. The dialog box uses the Explorer-style user interface.
 
