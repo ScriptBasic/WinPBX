@@ -1370,6 +1370,8 @@ The file name extension.
 
 Note that a valid file name extension cannot contain a space.
 
+#### Usage example
+
 ```
 DIM cws AS CWSTR = AfxPathFindExtension("C:\TEST\filetxt")
 ```
@@ -1389,3 +1391,29 @@ FUNCTION AfxPathFindFileName (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The file name.
+
+# <a name="AfxPathFindNextComponent"></a>AfxPathFindNextComponent
+
+Searches a path for a file name.
+
+```
+FUNCTION AfxPathFindNextComponent (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to parse. This string must not be longer than MAX_PATH characters, plus the terminating null character. Path components are delimited by backslashes. For instance, the path "c:\\path1\\path2\\file.txt" has four components: c:, path1, path2, and file.txt. |
+
+#### Return value
+
+The truncated path.
+
+#### Remarks
+
+*AfxPathFindNextComponent* walks a path string until it encounters a backslash ("\\"), ignores everything up to that point including the backslash, and returns the rest of the path. Therefore, if a path begins with a backslash (such as \\path1\\path2), the function simply removes the initial backslash and returns the rest (path1\\path2).
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathFindExtension("C:\TEST\filetxt")
+```
