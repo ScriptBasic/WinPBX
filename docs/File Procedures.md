@@ -1601,3 +1601,19 @@ FUNCTION AfxPathIsHTMLFile (BYREF wszFile AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns True if the file is an HTML file, or False otherwise.
+
+# <a name="AfxPathIsLFNFileSpec"></a>AfxPathIsLFNFileSpec
+
+Determines whether a file name is in long format.
+
+```
+FUNCTION AfxPathIsLFNFileSpec (BYREF wszName AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszName* | A string that contains the file name to be tested. |
+
+#### Return value
+
+Returns True if wszName exceeds the number of characters allowed by the 8.3 format, or False otherwise.
