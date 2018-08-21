@@ -16,6 +16,10 @@ Assorted COM procedures.
 | [AfxSafeRelease](#AfxSafeRelease) | Decrements the reference count for an interface on an object. |
 | [AfxAdvise](#AfxAdvise) | Establishes a connection between the connection point object and the client's sink. |
 | [AfxUnadvise](#AfxUnadvise) | Releases the events connection identified with the cookie returned by the Advise method. |
+| [AfxWstrAlloc](#AfxWstrAlloc) | Takes a null terminated wide string as input, and returns a pointer to a new wide string allocated with CoTaskMemAlloc. |
+| [AfxGetOleErrorInfo](#AfxGetOleErrorInfo) | Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. |
+| [AfxOleCreateFont](#AfxOleCreateFont) | Creates a standard IFont object. |
+| [AfxOleCreateFontDisp](#AfxOleCreateFontDisp) | Creates a standard IFontDisp object. |
 | [AfxGetVarType](#AfxGetVarType) | Returns the tyè of a variant. |
 | [AfxIsVarTypeFloat](#AfxIsVarTypeFloat) | Checks if a variant contains a float value. |
 | [AfxIsVariantArray](#AfxIsVariantArray) | Checks if a variant contains an array. |
@@ -29,7 +33,6 @@ Assorted COM procedures.
 | [AfxVariantToStringAlloc](#AfxVariantToStringAlloc) | Extracts the variant value of a variant structure to a string. |
 | [AfxVarToStr](#AfxVarToStr) | Extracts the contents of a VARIANT and returns them as a CWSTR. |
 | [AfxVariantToString](#AfxVariantToString) | Extracts the variant value of a variant structure to a string. |
-| [AfxWstrAlloc](#AfxWstrAlloc) | Takes a null terminated wide string as input, and returns a pointer to a new wide string allocated with CoTaskMemAlloc. |
 
 # <a name="AfxAcode"></a>AfxAcode
 
