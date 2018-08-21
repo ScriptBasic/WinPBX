@@ -1423,7 +1423,8 @@ DIM cws AS CWSTR = AfxPathFindNextComponent("C:\TEST\file.txt")
 Searches for a file.
 
 ```
-FUNCTION AfxPathFindOnPath (BYREF wszFile AS CONST WSTRING, BYVAL ppwszOtherDirs AS WSTRING PTR PTR = NULL) AS CWSTR
+FUNCTION AfxPathFindOnPath (BYREF wszFile AS CONST WSTRING, _
+   BYVAL ppwszOtherDirs AS WSTRING PTR PTR = NULL) AS CWSTR
 ```
 
 | Parameter  | Description |
