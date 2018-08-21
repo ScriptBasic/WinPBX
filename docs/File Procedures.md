@@ -11,10 +11,10 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
-| AfxCopyFile | Copies an existing file to a new file. |
+| [AfxCopyFile](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxCreateDirectory | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
-| AfxFileCopy | Copies an existing file to a new file. |
+| [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxDeleteFile | Deletes the specified file. |
@@ -329,3 +329,28 @@ If the function succeeds, the return value is TRUE.<br>
 If the function fails, the return value is FALSE.<br>
 To get extended error information, call **GetLastError**.
 
+# <a name="AfxCopyFile"></a>AfxCopyFile / AfxFileCopy
+
+Copies an existing file to a new file.
+
+```
+FUNCTION AfxCopyFile (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LPCWSTR, _
+   BYVAL bFailIfExists AS BOOLEAN = FALSE) AS BOOLEAN
+FUNCTION AfxFileCopy (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LPCWSTR, _
+   BYVAL bFailIfExists AS BOOLEAN = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpExistingFileName* | The name of an existing file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\?" to the path. If *lpExistingFileName* does not exist, CopyFile fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
+| *lpNewFileName* | The name of the new file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\?" to the path. |
+| *bFailIfExists* | If this parameter is TRUE and the new file specified by *lpNewFileName* already exists, the function fails. If this parameter is FALSE and the new file already exists, the function overwrites the existing file and succeeds. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE. To get extended error information, call **GetLastError**.
+
+#### Rermarks
+
+**AfxFileCopy** is an unicode replacement for Free Basic's **FileCopy** and returns 0 on success, or 1 if an error occurred.
