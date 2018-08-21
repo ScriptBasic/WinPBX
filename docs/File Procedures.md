@@ -2481,7 +2481,7 @@ FUNCTION AfxUrlHash (BYREF wszUrl AS WSTRING, BYVAL pbHash AS BYTE PTR, _
 
 #### Return value
 
-If the function succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
+If the function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
 
 #### Remarks
 
