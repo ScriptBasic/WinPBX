@@ -2591,3 +2591,19 @@ An escape sequence has the form "%xy".
 
 Input strings cannot be longer than INTERNET_MAX_URL_LENGTH.
 
+# <a name="AfxUrlUnescapeInPlace"></a>AfxUrlUnescapeInPlace
+
+Converts escape sequences back into ordinary characters and overwrites the original string.
+
+```
+FUNCTION AfxUrlUnescapeInPlace (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. The converted string is returned through this parameter. |
+| *dwFlags* | Flags that control which characters are unescaped. It can be the following flag:<br>*URL_DONT_UNESCAPE_EXTRA_INFO*: Do not convert the # or ? character, or any characters following them in the string. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an HRESULT otherwise.
