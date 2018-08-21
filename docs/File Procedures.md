@@ -2477,7 +2477,7 @@ FUNCTION AfxUrlHash (BYREF wszUrl AS WSTRING, BYVAL pbHash AS BYTE PTR, _
 | ---------- | ----------- |
 | *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
 | *pbHash* | A pointer to a buffer that, When this method returns successfully, receives the hashed array. |
-| *cbHash* | The number of elements in the array at pbHash. It should be no larger than 256. |
+| *cbHash* | The number of elements in the array at *pbHash*. It should be no larger than 256. |
 
 #### Return value
 
