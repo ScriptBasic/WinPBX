@@ -258,7 +258,6 @@ DIM cws AS CWSTR = AfxOpenFileDialog(hwnd, "", wszFile, wszInitialDir, wszFilter
 AfxMsg cws
 ```
 
-# <a name="AfxSaveFileDialog"></a>AfxSaveFileDialog
 
 Creates a **Save** dialog box that lets the user specify the drive, directory, and name of a file to save. The dialog box uses the Explorer-style user interface.
 
@@ -308,3 +307,24 @@ DIM dwFlags AS DWORD = OFN_EXPLORER OR OFN_FILEMUSTEXIST OR OFN_HIDEREADONLY OR 
 DIM cws AS CWSTR = AfxSaveFileDialog(hwnd, "", wszFile, wszInitialDir, wszFilter, "BAS", @dwFlags)
 AfxMsg cws
 ```
+
+# <a name="AfxChDir"></a>AfxChDir / AfxSetCurDir / AfxSetCurrentDirectory
+
+Changes the current directory for the current process.
+
+```
+FUNCTION AfxChDir (BYVAL pwszPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxSetCurDir (BYVAL pwszPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxSetCurrentDirectory (BYVAL pwszPathName AS LPCWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpPathName* | The path to the new current directory. This parameter may specify a relative path or a full path. In either case, the full path of the specified directory is calculated and stored as the current directory. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call **GetLastError**.
+
