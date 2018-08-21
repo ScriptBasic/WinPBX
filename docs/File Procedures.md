@@ -1306,3 +1306,25 @@ The '/' separator will be used instead of '\\' if the original string used it. I
 DIM cws AS CWSTR = AfxPathCompactPathEx("c:\test\My Filename", 18)
 ```
 
+# <a name="AfxPathCreateFromUrl"></a>AfxPathCreateFromUrl
+
+Converts a file URL to a Microsoft MS-DOS path.
+
+```
+FUNCTION AfxPathCreateFromUrl (BYREF wszUrl AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. |
+
+#### Return value
+
+The MS-DOS path.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCreateFromUrl("file:///C:/Documents%20and%20Settings/URIS.txt")
+```
+
