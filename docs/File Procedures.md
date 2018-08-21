@@ -2463,3 +2463,28 @@ FUNCTION AfxUrlGetPart (BYREF wszUrl AS WSTRING, _
 #### Return value
 
 A string with the specified part of that URL.
+
+# <a name="AfxUrlHash"></a>AfxUrlHash
+
+Hashes a URL string.
+
+```
+FUNCTION AfxUrlHash (BYREF wszUrl AS WSTRING, BYVAL pbHash AS BYTE PTR, _
+   BYVAL cbHash AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+| *pbHash* | A pointer to a buffer that, When this method returns successfully, receives the hashed array. |
+| *cbHash* | The number of elements in the array at pbHash. It should be no larger than 256. |
+
+#### Return value
+
+If the function succeeds, it returns S_OK. Otherwise, it returns an HRESULT error code.
+
+#### Remarks
+
+To hash a URL into a single byte, set cbHash = SIZEOF(BYTE) and pbHash = VARPTR(bHashedValue), where bHashedValue is a one-byte buffer.
+
+To hash a URL into a DWORD, set cbHash = SIZEOF(DWORD) and pbHash = VARPTR(dwHashedValue), where dwHashedValue is a DWORD buffer.
