@@ -857,7 +857,7 @@ To locate the file for a module that was loaded by another process, use the **Ge
 
 # <a name="AfxGetWinDir"></a>AfxGetWinDir
 
-Retrieves the path of the Windows directory. This path does not end with a backslash unless the Windows directory is the root directory. For example, if the Windows directory is named Windows on drive C, the path of the Windows directory retrieved by this function is C:\Windows. If the system was installed in the root directory of drive C, the path retrieved is C:\.
+Retrieves the path of the Windows directory. This path does not end with a backslash unless the Windows directory is the root directory. For example, if the Windows directory is named Windows on drive C, the path of the Windows directory retrieved by this function is C:\Windows. If the system was installed in the root directory of drive C, the path retrieved is C:\\.
 
 ```
 FUNCTION AfxGetWinDir () AS CWSTR
