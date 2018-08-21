@@ -15,7 +15,7 @@
 | [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
 | [AfxCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
-| AfxExePath | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
+| [AfxExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
 | [AfxFileExists](#AfxFileExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
@@ -29,7 +29,7 @@
 | AfxGetExeFileName | Returns the file name of the program which is currently executing. |
 | AfxGetExeFileNameX | Returns the file name and extension of the program which is currently executing. |
 | AfxGetExeFullPath | Returns the complete drive, path, file name, and extension of the program which is currently executing. |
-| AfxGetExePath | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
+| [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | AfxGetExePathName | Returns the path of the program which is currently executing. The path has a trailing backslash. |
 | AfxGetFileCreationTime | Returns the time the file was created, in FILETIME format. |
 | AfxGetFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
@@ -576,4 +576,17 @@ FUNCTION AfxFileLen (BYREF wszFileSpec AS WSTRING) AS ULONGLONG
 #### Return value
 
 The size in bytes of the file on success, or 0 on failure.
+
+# <a name="AfxExePath"></a>AfxExePath / AfxGetExePath
+
+Returns the path of the program which is currently executing.
+
+```
+FUNCTION AfxExePath () AS CWSTR
+FUNCTION AfxGetExePath () AS CWSTR
+```
+
+#### Remarks
+
+Unicode replacement for Free Basic's **ExePath** function. The path name has not a trailing backslash, except if it is a drive, e.g. "C:\".
 
