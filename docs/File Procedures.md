@@ -1487,3 +1487,24 @@ Returns one or more of the following values that define the type of character.
 | GCT_SHORTCHAR | The character is valid in a short (8.3) file name. |
 | GCT_WILD | The character is a wildcard character. |
 
+# <a name="AfxPathGetDriveNumber"></a>AfxPathGetDriveNumber
+
+Searches a path for a drive letter within the range of 'A' to 'Z' and returns the corresponding drive number.
+
+```
+FUNCTION AfxPathGetDriveNumber (BYREF wszPath AS CONST WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be searched. |
+
+#### Return value
+
+Returns 0 through 25 (corresponding to 'A' through 'Z') if the path has a drive letter, or -1 otherwise.
+
+#### Usage example
+
+```
+DIM n AS LONG = AfxPathGetDriveNumber("C:\TEST\bar.txt") ' output: 2
+```
