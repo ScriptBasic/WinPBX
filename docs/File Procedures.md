@@ -1956,3 +1956,19 @@ FUNCTION AfxPathRemoveBackslash (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 The changed path.
+
+# <a name="AfxPathRemoveBlanks"></a>AfxPathRemoveBlanks
+
+Removes all leading and trailing spaces from a string.
+
+```
+FUNCTION AfxPathRemoveBlanks (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path from which to strip all leading and trailing spaces. |
+
+#### Return value
+
+The changed path.
