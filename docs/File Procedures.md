@@ -37,7 +37,7 @@
 | [AfxFileLen](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | AfxGetFileName | Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
 | AfxGetFileNameX | Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\) or colon (:). |
-| [AfxGetFileSize](###AfxGetFileSize) | Returns the size in bytes of the specified file. |
+| [AfxGetFileSize](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | AfxGetFileVersion | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
 | AfxGetFolderName | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
 | AfxGetKnowFolderPath | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
