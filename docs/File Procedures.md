@@ -45,7 +45,7 @@
 | [AfxGetLongPathName](#AfxGetLongPathName) | Retrieves the short path form of the specified path. |
 | [AfxGetPathName](#AfxGetPathName) | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
 | [AfxGetShortPathName](#AfxGetShortPathName) | Retrieves the short path form of the specified path. |
-| AfxGetSpecialFolderLocation | Retrieves the path of an special folder. |
+| [AfxGetSpecialFolderLocation](#AfxGetSpecialFolderLocation) | Retrieves the path of an special folder. |
 | AfxGetSystemDllPath | Retrieves the fully qualified path for the file that contains the specified module. |
 | AfxGetWinDir | Retrieves the path of the Windows directory. |
 | AfxIsCompressedFile | Returns True if the specified file or directory is compressed; False if it is not. |
@@ -822,3 +822,19 @@ FUNCTION AfxGetShortPathName (BYREF wszPath AS WSTRING) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszPath* | The path/filename string. To extend the limit of MAX_PATH wode characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxGetSpecialFolderLocation"></a>AfxGetSpecialFolderLocation
+
+Retrieves the path of a special folder.
+
+```
+FUNCTION AfxGetSpecialFolderLocation (BYVAL nFolder AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nFolder* | A CSIDL value that identifies the folder of interest. |
+
+#### Remarks
+
+For a list of CSIDL values see: [CSIDL](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494(v=vs.85).aspx)
