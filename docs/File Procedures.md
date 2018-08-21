@@ -2397,3 +2397,28 @@ FUNCTION AfxUrlEscapeSpaces (BYREF wszUrl AS WSTRING) AS CWSTR
 
 The converted URL.
 
+# <a name="AfxUrlFixup"></a>AfxUrlFixup
+
+Attempts to correct a URL whose protocol identifier is incorrect. For example, htttp will be changed to http.
+
+```
+FUNCTION AfxUrlFixup (BYREF wszUrl AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL to be corrected. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+The converted URL.
+
+#### Remarks
+
+The **AfxUrlFixup** function recognizes the schemes specified by the URL_SCHEME enumeration.
+
+Priority is given to the first character in the protocol identifier section so htp will be converted to http instead of ftp.
+
+Note  Do not use this function for deterministic data transformation. The heuristics used by **AfxUrlFixup** can change from one release to the next. The function should only be used to correct possibly invalid user input.
+
+Notes: This function is available through Windows 7 and Windows Server 2008. It might be altered or unavailable in subsequent versions of Windows. This function is available only in a Unicode version.
