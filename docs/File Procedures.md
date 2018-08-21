@@ -1893,3 +1893,29 @@ FUNCTION AfxPathQuoteSpaces (BYREF wszPath AS CONST WSTRING) AS CWSTR
 #### Return value
 
 True if spaces were found; otherwise, False.
+
+# <a name="AfxPathRelativePathTo"></a>AfxPathRelativePathTo
+
+Creates a relative path from one file or folder to another.
+
+```
+FUNCTION AfxPathRelativePathTo (BYREF wszFrom AS CONST WSTRING, BYVAL dwAttrFrom AS DWORD, _
+   BYREF wszTo AS CONST WSTRING, BYVAL dwAttrTo AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFrom* | A string that contains the path that defines the start of the relative path. |
+| *dwAttrFrom* | The file attributes of wszFrom. If this value contains FILE_ATTRIBUTE_DIRECTORY, wszFrom is assumed to be a directory; otherwise, *wszFrom* is assumed to be a file. |
+| *wszTo* | A string that contains the path that defines the endpoint of the relative path. |
+| *dwAttrTo* | The file attributes of wszTo. If this value contains FILE_ATTRIBUTE_DIRECTORY, wszTo is assumed to be directory; otherwise, *wszTo* is assumed to be a file. |
+
+#### Return value
+
+Returns True if successful, or False otherwise.
+
+#### Remarks
+
+This function takes a pair of paths and generates a relative path from one to the other. The paths do not have to be fully-qualified, but they must have a common prefix, or the function will fail and return False.
+
+For example, let the starting point, *wszFrom*, be "c:\\FolderA\FolderB\\FolderC", and the ending point, *wszTo*, be "c:\\FolderA\\FolderD\\FolderE". **AfxPathRelativePathTo** will return the relative path from *wszFrom* to *wszTo* as: "..\\..\\FolderD\\FolderE". You will get the same result if you set *wszFrom* to "\\FolderA\\FolderB\\FolderC" and *wszTo* to "\\FolderA\\FolderD\\FolderE". On the other hand, "c:\\FolderA\\FolderB" and "a:\\FolderA\\FolderD do not share a common prefix, and the function will fail. Note that "\\\\" is not considered a prefix and is ignored. If you set *wszFrom* to "\\\\FolderA\\FolderB", and wszTo to "\\\\FolderC\\FolderD", the function will fail.
