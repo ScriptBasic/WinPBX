@@ -4,7 +4,7 @@
 | ---------- | ----------- |
 | [AfxBrowseForFolder](#AfxBrowseForFolder) | Displays a dialog box that enables the user to select a folder. |
 | [AfxOpenFileDialog](#AfxOpenFileDialog) | Creates an Open dialog box that lets the user specify the drive, directory, and the name of a file or set of files to be opened. |
-| AfxSaveFileDialog | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save. |
+| [AfxSaveFileDialog](#AfxSaveFileDialog) | Creates a Save dialog box that lets the user specify the drive, directory, and name of a file to save. |
 
 # File and Folder Procedures
 
