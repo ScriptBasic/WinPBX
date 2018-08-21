@@ -342,8 +342,8 @@ FUNCTION AfxFileCopy (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName A
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpExistingFileName* | The name of an existing file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\?" to the path. If *lpExistingFileName* does not exist, CopyFile fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
-| *lpNewFileName* | The name of the new file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\?" to the path. |
+| *lpExistingFileName* | The name of an existing file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\?" to the path. If *lpExistingFileName* does not exist, **CopyFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
+| *lpNewFileName* | The name of the new file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\?" to the path. |
 | *bFailIfExists* | If this parameter is TRUE and the new file specified by *lpNewFileName* already exists, the function fails. If this parameter is FALSE and the new file already exists, the function overwrites the existing file and succeeds. |
 
 #### Return value
@@ -367,7 +367,7 @@ FUNCTION AfxMkDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpPathName* | The path of the directory to be created. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+| *lpPathName* | The path of the directory to be created. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
 
 #### Return value:
 
@@ -397,7 +397,7 @@ FUNCTION AfxKill (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszFileSpec* | The full path and name of the file to delete. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+| *pwszFileSpec* | The full path and name of the file to delete. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
 
 #### Return value:
 
@@ -421,7 +421,7 @@ FUNCTION AfxFileDateTime (BYREF wszFileName AS WSTRING) AS DOUBLE
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszFileName* | Filename to retrieve date and time for. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+| *wszFileName* | Filename to retrieve date and time for. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
 
 #### Return value
 
@@ -458,4 +458,4 @@ The name of the current directory for the current process.
 
 #### Remark
 
-Unicode replacement for Free Basic's ^^Curdir**.
+Unicode replacement for Free Basic's **CurDir**.
