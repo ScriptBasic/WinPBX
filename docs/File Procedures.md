@@ -1827,3 +1827,28 @@ FUNCTION AfxPathMatchSpec (BYREF wszFile AS CONST WSTRING, BYREF wszSpec AS CONS
 
 Returns True if the string matches, or False otherwise.
 
+
+# <a name="AfxPathMatchSpecEx"></a>AfxPathMatchSpecEx
+
+Searches a path to determine whether it contains a file of a specified file type extension.
+
+```
+FUNCTION AfxPathMatchSpecEx (BYREF wszFile AS CONST WSTRING, _
+   BYREF wszSpec AS CONST WSTRING, BYVAL dwFlags AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFile* | A string that contains the path to be searched. |
+| *wszSpec* | A string that contains the file type extension or extensions for which to search. If exactly one extension is specified, set the PMSF_NORMAL flag in *dwFlags*. If more than one extension is specified, separate them with semicolons and set the PMSF_MULTIPLE flag. |
+| *dwFlags* | Modifies the search condition. The following are valid flags:<br>*PMSF_NORMAL* (&h00000000): The *wszSpec* parameter points to a single file type extension to be matched.<br>*PMSF_MULTIPLE* (&h00000001): The *wszSpec* parameter points to a semicolon-delimited list of file type extensions to be matched.<br>*PMSF_DONT_STRIP_SPACES* (&h00010000): If PMSF_NORMAL is used, ignore leading spaces in the string pointed to by *wszSpec*. If PMSF_MULTIPLE is used, ignore leading spaces in each file type contained in the string pointed to by *wszSpec*. This flag can be combined with PMSF_NORMAL and PMSF_MULTIPLE. |
+
+#### Return value
+
+Returns one of the following values:
+
+| Return code | Description |
+| ----------- | ----------- |
+| TRUE | A file type extension specified in *wszSpec* was found in the path pointed to by *wszFile*. |
+| FALSE | The path pointed to by *wszFile* does not contain any file type extension specified in *wszSpec*. |
+
