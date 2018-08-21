@@ -1870,7 +1870,7 @@ Returns the valid icon index value.
 
 #### Remarks
 
-This function is useful for taking a DefaultIcon value retrieved from the registry by *SHGetValue* and separating the icon index from the path.
+This function is useful for taking a DefaultIcon value retrieved from the registry by **SHGetValue** and separating the icon index from the path.
 
 #### Usage example
 
