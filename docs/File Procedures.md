@@ -1508,3 +1508,28 @@ Returns 0 through 25 (corresponding to 'A' through 'Z') if the path has a drive 
 ```
 DIM n AS LONG = AfxPathGetDriveNumber("C:\TEST\bar.txt") ' output: 2
 ```
+
+# <a name="AfxPathIsContentType"></a>AfxPathIsContentType
+
+Determines if a file's registered content type matches the specified content type. This function obtains the content type for the specified file type and compares that string with the *wszContentType*. The comparison is not case-sensitive.
+
+```
+FUNCTION AfxPathIsContentType (BYREF wszPath AS CONST WSTRING, _
+   BYREF wszContentType AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the file whose content type will be compared. |
+| *wszContentType* | A string that contains the content type string to which the file's registered content type will be compared. |
+
+#### Return value
+
+Returns nonzero if the file's registered content type matches *wszContentType*, or zero otherwise.
+
+#### Usage example
+
+```
+DIM b AS BOOLEAN = AfxPathIsContentType("C:\TEST\bar.txt", "text/plain") ' output: true
+DIM b AS BOOLEAN = AfxPathIsContentType("C:\TEST\bar.txt", "image/gif") ' output: false
+```
