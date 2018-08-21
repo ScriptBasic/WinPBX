@@ -48,19 +48,18 @@
 | [AfxGetSpecialFolderLocation](#AfxGetSpecialFolderLocation) | Retrieves the path of an special folder. |
 | [AfxGetSystemDllPath](#AfxGetSystemDllPath) | Retrieves the fully qualified path for the file that contains the specified module. |
 | [AfxGetWinDir](#AfxGetWinDir) | Retrieves the path of the Windows directory. |
-| AfxIsCompressedFile | Returns True if the specified file or directory is compressed; False if it is not. |
-| AfxIsEncryptedFile | Returns True if the specified file or directory is encrypted; False if it is not. |
-| AfxIsFolder | Returns True if the specified path is a folder; False if it is not. |
-| AfxIsHiddenFile | Returns True if the specified path is a hidden file or directory; False if it is not. |
-| AfxIsNormalFile | Returns True if the specified path is a normal file (a file that does not have other attributes set); False if it is not. |
-| AfxIsNotContentIndexedFile | Returns TRUE if the specified file or directory is not to be indexed by the content indexing service; FALSE, otherwise. |
-| AfxIsOfflineFile | Returns TRUE if the specified file file is not available immediately; FALSE, otherwise. |
-| AfxIsReadOnlyFile | Returns True if the specified path is a read only file; False if it is not. |
-| AfxIsReparsePointFile | Returns TRUE if the specified path is a file or directory that has an associated reparse point, or a file that is a symbolic link.; FALSE, otherwise. |
-| AfxIsSparseFile | Returns TRUE if the specified path is a sparse file; FALSE, otherwise. |
-| AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
-| AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
-| AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
+| [AfxIsCompressedFile](#AfxIsCompressedFile) | Returns True if the specified file or directory is compressed; False if it is not. |
+| [AfxIsEncryptedFile](#AfxIsEncryptedFile) | Returns True if the specified file or directory is encrypted; False if it is not. |
+| [AfxIsFolder](#AfxIsFolder) | Returns True if the specified path is a folder; False if it is not. |
+| [AfxIsHiddenFile](#AfxIsHiddenFile) | Returns True if the specified path is a hidden file or directory; False if it is not. |
+| [AfxIsNormalFile](#AfxIsNormalFile) | Returns True if the specified path is a normal file (a file that does not have other attributes set); False if it is not. |
+| [AfxIsNotContentIndexedFile](#AfxIsNotContentIndexedFile) | Returns TRUE if the specified file or directory is not to be indexed by the content indexing service; FALSE, otherwise. |
+| [AfxIsOfflineFile](#AfxIsOfflineFile) | Returns TRUE if the specified file file is not available immediately; FALSE, otherwise. |
+| [AfxIsReadOnlyFile](#AfxIsReadOnlyFile) | Returns True if the specified path is a read only file; False if it is not. |
+| [AfxIsReparsePointFile](#AfxIsReparsePointFile) | Returns TRUE if the specified path is a file or directory that has an associated reparse point, or a file that is a symbolic link.; FALSE, otherwise. |
+| [AfxIsSparseFile](#AfxIsSparseFile) | Returns TRUE if the specified path is a sparse file; FALSE, otherwise. |
+| [AfxIsSystemFile](#AfxIsSystemFile) | Returns True if the specified path is a system file; False if it is not. |
+| [AfxIsTemporaryFile](#AfxIsTemporaryFile) | Returns True if the specified path is a temporary file; False if it is not. |
 | [AfxKill](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxMakeDir](#AfxMakeDir) | Creates a new directory. |
 | [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
@@ -862,3 +861,15 @@ Retrieves the path of the Windows directory. This path does not end with a backs
 ```
 FUNCTION AfxGetWinDir () AS CWSTR
 ```
+
+# <a name="AfxIsCompressedFile"></a>AfxIsCompressedFile
+
+Returns True if the specified file or directory is compressed; False if it is not.
+
+```
+FUNCTION AfxIsCompressedFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
