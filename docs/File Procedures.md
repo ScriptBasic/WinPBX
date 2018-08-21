@@ -1057,6 +1057,6 @@ FUNCTION AfxSaveTempFile (BYVAL pwszBuffer AS WSTRING PTR, BYREF wszExtension AS
 | *pwszBuffer* | The string buffer to save. |
 | *wszExtension* | Optional. The extension of the file name without a colon (e.g. "bas"). If an empty string is passed, the function will use "tmp" as the extension. |
 
-####Remarks
+#### Remarks
 
 Temporary files whose names have been created by this function are not automatically deleted. To delete these files call **AfxDeleteFile**.
