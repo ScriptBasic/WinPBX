@@ -1533,3 +1533,19 @@ Returns nonzero if the file's registered content type matches *wszContentType*, 
 DIM b AS BOOLEAN = AfxPathIsContentType("C:\TEST\bar.txt", "text/plain") ' output: true
 DIM b AS BOOLEAN = AfxPathIsContentType("C:\TEST\bar.txt", "image/gif") ' output: false
 ```
+
+# <a name="AfxPathIsDirectory"></a>AfxPathIsDirectory
+
+Verifies that a path is a valid directory.
+
+```
+FUNCTION AfxPathIsDirectory (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to verify. |
+
+#### Return value
+
+Returns TRUE if the path is a valid directory (FILE_ATTRIBUTE_DIRECTORY is set), or FALSE otherwise.
