@@ -373,7 +373,7 @@ FUNCTION AfxMkDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
 
 If the function succeeds, the return value is TRUE.<br>
 If the function fails, the return value is FALSE.<br>
-To get extended error information, call GetLastError.<br>
+To get extended error information, call GetLastError.
 
 Possible errors include the following.
 
@@ -403,7 +403,7 @@ FUNCTION AfxKill (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
 
 If the function succeeds, the return value is TRUE.<br>
 If the function fails, the return value is FALSE.<br>
-To get extended error information, call GetLastError.<br>
+To get extended error information, call GetLastError.
 
 #### Remarks
 
@@ -475,7 +475,7 @@ FUNCTION AfxName (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LP
 
 If the function succeeds, the return value is TRUE.<br>
 If the function fails, the return value is FALSE.<br>
-To get extended error information, call GetLastError.<br>
+To get extended error information, call **GetLastError**.
 
 #### Remark
 
