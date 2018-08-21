@@ -2419,6 +2419,8 @@ The **AfxUrlFixup** function recognizes the schemes specified by the URL_SCHEME 
 
 Priority is given to the first character in the protocol identifier section so htp will be converted to http instead of ftp.
 
-Note  Do not use this function for deterministic data transformation. The heuristics used by **AfxUrlFixup** can change from one release to the next. The function should only be used to correct possibly invalid user input.
+**Notes**
 
-Notes: This function is available through Windows 7 and Windows Server 2008. It might be altered or unavailable in subsequent versions of Windows. This function is available only in a Unicode version.
+Do not use this function for deterministic data transformation. The heuristics used by **AfxUrlFixup** can change from one release to the next. The function should only be used to correct possibly invalid user input.
+
+This function is available through Windows 7 and Windows Server 2008. It might be altered or unavailable in subsequent versions of Windows.
