@@ -65,10 +65,10 @@
 | [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
 | [AfxMoveFile](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
 | [AfxName](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
-| AfxRemoveDirectory | Deletes an existing empty directory. |
-| AfxRemoveDir | Deletes an existing empty directory. |
+| [AfxRemoveDirectory](#AfxRemoveDir) | Deletes an existing empty directory. |
+| [AfxRemoveDir](#AfxRemoveDir) | Deletes an existing empty directory. |
 | [AfxRenameFile](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
-| AfxRmDir | Deletes an existing empty directory. |
+| [AfxRmDir](#AfxRemoveDir) | Deletes an existing empty directory. |
 | AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
 | [AfxSetCurDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxSetCurrentDirectory](#AfxChDir) | Changes the current directory for the current process. |
@@ -479,4 +479,30 @@ To get extended error information, call **GetLastError**.
 
 #### Remark
 
-**AfxName** is an unicode replacement for Free Basic's **Name** and returns 0 on success, or non-zerp on failure.
+**AfxName** is an unicode replacement for Free Basic's **Name** and returns 0 on success, or non-zero on failure.
+
+# <a name="AfxRemoveDir"></a>AfxRemoveDir / AfxRmDir / AfxRemoveDirectory
+
+Deletes an existing empty directory.
+
+```
+FUNCTION AfxRemoveDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxRemoveDirectory (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxRmDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpPathName* | The path of the directory to be removed. This path must specify an empty directory, and the calling process must have delete access to the directory. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+
+#### Return value:
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call **GetLastError**.
+
+#### Remaks
+
+The **AfxRemoveDir** function marks a directory for deletion on close. Therefore, the directory is not removed until the last handle to the directory is closed. To recursively delete the files in a directory, use the **SHFileOperation** function. **AfxRemoveDir** removes a directory junction, even if the contents of the target are not empty; the function removes directory junctions regardless of the state of the target object. 
+
+**AfxRmDir** is an unicode replacement for Free Basic's **RmDir** and returns 0 on success, or -1 on failure.
