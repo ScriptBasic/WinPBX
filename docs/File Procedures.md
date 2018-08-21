@@ -1941,3 +1941,18 @@ The changed path.
 
 This function should not be used on generic command path templates (from users or the registry), but rather it should be used only on templates that the application knows to be well formed.
 
+# <a name="AfxPathRemoveBackslash"></a>AfxPathRemoveBackslash
+
+Removes the trailing backslash from a given path.
+
+```
+FUNCTION AfxPathRemoveBackslash (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path from which to remove the backslash. |
+
+#### Return value
+
+The changed path.
