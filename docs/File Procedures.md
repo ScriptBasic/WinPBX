@@ -17,7 +17,6 @@
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
-| AfxDeleteFile | Deletes the specified file. |
 | AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file ans returns the number of occurrences of the specified delimiter. |
