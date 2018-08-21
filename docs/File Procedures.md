@@ -873,3 +873,135 @@ FUNCTION AfxIsCompressedFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsEncryptedFile"></a>AfxIsEncryptedFile
+
+Returns True if the specified file or directory is encrypted; False if it is not.
+
+```
+FUNCTION AfxIsEncryptedFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsFolder"></a>AfxIsFolder
+
+Returns True if the specified path is a folder; False if it is not.
+
+```
+FUNCTION AfxIsFolder (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsHiddenFile"></a>AfxIsHiddenFile
+
+Returns True if the specified path is a hidden file or directory; False if it is not.
+
+```
+FUNCTION AfxIsHiddenFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsNormalFile"></a>AfxIsNormalFile
+
+Returns True if the specified path is a normal file (a file that does not have other attributes set); False if it is not.
+
+```
+FUNCTION AfxIsNormalFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsNotContentIndexedFile"></a>AfxIsNotContentIndexedFile
+
+Returns TRUE if the specified file or directory is not to be indexed by the content indexing service; FALSE, otherwise.
+
+```
+FUNCTION AfxIsNotContentIndexedFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsOfflineFile"></a>AfxIsOfflineFile
+
+Returns TRUE if the specified file file is not available immediately; FALSE, otherwise.
+
+```
+FUNCTION AfxIsOfflineFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsReadOnlyFile"></a>AfxIsReadOnlyFile
+
+Returns True if the specified path is a read only file; False if it is not.
+
+```
+FUNCTION AfxIsReadOnlyFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsReparsePointFile"></a>AfxIsReparsePointFile
+
+Returns TRUE if the specified path is a file or directory that has an associated reparse point, or a file that is a symbolic link.; FALSE, otherwise.
+
+```
+FUNCTION AfxIsReparsePointFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsSparseFile"></a>AfxIsSparseFile
+
+Returns TRUE if the specified path is a sparse file; FALSE, otherwise.
+
+```
+FUNCTION AfxIsSparseFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsSystemFile"></a>AfxIsSystemFile
+
+Returns True if the specified path is a system file; False if it is not.
+
+```
+FUNCTION AfxIsSystemFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxIsTemporaryFile"></a>AfxIsTemporaryFile
+
+Returns True if the specified path is a temporary file; False if it is not.
+
+```
+FUNCTION AfxIsTemporaryFile (BYREF wszFileSpec AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileSpec* | The path to a file. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
