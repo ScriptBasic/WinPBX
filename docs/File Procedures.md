@@ -545,10 +545,16 @@ FUNCTION AfxFolderExists (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
 | ---------- | ----------- |
 | *pwszFileSpec* | The directory or path, and the file name, which can include wildcard characters, for example, an asterisk (\*) or a question mark (?). This parameter should not be NULL, an invalid string (for example, an empty string or a string that is missing the terminating null character), or end in a trailing backslash (\\). If the string ends with a wildcard, period (.), or directory name, the user must have access permissions to the root and all subdirectories on the path. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
 
-####Return value
+#### Return value
 
 Boolean. TRUE if the specified file exist or FALSE otherwise.
 
-####Remarks
+#### Remarks
 
-Prepending the string "\\\\?\\" does not allow access to the root directory. On network shares, you can use an *pwszFileSpec* in the form of the following: "\\\\server\service\\\*". However, you cannot use an pwszFileSpec that points to the share itself; for example, "\\\\server\service" is not valid. To examine a directory that is not a root directory, use the path to that directory, without a trailing backslash. For example, an argument of "C:\Windows" returns information about the directory "C:\Windows", not about a directory or file in "C:\Windows". To examine the files and directories in "C:\Windows", use an pwszFileSpec of "C:\Windows\\\*". Be aware that some other thread or process could create or delete a file with this name between the time you query for the result and the time you act on the information. If this is a potential concern for your application, one possible solution is to use the **CreateFile** function with CREATE_NEW (which fails if the file exists) or OPEN_EXISTING (which fails if the file does not exist).
+Prepending the string "\\\\?\\" does not allow access to the root directory.
+
+On network shares, you can use an *pwszFileSpec* in the form of the following: "\\\\server\service\\\*". However, you cannot use an pwszFileSpec that points to the share itself; for example, "\\\\server\service" is not valid.
+
+To examine a directory that is not a root directory, use the path to that directory, without a trailing backslash. For example, an argument of "C:\Windows" returns information about the directory "C:\Windows", not about a directory or file in "C:\Windows". To examine the files and directories in "C:\Windows", use an pwszFileSpec of "C:\Windows\\\*".
+
+Be aware that some other thread or process could create or delete a file with this name between the time you query for the result and the time you act on the information. If this is a potential concern for your application, one possible solution is to use the **CreateFile** function with CREATE_NEW (which fails if the file exists) or OPEN_EXISTING (which fails if the file does not exist).
