@@ -1649,3 +1649,24 @@ FUNCTION AfxPathIsRelative (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns True if the path is relative, or False if it is absolute.
+
+# <a name="AfxPathIsRoot"></a>AfxPathIsRoot
+
+Parses a path to determine if it is a directory root.
+
+```
+FUNCTION AfxPathIsRoot (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains contains the path to be validated. |
+
+#### Return value
+
+Returns True if the specified path is a root, or False otherwise.
+
+#### Remarks
+
+Returns True for paths such as "\\", "X:\\" or "\\\\server\\share". Paths such as "..\\path2" or "\\\\server\\" return FALSE. 
+
