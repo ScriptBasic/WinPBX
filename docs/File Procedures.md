@@ -2379,4 +2379,4 @@ Use of the URL_ESCAPE_SEGMENT_ONLY flag also causes the conversion of the # (%23
 
 By default, AfxUrlEscape ignores any text following a # or ? character. The URL_ESCAPE_SEGMENT_ONLY flag overrides this behavior by regarding the entire string as the segment. The URL_ESCAPE_SPACES_ONLY flag overrides this behavior, but only for space characters.
 
-Security Warning: This function should be called from client applications only. For more information, see Security Considerations: Microsoft Windows Shell and Michael Howard and David LeBlanc, Writing Secure Code. Microsoft Press, Redmond, WA, 2002.
+Security Warning: This function should be called from client applications only.
