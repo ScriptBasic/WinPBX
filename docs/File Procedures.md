@@ -456,7 +456,7 @@ The name of the current directory for the current process.
 
 Unicode replacement for Free Basic's **CurDir**.
 
-# <a name="AfxRenameFile"></a>AfxRenameFile / AfxMoveFile / AfxName
+# <a name="AfxMoveFile"></a>AfxRenameFile / AfxMoveFile / AfxName
 
 Moves an existing file or a directory, including its children.
 
