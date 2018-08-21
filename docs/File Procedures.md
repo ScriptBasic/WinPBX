@@ -36,8 +36,8 @@
 | [AfxGetFileLastAccessTime](#AfxGetFileLastAccessTime) | Returns the time the file was last accessed, in FILETIME format. |
 | [AfxGetFileLastWriteTime](#AfxGetFileLastWriteTime) | Returns the time the file was last written to, truncated, or overwritten, in FILETIME format. |
 | [AfxFileLen](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
-| AfxGetFileName | Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
-| AfxGetFileNameX | Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\) or colon (:). |
+| [AfxGetFileName](#AfxGetFileName) | Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
+| [AfxGetFileNameX](#AfxGetFileNameX) | Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\) or colon (:). |
 | [AfxGetFileSize](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | AfxGetFileVersion | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
 | AfxGetFolderName | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
@@ -705,3 +705,29 @@ FUNCTION AfxGetFileLastWriteTime (BYREF wszFileSpec AS WSTRING, BYVAL bUTC AS BO
 | *wszFileSpec* | The directory or path, and the file name, which can include wildcard characters, for example, an asterisk (\*) or a question mark (?). This parameter should not be NULL, an invalid string (for example, an empty string or a string that is missing the terminating null character), or end in a trailing backslash (\\). If the string ends with a wildcard, period (.), or directory name, the user must have access permissions to the root and all subdirectories on the path. To extend the limit from MAX_PATH to 32,767 wide characters, prepend "\\\\?\\" to the path. |
 | *bUTC* | Optional. Pass FALSE if you want to get the time in local time (the NTFS file system stores time values in UTC format, so they are not affected by changes in time zone or daylight saving time). **FileTimeToLocalFileTime** uses the current settings for the time zone and daylight saving time. Therefore, if it is daylight saving time, it takes daylight saving time into account, even if the file time you are converting is in standard time. |
 
+FUNCTION AfxGetExeFullPath () AS CWSTR
+```
+
+# <a name="AfxGetFileName"></a>AfxGetFileName
+
+Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.).
+
+```
+FUNCTION AfxGetFileName (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+# <a name="AfxGetFileNameX"></a>AfxGetFileNameX
+
+Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\\) or colon (:).
+
+```
+FUNCTION AfxGetFileNameX (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
