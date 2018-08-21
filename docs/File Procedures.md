@@ -46,7 +46,7 @@
 | [AfxGetPathName](#AfxGetPathName) | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
 | [AfxGetShortPathName](#AfxGetShortPathName) | Retrieves the short path form of the specified path. |
 | [AfxGetSpecialFolderLocation](#AfxGetSpecialFolderLocation) | Retrieves the path of an special folder. |
-| AfxGetSystemDllPath | Retrieves the fully qualified path for the file that contains the specified module. |
+| [AfxGetSystemDllPath](#AfxGetSystemDllPath) | Retrieves the fully qualified path for the file that contains the specified module. |
 | AfxGetWinDir | Retrieves the path of the Windows directory. |
 | AfxIsCompressedFile | Returns True if the specified file or directory is compressed; False if it is not. |
 | AfxIsEncryptedFile | Returns True if the specified file or directory is encrypted; False if it is not. |
@@ -838,3 +838,19 @@ FUNCTION AfxGetSpecialFolderLocation (BYVAL nFolder AS LONG) AS CWSTR
 #### Remarks
 
 For a list of CSIDL values see: [CSIDL](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494(v=vs.85).aspx)
+
+# <a name="AfxGetSystemDllPath"></a>AfxGetSystemDllPath
+
+Retrieves the fully qualified path for the file that contains the specified module.
+
+```
+FUNCTION AfxGetSystemDllPath (BYREF wszDllName AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszDllName* | The name of the system DLL to find. |
+
+#### Remarks
+
+To locate the file for a module that was loaded by another process, use the **GetModuleFileNameEx** function.
