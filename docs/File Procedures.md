@@ -2,7 +2,7 @@
 
 Assorted file procedures.
 
-**Include file**: AfxWin.inc
+**Include files**: AfxWin.inc, AfxPath.inc
 
 # Dialogs
 
@@ -2318,3 +2318,65 @@ FUNCTION AfxUrlCreateFromPath (BYREF wszPath AS WSTRING) AS CWSTR
 #### Return value
 
 The canonicalized URL.
+
+# <a name="AfxUrlEscape"></a>AfxUrlEscape
+
+Converts characters in a URL that might be altered during transport across the Internet ("unsafe" characters) into their corresponding escape sequences.
+
+```
+FUNCTION AfxUrlEscape (BYREF wszUrl AS WSTRING, BYVAL dwFlags AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the MS-DOS path. |
+| *dwFlags* | The flags that indicate which portion of the URL is being provided in wszURL and which characters in that string should be converted to their escape sequences. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| URL_DONT_ESCAPE_EXTRA_INFO | Used only in conjunction with URL_ESCAPE_SPACES_ONLY to prevent the conversion of characters in the query (the portion of the URL following the first # or ? character encountered in the string). This flag should not be used alone, nor combined with URL_ESCAPE_SEGMENT_ONLY. |
+| URL_BROWSER_MODE | Defined to be the same as URL_DONT_ESCAPE_EXTRA_INFO. |
+| URL_ESCAPE_SPACES_ONLY | Convert only space characters to their escape sequences, including those space characters in the query portion of the URL. Other unsafe characters are not converted to their escape sequences. This flag assumes that wszURL does not contain a full URL. It expects only the portions following the server specification.<br>Combine this flag with URL_DONT_ESCAPE_EXTRA_INFO to prevent the conversion of space characters in the query portion of the URL.<br>This flag cannot be combined with URL_ESCAPE_PERCENT or URL_ESCAPE_SEGMENT_ONLY. |
+| URL_ESCAPE_PERCENT | Convert any % character found in the segment section of the URL (that section falling between the server specification and the first # or ? character). By default, the % character is not converted to its escape sequence. Other unsafe characters in the segment are also converted normally.<br>Combining this flag with URL_ESCAPE_SEGMENT_ONLY includes those % characters in the query portion of the URL. However, as the URL_ESCAPE_SEGMENT_ONLY flag causes the entire string to be considered the segment, any # or ? characters are also converted.<br>This flag cannot be combined with URL_ESCAPE_SPACES_ONLY. |
+| URL_ESCAPE_SEGMENT_ONLY | Indicates that wszURL contains only that section of the URL following the server component but preceding the query. All unsafe characters in the string are converted. If a full URL is provided when this flag is set, all unsafe characters in the entire string are converted, including # and ? characters.<br>Combine this flag with URL_ESCAPE_PERCENT to include that character in the conversion.<br>This flag cannot be combined with URL_ESCAPE_SPACES_ONLY or URL_DONT_ESCAPE_EXTRA_INFO. |
+| URL_ESCAPE_AS_UTF8 | Windows 7 and later. Percent-encode all non-ASCII characters as their UTF-8 equivalents. |
+
+#### Return value
+
+The converted URL.
+
+#### Remarks
+
+For the purposes of this document, a typical URL is divided into three sections: the server, the segment, and the query. For example:
+
+http://microsoft.com/test.asp?url=/example/abc.asp?frame=true#fragment
+
+The server portion is "http://microsoft.com/". The trailing forward slash is considered part of the server portion.
+
+The segment portion is any part of the path found following the server portion, but before the first # or ? character, in this case simply "test.asp".
+
+The query portion is the remainder of the path from the first # or ? character (inclusive) to the end. In the example, it is "?url=/example/abc.asp?frame=true#fragment".
+
+Unsafe characters are those characters that might be altered during transport across the Internet. This function converts unsafe characters into their equivalent "%xy" escape sequences. The following table shows unsafe characters and their escape sequences.
+
+| Character  | Escape Sequence |
+| ---------- | ----------- |
+| ^ | %5E5E |
+| & | %26 |
+| ` | %60 |
+| { | %7B |
+| } | %7D |
+| \| | %7C |
+| ] | %5D |
+| \[ | %5B |
+| " | %22 |
+| < | %3C |
+| > | %3E |
+| \ | %5C |
+
+
+Use of the URL_ESCAPE_SEGMENT_ONLY flag also causes the conversion of the # (%23), ? (%3F), and / (%2F) characters.
+
+By default, AfxUrlEscape ignores any text following a # or ? character. The URL_ESCAPE_SEGMENT_ONLY flag overrides this behavior by regarding the entire string as the segment. The URL_ESCAPE_SPACES_ONLY flag overrides this behavior, but only for space characters.
+
+Security Warning: This function should be called from client applications only. For more information, see Security Considerations: Microsoft Windows Shell and Michael Howard and David LeBlanc, Writing Secure Code. Microsoft Press, Redmond, WA, 2002.
