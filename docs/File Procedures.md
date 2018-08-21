@@ -1617,3 +1617,19 @@ FUNCTION AfxPathIsLFNFileSpec (BYREF wszName AS CONST WSTRING) AS BOOLEAN
 #### Return value
 
 Returns True if wszName exceeds the number of characters allowed by the 8.3 format, or False otherwise.
+
+# <a name="AfxPathIsNetworkPath"></a>AfxPathIsNetworkPath
+
+Determines whether a path string represents a network resource.
+
+```
+FUNCTION AfxPathIsNetworkPath (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains contains the path. |
+
+#### Return value
+
+Returns True if the string represents a network resource, or False otherwise.
