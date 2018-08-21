@@ -86,32 +86,31 @@
 | [AfxPathCommonPrefix](#AfxPathCommonPrefix) | Compares two paths to determine if they share a common prefix. A prefix is one of these types: "C:\\", ".", "..", "..\\". |
 | [AfxPathCompactPath](#AfxPathCompactPath) | Truncates a file path to fit within a given pixel width by replacing path components with ellipses. |
 | [AfxPathCompactPathEx](#) | Truncates a path to fit within a certain number of characters by replacing path components with ellipses. |
-| AfxPathCreateFromUrl | Converts a file URL to a Microsoft MS-DOS path. |
-| AfxPathFileExists | Determines whether a path to a file system object such as a file or directory is valid. |
-| AfxPathFindExtension | Searches a path for an extension. |
-| AfxPathFindFileName | Searches a path for a file name. |
-| AfxPathFindFileName | Searches a path for a file name. |
-| AfxPathFindNextComponent | Parses a path and returns the portion of that path that follows the first backslash. |
-| AfxPathFindOnPath | Searches for a file. |
-| AfxPathFindSuffixArray | Determines whether a given file name has one of a list of suffixes. |
-| AfxPathGetArgs | Finds the command line arguments within a given path. |
-| AfxPathGetCharType | Determines the type of character in relation to a path. |
-| AfxPathGetDriveNumber | Searches a path for a drive letter within the range of 'A' to 'Z' and returns the corresponding drive number. |
-| AfxPathIsContentType | Determines if a file's registered content type matches the specified content type. |
-| AfxPathIsDirectory | Verifies that a path is a valid directory. |
-| AfxPathIsDirectoryEmpty | Determines whether a specified path is an empty directory. |
-| AfxPathIsFileSpec | Searches a path for any path-delimiting characters (for example, ':' or '\' ). If there are no path-delimiting characters present, the path is considered to be a File Spec path. |
-| AfxPathIsHTMLFile | Determines if a file is an HTML file. The determination is made based on the content type that is registered for the file's extension. |
-| AfxPathIsLFNFileSpec | Determines whether a file name is in long format. |
-| AfxPathIsNetworkPath | Determines whether a path string represents a network resource. |
-| AfxPathIsPrefix | Searches a path to determine if it contains a valid prefix of the type passed by wszPrefix. A prefix is one of these types: "C:\", ".", "..", "..\". |
-| AfxPathIsRelative | Searches a path and determines if it is relative. |
-| AfxPathIsRoot | Parses a path to determine if it is a directory root. |
-| AfxPathIsSameRoot | Compares two paths to determine if they have a common root component. |
-| AfxPathIsSystemFolder | Determines if an existing folder contains the attributes that make it a system folder. Alternately, this function indicates if certain attributes qualify a folder to be a system folder. |
-| AfxPathIsUNC | Determines if the string is a valid Universal Naming Convention (UNC) for a server and share path. |
-| AfxPathIsUNCServer | Determines if a string is a valid Universal Naming Convention (UNC) for a server path only. |
-| AfxPathIsUNCServerShare | Determines if a string is a valid Universal Naming Convention (UNC) share path, \\*server*\*share*. |
+| [AfxPathCreateFromUrl](#AfxPathCreateFromUrl) | Converts a file URL to a Microsoft MS-DOS path. |
+| [AfxPathFileExists](#AfxPathFileExists) | Determines whether a path to a file system object such as a file or directory is valid. |
+| [AfxPathFindExtension](#AfxPathFindExtension) | Searches a path for an extension. |
+| [AfxPathFindFileName](#AfxPathFindFileName) | Searches a path for a file name. |
+| [AfxPathFindNextComponent](#AfxPathFindNextComponent) | Parses a path and returns the portion of that path that follows the first backslash. |
+| [AfxPathFindOnPath](#AfxPathFindOnPath) | Searches for a file. |
+| [AfxPathFindSuffixArray](#AfxPathFindSuffixArray) | Determines whether a given file name has one of a list of suffixes. |
+| [AfxPathGetArgs](#AfxPathGetArgs) | Finds the command line arguments within a given path. |
+| [AfxPathGetCharType](#AfxPathGetCharType) | Determines the type of character in relation to a path. |
+| [AfxPathGetDriveNumber](#AfxPathGetDriveNumber) | Searches a path for a drive letter within the range of 'A' to 'Z' and returns the corresponding drive number. |
+| [AfxPathIsContentType](#AfxPathIsContentType) | Determines if a file's registered content type matches the specified content type. |
+| [AfxPathIsDirectory](#AfxPathIsDirectory) | Verifies that a path is a valid directory. |
+| [AfxPathIsDirectoryEmpty](#AfxPathIsDirectoryEmpty) | Determines whether a specified path is an empty directory. |
+| [AfxPathIsFileSpec](#AfxPathIsFileSpec) | Searches a path for any path-delimiting characters (for example, ':' or '\' ). If there are no path-delimiting characters present, the path is considered to be a File Spec path. |
+| [AfxPathIsHTMLFile](#AfxPathIsHTMLFile) | Determines if a file is an HTML file. The determination is made based on the content type that is registered for the file's extension. |
+| [AfxPathIsLFNFileSpec](#AfxPathIsLFNFileSpec) | Determines whether a file name is in long format. |
+| [AfxPathIsNetworkPath](#AfxPathIsNetworkPath) | Determines whether a path string represents a network resource. |
+| [AfxPathIsPrefix](#AfxPathIsPrefix) | Searches a path to determine if it contains a valid prefix of the type passed by wszPrefix. A prefix is one of these types: "C:\\", ".", "..", "..\\". |
+| [AfxPathIsRelative](#AfxPathIsRelative) | Searches a path and determines if it is relative. |
+| [AfxPathIsRoot](#AfxPathIsRoot) | Parses a path to determine if it is a directory root. |
+| [AfxPathIsSameRoot](#AfxPathIsSameRoot) | Compares two paths to determine if they have a common root component. |
+| [AfxPathIsSystemFolder](#AfxPathIsSystemFolder) | Determines if an existing folder contains the attributes that make it a system folder. Alternately, this function indicates if certain attributes qualify a folder to be a system folder. |
+| [AfxPathIsUNC](#AfxPathIsUNC) | Determines if the string is a valid Universal Naming Convention (UNC) for a server and share path. |
+| [AfxPathIsUNCServer](#AfxPathIsUNCServer) | Determines if a string is a valid Universal Naming Convention (UNC) for a server path only. |
+| [AfxPathIsUNCServerShare](#AfxPathIsUNCServerShare) | Determines if a string is a valid Universal Naming Convention (UNC) share path, \\\\*server*\\*share*. |
 | AfxPathIsURL | Tests a given string to determine if it conforms to a valid URL format. |
 | AfxPathMakePretty | Converts a path to all lowercase characters to give the path a consistent appearance. |
 | AfxPathMakeSystemFolder | Gives an existing folder the proper attributes to become a system folder. |
