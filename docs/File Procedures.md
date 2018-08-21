@@ -1415,5 +1415,5 @@ The truncated path.
 #### Usage example
 
 ```
-DIM cws AS CWSTR = AfxPathFindExtension("C:\TEST\filetxt")
+DIM cws AS CWSTR = AfxPathFindNextComponent("C:\TEST\file.txt")
 ```
