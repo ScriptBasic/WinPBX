@@ -59,7 +59,7 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
-| [AfxKill](#(#AfxDeleteFile) | Deletes the specified file. |
+| [AfxKill](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxMakeDir](#AfxMakeDir) | Creates a new directory. |
 | [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
 | AfxMoveFile | Moves an existing file or a directory, including its children. |
