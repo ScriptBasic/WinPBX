@@ -13,7 +13,7 @@
 | [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxCopyFile](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxCreateDirectory](#AfxMakeDir) | Creates a new directory. |
-| AfxDeleteFile | Deletes the specified file. |
+| [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
 | AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
@@ -59,7 +59,7 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
-| AfxKill | Deletes the specified file. |
+| [AfxKill](#(#AfxDeleteFile) | Deletes the specified file. |
 | [AfxMakeDir](#AfxMakeDir) | Creates a new directory. |
 | [AfxMkDir](#AfxMakeDir) | Creates a new directory. |
 | AfxMoveFile | Moves an existing file or a directory, including its children. |
@@ -384,3 +384,28 @@ Possible errors include the following.
 #### Remarks
 
 **AfxMkDir** is an unicode replacement for Free Basic's **MkDir** and returns 0 on success, or or -1 on failure.
+
+# <a name="AfxDeleteFile"></a>AfxDeleteFile / AfxKill
+
+Deletes the specified file.
+
+```
+FUNCTION AfxDeleteFile (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
+FUNCTION AfxKill (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszFileSpec* | The full path and name of the file to delete. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+
+#### Return value:
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call GetLastError.<br>
+
+#### Remarks
+
+If an application attempts to delete a file that does not exist, this function fails with ERROR_FILE_NOT_FOUND. If the file is a read-only file, the function fails with ERROR_ACCESS_DENIED.
+
+**AfxKill** is an unicode replacement for Free Basic's **Kill** and returns 0 on success, or or -1 on failure.
