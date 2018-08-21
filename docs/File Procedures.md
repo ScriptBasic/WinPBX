@@ -1569,3 +1569,19 @@ Returns TRUE if wszPath is an empty directory. Returns FALSE if *wszPath* is not
 #### Remarks
 
 "C:\" is considered a directory.
+
+# <a name="AfxPathIsFileSpec"></a>AfxPathIsFileSpec
+
+Searches a path for any path-delimiting characters (for example, ':' or '\\' ). If there are no path-delimiting characters present, the path is considered to be a File Spec path.
+
+```
+FUNCTION AfxPathIsFileSpec (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be searched. |
+
+#### Return value
+
+Returns TRUE if there are no path-delimiting characters within the path, or FALSE if there are path-delimiting characters.
