@@ -226,6 +226,21 @@ FUNCTION AfxOpenFileDialog (BYVAL hwndOwner AS HWND, BYREF wszTitle AS WSTRING, 
 | *dwFlags* | \[in, out, optional] A set of bit flags you can use to initialize the dialog box. When the dialog box returns, it sets these flags to indicate the user's input. This member can be a combination of the following flags. |
 | *dwBufLen* | \[in, out, optional] Maximum length of the returned string containing the selected file or files. |
 
+| Flag       | Description |
+| ---------- | ----------- |
+| OFN_ALLOWMULTISELECT | The *File Name* list box allows multiple selections. |
+| OFN_DONTADDTORECENT | Prevents the system from adding a link to the selected file in the file system directory that contains the user's most recently used documents. To retrieve the location of this directory, call the **SHGetSpecialFolderLocation** function with the CSIDL_RECENT flag. |
+| OFN_EXTENSIONDIFFERENT | The user typed a file name extension that differs from the extension specified by wszDefExt. The function does not use this flag if wszDefExt is NULL. |
+| OFN_FILEMUSTEXIST | The user can type only names of existing files in the File Name entry field. If this flag is specified and the user enters an invalid name, the dialog box procedure displays a warning in a message box. If this flag is specified, the OFN_PATHMUSTEXIST flag is also used. |
+| OFN_FORCESHOWHIDDEN | Forces the showing of system and hidden files, thus overriding the user setting to show or not show hidden files. However, a file that is marked both system and hidden is not shown. |
+| OFN_HIDEREADONLY | Hides the Read Only check box. |
+| OFN_NODEREFERENCELINKS | Directs the dialog box to return the path and file name of the selected shortcut (.LNK) file. If this value is not specified, the dialog box returns the path and file name of the file referenced by the shortcut. |
+| OFN_NONETWORKBUTTON | Hides and disables the Network button. |
+| OFN_NOREADONLYRETURN | The returned file does not have the Read Only check box selected and is not in a write-protected directory. |
+| OFN_PATHMUSTEXIST | The user can type only valid paths and file names. If this flag is used and the user types an invalid path and file name in the File Name entry field, the dialog box function displays a warning in a message box. |
+| OFN_READONLY | Causes the Read Only check box to be selected initially when the dialog box is created. This flag indicates the state of the Read Only check box when the dialog box is closed. |
+| OFN_SHOWHELP | Causes the dialog box to display the Help button. The hwndOwner member must specify the window to receive the HELPMSGSTRING registered messages that the dialog box sends when the user clicks the **Help** button. |
+
 #### Return value
 
 If the OFN_ALLOWMULTISELECT flag is set and the user selects multiple files, the returned string contains the current directory followed by the file names of the selected files. For Explorer-style dialog boxes, the directory and file name strings are separated by semicolons. If the user selects only one file, the returned string does not have a separator between the path and file name.
