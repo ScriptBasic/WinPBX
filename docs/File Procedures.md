@@ -12,7 +12,7 @@
 | ---------- | ----------- |
 | [AfxChDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxCopyFile](#AfxCopyFile) | Copies an existing file to a new file. |
-| AfxCreateDirectory | Creates a new directory. |
+| [AfxCreateDirectory](#AfxMkDir) | Creates a new directory. |
 | AfxDeleteFile | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | AfxFileDateTime | Returns the file's last modified date and time as Date Serial. |
@@ -61,8 +61,8 @@
 | AfxIsSystemFile | Returns True if the specified path is a system file; False if it is not. |
 | AfxIsTemporaryFile | Returns True if the specified path is a temporary file; False if it is not. |
 | AfxKill | Deletes the specified file. |
-| AfxMakeDir | Creates a new directory. |
-| AfxMkDir | Creates a new directory. |
+| [AfxMakeDir](#AfxMkDir) | Creates a new directory. |
+| [AfxMkDir](#AfxMkDir) | Creates a new directory. |
 | AfxMoveFile | Moves an existing file or a directory, including its children. |
 | AfxName | Moves an existing file or a directory, including its children. |
 | AfxRemoveDirectory | Deletes an existing empty directory. |
@@ -354,3 +354,34 @@ If the function fails, the return value is FALSE. To get extended error informat
 #### Rermarks
 
 **AfxFileCopy** is an unicode replacement for Free Basic's **FileCopy** and returns 0 on success, or 1 if an error occurred.
+
+# <a name="AfxMkDir"></a>AfxMkDir / AfxMaleDir / AfxCreateDirectory
+
+Creates a new directory.
+
+```
+FUNCTION AfxCreateDirectory (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxMakeDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxMkDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpPathName* | The path of the directory to be created. To extend the limit to 32,767 wide characters, prepend "\?" to the path. |
+
+#### Return value:
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call GetLastError.<br>
+
+Possible errors include the following.
+
+| Error      | Description |
+| ---------- | ----------- |
+| ERROR_ALREADY_EXISTS | The specified directory already exists. |
+| ERROR_PATH_NOT_FOUND | One or more intermediate directories do not exist; this function will only create the final directory in the path. |
+
+#### Remarks
+
+**AfxMkDir** is an unicode replacement for Free Basic's **MkDir** and returns 0 on success, or or -1 on failure.
