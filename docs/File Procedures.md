@@ -1169,3 +1169,35 @@ The root path. If the call fails for any reason (for example, an invalid drive n
 DIM cws AS CWSTR = AfxPathBuildRoot(2) ' output: C:\
 ```
 
+# <a name="AfxPathCanonicalize"></a>AfxPathCanonicalize
+
+Removes elements of a file path according to special strings inserted into that path.
+
+```
+FUNCTION AfxPathCanonicalize (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be canonicalized. |
+
+#### Return value
+
+The canonicalized path.
+
+#### Remarks
+
+This function allows the user to specify what to remove from a path by inserting special character sequences into the path. The ".." sequence indicates to remove a path segment from the current position to the previous path segment. The "." sequence indicates to skip over the next path segment to the following path segment. The root segment of the path cannot be removed.
+
+If there are more ".." sequences than there are path segments, the contents of the returned string contains just the root, "\\".
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCanonicalize("A:\name_1\.\name_2\..\sname_3") ' output: A:\name_1\name_3
+DIM cws AS CWSTR = AfxPathCanonicalize("A:\name_1\..\name_2\.\name_3") ' output: A:\name_2\name_3
+DIM cws AS CWSTR = AfxPathCanonicalize("A:\name_1\name_2\.\name_3\..\name_4") ' output: A:\name_1\name_2\name_4
+DIM cws AS CWSTR = AfxPathCanonicalize("A:\name_1\.\name_2\.\name_3\..\name_4\..") ' output: A:\name_1\name_2
+DIM cws AS CWSTR = AfxPathCanonicalize("C:\..") ' output: C:\
+```
+
