@@ -2548,3 +2548,23 @@ Returns a True value if the URL is a URL that is not included in navigation hist
 
 This function is equivalent to the following: AfxUrlIs(wszURL, URLIS_NOHISTORY)
 
+# <a name="AfxUrlIsOpaque"></a>AfxUrlIsOpaque
+
+Returns whether a URL is opaque.
+
+```
+FUNCTION AfxUrlIsOpaque (BYVAL wszUrl AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL to be corrected. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+Returns True if the URL is opaque, or False otherwise.
+
+#### Remarks
+
+A URL that has a scheme that is not followed by two slashes (//) is opaque. For example, mailto:xyz@litwareinc.com is an opaque URL. Opaque URLs cannot be separated into the standard URL hierarchy. **AfxUrlIsOpaque** is equivalent to the following: AfxUrlIs(wszURL, URLIS_OPAQUE)
+
