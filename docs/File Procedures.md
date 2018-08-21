@@ -42,9 +42,9 @@
 | [AfxGetFileVersion](#AfxGetFileVersion) | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
 | [AfxGetFolderName](#AfxGetFolderName) | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
 | [AfxGetKnowFolderPath](#AfxGetKnowFolderPath) | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
-| AfxGetLongPathName | Retrieves the short path form of the specified path. |
-| AfxGetPathName | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
-| AfxGetShortPathName | Retrieves the short path form of the specified path. |
+| [AfxGetLongPathName](#AfxGetLongPathName) | Retrieves the short path form of the specified path. |
+| [AfxGetPathName](#AfxGetPathName) | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
+| [AfxGetShortPathName](#AfxGetShortPathName) | Retrieves the short path form of the specified path. |
 | AfxGetSpecialFolderLocation | Retrieves the path of an special folder. |
 | AfxGetSystemDllPath | Retrieves the fully qualified path for the file that contains the specified module. |
 | AfxGetWinDir | Retrieves the path of the Windows directory. |
@@ -784,3 +784,41 @@ For a list of KNOWNFOLDERID constants see: [KNOWNFOLDERID](https://msdn.microsof
 AfxGetKnowFolderPath(@FOLDERID_CommonPrograms)
 ```
 
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+# <a name="AfxGetLongPathName"></a>AfxGetLongPathName
+
+Retrieves the short path form of the specified path.
+```
+FUNCTION AfxGetLongPathName (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. To extend the limit of MAX_PATH wode characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
+
+# <a name="AfxGetPathName"></a>AfxGetPathName
+
+Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:).
+
+```
+FUNCTION AfxGetPathName (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+# <a name="AfxGetShortPathName"></a>AfxGetShortPathName
+
+Retrieves the short path form of the specified path.
+
+```
+FUNCTION AfxGetShortPathName (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. To extend the limit of MAX_PATH wode characters to 32,767 wide characters, prepend "\\\\?\\" to the path. |
