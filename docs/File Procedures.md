@@ -69,7 +69,7 @@
 | [AfxRemoveDir](#AfxRemoveDir) | Deletes an existing empty directory. |
 | [AfxRenameFile](#AfxMoveFile) | Moves an existing file or a directory, including its children. |
 | [AfxRmDir](#AfxRemoveDir) | Deletes an existing empty directory. |
-| AfxSaveTempFile | Saves the contents of a string buffer in a temporary file. |
+| [AfxSaveTempFile](#AfxSaveTempFile) | Saves the contents of a string buffer in a temporary file. |
 | [AfxSetCurDir](#AfxChDir) | Changes the current directory for the current process. |
 | [AfxSetCurrentDirectory](#AfxChDir) | Changes the current directory for the current process. |
 
@@ -1044,3 +1044,19 @@ Use **AfxFileReadAllLinesA** for ansi text files and **AfxFileReadAllLinesW** fo
 
 Because it returns a safe array, this function is located in the CSafeArray.inc include file.
 
+# <a name="AfxSaveTempFile"></a>AfxSaveTempFile
+
+Saves the contents of a string buffer in a temporary file.
+
+```
+FUNCTION AfxSaveTempFile (BYVAL pwszBuffer AS WSTRING PTR, BYREF wszExtension AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszBuffer* | The string buffer to save. |
+| *wszExtension* | Optional. The extension of the file name without a colon (e.g. "bas"). If an empty string is passed, the function will use "tmp" as the extension. |
+
+####Remarks
+
+Temporary files whose names have been created by this function are not automatically deleted. To delete these files call **AfxDeleteFile**.
