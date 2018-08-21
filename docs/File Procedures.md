@@ -2279,3 +2279,26 @@ The canonicalized url.
 Items between slashes are treated as hierarchical identifiers; the last item specifies the document itself. You must enter a slash (/) after the document name to append more items; otherwise, **AfxUrlCombine** changes one document for another.
 
 If a URL string contains '/../' or '/./', **AfxUrlCombine** usually treats the characters as if they indicated navigation in the URL hierarchy. The function simplifies the URLs before combining them. For instance, "/hello/cruel/../world" is simplified to "/hello/world". If the URL_DONT_SIMPLIFY flag is set in dwFlags, the function does not simplify URLs. In this case, "/hello/cruel/../world" is left as it is.
+
+# <a name="AfxUrlCompare"></a>AfxUrlCompare
+
+Makes a case-sensitive comparison of two URL strings.
+
+```
+FUNCTION AfxUrlCompare (BYREF wszUrl1 AS CONST WSTRING, BYREF wszUrl2 AS CONST WSTRING, _
+   BYVAL fIgnoreSlash AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl1* | A string that contains the first URL. |
+| *wszUrl2* | A string that contains the second URL. |
+| *fIgnoreSlash* |  A value that is set to TRUE to have **AfxUrlCompare** ignore a trailing '/' character on either or both URLs. |
+
+#### Return value
+
+Returns zero if the two strings are equal. The function will also return zero if *fIgnoreSlash* is set to TRUE and one of the strings has a trailing '\\' character. The function returns a negative integer if the string pointed to by *wszUrl1* is less than the string pointed to by *wszUrl2*. Otherwise, it returns a positive integer.
+
+####Remarks
+
+For best results, you should first canonicalize the URLs with **AfxUrlCanonicalize**. Then, compare the canonicalized URLs with **AfxUrlCompare**.
