@@ -2035,9 +2035,9 @@ FUNCTION AfxPathSearchAndQualify (BYREF wszPath AS CONST WSTRING, BYREF wszFully
 | ---------- | ----------- |
 | *wszPath* | A string that contains the path to search. |
 | *wszFullyQualifiedPath* | A string of length MAX_PATH that contains the path to be referenced. |
-| *cchFullyQualifiedPath* | The size of the buffer pointed to by wszFullyQualifiedPath, in characters. |
+| *cchFullyQualifiedPath* | The size of the buffer pointed to by *wszFullyQualifiedPath*, in characters. |
 
 #### Return value
 
-True of False.
+Returns True if the path is qualified, or False otherwise.
 
