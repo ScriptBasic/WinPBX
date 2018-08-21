@@ -1810,3 +1810,20 @@ FUNCTION AfxPathMakeSystemFolder (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 
 Returns True if successful, or False otherwise.
 
+# <a name="AfxPathMatchSpec"></a>AfxPathMatchSpec
+
+Searches a string using a Microsoft MS-DOS wild card match type.
+
+```
+FUNCTION AfxPathMatchSpec (BYREF wszFile AS CONST WSTRING, BYREF wszSpec AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFile* | A string that contains the path to be searched. |
+| *wszSpec* | A string that contains the file type for which to search. For example, to test whether *wszFile* is a .doc file, *wszSpec* should be set to "\*.doc". |
+
+#### Return value
+
+Returns True if the string matches, or False otherwise.
+
