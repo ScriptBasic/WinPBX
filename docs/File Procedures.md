@@ -507,7 +507,7 @@ The **AfxRemoveDir** function marks a directory for deletion on close. Therefore
 
 **AfxRmDir** is an unicode replacement for Free Basic's **RmDir** and returns 0 on success, or -1 on failure.
 
-# <a name="AfxRemoveDir"></a>AfxRemoveDir / AfxRmDir / AfxRemoveDirectory
+# <a name="AfxFileExists"></a>AfxFileExists
 
 Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used).
 
