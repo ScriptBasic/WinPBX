@@ -17,11 +17,11 @@
 | [AfxDeleteFile](#AfxDeleteFile) | Deletes the specified file. |
 | [AfxFileCopy](#AfxCopyFile) | Copies an existing file to a new file. |
 | [AfxFileDateTime](#AfxFileDateTime) | Returns the file's last modified date and time as Date Serial. |
-| AfxFileExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
+| [AfxFileExists](#AfxFileExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | AfxGetFileLen | Returns the size in bytes of the specified file. |
 | AfxFileReadAllLines | Reads all the lines of the specified file into a safe array. |
 | AfxFileScan | Scans a text file and returns the number of occurrences of the specified delimiter. |
-| AfxFolderExists | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
+| [AfxFolderExists](#AfxFolderExists) | Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used). |
 | [AfxGetCurDir](#AfxCurDir) | Retrieves the current directory for the current process. |
 | [AfxGetCurrentDirectory](#AfxCurDir) | Retrieves the current directory for the current process. |
 | AfxGetDriveType | Determines whether a disk drive is a removable, fixed, CD-ROM, RAM disk, or network drive. |
@@ -342,8 +342,8 @@ FUNCTION AfxFileCopy (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName A
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpExistingFileName* | The name of an existing file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\?" to the path. If *lpExistingFileName* does not exist, **CopyFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
-| *lpNewFileName* | The name of the new file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\?" to the path. |
+| *lpExistingFileName* | The name of an existing file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\\?" to the path. If *lpExistingFileName* does not exist, **CopyFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
+| *lpNewFileName* | The name of the new file. To extend the limit of MAX_PATH characters to 32,767 wide characters prepend "\\\?" to the path. |
 | *bFailIfExists* | If this parameter is TRUE and the new file specified by *lpNewFileName* already exists, the function fails. If this parameter is FALSE and the new file already exists, the function overwrites the existing file and succeeds. |
 
 #### Return value
@@ -367,7 +367,7 @@ FUNCTION AfxMkDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpPathName* | The path of the directory to be created. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+| *lpPathName* | The path of the directory to be created. To extend the limit to 32,767 wide characters, prepend "\\\?" to the path. |
 
 #### Return value:
 
@@ -397,7 +397,7 @@ FUNCTION AfxKill (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszFileSpec* | The full path and name of the file to delete. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+| *pwszFileSpec* | The full path and name of the file to delete. To extend the limit to 32,767 wide characters, prepend "\\\?" to the path. |
 
 #### Return value:
 
@@ -468,8 +468,8 @@ FUNCTION AfxName (BYVAL lpExistingFileName AS LPCWSTR, BYVAL lpNewFileName AS LP
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpExistingFileName* | The name of an existing file. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. If *lpExistingFileName* does not exist, **AfxRenameFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
-| *lpNewFileName* | The name of the new file. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+| *lpExistingFileName* | The name of an existing file. To extend the limit to 32,767 wide characters, prepend "\\\?" to the path. If *lpExistingFileName* does not exist, **AfxRenameFile** fails, and **GetLastError** returns ERROR_FILE_NOT_FOUND. |
+| *lpNewFileName* | The name of the new file. To extend the limit to 32,767 wide characters, prepend "\\\?" to the path. |
 
 #### Return value:
 
@@ -493,7 +493,7 @@ FUNCTION AfxRmDir (BYVAL lpPathName AS LPCWSTR) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpPathName* | The path of the directory to be removed. This path must specify an empty directory, and the calling process must have delete access to the directory. To extend the limit to 32,767 wide characters, prepend "\\?" to the path. |
+| *lpPathName* | The path of the directory to be removed. This path must specify an empty directory, and the calling process must have delete access to the directory. To extend the limit to 32,767 wide characters, prepend "\\\?" to the path. |
 
 #### Return value:
 
@@ -506,3 +506,29 @@ To get extended error information, call **GetLastError**.
 The **AfxRemoveDir** function marks a directory for deletion on close. Therefore, the directory is not removed until the last handle to the directory is closed. To recursively delete the files in a directory, use the **SHFileOperation** function. **AfxRemoveDir** removes a directory junction, even if the contents of the target are not empty; the function removes directory junctions regardless of the state of the target object. 
 
 **AfxRmDir** is an unicode replacement for Free Basic's **RmDir** and returns 0 on success, or -1 on failure.
+
+# <a name="AfxRemoveDir"></a>AfxRemoveDir / AfxRmDir / AfxRemoveDirectory
+
+Searches a directory for a file or subdirectory with a name that matches a specific name (or partial name if wildcards are used).
+
+```
+FUNCTION AfxFileExists (BYVAL pwszFileSpec AS WSTRING PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszFileSpec* | The directory or path, and the file name, which can include wildcard characters, for example, an asterisk (\*) or a question mark (?). This parameter should not be NULL, an invalid string (for example, an empty string or a string that is missing the terminating null character), or end in a trailing backslash (\\). If the string ends with a wildcard, period (.), or directory name, the user must have access permissions to the root and all subdirectories on the path. To extend the limit of MAX_PATH wide characters to 32,767 wide characters, prepend "\\\?\" to the path. |
+
+#### Return value
+
+Boolean. TRUE if the specified file exist or FALSE otherwise.
+
+#### Remarks
+
+Prepending the string "\\\?\" does not allow access to the root directory.
+
+On network shares, you can use an pwszFileSpec in the form of the following: "\\\server\service\*". However, you cannot use an pwszFileSpec that points to the share itself; for example, "\\\server\service" is not valid.
+
+To examine a directory that is not a root directory, use the path to that directory, without a trailing backslash. For example, an argument of "C:\Windows" returns information about the directory "C:\Windows", not about a directory or file in "C:\Windows". To examine the files and directories in "C:\Windows", use an *pwszFileSpec* of "C:\Windows\*".
+
+Be aware that some other thread or process could create or delete a file with this name between the time you query for the result and the time you act on the information. If this is a potential concern for your application, one possible solution is to use the CreateFile function with CREATE_NEW (which fails if the file exists) or OPEN_EXISTING (which fails if the file does not exist).
