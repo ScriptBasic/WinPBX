@@ -2444,3 +2444,22 @@ A string with the location or an empty string.
 #### Remarks
 
 The location is the segment of the URL starting with a ? or # character. If a file URL has a query string, the returned string includes the query string.
+
+# <a name="AfxUrlGetPart"></a>AfxUrlGetPart
+
+Accepts a URL string and returns a specified part of that URL.
+
+```
+FUNCTION AfxUrlGetPart (BYREF wszUrl AS WSTRING, _
+   BYVAL dwPart AS DWORD, BYVAL dwFlags AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the URL. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+| *dwPart* | The flags that specify which part of the URL to retrieve. It can have one of the following values.<br>*URL_PART_HOSTNAME*: The host name.<br>*URL_PART_PASSWORD*: The password.<br>*URL_PART_PORT*: The port number.<br>*URL_PART_QUERY*: The query portion of the URL.<br>*URL_PART_SCHEME*: The URL scheme.<br>*URL_PART_USERNAME*: The username. |
+| *dwFlags* | A flag that can be set to keep the URL scheme, in addition to the part that is specified by *dwPart*.<br>*URL_PARTFLAG_KEEPSCHEME*: Keep the URL scheme. |
+
+#### Return value
+
+A string with the specified part of that URL.
