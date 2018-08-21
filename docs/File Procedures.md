@@ -1670,3 +1670,19 @@ Returns True if the specified path is a root, or False otherwise.
 
 Returns True for paths such as "\\", "X:\\" or "\\\\server\\share". Paths such as "..\\path2" or "\\\\server\\" return FALSE. 
 
+# <a name="AfxPathIsSameRoot"></a>AfxPathIsSameRoot
+
+Compares two paths to determine if they have a common root component.
+
+```
+FUNCTION AfxPathIsSameRoot (BYREF wszPath1 AS CONST WSTRING, BYREF wszPath2 AS CONST WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath1* | A string that contains contains the path to be compared. |
+| *wszPath2* | A string that contains contains the second path to be compared. |
+
+#### Return value
+
+Returns True if both strings have the same root component, or False otherwise. If *wszPath1* contains only the server and share, this function also returns False.
