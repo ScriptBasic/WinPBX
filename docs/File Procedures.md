@@ -83,7 +83,7 @@
 | [AfxPathBuildRoot](#AfxPathBuildRoot) | Creates a root path from a given drive number. |
 | [AfxPathCanonicalize](#AfxPathCanonicalize) | Removes elements of a file path according to special strings inserted into that path. |
 | [AfxPathCombine](#AfxPathCombine) | Concatenates two strings that represent properly formed paths into one path; also concatenates any relative path elements. |
-| [AfxPathCommonPrefix](#AfxPathCommonPrefix) | Compares two paths to determine if they share a common prefix. A prefix is one of these types: "C:\", ".", "..", "..\". |
+| [AfxPathCommonPrefix](#AfxPathCommonPrefix) | Compares two paths to determine if they share a common prefix. A prefix is one of these types: "C:\\", ".", "..", "..\\". |
 | [AfxPathCompactPath](#AfxPathCompactPath) | Truncates a file path to fit within a given pixel width by replacing path components with ellipses. |
 | [AfxPathCompactPathEx](#) | Truncates a path to fit within a certain number of characters by replacing path components with ellipses. |
 | AfxPathCreateFromUrl | Converts a file URL to a Microsoft MS-DOS path. |
