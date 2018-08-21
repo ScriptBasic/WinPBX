@@ -1328,3 +1328,24 @@ The MS-DOS path.
 DIM cws AS CWSTR = AfxPathCreateFromUrl("file:///C:/Documents%20and%20Settings/URIS.txt")
 ```
 
+# <a name="AfxPathFileExists"></a>AfxPathFileExists
+
+Determines whether a path to a file system object such as a file or directory is valid.
+
+```
+FUNCTION AfxPathFileExists (BYREF wszPath AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the full path of the object to verify. |
+
+#### Return value
+
+Returns TRUE if the file exists, or FALSE otherwise.
+
+#### Remarks
+
+This function tests the validity of the path.
+
+A path specified by Universal Naming Convention (UNC) is limited to a file only; that is, \\\\server\\share\file is permitted. A UNC path to a server or server share is not permitted; that is, \\\\server or \\\\server\\share. This function returns FALSE if a mounted remote drive is out of service.
