@@ -41,7 +41,7 @@
 | [AfxGetFileSize](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
 | [AfxGetFileVersion](#AfxGetFileVersion) | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
 | [AfxGetFolderName](#AfxGetFolderName) | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
-| AfxGetKnowFolderPath | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
+| [AfxGetKnowFolderPath](#AfxGetKnowFolderPath) | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
 | AfxGetLongPathName | Retrieves the short path form of the specified path. |
 | AfxGetPathName | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
 | AfxGetShortPathName | Retrieves the short path form of the specified path. |
@@ -752,3 +752,35 @@ FUNCTION AfxGetFolderName (BYREF wszPath AS WSTRING) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszPath* | The path/filename string. |
+
+# <a name="AfxGetKnowFolderPath"></a>AfxGetKnowFolderPath
+
+Retrieves the path of an special folder.
+
+```
+FUNCTION AfxGetKnowFolderPath (BYVAL rfid AS CONST KNOWNFOLDERID CONST PTR, _
+   BYVAL dwFlags AS DWORD = 0, BYVAL hToken AS HANDLE = NULL) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *rfid* | A reference to the KNOWNFOLDERID that identifies the folder. The folders associated with the known folder IDs might not exist on a particular system. |
+| *dwFlags* | Flags that specify special retrieval options. This value can be 0; otherwise, it is one or more of the KNOWN_FOLDER_FLAG values. |
+| *hToken* | An access token used to represent a particular user. This parameter is usually set to NULL, in which case the function tries to access the current user's instance of the folder. However, you may need to assign a value to *hToken* for those folders that can have multiple users but are treated as belonging to a single user. The most commonly used folder of this type is Documents. The calling application is responsible for correct impersonation when *hToken* is non-null. It must have appropriate security privileges for the particular user, including TOKEN_QUERY and TOKEN_IMPERSONATE, and the user's registry hive must be currently mounted. See [Access Control](https://msdn.microsoft.com/en-us/library/windows/desktop/aa374860(v=vs.85).aspx) for further discussion of access control issues. Assigning the *hToken* parameter a value of -1 indicates the Default User. This allows clients of **SHGetKnownFolderIDList** to find folder locations (such as the Desktop folder) for the Default User. The Default User user profile is duplicated when any new user account is created, and includes special folders such as Documents and Desktop. Any items added to the Default User folder also appear in any new user account. Note that access to the Default User folders requires administrator privileges. |
+
+#### Return value
+
+The path of the requested folder on success, or an empty string on failure.
+
+#### Remarks
+
+Requires Windows Vista/Windows 7 or superior.
+
+For a list of KNOWNFOLDERID constants see: [KNOWNFOLDERID](https://msdn.microsoft.com/en-us/library/windows/desktop/dd378457(v=vs.85).aspx)
+
+#### Usage example
+
+```
+AfxGetKnowFolderPath(@FOLDERID_CommonPrograms)
+```
+
