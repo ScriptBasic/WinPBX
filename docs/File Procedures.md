@@ -39,8 +39,8 @@
 | [AfxGetFileName](#AfxGetFileName) | Parses a path/filename and returns the file name portion. That is the text to the right of the last backslash (\) or colon (:), ending just before the last period (.). |
 | [AfxGetFileNameX](#AfxGetFileNameX) | Parses a path/filename and returns the file name and extension portion. That is the text to the right of the last backslash (\) or colon (:). |
 | [AfxGetFileSize](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
-| AfxGetFileVersion | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
-| AfxGetFolderName | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
+| [AfxGetFileVersion](#AfxGetFileVersion) | Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01. |
+| [AfxGetFolderName](#AfxGetFolderName) | Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name. |
 | AfxGetKnowFolderPath | Retrieves the path of an special folder. Requires Windows Vista/Windows 7 or superior. |
 | AfxGetLongPathName | Retrieves the short path form of the specified path. |
 | AfxGetPathName | Parses a path/filename and returns the path portion. That is the text up to and including the last backslash (\) or colon (:). |
@@ -723,6 +723,30 @@ Parses a path/filename and returns the file name and extension portion. That is 
 
 ```
 FUNCTION AfxGetFileNameX (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+# <a name="AfxGetFileVersion"></a>AfxGetFileVersion
+
+Retrieves the version of the specified file multiplied by 100, e.g. 601 for version 6.01.
+
+```
+FUNCTION AfxGetFileVersion (BYVAL pwszFileName AS WSTRING PTR) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+# <a name="AfxGetFolderName"></a>AfxGetFolderName
+
+Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name.
+
+```
+FUNCTION AfxGetFolderName (BYREF wszPath AS WSTRING) AS CWSTR
 ```
 
 | Parameter  | Description |
