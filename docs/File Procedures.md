@@ -1201,3 +1201,30 @@ DIM cws AS CWSTR = AfxPathCanonicalize("A:\name_1\.\name_2\.\name_3\..\name_4\..
 DIM cws AS CWSTR = AfxPathCanonicalize("C:\..") ' output: C:\
 ```
 
+# <a name="AfxPathCombine"></a>AfxPathCombine
+
+Concatenates two strings that represent properly formed paths into one path; also concatenates any relative path elements.
+
+```
+FUNCTION AfxPathCombine (BYREF wszDir AS CONST WSTRING, BYREF wszFile AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszDir* | A string that contains the directory path. This value can be "". |
+| *wszFile* | A string that contains the file path. This value can be "". |
+
+#### Return value
+
+The concatenated path if successful, or an empty string otherwise.
+
+#### Remarks
+
+The directory path should be in the form of A:,B:, ..., Z:. The file path should be in a correct form that represents the file part of the path. The file path must not be null, and if it ends with a backslash, the backslash will be maintained.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathCombine("C:", "One\Two\Three") ' output: C:\One\Two\Three
+```
+
