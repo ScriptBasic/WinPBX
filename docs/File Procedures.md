@@ -1686,3 +1686,20 @@ FUNCTION AfxPathIsSameRoot (BYREF wszPath1 AS CONST WSTRING, BYREF wszPath2 AS C
 #### Return value
 
 Returns True if both strings have the same root component, or False otherwise. If *wszPath1* contains only the server and share, this function also returns False.
+
+# <a name="AfxPathIsSystemFolder"></a>AfxPathIsSystemFolder
+
+Determines if an existing folder contains the attributes that make it a system folder. Alternately, this function indicates if certain attributes qualify a folder to be a system folder.
+
+```
+FUNCTION AfxPathIsSystemFolder (BYREF wszPath AS CONST WSTRING, BYVAL dwAttrb AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the name of an existing folder. The attributes for this folder will be retrieved and compared with those that define a system folder. If this folder contains the attributes to make it a system folder, the function returns nonzero. If this value is NULL, this function determines if the attributes passed in dwAttrb qualify it to be a system folder. |
+| *dwAttrb* | The file attributes to be compared. Used only if wszPath is NULL. In that case, the attributes passed in this value are compared with those that qualify a folder as a system folder. If the attributes are sufficient to make this a system folder, this function returns nonzero. These attributes are the attributes that are returned from **GetFileAttributes**. |
+
+#### Return value
+
+Returns True if the *wszPath* or *dwAttrb* represent a system folder, or False otherwise.
