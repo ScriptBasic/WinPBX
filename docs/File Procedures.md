@@ -32,7 +32,7 @@
 | [AfxGetExePath](#AfxExePath) | Returns the path of the program which is currently executing. The path has not a trailing backslash except if it is a drive, e.g. C:\. |
 | [AfxGetExePathName](#AfxGetExePathName) | Returns the path of the program which is currently executing. The path has a trailing backslash. |
 | [AfxGetFileCreationTime](#AfxGetFileCreationTime) | Returns the time the file was created, in FILETIME format. |
-| AfxGetFileExt | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
+| [AfxGetFileExt](#AfxGetFileExt) | Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it. |
 | [AfxGetFileLastAccessTime](#AfxGetFileLastAccessTime) | Returns the time the file was last accessed, in FILETIME format. |
 | [AfxGetFileLastWriteTime](#AfxGetFileLastWriteTime) | Returns the time the file was last written to, truncated, or overwritten, in FILETIME format. |
 | [AfxFileLen](#AfxGetFileSize) | Returns the size in bytes of the specified file. |
@@ -653,6 +653,18 @@ Returns the complete drive, path, file name, and extension of the program which 
 ```
 FUNCTION AfxGetExeFullPath () AS CWSTR
 ```
+
+# <a name="AfxGetFileExt"></a>AfxGetFileExt
+
+Parses a path/filename and returns the extension portion of the path/file name. That is the last period (.) in the string plus the text to the right of it.
+
+```
+FUNCTION AfxGetFileExt (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
 
 # <a name="AfxGetFileCreationTime"></a>AfxGetFileCreationTime
 
