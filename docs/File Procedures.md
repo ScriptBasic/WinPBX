@@ -2424,3 +2424,23 @@ Priority is given to the first character in the protocol identifier section so h
 Do not use this function for deterministic data transformation. The heuristics used by **AfxUrlFixup** can change from one release to the next. The function should only be used to correct possibly invalid user input.
 
 This function is available through Windows 7 and Windows Server 2008. It might be altered or unavailable in subsequent versions of Windows.
+
+# <a name="AfxUrlGetLocation"></a>AfxUrlGetLocation
+
+Retrieves the location from a URL.
+
+```
+FUNCTION AfxUrlGetLocation (BYREF wszUrl AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszUrl* | A string that contains the location. This string must not exceed INTERNET_MAX_PATH_LENGTH characters in length, including the terminating NULL character. |
+
+#### Return value
+
+A string with the location or an empty string.
+
+#### Remarks
+
+The location is the segment of the URL starting with a ? or # character. If a file URL has a query string, the returned string includes the query string.
