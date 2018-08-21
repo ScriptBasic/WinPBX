@@ -77,7 +77,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxPathAddBackSlash | Adds a backslash to the end of a string to create the correct syntax for a path. If the source path already has a trailing backslash, no backslash will be added. |
+| [AfxPathAddBackSlash](#AfxPathAddBackSlash) | Adds a backslash to the end of a string to create the correct syntax for a path. If the source path already has a trailing backslash, no backslash will be added. |
 | AfxPathAddExtension | Adds a file name extension to a path string. |
 | AfxPathAppend | Appends one path to the end of another. |
 | AfxPathBuildRoot | Creates a root path from a given drive number. |
@@ -1060,3 +1060,26 @@ FUNCTION AfxSaveTempFile (BYVAL pwszBuffer AS WSTRING PTR, BYREF wszExtension AS
 #### Remarks
 
 Temporary files whose names have been created by this function are not automatically deleted. To delete these files call **AfxDeleteFile**.
+
+# <a name="AfxPathAddBackSlash"></a>AfxPathAddBackSlash
+
+Adds a backslash to the end of a string to create the correct syntax for a path. If the source path already has a trailing backslash, no backslash will be added.
+
+```
+FUNCTION AfxPathAddBackSlash (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that represents a path. |
+
+#### Return value
+
+The changed path.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxPathAddBackSlash("C:\dir_name\dir_name\file_name")
+```
+
