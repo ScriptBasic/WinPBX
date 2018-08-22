@@ -420,3 +420,11 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="GetArgErr"></a>GetArgErr
+
+Returns the index within rgvarg of the first argument that has an error. Arguments are stored in pDispParams->rgvarg in reverse order, so the first argument is the one with the highest index in the array. This parameter is returned only when the resulting return value is DISP_E_TYPEMISMATCH or DISP_E_PARAMNOTFOUND.
+
+```
+FUNCTION GetArgErr () AS UINT
+```
