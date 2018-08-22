@@ -19,7 +19,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | ---------- | ----------- |
 | [Constructor (SAFEARRAYBOUND)](#Constructor1) | Creates a safe array. |
 | [Constructor (CSafeArray)](#Constructor2) | Creates a safe array from another CSafeArray. |
-| [Constructor (SAFEARRAY PTR)] (#Constructor3) | Creates a safe array from a SafeArray. |
+| [Constructor (SAFEARRAY PTR)](#Constructor3) | Creates a safe array from a SafeArray. |
 | [Constructor (VARIANT PTR)](#COnstructor4) | Creates a safe array from a variant of type VT_ARRAY. |
 
 # Operators
