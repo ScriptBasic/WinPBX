@@ -21,7 +21,7 @@
 | [Operator \*](#Operator1) | Returns the underlying IDispatch pointer. |
 | [Operator LET](#Operator2) | Assigns an IDispatch pointer and increases the reference count. |
 
-# Methods
+# Methods and Properties
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -536,3 +536,18 @@ FUNCTION SetLcid (BYVAL lcid AS LCID)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *lcid* | The locale context in which to interpret arguments. The *lcid* is used by the **GetIDsOfNames** function, and is also passed to **Invoke** to allow the object to interpret its arguments specific to a locale. Applications that do not support multiple national languages can ignore this parameter. |
+
+# <a name="Put"></a>Put
+
+Calls the specified property of an interface and sets the passed value.
+
+```
+PROPERTY Put (BYVAL dispID AS DISPID, BYREF cvArg AS CVAR)
+PROPERTY Put (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg* | CVAR. The value to set. |
