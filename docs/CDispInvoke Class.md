@@ -367,3 +367,56 @@ Returns a pointer to the dispatch interface. Don't call **IUnknown_Release** on 
 ```
 FUNCTION DispPtr () AS IDispatch PTR
 ```
+
+# <a name="Get"></a>Get
+
+Calls the specified property of an interface and gets the value returned The overloaded methods allow to use the **Get** method passing one argument, two arguments or none.
+
+```
+FUNCTION Get (BYVAL dispID AS DISPID) AS CVAR
+FUNCTION Get (BYVAL dispID AS DISPID, BYREF cvArg AS CVAR) AS CVAR
+FUNCTION Get (BYVAL dispID AS DISPID, BYREF cvArg1 AS CVAR, BYREF cvArg2 AS CVAR) AS CVAR
+FUNCTION Get (BYVAL pwszName AS WSTRING PTR) AS CVAR
+FUNCTION Get (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR) AS CVAR
+FUNCTION Get (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 AS CVAR, BYREF cvArg2 AS CVAR) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg1* | CVAR. First argument. |
+| *cvArg2* | CVAR. Second argument. |
+
+#### Return value
+
+CVAR. The property value.
+
+#### Example
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Count: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke = pServices.NextObject
+IF pDispServ.DispPtr THEN
+   PRINT "Caption: "; pDispServ.Get("Caption")
+   PRINT "Serial number: "; pDispServ.Get("SerialNumber")
+END IF
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
