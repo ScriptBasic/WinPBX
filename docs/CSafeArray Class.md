@@ -62,7 +62,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [GetRecordInfo](#GetRecordInfo) | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
 | [GetType](#GetType) | Returns the VARTYPE stored in the given safe array. |
 | [Insert](#Insert) | Inserts a value at the specified position of the safe array. |
-| IsResizable | Tests if the safe array can be resized. |
+| [IsResizable](#IsResizable) | Tests if the safe array can be resized. |
 | LBound | Returns the lower bound for any dimension of a safe array. |
 | LocksCount | Returns the number of times the array has been locked without the corresponding unlock. |
 | MoveFromVariant | Transfers ownership of the safe array contained in the variant parameter to this object. |
@@ -72,11 +72,8 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Put | Stores the data element at a given location in the array. |
 | Redim | Changes the right-most (least significant) bound of a safe array. |
 | Remove | Deletes the specified array element. |
-| RemoveStr | Deletes the specified string element from the array. |
-| RemoveVar | Deletes the specified variant element from the array. |
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | SetIID | Sets the GUID of the interface contained within a given safe array. |
-| SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
 | SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
 | Sort | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
 | UBound | Returns the upper bound for any dimension of a safe array. |
@@ -949,4 +946,15 @@ S_OK (0) on success or an HRESULT code on failure.
 | E_OUTOFMEMORY | Memory could not be allocated for the element. |
 | E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
  
+# <a name="IsResizable"></a>IsResizable
+
+Tests if the safe array can be resized.
+
+```
+FUNCTION IsResizable () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE if the array can be resized; FALSE, otherwise.
 
