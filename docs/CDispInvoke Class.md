@@ -267,7 +267,7 @@ OPERATOR Let (BYREF cvDisp AS CVAR)
 
 # <a name="Attach"></a>Attach
 
-Attaches a Dispatch pointer
+Attaches a Dispatch pointer to the class.
 
 ```
 FUNCTION Attach (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE) AS HRESULT
@@ -282,3 +282,19 @@ FUNCTION Attach (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
 
 S_OK = Success.
 E_INVALIDARG = The passed pointer is null.
+
+# <a name="Detach"></a>Detach
+
+Detaches the Dispatch pointer from the class.
+
+```
+FUNCTION Detach () AS IDispatch PTR
+```
+
+#### Return value
+
+S_OK = Success.
+
+#### Remarks
+
+Extracts and returns the encapsulated interface pointer, and then clears the encapsulated pointer storage to NULL. This removes the interface pointer from encapsulation. It is up  to you to call **Release** on the returned interface pointer.
