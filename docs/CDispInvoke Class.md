@@ -351,3 +351,19 @@ Extracts and returns the encapsulated interface pointer, and then clears the enc
 #### Remarks
 
 This method is called internally by the **Get**, **Put**, **PutRef** and **Invoke** methods of the **CDispInvoke class**. You don't need to call it directly.
+
+# <a name="DispObj"></a>DispObj
+
+Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it.
+
+```
+FUNCTION DispObj () AS IDispatch PTR
+```
+
+# <a name="DispPtr"></a>DispPtr
+
+Returns a pointer to the dispatch interface. Don't call **IUnknown_Release** on it.
+
+```
+FUNCTION DispPtr () AS IDispatch PTR
+```
