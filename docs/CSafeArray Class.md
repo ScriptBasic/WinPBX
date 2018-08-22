@@ -68,7 +68,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [MoveFromVariant](#MoveFromVariant) | Transfers ownership of the safe array contained in the variant parameter to this object. |
 | [MoveToVariant](#MoveToVariant) | Transfers ownership of the safe array to a variant and detaches it from the class. |
 | [NumDims](#NumDims) | Returns the number of dimensions in the array. |
-| PtrOfIndex | Returns a pointer to an array element. |
+| [PtrOfIndex](#PtrOfIndex) | Returns a pointer to an array element. |
 | Put | Stores the data element at a given location in the array. |
 | Redim | Changes the right-most (least significant) bound of a safe array. |
 | Remove | Deletes the specified array element. |
@@ -1041,3 +1041,44 @@ Returns the number of dimensions in the array.
 ```
 FUNCTION NumDims () AS UINT
 ```
+
+# <a name="PtrOfIndex"></a>PtrOfIndex
+
+Returns a pointer to an array element.
+
+Multidimensional array:
+
+```
+FUNCTION PtrOfIndex (BYVAL prgIndices AS LONG PTR) AS ANY PTR
+```
+
+One-dimensional array:
+
+```
+FUNCTION PtrOfIndex (BYVAL idx AS LONG) AS HRESULT
+```
+
+Two-dimensional array:
+
+```
+FUNCTION PtrOfIndex (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS HRESULT
+```
+
+Multidimensional array:
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgIndices* | An array of index values that identify an element of the array. All indexes for the element must be specified. |
+
+One-dimensional array:
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *idx* | Index of the element. |
+
+Two-dimensional array:
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cElem* | Index of the element. |
+| *cDim* | Dimension number of the array. |
