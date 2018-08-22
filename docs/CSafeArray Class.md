@@ -1002,7 +1002,7 @@ Returns the number of times the array has been locked without the corresponding 
 FUNCTION LocksCount () AS UINT
 ```
 
-# <a name="LocksCount"></a>LocksCount
+# <a name="MoveFromVariant"></a>MoveFromVariant
 
 Transfers ownership of the safe array contained in the variant parameter to this object. The variant is then changed to VT_EMPTY.
 
