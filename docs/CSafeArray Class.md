@@ -91,27 +91,6 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [AfxXmlBase64Decode](#AfxXmlBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | [AfxXmlBase64Encode](#AfxXmlBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
 
-# Analyzing the safe array API
-
-| Topic |
-| ----- |
-| About safe arrays |
-| Safe array descriptor |
-| Creating a safe array |
-| Putting data |
-| Retrieving data |
-| Rediming a safe array |
-| Copying a safe array |
-| Destroying a safe array |
-| Getting the dimensions of a safe array |
-| Getting the bounds of a safe array |
-| Getting the type of a safe array |
-| Setting ad getting the GUID of an interface |
-| Setting and getting record information |
-| Accessing data |
-| Getting the element size |
-| Creating vectors |
-
 # <a name="SAFEARRAY"></a>SAFEARRAY Structure
 
 Represents a safe array.
