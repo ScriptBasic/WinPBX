@@ -75,7 +75,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | [SetIID](#SetIID) | Sets the GUID of the interface contained within a given safe array. |
 | [SetRecordInfo](#SetRecordInfo) | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
-| Sort | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
+| [Sort](#Sort) | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
 | [UBound](#UBound) | Returns the upper bound for any dimension of a safe array. |
 | UnaccessData | Decrements the lock count of an array, and invalidates the pointer retrieved by AccessData. |
 
@@ -1255,3 +1255,20 @@ FUNCTION SetRecordInfo (BYVAL prinfo AS IRecordInfo PTR) AS HRESULT
 | ---------- | ----------- |
 | E_INVALIDARG | If the array descriptor does not have the FADF_RECORD flag set. |
 | E_FAIL | Failure. The array descriptor is null. |
+
+# <a name="Sort"></a>Sort
+
+Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function.
+
+```
+FUNCTION Sort (BYVAL bAscend AS BOOLEAN = TRUE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bAscend* | TRUE for sorting in ascending order; FALSE for sorting in descending order. |
+
+| HRESULT    | Description |
+| ---------- | ----------- |
+| E_FAIL | The array descriptor is null or the safe array is not of of the type VT_BSTR. |
+| E_UNEXPECTED | The array could not be locked. |
