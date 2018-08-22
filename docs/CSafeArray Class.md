@@ -22,6 +22,13 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Operator * | Returns a pointer to the safe array descriptor. |
 | Operator LET | Assigns a CSafeArray, a safe array or a Variant. |
 
+# Structures
+
+| Name       | Description |
+| ---------- | ----------- |
+| SAFEARRAY | Represents a safe array. |
+| SAFEARRAYBOUND | Represents the bounds of one dimension of the array. |
+
 # Methods
 
 | Name       | Description |
