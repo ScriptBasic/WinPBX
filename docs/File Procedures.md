@@ -1803,7 +1803,7 @@ FUNCTION AfxPathIsURL (BYREF wszPath AS CONST WSTRING) AS BOOLEAN
 
 #### Return value
 
-Returns True if wszPath has a valid URL format, or Fañse otherwise.
+Returns True if *wszPath* has a valid URL format, or Fañse otherwise.
 
 #### Remarks
 
