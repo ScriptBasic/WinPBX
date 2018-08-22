@@ -692,5 +692,5 @@ FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 
 
 #### Return value
 
-S_OK (0) on success or an HREUSLT code on failure.
+S_OK (0) on success or an HRESULT code on failure.
 
