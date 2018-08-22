@@ -58,3 +58,23 @@ FUNCTION Pop () AS CVAR
 #### Return value
 
 A Variant. If there are no elements to pop, the returned variant will be empty.
+
+# <a name="Count"></a>Count
+
+Returns the number of elements in the collection.
+
+```
+FUNCTION Count () AS UINT
+```
+
+# <a name="Clear"></a>Clear
+
+Returns the number of elements in the collection.
+
+```
+FUNCTION Clear () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK on success, or an error HRESULT on failure.
