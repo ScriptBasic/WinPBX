@@ -70,7 +70,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [NumDims](#NumDims) | Returns the number of dimensions in the array. |
 | [PtrOfIndex](#PtrOfIndex) | Returns a pointer to an array element. |
 | [Put](#Put) | Stores the data element at a given location in the array. |
-| Redim | Changes the right-most (least significant) bound of a safe array. |
+| [Redim](#Redim) | Changes the right-most (least significant) bound of a safe array. |
 | Remove | Deletes the specified array element. |
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | SetIID | Sets the GUID of the interface contained within a given safe array. |
@@ -1147,3 +1147,52 @@ S_OK (0) on success or an HRESULT code on failure.
 This function automatically calls **SAfeArrayLock** and **SafeArrayUnlock**  before and after assigning the element. If the data element is a string, object, or variant, the function copies it correctly when the safe array is destroyed. If the existing element is a string, object, or variant, it is cleared correctly. If the data element is a VT_DISPATCH or VT_UNKNOWN, **AddRef** is called to increment the object's reference count. 
 
 Multiple locks can be on an array. Elements can be put into an array while the array is locked by other operations.
+
+# <a name="Redim"></a>Redim
+
+Changes the right-most (least significant) bound of a safe array.
+
+Multidimensional array:
+
+```
+FUNCTION Redim (BYVAL pnewsabounds AS SAFEARRAYBOUND PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pnewsabounds* | Pointer to a new safe array bound structure that contains the new array boundary. You can change only the least significant dimension of an array. |
+
+One-dimensional array:
+
+```
+FUNCTION Redim (BYVAL cElements AS ULONG, BYVAL lLBound AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cElements* | Number of elements in the array. |
+| *lLBound* | The lower bound of the array. |
+
+Two-dimensional array:
+
+```
+FUNCTION Redim (BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
+   BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cElements1* | Number of elements in the first dimension of the array |
+| *lLBound1* | The lower bound of the first dimension of the array. |
+| *cElements2* | Number of elements in the second dimension of the array |
+| *lLBound2* | The lower bound of the second dimension of the array. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HRESULT  | Description |
+| ---------- | ----------- |
+| DISP_E_ARRAYISLOCKED | The array is currently locked. |
+| E_INVALIDARG | Invalid safe array descriptor. |
+| E_FAIL | Failure. |
