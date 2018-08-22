@@ -46,3 +46,15 @@ PRINT cv
 PRINT pStack.Pop
 PRINT pStack.Pop
 ```
+
+# <a name="Pop"></a>Pop
+
+Gets and removes the last element of the collection.
+
+```
+FUNCTION Pop () AS CVAR
+```
+
+#### Return value
+
+A Variant. If there are no elements to pop, the returned variant will be empty.
