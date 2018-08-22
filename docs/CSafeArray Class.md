@@ -50,7 +50,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CreateVectorEx](#CreateVectorEx) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | [Destroy](#Destroy) | Destroys an existing array descriptor and all of the data in the array. |
 | [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
-| Detach | Detaches the sage array descriptor from the CSafeArray. |
+| [Detach](#Detach) | Detaches the sage array descriptor from the CSafeArray. |
 | ElemSize | Returns the size of an element. |
 | [Erase](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
 | Features | Returns the flags used by the safe array. This is the same that the Flags method. |
@@ -733,3 +733,19 @@ S_OK (0) on success or an HRESULT code on failure.
 | ---------- | ----------- |
 | E_INVALIDARG | The dimensions or the number of dimensions don't match. |
 | DISP_E_ARRAYISLOCKED | The array is currently locked. |
+
+# <a name="Detach"></a>Detach
+
+Detaches the safe array descriptor from the CSafeArray.
+
+```
+FUNCTION Detach () AS SAFEARRAY PTR
+```
+
+#### Return value
+
+Returns a pointer to a SAFEARRAY descriptor.
+
+#### Remarks
+
+The caller takes ownership of it and must destroy it when no longer needed.
