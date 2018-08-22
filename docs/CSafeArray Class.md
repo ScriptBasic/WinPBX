@@ -71,7 +71,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [PtrOfIndex](#PtrOfIndex) | Returns a pointer to an array element. |
 | [Put](#Put) | Stores the data element at a given location in the array. |
 | [Redim](#Redim) | Changes the right-most (least significant) bound of a safe array. |
-| Remove | Deletes the specified array element. |
+| [Remove](#Remove) | Deletes the specified array element. |
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | SetIID | Sets the GUID of the interface contained within a given safe array. |
 | SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
@@ -1195,4 +1195,29 @@ S_OK (0) on success or an HRESULT code on failure.
 | ---------- | ----------- |
 | DISP_E_ARRAYISLOCKED | The array is currently locked. |
 | E_INVALIDARG | Invalid safe array descriptor. |
+| E_FAIL | Failure. |
+
+# <a name="Remove"></a>Remove
+
+Removes the specified array element.
+
+```
+FUNCTION Remove (BYVAL nPos AS LONG) AS HRESULT
+FUNCTION RemoveStr (BYVAL nPos AS LONG) AS HRESULT
+FUNCTION RemoveVar (BYVAL nPos AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPos* | Index of the array element which will be deleted.. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HRESULT  | Description |
+| ---------- | ----------- |
+| DISP_E_BADINDEX | The specified index is not valid. |
+| E_INVALIDARG | One of the arguments is not valid. |
+| E_OUTOFMEMORY | Memory could not be allocated for the element. |
 | E_FAIL | Failure. |
