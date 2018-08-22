@@ -280,8 +280,10 @@ FUNCTION Attach (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
 
 #### Return value
 
-S_OK = Success.
-E_INVALIDARG = The passed pointer is null.
+| HRESULT    | Description |
+| ---------- | ----------- |
+| S_OK | Success. |
+| E_INVALIDARG | The passed pointer is null. |
 
 # <a name="Detach"></a>Detach
 
@@ -293,8 +295,57 @@ FUNCTION Detach () AS IDispatch PTR
 
 #### Return value
 
+| HRESULT    | Description |
+| ---------- | ----------- |
+| S_OK | Success. |
+
+#### Remarks
+
+Extracts and returns the encapsulated interface pointer, and then clears the encapsulated pointer storage to NULL. This removes the interface pointer from encapsulation. It is up  to the caller to call **Release** on the returned interface pointer.
+
+# <a name="DispInvoke"></a>DispInvoke
+
+Calls a method or a get property.
+
+```
+FUNCTION DispInvoke (BYVAL wFlags AS WORD, BYVAL dispIdMember AS DISPID, BYVAL prgArgs AS VARIANT PTR = NULL, _
+   BYVAL cArgs AS UINT = 0, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS HRESULT
+FUNCTION DispInvoke (BYVAL wFlags AS WORD, BYVAL pwszName AS WSTRING PTR, BYVAL prgArgs AS VARIANT PTR = NULL, _
+   BYVAL cArgs AS UINT = 0, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wFlags* | Flags describing the context of the Invoke call. |
+| *dispID* | Identifies the member. Use *GetIDsOfNames* or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the method or property to call. |
+| *prgArgs* | Array of variant parameters in reversed order. |
+| *cArgs* | The number of arguments in the *prgArgs* array. |
+| *lcid* | The locale context in which to interpret arguments. The lcid is used by the **GetIDsOfNames** function, and is also passed to Invoke to allow the object to interpret its arguments specific to a locale. Applications that do not support multiple national languages can ignore this parameter. |
+
+#### Return value
+
 S_OK = Success.
 
 #### Remarks
 
-Extracts and returns the encapsulated interface pointer, and then clears the encapsulated pointer storage to NULL. This removes the interface pointer from encapsulation. It is up  to you to call **Release** on the returned interface pointer.
+Extracts and returns the encapsulated interface pointer, and then clears the encapsulated pointer storage to NULL. This removes the interface pointer from encapsulation. It is up  to the caller to call **Release** on the returned interface pointer.
+
+| HRESULT    | Description |
+| ---------- | ----------- |
+| S_OK | Success. |
+| DISP_E_BADPARAMCOUNT | The number of elements provided to DISPPARAMS is different from the number of arguments accepted by the method or property. |
+| DISP_E_BADVARTYPE | One of the arguments in DISPPARAMS is not a valid variant type. |
+| DISP_E_EXCEPTION | The application needs to raise an exception. In this case, the structure passed in pexcepinfo should be filled in. Note: Because the information that can be returned by the EXCEPINFO structure is very limited, some COM servers like ADO or WMI use its own system to return errors. |
+| DISP_E_MEMBERNOTFOUND | The requested member does not exist. |
+| DISP_E_NONAMEDARGS | This implementation of IDispatch does not support named arguments. |
+| DISP_E_OVERFLOW | One of the arguments in DISPPARAMS could not be coerced to the specified type. |
+| DISP_E_PARAMNOTFOUND | One of the parameter IDs does not correspond to a parameter on the method. In this case, puArgErr is set to the first argument that contains the error. |
+| DISP_E_TYPEMISMATCH | One or more of the arguments could not be coerced. The index of the first parameter with the incorrect type within rgvarg is returned in *puArgErr*. |
+| DISP_E_UNKNOWNINTERFACE | The interface identifier passed in riid is not IID_NULL. |
+| DISP_E_UNKNOWNLCID | The member being invoked interprets string arguments according to the LCID, and the LCID is not recognized. If the LCID is not needed to interpret arguments, this error should not be returned. |
+| DISP_E_PARAMNOTOPTIONAL | A required parameter was omitted. |
+
+#### Remarks
+
+This method is called internally by the **Get**, **Put**, **PutRef** and **Invoke** methods of the **CDispInvoke class**. You don't need to call it directly.
