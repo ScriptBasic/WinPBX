@@ -36,8 +36,8 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | ---------- | ----------- |
 | [AccessData](#AccessData) | Increments the lock count of an array, and retrieves a pointer to the array data. |
 | [Append](#Append) | Appends a value to the end of the one-dimensional safe array. |
-| Attach | Attaches a safe array to a CSafeArray object. |
-| Clear | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
+| [Attach](#Attach) | Attaches a safe array to a CSafeArray object. |
+| [Clear](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
 | Copy | Creates a copy of the safe array. |
 | CopyData | Copies the source array to the target array after releasing any resources in the target array. |
 | CopyFrom | Copies the contents of a safe array. |
@@ -49,10 +49,10 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | Destroy | Destroys an existing array descriptor and all of the data in the array. |
-| DestroyData | Destroys all the data in a safe array. |
+| [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
 | Detach | Detaches the sage array descriptor from the CSafeArray. |
 | ElemSize | Returns the size of an element. |
-| Erase | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
+| [Erase](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
 | Features | Returns the flags used by the safe array. This is the same that the Flags method. |
 | Find | Scans the array to search for the specified string. |
 | Flags | Returns the flags used by the safe array. This is the same that the Features method. |
@@ -74,7 +74,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Remove | Deletes the specified array element. |
 | RemoveStr | Deletes the specified string element from the array. |
 | RemoveVar | Deletes the specified variant element from the array. |
-| Reset | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
+| [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | SetIID | Sets the GUID of the interface contained within a given safe array. |
 | SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
 | SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
@@ -475,3 +475,31 @@ S_OK (0) on success or an HREUSLT code.
 | E_INVALIDARG | One of the arguments is not valid. |
 | E_OUTOFMEMORY | Memory could not be allocated for the element. |
 | E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
+
+# <a name="Attach"></a>Attach
+
+Attaches a safe array to a CSafeArray object.
+
+```
+FUNCTION Attach (BYVAL psaSrc AS SAFEARRAY PTR) AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code.
+
+# <a name="DestroyData"></a>DestroyData / Clear / Erase / Reset
+
+Destroys all the data in a safe array.
+
+```
+FUNCTION DestroyData () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code.
+
+| HREUSLT  | Description |
+| ---------- | ----------- |
+| DISP_E_ARRAYISLOCKED | The array is locked. |
