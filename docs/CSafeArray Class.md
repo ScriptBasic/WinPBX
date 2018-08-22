@@ -47,7 +47,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Create](#Create) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | [CreateEx](#CreateEx) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | [CreateVector](#CreateVector) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
-| CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
+| [CreateVectorEx](#CreateVectorEx) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | Destroy | Destroys an existing array descriptor and all of the data in the array. |
 | [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
 | Detach | Detaches the sage array descriptor from the CSafeArray. |
@@ -637,7 +637,7 @@ FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
 | *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
 | *cDims* | Number of dimensions in the array. The number cannot be changed after the array is created. |
 | *rgsabound* | Pointer to a vector of bounds (one for each dimension) to allocate for the array. |
-| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then *pvExtra* will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
 
 One-dimensional array:
 
@@ -651,7 +651,7 @@ FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, _
 | *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
 | *cElements* | Optional. Number of elements in the array. |
 | *lLBound* | Optional. The lower bound of the array. |
-| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then *pvExtra* will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
 
 Two-dimensional array:
 
@@ -667,7 +667,7 @@ FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound
 | *lLBound1* | The lower bound of the first dimension of the array. |
 | *cElements2* | Number of elements in the second dimension of the array. |
 | *lLBound2* | The lower bound of the second dimension of the array. |
-| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then *pvExtra* will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
 
 #### Return value
 
@@ -675,7 +675,7 @@ S_OK (0) on success or an HRESULT code on failure.
 
 # <a name="CreateVector"></a>CreateVector
 
-Creates a safe array from the given VARTYPE, lower bound and number of elements. A safe array created with **CreateVector** is a fixed size, so the constant FADF_FIXEDSIZE is always set.
+Creates a fixed size safe array from the given VARTYPE, lower bound and number of elements.
 
 ```
 FUNCTION CreateVector (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, BYVAL lLBound AS LONG) AS HRESULT
@@ -696,3 +696,23 @@ S_OK (0) on success or an HRESULT code on failure.
 **CreateVector** allocates a single block of memory containing a SAFEARRAY structure for a single-dimension array (24 bytes), immediately followed by the array data. All of the existing safe array functions work correctly for safe arrays that are allocated with CreateVector.
 
 A safe array created with CreateVector is allocated as a single block of memory. Both the SafeArray descriptor and the array data block are allocated contiguously in one allocation, which speeds up array allocation. However, a user can allocate the descriptor and data area separately using the **SafeArrayAllocDescriptor** and **SafeArrayAllocData*** calls.
+
+# <a name="CreateVectorEx"></a>CreateVectorEx
+
+Creates a fixed size safe array from the given VARTYPE, lower bound and number of elements.
+
+```
+FUNCTION CreateVectorEx (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, BYVAL lLBound AS LONG, _
+   BYVAL pvExtra AS ANY PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
+| *cElements* | The number of elements in the array. |
+| *lLBound* | The lower bound for the array. Can be negative. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
