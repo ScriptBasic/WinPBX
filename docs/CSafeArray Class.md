@@ -28,7 +28,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Name       | Description |
 | ---------- | ----------- |
 | [Operator \*](#Operator1) | Returns a pointer to the safe array descriptor. |
-| [Operator LET](Operator2) | Assigns a CSafeArray, a safe array or a Variant. |
+| [Operator LET](#Operator2) | Assigns a CSafeArray, a safe array or a Variant. |
 
 # Methods
 
