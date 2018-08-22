@@ -53,9 +53,9 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Detach](#Detach) | Detaches the sage array descriptor from the CSafeArray. |
 | [ElemSize](#ElemSize) | Returns the size of an element. |
 | [Erase](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
-| Features | Returns the flags used by the safe array. This is the same that the Flags method. |
+| [Features](#Features) | Returns the flags used by the safe array. This is the same that the Flags method. |
 | Find | Scans the array to search for the specified string. |
-| Flags | Returns the flags used by the safe array. This is the same that the Features method. |
+| [Flags](#Features) | Returns the flags used by the safe array. This is the same that the **Features** method. |
 | Get | Retrieves a single element of the array. |
 | GetIID | Returns the GUID of the interface contained within a given safe array. |
 | [GetPtr](#Operator1) | Returns the address of the safe array. |
@@ -761,3 +761,16 @@ FUNCTION ElemSize () AS UINT
 #### Return value
 
 Returns the size (in bytes) of an element in a safe array. Does not include size of pointed-to data.
+
+# <a name="Features"></a>Features / Flags
+
+Returns the flags used by the safe array. This is the same that the **Flags** method.
+
+```
+FUNCTION Features () AS USHORT
+```
+
+#### Return value
+
+The flags used by the safe array.
+
