@@ -24,7 +24,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | Name       | Description |
 | ---------- | ----------- |
 | [ExecQuery](#ExecQuery) | Executes a query to retrieve objects. |
-| Get | Retrieves an object, that is either a class definition or an instance, based on the object path. |
+| [Get](#Get) | Retrieves an object, that is either a class definition or an instance, based on the object path. |
 | GetErrorCodeText | Returns the text string description associated with the WMI error code. |
 | GetFacilityCodeText | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
 | GetLastResult | Returns the last result code. |
@@ -101,7 +101,7 @@ CONSTRUCTOR CWmiServices (BYREF cbsServer AS CBSTR, BYREF cbsNamespace AS CBSTR,
 
 If successful, WMI returns an **SWbemServices** object that is bound to the namespace that is specified in *cbsNamespace* on the computer that is specified in *cbsServer*.
 
-**Usage example** )with the local computer):
+**Usage example** (with the local computer):
 
 ```
 DIM pServices AS CWmiServices = CWmiServices(".", "root\\cimv2")
@@ -112,3 +112,228 @@ DIM pServices AS CWmiServices = CWmiServices(".", "root\\cimv2")
 The *ConnectServer* method is often used when connecting to an account with a different username and password—credentials—on a remote computer because you cannot specify a different password in a moniker string.
 
 Using an IPv4 address to connect to a remote server may result in unexpected behavior. The likely cause is stale DNS entries in your environment. In these circumstances, the stale PTR entry for the machine will be used, with unpredictable results. To avoid this behavior, you can append a period (".") to the IP address before calling *ConnectServer*. This causes the reverse DNS lookup to fail, but may allow the *ConnectServer* call to succeed on the correct machine.
+
+# <a name="ExecQuery"></a>ExecQuery
+
+Executes a query to retrieve objects. These objects are available through the retrieved **SWbemObjectSet** collection.
+
+```
+FUNCTION ExecQuery (BYREF cbsQuery AS CBSTR, BYVAL iFlags AS LONG = wbemFlagReturnWhenComplete) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsQuery* | Required. String that contains the text of the query. This parameter cannot be blank. |
+| *iFlags* | Optional. Integer that determines the behavior of the query and determines whether this call returns immediately. The default value for this parameter is *wbemFlagReturnWhenComplete*. This parameter can accept the following values. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| *wbemFlagForwardOnly* | Causes a forward-only enumerator to be returned. Forward-only enumerators are generally much faster and use less memory than conventional enumerators, but they do not allow calls to SWbemObject.Clone_. |
+| *wbemFlagReturnWhenComplete* | Causes this call to block until the query is complete. This flag calls the method in the synchronous mode. |
+| *wbemFlagBidirectional* | Causes WMI to retain pointers to objects of the enumeration until the client releases the enumerator. |
+| *wbemFlagReturnImmediately* | Causes the call to return immediately. |
+| *wbemQueryFlagPrototype* | Used for prototyping. This flag stops the query from happening and returns an object that looks like a typical result object. |
+| *wbemFlagUseAmendedQualifiers* | Causes WMI to return class amendment data with the base class definition. |
+
+#### Return value
+
+Returns S_OK (0) on success, or an HRESULT code on failure.
+
+#### Examples
+
+Using an enumerator (the standard IEnumVARIANT interface) to retrieve the information:
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Count: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke = pServices.NextObject
+IF pDispServ.DispPtr THEN
+   PRINT "Caption: "; pDispServ.Get("Caption")
+   PRINT "Serial number: "; pDispServ.Get("SerialNumber")
+END IF
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+If the query returns more than one object, then we will use a loop:
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT * FROM Win32_Printer")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Count: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+
+' // Enumerate the objects
+FOR i AS LONG = 0 TO nCount - 1
+   PRINT "--- Index " & STR(i) & " ---"
+   DIM pDispServ AS CDispInvoke = pServices.NextObject
+   IF pDispServ.DispPtr THEN
+      PRINT "Caption: "; pDispServ.Get("Caption")
+      PRINT "Capabilities "; pDispServ.Get("Capabilities")
+   END IF
+NEXT
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+To improve enumeration performance set the iFlags parameter if the ExecQuery method to WbemFlagReturnImmediately and WbemFlagForwardOnly (the combined value of these flags is 48) to allow semisynchronous return of the data with an enumerator that discards each item from WMI as it is delivered. In this case don't call the ObjectsCount method because it will return 0, since the operation has not been completed.
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS", 48)
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke = pServices.NextObject
+IF pDispServ.DispPtr THEN
+   PRINT "Caption: "; pDispServ.Get("Caption").ToStr
+   PRINT "Serial number: "; pDispServ.Get("SerialNumber").ToStr
+END IF
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+If there are several objects in the collection, we can use a loop:
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT * FROM Win32_Printer", 48)
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke
+DO
+   pDispServ = pServices.NextObject
+   IF pDispServ.DispPtr = NULL THEN EXIT DO
+   PRINT "Caption: "; pDispServ.Get("Caption").ToStr
+   PRINT "Capabilities "; pDispServ.Get("Capabilities").ToStr
+LOOP
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+Calling the GetNamedProperties method after executing the query. GetNamedProperties generates a named collection of properties. This has the advantage of not having to use CDispInvoke.
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Number of objects: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+
+' // Get a collection of named properties
+IF pServices.GetNamedProperties <> S_OK THEN PRINT "Failed to get the named properties" : SLEEP : END
+
+' // Retrieve the value of the properties
+'DIM cv AS CVAR = pServices.PropValue("Caption")
+'PRINT cv.ToStr
+PRINT pServices.PropValue("Caption").ToStr
+PRINT pServices.PropValue("SerialNumber").ToStr
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+Using a loop:
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT * FROM Win32_Printer")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Number of objects: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+
+' // Enumerate the objects
+FOR i AS LONG = 0 TO nCount - 1
+   PRINT "--- Index " & STR(i) & " ---"
+   ' // Get a collection of named properties
+   IF pServices.GetNamedProperties(i) = S_OK THEN
+      PRINT pServices.PropValue("Caption").ToStr
+      PRINT pServices.PropValue("Capabilities").ToStr
+   END IF
+NEXT
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
