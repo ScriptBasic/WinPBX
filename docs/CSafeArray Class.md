@@ -56,7 +56,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Features](#Features) | Returns the flags used by the safe array. This is the same that the Flags method. |
 | [Find](#Find) | Scans the array to search for the specified string. |
 | [Flags](#Features) | Returns the flags used by the safe array. This is the same that the **Features** method. |
-| Get | Retrieves a single element of the array. |
+| [Get](#Get) | Retrieves a single element of the array. |
 | GetIID | Returns the GUID of the interface contained within a given safe array. |
 | [GetPtr](#Operator1) | Returns the address of the safe array. |
 | GetRecordInfo | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
@@ -770,10 +770,6 @@ Returns the flags used by the safe array. This is the same that the **Flags** me
 FUNCTION Features () AS USHORT
 ```
 
-#### Return value
-
-The flags used by the safe array.
-
 # <a name="Find"></a>Find
 
 Scans the array to search for the specified string.
@@ -785,8 +781,84 @@ FUNCTION Find (BYREF wszFind AS WSTRING, BYVAL bNoCase AS BOOLEAN = FALSE) AS LO
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszFind* | The string to find. |
-| *bNoCase* | Optional. TRUE = Ignore case.  |
+| *bNoCase* | Optional. TRUE = Ignore case. |
 
 #### Return value
 
 The index of the retrieved array element, or 0 on failue.
+
+# <a name="Get"></a>Get / GetStr / GetVar
+
+Retrieves a single element of the array.
+
+Multidimensional array:
+
+```
+FUNCTION Get (BYVAL prgIndices AS LONG PTR, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Get (BYVAL prgIndices AS LONG PTR, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Get (BYVAL prgIndices AS LONG PTR, BYREF cvData AS CVAR) AS HRESULT
+FUNCTION GetStr (BYVAL prgIndices AS LONG PTR) AS CBSTR
+FUNCTION GetVar (BYVAL prgIndices AS LONG PTR) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgIndices* | Pointer to a vector of indexes for each dimension of the array. The right-most (least significant) dimension is rgIndices(0). The left-most dimension is stored at pgIndices(@psa.cDims – 1). |
+| *pData* | Pointer to the location to place the element of the array. |
+| *cbsData* | A CBSTR passed by reference that will receive the result. |
+| *cvData* | A CVAR passed by reference that will receive the result. |
+
+One-dimensional array:
+
+```
+FUNCTION Get (BYVAL idx AS LONG, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Get (BYVAL idx AS LONG, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Get (BYVAL idx AS LONG, BYREF cvData AS CVAR) AS HRESULT
+FUNCTION GetStr (BYVAL idx AS LONG) AS CBSTR
+FUNCTION GetVar (BYVAL idx AS LONG) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *idx* | Index of the element. |
+| *pData* | Pointer to the location to place the element of the array. |
+| *cbsData* | A CBSTR passed by reference that will receive the result. |
+| *cvData* | A CVAR passed by reference that will receive the result. |
+
+Two-dimensional array:
+
+```
+FUNCTION Get (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Get (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Get (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYREF cvData AS CVAR) AS HRESULT
+FUNCTION GetStr (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS CVAR
+FUNCTION GetVar (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cElem* | Index of the element. |
+| *cDim* | Dimension of the array. |
+| *pData* | Pointer to the location to place the element of the array. |
+| *cbsData* | A CBSTR passed by reference that will receive the result. |
+| *cvData* | A CVAR passed by reference that will receive the result. |
+
+First element, then dimension, e.g. 2, 1 (element 2, first dimension), 1, 2 (element 1, 2nd dimension).
+
+#### Return value (Get)
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HRESULT  | Description |
+| ---------- | ----------- |
+| DISP_E_BADINDEX | The specified index is invalid. |
+| E_INVALIDARG | One of the arguments is invalid. |
+| E_OUTOFMEMORY | Memory could not be allocated for the element. |
+
+#### Return value (GetStr / GetVar)
+
+The string or variant element.
+
+#### Remarks
+
+This method calls **SafearrayLock** and **SafearrayUnlock** automatically, before and after retrieving the element. The caller must provide a storage area of the correct size to receive the data. If the data element is a string, object, or variant, the function copies the element in the correct way.
