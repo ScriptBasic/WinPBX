@@ -370,7 +370,7 @@ FUNCTION DispPtr () AS IDispatch PTR
 
 # <a name="Get"></a>Get
 
-Calls the specified property of an interface and gets the value returned The overloaded methods allow to use the **Get** method passing one argument, two arguments or none.
+Calls the specified property of an interface and gets the value returned. The overloaded methods allow to use the **Get** method passing one argument, two arguments or none.
 
 ```
 FUNCTION Get (BYVAL dispID AS DISPID) AS CVAR
