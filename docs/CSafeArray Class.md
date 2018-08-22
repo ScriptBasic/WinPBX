@@ -80,3 +80,25 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Sort | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
 | UBound | Returns the upper bound for any dimension of a safe array. |
 | UnaccessData | Decrements the lock count of an array, and invalidates the pointer retrieved by AccessData. |
+
+# Analyzing the safe array API
+
+| Topic |
+| ----- |
+| About safe arrays |
+| Safe array descriptor |
+| Creating a safe array |
+| Putting data |
+| Retrieving data |
+| Rediming a safe array |
+| Copying a safe array |
+| Destroying a safe array |
+| Getting the dimensions of a safe array |
+| Getting the bounds of a safe array |
+| Getting the type of a safe array |
+| Setting ad getting the GUID of an interface |
+| Setting and getting record information |
+| Accessing data |
+| Getting the element size |
+| Creating vectors |
+
