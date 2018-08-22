@@ -74,7 +74,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Remove](#Remove) | Deletes the specified array element. |
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
 | [SetIID](#SetIID) | Sets the GUID of the interface contained within a given safe array. |
-| SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
+| [SetRecordInfo](#SetRecordInfo) | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
 | Sort | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
 | [UBound](#UBound) | Returns the upper bound for any dimension of a safe array. |
 | UnaccessData | Decrements the lock count of an array, and invalidates the pointer retrieved by AccessData. |
@@ -1232,9 +1232,26 @@ FUNCTION SetIID (BYVAL pguid AS GUID PTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pguid* | A pointer to the IID. |
+| *pguid* | Pointer to the IID. |
 
 | HRESULT    | Description |
 | ---------- | ----------- |
 | E_INVALIDARG | If the array descriptor does not have the FADF_HAVEIID flag set. |
+| E_FAIL | Failure. The array descriptor is null. |
+
+# <a name="SetRecordInfo"></a>SetRecordInfo
+
+Sets the IRecordInfo interface of the UDT contained in a given safe array.
+
+```
+FUNCTION SetRecordInfo (BYVAL prinfo AS IRecordInfo PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prinfo* | Pointer to an IRecordInfo interface. |
+
+| HRESULT    | Description |
+| ---------- | ----------- |
+| E_INVALIDARG | If the array descriptor does not have the FADF_RECORD flag set. |
 | E_FAIL | Failure. The array descriptor is null. |
