@@ -79,7 +79,7 @@ print "Result: ", cvRes.ValLong
 
 # <a name="Constructor2"></a>Constructor(Server)
 
-Connects to the namespace that is specified on the cbsNamespace parameter on the computer that is specified in the *cbsServer* parameter. The target computer can be either local or remote, but it must have WMI installed.
+Connects to the namespace that is specified on the *cbsNamespace* parameter on the computer that is specified in the *cbsServer* parameter. The target computer can be either local or remote, but it must have WMI installed.
 
 ```
 CONSTRUCTOR CWmiServices (BYREF cbsServer AS CBSTR, BYREF cbsNamespace AS CBSTR, BYREF cbsUser AS CBSTR = "", _
