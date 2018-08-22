@@ -1291,3 +1291,7 @@ Decrements the lock count of an array, and invalidates the pointer retrieved by 
 ```
 FUNCTION UnaccessData () AS HRESULT
 ```
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
