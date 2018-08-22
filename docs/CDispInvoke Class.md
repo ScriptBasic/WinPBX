@@ -500,7 +500,7 @@ FUNCTION Invoke (BYVAL pwszName AS WSTRING PTR, cvArg1...cvArg16) AS CVAR
 | ---------- | ----------- |
 | *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
 | *pwszName* | The name of the property to call. |
-| *cvArg1 ... cvArg16* | CVAR. Parameters that will be passed to IDIspatch.Invoke as an array of variants in reversed order. |
+| *cvArg1...cvArg16* | CVAR. Parameters that will be passed to IDIspatch.Invoke as an array of variants in reversed order. |
 
 Remarks
 
