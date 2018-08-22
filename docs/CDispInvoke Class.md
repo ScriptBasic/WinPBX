@@ -235,3 +235,32 @@ DIM pDispInvoke AS CDispInvoke = (CLSID_Dictionary, IID_IDictionary)
 ' and IID_IDictionary as
 '    CONST IID_IDictionary = "{42C642C1-97E1-11CF-978F-00A02463E06F}"
 ```
+
+# <a name="Operator1"></a>Operator *
+
+Returns the underlying IDispatch pointer.
+
+```
+OPERATOR * (BYREF cdi AS CDispInvoke) AS IDispatch PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cdi* | An instance of the CDispInvoke class. |
+
+# <a name="Operator2"></a>Operator LET (=)
+
+Assigns an IDispatch pointer and increases the reference count.
+
+```
+OPERATOR Let (BYVAL pdisp AS IDispatch PTR)
+OPERATOR Let (BYVAL vDisp AS VARIANT PTR)
+OPERATOR Let (BYVAL vDisp AS VARIANT)
+OPERATOR Let (BYREF cvDisp AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pdisp* | An IDispatch pointer. |
+| *vDisp* | A VT_DISPATCH variant. |
+| *cvDisp* | A VT_DISPATCH CVAR. |
