@@ -38,7 +38,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Append](#Append) | Appends a value to the end of the one-dimensional safe array. |
 | [Attach](#Attach) | Attaches a safe array to a CSafeArray object. |
 | [Clear](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
-| Copy | Creates a copy of the safe array. |
+| [Copy](#Copy) | Creates a copy of the safe array. |
 | CopyData | Copies the source array to the target array after releasing any resources in the target array. |
 | CopyFrom | Copies the contents of a safe array. |
 | CopyFromVariant | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
@@ -503,3 +503,16 @@ S_OK (0) on success or an HREUSLT code.
 | HREUSLT  | Description |
 | ---------- | ----------- |
 | DISP_E_ARRAYISLOCKED | The array is locked. |
+
+# <a name="Copy"></a>Copy
+
+Creates a copy of the safe array.
+
+```
+FUNCTION Copy () AS SAFEARRAY PTR
+```
+
+#### Return value
+
+Pointer of the new array descriptor. You must free this pointer calling the API function **SafeArrayDestroy**.
+
