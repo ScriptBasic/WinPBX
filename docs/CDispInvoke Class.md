@@ -525,3 +525,14 @@ To check for succes or failure, call the **GetLastResult** method. It will retur
 
 For optional parameters, we must use a VT_ERROR VARIANT with a value of DISP_E_PARAMNOTFOUND. You can use the function **AfxCVarOptPrm** or the macro **CVAR_OPTPRM** for this purpose.
 
+# <a name="SetLcid"></a>SetLcid
+
+Sets de locale identifier used by the class.
+
+```
+FUNCTION SetLcid (BYVAL lcid AS LCID)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | The locale context in which to interpret arguments. The *lcid* is used by the **GetIDsOfNames** function, and is also passed to **Invoke** to allow the object to interpret its arguments specific to a locale. Applications that do not support multiple national languages can ignore this parameter. |
