@@ -264,3 +264,21 @@ OPERATOR Let (BYREF cvDisp AS CVAR)
 | *pdisp* | An IDispatch pointer. |
 | *vDisp* | A VT_DISPATCH variant. |
 | *cvDisp* | A VT_DISPATCH CVAR. |
+
+# <a name="Attach"></a>Attach
+
+Attaches a Dispatch pointer
+
+```
+FUNCTION Attach (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pdisp* | Pointer to a Dispatch interface, |
+| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling **AddRef**.<br>If it is true, then **AddRef** is called. This is needed when we pass a raw pointer. |
+
+#### Return value
+
+S_OK = Success.
+E_INVALIDARG = The passed pointer is null.
