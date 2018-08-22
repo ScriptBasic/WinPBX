@@ -1410,7 +1410,7 @@ The truncated path.
 
 #### Remarks
 
-*AfxPathFindNextComponent* walks a path string until it encounters a backslash ("\\"), ignores everything up to that point including the backslash, and returns the rest of the path. Therefore, if a path begins with a backslash (such as \\path1\\path2), the function simply removes the initial backslash and returns the rest (path1\\path2).
+**AfxPathFindNextComponent** walks a path string until it encounters a backslash ("\\"), ignores everything up to that point including the backslash, and returns the rest of the path. Therefore, if a path begins with a backslash (such as \\path1\\path2), the function simply removes the initial backslash and returns the rest (path1\\path2).
 
 #### Usage example
 
