@@ -1,0 +1,75 @@
+# CSafeArray Class
+
+**CSafeArray** is a class that provides wrapper methods for the SAFEARRAY structure, making it easy to create and manage single- and multidimensional arrays of almost any of the VARIANT-supported types. The lower bound of a CSafeArray can start at any user-defined value.
+
+Additional overloaded methods are provided for one and two-dimensional safe arrays, that are the ones most often used in COM programming.
+
+**Include file**: CSafeArray.INC.
+
+# Constructors
+
+| Name       | Description |
+| ---------- | ----------- |
+| Constructor (SAFEARRAYBOUND) | Creates a safe array. |
+| Constructor (CSafeArray) | Creates a safe array from another CSafeArray. |
+| Constructor (SAFEARRAY PTR) | Creates a safe array from a SafeArray. |
+| Constructor (VARIANT PTR) | Creates a safe array from a variant of type VT_ARRAY. |
+
+# Opertors
+
+| Name       | Description |
+| ---------- | ----------- |
+| Operator * | Returns a pointer to the safe array descriptor. |
+| Operator LET | Assigns a CSafeArray, a safe array or a Variant. |
+
+# Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| AccessData | Increments the lock count of an array, and retrieves a pointer to the array data. |
+| Append | Appends a value to the end of the one-dimensional safe array. |
+| Attach | Attaches a safe array to a CSafeArray object. |
+| Clear | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
+| Copy | Creates a copy of the safe array. |
+| CopyData | Copies the source array to the target array after releasing any resources in the target array. |
+| CopyFrom | Copies the contents of a safe array. |
+| CopyFromVariant | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
+| CopyToVariant | Copies the safe array to the passed variant. |
+| Count | Returns the number of elements in the specified dimension of the array. |
+| Create | Creates a safe array. |
+| CreateEx | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
+| CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
+| CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
+| Destroy | Destroys an existing array descriptor and all of the data in the array. |
+| DestroyData | Destroys all the data in a safe array. |
+| Detach | Detaches the sage array descriptor from the CSafeArray. |
+| ElemSize | Returns the size of an element. |
+| Erase | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
+| Features | Returns the flags used by the safe array. This is the same that the Flags method. |
+| Find | Scans the array to search for the specified string. |
+| Flags | Returns the flags used by the safe array. This is the same that the Features method. |
+| Get | Retrieves a single element of the array. |
+| GetIID | Returns the GUID of the interface contained within a given safe array. |
+| GetPtr | Returns the address of the safe array. |
+| GetRecordInfo | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
+| GetType | Returns the VARTYPE stored in the given safe array. |
+| Insert | Inserts a value at the specified position of the safe array. |
+| IsResizable | Tests if the safe array can be resized. |
+| LBound | Returns the lower bound for any dimension of a safe array. |
+| LocksCount | Returns the number of times the array has been locked without the corresponding unlock. |
+| MoveFromVariant | Transfers ownership of the safe array contained in the variant parameter to this object. |
+| MoveToVariant | Transfers ownership of the safe array to a variant and detaches it from the class. |
+| NumDims | Returns the number of dimensions in the array. |
+| PtrOfIndex | Returns a pointer to an array element. |
+| Put | Stores the data element at a given location in the array. |
+| Redim | Changes the right-most (least significant) bound of a safe array. |
+| Remove | Deletes the specified array element. |
+| RemoveStr | Deletes the specified string element from the array. |
+| RemoveVar | Deletes the specified variant element from the array. |
+| Reset | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
+| SetIID | Sets the GUID of the interface contained within a given safe array. |
+| SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
+| SetRecordInfo | Sets the IRecordInfo interface of the UDT contained in a given safe array. |
+| Sort | Sorts a one-dimensional VT_BSTR CSafeArray calling the C qsort function. |
+| UBound | Returns the upper bound for any dimension of a safe array. |
+| UnaccessData | Decrements the lock count of an array, and invalidates the pointer retrieved by AccessData. |
