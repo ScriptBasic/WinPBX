@@ -139,18 +139,18 @@ EBD TYPE
 
 | Flag       | Description |
 | ---------- | ----------- |
-| FADF_AUTO (&h0001) | An array that is allocated on the stack. |
-| FADF_STATIC (&hH0002) | An array that is statically allocated. |
-| FADF_EMBEDDED (&h0004) | An array that is embedded in a structure. |
-| FADF_FIXEDSIZE (&h0010) | An array that may not be resized or reallocated. |
-| FADF_RECORD (&h0020) | An array that contains records. When set, there will be a pointer to the IRecordinfo interface at negative offset 4 in the array descriptor. |
-| FADF_HAVEIID (&h0040) | An array that has an IID identifying interface. When set, there will be a GUID at negative offset 16 in the safe array descriptor. Flag is set only when FADF_DISPATCH or FADF_UNKNOWN is also set. |
-| FADF_HAVEVARTYPE (&h0080) | An array that has a VT type. When set, there will be a VT tag at negative offset 4 in the array descriptor that specifies the element type. |
-| FADF_BSTR (&h0100) | An array of BSTRs. |
-| FADF_UNKNOWN (&h0200) | An array of IUnknown*. |
-| FADF_DISPATCH (&h0400) | An array of IDispatch*. |
-| FADF_VARIANT (&h0800) | An array of VARIANTs. |
-| FADF_RESERVED (&hHF008) | Bits reserved for future use. |
+| FADF_AUTO | An array that is allocated on the stack. |
+| FADF_STATIC | An array that is statically allocated. |
+| FADF_EMBEDDED | An array that is embedded in a structure. |
+| FADF_FIXEDSIZE | An array that may not be resized or reallocated. |
+| FADF_RECORD | An array that contains records. When set, there will be a pointer to the IRecordinfo interface at negative offset 4 in the array descriptor. |
+| FADF_HAVEIID | An array that has an IID identifying interface. When set, there will be a GUID at negative offset 16 in the safe array descriptor. Flag is set only when FADF_DISPATCH or FADF_UNKNOWN is also set. |
+| FADF_HAVEVARTYPE | An array that has a VT type. When set, there will be a VT tag at negative offset 4 in the array descriptor that specifies the element type. |
+| FADF_BSTR | An array of BSTRs. |
+| FADF_UNKNOWN | An array of IUnknown*. |
+| FADF_DISPATCH | An array of IDispatch*. |
+| FADF_VARIANT | An array of VARIANTs. |
+| FADF_RESERVED | Bits reserved for future use. |
 
 #### Remarks
 
