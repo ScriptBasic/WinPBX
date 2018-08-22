@@ -326,8 +326,8 @@ OPERATOR * () AS ANY PTR
 
 # <a name="Operator2"></a>Operator LET
 
-Assigns a CSafeArray to another CSafeArray.
-Assigns a safe array to a CSafeArray.
+Assigns a CSafeArray to another CSafeArray.<br>
+Assigns a safe array to a CSafeArray.<br>
 Assigns a variant of type VT_ARRAY to a CSafeArray.
 
 ```
