@@ -42,7 +42,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CopyData](#CopyData) | Copies the source array to the target array after releasing any resources in the target array. |
 | [CopyFrom](#CopyFrom) | Copies the contents of a safe array. |
 | [CopyFromVariant](#CopyFromVariant) | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
-| CopyToVariant | Copies the safe array to the passed variant. |
+| [CopyToVariant](#CopyToVariant) | Copies the safe array to the passed variant. |
 | Count | Returns the number of elements in the specified dimension of the array. |
 | Create | Creates a safe array. |
 | CreateEx | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
@@ -567,4 +567,17 @@ S_OK (0) on success or an HREUSLT code on failure.
 #### Remarks
 
 **CopyFromVariant** calls the string or variant manipulation functions if the array to copy contains either of these data types. If the array being copied contains object references, the reference counts for the objects are incremented.
+
+# <a name="CopyToVariant"></a>CopyToVariant
+
+Copies the safe array to the passed variant.
+
+```
+FUNCTION CopyToVariant (BYVAL pvar AS VARIANT PTR) AS HRESULT
+```
+*pvar* is a pointer to the variant where the safe array will be copied.
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code on failure.
 
