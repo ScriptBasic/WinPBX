@@ -67,7 +67,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [LocksCount](#LocksCount) | Returns the number of times the array has been locked without the corresponding unlock. |
 | [MoveFromVariant](#MoveFromVariant) | Transfers ownership of the safe array contained in the variant parameter to this object. |
 | [MoveToVariant](#MoveToVariant) | Transfers ownership of the safe array to a variant and detaches it from the class. |
-| NumDims | Returns the number of dimensions in the array. |
+| [NumDims](#NumDims) | Returns the number of dimensions in the array. |
 | PtrOfIndex | Returns a pointer to an array element. |
 | Put | Stores the data element at a given location in the array. |
 | Redim | Changes the right-most (least significant) bound of a safe array. |
@@ -1033,3 +1033,11 @@ FUNCTION MoveToVariant (BYVAL pvar AS VARIANT PTR) AS HRESULT
 #### Return value
 
 S_OK (0) on success or an HRESULT code on failure.
+
+# <a name="NumDims"></a>NumDims
+
+Returns the number of dimensions in the array.
+
+```
+FUNCTION NumDims () AS UINT
+```
