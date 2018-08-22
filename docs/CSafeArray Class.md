@@ -316,7 +316,7 @@ CONSTRUCTOR CSafeArray (BYVAL pvar AS VARIANT PTR)
 | ---------- | ----------- |
 | *pvar* | Pointer to the VARIANT. |
 
-# <a name="Operator1"></a>Operator * / GetPtr
+# <a name="Operator1"></a>Operator * (GetPtr)
 
 Returns a pointer to the underlying safe array descriptor.
 
@@ -328,7 +328,7 @@ OPERATOR * () AS ANY PTR
 
 You can also call the **GetPtr** method.
 
-# <a name="Operator2"></a>Operator LET / =
+# <a name="Operator2"></a>Operator LET ( = )
 
 Assigns a CSafeArray to another CSafeArray.<br>
 Assigns a safe array to a CSafeArray.<br>
