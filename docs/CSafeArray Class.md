@@ -15,7 +15,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Constructor (SAFEARRAY PTR) | Creates a safe array from a SafeArray. |
 | Constructor (VARIANT PTR) | Creates a safe array from a variant of type VT_ARRAY. |
 
-# Opertors
+# Operators
 
 | Name       | Description |
 | ---------- | ----------- |
