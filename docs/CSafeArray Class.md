@@ -66,7 +66,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [LBound](#LBound) | Returns the lower bound for any dimension of a safe array. |
 | [LocksCount](#LocksCount) | Returns the number of times the array has been locked without the corresponding unlock. |
 | [MoveFromVariant](#MoveFromVariant) | Transfers ownership of the safe array contained in the variant parameter to this object. |
-| MoveToVariant | Transfers ownership of the safe array to a variant and detaches it from the class. |
+| [MoveToVariant](#MoveToVariant) | Transfers ownership of the safe array to a variant and detaches it from the class. |
 | NumDims | Returns the number of dimensions in the array. |
 | PtrOfIndex | Returns a pointer to an array element. |
 | Put | Stores the data element at a given location in the array. |
@@ -1013,6 +1013,22 @@ FUNCTION MoveFromVariant (BYVAL pvar AS VARIANT PTR) AS HRESULT
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pvar* | Pointer to the variant containing the safe array. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+# <a name="MoveToVariant"></a>MoveToVariant
+
+Transfers ownership of the safe array to a variant and detaches it from the class.
+
+```
+FUNCTION MoveToVariant (BYVAL pvar AS VARIANT PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvar* | Pointer to the variant where the safe array will be moved. |
 
 #### Return value
 
