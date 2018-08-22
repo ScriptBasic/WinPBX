@@ -45,7 +45,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CopyToVariant](#CopyToVariant) | Copies the safe array to the passed variant. |
 | [Count](#Count) | Returns the number of elements in the specified dimension of the array. |
 | [Create](#Create) | Creates a safe array. |
-| CreateEx | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
+| [CreateEx](#CreateEx) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | Destroy | Destroys an existing array descriptor and all of the data in the array. |
@@ -637,6 +637,58 @@ FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 
 | *lLBound1* | The lower bound of the first dimension of the array. |
 | *cElements2* | Number of elements in the second dimension of the array. |
 | *lLBound2* | The lower bound of the second dimension of the array. |
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code on failure.
+
+# <a name="CreateEx"></a>CreateEx
+
+Creates a safe array.
+
+Multidimensional array:
+
+```
+FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
+   BYVAL prgsabound AS SAFEARRAYBOUND PTR, BYVAL pvExtra AS PVOID) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
+| *cDims* | Number of dimensions in the array. The number cannot be changed after the array is created. |
+| *rgsabound* | Pointer to a vector of bounds (one for each dimension) to allocate for the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+
+One-dimensional array:
+
+```
+FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, _
+   BYVAL lLBound AS LONG, BYVAL pvExtra AS PVOID) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
+| *cElements* | Optional. Number of elements in the array. |
+| *lLBound* | Optional. The lower bound of the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
+
+Two-dimensional array:
+
+```
+FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
+   BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG, BYVAL pvExtra AS PVOID) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. The FADF_RECORD flag can be set for a variant type VT_RECORD, The FADF_HAVEIID flag can be set for VT_DISPATCH or VT_UNKNOWN, and FADF_HAVEVARTYPE can be set for all other VARTYPEs. For more information about the FADF_RECORD, FADF_HAVEIID or FADF_HAVEVARTYPE flags see SAFEARRAY Data Type. |
+| *cElements1* | Number of elements in the first dimension of the array. |
+| *lLBound1* | The lower bound of the first dimension of the array. |
+| *cElements2* | Number of elements in the second dimension of the array. |
+| *lLBound2* | The lower bound of the second dimension of the array. |
+| *pvExtra* | Points to the type information of the user-defined type, if you are creating a safe array of user-defined types. If the *vt* parameter is VT_RECORD, then pvExtra will be a pointer to an **IRecordInfo** interface describing the record. If the *vt* parameter is VT_DISPATCH or VT_UNKNOWN, then *pvExtra* will contain a pointer to a GUID representing the type of interface being passed to the array. |
 
 #### Return value
 
