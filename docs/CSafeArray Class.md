@@ -69,7 +69,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [MoveToVariant](#MoveToVariant) | Transfers ownership of the safe array to a variant and detaches it from the class. |
 | [NumDims](#NumDims) | Returns the number of dimensions in the array. |
 | [PtrOfIndex](#PtrOfIndex) | Returns a pointer to an array element. |
-| Put | Stores the data element at a given location in the array. |
+| [Put](#Put) | Stores the data element at a given location in the array. |
 | Redim | Changes the right-most (least significant) bound of a safe array. |
 | Remove | Deletes the specified array element. |
 | [Reset](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Erase. |
@@ -463,7 +463,7 @@ S_OK (0) on success or an HREUSLT code on failure.
 | DISP_E_BADINDEX | The specified index is not valid. |
 | E_INVALIDARG | One of the arguments is not valid. |
 | E_OUTOFMEMORY | Memory could not be allocated for the element. |
-| E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
+| E_FAIL | Failure |
 
 # <a name="Attach"></a>Attach
 
@@ -944,7 +944,7 @@ S_OK (0) on success or an HRESULT code on failure.
 | DISP_E_BADINDEX | The specified index is invalid. |
 | E_INVALIDARG | One of the arguments is invalid. |
 | E_OUTOFMEMORY | Memory could not be allocated for the element. |
-| E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
+| E_FAIL | Failure. |
  
 # <a name="IsResizable"></a>IsResizable
 
@@ -1052,25 +1052,15 @@ Multidimensional array:
 FUNCTION PtrOfIndex (BYVAL prgIndices AS LONG PTR) AS ANY PTR
 ```
 
-One-dimensional array:
-
-```
-FUNCTION PtrOfIndex (BYVAL idx AS LONG) AS HRESULT
-```
-
-Two-dimensional array:
-
-```
-FUNCTION PtrOfIndex (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS HRESULT
-```
-
-Multidimensional array:
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *prgIndices* | An array of index values that identify an element of the array. All indexes for the element must be specified. |
 
 One-dimensional array:
+
+```
+FUNCTION PtrOfIndex (BYVAL idx AS LONG) AS HRESULT
+```
 
 | Parameter  | Description |
 | ---------- | ----------- |
@@ -1078,7 +1068,82 @@ One-dimensional array:
 
 Two-dimensional array:
 
+```
+FUNCTION PtrOfIndex (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS HRESULT
+```
+
 | Parameter  | Description |
 | ---------- | ----------- |
 | *cElem* | Index of the element. |
 | *cDim* | Dimension number of the array. |
+
+# <a name="Put"></a>Put
+
+Stores the data element at a given location in the array.
+
+Multidimensional array:
+
+```
+FUNCTION Put (BYVAL prgIndices AS LONG PTR, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION PutStr (BYVAL prgIndices AS LONG PTR, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION PutVar (BYVAL prgIndices AS LONG PTR, BYREF cvData AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *prgIndices* | Pointer to a vector of indexes for each dimension of the array. The right-most (least significant) dimension is rgIndices(0). The left-most dimension is stored at prgIndices(@psa.cDims – 1). |
+| *pData* | Pointer to the data to assign to the array. The variant types VT_DISPATCH, VT_UNKNOWN, and VT_BSTR are pointers, and do not require another level of indirection. |
+| *cbsData* | A CBSTR. |
+| *cbsData* | A CVAR. |
+
+One-dimensional array:
+
+```
+FUNCTION Put (BYVAL idx AS LONG, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION PutStr (BYVAL idx AS LONG, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION PutVar (BYVAL idx AS LONG, BYREF cvData AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *idx* | Index of the element of the array. |
+| *pData* | Pointer to the data to assign to the array. The variant types VT_DISPATCH, VT_UNKNOWN, and VT_BSTR are pointers, and do not require another level of indirection. |
+| *cbsData* | A CBSTR. |
+| *cbsData* | A CVAR. |
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *idx* | Index of the element. |
+
+Two-dimensional array:
+
+```
+FUNCTION Put (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION PutStr (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION PutVar (BYVAL cElem AS LONG, BYVAL cDim AS LONG, BYREF cvData AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cElem* | Index of the element of the array. |
+| *cDim* | Dimension number of the array. |
+| *pData* | Pointer to the data to assign to the array. The variant types VT_DISPATCH, VT_UNKNOWN, and VT_BSTR are pointers, and do not require another level of indirection. |
+| *cbsData* | A CBSTR. |
+| *cbsData* | A CVAR. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HRESULT  | Description |
+| ---------- | ----------- |
+| DISP_E_BADINDEX | The specified index is invalid. |
+| E_INVALIDARG | One of the arguments is invalid. |
+| E_OUTOFMEMORY | Memory could not be allocated for the element. |
+| E_FAIL | Failure. |
+
+#### Remarks
+
+This function automatically calls **SAfeArrayLock** and **SafeArrayUnlock**  before and after assigning the element. If the data element is a string, object, or variant, the function copies it correctly when the safe array is destroyed. If the existing element is a string, object, or variant, it is cleared correctly. If the data element is a VT_DISPATCH or VT_UNKNOWN, **AddRef** is called to increment the object's reference count. 
+
+Multiple locks can be on an array. Elements can be put into an array while the array is locked by other operations.
