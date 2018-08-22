@@ -51,7 +51,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Destroy](#Destroy) | Destroys an existing array descriptor and all of the data in the array. |
 | [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
 | [Detach](#Detach) | Detaches the sage array descriptor from the CSafeArray. |
-| ElemSize | Returns the size of an element. |
+| [ElemSize](#ElemSize) | Returns the size of an element. |
 | [Erase](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
 | Features | Returns the flags used by the safe array. This is the same that the Flags method. |
 | Find | Scans the array to search for the specified string. |
@@ -749,3 +749,15 @@ Returns a pointer to a SAFEARRAY descriptor.
 #### Remarks
 
 The caller takes ownership of it and must destroy it when no longer needed.
+
+# <a name="ElemSize"></a>ElemSize
+
+Returns the size of an element.
+
+```
+FUNCTION ElemSize () AS UINT
+```
+
+#### Return value
+
+Returns the size (in bytes) of an element in a safe array. Does not include size of pointed-to data.
