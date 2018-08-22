@@ -58,7 +58,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Flags | Returns the flags used by the safe array. This is the same that the Features method. |
 | Get | Retrieves a single element of the array. |
 | GetIID | Returns the GUID of the interface contained within a given safe array. |
-| GetPtr | Returns the address of the safe array. |
+| [GetPtr](#Operator1) | Returns the address of the safe array. |
 | GetRecordInfo | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
 | GetType | Returns the VARTYPE stored in the given safe array. |
 | Insert | Inserts a value at the specified position of the safe array. |
@@ -316,7 +316,7 @@ CONSTRUCTOR CSafeArray (BYVAL pvar AS VARIANT PTR)
 | ---------- | ----------- |
 | *pvar* | Pointer to the VARIANT. |
 
-# <a name="Operator1"></a>Operator *
+# <a name="Operator1"></a>Operator * / GetPtr
 
 Returns a pointer to the underlying safe array descriptor.
 
