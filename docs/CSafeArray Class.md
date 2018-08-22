@@ -18,10 +18,10 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor (SAFEARRAYBOUND)](#Constructor1) | Creates a safe array. |
-| [Constructor (CSafeArray)](#Constructor2) | Creates a safe array from another CSafeArray. |
-| [Constructor (SAFEARRAY PTR)](#Constructor3) | Creates a safe array from a SafeArray. |
-| [Constructor (VARIANT PTR)](#COnstructor4) | Creates a safe array from a variant of type VT_ARRAY. |
+| [Constructor (SAFEARRAYBOUND)](#Constructor1) | Creates a CSafeArray. |
+| [Constructor (CSafeArray)](#Constructor2) | Creates a CSafeArray from another CSafeArray. |
+| [Constructor (SAFEARRAY PTR)](#Constructor3) | Creates a CSafeArray from a safe array. |
+| [Constructor (VARIANT PTR)](#COnstructor4) | Creates a CSafeArray from a Variant of type VT_ARRAY. |
 
 # Operators
 
@@ -185,43 +185,44 @@ END TYPE
 
 The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal.
 
-| VarType    | Meaning     | Data type |
-| ---------- | ----------- | --------- |
-| VT_I1 | Signed byte | BYTE |
-| VT_UI1 | Unsigned byte | UBYTE |
-| VT_I2 | Signed short | SHORT |
-| VT_UI2 | Unsigned short | USHORT |
-| VT_I4 | Signed long | LONG |
-| VT_INT | Signed long | LONG |
-| VT_UI4 | Unsigned long | ULONG |
-| VT_UINT | Unsigned long | ULONG |
-| VT_I8 | Signed quad | LONGINT |
-| VT_UI8 | Unnsigned quad | ULONGINT |
-| VT_R4 | Single | SINGLE |
-| VT_R8 | Double | DOUBLE |
-| VT_CUR | Currency | CY |
-| VT_BOOL | Boolean (cast to a signed short) | SHORT |
-| VT_WSTR | WString | WSTRING |
-| VT_DATE | Date | DATE_ |
-| VT_DECIMAL | Decimal structure | DECIMAL |
-| VT_VARIANT | Variant | VARIANT |
-| VT_UNKNOWN | IUnknown pointer | IUnknown PTR |
-| VT_DISPATCH | IDispatch pointer | IDispatch PTR |
+| VarType    | Meaning     | Data type | strType |
+| ---------- | ----------- | --------- | ------- |
+| VT_BSTR | Unicode string | BSTR | "BSTR" |
+| VT_I1 | Signed byte | BYTE | "BYTE" |
+| VT_UI1 | Unsigned byte | UBYTE | "UBYTE" |
+| VT_I2 | Signed short | SHORT | "SHORT" |
+| VT_UI2 | Unsigned short | USHORT | "USHORT" |
+| VT_I4 | Signed long | LONG | "LONG" |
+| VT_INT | Signed long | LONG | "ULONG" |
+| VT_UI4 | Unsigned long | ULONG | "LONG" |
+| VT_UINT | Unsigned long | ULONG | "ULONG" |
+| VT_I8 | Signed quad | LONGINT | "LONGINT" |
+| VT_UI8 | Unnsigned quad | ULONGINT | "ULONGINT" |
+| VT_R4 | Single | SINGLE | "SINGLE" |
+| VT_R8 | Double | DOUBLE | "DOUBLE" |
+| VT_CUR | Currency | CY | "CURRENCY" |
+| VT_BOOL | Boolean (cast to a signed short) | SHORT | "BOOL" |
+| VT_DATE | Date | DATE_ | "DATE" |
+| VT_DECIMAL | Decimal structure | DECIMAL | "DECIMAL" |
+| VT_VARIANT | Variant | VARIANT | "VARIANT" |
+| VT_UNKNOWN | IUnknown pointer | IUnknown PTR | "UNKNOWN" |
+| VT_DISPATCH | IDispatch pointer | IDispatch PTR | "DISPATCH" |
 
 # <a name="Constructor1"></a>Constructor (SAFEARRAYBOUND)
 
-Creates a safe array.
+Creates a CSafeArray.
 
 Multidimensional array:
 
 ```
-CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
-   BYVAL prgsabounds AS SAFEARRAYBOUND PTR)
+CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, BYVAL prgsabounds AS SAFEARRAYBOUND PTR)
+CONSTRUCTOR CSafeArray (BYREF strType AS STRING, BYVAL cDims AS UINT, BYVAL prgsabounds AS SAFEARRAYBOUND PTR)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *strType* | The base type of the array as a string literal. |
 | *cDims* | Number of dimensions in the array. The number cannot be changed after the array is created. |
 | *rgsabound* | Pointer to a vector of bounds (one for each dimension) to allocate for the array. |
 
@@ -229,11 +230,13 @@ One-dimensional array:
 
 ```
 CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG = 0, BYVAL lLBound AS LONG = 0)
+CONSTRUCTOR (BYREF strType AS STRING, BYVAL cElements AS ULONG = 0, BYVAL lLBound AS LONG = 0)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *strType* | The base type of the array as a string literal. |
 | *cElements* | Optional. Number of elements in the array. |
 | *lLBound* | Optional. The lower bound of the array. |
 
@@ -242,11 +245,14 @@ Two-dimensional array:
 ```
 CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
    BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG)
+CONSTRUCTOR (BYREF strType AS STRING, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
+   BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *strType* | The base type of the array as a string literal. |
 | *cElements1* | Number of elements in the first dimension of the array. |
 | *lLBound1* | The lower bound of the first dimension of the array. |
 | *cElements2* | Number of elements in the second dimension of the array. |
@@ -272,6 +278,44 @@ DIM csa AS CSafeArray = CSafeArray(VT_VARIANT)
 ' // One-dimensional array of VT_BSTR with 5 elements and a lower-bound of 1
 DIM csa AS CSafeArray = CSafeArray(VT_BSTR, 5, 1)
 ```
+
+# <a name="Constructor2"></a>Constructor (SAFEARRAYBOUND)
+
+Creates a CSafeArray from another CSafeArray.
+
+```
+CONSTRUCTOR CSafeArray (BYREF csa AS CSafeArray)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *csa* | A CSafeArray object. |
+
+# <a name="Constructor3"></a>CConstructor (SAFEARRAY PTR)
+
+Creates a CSafeArray from a safe array.
+```
+CONSTRUCTOR CSafeArray (BYVAL psa AS SafeArray PTR)
+CONSTRUCTOR CSafeArray (BYVAL psa AS SafeArray PTR, BYVAL fAttach AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *psa* | Pointer to a safe array. |
+| *fAttach* | If TRUE, the safe array is attached, else a copy is made. |
+
+# <a name="Constructor4"></a>CConstructor (VARIANT PTR)
+
+Creates a CSafeArray from a Variant of type VT_ARRAY.
+
+```
+CONSTRUCTOR CSafeArray (BYVAL pvar AS VARIANT PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvar* | Pointer to the VARIANT. |
+
 
 # <a name="AfxStrJoin"></a>AfxStrJoin
 
