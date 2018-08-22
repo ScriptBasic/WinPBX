@@ -467,7 +467,7 @@ FUNCTION Append (BYVAL vData AS VARIANT) AS HRESULT
 
 #### Return value
 
-S_OK (0) on success or an HREUSLT CODE.
+S_OK (0) on success or an HREUSLT code.
 
 | HREUSLT  | Description |
 | ---------- | ----------- |
