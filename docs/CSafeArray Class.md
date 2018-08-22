@@ -147,8 +147,8 @@ EBD TYPE
 | FADF_HAVEIID | An array that has an IID identifying interface. When set, there will be a GUID at negative offset 16 in the safe array descriptor. Flag is set only when FADF_DISPATCH or FADF_UNKNOWN is also set. |
 | FADF_HAVEVARTYPE | An array that has a VT type. When set, there will be a VT tag at negative offset 4 in the array descriptor that specifies the element type. |
 | FADF_BSTR | An array of BSTRs. |
-| FADF_UNKNOWN | An array of IUnknown*. |
-| FADF_DISPATCH | An array of IDispatch*. |
+| FADF_UNKNOWN | An array of IUnknown pointers. |
+| FADF_DISPATCH | An array of IDispatch pointers. |
 | FADF_VARIANT | An array of VARIANTs. |
 | FADF_RESERVED | Bits reserved for future use. |
 
