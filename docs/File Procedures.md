@@ -1463,6 +1463,26 @@ The matching suffix if successful, or an empty string if bstrPath does not end w
 
 This function uses a case-sensitive comparison. The suffix must match exactly.
 
+# <a name="AfxPathGetArgs"></a>AfxPathGetArgs
+
+Finds the command line arguments within a given path.
+
+```
+FUNCTION AfxPathGetArgs (BYREF wszPath AS CONST WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | A string that contains the path to be searched. |
+
+#### Return value
+
+A string that contains the arguments portion of the path if successful or an empty string if there are no arguments in the path.
+
+#### Remarks
+
+This function should not be used on generic command path templates (from users or the registry), but rather should be used only on templates that the application knows to be well formed.
+
 # <a name="AfxPathGetCharType"></a>AfxPathGetCharType
 
 Determines the type of character in relation to a path.
