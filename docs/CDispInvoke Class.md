@@ -73,7 +73,7 @@ CONSTRUCTOR CDispInvoke (BYREF cvDisp AS CVAR)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *vDisp* | A VT_DISPATCH variant. |
-| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef is called**. This is needed when we pass a raw pointer. |
+| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef** is called. This is needed when we pass a raw pointer. |
 | *cvDisp* | A VT_DISPATCH CVAR. |
 
 # <a name="Constructor3"></a>Constructor(ProgID)
