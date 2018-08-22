@@ -43,7 +43,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CopyFrom](#CopyFrom) | Copies the contents of a safe array. |
 | [CopyFromVariant](#CopyFromVariant) | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
 | [CopyToVariant](#CopyToVariant) | Copies the safe array to the passed variant. |
-| Count | Returns the number of elements in the specified dimension of the array. |
+| [Count](#Count) | Returns the number of elements in the specified dimension of the array. |
 | Create | Creates a safe array. |
 | CreateEx | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
@@ -576,6 +576,19 @@ Copies the safe array to the passed variant.
 FUNCTION CopyToVariant (BYVAL pvar AS VARIANT PTR) AS HRESULT
 ```
 *pvar* is a pointer to the variant where the safe array will be copied.
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code on failure.
+
+# <a name="Count"></a>Count
+
+Returns the number of elements in the specified dimension of the array.
+
+```
+FUNCTION Count (BYVAL nDim AS UINT = 1) AS UINT
+```
+The optional nDim parameter is the array dimension for which to get the number of elements. You don't need to pass this parameter if the safe array in one-dimensional.
 
 #### Return value
 
