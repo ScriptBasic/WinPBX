@@ -460,6 +460,9 @@ Appends a value to the end of the one-dimensional safe array.
 
 ```
 FUNCTION Append (BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Append (BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Append (BYREF cvData AS CVAR) AS HRESULT
+FUNCTION Append (BYVAL vData AS VARIANT) AS HRESULT
 ```
 
 #### Return value
