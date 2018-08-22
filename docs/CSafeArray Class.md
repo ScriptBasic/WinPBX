@@ -60,7 +60,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [GetIID](#GetIID) | Returns the GUID of the interface contained within a given safe array. |
 | [GetPtr](#Operator1) | Returns the address of the safe array. |
 | [GetRecordInfo](#GetRecordInfo) | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
-| GetType | Returns the VARTYPE stored in the given safe array. |
+| [GetType](#GetType) | Returns the VARTYPE stored in the given safe array. |
 | Insert | Inserts a value at the specified position of the safe array. |
 | IsResizable | Tests if the safe array can be resized. |
 | LBound | Returns the lower bound for any dimension of a safe array. |
@@ -881,4 +881,12 @@ Retrieves the IRecordInfo interface of a UDT contained in a given safe array.
 
 ```
 FUNCTION GetRecordInfo () AS IRecordInfo PTR
+```
+
+# <a name="GetType"></a>GetType
+
+Returns the VARTYPE stored in the given safe array.
+
+```
+FUNCTION GetType () AS VARTYPE
 ```
