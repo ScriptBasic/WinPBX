@@ -20,6 +20,7 @@
 | ---------- | ----------- |
 | [Operator \*](#Operator1) | Returns the underlying IDispatch pointer. |
 | [Operator LET](#Operator2) | Assigns an IDispatch pointer and increases the reference count. |
+| [vptr](#vptr) | Clears the contents of the class and returns the address of the underlying IDispatch pointer. |
 
 # Methods and Properties
 
@@ -45,7 +46,6 @@
 | [PutRef](#PutRef) | Assigns a value to an interface member property that contains a reference to an object. |
 | [Set](#Set) | Calls the specified property of an interface and sets the passed value. |
 | [SetRef](#SetRef) | Assigns a value to an interface member property that contains a reference to an object. |
-| [vptr](#vptr) | Clears the contents of the class and returns the address of the underlying IDispatch pointer. |
 
 # <a name="Constructor1"></a>Constructor(ProgID)
 
@@ -264,6 +264,20 @@ OPERATOR Let (BYREF cvDisp AS CVAR)
 | *pdisp* | An IDispatch pointer. |
 | *vDisp* | A VT_DISPATCH variant. |
 | *cvDisp* | A VT_DISPATCH CVAR. |
+
+# <a name="vptr"></a>vptr
+
+Clears the contents of the class and returns the address of the underlying IDispatch pointer.
+
+```
+FUNCTION vptr () AS IDispatch PTR PTR
+```
+
+#### Remarks
+
+To pass the class to an OUT BYVAL IDispatch PTR parameter.
+
+If we pass a **CDispInvoke** variable to a function with an OUT IDIspatch parameter without first clearing the contents of the class, we may have a memory leak.
 
 # <a name="Attach"></a>Attach
 
