@@ -48,7 +48,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CreateEx](#CreateEx) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | [CreateVector](#CreateVector) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | [CreateVectorEx](#CreateVectorEx) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
-| Destroy | Destroys an existing array descriptor and all of the data in the array. |
+| [Destroy](#Destroy) | Destroys an existing array descriptor and all of the data in the array. |
 | [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
 | Detach | Detaches the sage array descriptor from the CSafeArray. |
 | ElemSize | Returns the size of an element. |
@@ -716,3 +716,20 @@ FUNCTION CreateVectorEx (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, BYVAL lL
 #### Return value
 
 S_OK (0) on success or an HRESULT code on failure.
+
+# <a name="Destroy"></a>Destroy
+
+Destroys an existing array descriptor and all of the data in the array. If objects are stored in the array, Release is called on each object in the array.
+
+```
+FUNCTION Destroy () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HREUSLT  | Description |
+| ---------- | ----------- |
+| E_INVALIDARG | The dimensions or the number of dimensions don't match. |
+| DISP_E_ARRAYISLOCKED | The array is currently locked. |
