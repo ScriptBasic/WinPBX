@@ -81,6 +81,15 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | UBound | Returns the upper bound for any dimension of a safe array. |
 | UnaccessData | Decrements the lock count of an array, and invalidates the pointer retrieved by AccessData. |
 
+# Helper Procedures
+
+| Name       | Description |
+| ---------- | ----------- |
+| AfxStrSplit | Splits a string into tokens. |
+| AfxStrJoin | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
+| AfxXmlBase64Decode | Converts the contents of a Base64 mime encoded string to an ascii string. |
+| AfxXmlBase64Encode | Converts the contents of a string to Base64 mime encoding. |
+
 # Analyzing the safe array API
 
 | Topic |
@@ -102,3 +111,108 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Getting the element size |
 | Creating vectors |
 
+# <a name="AfxStrJoin"></a>AfxStrJoin
+
+Returns a string consisting of all of the strings in an array, each separated by a delimiter. If the delimiter is a null (zero-length) string then no separators are inserted between the string sections. If the delimiter expression is the 3-byte value of "," which may be expressed in your source code as the string literal """,""" or as Chr(34,44,34) then a leading and trailing double-quote is added to each string section. This ensures that the returned string contains standard comma-delimited quoted fields that can be easily parsed.
+
+```
+FUNCTION AfxStrJoin (BYREF cwsa AS CSafeArray, BYREF wszDelimiter AS WSTRING = " ") AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsa* | The one-dimensional VT_BSTR CSafeArray to join. |
+| *wszDelimiter* | The delimiter character. |
+
+#### Return value
+
+A CWSTR containing the joined string.
+
+#### Usage example
+
+```
+DIM csa AS CSafeArray = CSafeArray("STRING", 3, 1)
+csa.PutStr(1, "One")
+csa.PutStr(2, "Two")
+csa.PutStr(3, "Three")
+DIM cws AS CWSTR = AfxStrJoin(csa, ",")
+PRINT cws   ' ouput: One,Two,Three
+```
+
+# <a name="AfxStrSplit"></a>AfxStrSplit
+
+Splits a string into tokens, which are sequences of contiguous characters separated by any of the characters that are part of delimiters.
+
+```
+FUNCTION AfxStrSplit (BYREF wszStr AS CONST WSTRING, BYREF wszDelimiters AS WSTRING = " ") AS CSafeArray
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszStr* | The string to split. |
+| *wszDelimiters* | The delimiter characters. |
+
+#### Return value
+
+A CSafeArray containing a token in each element.
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = "- This, a sample string."
+DIM cwsa AS CSafeArray = AfxStrSplit(cws, " ,.-")
+FOR i AS LONG = cwsa.LBound TO cwsa.UBound
+  PRINT cwsa.GetStr(i)
+NEXT
+```
+# <a name="AfxXmlBase64Decode"></a>AfxXmlBase64Decode
+
+Converts the contents of a Base64 mime encoded string to an ascii string.
+
+```
+FUNCTION AfxXmlBase64Decode (BYREF strData AS STRING) AS STRING
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *strData* | The string to decode. |
+
+#### Return value
+
+The decoded string on success, or a null string on failure.
+
+Remaks
+
+Base64 is a group of similar encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The Base64 term originates from a specific MIME content transfer encoding.
+
+Base64 encoding schemes are commonly used when there is a need to encode binary data that needs be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is used commonly in a number of applications including email via MIME, and storing complex data in XML.
+
+#### Important note
+
+Because it uses COM, you must initialize the COM library before calling this function.
+
+**Include file**: CSafeArray.inc
+
+# <a name="AfxXmlBase64Encode"></a>AfxXmlBase64Encode
+
+Converts the contents of a string to Base64 mime encoding.
+
+```
+FUNCTION AfxXmlBase64Encode (BYREF strData AS STRING) AS STRING
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *strData* | The string to encode. |
+
+#### Return value
+
+The encoded string on succeess, or a null string on failure.
+
+Remaks
+
+Base64 is a group of similar encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The Base64 term originates from a specific MIME content transfer encoding.
+
+Base64 encoding schemes are commonly used when there is a need to encode binary data that needs be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is used commonly in a number of applications including email via MIME, and storing complex data in XML.
+
+#### Important note
+
+Because it uses COM, you must initialize the COM library before calling this function.
