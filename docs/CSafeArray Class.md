@@ -34,7 +34,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 | Name       | Description |
 | ---------- | ----------- |
-| AccessData | Increments the lock count of an array, and retrieves a pointer to the array data. |
+| [AccessData](#AccessData) | Increments the lock count of an array, and retrieves a pointer to the array data. |
 | Append | Appends a value to the end of the one-dimensional safe array. |
 | Attach | Attaches a safe array to a CSafeArray object. |
 | Clear | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
@@ -441,3 +441,15 @@ Remaks
 Base64 is a group of similar encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The Base64 term originates from a specific MIME content transfer encoding.
 
 Base64 encoding schemes are commonly used when there is a need to encode binary data that needs be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remains intact without modification during transport. Base64 is used commonly in a number of applications including email via MIME, and storing complex data in XML.
+
+# <a name="AccessData"></a>AccessData
+
+Increments the lock count of an array, and retrieves a pointer to the array data.
+
+```
+FUNCTION AccessData () AS ANY PTR
+```
+
+#### Return value
+
+IF it succeeds, it returns a pointer to the array data. If it fails, it returns a null pointer.
