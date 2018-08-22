@@ -27,8 +27,8 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 | Name       | Description |
 | ---------- | ----------- |
-| Operator * | Returns a pointer to the safe array descriptor. |
-| Operator LET | Assigns a CSafeArray, a safe array or a Variant. |
+| [Operator \*](#Operator1) | Returns a pointer to the safe array descriptor. |
+| [Operator LET](Operator2) | Assigns a CSafeArray, a safe array or a Variant. |
 
 # Methods
 
@@ -316,6 +316,31 @@ CONSTRUCTOR CSafeArray (BYVAL pvar AS VARIANT PTR)
 | ---------- | ----------- |
 | *pvar* | Pointer to the VARIANT. |
 
+# <a name="Operator1"></a>Operator *
+
+Returns a pointer to the underlying safe array descriptor.
+
+```
+OPERATOR * () AS ANY PTR
+```
+
+# <a name="Operator2"></a>Operator LET
+
+Assigns a CSafeArray to another CSafeArray.
+Assigns a safe array to a CSafeArray.
+Assigns a variant of type VT_ARRAY to a CSafeArray.
+
+```
+OPERATOR Let (BYREF csa AS CSafeArray)
+OPERATOR Let (BYVAL psa AS SAFEARRAY PTR)
+OPERATOR Let (BYVAL pvar AS VARIANT PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *csa* | An instance of the CSafeArray class. |
+| *psa* | A safe array pointer. |
+| *pvar* | Pointer to a VARIANT. |
 
 # <a name="AfxStrJoin"></a>AfxStrJoin
 
