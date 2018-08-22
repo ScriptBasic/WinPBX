@@ -593,3 +593,26 @@ FUNCTION Set (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 ... cvArg3 AS CVAR) AS
 #### Returm value
 
 S_OK (0) on success or an HRESULT code.
+
+# <a name="SetRef"></a>SetRef
+
+Assigns a value to an interface member property that contains a reference to an object. For example, a reference to another interface.
+
+```
+FUNCTION SetRef (BYVAL dispID AS DISPID, BYREF cvArg AS CVAR) AS HRESULT
+FUNCTION SetRef (BYVAL dispID AS DISPID, BYREF cvArg1 ... cvArg2 AS CVAR) AS HRESULT
+FUNCTION SetRef (BYVAL dispID AS DISPID, BYREF cvArg1 ... cvArg3 AS CVAR) AS HRESULT
+FUNCTION SetRef (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR) AS HRESULT
+FUNCTION SetRef (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 ... cvArg2 AS CVAR) AS HRESULT
+FUNCTION SetRef (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 ... cvArg3 AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg1...cvArg3* | CVAR. The last parameter is the value to set. cvArg1 and cvArg2 are the index values. |
+
+#### Returm value
+
+S_OK (0) on success or an HRESULT code.
