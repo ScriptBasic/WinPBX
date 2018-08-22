@@ -6,12 +6,13 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 **Include file**: CSafeArray.INC.
 
-# Structures
+# Structures and VARTYPE
 
 | Name       | Description |
 | ---------- | ----------- |
 | [SAFEARRAY](#SAFEARRAY) | Represents a safe array. |
 | [SAFEARRAYBOUND](#SAFEARRAYBOUND) | Represents the bounds of one dimension of the array. |
+| [VARTYPE](#VARTYPE) | Safe array Variant type. |
 
 # Constructors
 
@@ -179,6 +180,33 @@ END TYPE
 | ---------- | ----------- |
 | **cElements** | Number of elements in the dimension. |
 | **lLbound** | The lower bound of the dimension. |
+
+# <a name="VARTYPE"></a>Safe array Variant type
+
+The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal.
+
+| VarType    | Meaning     |
+| ---------- | ----------- |
+| VT_I1 | Signed byte |
+| VT_UI1 | Unsigned byte |
+| VT_I2 | Signed short |
+| VT_UI2 | Unsigned short |
+| VT_I4 | Signed long |
+| VT_INT | Sifned long |
+| VT_UI4 | Unsigned long |
+| VT_UINT | Unsigned long |
+| VT_I8 | Signed quad |
+| VT_UI8 | Unnsigned quad |
+| VT_R4 | Single |
+| VT_R8 | Double |
+| VT_CUR | Currency |
+| VT_BOOL | Boolean (cast to a signed short) |
+| VT_WSTR | WString |
+| VT_DATE | Date |
+| VT_DECIMAL | Decimal structure |
+| VT_VARIANT | Variant |
+| VT_UNKNOWN | IUnknown pointer |
+| VT_DISPATCH | IDispatch pointer |
 
 # <a name="Constructor1"></a>Constructor (SAFEARRAYBOUND)
 
