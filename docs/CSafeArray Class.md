@@ -40,7 +40,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Clear](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
 | [Copy](#Copy) | Creates a copy of the safe array. |
 | [CopyData](#CopyData) | Copies the source array to the target array after releasing any resources in the target array. |
-| CopyFrom | Copies the contents of a safe array. |
+| [CopyFrom](#CopyFrom)) | Copies the contents of a safe array. |
 | CopyFromVariant | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
 | CopyToVariant | Copies the safe array to the passed variant. |
 | Count | Returns the number of elements in the specified dimension of the array. |
@@ -467,7 +467,7 @@ FUNCTION Append (BYVAL vData AS VARIANT) AS HRESULT
 
 #### Return value
 
-S_OK (0) on success or an HREUSLT code.
+S_OK (0) on success or an HREUSLT code on failure.
 
 | HREUSLT  | Description |
 | ---------- | ----------- |
@@ -498,7 +498,7 @@ FUNCTION DestroyData () AS HRESULT
 
 #### Return value
 
-S_OK (0) on success or an HREUSLT code.
+S_OK (0) on success or an HREUSLT code  on failure.
 
 | HREUSLT  | Description |
 | ---------- | ----------- |
@@ -534,4 +534,16 @@ S_OK (0) on success or an HREUSLT code.
 | ---------- | ----------- |
 | E_INVALIDARG | The dimensions or the number of dimensions don't match. |
 | E_OUTOFMEMORY | Insufficient memory to create the copy. |
+
+# <a name="CopyFrom"></a>CopyFrom
+
+Copies the contents of the passed safe array.
+
+```
+FUNCTION CopyFrom (BYVAL psaSrc AS SAFEARRAY PTR) AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT code on failure.
 
