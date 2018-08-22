@@ -46,7 +46,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Count](#Count) | Returns the number of elements in the specified dimension of the array. |
 | [Create](#Create) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | [CreateEx](#CreateEx) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
-| CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
+| [CreateVector](#CreateVector) | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | Destroy | Destroys an existing array descriptor and all of the data in the array. |
 | [DestroyData](#DestroyData) | Destroys all the data in a safe array. |
@@ -673,3 +673,26 @@ FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound
 
 S_OK (0) on success or an HRESULT code on failure.
 
+# <a name="CreateVector"></a>CreateVector
+
+Creates a safe array from the given VARTYPE, lower bound and number of elements. A safe array created with **CreateVector** is a fixed size, so the constant FADF_FIXEDSIZE is always set.
+
+```
+FUNCTION CreateVector (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, BYVAL lLBound AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *cElements* | The number of elements in the array. |
+| *lLBound* | The lower bound for the array. Can be negative. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+#### Remarks
+
+**CreateVector** allocates a single block of memory containing a SAFEARRAY structure for a single-dimension array (24 bytes), immediately followed by the array data. All of the existing safe array functions work correctly for safe arrays that are allocated with CreateVector.
+
+A safe array created with CreateVector is allocated as a single block of memory. Both the SafeArray descriptor and the array data block are allocated contiguously in one allocation, which speeds up array allocation. However, a user can allocate the descriptor and data area separately using the **SafeArrayAllocDescriptor** and **SafeArrayAllocData*** calls.
