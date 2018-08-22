@@ -26,8 +26,8 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 | Name       | Description |
 | ---------- | ----------- |
-| SAFEARRAY | Represents a safe array. |
-| SAFEARRAYBOUND | Represents the bounds of one dimension of the array. |
+| [SAFEARRAY](#SAFEARRAY) | Represents a safe array. |
+| [SAFEARRAYBOUND](#SAFEARRAYBOUND) | Represents the bounds of one dimension of the array. |
 
 # Methods
 
@@ -163,6 +163,22 @@ The **fFeatures** flags describe attributes of an array that can affect how the 
 All public static members of the SAFEARRAY data type are thread safe. Instance members are not guaranteed to be thread safe.
 
 For example, consider an application that uses the SafeArrayLock and SafeArrayUnlock functions. If these functions are called concurrently from different threads on the same SAFEARRAY data type instance, an inconsistent lock count may be created. This will eventually cause the SafeArrayUnlock function to return E_UNEXPECTED. You can prevent this by providing your own synchronization code.
+
+# <a name="SAFEARRAYBOUND"></a>SAFEARRAYBOUND Structure
+
+Represents the bounds of one dimension of the array. The lower bound of the dimension is represented by lLbound, and cElements represents the number of elements in the dimension. The structure is defined as follows:
+
+```
+TYPE SAFEARRAYBOUND
+   cElements as ULONG
+   lLbound as LONG
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **cElements** | Number of elements in the dimension. |
+| **lLbound** | The lower bound of the dimension. |
 
 # <a name="AfxStrJoin"></a>AfxStrJoin
 
