@@ -87,7 +87,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | ---------- | ----------- |
 | [AfxStrJoin](#AfxStrJoin) | Returns a string consisting of all of the strings in an array, each separated by a delimiter. |
 | [AfxStrSplit](#AfxStrSplit) | Splits a string into tokens. |
-| [AfxXmlBase64Decode](#AfxXmlBase64Decode( | Converts the contents of a Base64 mime encoded string to an ascii string. |
+| [AfxXmlBase64Decode](#AfxXmlBase64Decode) | Converts the contents of a Base64 mime encoded string to an ascii string. |
 | [AfxXmlBase64Encode](#AfxXmlBase64Encode) | Converts the contents of a string to Base64 mime encoding. |
 
 # Analyzing the safe array API
