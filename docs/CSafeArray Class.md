@@ -447,7 +447,7 @@ FUNCTION Append (BYVAL vData AS VARIANT) AS HRESULT
 Appends a string to the end of the one-dimensional safe array.
 
 ```
-AppendStr (BYVAL pwszData AS WSTRING PTR) AS HRESULT
+FUNCTION AppendStr (BYVAL pwszData AS WSTRING PTR) AS HRESULT
 ```
 
 #### Return value
