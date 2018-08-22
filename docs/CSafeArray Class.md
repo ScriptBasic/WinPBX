@@ -17,10 +17,10 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 
 | Name       | Description |
 | ---------- | ----------- |
-| Constructor (SAFEARRAYBOUND) | Creates a safe array. |
-| Constructor (CSafeArray) | Creates a safe array from another CSafeArray. |
-| Constructor (SAFEARRAY PTR) | Creates a safe array from a SafeArray. |
-| Constructor (VARIANT PTR) | Creates a safe array from a variant of type VT_ARRAY. |
+| [Constructor (SAFEARRAYBOUND)](#Constructor1) | Creates a safe array. |
+| [Constructor (CSafeArray)](#Constructor2) | Creates a safe array from another CSafeArray. |
+| [Constructor (SAFEARRAY PTR)] (#Constructor3) | Creates a safe array from a SafeArray. |
+| [Constructor (VARIANT PTR)](#COnstructor4) | Creates a safe array from a variant of type VT_ARRAY. |
 
 # Operators
 
@@ -179,6 +179,71 @@ END TYPE
 | ---------- | ----------- |
 | **cElements** | Number of elements in the dimension. |
 | **lLbound** | The lower bound of the dimension. |
+
+# <a name="Constructor1"></a>Constructor (SAFEARRAYBOUND)
+
+Creates a safe array.
+
+Multidimensional array:
+
+```
+CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
+   BYVAL prgsabounds AS SAFEARRAYBOUND PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *cDims* | Number of dimensions in the array. The number cannot be changed after the array is created. |
+| *rgsabound* | Pointer to a vector of bounds (one for each dimension) to allocate for the array. |
+
+One-dimensional array:
+
+```
+CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG = 0, BYVAL lLBound AS LONG = 0)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *cElements* | Optional. Number of elements in the array. |
+| *lLBound* | Optional. The lower bound of the array. |
+
+Two-dimensional array:
+
+```
+CONSTRUCTOR CSafeArray (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
+   BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vt* | The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal. |
+| *cElements1* | Number of elements in the first dimension of the array. |
+| *lLBound1* | The lower bound of the first dimension of the array. |
+| *cElements2* | Number of elements in the second dimension of the array. |
+| *lLBound2* | The lower bound of the second dimension of the array. |
+
+#### Usage examples
+
+```
+' // Two-dimensional array of BSTR
+' // 2D: elements = 5, lower bound = 1
+' // 2D: elements = 3, lower bound = 1
+DIM rgsabounds(0 TO 1) AS SAFEARRAYBOUND = {(5, 1), (3, 1)}
+DIM csa AS CSafeArray = CSafeArray(VT_BSTR, 2, @rgsabounds(0))
+-or-
+' // Two-dimensional array of BSTR
+DIM csa AS CSafeArray = CSafeArray(VT_BSTR, 5, 1, 3, 1)
+
+' // One-dimensional array of VT_VARIANT with 0 elements and a lower-bound of 0
+DIM csa AS CSafeArray = CSafeArray(VT_VARIANT, 0, 0)
+-or-
+DIM csa AS CSafeArray = CSafeArray(VT_VARIANT)
+
+' // One-dimensional array of VT_BSTR with 5 elements and a lower-bound of 1
+DIM csa AS CSafeArray = CSafeArray(VT_BSTR, 5, 1)
+```
 
 # <a name="AfxStrJoin"></a>AfxStrJoin
 
