@@ -328,7 +328,7 @@ OPERATOR * () AS ANY PTR
 
 You can also call the **GetPtr** method.
 
-# <a name="Operator2"></a>Operator LET
+# <a name="Operator2"></a>Operator LET / =
 
 Assigns a CSafeArray to another CSafeArray.<br>
 Assigns a safe array to a CSafeArray.<br>
