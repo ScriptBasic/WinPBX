@@ -57,7 +57,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Find](#Find) | Scans the array to search for the specified string. |
 | [Flags](#Features) | Returns the flags used by the safe array. This is the same that the **Features** method. |
 | [Get](#Get) | Retrieves a single element of the array. |
-| GetIID | Returns the GUID of the interface contained within a given safe array. |
+| [GetIID](#GetIID) | Returns the GUID of the interface contained within a given safe array. |
 | [GetPtr](#Operator1) | Returns the address of the safe array. |
 | GetRecordInfo | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
 | GetType | Returns the VARTYPE stored in the given safe array. |
@@ -862,3 +862,14 @@ The string or variant element.
 #### Remarks
 
 This method calls **SafearrayLock** and **SafearrayUnlock** automatically, before and after retrieving the element. The caller must provide a storage area of the correct size to receive the data. If the data element is a string, object, or variant, the function copies the element in the correct way.
+
+# <a name="GetIID"></a>GetIID
+
+Returns the GUID of the interface contained within a given safe array.
+
+```
+FUNCTION GetIID () AS GUID
+```
+#### Return value
+
+The GUID of the interface, on success, or a null guid on failure.
