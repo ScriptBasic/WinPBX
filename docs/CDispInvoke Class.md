@@ -70,6 +70,54 @@ pDispInvoke = CDispInvoke(CLSID_Dictionary)
 '    CONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"
 ```
 
+#### Example
+
+The following example demonstrates how to use it to create an instance of the VBScript RegExp object and execute a search.
+
+```
+#include once "Afx/CDispInvoke.inc"
+USING Afx
+
+' // Create an instance of the RegExp object
+DIM pDisp AS CDispInvoke = "VBScript.RegExp"
+' // To check for success, see if the value returned by the DispPtr method is not null
+IF pDisp.DispPtr = NULL THEN END
+
+' // Set some properties
+' // Use VARIANT_TRUE or CTRUE, not TRUE, because Free Basic TRUE is a BOOLEAN data type, not a LONG
+pDisp.Put("Pattern") = ".is"
+pDisp.Put("IgnoreCase") = VARIANT_TRUE
+pDisp.Put("Global") = VARIANT_TRUE
+
+' // Execute a search
+DIM pMatches AS CDispInvoke = pDisp.Invoke("Execute", "IS1 is2 IS3 is4")
+' // Parse the collection of matches
+IF pMatches.DispPtr THEN
+   ' // Get the number of matches
+   DIM nCount AS LONG = VAL(pMatches.Get("Count"))
+   ' // This is equivalent to:
+   ' DIM cvRes AS CVAR = pMatches.Get("Count")
+   ' DIM nCount AS LONG = cvRes.ValInt
+   FOR i AS LONG = 0 TO nCount -1
+      ' // Get a pointer to the Match object
+      ' // When using COM Automation, it's not always necessary to make sure that the
+      ' // passed variant with a numeric value is of the exact type, since the standard
+      ' // implementation of DispInvoke tries to coerce parameters. However, it is always
+      ' // safer to use a syntax like CVAR(i, "LONG")) than CVAR(i)
+'      DIM pMatch AS CDIspInvoke = pMatches.Get("Item", CVAR(i, "LONG"))   ' // or CVAR(i, "LONG"))
+      DIM pMatch AS CDIspInvoke = pMatches.Get("Item", i)
+      IF pMatch.DispPtr THEN
+         ' // Get the value of the match and convert it to a string
+         print pMatch.Get("Value")
+      END IF
+   NEXT
+END IF
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
 # <a name="Constructor2"></a>Constructor(CLSID)
 
 Creates a single uninitialized object of the class associated with a specified CLSID.
@@ -113,6 +161,28 @@ CONSTRUCTOR CDispInvoke (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN 
 | ---------- | ----------- |
 | *pdisp* | Pointer to a Dispatch interface. |
 | *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef is called**. This is needed when we pass a raw pointer. |
+
+#### Exaample
+
+The following example combines CDispInvoke and CWmiDisp to set the specified printer as the default one.
+
+```
+#include once "Afx/CDispInvoke.inc"
+#include once "Afx/CWmiDisp.inc"
+USING Afx
+
+' // Connect with WMI in the local computer and get the properties of the specified printer
+DIM pDisp AS CDispInvoke = CWmiServices( _
+   $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2:" & _
+   "Win32_Printer.DeviceID='OKI B410'").ServicesObj
+
+' // Set the printer as the default printer
+pDisp.Invoke("SetDefaultPrinter")
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
 
 # <a name="Constructor4"></a>Constructor(VARIANT)
 
