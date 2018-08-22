@@ -61,7 +61,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [GetPtr](#Operator1) | Returns the address of the safe array. |
 | [GetRecordInfo](#GetRecordInfo) | Retrieves the IRecordInfo interface of a UDT contained in a given safe array. |
 | [GetType](#GetType) | Returns the VARTYPE stored in the given safe array. |
-| Insert | Inserts a value at the specified position of the safe array. |
+| [Insert](#Insert) | Inserts a value at the specified position of the safe array. |
 | IsResizable | Tests if the safe array can be resized. |
 | LBound | Returns the lower bound for any dimension of a safe array. |
 | LocksCount | Returns the number of times the array has been locked without the corresponding unlock. |
@@ -890,3 +890,50 @@ Returns the VARTYPE stored in the given safe array.
 ```
 FUNCTION GetType () AS VARTYPE
 ```
+
+# <a name="Insert"></a>Insert
+
+Inserts a value at the specified position of the safe array.
+
+```
+FUNCTION Insert (BYVAL nPos AS LONG, BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Insert (BYVAL nPos AS LONG, BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Insert (BYVAL nPos AS LONG, BYREF cvData AS CVAR) AS HRESULT
+FUNCTION Insert (BYVAL nPos AS LONG, BYVAL vData AS VARIANT) AS HRESULT
+```
+Inserts a value at the beginning of the safe array.
+
+```
+FUNCTION Insert (BYVAL pData AS ANY PTR) AS HRESULT
+FUNCTION Insert (BYREF cbsData AS CBSTR) AS HRESULT
+FUNCTION Insert (BYREF cvData AS CVAR) AS HRESULT
+FUNCTION Insert (BYVAL vData AS VARIANT) AS HRESULT
+```
+
+Inserts a string.
+
+```
+FUNCTION InsertStr (BYVAL nPos AS LONG, BYVAL pwszData AS WSTRING PTR) AS HRESULT
+FUNCTION InsertStr (BYVAL pwszData AS WSTRING PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPos* | Opional. Index of the array in which the data will be inserted. If *nPos* is not specified, the item is inserted at the beginning of the array. If the array is empty, it is redimensioned to one element. |
+| *pData* | Pointer to the location to place the element of the array. |
+| *cbsData* | The CBSTR to insert, if the safe array is of type VT_BSTR. |
+| *cvData* | The CVAR to insert, if the safe array is of type VT_VARIANT. |
+| *vData* | The VARIANT to insert, if the safe array is of type VT_VARIANT. |
+
+#### Return value
+
+S_OK (0) on success or an HRESULT code on failure.
+
+| HRESULT  | Description |
+| ---------- | ----------- |
+| DISP_E_BADINDEX | The specified index is invalid. |
+| E_INVALIDARG | One of the arguments is invalid. |
+| E_OUTOFMEMORY | Memory could not be allocated for the element. |
+| E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
+ 
+
