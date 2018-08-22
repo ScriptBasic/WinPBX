@@ -428,3 +428,100 @@ Returns the index within rgvarg of the first argument that has an error. Argumen
 ```
 FUNCTION GetArgErr () AS UINT
 ```
+
+# <a name="GetDescription"></a>GetDescription
+
+Gets the exception description.
+
+```
+FUNCTION GetDescription () AS CWSTR
+```
+
+# <a name="GetErrorCode"></a>GetErrorCode
+
+Returns the error code. When the call to Invoke returns DISP_E_EXCEPTION, this function returns a long integer value with a more specific error code. If the value is less than 65536 it is usually an application defined code, stored in the *wCode* member of the EXCEPINFO structure. More common are the longer values, usually defined by Windows, stored in the *sCode* member, such E_INVALIDARG (&h80070057), E_FAIL (&h80004005), etc.
+
+```
+FUNCTION GetErrorCode () AS SCODE
+```
+
+# <a name="GetHelpFile"></a>GetHelpFile
+
+Gets the fully qualified help file path. In many cases it is empty or outdated.
+
+```
+FUNCTION GetHelpFile () AS CWSTR
+```
+
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the result code returned by the last executed method..
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+# <a name="GetSource"></a>GetSource
+
+Gets the name of the exception source. Typically, this is an application name.
+
+```
+FUNCTION GetSource () AS CWSTR
+```
+
+# <a name="GetVarResult"></a>GetVarResult
+
+The result of a call to the Invoke method. Not usually needed because Invoke already returns it as the result of the function.
+
+```
+FUNCTION GetVarResult () AS CVAR
+```
+
+# <a name="GetLcid"></a>GetLcid
+
+Returns de locale identifier used by the class.
+
+```
+FUNCTION GetLcid () AS LCID
+```
+
+# <a name="Invoke"></a>Invoke
+
+Calls a method or a get property.
+
+```
+FUNCTION Invoke (BYVAL dispID AS DISPID) AS CVAR
+FUNCTION Invoke (BYVAL dispID AS DISPID, cvArg1...cvArg16) AS CVAR
+FUNCTION Invoke (BYVAL pwszName AS WSTRING PTR) AS CVAR
+FUNCTION Invoke (BYVAL pwszName AS WSTRING PTR, cvArg1...cvArg16) AS CVAR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg1 ... cvArg16* | CVAR. Parameters that will be passed to IDIspatch.Invoke as an array of variants in reversed order. |
+
+Remarks
+
+To check for succes or failure, call the **GetLastResult** method. It will return S_OK (0) on succes or an HRESULT code on failure.
+
+| HRESULT    | Description |
+| ---------- | ----------- |
+| S_OK | Success. |
+| DISP_E_BADPARAMCOUNT | The number of elements provided to **DISPPARAMS** is different from the number of arguments accepted by the method or property. |
+| DISP_E_BADVARTYPE | One of the arguments in **DISPPARAMS** is not a valid variant type. |
+| DISP_E_EXCEPTION | The application needs to raise an exception. In this case, the structure passed in *pexcepinfo* should be filled in. Note: Because the information that can be returned by the **EXCEPINFO** structure is very limited, some COM servers like ADO or WMI use its own system to return errors. |
+| DISP_E_MEMBERNOTFOUND | The requested member does not exist. |
+| DISP_E_NONAMEDARGS | This implementation of IDispatch does not support named arguments. |
+| DISP_E_OVERFLOW | One of the arguments in **DISPPARAMS*** could not be coerced to the specified type. |
+| DISP_E_PARAMNOTFOUND | One of the parameter IDs does not correspond to a parameter on the method. In this case, *puArgErr* is set to the first argument that contains the error. |
+| DISP_E_TYPEMISMATCH | One or more of the arguments could not be coerced. The index of the first parameter with the incorrect type within *rgvarg* is returned in *puArgErr*. |
+| DISP_E_UNKNOWNINTERFACE | The interface identifier passed in *riid* is not IID_NULL. |
+| DISP_E_UNKNOWNLCID | The member being invoked interprets string arguments according to the LCID, and the LCID is not recognized. If the LCID is not needed to interpret arguments, this error should not be returned. |
+| DISP_E_PARAMNOTOPTIONAL | A required parameter was omitted. |
+
+#### Remarks
+
+For optional parameters, we must use a VT_ERROR VARIANT with a value of DISP_E_PARAMNOTFOUND. You can use the function **AfxCVarOptPrm** or the macro **CVAR_OPTPRM** for this purpose.
+
