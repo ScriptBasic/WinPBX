@@ -8,10 +8,10 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor(IDispatch)](#Constructor1) | Creates a single uninitialized object of the class associated with a pointer to a Dispatch interface. |
-| [Constructor(VARIANT)](#Constructor2) | Creates a single uninitialized object of the class associated with a variant of the type VT_DISPATCH. |
-| [Constructor(PROGID)](#Constructor3) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
-| [Constructor(CLSID)](#Constructor4) | Creates a single uninitialized object of the class associated with a specified CLSID. |
+| [Constructor(PROGID)](#Constructor1) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
+| [Constructor(CLSID)](#Constructor2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
+| [Constructor(IDispatch)](#Constructor3) | Creates a single uninitialized object of the class associated with a pointer to a Dispatch interface. |
+| [Constructor(VARIANT)](#Constructor4) | Creates a single uninitialized object of the class associated with a variant of the type VT_DISPATCH. |
 | [Constructor(LibName)](#Constructor5) | Loads the specified library from file and creates an instance of an object. |
 
 # Operators
@@ -47,36 +47,7 @@
 | [SetRef](#SetRef) | Assigns a value to an interface member property that contains a reference to an object. |
 | [vptr](#vptr) | Clears the contents of the class and returns the address of the underlying IDispatch pointer. |
 
-# <a name="Constructor1"></a>Constructor(IDispatch)
-
-Creates a single uninitialized object of the class associated with a pointer to a Dispatch interface.
-
-```
-CONSTRUCTOR CDispInvoke (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pdisp* | Pointer to a Dispatch interface. |
-| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef is called**. This is needed when we pass a raw pointer. |
-
-# <a name="Constructor2"></a>Constructor(VARIANT)
-
-Creates a single uninitialized object of the class associated with a variant of the type VT_DISPATCH.
-
-```
-CONSTRUCTOR CDispInvoke (BYVAL vDisp AS VARIANT PTR, BYVAL fAddRef AS BOOLEAN = TRUE)
-CONSTRUCTOR CDispInvoke (BYVAL vDisp AS VARIANT, BYVAL fAddRef AS BOOLEAN = TRUE)
-CONSTRUCTOR CDispInvoke (BYREF cvDisp AS CVAR)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *vDisp* | A VT_DISPATCH variant. |
-| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef** is called. This is needed when we pass a raw pointer. |
-| *cvDisp* | A VT_DISPATCH CVAR. |
-
-# <a name="Constructor3"></a>Constructor(ProgID)
+# <a name="Constructor1"></a>Constructor(ProgID)
 
 Creates a single uninitialized object of the class associated with a specified ProgID or CLSID.
 
@@ -99,7 +70,7 @@ pDispInvoke = CDispInvoke(CLSID_Dictionary)
 '    CONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"
 ```
 
-# <a name="Constructor4"></a>Constructor(CLSID)
+# <a name="Constructor2"></a>Constructor(CLSID)
 
 Creates a single uninitialized object of the class associated with a specified CLSID.
 
@@ -129,6 +100,35 @@ DIM pDispInvoke AS CDispInvoke = (CLSID_Dictionary, IID_IDictionary)
 ' and IID_IDictionary as
 '    CONST IID_IDictionary = "{42C642C1-97E1-11CF-978F-00A02463E06F}"
 ```
+
+# <a name="Constructor3"></a>Constructor(IDispatch)
+
+Creates a single uninitialized object of the class associated with a pointer to a Dispatch interface.
+
+```
+CONSTRUCTOR CDispInvoke (BYVAL pdisp AS IDispatch PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pdisp* | Pointer to a Dispatch interface. |
+| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef is called**. This is needed when we pass a raw pointer. |
+
+# <a name="Constructor4"></a>Constructor(VARIANT)
+
+Creates a single uninitialized object of the class associated with a variant of the type VT_DISPATCH.
+
+```
+CONSTRUCTOR CDispInvoke (BYVAL vDisp AS VARIANT PTR, BYVAL fAddRef AS BOOLEAN = TRUE)
+CONSTRUCTOR CDispInvoke (BYVAL vDisp AS VARIANT, BYVAL fAddRef AS BOOLEAN = TRUE)
+CONSTRUCTOR CDispInvoke (BYREF cvDisp AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vDisp* | A VT_DISPATCH variant. |
+| *fAddRef* | If it is false, the object takes ownership of the interface pointer without calling AddRef. This is the usual case when we assign directly an already AddRefed pointer returned by a COM method. If it is true, then **AddRef** is called. This is needed when we pass a raw pointer. |
+| *cvDisp* | A VT_DISPATCH CVAR. |
 
 # <a name="Constructor5"></a>Constructor(LibName)
 
