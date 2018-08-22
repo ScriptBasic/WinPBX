@@ -551,3 +551,45 @@ PROPERTY Put (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR)
 | *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
 | *pwszName* | The name of the property to call. |
 | *cvArg* | CVAR. The value to set. |
+
+# <a name="PutRef"></a>PutRef
+
+Assigns a value to an interface member property that contains a reference to an object. For example, a reference to another interface.
+
+```
+PROPERTY PutRef (BYVAL dispID AS DISPID, BYREF cvArg AS CVAR)
+PROPERTY PutRef (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR)
+PROPERTY PutRef (BYVAL dispID AS DISPID, BYVAL pv AS ANY PTR)
+PROPERTY PutRef (BYVAL pwszName AS WSTRING PTR, BYVAL pv AS ANY PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg* | CVAR. The value to set. |
+| *pv* | Pointer to an interface. |
+
+# <a name="Set"></a>Set
+
+Calls the specified property of an interface and sets the passed value.
+
+```
+FUNCTION Set (BYVAL dispID AS DISPID, BYREF cvArg AS CVAR) AS HRESULT
+FUNCTION Set (BYVAL dispID AS DISPID, BYREF cvArg1 ... cvArg2 AS CVAR) AS HRESULT
+FUNCTION Set (BYVAL dispID AS DISPID, BYREF cvArg1 ... cvArg3 AS CVAR) AS HRESULT
+FUNCTION Set (BYVAL pwszName AS WSTRING PTR, BYREF cvArg AS CVAR) AS HRESULT
+FUNCTION Set (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 ... cvArg2 AS CVAR) AS HRESULT
+FUNCTION Set (BYVAL pwszName AS WSTRING PTR, BYREF cvArg1 ... cvArg3 AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dispID* | Identifies the member. Use **GetIDsOfNames** or the object's documentation to obtain the dispatch identifier. |
+| *pwszName* | The name of the property to call. |
+| *cvArg* | CVAR. The value to set. |
+| *cvArg1...cvArg3* | CVAR. The last parameter is the value to set. cvArg1 and cvArg2 are the index values. |
+
+#### Returm value
+
+S_OK (0) on success or an HRESULT code.
