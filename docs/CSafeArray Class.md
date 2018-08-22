@@ -450,6 +450,13 @@ Appends a string to the end of the one-dimensional safe array.
 FUNCTION AppendStr (BYVAL pwszData AS WSTRING PTR) AS HRESULT
 ```
 
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pData* | Pointer to a variable of the appropriate data type. |
+| *cbsData* | The CBSTR to insert, if the safe array is of type VT_BSTR. |
+| *cvData* | The CVAR to insert, if the safe array is of type VT_VARIANT. |
+| *vData* | The VARIANT to insert, if the safe array is of type VT_VARIANT. |
+
 #### Return value
 
 S_OK (0) on success or an HREUSLT code on failure.
@@ -845,7 +852,7 @@ FUNCTION GetVar (BYVAL cElem AS LONG, BYVAL cDim AS LONG) AS CVAR
 | ---------- | ----------- |
 | *cElem* | Index of the element. |
 | *cDim* | Dimension of the array. |
-| *pData* | Pointer to the location to place the element of the array. |
+| *pData* | Pointer to the location where to place the element of the array. |
 | *cbsData* | A CBSTR passed by reference that will receive the result. |
 | *cvData* | A CVAR passed by reference that will receive the result. |
 
@@ -925,8 +932,8 @@ FUNCTION InsertStr (BYVAL pwszData AS WSTRING PTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nPos* | Opional. Index of the array in which the data will be inserted. If *nPos* is not specified, the item is inserted at the beginning of the array. If the array is empty, it is redimensioned to one element. |
-| *pData* | Pointer to the location to place the element of the array. |
+| *nPos* | Optional. Index of the array in which the data will be inserted. If *nPos* is not specified, the item is inserted at the beginning of the array. If the array is empty, it is redimensioned to one element. |
+| *pData* | Pointer to a variable of the appropriate data type. |
 | *cbsData* | The CBSTR to insert, if the safe array is of type VT_BSTR. |
 | *cvData* | The CVAR to insert, if the safe array is of type VT_VARIANT. |
 | *vData* | The VARIANT to insert, if the safe array is of type VT_VARIANT. |
