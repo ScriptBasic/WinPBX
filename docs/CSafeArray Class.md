@@ -185,28 +185,28 @@ END TYPE
 
 The base type of the array (the VARTYPE of each element of the array). The VARTYPE is restricted to a subset of the variant types. Neither the VT_ARRAY nor the VT_BYREF flag can be set. VT_EMPTY and VT_NULL are not valid base types for the array. All other types are legal.
 
-| VarType    | Meaning     |
-| ---------- | ----------- |
-| VT_I1 | Signed byte |
-| VT_UI1 | Unsigned byte |
-| VT_I2 | Signed short |
-| VT_UI2 | Unsigned short |
-| VT_I4 | Signed long |
-| VT_INT | Sifned long |
-| VT_UI4 | Unsigned long |
-| VT_UINT | Unsigned long |
-| VT_I8 | Signed quad |
-| VT_UI8 | Unnsigned quad |
-| VT_R4 | Single |
-| VT_R8 | Double |
-| VT_CUR | Currency |
-| VT_BOOL | Boolean (cast to a signed short) |
-| VT_WSTR | WString |
-| VT_DATE | Date |
-| VT_DECIMAL | Decimal structure |
-| VT_VARIANT | Variant |
-| VT_UNKNOWN | IUnknown pointer |
-| VT_DISPATCH | IDispatch pointer |
+| VarType    | Meaning     | Data type |
+| ---------- | ----------- | --------- |
+| VT_I1 | Signed byte | BYTE |
+| VT_UI1 | Unsigned byte | UBYTE |
+| VT_I2 | Signed short | SHORT |
+| VT_UI2 | Unsigned short | USHORT |
+| VT_I4 | Signed long | LONG |
+| VT_INT | Signed long | LONG |
+| VT_UI4 | Unsigned long | ULONG |
+| VT_UINT | Unsigned long | ULONG |
+| VT_I8 | Signed quad | LONGINT |
+| VT_UI8 | Unnsigned quad | ULONGINT |
+| VT_R4 | Single | SINGLE |
+| VT_R8 | Double | DOUBLE |
+| VT_CUR | Currency | CY |
+| VT_BOOL | Boolean (cast to a signed short) | SHORT |
+| VT_WSTR | WString | WSTRING |
+| VT_DATE | Date | DATE_ |
+| VT_DECIMAL | Decimal structure | DECIMAL |
+| VT_VARIANT | Variant | VARIANT |
+| VT_UNKNOWN | IUnknown pointer | IUnknown PTR |
+| VT_DISPATCH | IDispatch pointer | IDispatch PTR |
 
 # <a name="Constructor1"></a>Constructor (SAFEARRAYBOUND)
 
