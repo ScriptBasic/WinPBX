@@ -1,14 +1,16 @@
-# CWmiDisp Class
+# Windows Management Instrumentation (WMI)
 
 Windows Management Instrumentation (WMI) is the infrastructure for management data and operations on Windows-based operating systems. 
 
-**CWmiDisp** is a wrapper class on top of the WMI scripting interfaces.
+**CWmiServices** is a wrapper class on top of the WMI scripting interfaces.
 
-**CWmiDisp** supports three ways of retrieving information.
+**CWmiServices** supports three ways of retrieving information.
 
 * The first one uses an enumerator (the standard IEnumVARIANT interface).
 * The second way is to call the **GetNamedProperties** method after executing the query. **GetNamedProperties** generates a named collection of properties. This has the advantage of not having to use CDispInvoke.
 * The third way is to use the **Get** method. It retrieves an object, that is either a class definition or an instance, based on the specified object path. Using this object, it generates a named collection of properties. The disadvantage over **EcexuteQuery** is that you can't choose the properties to return: it returns all the properties of the specified WMI class.
+
+**Include file**: CWmiDisp.inc.
 
 # Constructors
 
@@ -41,3 +43,36 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | WmiDateToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy". |
 | WmiTimeToFileTime | Converts a date and time value in the CIM DATETIME format to the FILETIME format. |
 | WmiTimeToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "hh':'mm':'ss tt". |
+
+# <a name="Constructor1"></a>Constructor(Moniker)
+
+Connects to WMI using a moniker.
+
+```
+CONSTRUCTOR CWmiServices (BYREF wszDisplayName AS WSTRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszDisplayName* | The display name of the object to be created. |
+
+#### Examples
+
+```
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+```
+
+This example uses **CWmiServices** and **CDispInvoke** to easily set the specified printer as the default printer:
+
+```
+' // Connect with WMI in the local computer and get the properties of the specified printer
+DIM pDisp AS CDispInvoke = CWmiServices( _
+   $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2:" & _
+   "Win32_Printer.DeviceID='OKI B410'").ServicesObj
+
+' // Set the printer as the default printer
+DIM cvRes AS CVAR = pDisp.Invoke("SetDefaultPrinter")
+print "Result: ", cvRes.ValLong
+```
