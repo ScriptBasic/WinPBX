@@ -76,3 +76,39 @@ DIM pDisp AS CDispInvoke = CWmiServices( _
 DIM cvRes AS CVAR = pDisp.Invoke("SetDefaultPrinter")
 print "Result: ", cvRes.ValLong
 ```
+
+# <a name="Constructor2"></a>Constructor(Server)
+
+Connects to the namespace that is specified on the cbsNamespace parameter on the computer that is specified in the *cbsServer* parameter. The target computer can be either local or remote, but it must have WMI installed.
+
+```
+CONSTRUCTOR CWmiServices (BYREF cbsServer AS CBSTR, BYREF cbsNamespace AS CBSTR, BYREF cbsUser AS CBSTR = "", _
+   BYREF cbsPassword AS CBSTR = "", BYREF cbsLocale AS CBSTR = "", BYREF cbsAuthority AS CBSTR = "", _
+   BYVAL iSecurityFlags AS LONG = wbemConnectFlagUseMaxWait)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsServer* | Computer name to which you are connecting. If the remote computer is in a different domain than the user account under which you log in, then use the fully qualified computer name. If you do not provide this parameter, the call defaults to the local computer.<br>Example: server1.network.fabrikam<br>You also can use an IP address in this parameter. If the IP address is in IPv6 format, the target computer must be running IPv6. An address in IPv4 looks like 111.222.333.444. An IP address in IPv6 format looks like 2010:836B:4179::836B:4179 |
+| *cbsNamespace* | String that specifies the namespace to which you log on. For example, to log on to the root\default namespace, use root\\default. If you do not specify this parameter, it defaults to the namespace that is configured as the default namespace for scripting.<br>Example: DIM pServices AS CWmiServices = CWmiServices(".", "root\\cimv2")<br>where "." is a shortcut for the local computer. |
+| *cbUser* | User name to use to connect. The string can be in the form of either a user name or a Domain\\Username. Leave this parameter blank to use the current security context. The *cbsUser* parameter should only be used with connections to remote WMI servers. If you attempt to specify cbsUser for a local WMI connection, the connection attempt fails.<br>If Kerberos authentication is in use, then the username and password that is specified in *cbsUser* and *cbsPassword* cannot be intercepted on a network. You can use the UPN format to specify the *cbsUser*.<br>Example: "DomainName\\UserName"<br>Note: If a domain is specified in *cbsAuthority*, then the domain must not be specified here. Specifying the domain in both parameters results in an Invalid Parameter error. |
+| *cbsPassword* | String that specifies the password to use when attempting to connect. Leave the parameter blank to use the current security context. The *cbsPassword* parameter should only be used with connections to remote WMI servers. If you attempt to specify *cbsPassword* for a local WMI connection, the connection attempt fails. If Kerberos authentication is in use then the username and password that is specified in *cbsUser* and *cbsPassword* cannot be intercepted on the network. |
+| *cbsLocale* | String that specifies the localization code. If you want to use the current locale, leave it blank. If not blank, this parameter must be a string that indicates the desired locale where information must be retrieved. For Microsoft locale identifiers, the format of the string is "MS_xxxx", where xxxx is a string in the hexadecimal form that indicates the LCID. For example, American English would appear as "MS_409". |
+| *cbsAuthority* | Optional. *""*: This parameter is optional. However, if it is specified, only Kerberos or NTLMDomain can be used.<br> *Kerberos*: If the *cbsAuthority* parameter begins with the string "Kerberos:", then Kerberos authentication is used and this parameter should contain a Kerberos principal name. The Kerberos principal name is specified as Kerberos:domain, such as Kerberos:fabrikam where fabrikam is the server to which you are  attempting to connect. Example: "Kerberos:DOMAIN"<br>*NTLMDomain*: To use NT Lan Manager (NTLM) authentication, you must specify it as NTLMDomain:domain, such as NTLMDomain:fabrikam where fabrikam is the name of the domain. Example: "NTLMDomain:DOMAIN"<br>If you leave this parameter blank, the operating system negotiates with COM to determine whether NTLM or Kerberos authentication is used. This parameter should only be used with connections to remote WMI servers. If you attempt to set the authority for a local WMI connection, the connection attempt fails.<>Note: If the domain is specified in *cbsUser*, which is the preferred location, then it must not be specified here. Specifying the domain in both parameters results in an Invalid Parameter error. |
+| *iSecurityFlags* | Optional. Used to pass flag values to the *ConnectServer* method of the ISWbemLocator interface.<br>*0 (&h0)*: A value of 0 for this parameter causes the call to *ConnectServer* to return only after the connection to the server is established. This could cause your program to stop responding indefinitely if the connection cannot be established.<br>*wbemConnectFlagUseMaxWait (128 (&H80))*<> The *ConnectServer* call is guaranteed to return in 2 minutes or less. Use this flag to prevent your program from ceasing to respond indefinitely if the connection cannot be established. |
+
+#### Return value
+
+If successful, WMI returns an **SWbemServices** object that is bound to the namespace that is specified in *cbsNamespace* on the computer that is specified in *cbsServer*.
+
+**Usage example** )with the local computer):
+
+```
+DIM pServices AS CWmiServices = CWmiServices(".", "root\\cimv2")
+```
+
+### Remarks
+
+The *ConnectServer* method is often used when connecting to an account with a different username and password—credentials—on a remote computer because you cannot specify a different password in a moniker string.
+
+Using an IPv4 address to connect to a remote server may result in unexpected behavior. The likely cause is stale DNS entries in your environment. In these circumstances, the stale PTR entry for the machine will be used, with unpredictable results. To avoid this behavior, you can append a period (".") to the IP address before calling *ConnectServer*. This causes the reverse DNS lookup to fail, but may allow the *ConnectServer* call to succeed on the correct machine.
