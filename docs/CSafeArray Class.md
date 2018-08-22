@@ -35,7 +35,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Name       | Description |
 | ---------- | ----------- |
 | [AccessData](#AccessData) | Increments the lock count of an array, and retrieves a pointer to the array data. |
-| Append | Appends a value to the end of the one-dimensional safe array. |
+| [Append](#Append) | Appends a value to the end of the one-dimensional safe array. |
 | Attach | Attaches a safe array to a CSafeArray object. |
 | Clear | Like DestroyData, destroys all the data in a safe array. It is the same that Erase and Reset. |
 | Copy | Creates a copy of the safe array. |
@@ -444,7 +444,7 @@ Base64 encoding schemes are commonly used when there is a need to encode binary 
 
 # <a name="AccessData"></a>AccessData
 
-Increments the lock count of an array, and retrieves a pointer to the array data.
+Retrieves a pointer to the array data and increments the lock count of an array.
 
 ```
 FUNCTION AccessData () AS ANY PTR
@@ -453,3 +453,22 @@ FUNCTION AccessData () AS ANY PTR
 #### Return value
 
 IF it succeeds, it returns a pointer to the array data. If it fails, it returns a null pointer.
+
+# <a name="Append"></a>Append
+
+Appends a value to the end of the one-dimensional safe array.
+
+```
+FUNCTION Append (BYVAL pData AS ANY PTR) AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) on success or an HREUSLT CODE.
+
+| HREUSLT  | Description |
+| ---------- | ----------- |
+| DISP_E_BADINDEX | The specified index is not valid. |
+| E_INVALIDARG | One of the arguments is not valid. |
+| E_OUTOFMEMORY | Memory could not be allocated for the element. |
+| E_FAIL | The item pointed to by m_psa is not a safe array descriptor.<br>It is a fixed-size array.<br>It is not a one-dimensional array. |
