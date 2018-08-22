@@ -166,7 +166,7 @@ For example, consider an application that uses the SafeArrayLock and SafeArrayUn
 
 # <a name="SAFEARRAYBOUND"></a>SAFEARRAYBOUND Structure
 
-Represents the bounds of one dimension of the array. The lower bound of the dimension is represented by lLbound, and cElements represents the number of elements in the dimension. The structure is defined as follows:
+Represents the bounds of one dimension of the array. The lower bound of the dimension is represented by **lLbound**, and **cElements** represents the number of elements in the dimension. The structure is defined as follows:
 
 ```
 TYPE SAFEARRAYBOUND
