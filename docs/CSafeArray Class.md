@@ -54,7 +54,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [ElemSize](#ElemSize) | Returns the size of an element. |
 | [Erase](#DestroyData) | Like DestroyData, destroys all the data in a safe array. It is the same that Clear and Reset. |
 | [Features](#Features) | Returns the flags used by the safe array. This is the same that the Flags method. |
-| Find | Scans the array to search for the specified string. |
+| [Find](#Find) | Scans the array to search for the specified string. |
 | [Flags](#Features) | Returns the flags used by the safe array. This is the same that the **Features** method. |
 | Get | Retrieves a single element of the array. |
 | GetIID | Returns the GUID of the interface contained within a given safe array. |
@@ -729,7 +729,7 @@ FUNCTION Destroy () AS HRESULT
 
 S_OK (0) on success or an HRESULT code on failure.
 
-| HREUSLT  | Description |
+| HRESULT  | Description |
 | ---------- | ----------- |
 | E_INVALIDARG | The dimensions or the number of dimensions don't match. |
 | DISP_E_ARRAYISLOCKED | The array is currently locked. |
@@ -774,3 +774,19 @@ FUNCTION Features () AS USHORT
 
 The flags used by the safe array.
 
+# <a name="Find"></a>Find
+
+Scans the array to search for the specified string.
+
+```
+FUNCTION Find (BYREF wszFind AS WSTRING, BYVAL bNoCase AS BOOLEAN = FALSE) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFind* | The string to find. |
+| *bNoCase* | Optional. TRUE = Ignore case.  |
+
+#### Return value
+
+The index of the retrieved array element, or 0 on failue.
