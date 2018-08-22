@@ -111,6 +111,59 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | Getting the element size |
 | Creating vectors |
 
+# <a name="SAFEARRAY"></a>SAFEARRAY Structure
+
+Represents a safe array.
+
+```
+TYPE tagSAFEARRAY
+   cDims as USHORT
+   fFeatures as USHORT
+   cbElements as ULONG
+   cLocks as ULONG
+   pvData as PVOID
+   rgsabound(0 to 0) as SAFEARRAYBOUND
+EBD TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **cDims** | Count of dimensions of the array. |
+| **fFeatures** | Flags. |
+| **cbElements** | Size of an element of the array. |
+| **cLocks** | Number of times the array has been locked without corresponding unlock. |
+| **pvData** | Pointer to the data. |
+| **rgsabound** | One bound for each dimension. |
+
+#### fFeatures Flags
+
+| Flag       | Description |
+| ---------- | ----------- |
+| FADF_AUTO (&h0001) | An array that is allocated on the stack. |
+| FADF_STATIC (&hH0002) | An array that is statically allocated. |
+| FADF_EMBEDDED (&h0004) | An array that is embedded in a structure. |
+| FADF_FIXEDSIZE (&h0010) | An array that may not be resized or reallocated. |
+| FADF_RECORD (&h0020) | An array that contains records. When set, there will be a pointer to the IRecordinfo interface at negative offset 4 in the array descriptor. |
+| FADF_HAVEIID (&h0040) | An array that has an IID identifying interface. When set, there will be a GUID at negative offset 16 in the safe array descriptor. Flag is set only when FADF_DISPATCH or FADF_UNKNOWN is also set. |
+| FADF_HAVEVARTYPE (&h0080) | An array that has a VT type. When set, there will be a VT tag at negative offset 4 in the array descriptor that specifies the element type. |
+| FADF_BSTR (&h0100) | An array of BSTRs. |
+| FADF_UNKNOWN (&h0200) | An array of IUnknown*. |
+| FADF_DISPATCH (&h0400) | An array of IDispatch*. |
+| FADF_VARIANT (&h0800) | An array of VARIANTs. |
+| FADF_RESERVED (&hHF008) | Bits reserved for future use. |
+
+#### Remarks
+
+The array rgsabound is stored with the left-most dimension in rgsabound[0] and the right-most dimension in rgsabound(cDims - 1).
+
+The **fFeatures** flags describe attributes of an array that can affect how the array is released. The fFeatures field describes what type of data is stored in the SAFEARRAY and how the array is allocated. This allows freeing the array without referencing its containing variant. The bits are accessed using the following constants:
+
+#### Thread Safety
+
+All public static members of the SAFEARRAY data type are thread safe. Instance members are not guaranteed to be thread safe.
+
+For example, consider an application that uses the SafeArrayLock and SafeArrayUnlock functions. If these functions are called concurrently from different threads on the same SAFEARRAY data type instance, an inconsistent lock count may be created. This will eventually cause the SafeArrayUnlock function to return E_UNEXPECTED. You can prevent this by providing your own synchronization code.
+
 # <a name="AfxStrJoin"></a>AfxStrJoin
 
 Returns a string consisting of all of the strings in an array, each separated by a delimiter. If the delimiter is a null (zero-length) string then no separators are inserted between the string sections. If the delimiter expression is the 3-byte value of "," which may be expressed in your source code as the string literal """,""" or as Chr(34,44,34) then a leading and trailing double-quote is added to each string section. This ensures that the returned string contains standard comma-delimited quoted fields that can be easily parsed.
