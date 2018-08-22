@@ -64,7 +64,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [Insert](#Insert) | Inserts a value at the specified position of the safe array. |
 | [IsResizable](#IsResizable) | Tests if the safe array can be resized. |
 | [LBound](#LBound) | Returns the lower bound for any dimension of a safe array. |
-| LocksCount | Returns the number of times the array has been locked without the corresponding unlock. |
+| [LocksCount](#LocksCount) | Returns the number of times the array has been locked without the corresponding unlock. |
 | MoveFromVariant | Transfers ownership of the safe array contained in the variant parameter to this object. |
 | MoveToVariant | Transfers ownership of the safe array to a variant and detaches it from the class. |
 | NumDims | Returns the number of dimensions in the array. |
@@ -993,3 +993,11 @@ FUNCTION UBound (BYVAL nDim AS UINT = 1) AS LONG
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nDim* | Optional. The array dimension for which to get the upper bound. You don't need to pass this parameter if it is a one-dimensional array. |
+
+# <a name="LocksCount"></a>LocksCount
+
+Returns the number of times the array has been locked without the corresponding unlock.
+
+```
+FUNCTION LocksCount () AS UINT
+```
