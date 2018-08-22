@@ -44,7 +44,7 @@ Additional overloaded methods are provided for one and two-dimensional safe arra
 | [CopyFromVariant](#CopyFromVariant) | Copies the contents of a VARIANT of type VT_ARRAY to the object. |
 | [CopyToVariant](#CopyToVariant) | Copies the safe array to the passed variant. |
 | [Count](#Count) | Returns the number of elements in the specified dimension of the array. |
-| [Create](#Create) | Creates a safe array. |
+| [Create](#Create) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | [CreateEx](#CreateEx) | Creates a safe array from the given VARTYPE, number of dimensions and bounds. |
 | CreateVector | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
 | CreateVectorEx | Creates a one-dimensional safe array from the given VARTYPE, lower bound and number elements. |
@@ -597,7 +597,7 @@ S_OK (0) on success or an HREUSLT code on failure.
 
 # <a name="Create"></a>Create
 
-Creates a safe array.
+Creates a safe array from the given VARTYPE, number of dimensions and bounds.
 
 Multidimensional array:
 
@@ -644,12 +644,12 @@ S_OK (0) on success or an HREUSLT code on failure.
 
 # <a name="CreateEx"></a>CreateEx
 
-Creates a safe array.
+Creates a safe array from the given VARTYPE, number of dimensions and bounds.
 
 Multidimensional array:
 
 ```
-FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
+FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
    BYVAL prgsabound AS SAFEARRAYBOUND PTR, BYVAL pvExtra AS PVOID) AS HRESULT
 ```
 
@@ -663,7 +663,7 @@ FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cDims AS UINT, _
 One-dimensional array:
 
 ```
-FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, _
+FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, _
    BYVAL lLBound AS LONG, BYVAL pvExtra AS PVOID) AS HRESULT
 ```
 
@@ -677,7 +677,7 @@ FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements AS ULONG, _
 Two-dimensional array:
 
 ```
-FUNCTION Create (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
+FUNCTION CreateEx (BYVAL vt AS VARTYPE, BYVAL cElements1 AS ULONG, BYVAL lLBound1 AS LONG, _
    BYVAL cElements2 AS ULONG, BYVAL lLBound2 AS LONG, BYVAL pvExtra AS PVOID) AS HRESULT
 ```
 
