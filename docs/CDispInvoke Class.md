@@ -116,8 +116,6 @@ CONSTRUCTOR CDispInvoke (BYREF wszClsID AS CONST WSTRING, BYREF wszIID AS CONST 
 
 #### Usage examples
 
-Usage examples:
-
 ```
 DIM pDispInvoke AS CDispInvoke = CDispInvoke(CLSID_Dictionary)
 ' where CLSID_Dictionary has been declared as
