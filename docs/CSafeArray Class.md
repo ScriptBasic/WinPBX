@@ -324,6 +324,10 @@ Returns a pointer to the underlying safe array descriptor.
 OPERATOR * () AS ANY PTR
 ```
 
+#### Remark
+
+You can also call the **GetPtr** method.
+
 # <a name="Operator2"></a>Operator LET
 
 Assigns a CSafeArray to another CSafeArray.<br>
