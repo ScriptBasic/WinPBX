@@ -262,7 +262,7 @@ FUNCTION AfxGuidText (BYVAL riid AS REFIID) AS STRING
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *classID* | The GUID to convert. |
+| *classID, riid* | The GUID to convert. |
 
 #### Return value
 
