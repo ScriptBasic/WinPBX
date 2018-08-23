@@ -36,7 +36,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [ObjectSetPtr](#ObjectSetPtr) | Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it. |
 | [PropertySetPtr](#PropertySetPtr) | Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it. |
 | [PropsCount](#PropsCount) | Returns the number of objects in the property set collection. |
-| PropValue | Retrieves de variant value of the WMI property. |
+| [PropValue](#PropValue) | Retrieves de variant value of the WMI property. |
 | ResetEnum | Resets the enumeration sequence to the beginning. |
 | ServicesObj | Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it. |
 | ServicesPtr | Returns a pointer to the ISWbemServices interface. Don't call **IUnknown_Release** on it. |
@@ -744,3 +744,17 @@ Returns the number of objects in the property set collection.
 ```
 FUNCTION PropsCount () AS LONG
 ```
+
+# <a name="PropsCount"></a>PropsCount
+
+Gets/sets the variant value of the WMI property.
+
+```
+PROPERTY PropValue (BYREF cbsName AS CBSTR) AS CVAR
+PROPERTY PropValue (BYREF cbsName AS CBSTR, BYREF cvValue AS CVAR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsName* | Name of the property to retrieve. |
+| *cvValue* | The variant value to set. |
