@@ -334,3 +334,23 @@ FUNCTION AfxAdvise (BYVAL pUnk AS ANY PTR, BYVAL pEvtObj AS ANY PTR, _
 
 S_OK (0) on success, or an HRESULT error code on failure.
 
+# <a name="AfxUnadvise"></a>AfxUnadvise
+
+Releases the events connection identified with the cookie returned by the **AfxAdvise** method.
+
+```
+FUNCTION AfxUnadvise (BYVAL pUnk AS ANY PTR, BYVAL riid AS IID PTR, BYVAL dwCookie AS DWORD) AS HRESULT
+FUNCTION AfxUnadvise (BYVAL pUnk AS ANY PTR, BYREF riid AS CONST IID, BYVAL dwCookie AS DWORD) AS HRESULT
+FUNCTION AfxUnadvise (BYVAL pUnk AS ANY PTR, BYREF riid AS IID, BYVAL dwCookie AS DWORD PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pUnk* | A pointer to the **IUnknown** of the object the client wants to disconnect with. |
+| *riid* | The GUID of the connection point. Typically, this is the same as the outgoing interface managed by the connection point. |
+| *dwCookie* | The cookie returned by **AfxAdvise** that uniquely identifies the connection. |
+
+#### Return value
+
+S_OK (0) on success, or an HRESULT error code on failure.
+
