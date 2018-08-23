@@ -839,7 +839,7 @@ The following table defines the format types used to represent years:
 
 #### Return value
 
-The date and time value as a **FILETIME** structure.
+The formatted date as a string.
 
 # <a name="WmiTimeToFileTime"></a>WmiTimeToFileTime
 
@@ -857,3 +857,37 @@ FUNCTION WmiTimeToFileTime (BYVAL pwszDateTime AS WSTRING PTR, BYVAL bIsLocal AS
 #### Return value
 
 The date and time value as a **FILETIME** structure.
+
+# <a name="WmiTimeToStr"></a>WmiTimeToStr
+
+Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "hh':'mm':'ss tt".
+
+```
+FUNCTION WmiTimeToStr (BYVAL pwszDateTime AS WSTRING PTR, BYREF wszMask AS WSTRING, _
+   BYVAL bIsLocal AS BOOLEAN = TRUE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszDateTime* | The date and time value in the CIM DATETIME format. |
+| *wszMask* | A picture string that is used to form the time. |
+| *bIsLocal* | Indicates whether the returned value is interpreted as local time. The UTC property then contains the local time converted to the correct Coordinated Universal Times (UTC) offset. If the value is FALSE, then the value is interpreted as UTC with a zero (0) offset. |
+
+The following table defines the format types used to represent days:
+
+|Picture     | Description |
+| ---------- | ----------- |
+| h | Hours with no leading zero for single-digit hours; 12-hour clock |
+| hh | Hours with leading zero for single-digit hours; 12-hour clock |
+| H | Hours with no leading zero for single-digit hours; 24-hour clock |
+| HH | Hours with leading zero for single-digit hours; 24-hour clock |
+| m | Minutes with no leading zero for single-digit minutes |
+| mm | Minutes with leading zero for single-digit minutes |
+| s | Seconds with no leading zero for single-digit seconds |
+| ss | Seconds with leading zero for single-digit seconds |
+| t | One character time marker string, such as A or P |
+| tt | Multi-character time marker string, such as AM or PM |
+
+#### Return value
+
+The formatted date as a string.
