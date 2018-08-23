@@ -9,7 +9,10 @@ Assorted COM procedures.
 | [AfxAcode](#AfxAcode) | Translates unicode bytes to ansi bytes. |
 | [AfxUcode](#AfxUcode) | Translates ansi bytes to unicode bytes. |
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
-| [AfxNewCOM](#AfxNewCOM) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
+| [AfxNewCOM(PROGID](#AfxNewCOM1) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
+| [AfxNewCOM(CLSID](#AfxNewCOM2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
+| [AfxNewCOM(CLSID,IID](#AfxNewCOM3) | Creates a single uninitialized object of the class associated with the specified CLSID and IID. |
+| [AfxNewCOM(LibName](#AfxNewCOM4) | Loads the specified library from file and creates an instance of an object. |
 | [AfxGuid](#AfxGuid) | Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). |
 | [AfxGuidText](#AfxGuidText) | Returns a 38-byte human-readable guid string from a 16-byte GUID. |
 | [AfxSafeAddRef](#AfxSafeAddRef) | Increments the reference count for an interface on an object. |
@@ -110,7 +113,7 @@ Will return FALSE if it is a null pointer.
 If it is an OLE string it must have a descriptor; otherwise, don't.
 Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
 
-# <a name="AfxNewCOM"></a>AfxNewCOM
+# <a name="AfxNewCOM1"></a>AfxNewCOM (PROGID)
 
 Creates a single uninitialized object of the class associated with a specified ProgID or CLSID.
 
@@ -123,7 +126,7 @@ FUNCTION AfxNewCom (BYREF wszProgID AS CONST WSTRING, BYREF wszLicKey AS WSTRING
 | *wszProgID* | The ProgID or the CLSID of the object to create.<br>A ProgID such as "MSCAL.Calendar.7"<br>A CLSID such as "{8E27C92B-1264-101C-8A2F-040224009C02}" |
 | *wszLicKey* | Optional. The license key as a unicode string. |
 
-####Return value
+#### Return value
 
 An interface pointer or NULL.
 
@@ -136,3 +139,29 @@ pDic = AfxNewCom("Scripting.Dictionary")
 pDic = AfxNewCom(CLSID_Dictionary)
 ```
 where CLSID_Dictionary has been declared as CONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"
+
+# <a name="AfxNewCOM2"></a>AfxNewCOM (CLSID)
+
+Creates a single uninitialized object of the class associated with a specified CLSID.
+
+```
+FUNCTION AfxNewCom (BYREF classID AS CONST CLSID) AS ANY PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
+
+#### Return value
+
+An interface pointer or NULL.
+
+#### Usage examples
+
+```
+DIM pDic AS IDictionary PTR
+pDic = AfxNewCom(CLSID_Dictionary)
+```
+
+where CLSID_Dictionary has been declared as
+DIM CLSID_Dictionary AS CLSID = (&hEE09B103, &h97E0, &h11CF, {&h97, &h8F, &h00, &hA0, &h24, &h63, &hE0, &h6F})
