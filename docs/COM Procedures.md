@@ -599,8 +599,25 @@ FUNCTION AfxVariantToString (BYVAL pvarIn AS VARIANT PTR, BYVAL pwszBuf AS WSTRI
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pvarIn* | Pointer to the variant. |
-| *pwszBuf* |Pointer to the extracted property value if one exists; otherwise, empty. |
-| *cchBuf* | The string length, in characters. |
+| *pwszBuf* | Pointer to a buffer of length *cchBuf* bytes. When this function returns, contains the first *cchBuf* bytes of the extracted buffer value. |
+| *cchBuf* | The size of the *pwszBuf* buffer, in bytes. The buffer should be the same size as the data to be extracted. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
+
+# <a name="AfxVariantToStringAlloc"></a>AfxVariantToStringAlloc
+
+Extracts the variant value of a variant structure to a string.
+
+```
+FUNCTION AfxVariantToStringAlloc (BYVAL pvarIn AS VARIANT PTR, BYVAL ppwszBuf AS WSTRING PTR PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvarIn* | Pointer to the variant. |
+| *ppwszBuf* | Pointer to a buffer that contains the extracted string exists. |
 
 #### Return value
 
