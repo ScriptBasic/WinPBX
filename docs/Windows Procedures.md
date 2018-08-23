@@ -239,7 +239,7 @@ Platform 2:
 
 **Note**: As Windows 95 and Windows NT return the same version number, we also need to call GetWindowsPlatform to differentiate them.
 
-# <a name="AfxWindowsVersion"></a>AfxWindowsVersion
+# <a name="AfxWindowsBuild"></a>AfxWindowsBuild
 
 Returns the Windows build number.
 
