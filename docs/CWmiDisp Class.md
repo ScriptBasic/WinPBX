@@ -37,9 +37,9 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [PropertySetPtr](#PropertySetPtr) | Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it. |
 | [PropsCount](#PropsCount) | Returns the number of objects in the property set collection. |
 | [PropValue](#PropValue) | Retrieves de variant value of the WMI property. |
-| ResetEnum | Resets the enumeration sequence to the beginning. |
-| ServicesObj | Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it. |
-| ServicesPtr | Returns a pointer to the ISWbemServices interface. Don't call **IUnknown_Release** on it. |
+| [ResetEnum](#ResetEnum) | Resets the enumeration sequence to the beginning. |
+| [ServicesObj](#ServicesObj) | Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it. |
+| [ServicesPtr](#ServicesPtr) | Returns a pointer to the ISWbemServices interface. Don't call **IUnknown_Release** on it. |
 | WmiDateToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy". |
 | WmiTimeToFileTime | Converts a date and time value in the CIM DATETIME format to the FILETIME format. |
 | WmiTimeToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "hh':'mm':'ss tt". |
@@ -758,3 +758,35 @@ PROPERTY PropValue (BYREF cbsName AS CBSTR, BYREF cvValue AS CVAR)
 | ---------- | ----------- |
 | *cbsName* | Name of the property to retrieve. |
 | *cvValue* | The variant value to set. |
+
+# <a name="ResetEnum"></a>ResetEnum
+
+Resets the enumeration sequence to the beginning.
+
+```
+FUNCTION ResetEnum () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE if the enumerator has been reset or FALSE otherwise.
+
+# <a name="ServicesObj"></a>ServicesObj
+
+Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it.
+
+```
+FUNCTION ServicesObj () AS ANY PTR
+```
+
+#### Return value
+
+A counted reference to the **ISWbemServices** interface. Because it is a an addrefed pointer, you must release it when no longer needed.
+
+# <a name="ServicesPtr"></a>ServicesPtr
+
+Returns a pointer to the **ISWbemServices** interface. Don't call IUnknown_Release on it.
+
+```
+FUNCTION ServicesPtr () AS ANY PTR
+```
