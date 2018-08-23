@@ -308,4 +308,4 @@ The function returns the new reference count. This value is intended to be used 
 
 #### Remarks
 
-When the reference count on an object reaches zero, **Release** must cause the interface pointer to free itself. When the released pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the implementation must free the object.
+When the reference count on an object reaches zero, **AfxSafeRelease** must cause the interface pointer to free itself. When the released pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the implementation must free the object.
