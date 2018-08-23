@@ -463,3 +463,10 @@ FUNCTION GetFacilityCodeText (BYVAL hRes AS HRESULT) AS CBSTR
 
 The name of the subsystem where the error occurred.
 
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the result code returned by the last executed method.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
