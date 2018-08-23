@@ -529,3 +529,24 @@ Returns true if the variant is of type VT_ARRAY; false, otherwise.
 ```
 FUNCTION AfxIsVariantArray (BYVAL pvar AS VARIANT PTR) AS BOOLEAN
 ```
+
+# <a name="AfxVarToStr"></a>AfxVarToStr
+
+Extracts the contents of a VARIANT and returns them as a CWSTR.
+
+```
+FUNCTION AfxVarToStr (BYVAL pvarIn AS VARIANT PTR, BYVAL bClear AS BOOLEAN = FALSE) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvarIn* | Pointer to the variant. |
+| *bClear* | Optional. Clear the contents of the variant (TRUE or FALSE). |
+
+#### Return value
+
+If the function succeeds, it returns the contents of the variant in string form; if it fails, it returns an empty string and the contents of the variant aren't cleared.
+
+#### Remarks
+
+When *pvarIn* contains an array, each element of the array is appended to the resulting string separated with a semicolon and a space. For variants that contains an array of bytes, use **AfxVariantToBuffer**.
