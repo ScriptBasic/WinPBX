@@ -79,9 +79,9 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxChooseColorDialog | Displays the Windows choose color dialog. |
-| AfxControlRunDLL | Launches control panel applications. |
-| AfxShowSysInfo | Displays the Windows Information System dialog. |
+| [AfxChooseColorDialog](#AfxChooseColorDialog) | Displays the Windows choose color dialog. |
+| [AfxControlRunDLL](#AfxControlRunDLL) | Launches control panel applications. |
+| [AfxShowSysInfo](#AfxShowSysInfo) | Displays the Windows Information System dialog. |
 
 # High DPI
 
