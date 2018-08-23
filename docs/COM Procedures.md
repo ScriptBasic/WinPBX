@@ -379,3 +379,27 @@ FUNCTION AfxGetOleErrorInfo () AS CWSTR
 #### Return value
 
 The description of the error on success or an empty string on failure.
+
+# <a name="AfxOleCreateFont"></a>AfxOleCreateFont
+
+Creates a standard **IFont** object.
+
+```
+FUNCTION AfxOleCreateFont (BYREF wszFaceName AS WSTRING, BYVAL cySize AS LONG, BYVAL fWeight AS LONG = FW_NORMAL, _
+   BYVAL fItalic AS UBYTE = FALSE, BYVAL fUnderline AS UBYTE = FALSE, BYVAL fStrikeOut AS UBYTE = FALSE, _
+   BYVAL fCharSet AS UBYTE = DEFAULT_CHARSET) AS IFont PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFaceName* | A string that specifies the typeface name of the font. The length of this string must not exceed 31 characters. The **EnumFontFamilies** function can be used to enumerate the typeface names of all currently available fonts. If *wszFaceName* is an empty string, GDI uses the first font that matches the other specified attributes. |
+| *cySize* | Specifies the height, in logical units, of the font's character cell or character. |
+| *fWeight* | Initial weight of the font. If the weight is below 550 (the average of FW_NORMAL, 400, and FW_BOLD, 700), then the Bold property is also initialized to FALSE. If the weight is above 550, the Bold property is set to TRUE.<br>The following values are defined for convenience: FW_DONTCARE (0), FW_THIN (100), FW_EXTRALIGHT (200), FW_ULTRALIGHT (200), FW_LIGHT (300), FW_NORMAL (400), FW_REGULAR (400), FW_MEDIUM (500), FW_SEMIBOLD (600), FW_DEMIBOLD (600), FW_BOLD (700), FW_EXTRABOLD (800), FW_ULTRABOLD (800), FW_HEAVY (900), FW_BLACK (900) |
+| *fItalic* | Specifies an italic font if set to TRUE. |
+| *fUnderline* | Specifies an underlined font if set to TRUE. |
+| *fStrikeOut* | Specifies a strikeout font if set to TRUE. |
+| *fCharSet* | Specifies the character set. The following values are predefined:<br>ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET|
+
+#### Return value
+
+A pointer to the object indicates success. NULL indicates failure.
