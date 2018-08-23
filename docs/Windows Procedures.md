@@ -39,9 +39,9 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxDoEvents | Processes pending Windows messages. |
-| AfxForwardSizeMessage | Sends a WM_SIZE message to the specified window. |
-| AfxPumpMessages | Processes pending Windows messages. |
+| [AfxDoEvents](#AfxDoEvents) | Processes pending Windows messages. |
+| [AfxForwardSizeMessage](#AfxForwardSizeMessage) | Sends a WM_SIZE message to the specified window. |
+| [AfxPumpMessages](#AfxPumpMessages) | Processes pending Windows messages. |
 
 # Handles
 
@@ -494,3 +494,51 @@ The MAC address in the following format: MM-MM-MM-SS-SS-SS. The leftmost 6 digit
 #### Remarks
 
 This function only supports one NIC card on your PC.
+
+# <a name="AfxDoEvents"></a>AfxDoEvents
+
+Processes pending Windows messages. Call this procedure if you are performing a tight FOR/NEXT or DO/LOOP and need to allow your application to be responsive to user input.
+
+```
+SUB AfxDoEvents (BYVAL hwnd AS HWND = NULL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. Handle of the window or dialog. If NULL, the window handle to the active window attached to the calling thread's message queue is used. |
+
+# <a name="AfxPumpMessages"></a>AfxPumpMessages
+
+Processes pending Windows messages. Call this procedure if you are performing a tight FOR/NEXT or DO/LOOP and need to allow your application to be responsive to user input.
+
+```
+SUB AfxPumpMessages
+```
+
+# <a name="AfxForwardSizeMessage"></a>AfxForwardSizeMessage
+
+Sends a WM_SIZE message to the specified window.
+
+```
+FUNCTION AfxForwardSizeMessage (BYVAL hwnd AS HWND, BYVAL nResizeType AS DWORD, _
+   BYVAL nWidth AS LONG, BYVAL nHeight AS LONG) AS LRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | A handle to a window. |
+| *nResizeType* | Type of resizing requested. |
+| *nWidth* | The new width of the client area. |
+| *nHeight* | The new height of the client ara. |
+
+| Resizing type  | Description |
+| -------------- | ----------- |
+| SIZE_MAXHIDE | Message is sent to all pop-up windows when some other window is maximized. |
+| SIZE_MAXIMIZED | Maximize the window. |
+| SIZE_MAXSHOW | Message is sent to all pop-up windows when some other window has been restored to its former size. |
+| SIZE_MINIMIZED | Minimize the window. |
+| SIZE_RESTORED | The window has been resized, but neither the SIZE_MINIMIZED nor SIZE_MAXIMIZED value applies. |
+
+#### Remark
+
+If an application processes this message, it should return zero.
