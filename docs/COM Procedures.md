@@ -360,6 +360,7 @@ Takes a null terminated wide string as input, and returns a pointer to a new wid
 
 ```
 FUNCTION AfxWstrAlloc () AS WSTRING PTR
+```
 
 #### Remarks
 
