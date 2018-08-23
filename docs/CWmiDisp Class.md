@@ -30,7 +30,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [GetNamedProperties](#GetNamedProperties) | Retrieves a named collection of the properties for the current class or instance. |
 | [InstancesOf](#InstancesOf) | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
-| NewEnum | Retrieves an enumerator for the collection. |
+| [NewEnum](#NewEnum) | Retrieves an enumerator for the collection. |
 | NextObject | Retrieves the next item in the enumeration sequence. |
 | ObjectsCount | Returns the number of objects in the collection. |
 | ObjectSetPtr | Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it. |
@@ -622,3 +622,18 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="NewEnum"></a>NewEnum
+
+Retrieves an enumerator for the collection.
+
+Note: If **ExecQuery** has been called using the *wbemFlagReturnImmediately* flag, the enumerator won't be available until the operation has completed.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+#### Return value
+
+TRUE if the enumerator has been retrieved or FALSE otherwise.
+
