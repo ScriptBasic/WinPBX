@@ -29,7 +29,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [GetFacilityCodeText](#GetFacilityCodeText) | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [GetNamedProperties](#GetNamedProperties) | Retrieves a named collection of the properties for the current class or instance. |
-| InstancesOf | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
+| [InstancesOf](#InstancesOf) | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
 | NewEnum | Retrieves an enumerator for the collection. |
 | NextObject | Retrieves the next item in the enumeration sequence. |
 | ObjectsCount | Returns the number of objects in the collection. |
@@ -560,6 +560,63 @@ FOR i AS LONG = 0 TO nCount - 1
       PRINT pServices.PropValue("Capabilities")
    END IF
 NEXT
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+# <a name="InstancesOf"></a>InstancesOf
+
+Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. This method implements a simple query. More complex queries may require the use of the **ExecQuery** method. By default, the method is called in the semisynchronous mode.
+
+```
+FUNCTION InstancesOf (BYREF cbsClass AS CBSTR, BYVAL iFlags AS LONG = wbemFlagReturnImmediately) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsClass* | Required. String that contains the name of the class for which instances are desired. This parameter cannot be blank. |
+| *iFlags* | Optional. This parameter determines how detailed the call enumerates and if this call returns immediately. The default value for this parameter is *wbemFlagReturnImmediately*. This parameter can accept the following values. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| *wbemFlagForwardOnly* | Causes a forward-only enumerator to be returned. Forward-only enumerators are generally much faster and use less memory than conventional enumerators, but they do not allow calls to **SWbemObject.Clone_**. |
+| *wbemFlagReturnWhenComplete* | Causes this call to block until the query is complete. This flag calls the method in the synchronous mode. |
+| *wbemFlagBidirectional* | Causes WMI to retain pointers to objects of the enumeration until the client releases the enumerator. |
+| *wbemFlagReturnImmediately* | Causes the call to return immediately. |
+| *wbemQueryFlagPrototype* | Used for prototyping. This flag stops the query from happening and returns an object that looks like a typical result object. |
+| *wbemFlagUseAmendedQualifiers* | Causes WMI to return class amendment data with the base class definition. |
+
+#### Return value
+
+S_OK on success or an error code.
+
+#### Example
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Retrieve the instances of
+DIM hr AS HRESULT = pServices.InstancesOf("Win32_Printer")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke
+DO
+   pDispServ = pServices.NextObject
+   IF pDispServ.DispPtr = NULL THEN EXIT DO
+   PRINT "Caption: "; pDispServ.Get("Caption")
+   PRINT "Capabilities "; pDispServ.Get("Capabilities")
+LOOP
 
 PRINT
 PRINT "Press any key..."
