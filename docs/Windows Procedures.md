@@ -333,6 +333,10 @@ FUNCTION AfxGetWinErrMsg (BYVAL dwError AS DWORD) AS CWSTR
 | ---------- | ----------- |
 | *dwError* | The Windows error code. |
 
+#### Return value
+
+The localized description of the error code.
+
 # <a name="AfxCommand"></a>AfxCommand
 
 Returns command line parameters used to call the program.
