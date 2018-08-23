@@ -187,9 +187,9 @@ Assorted Windows procedures.
 | ---------- | ----------- |
 | [AfxCommand](#AfxCommand) | Returns command line parameters used to call the program. |
 | [AfxEnviron](#AfxEnviron) | Retrieves the contents of the specified variable from the environment block of the calling process. |
-| AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
-| AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
-| AfxGetUserName | Retrieves the name of the user associated with the current thread. |
+| [AfxGetComputerName](#AfxGetComputerName) | Retrieves the NetBIOS name of the local computer. |
+| [AfxGetMACAddress](#AfxGetMACAddress) | Retrieves the MAC address of a machine's Ethernet card. |
+| [AfxGetUserName](#AfxGetUserName) | Retrieves the name of the user associated with the current thread. |
 | [AfxGetWinErrMsg](#AfxGetWinErrMsg) | Retrieves the localized description of the specified Windows error code. |
 | [AfxMsg](#AfxMsg) | Displays an application modal message box. |
 | [AfxSetDlgMsgResult](#AfxSetDlgMsgResult) | Sets the return value of a message processed in the dialog box procedure. |
@@ -446,3 +446,51 @@ FUNCTION AfxSetDlgMsgResult (BYVAL hDlg AS HWND, BYVAL msg AS UINT, BYVAL result
 #### Return value
 
 If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
+
+# <a name="AfxGetComputerName"></a>AfxGetComputerName
+
+Retrieves the NetBIOS name of the local computer. This name is established at system startup, when the system reads it from the registry.
+
+```
+FUNCTION AfxGetComputerName () AS CWSTR
+```
+
+#### Return value
+
+The NetBIOS name of the local computer.
+
+#### Remarks
+
+The behavior of this function can be affected if the local computer is a node in a cluster. For more information, see **ResUtilGetEnvironmentWithNetName** and **UseNetworkName**.
+
+# <a name="AfxGetUserName"></a>AfxGetUserName
+
+Retrieves the name of the user associated with the current thread.
+
+```
+FUNCTION AfxGetUserName () AS CWSTR
+```
+
+#### Return value
+
+The name of the current user associated with the current thread.
+
+#### Remarks
+
+If the current thread is impersonating another client, the **AfxGetUserName** function returns the user name of the client that the thread is impersonating.
+
+# <a name="AfxGetMACAddress"></a>AfxGetMACAddress
+
+Retrieves the MAC address of a machine's Ethernet card.
+
+```
+FUNCTION AfxGetMACAddress () AS STRING
+```
+
+#### Return value
+
+The MAC address in the following format: MM-MM-MM-SS-SS-SS. The leftmost 6 digits, called a "prefix", is associated with the adapter manufacturer. The rightmost digits of a MAC address represent an identification number for the specific device.
+
+#### Remarks
+
+This function only supports one NIC card on your PC.
