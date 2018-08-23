@@ -185,7 +185,7 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxCommand | Returns command line parameters used to call the program. |
+| [AfxCommand](#AfxCommand) | Returns command line parameters used to call the program. |
 | AfxEnviron | Retrieves the contents of the specified variable from the environment block of the calling process. |
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
@@ -289,3 +289,27 @@ FUNCTION AfxComCtlVersion () AS LONG
 #### Return value
 
 The version of CommCtl32.dll multiplied by 100, e.g. 582 for version 5.82.
+
+# <a name="AfxCommand"></a>AfxCommand
+
+Returns command line parameters used to call the program.
+
+```
+FUNCTION AfxCommand (BYVAL nIndex AS LONG = -1) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nIndex* | Zero-based index for a particular command-line argument. |
+
+#### Return value
+
+Returns the command-line arguments(s).
+
+#### Remarks
+
+**AfxCommand** returns command-line arguments passed to the program upon execution.
+
+If index is less than zero (< 0), a space-separated list of all command-line arguments is returned, otherwise, a single argument is returned. A value of zero (0) returns the name of the executable; and values of one (1) and greater return each command-line argument.
+
+If index is greater than the number of arguments passed to the program, a null string ("") is returned.
