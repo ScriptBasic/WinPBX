@@ -201,6 +201,7 @@ Assorted Windows procedures.
 | ---------- | ----------- |
 | AfxComCtlVersion | Returns the version of CommCtl32.dll. |
 | AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| AfxWindowsBitness | Returns the bitness of the operating system (32 or 64 bit). |
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
 | AfxWindowsVersion | Returns the Windows version. |
