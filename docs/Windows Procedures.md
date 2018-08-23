@@ -190,7 +190,7 @@ Assorted Windows procedures.
 | AfxGetComputerName | Retrieves the NetBIOS name of the local computer. |
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
-| AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
+| [AfxGetWinErrMsg](#AfxGetWinErrMsg) | Retrieves the localized description of the specified Windows error code. |
 | [AfxMsg](#AfxMsg) | Displays an application modal message box. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
 | AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
@@ -320,6 +320,18 @@ FUNCTION AfxMsg (BYVAL nValue AS DOUBLE, BYREF wszCaption AS WSTRING = "Message"
 #### Return value
 
 The version of CommCtl32.dll multiplied by 100, e.g. 582 for version 5.82.
+
+# <a name="AfxGetWinErrMsg"></a>AfxGetWinErrMsg
+
+Retrieves the localized description of the specified Windows error code.
+
+```
+FUNCTION AfxGetWinErrMsg (BYVAL dwError AS DWORD) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwError* | The Windows error code. |
 
 # <a name="AfxCommand"></a>AfxCommand
 
