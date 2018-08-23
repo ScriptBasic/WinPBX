@@ -32,10 +32,10 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [InstancesOf](#InstancesOf) | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
 | [NewEnum](#NewEnum) | Retrieves an enumerator for the collection. |
 | [NextObject](#NextObject) | Retrieves the next item in the enumeration sequence. |
-| ObjectsCount | Returns the number of objects in the collection. |
-| ObjectSetPtr | Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it. |
-| PropertySetPtr | Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it. |
-| PropsCount | Returns the number of objects in the property set collection. |
+| [ObjectsCount](#ObjectsCount) | Returns the number of objects in the collection. |
+| [ObjectSetPtr](#ObjectSetPtr) | Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it. |
+| [PropertySetPtr](#PropertySetPtr) | Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it. |
+| [PropsCount](#PropsCount) | Returns the number of objects in the property set collection. |
 | PropValue | Retrieves de variant value of the WMI property. |
 | ResetEnum | Resets the enumeration sequence to the beginning. |
 | ServicesObj | Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it. |
@@ -630,7 +630,7 @@ Retrieves an enumerator for the collection.
 Note: If **ExecQuery** has been called using the *wbemFlagReturnImmediately* flag, the enumerator won't be available until the operation has completed.
 
 ```
-FUNCTION GetLastResult () AS HRESULT
+FUNCTION NewEnum () AS BOOLEAN
 ```
 
 #### Return value
@@ -708,3 +708,15 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="ObjectsCount"></a>ObjectsCount
+
+Returns the number of objects in the collection.
+
+```
+FUNCTION ObjectsCount () AS LONG
+```
+
+#### Remarks
+
+If **ExecQuery** has been called without the *wbemFlagReturnWhenComplete* flag, this method will return 0 because the operation has not been completed.
