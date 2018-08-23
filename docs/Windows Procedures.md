@@ -561,3 +561,43 @@ FUNCTION AfxChooseColorDialog (BYVAL hwnd AS HWND, BYVAL rgbDefaultColor AS COLO
 #### Return value
 
 The selected color, or -1 if the user has canceled the dialog.
+
+# <a name="AfxControlRunDLL"></a>AfxControlRunDLL
+
+Control_RunDLL is an undocumented procedure in the Shell32.dll which can be used to launch control panel applications. You’ve to pass the name of the control panel file (.cpl) and the tool represented by it will be launched. For launching some control panel applications, you’ve to provide a valid windows handle (hwnd parameter) and program instance (*hInst*) parameter).
+
+```
+FUNCTION AfxControlRunDLL (BYVAL hwnd AS HWND, BYVAL hInst AS HINSTANCE, _
+   BYVAL cmd AS WSTRING PTR, BYVAL nCmdShow AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to a window. This parameter can be NULL. |
+| *hInst* | Instance handle. This parameter can be NULL. |
+| *cmd* | The command and parameters. |
+| *nCmdShow* | Controls how the window is to be shown, e.g. SW_SHOWNORMAL. |
+
+| nCmdShow value  | Description |
+| --------------- | ----------- |
+| SW_FORCEMINIMIZE | Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread. |
+| SW_HIDE | Hides the window and activates another window. |
+| SW_MAXIMIZE | Maximizes the specified window. |
+| SW_MINIMIZE | Minimizes the specified window and activates the next top-level window in the Z order. |
+| SW_RESTORE | Activates and displays the window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window. |
+| SW_SHOW | Activates the window and displays it in its current size and position. |
+| SW_SHOWDEFAULT | Sets the show state based on the SW_ value specified in the STARTUPINFO structure passed to the **CreateProcess** function by the program that started the application. |
+| SW_SHOWMAXIMIZED | Activates the window and displays it as a maximized window. |
+| SW_SHOWMINIMIZED | Activates the window and displays it as a minimized window. |
+| SW_SHOWMINNOACTIVE | Displays the window as a minimized window. This value is similar to SW_SHOWMINIMIZED, except the window is not activated. |
+| SW_SHOWNA | Displays the window in its current size and position. This value is similar to SW_SHOW, except that the window is not activated. |
+| SW_SHOWNOACTIVATE | Displays a window in its most recent size and position. This value is similar to SW_SHOWNORMAL, except that the window is not activated. |
+| SW_SHOWNORMAL | Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time. |
+
+####Usage examples
+
+```
+AfxControlRunDLL(0, 0, "", SW_SHOWNORMAL)   ' Opens the control panel
+AfxControlRunDLL(0, 0, "appwiz.cpl", SW_SHOWNORMAL)   ' Opens the applications wizard
+```
+
