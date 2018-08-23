@@ -368,3 +368,14 @@ The new string must be freed with **CoTaskMemFree**.
 
 Useful when we need to pass a pointer to a null terminated wide string to a function or method that will release it. If we pass a WSTRING it will GPF. If the length of the input string is 0, **CoTaskMemAlloc** allocates a zero-length item and returns a valid pointer to that item. If there is insufficient memory available, **CoTaskMemAlloc** returns NULL.
 
+# <a name="AfxGetOleErrorInfo"></a>AfxGetOleErrorInfo
+
+Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of an Automation interface and will only succeed if the object supports the IErrorInfo interface.
+
+```
+FUNCTION AfxGetOleErrorInfo () AS CWSTR
+```
+
+#### Return value
+
+The description of the error on success or an empty string on failure.
