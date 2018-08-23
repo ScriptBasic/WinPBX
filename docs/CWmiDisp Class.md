@@ -791,7 +791,7 @@ Returns a pointer to the **ISWbemServices** interface. Don't call IUnknown_Relea
 FUNCTION ServicesPtr () AS ANY PTR
 ```
 
-# <a name="ServicesPtr"></a>ServicesPtr
+# <a name="WmiDateToStr"></a>WmiDateToStr
 
 Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy".
 
