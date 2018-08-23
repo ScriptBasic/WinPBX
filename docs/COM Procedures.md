@@ -562,3 +562,27 @@ FUNCTION AfxVariantGetElementCount (BYVAL pvarIn AS VARIANT PTR) AS ULONG
 #### Return value
 
 Returns the element count for values of type VT_ARRAY; otherwise, returns 1.
+
+# <a name="AfxVariantToBuffer"></a>AfxVariantToBuffer
+
+Extracts the contents of a variant that contains an array of bytes.
+
+```
+FUNCTION AfxVariantToBuffer (BYVAL pvarIn AS VARIANT PTR, BYVAL pv AS LPVOID, BYVAL cb AS ULONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvarIn* | Pointer to the variant. |
+| *pv* | Pointer to a buffer of length *cb* bytes. |
+| *cb* | The size of the *pv* buffer, in bytes. The buffer should be the same size as the data to be extracted. |
+
+#### Return value
+
+Returns one of the following values:
+
+| HRESULT    | Description |
+| ---------- | ----------- |
+| S_OK | Data successfully extracted. |
+| E_INVALIDARG | The VARIANT was not of type VT_ARRRAY OR VT_UI1. |
+| E_FAIL | The VARIANT buffer value had fewer than *cb* bytes. |
