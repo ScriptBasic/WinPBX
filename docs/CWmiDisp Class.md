@@ -337,3 +337,96 @@ PRINT "Press any key..."
 SLEEP
 ```
 
+# <a name="Get"></a>Get
+
+Retrieves an object, that is either a class definition or an instance, based on the object path. This method retrieves only objects from the namespace that is associated with the current **SWbemServices** object.
+
+```
+FUNCTION Get (BYREF cbsObjectPath AS CBSTR, BYVAL iFlags AS LONG = 0, _
+   BYVAL objWbemNamedValueSet AS Afx_IDispatch PTR = NULL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsObjectPath* | String that contains the object path of the object to retrieve. If this value is empty, the empty object that is returned can become a new class. |
+| *iFlags* | Optional. Integer value that determines the behavior of the query. This parameter can accept the folñlowing value:<br>*wbemFlagUseAmendedQualifiers*: Causes WMI to return class amendment data with the base class definition. |
+| *objWbemNamedValueSet* | Optional. Typically, this is undefined. Otherwise, this is an **SWbemNamedValueSet** object whose elements represent the context information that can be used by the provider that is servicing the request. A provider that supports or requires such information must document the recognized value names, data type of the value, allowed values, and semantics. |
+
+#### Return value
+
+S_OK on success or an error code.
+
+May return one of the error codes in the following list:
+
+| Error      | Value       | Description |
+| ---------- | ----------- | ----------- |
+| *wbemErrAccessDenied* | -2147749891 (&j80041003) | Current user does not have the permission to access the object. |
+| *wbemErrFailed* | -2147749889 (&h80041001) | Unspecified error. |
+| *wbemErrInvalidParameter* | -2147749896 (&h80041008) | A specified parameter is not valid. |
+| *wbemErrInvalidObjectPath* | -2147749946 (&h8004103A) | Specified path was not valid. |
+| *wbemErrNotFound* | -2147749890 (&h80041002) | Requested object could not be found. |
+| *wbemErrOutOfMemory* | -2147749894 (&h80041006) | Not enough memory to complete the operation. |
+
+#### Example
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+ 
+' // Get an instance of the printer "OKI B410" --> change me
+DIM hr AS HRESULT = pServices.Get("Win32_Printer.DeviceID='OKI B410'")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Number of properties
+PRINT "Number of properties: ", pServices.PropsCount
+PRINT
+
+' // Display some properties
+PRINT "Port name: "; pServices.PropValue("PortName")
+PRINT "Attributes: "; pServices.PropValue("Attributes")
+PRINT "Paper sizes supported: "; pServices.PropValue("PaperSizesSupported")
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+Example
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+'DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+' Use the constructor for server connection, just for trying...
+DIM pServices AS CWmiServices = CWmiServices(".", "root\cimv2")
+IF pServices.ServicesPtr = NULL THEN END
+ 
+ '// Get an instance of a file --> change me
+DIM cbsPath AS CBSTR = ExePath & "\EX_CWMI_Get_02.bas"   ' --> change me
+DIM hr AS HRESULT = pServices.Get("CIM_DataFile.Name='" & cbsPath & "'")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Number of properties
+PRINT "Number of properties: ", pServices.PropsCount
+PRINT
+
+' // Display some properties
+PRINT "Relative path: "; pServices.PropValue("Path")
+PRINT "FileName: "; pServices.PropValue("FileName")
+PRINT "Extension: "; pServices.PropValue("Extension")
+PRINT "Size: "; pServices.PropValue("Filesize")
+'PRINT pServices.PropValue("LastModified")
+PRINT "Date last modified: "; pServices.WmiDateToStr(pServices.PropValue("LastModified"), "dd-MM-yyyy")   ' // change the mask if needed
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
