@@ -745,7 +745,7 @@ Returns the number of objects in the property set collection.
 FUNCTION PropsCount () AS LONG
 ```
 
-# <a name="PropsCount"></a>PropsCount
+# <a name="PropValue"></a>PropValue
 
 Gets/sets the variant value of the WMI property.
 
