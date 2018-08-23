@@ -110,7 +110,7 @@ Will return FALSE if it is a null pointer.
 If it is an OLE string it must have a descriptor; otherwise, don't.
 Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
 
-# <a name="AfxNewCom"></a>AfxNewCom
+# <a name="AfxNewCOM"></a>AfxNewCOM
 
 Creates a single uninitialized object of the class associated with a specified ProgID or CLSID.
 
