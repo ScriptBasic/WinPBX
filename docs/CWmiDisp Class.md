@@ -28,7 +28,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [GetErrorCodeText](#GetErrorCodeText) | Returns the text string description associated with the WMI error code. |
 | [GetFacilityCodeText](#GetFacilityCodeText) | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
-| GetNamedProperties | Retrieves a named collection of the properties for the current class or instance. |
+| [GetNamedProperties](#GetNamedProperties) | Retrieves a named collection of the properties for the current class or instance. |
 | InstancesOf | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
 | NewEnum | Retrieves an enumerator for the collection. |
 | NextObject | Retrieves the next item in the enumeration sequence. |
@@ -470,3 +470,27 @@ Returns the result code returned by the last executed method.
 ```
 FUNCTION GetLastResult () AS HRESULT
 ```
+
+# <a name="GetNamedProperties"></a>GetNamedProperties
+
+Retrieves a named collection of the properties for the current class or instance.
+
+```
+FUNCTION GetNamedProperties (BYVAL idx AS LONG = 0) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *idx* | The zero-based index of the member of the collection. |
+
+#### Return value
+
+S_OK on success or an error code.
+
+May return one of the error codes in the following list:
+
+| Error      | Value       | Description |
+| ---------- | ----------- | ----------- |
+| *wbemErrFailed* | -2147749889 (&h80041001) | Unspecified error. |
+| *wbemErrInvalidParameter* | -2147749896 (&h80041008) | A specified parameter is not valid. |
+| *wbemErrOutOfMemory* | -2147749894 (&h80041006) | Not enough memory to complete the operation. |
