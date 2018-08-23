@@ -232,3 +232,20 @@ An interface pointer or NULL.
 * Components that manage a shared physical or virtual system resource aren't supported.
 * Visual ActiveX controls aren't supported because they need to be initilized and activated by the OLE container.
 
+# <a name="AfxGuid"></a>AfxGuid
+
+Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). To be valid, the string must contain exactly 32 hexadecimal digits, delimited by hyphens and enclosed by curly braces. For example: {B09DE715-87C1-11D1-8BE3-0000F8754DA1}
+
+If *pwszGuidText* is omited, AfxGuid generates a new unique guid.
+
+```
+FUNCTION AfxGuid (BYVAL pwszGuidText AS WSTRING PTR = NULL) AS GUID
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszGuidText* | A GUID in string format. |
+
+#### Return value
+
+A GUID.
