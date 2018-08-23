@@ -373,8 +373,60 @@ FUNCTION AfxEnviron (BYVAL pwszName AS LPCWSTR) AS CWSTR
 | ---------- | ----------- |
 | *pwszName* | The name of the environment variable. |
 
+**Include file**: AfxStr.inc
+
 #### Usage example
 
 ```
 DIM cws AS CWSTR = AfxEnviron("path")
 ```
+
+# <a name="AfxSetEnviron"></a>AfxSetEnviron
+
+Sets the contents of the specified environment variable for the current process.
+
+```
+FUNCTION AfxSetEnviron (BYVAL pwszName AS LPCWSTR, BYVAL pwszValue AS LPCWSTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist
+'              and pwszValue is not NULL. |
+| *pwszValue* | The name of the environment variable. The maximum size of a user-defined environment variable is 32,767 characters. |
+
+**Include file**: AfxStr.inc
+
+#### Return value
+
+If the function succeeds, the return value is TRUE.<br>
+If the function fails, the return value is FALSE.<br>
+To get extended error information, call **GetLastError**.
+
+#### Usage example
+
+```
+AfxSetEnviron("path", "c:")
+```
+
+# AfxSetEnviron (Overload)
+
+Sets the contents of the specified environment variable for the current process.<br>
+Unicode replacement for Free Basic's **SetEnviron** function.
+
+```
+FUNCTION AfxSetEnviron (BYVAL pwszName AS LPCWSTR, BYVAL pwszValue AS LPCWSTR) AS BOOLEAN
+FUNCTION AfxSetEnviron (BYREF varexp AS WSTRING) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist
+'              and pwszValue is not NULL. |
+| *varexp* | Name and setting of an environment variable in the following (or equivalent) form: varname=varstring (*varname* being the name of the environment variable, and *varstring* being its text value to set).
+
+**Include file**: AfxStr.inc
+
+#### Return value
+
+Returns 0 on success, or -1 on failure.
