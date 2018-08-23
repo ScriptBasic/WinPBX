@@ -309,3 +309,28 @@ The function returns the new reference count. This value is intended to be used 
 #### Remarks
 
 When the reference count on an object reaches zero, **AfxSafeRelease** must cause the interface pointer to free itself. When the released pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the implementation must free the object.
+
+# <a name="AfxAdvise"></a>AfxAdvise
+
+Establishes a connection between the connection point object and the client's sink.
+
+```
+FUNCTION AfxAdvise (BYVAL pUnk AS ANY PTR, BYVAL pEvtObj AS ANY PTR, _
+   BYVAL riid AS IID PTR, BYVAL pdwCookie AS DWORD PTR) AS HRESULT
+FUNCTION AfxAdvise (BYVAL pUnk AS ANY PTR, BYVAL pEvtObj AS ANY PTR, _
+   BYREF riid AS CONST IID, BYVAL pdwCookie AS DWORD PTR) AS HRESULT
+FUNCTION AfxAdvise (BYVAL pUnk AS ANY PTR, BYVAL pEvtObj AS ANY PTR, _
+   BYREF riid AS IID, BYVAL pdwCookie AS DWORD PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pUnk* | A pointer to the **IUnknown** of the object the client wants to connect with. |
+| *pEvtObj* | A pointer to the client's **IUnknown**. |
+| *riid* | The GUID of the connection point. Typically, this is the same as the outgoing interface managed by the connection point. |
+| *pdwCookie* | Pointer to a DWORD variable that will receive the cookie that uniquely identifies the connection. |
+
+#### Return value
+
+S_OK (0) on success, or an HRESULT error code on failure.
+
