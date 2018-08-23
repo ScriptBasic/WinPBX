@@ -179,7 +179,7 @@ FUNCTION AfxNewCom (BYREF wszClsID AS CONST WSTRING, BYREF wszIID AS CONST WSTRI
 | ---------- | ----------- |
 | *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
 | *riid* | A reference to the identifier of the interface to be used to communicate with the object. |
-| *wszClsID* | The CLSID in stering format. |
+| *wszClsID* | The CLSID in string format. |
 | *wszIID* | The IID in string format. |
 
 #### Return value
@@ -214,7 +214,7 @@ FUNCTION AfxNewCom (BYREF wszLibName AS CONST WSTRING, BYREF wszClsid AS CONST W
 | *wszLibName* | Full path where the library is located. |
 | *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
 | *riid* | A reference to the identifier of the interface to be used to communicate with the object. |
-| *wszClsID* | The CLSID in stering format. |
+| *wszClsID* | The CLSID in string format. |
 | *wszIID* | The IID in string format. |
 | *wszLicKey* | Optional. The license key. |
 
