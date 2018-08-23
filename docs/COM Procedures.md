@@ -267,3 +267,45 @@ FUNCTION AfxGuidText (BYVAL riid AS REFIID) AS STRING
 #### Return value
 
 A 38-byte human-readable guid string.
+
+# <a name="AfxSafeAddRef"></a>AfxSafeAddRef
+
+Increments the reference count for an interface on an object.
+
+```
+FUNCTION AfxSafeAddRef (BYVAL pv AS ANY PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | The COM interface pointer. |
+
+#### Return value
+
+The function returns the new reference count. This value is intended to be used only for test purposes.
+
+#### Remarks
+
+This method should be called for every new copy of a pointer to an interface on an object. For example, if you are passing a copy of a pointer back from a method, you must call **AddRef** on that pointer. You must also call **AddRef** on a pointer before passing it as an in-out parameter to a method; the method will call **IUnknown_Release** before copying the out-value on top of it.
+
+Objects use a reference counting mechanism to ensure that the lifetime of the object includes the lifetime of references to it. You use AddRef to stabilize a copy of an interface pointer. It can also be called when the life of a cloned pointer must extend beyond the lifetime of the original pointer. The cloned pointer must be released by calling **AfxSafeRelease**.
+
+# <a name="AfxSafeRelease"></a>AfxSafeRelease
+
+Decrements the reference count for an interface on an object and sets the value of the passed pointer to NULL.
+
+```
+FUNCTION AfxSafeRelease (BYVAL pv AS ANY PTR) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pv* | The COM interface pointer to release. |
+
+#### Return value
+
+The function returns the new reference count. This value is intended to be used only for test purposes.
+
+#### Remarks
+
+When the reference count on an object reaches zero, Release must cause the interface pointer to free itself. When the released pointer is the only existing reference to an object (whether the object supports single or multiple interfaces), the implementation must free the object.
