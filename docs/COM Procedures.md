@@ -550,3 +550,15 @@ If the function succeeds, it returns the contents of the variant in string form;
 #### Remarks
 
 When *pvarIn* contains an array, each element of the array is appended to the resulting string separated with a semicolon and a space. For variants that contains an array of bytes, use **AfxVariantToBuffer**.
+
+# <a name="AfxVariantGetElementCount"></a>AfxVariantGetElementCount
+
+Retrieves the element count of a variant structure.
+
+```
+FUNCTION AfxVariantGetElementCount (BYVAL pvarIn AS VARIANT PTR) AS ULONG
+```
+
+#### Return value
+
+Returns the element count for values of type VT_ARRAY; otherwise, returns 1.
