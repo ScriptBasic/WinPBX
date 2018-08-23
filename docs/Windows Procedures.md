@@ -601,3 +601,18 @@ AfxControlRunDLL(0, 0, "", SW_SHOWNORMAL)   ' Opens the control panel
 AfxControlRunDLL(0, 0, "appwiz.cpl", SW_SHOWNORMAL)   ' Opens the applications wizard
 ```
 
+# <a name="AfxShowSysInfo"></a>AfxShowSysInfo
+
+Displays the Windows Information System dialog.
+
+```
+FUNCTION AfxShowSysInfo (BYVAL hwnd AS HWND) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | A handle to the parent window or NULL. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
