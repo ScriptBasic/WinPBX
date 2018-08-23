@@ -23,7 +23,7 @@ Assorted COM procedures.
 | [AfxGetOleErrorInfo](#AfxGetOleErrorInfo) | Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. |
 | [AfxOleCreateFont](#AfxOleCreateFont) | Creates a standard IFont object. |
 | [AfxOleCreateFontDisp](#AfxOleCreateFontDisp) | Creates a standard IFontDisp object. |
-| [AfxGetVarType](#AfxGetVarType) | Returns the tyè of a variant. |
+| [AfxGetVarType](#AfxGetVarType) | Returns the type of a variant. |
 | [AfxIsVarTypeFloat](#AfxIsVarTypeFloat) | Checks if a variant contains a float value. |
 | [AfxIsVariantArray](#AfxIsVariantArray) | Checks if a variant contains an array. |
 | [AfxIsVariantString](#AfxIsVariantString) | Checks if a variant contains an string. |
