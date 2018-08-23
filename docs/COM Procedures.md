@@ -127,7 +127,7 @@ FUNCTION AfxNewCom (BYREF wszProgID AS CONST WSTRING, BYREF wszLicKey AS WSTRING
 
 An interface pointer or NULL.
 
-####Usage examples
+#### Usage examples
 
 ```
 DIM pDic AS IDictionary PTR
