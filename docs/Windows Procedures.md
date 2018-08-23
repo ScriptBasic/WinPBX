@@ -360,3 +360,21 @@ Returns the command-line arguments(s).
 If index is less than zero (< 0), a space-separated list of all command-line arguments is returned, otherwise, a single argument is returned. A value of zero (0) returns the name of the executable; and values of one (1) and greater return each command-line argument.
 
 If index is greater than the number of arguments passed to the program, a null string ("") is returned.
+
+# <a name="AfxEnviron"></a>AfxEnviron
+
+Retrieves the contents of the specified variable from the environment block of the calling process.
+
+```
+FUNCTION AfxEnviron (BYVAL pwszName AS LPCWSTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszName* | The name of the environment variable. |
+
+#### Usage example
+
+```
+DIM cws AS CWSTR = AfxEnviron("path")
+```
