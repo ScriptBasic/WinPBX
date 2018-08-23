@@ -542,3 +542,22 @@ FUNCTION AfxForwardSizeMessage (BYVAL hwnd AS HWND, BYVAL nResizeType AS DWORD, 
 #### Remark
 
 If an application processes this message, it should return zero.
+
+# <a name="AfxChooseColorDialog"></a>AfxChooseColorDialog
+
+Displays the Windows choose color dialog.
+
+```
+FUNCTION AfxChooseColorDialog (BYVAL hwnd AS HWND, BYVAL rgbDefaultColor AS COLORREF = 0, _
+   BYVAL lpCustColors AS COLORREF PTR = NULL) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | A handle to the parent window or NULL. |
+| *rgbDefaultColor* | The color initially selected when the dialog box is created. If the specified color value is not among the available colors, the system selects the nearest solid color available. If rgbResult is zero, the initially selected color is black. |
+| *lpCustColors* | Out. A pointer to an array of 16 values that contain red, green, blue (RGB) values for the custom color boxes in the dialog box. If the user modifies these colors, the system updates the array with the new RGB values. To preserve new custom colors between calls to the **AfxChooseColorDialog** function, you should allocate static memory for the array. To create a COLORREF color value, use the BGR macro. |
+
+#### Return value
+
+The selected color, or -1 if the user has canceled the dialog.
