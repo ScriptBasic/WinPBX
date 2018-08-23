@@ -204,4 +204,38 @@ Assorted Windows procedures.
 | AfxWindowsBitness | Returns the bitness of the operating system (32 or 64 bit). |
 | AfxWindowsBuild | Returns the Windows build number. |
 | AfxWindowsPlatform | Returns the Windows platform. |
-| AfxWindowsVersion | Returns the Windows version. |
+| [AfxWindowsVersion](#AfxWindowsVersion) | Returns the Windows version. |
+
+# <a name="AfxWindowsVersion"></a>AfxWindowsVersion
+
+Returns the Windows version.
+
+```
+FUNCTION AfxWindowsVersion () AS LONG
+```
+
+#### Return value
+
+Platform 1:
+```
+  400 Windows 95
+  410 Windows 98
+  490 Windows ME
+```
+
+Platform 2:
+
+```
+  400 Windows NT
+  500 Windows 2000
+  501 Windows XP
+  502 Windows Server 2003
+  600 Windows Vista and Windows Server 2008
+  601 Windows 7
+  602 Windows 8
+  603 Windows 8.1
+1000 Windows 10
+```
+
+**Note**: As Windows 95 and Windows NT return the same version number, we also need to call GetWindowsPlatform to differentiate them.
+
