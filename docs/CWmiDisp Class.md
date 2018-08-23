@@ -873,8 +873,6 @@ FUNCTION WmiTimeToStr (BYVAL pwszDateTime AS WSTRING PTR, BYREF wszMask AS WSTRI
 | *wszMask* | A picture string that is used to form the time. |
 | *bIsLocal* | Indicates whether the returned value is interpreted as local time. The UTC property then contains the local time converted to the correct Coordinated Universal Times (UTC) offset. If the value is FALSE, then the value is interpreted as UTC with a zero (0) offset. |
 
-The following table defines the format types used to represent days:
-
 |Picture     | Description |
 | ---------- | ----------- |
 | h | Hours with no leading zero for single-digit hours; 12-hour clock |
