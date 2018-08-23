@@ -574,7 +574,7 @@ FUNCTION AfxVariantToBuffer (BYVAL pvarIn AS VARIANT PTR, BYVAL pv AS LPVOID, BY
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pvarIn* | Pointer to the variant. |
-| *pv* | Pointer to a buffer of length *cb* bytes. |
+| *pv* | Pointer to a buffer of length *cb* bytes. When this function returns, contains the first cb bytes of the extracted buffer value. |
 | *cb* | The size of the *pv* buffer, in bytes. The buffer should be the same size as the data to be extracted. |
 
 #### Return value
@@ -586,3 +586,22 @@ Returns one of the following values:
 | S_OK | Data successfully extracted. |
 | E_INVALIDARG | The VARIANT was not of type VT_ARRRAY OR VT_UI1. |
 | E_FAIL | The VARIANT buffer value had fewer than *cb* bytes. |
+
+# <a name="AfxVariantToString"></a>AfxVariantToString
+
+Extracts the variant value of a variant structure to a string.
+
+```
+FUNCTION AfxVariantToString (BYVAL pvarIn AS VARIANT PTR, BYVAL pwszBuf AS WSTRING PTR, _
+   BYVAL cchBuf AS UINT) AS ULONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pvarIn* | Pointer to the variant. |
+| *pwszBuf* |Pointer to the extracted property value if one exists; otherwise, empty. |
+| *cchBuf* | The string length, in characters. |
+
+#### Return value
+
+If this function succeeds, it returns S_OK (0). Otherwise, it returns an HRESULT error code.
