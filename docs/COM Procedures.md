@@ -236,7 +236,7 @@ An interface pointer or NULL.
 
 Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). To be valid, the string must contain exactly 32 hexadecimal digits, delimited by hyphens and enclosed by curly braces. For example: {B09DE715-87C1-11D1-8BE3-0000F8754DA1}
 
-If *pwszGuidText* is omited, AfxGuid generates a new unique guid.
+If *pwszGuidText* is omited, **AfxGuid** generates a new unique guid.
 
 ```
 FUNCTION AfxGuid (BYVAL pwszGuidText AS WSTRING PTR = NULL) AS GUID
@@ -249,3 +249,21 @@ FUNCTION AfxGuid (BYVAL pwszGuidText AS WSTRING PTR = NULL) AS GUID
 #### Return value
 
 A GUID.
+
+# <a name="AfxGuidText"></a>AfxGuidText
+
+Returns a 38-byte human-readable guid string from a 16-byte GUID.
+
+```
+FUNCTION AfxGuidText (BYVAL classID AS CLSID PTR) AS STRING
+FUNCTION AfxGuidText (BYVAL classID AS CLSID) AS STRING
+FUNCTION AfxGuidText (BYVAL riid AS REFIID) AS STRING
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *classID* | The GUID to convert. |
+
+#### Return value
+
+A 38-byte human-readable guid string.
