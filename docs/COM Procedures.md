@@ -399,7 +399,17 @@ FUNCTION AfxOleCreateFont (BYREF wszFaceName AS WSTRING, BYVAL cySize AS LONG, _
 | *fItalic* | Specifies an italic font if set to TRUE. |
 | *fUnderline* | Specifies an underlined font if set to TRUE. |
 | *fStrikeOut* | Specifies a strikeout font if set to TRUE. |
-| *fCharSet* | Specifies the character set. The following values are predefined:<br>ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET|
+| *fCharSet* | Specifies the character set. The following values are predefined:<br>ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET.<br>Korean Windows: JOHAB_CHARSET<br>Middle-Eastern Windows: HEBREW_CHARSET, ARABIC_CHARSET.<br>Thai Windows: THAI_CHARSET.|
+
+#### Remarks
+
+The OEM_CHARSET value specifies a character set that is operating-system dependent.
+
+DEFAULT_CHARSET is set to a value based on the current system locale. For example, when the system locale is English (United States), the value is ANSI_CHARSET.
+
+Fonts with other character sets may exist in the operating system. If an application uses a font with an unknown character set, it should not attempt to translate or interpret strings that are rendered with that font.
+
+This member is important in the font mapping process. To ensure consistent results, specify a specific character set.
 
 #### Return value
 
