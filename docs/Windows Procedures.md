@@ -391,8 +391,7 @@ FUNCTION AfxSetEnviron (BYVAL pwszName AS LPCWSTR, BYVAL pwszValue AS LPCWSTR) A
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist
-'              and pwszValue is not NULL. |
+| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist and *pwszValue* is not NULL. |
 | *pwszValue* | The name of the environment variable. The maximum size of a user-defined environment variable is 32,767 characters. |
 
 **Include file**: AfxStr.inc
@@ -421,8 +420,7 @@ FUNCTION AfxSetEnviron (BYREF varexp AS WSTRING) AS BOOLEAN
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist
-'              and pwszValue is not NULL. |
+| *pwszName* | The name of the environment variable. The operating system creates the environment variable if it does not exist and *pwszValue* is not NULL. |
 | *varexp* | Name and setting of an environment variable in the following (or equivalent) form: varname=varstring (*varname* being the name of the environment variable, and *varstring* being its text value to set).
 
 **Include file**: AfxStr.inc
