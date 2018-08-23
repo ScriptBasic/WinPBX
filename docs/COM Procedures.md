@@ -11,7 +11,7 @@ Assorted COM procedures.
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
 | [AfxNewCOM(PROGID](#AfxNewCOM1) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
 | [AfxNewCOM(CLSID)](#AfxNewCOM2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
-| [AfxNewCOM(CLSID,IID](#AfxNewCOM3) | Creates a single uninitialized object of the class associated with the specified CLSID and IID. |
+| [AfxNewCOM(CLSID,IID)](#AfxNewCOM3) | Creates a single uninitialized object of the class associated with the specified CLSID and IID. |
 | [AfxNewCOM(LibName](#AfxNewCOM4) | Loads the specified library from file and creates an instance of an object. |
 | [AfxGuid](#AfxGuid) | Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). |
 | [AfxGuidText](#AfxGuidText) | Returns a 38-byte human-readable guid string from a 16-byte GUID. |
@@ -179,8 +179,8 @@ FUNCTION AfxNewCom (BYREF wszClsID AS CONST WSTRING, BYREF wszIID AS CONST WSTRI
 | ---------- | ----------- |
 | *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
 | *riid* | A reference to the identifier of the interface to be used to communicate with the object. |
-| *classID* | The CLSID in stering format. |
-| *riid* | The IID in string format. |
+| *wszClsID* | The CLSID in stering format. |
+| *wszIID* | The IID in string format. |
 
 #### Return value
 
@@ -195,4 +195,40 @@ pDic = AfxNewCom(CLSID_Dictionary, IID_IDictionary)
 
 where CLSID_Dictionary has been declared asCONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"<br>
 and IID_IDictionary as CONST IID_IDictionary = "{42C642C1-97E1-11CF-978F-00A02463E06F}"
+
+# <a name="AfxNewCOM4"></a>AfxNewCOM (LibName)
+
+Loads the specified library from file and creates an instance of an object.
+
+```
+FUNCTION AfxNewCom (BYREF wszLibName AS CONST WSTRING, BYREF rclsid AS CONST CLSID, _
+   BYREF riid AS CONST IID, BYREF wszLicKey AS WSTRING) AS ANY PTR
+FUNCTION AfxNewCom (BYREF wszLibName AS CONST WSTRING, BYREF wszClsid AS CONST WSTRING, _
+   BYREF riid AS CONST IID, BYREF wszLicKey AS WSTRING = "") AS ANY PTR
+FUNCTION AfxNewCom (BYREF wszLibName AS CONST WSTRING, BYREF wszClsid AS CONST WSTRING, _
+   BYREF wszIid AS CONST WSTRING, BYREF wszLicKey AS WSTRING = "") AS ANY PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszLibName* | Full path where the library is located. |
+| *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
+| *riid* | A reference to the identifier of the interface to be used to communicate with the object. |
+| *wszClsID* | The CLSID in stering format. |
+| *wszIID* | The IID in string format. |
+| *wszLicKey* | Optional. The license key. |
+
+#### Return value
+
+An interface pointer or NULL.
+
+#### Remarks
+
+* Not every component is a suitable candidate for use under this overloaded **AfxNewCom** function.
+* Only in-process servers (DLLs) are supported.
+** Components that are system components or part of the operating system, such as XML, Data Access, Internet Explorer, or DirectX, aren't supported.
+* Components that are part of an application, such Microsoft Office, aren't supported.
+* Components intended for use as an add-in or a snap-in, such as an Office add-in or a control in a Web browser, aren't supported.
+* Components that manage a shared physical or virtual system resource aren't supported.
+* Visual ActiveX controls aren't supported because they need to be initilized and activated by the OLE container.
 
