@@ -385,8 +385,9 @@ The description of the error on success or an empty string on failure.
 Creates a standard **IFont** object.
 
 ```
-FUNCTION AfxOleCreateFont (BYREF wszFaceName AS WSTRING, BYVAL cySize AS LONG, BYVAL fWeight AS LONG = FW_NORMAL, _
-   BYVAL fItalic AS UBYTE = FALSE, BYVAL fUnderline AS UBYTE = FALSE, BYVAL fStrikeOut AS UBYTE = FALSE, _
+FUNCTION AfxOleCreateFont (BYREF wszFaceName AS WSTRING, BYVAL cySize AS LONG, _
+   BYVAL fWeight AS LONG = FW_NORMAL, BYVAL fItalic AS UBYTE = FALSE, _
+   BYVAL fUnderline AS UBYTE = FALSE, BYVAL fStrikeOut AS UBYTE = FALSE, _
    BYVAL fCharSet AS UBYTE = DEFAULT_CHARSET) AS IFont PTR
 ```
 
