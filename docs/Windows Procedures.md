@@ -192,7 +192,7 @@ Assorted Windows procedures.
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
 | [AfxGetWinErrMsg](#AfxGetWinErrMsg) | Retrieves the localized description of the specified Windows error code. |
 | [AfxMsg](#AfxMsg) | Displays an application modal message box. |
-| AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
+| [AfxSetDlgMsgResult](#AfxSetDlgMsgResult) | Sets the return value of a message processed in the dialog box procedure. |
 | [AfxSetEnviron](#AfxSetEnviron) | Sets the contents of the specified environment variable for the current process. |
 
 # Versioning
@@ -428,3 +428,21 @@ FUNCTION AfxSetEnviron (BYREF varexp AS WSTRING) AS BOOLEAN
 #### Return value
 
 Returns 0 on success, or -1 on failure.
+
+# <a name="AfxSetDlgMsgResult"></a>AfxSetDlgMsgResult
+
+Sets the return value of a message processed in the dialog box procedure.
+
+```
+FUNCTION AfxSetDlgMsgResult (BYVAL hDlg AS HWND, BYVAL msg AS UINT, BYVAL result AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hDlg* | A handle to a dialog box. |
+| *msg* | The message type. |
+| *result* | The return value. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
