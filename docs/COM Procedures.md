@@ -10,7 +10,7 @@ Assorted COM procedures.
 | [AfxUcode](#AfxUcode) | Translates ansi bytes to unicode bytes. |
 | [AfxIsBstr](#AfxIsBstr) | Checks if the passed pointer is a BSTR. |
 | [AfxNewCOM(PROGID](#AfxNewCOM1) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
-| [AfxNewCOM(CLSID](#AfxNewCOM2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
+| [AfxNewCOM(CLSID)](#AfxNewCOM2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
 | [AfxNewCOM(CLSID,IID](#AfxNewCOM3) | Creates a single uninitialized object of the class associated with the specified CLSID and IID. |
 | [AfxNewCOM(LibName](#AfxNewCOM4) | Loads the specified library from file and creates an instance of an object. |
 | [AfxGuid](#AfxGuid) | Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). |
@@ -163,5 +163,5 @@ DIM pDic AS IDictionary PTR
 pDic = AfxNewCom(CLSID_Dictionary)
 ```
 
-where CLSID_Dictionary has been declared as
+where CLSID_Dictionary has been declared as<br>
 DIM CLSID_Dictionary AS CLSID = (&hEE09B103, &h97E0, &h11CF, {&h97, &h8F, &h00, &hA0, &h24, &h63, &hE0, &h6F})
