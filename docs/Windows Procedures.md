@@ -199,11 +199,11 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxComCtlVersion | Returns the version of CommCtl32.dll. |
-| AfxIsPlatformNT | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
-| AfxWindowsBitness | Returns the bitness of the operating system (32 or 64 bit). |
-| AfxWindowsBuild | Returns the Windows build number. |
-| AfxWindowsPlatform | Returns the Windows platform. |
+| [AfxComCtlVersion](#AfxComCtlVersion) | Returns the version of CommCtl32.dll. |
+| [AfxIsPlatformNT](#AfxIsPlatformNT) | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| [AfxWindowsBitness](#AfxWindowsBitness) | Returns the bitness of the operating system (32 or 64 bit). |
+| [AfxWindowsBuild](#AfxWindowsBuild) | Returns the Windows build number. |
+| [AfxWindowsPlatform](#AfxWindowsPlatform) | Returns the Windows platform. |
 | [AfxWindowsVersion](#AfxWindowsVersion) | Returns the Windows version. |
 
 # <a name="AfxWindowsVersion"></a>AfxWindowsVersion
@@ -239,3 +239,53 @@ Platform 2:
 
 **Note**: As Windows 95 and Windows NT return the same version number, we also need to call GetWindowsPlatform to differentiate them.
 
+# <a name="AfxWindowsVersion"></a>AfxWindowsVersion
+
+Returns the Windows build number.
+
+```
+FUNCTION AfxWindowsBuild () AS LONG
+```
+
+# <a name="AfxWindowsPlatform"></a>AfxWindowsPlatform
+
+Returns the Windows platform.
+
+```
+FUNCTION AfxWindowsPlatform () AS LONG
+```
+
+#### Return value
+
+| Value      | Description |
+| ---------- | ----------- |
+| 1 | Windows 95/98/ME |
+| 2 | Windows NT/2000/XP/Server/Vista/Windows 7 |
+
+# <a name="AfxWindowsBitness"></a>AfxWindowsBitness
+
+Returns the Windows bitness (32 or 64 bit).
+
+```
+FUNCTION AfxWindowsBitness () AS LONG
+```
+
+# <a name="AfxIsPlatformNT"></a>AfxIsPlatformNT
+
+Returns TRUE if the Windows Platform is NT; FALSE, otherwise.
+
+```
+FUNCTION AfxIsPlatformNT () AS BOOLEAN
+```
+
+# <a name="AfxComCtlVersion"></a>AfxComCtlVersion
+
+Returns the version of CommCtl32.dll
+
+```
+FUNCTION AfxComCtlVersion () AS LONG
+```
+
+#### Return value
+
+The version of CommCtl32.dll multiplied by 100, e.g. 582 for version 5.82.
