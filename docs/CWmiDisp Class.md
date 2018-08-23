@@ -31,7 +31,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [GetNamedProperties](#GetNamedProperties) | Retrieves a named collection of the properties for the current class or instance. |
 | [InstancesOf](#InstancesOf) | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
 | [NewEnum](#NewEnum) | Retrieves an enumerator for the collection. |
-| NextObject | Retrieves the next item in the enumeration sequence. |
+| [NextObject](#NextObject) | Retrieves the next item in the enumeration sequence. |
 | ObjectsCount | Returns the number of objects in the collection. |
 | ObjectSetPtr | Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it. |
 | PropertySetPtr | Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it. |
@@ -637,3 +637,74 @@ FUNCTION GetLastResult () AS HRESULT
 
 TRUE if the enumerator has been retrieved or FALSE otherwise.
 
+# <a name="NextObject"></a>NextObject
+
+Retrieves the next item in the enumeration sequence.
+
+Note: The first time that you call this method, it retrieves the first item.
+
+```
+FUNCTION NextObject () AS CVAR
+```
+
+#### Return value
+
+Te retrieved object.
+
+#### Example
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS")
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+' // Get the number of objects retrieved
+DIM nCount AS LONG = pServices.ObjectsCount
+print "Count: ", nCount
+IF nCount = 0 THEN PRINT "No objects found" : SLEEP : END
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke = pServices.NextObject
+IF pDispServ.DispPtr THEN
+   PRINT "Caption: "; pDispServ.Get("Caption")
+   PRINT "Serial number: "; pDispServ.Get("SerialNumber")
+END IF
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
+
+To improve enumeration performance set the iFlags parameter if the ExecQuery method to WbemFlagReturnImmediately and WbemFlagForwardOnly (the combined value of these flags is 48) to allow semisynchronous return of the data with an enumerator that discards each item from WMI as it is delivered. In this case don't call the ObjectsCount method because it will return 0, since the operation has not been completed.
+
+```
+#include "windows.bi"
+#include "Afx/CWmiDisp.inc"
+using Afx
+
+' // Connect to WMI using a moniker
+' // Note: $ is used to avoid the pedantic warning of the compiler about escape characters
+DIM pServices AS CWmiServices = $"winmgmts:{impersonationLevel=impersonate}!\\.\root\cimv2"
+IF pServices.ServicesPtr = NULL THEN END
+
+' // Execute a query
+DIM hr AS HRESULT = pServices.ExecQuery("SELECT Caption, SerialNumber FROM Win32_BIOS", 48)
+IF hr <> S_OK THEN PRINT AfxWmiGetErrorCodeText(hr) : SLEEP : END
+
+' // Enumerate the objects using the standard IEnumVARIANT enumerator (NextObject method)
+' // and retrieve the properties using the CDispInvoke class.
+DIM pDispServ AS CDispInvoke = pServices.NextObject
+IF pDispServ.DispPtr THEN
+   PRINT "Caption: "; pDispServ.Get("Caption")
+   PRINT "Serial number: "; pDispServ.Get("SerialNumber")
+END IF
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
