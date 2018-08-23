@@ -156,7 +156,7 @@ FUNCTION AfxNewCom (BYREF classID AS CONST CLSID) AS ANY PTR
 
 An interface pointer or NULL.
 
-#### Usage examples
+#### Usage example
 
 ```
 DIM pDic AS IDictionary PTR
@@ -165,3 +165,34 @@ pDic = AfxNewCom(CLSID_Dictionary)
 
 where CLSID_Dictionary has been declared as<br>
 DIM CLSID_Dictionary AS CLSID = (&hEE09B103, &h97E0, &h11CF, {&h97, &h8F, &h00, &hA0, &h24, &h63, &hE0, &h6F})
+
+# <a name="AfxNewCOM3"></a>AfxNewCOM (CLSID, IID)
+
+Creates a single uninitialized object of the class associated with the specified CLSID and IID.
+
+```
+FUNCTION AfxNewCom (BYREF classID AS CONST CLSID, BYREF riid AS CONST IID) AS ANY PTR
+FUNCTION AfxNewCom (BYREF wszClsID AS CONST WSTRING, BYREF wszIID AS CONST WSTRING) AS ANY PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *classID* | The CLSID (class identifier) associated with the data and code that will be used to create the object. |
+| *riid* | A reference to the identifier of the interface to be used to communicate with the object. |
+| *classID* | The CLSID in stering format. |
+| *riid* | The IID in string format. |
+
+#### Return value
+
+An interface pointer or NULL.
+
+#### Usage examples
+
+```
+DIM pDic AS IDictionary PTR
+pDic = AfxNewCom(CLSID_Dictionary, IID_IDictionary)
+```
+
+where CLSID_Dictionary has been declared asCONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"<br>
+and IID_IDictionary as CONST IID_IDictionary = "{42C642C1-97E1-11CF-978F-00A02463E06F}"
+
