@@ -12,7 +12,7 @@ Assorted COM procedures.
 | [AfxNewCOM(PROGID](#AfxNewCOM1) | Creates a single uninitialized object of the class associated with a specified ProgID or CLSID. |
 | [AfxNewCOM(CLSID)](#AfxNewCOM2) | Creates a single uninitialized object of the class associated with a specified CLSID. |
 | [AfxNewCOM(CLSID,IID)](#AfxNewCOM3) | Creates a single uninitialized object of the class associated with the specified CLSID and IID. |
-| [AfxNewCOM(LibName](#AfxNewCOM4) | Loads the specified library from file and creates an instance of an object. |
+| [AfxNewCOM(LibName)](#AfxNewCOM4) | Loads the specified library from file and creates an instance of an object. |
 | [AfxGuid](#AfxGuid) | Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID). |
 | [AfxGuidText](#AfxGuidText) | Returns a 38-byte human-readable guid string from a 16-byte GUID. |
 | [AfxSafeAddRef](#AfxSafeAddRef) | Increments the reference count for an interface on an object. |
