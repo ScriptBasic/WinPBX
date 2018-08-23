@@ -193,7 +193,7 @@ Assorted Windows procedures.
 | [AfxGetWinErrMsg](#AfxGetWinErrMsg) | Retrieves the localized description of the specified Windows error code. |
 | [AfxMsg](#AfxMsg) | Displays an application modal message box. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
-| AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
+| [AfxSetEnviron](#AfxSetEnviron) | Sets the contents of the specified environment variable for the current process. |
 
 # Versioning
 
