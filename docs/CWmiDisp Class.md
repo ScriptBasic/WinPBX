@@ -40,9 +40,9 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [ResetEnum](#ResetEnum) | Resets the enumeration sequence to the beginning. |
 | [ServicesObj](#ServicesObj) | Returns a counted reference of the underlying dispatch pointer. You must release it, e.g. calling call **IUnknown_Release** or the function **AfxSafeRelease** when no longer need it. |
 | [ServicesPtr](#ServicesPtr) | Returns a pointer to the ISWbemServices interface. Don't call **IUnknown_Release** on it. |
-| WmiDateToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy". |
-| WmiTimeToFileTime | Converts a date and time value in the CIM DATETIME format to the FILETIME format. |
-| WmiTimeToStr | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "hh':'mm':'ss tt". |
+| [WmiDateToStr](#WmiDateToStr) | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy". |
+| [WmiTimeToFileTime](#WmiTimeToFileTime) | Converts a date and time value in the CIM DATETIME format to the FILETIME format. |
+| [WmiTimeToStr](#WmiTimeToStr) | Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "hh':'mm':'ss tt". |
 
 # <a name="Constructor1"></a>Constructor(Moniker)
 
@@ -790,3 +790,53 @@ Returns a pointer to the **ISWbemServices** interface. Don't call IUnknown_Relea
 ```
 FUNCTION ServicesPtr () AS ANY PTR
 ```
+
+# <a name="ServicesPtr"></a>ServicesPtr
+
+Converts a date and time value in the CIM DATETIME format to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy".
+
+```
+FUNCTION WmiDateToStr (BYVAL pwszDateTime AS WSTRING PTR, BYREF wszMask AS WSTRING, _
+   BYVAL bIsLocal AS BOOLEAN = TRUE) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszDateTime* | The date and time value in the CIM DATETIME format. |
+| *wszMask* | A picture string that is used to form the date. |
+| *bIsLocal* | Indicates whether the returned value is interpreted as local time. The UTC property then contains the local time converted to the correct Coordinated Universal Times (UTC) offset. If the value is FALSE, then the value is interpreted as UTC with a zero (0) offset. |
+
+The format types "d", and "y" must be lowercase and the letter "M" must be uppercase.
+
+For example, to get the date string "Wed, Aug 31 94", the application uses the picture string "ddd',' MMM dd yy".
+
+The following table defines the format types used to represent days:
+
+| Format type | Description |
+| ---------- | ----------- |
+| d | Day of the month as digits without leading zeros for single-digit days. |
+| dd | Day of the month as digits with leading zeros for single-digit days. |
+| ddd | Abbreviated day of the week, for example, "Mon" in English (United States). |
+| dddd | Day of the week. |
+
+The following table defines the format types used to represent months:
+
+| Format type | Description |
+| ---------- | ----------- |
+| M | Month as digits without leading zeros for single-digit months. |
+| MM | Month as digits with leading zeros for single-digit months. |
+| MMM | Abbreviated month, for example, "Nov" in English (United States). |
+| MMMM | Month value, for example, "November" for English (United States), and "Noviembre" for Spanish (Spain). |
+
+The following table defines the format types used to represent years:
+
+| Format type | Description |
+| ---------- | ----------- |
+| y | Year represented only by the last digit. |
+| yy | Year represented only by the last two digits. A leading zero is added for single-digit years. |
+| yyyy | Year represented by a full four or five digits, depending on the calendar used. Thai Buddhist and Korean calendars have five-digit years. The "yyyy" pattern shows five digits for these two calendars, and four digits for all other supported calendars. Calendars that have single-digit or two-digit years, such as for the Japanese Emperor era, are represented differently. A single-digit year is represented with a leading zero, for example, "03". A two-digit year is represented with two digits, for example, "13". No additional leading zeros are displayed. |
+| yyyyy | Behaves identically to "yyyy". |
+
+#### Return value
+
+The date and time value as a **FILETIME** structure.
