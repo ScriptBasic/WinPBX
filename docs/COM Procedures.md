@@ -1,4 +1,4 @@
-# COM Procedures
+# Helper COM Procedures
 
 Assorted COM procedures.
 
