@@ -25,8 +25,8 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | ---------- | ----------- |
 | [ExecQuery](#ExecQuery) | Executes a query to retrieve objects. |
 | [Get](#Get) | Retrieves an object, that is either a class definition or an instance, based on the object path. |
-| GetErrorCodeText | Returns the text string description associated with the WMI error code. |
-| GetFacilityCodeText | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
+| [GetErrorCodeText](#GetErrorCodeText) | Returns the text string description associated with the WMI error code. |
+| [GetFacilityCodeText](#GetFacilityCodeText) | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
 | GetLastResult | Returns the last result code. |
 | GetNamedProperties | Retrieves a named collection of the properties for the current class or instance. |
 | InstancesOf | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
@@ -430,3 +430,36 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="GetErrorCodeText"></a>GetErrorCodeText
+
+Returns the text string description associated with the WMI error code.
+
+```
+FUNCTION GetErrorCodeText (BYVAL hRes AS HRESULT) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hRes* | The WMI error code. |
+
+#### Return value
+
+The localized text string description associated with the WMI error code.
+
+# <a name="GetFacilityCodeText"></a>GetFacilityCodeText
+
+Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC".
+
+```
+FUNCTION GetFacilityCodeText (BYVAL hRes AS HRESULT) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hRes* | The WMI error code. |
+
+#### Return value
+
+The name of the subsystem where the error occurred.
+
