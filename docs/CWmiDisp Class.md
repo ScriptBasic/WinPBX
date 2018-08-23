@@ -360,7 +360,7 @@ May return one of the error codes in the following list:
 
 | Error      | Value       | Description |
 | ---------- | ----------- | ----------- |
-| *wbemErrAccessDenied* | -2147749891 (&j80041003) | Current user does not have the permission to access the object. |
+| *wbemErrAccessDenied* | -2147749891 (&h80041003) | Current user does not have the permission to access the object. |
 | *wbemErrFailed* | -2147749889 (&h80041001) | Unspecified error. |
 | *wbemErrInvalidParameter* | -2147749896 (&h80041008) | A specified parameter is not valid. |
 | *wbemErrInvalidObjectPath* | -2147749946 (&h8004103A) | Specified path was not valid. |
