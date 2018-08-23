@@ -840,3 +840,20 @@ The following table defines the format types used to represent years:
 #### Return value
 
 The date and time value as a **FILETIME** structure.
+
+# <a name="WmiTimeToFileTime"></a>WmiTimeToFileTime
+
+Converts a date and time value in the CIM DATETIME format to the FILETIME format.
+
+```
+FUNCTION WmiTimeToFileTime (BYVAL pwszDateTime AS WSTRING PTR, BYVAL bIsLocal AS BOOLEAN = TRUE) AS FILETIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszDateTime* | The date and time value in the CIM DATETIME format. |
+| *bIsLocal* | Indicates whether the returned value is interpreted as local time. The UTC property then contains the local time converted to the correct Coordinated Universal Times (UTC) offset. If the value is FALSE, then the value is interpreted as UTC with a zero (0) offset. |
+
+#### Return value
+
+The date and time value as a **FILETIME** structure.
