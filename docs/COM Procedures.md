@@ -354,3 +354,16 @@ FUNCTION AfxUnadvise (BYVAL pUnk AS ANY PTR, BYREF riid AS IID, BYVAL dwCookie A
 
 S_OK (0) on success, or an HRESULT error code on failure.
 
+# <a name="AfxWstrAlloc"></a>AfxWstrAlloc
+
+Takes a null terminated wide string as input, and returns a pointer to a new wide string allocated with **CoTaskMemAlloc**.
+
+```
+FUNCTION AfxWstrAlloc () AS WSTRING PTR
+
+#### Remarks
+
+The new string must be freed with **CoTaskMemFree**.
+
+Useful when we need to pass a pointer to a null terminated wide string to a function or method that will release it. If we pass a WSTRING it will GPF. If the length of the input string is 0, **CoTaskMemAlloc** allocates a zero-length item and returns a valid pointer to that item. If there is insufficient memory available, **CoTaskMemAlloc** returns NULL.
+
