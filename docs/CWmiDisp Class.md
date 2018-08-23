@@ -27,7 +27,7 @@ Windows Management Instrumentation (WMI) is the infrastructure for management da
 | [Get](#Get) | Retrieves an object, that is either a class definition or an instance, based on the object path. |
 | [GetErrorCodeText](#GetErrorCodeText) | Returns the text string description associated with the WMI error code. |
 | [GetFacilityCodeText](#GetFacilityCodeText) | Returns the name of the subsystem where the error occurred, such as "Windows", "WBEM", "SSPI", or "RPC". |
-| GetLastResult | Returns the last result code. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
 | GetNamedProperties | Retrieves a named collection of the properties for the current class or instance. |
 | InstancesOf | Creates an enumerator that returns the instances of a specified class according to the user-specified selection criteria. |
 | NewEnum | Retrieves an enumerator for the collection. |
