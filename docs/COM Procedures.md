@@ -286,7 +286,7 @@ The function returns the new reference count. This value is intended to be used 
 
 #### Remarks
 
-This method should be called for every new copy of a pointer to an interface on an object. For example, if you are passing a copy of a pointer back from a method, you must call **AddRef** on that pointer. You must also call **AddRef** on a pointer before passing it as an in-out parameter to a method; the method will call **IUnknown_Release** before copying the out-value on top of it.
+This method should be called for every new copy of a pointer to an interface on an object. For example, if you are passing a copy of a pointer back from a method, you must call **AfxSafeAddRef** on that pointer. You must also call **AfxSafeAddRef** on a pointer before passing it as an in-out parameter to a method; the method will call **IUnknown_Release** before copying the out-value on top of it.
 
 Objects use a reference counting mechanism to ensure that the lifetime of the object includes the lifetime of references to it. You use AddRef to stabilize a copy of an interface pointer. It can also be called when the life of a cloned pointer must extend beyond the lifetime of the original pointer. The cloned pointer must be released by calling **AfxSafeRelease**.
 
