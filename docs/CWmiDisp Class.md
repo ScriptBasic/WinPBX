@@ -349,7 +349,7 @@ FUNCTION Get (BYREF cbsObjectPath AS CBSTR, BYVAL iFlags AS LONG = 0, _
 | Parameter  | Description |
 | ---------- | ----------- |
 | *cbsObjectPath* | String that contains the object path of the object to retrieve. If this value is empty, the empty object that is returned can become a new class. |
-| *iFlags* | Optional. Integer value that determines the behavior of the query. This parameter can accept the following value:<br>*wbemFlagUseAmendedQualifiers*: Causes WMI to return class amendment data with the base class definition. |
+| *iFlags* | Optional. Integer value that determines the behavior of the query. This parameter can accept the following value: *wbemFlagUseAmendedQualifiers*: Causes WMI to return class amendment data with the base class definition. |
 | *objWbemNamedValueSet* | Optional. Typically, this is undefined. Otherwise, this is an **SWbemNamedValueSet** object whose elements represent the context information that can be used by the provider that is servicing the request. A provider that supports or requires such information must document the recognized value names, data type of the value, allowed values, and semantics. |
 
 #### Return value
