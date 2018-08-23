@@ -191,7 +191,7 @@ Assorted Windows procedures.
 | AfxGetMACAddress | Retrieves the MAC address of a machine's Ethernet card. |
 | AfxGetUserName | Retrieves the name of the user associated with the current thread. |
 | AfxGetWinErrMsg | Retrieves the localized description of the specified Windows error code. |
-| AfxMsg | Displays an application modal message box. |
+| [AfxMsg](#AfxMsg) | Displays an application modal message box. |
 | AfxSetDlgMsgResult | Sets the return value of a message processed in the dialog box procedure. |
 | AfxSetEnviron | Sets the contents of the specified environment variable for the current process. |
 
@@ -285,6 +285,37 @@ Returns the version of CommCtl32.dll
 ```
 FUNCTION AfxComCtlVersion () AS LONG
 ```
+
+#### Return value
+
+The version of CommCtl32.dll multiplied by 100, e.g. 582 for version 5.82.
+
+# <a name="AfxMsg"></a>AfxMsg
+
+Displays an application modal message box. Helper proceudre to display feedback and errors.
+
+```
+FUNCTION AfxMsg (BYVAL pwszText AS WSTRING PTR, BYREF wszCaption AS WSTRING = "Message", _
+   BYVAL uType AS DWORD = 0) AS LONG
+FUNCTION AfxMsg (BYREF cws AS CWSTR, BYREF wszCaption AS WSTRING = "Message", _
+   BYVAL uType AS DWORD = 0) AS LONG
+FUNCTION AfxMsg (BYREF cbs AS CBSTR, BYREF wszCaption AS WSTRING = "Message", _
+   BYVAL uType AS DWORD = 0) AS LONG
+FUNCTION AfxMsg (BYREF cv AS CVAR, BYREF wszCaption AS WSTRING = "Message", _
+   BYVAL uType AS DWORD = 0) AS LONG
+FUNCTION AfxMsg (BYVAL nValue AS DOUBLE, BYREF wszCaption AS WSTRING = "Message", _
+   BYVAL uType AS DWORD = 0) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszText* | Pointer to a WSTRING. |
+| *cws* | A CWSTR variable. |
+| *cws* | A CBSTR variable. |
+| *cv* | A CVAR variable. |
+| *nValue* | A numeric variable. |
+| *wszCaption* | Optional. The message box caption. Default title is "Message". |
+| *uType* | Optional. For a list of available types, see the Microsoft documentation for the MessageBoxW function. The MB_APPLMODAL type is always added. |
 
 #### Return value
 
