@@ -25,12 +25,12 @@ Assorted COM procedures.
 | [AfxOleCreateFontDisp](#AfxOleCreateFontDisp) | Creates a standard IFontDisp object. |
 | [AfxGetVarType](#AfxGetVarType) | Returns the type of a variant. |
 | [AfxIsVarTypeFloat](#AfxIsVarTypeFloat) | Checks if a variant contains a float value. |
-| [AfxIsVariantArray](#AfxIsVariantArray) | Checks if a variant contains an array. |
-| [AfxIsVariantString](#AfxIsVariantString) | Checks if a variant contains an string. |
 | [AfxIsVarTypeSignedInteger](#AfxIsVarTypeSignedInteger) | Checks if a variant contains a signed integer. |
 | [AfxIsVarTypeUnsignedInteger](#AfxIsVarTypeUnsignedInteger) | Checks if a variant contains an unsigned integer. |
 | [AfxIsVarTypeInteger](#AfxIsVarTypeInteger) | Checks if a variant contains an integer. |
 | [AfxIsVarTypeNumber](#AfxIsVarTypeNumber) | Checks if a variant contains a number. |
+| [AfxIsVariantString](#AfxIsVariantString) | Checks if a variant contains an string. |
+| [AfxIsVariantArray](#AfxIsVariantArray) | Checks if a variant contains an array. |
 | [AfxVarToStr](#AfxVarToStr) | Extracts the contents of a VARIANT and returns them as a CWSTR. |
 | [AfxVariantGetElementCount](#AfxVariantGetElementCount) | Retrieves the element count of a variant structure. |
 | [AfxVariantToBuffer](#AfxVariantToBuffer) | Extracts the contents of a variant that contains an array of bytes. |
@@ -464,4 +464,68 @@ A pointer to the object indicates success. NULL indicates failure.
 DIM pFontDisp AS IFontDisp PTR = AfxOleCreateFontDisp("MS Sans Serif", 8, FW_NORMAL, , , , DEFAULT_CHARSET)
 DIM pFontDisp AS IFontDisp PTR = AfxOleCreateFontDisp("Courier New", 10, FW_BOLD, , , , DEFAULT_CHARSET)
 DIM pFontDisp AS IFontDisp PTR = AfxOleCreateFontDisp("Marlett", 8, FW_NORMAL, , , , SYMBOL_CHARSET)
+```
+
+# <a name="AfxGetVarType"></a>AfxGetVarType
+
+Return the variant type.
+
+```
+FUNCTION AfxGetVarType (BYVAL pvar AS VARIANT PTR) AS VARTYPE
+```
+
+# <a name="AfxIsVarTypeFloat"></a>AfxIsVarTypeFloat
+
+Returns true if the vartype is of type float (VT_R4 or VT_R8); false, otherwise.
+
+```
+FUNCTION AfxIsVarTypeFloat (BYVAL vt AS VARTYPE) AS BOOLEAN
+```
+
+# <a name="AfxIsVarTypeSignedInteger"></a>AfxIsVarTypeSignedInteger
+
+Returns true if the vartype is of type signed integer (VT_I1, VT_I2, VT_I4, VT_I8); false, otherwise.
+
+```
+FUNCTION AfxIsVarTypeSignedInteger (BYVAL vt AS VARTYPE) AS BOOLEAN
+```
+
+# <a name="AfxIsVarTypeUnsignedInteger"></a>AfxIsVarTypeUnsignedInteger
+
+Returns true if the vartype is of type unsigned integer (VT_UI1, VT_UI2, VT_UI4, VT_UI8); false, otherwise.
+
+```
+FUNCTION AfxIsVarTypeUnsignedInteger (BYVAL vt AS VARTYPE) AS BOOLEAN
+```
+
+# <a name="AfxIsVarTypeInteger"></a>AfxIsVarTypeInteger
+
+Returns true if the vartype is of type integer (signed or unsigned); false, otherwise.
+
+```
+FUNCTION AfxIsVarTypeInteger (BYVAL vt AS VARTYPE) AS BOOLEAN
+```
+
+# <a name="AfxIsVarTypeNumber"></a>AfxIsVarTypeNumber
+
+Returns true if the vartype is of type numeric (integer or float); false, otherwise.
+
+```
+FUNCTION AfxIsVarTypeNumber (BYVAL vt AS VARTYPE) AS BOOLEAN
+```
+
+# <a name="AfxIsVariantString"></a>AfxIsVariantString
+
+Returns true if the variant contains an string.
+
+```
+PRIVATE FUNCTION AfxIsVariantString (BYVAL pvar AS VARIANT PTR) AS BOOLEAN
+```
+
+# <a name="AfxIsVariantArray"></a>AfxIsVariantArray
+
+Returns true if the variant is of type VT_ARRAY; false, otherwise.
+
+```
+FUNCTION AfxIsVariantArray (BYVAL pvar AS VARIANT PTR) AS BOOLEAN
 ```
