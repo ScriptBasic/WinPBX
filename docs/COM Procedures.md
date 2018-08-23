@@ -109,3 +109,30 @@ FUNCTION AfxIsBstr (BYVAL pv AS ANY PTR) AS BOOLEAN
 Will return FALSE if it is a null pointer.
 If it is an OLE string it must have a descriptor; otherwise, don't.
 Gets the length in bytes looking at the descriptor and divides by 2 to get the number of unicode characters, that is the value returned by the FreeBASIC LEN operator. If the retrieved length if the same that the returned by LEN, then it must be an OLE string.
+
+# <a name="AfxNewCom"></a>AfxNewCom
+
+Creates a single uninitialized object of the class associated with a specified ProgID or CLSID.
+
+```
+FUNCTION AfxNewCom (BYREF wszProgID AS CONST WSTRING, BYREF wszLicKey AS WSTRING = "") AS ANY PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszProgID* | The ProgID or the CLSID of the object to create.<br>A ProgID such as "MSCAL.Calendar.7"<br>A CLSID such as "{8E27C92B-1264-101C-8A2F-040224009C02}" |
+| *wszLicKey* | Optional. The license key as a unicode string. |
+
+####Return value
+
+An interface pointer or NULL.
+
+####Usage examples
+
+```
+DIM pDic AS IDictionary PTR
+pDic = AfxNewCom("Scripting.Dictionary")
+-or-
+pDic = AfxNewCom(CLSID_Dictionary)
+```
+where CLSID_Dictionary has been declared as CONST CLSID_Dictionary = "{EE09B103-97E0-11CF-978F-00A02463E06F}"
