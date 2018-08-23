@@ -720,3 +720,27 @@ FUNCTION ObjectsCount () AS LONG
 #### Remarks
 
 If **ExecQuery** has been called without the *wbemFlagReturnWhenComplete* flag, this method will return 0 because the operation has not been completed.
+
+# <a name="ObjectSetPtr"></a>ObjectSetPtr
+
+Returns a pointer to the **ISWbemObjectSet** interface. Don't call **IUnknown_Release** on it.
+
+```
+FUNCTION ObjectSetPtr () AS ANY PTR
+```
+
+# <a name="PropertySetPtr"></a>PropertySetPtr
+
+Returns a pointer to the **ISWbemPropertySet** interface. Don't call **IUnknown_Release** on it.
+
+```
+FUNCTION PropertySetPtr () AS ANY PTR
+```
+
+# <a name="PropsCount"></a>PropsCount
+
+Returns the number of objects in the property set collection.
+
+```
+FUNCTION PropsCount () AS LONG
+```
