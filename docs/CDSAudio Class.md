@@ -27,7 +27,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [SetPositions](#SetPositions) | Sets the current position and the stop position. |
 | [SetVolume](#SetVolume) | Sets the volume (amplitude) of the audio signal. |
 | [Stop](#Stop) | Stops all the filters in the filter graph. |
-| WaitForCompletion | Waits for the filter graph to render all available data. |
+| [WaitForCompletion](#WaitForCompletion) | Waits for the filter graph to render all available data. |
 
 # <a name="Constructor"></a>Constructor
 
