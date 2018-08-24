@@ -146,9 +146,9 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxCreateDIBSection | Creates a DIB section. |
-| AfxDibLoadImage | Loads a DIB in memory and returns a pointer to it. |
-| AfxDibSaveImage | Saves a DIB to a file. |
+| [AfxCreateDIBSection](#AfxCreateDIBSection) | Creates a DIB section. |
+| [AfxDibLoadImage](#AfxDibLoadImage) | Loads a DIB in memory and returns a pointer to it. |
+| [AfxDibSaveImage](#AfxDibSaveImage) | Saves a DIB to a file. |
 
 # Metric conversions
 
@@ -990,4 +990,47 @@ FUNCTION AfxGetBitmapWidth (BYVAL hBitmap AS HBITMAP) AS LONG
 #### Return value
 
 The width of the bitmap on success or 0 on failure.
+
+# <a name="AfxCreateDIBSection"></a>AfxCreateDIBSection
+
+Creates a DIB section.
+
+```
+FUNCTION AfxCreateDIBSection (BYVAL hdc AS HDC, BYVAL nWidth AS DWORD, BYVAL nHeight AS DWORD, _
+   BYVAL bpp AS LONG = 0, BYVAL ppvBits AS ANY PTR PTR = NULL) AS HBITMAP
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hdc* | A handle to the device context. |
+| *nWidth* | The width of the bitmap, in pixels. |
+| *nHeight* | The height of the bitmap, in pixels. |
+| *bpp* | The number of bits-per-pixel. If this parameter is 0, the function will use the value returned by GetDeviceCaps(hDC, BITSPIXEL_). |
+| *ppvBits* | Out, optional. A pointer to a variable that receives a pointer to the location of the DIB bit values. Can be NULL. |
+
+#### Return value
+
+If the function succeeds, the return value is a handle to the newly created DIB, and ppvBits points to the bitmap bit values.
+
+If the function fails, the return value is NULL, and ppvBits is NULL. The function can fail if one or more of the input parameters is invalid.
+
+This function can return the following value: ERROR_INVALID_PARAMETER (One or more of the input parameters is invalid).
+
+#### Remarks
+
+You must delete the returned bitmap handle with **DeleteObject** when no longer needed to avoid memory leaks.
+
+You cannot paste a DIB section from one application into another application.
+
+**AfxCreateDIBSection** does not use the **BITMAPINFOHEADER** parameters *biXPelsPerMeter* or *biYPelsPerMeter* and will not provide resolution information in the **BITMAPINFO** structure.
+
+#### Usage example
+
+```
+DIM hdcWindow AS HDC, hbmp AS HBITMAP, pvBits AS ANY PTR
+hdcWindow = GetWindowDC(hwnd)   ' where hwnd is the handle of the wanted window or control
+hbmp = AfxCreateDIBSection(hdcWindow, 10, 10, @pvBits)
+ReleaseDC(hwnd, hdcWindow)
+```
+
 
