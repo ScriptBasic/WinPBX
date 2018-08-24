@@ -1959,9 +1959,9 @@ SUB AfxForceSetForegroundWindow (BYVAL hwnd AS HWND)
 
 #### Remarks
 
-Replacement for the SetForegroundWindow API function, that sometimes fails.
+Replacement for the **SetForegroundWindow** API function, that sometimes fails.
 
 #### Warning
 
-Don't use it. Apparently, AttachThreadInput can lead to a deadlock.
+Don't use it. Apparently, **AttachThreadInput** can lead to a deadlock.
 See: [The dangers of attaching input queues](https://blogs.msdn.microsoft.com/oldnewthing/20080801-00/?p=21393)
