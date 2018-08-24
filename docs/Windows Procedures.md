@@ -1189,3 +1189,20 @@ If the function succeeds, the return value is the handle to the data. If the fun
 #### Remarks
 
 If **AfxSetClipboardData** succeeds, the system owns the object identified by the *hData* parameter. The application may not write to or free the data once ownership has been transferred to the system.
+
+# <a name="AfxSetClipboardText"></a>AfxSetClipboardText
+
+Places a text string into the clipboard.
+
+```
+FUNCTION AfxSetClipboardText (BYREF wszText AS WSTRING) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszText* | The text to be placed in the clipboard. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle to the data. If the function fails, the return value is NULL.
+
