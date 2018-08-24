@@ -1818,7 +1818,7 @@ The previous extended window styles.
 
 # <a name="AfxRemoveWindowStyle"></a>AfxRemoveWindowStyle
 
-Removes an extended style from the specified window.
+Removes a style from the specified window.
 
 ```
 FUNCTION AfxRemoveWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DWORD
@@ -1831,4 +1831,4 @@ FUNCTION AfxRemoveWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DW
 
 #### Return value
 
-The previous extended window styles.
+The previous window styles.
