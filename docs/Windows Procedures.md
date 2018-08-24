@@ -1010,9 +1010,9 @@ FUNCTION AfxCreateDIBSection (BYVAL hdc AS HDC, BYVAL nWidth AS DWORD, BYVAL nHe
 
 #### Return value
 
-If the function succeeds, the return value is a handle to the newly created DIB, and ppvBits points to the bitmap bit values.
+If the function succeeds, the return value is a handle to the newly created DIB, and *ppvBits* points to the bitmap bit values.
 
-If the function fails, the return value is NULL, and ppvBits is NULL. The function can fail if one or more of the input parameters is invalid.
+If the function fails, the return value is NULL, and *ppvBits* is NULL. The function can fail if one or more of the input parameters is invalid.
 
 This function can return the following value: ERROR_INVALID_PARAMETER (One or more of the input parameters is invalid).
 
