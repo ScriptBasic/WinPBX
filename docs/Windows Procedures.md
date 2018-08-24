@@ -11,7 +11,7 @@ Assorted Windows procedures.
 | [AfxCenterWindow](#AfxCenterWindow) | Centers a window on the screen or over another window. |
 | [AfxForceSetForegroundWindow](#AfxForceSetForegroundWindow) | Brings the thread that created the specified window into the foreground and activates the window. |
 | [AfxGetTopEnabledWindow](#AfxGetTopEnabledWindow) | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
-| AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
+| [AfxGetTopLevelParent](#AfxGetTopLevelParent) | Retrieves the window's top-level parent window. |
 | AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
 | AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
 | AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
@@ -1977,3 +1977,15 @@ FUNCTION AfxGetTopEnabledWindow () AS HWND
 #### Return value
 
 Handle of the window at top of z-order or NULL.
+
+# <a name="AfxGetTopEnabledWindow"></a>AfxGetTopEnabledWindow
+
+Retrieves the window's top-level parent window.
+
+```
+FUNCTION AfxGetTopEnabledWindow () AS HWND
+```
+
+#### Return value
+
+Handle of the top-level parent window.
