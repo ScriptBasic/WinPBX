@@ -26,8 +26,8 @@ Assorted Windows procedures.
 | [AfxGetWorkAreaHeight](#AfxGetWorkAreaHeight) | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | [AfxGetWorkAreaRect](#AfxGetWorkAreaRect) | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | [AfxGetWorkAreaWidth](#AfxGetWorkAreaWidth) | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
-| AfxRedrawWindow | Redraws the specified window. |
+| [AfxRedrawNonClientArea](#AfxRedrawNonClientArea) | Redraws the non-client area of the specified window. |
+| [AfxRedrawWindow](#AfxRedrawWindow) | Redraws the specified window. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
 | AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
@@ -2193,4 +2193,26 @@ Retrieves the width of the work area on the primary display monitor expressed in
 
 ```
 FUNCTION AfxGetWorkAreaWidth () AS LONG
+```
+
+# <a name="AfxRedrawNonClientArea"></a>AfxRedrawNonClientArea
+
+Redraws the non-client area of the specified window.
+
+```
+FUNCTION AfxRedrawNonClientArea (BYVAL hwnd AS HWND) AS BOOLEAN
+```
+
+Return value
+
+If the function succeeds, the return value is TRUE.
+
+If the function fails, the return value is FALSE. To get extended error information, call **GetLastError**.
+
+# <a name="AfxRedrawWindow"></a>AfxRedrawWindow
+
+Redraws the specified window.
+
+```
+SUB AfxRedrawWindow (BYVAL hwnd AS HWND)
 ```
