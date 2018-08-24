@@ -19,7 +19,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [GetDuration](#GetDuration) | Gets the duration of the stream, in 100-nanosecond units. |
 | [GetEvent](#GetEvent) | Retrieves the next event notification from the event queue. |
 | [GetVolume](#GetVolume) | Gets the volume (amplitude) of the audio signal. |
-| Load | Builds a filter graph that renders the specified file. |
+| [Load](#Load) | Builds a filter graph that renders the specified file. |
 | Pause | Pauses all the filters in the filter graph. |
 | Run | Runs all the filters in the filter graph. |
 | SetBalance | Sets the balance for the audio signal. |
@@ -140,7 +140,7 @@ FUNCTION GetEvent(BYREF lEventCode AS LONG, BYREF lParam1 AS LONG_PTR, _
 | *msTimeout* | In. Time-out interval, in milliseconds. Use INFINITE to block until there is an event. |
 
 | Result code | Description |
-| ---------- | ----------- |
+| ----------- | ----------- |
 | S_OK | Success. |
 | E_ABORT | Timeout expired. |
 | E_POINTER | The **IMediaEventEx** interface pointer is null. |
@@ -157,3 +157,36 @@ FUNCTION GetVolume () AS LONG
 
 The volume (amplitude) of the audio signal. Specifies the volume, as a number from –10,000 to 0, inclusive. Full volume is 0, and –10,000 is silence. Multiply the desired decibel level by 100. For example, –10,000 = –100 dB.
 
+# <a name="Load"></a>Load
+
+Builds a filter graph that renders the specified file.
+
+```
+FUNCTION Load (BYREF wszFileName AS WSTRING) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFilename* | The file to load. |
+
+#### Return value
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | Success. |
+| VFW_S_AUDIO_NOT_RENDERED | Partial success; the audio was not rendered. |
+| VFW_S_DUPLICATE_NAME | Success; the Filter Graph Manager modified the filter name to avoid duplication. |
+| VFW_S_PARTIAL_RENDER | Some of the streams in this movie are in an unsupported format. |
+| VFW_S_VIDEO_NOT_RENDERED | Partial success; some of the streams in this movie are in an unsupported format. |
+| E_ABORT | Operation aborted. |
+| E_FAIL | Failure. |
+| E_INVALIDARG | Argument is invalid. |
+| E_OUTOFMEMORY | Insufficient memory. |
+| E_POINTER | NULL pointer argument.. |
+| VFW_E_CANNOT_CONNECT | No combination of intermediate filters could be found to make the connection.. |
+| VFW_E_CANNOT_LOAD_SOURCE_FILTER | The source filter for this file could not be loaded.. |
+| VFW_E_CANNOT_RENDER | No combination of filters could be found to render the stream.. |
+| VFW_E_INVALID_FILE_FORMAT | The file format is invalid.. |
+| VFW_E_NOT_FOUND | An object or name was not found.. |
+| VFW_E_UNKNOWN_FILE_TYPE | The media type of this file is not recognized.. |
+| VFW_E_UNSUPPORTED_STREAM | Cannot play back the file: the format is not supported.. |
