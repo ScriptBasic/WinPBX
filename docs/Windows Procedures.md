@@ -113,7 +113,7 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxCreateFont | Creates a logical font. |
+| [AfxCreateFont](#AfxCreateFont) | Creates a logical font. |
 | AfxGetFontHeight | Returns the logical height of a font given its point size. |
 | AfxGetFontPointSize | Returns the point size of a font given its logical height. |
 | AfxGetWindowFont | Retrieves the font with which the control is currently drawing its text. |
@@ -1205,4 +1205,41 @@ FUNCTION AfxSetClipboardText (BYREF wszText AS WSTRING) AS HANDLE
 #### Return value
 
 If the function succeeds, the return value is the handle to the data. If the function fails, the return value is NULL.
+
+# <a name="AfxCreateFont"></a>AfxCreateFont
+
+Creates a logical font.
+
+```
+FUNCTION AfxCreateFont (BYREF wszFaceName AS WSTRING, BYVAL lPointSize AS LONG, BYVAL DPI AS LONG = 96, _
+   BYVAL lWeight AS LONG = 0, BYVAL bItalic AS UBYTE = FALSE, BYVAL bUnderline AS UBYTE = FALSE, _
+   BYVAL bStrikeOut AS UBYTE = FALSE, BYVAL bCharSet AS UBYTE = DEFAULT_CHARSET) AS HFONT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFaceName* | The typeface name. |
+| *lPointSize* | The point size. |
+| *DPI* | Dots per inch to calculate scaling. Default value = 96 (no scaling). If you pass -1 and the application is DPI aware, the DPI value used by the operating system will be used. |
+| *lWeight* | Initial weight of the font. If the weight is below 550 (the average of FW_NORMAL, 400, and FW_BOLD, 700), then the Bold property is also initialized to FALSE. If the weight is above 550, the Bold property is set to TRUE.<br>The following values are defined for convenience: FW_DONTCARE (0), FW_THIN (100), FW_EXTRALIGHT (200), FW_ULTRALIGHT (200), FW_LIGHT (300), FW_NORMAL (400), FW_REGULAR (400), FW_MEDIUM (500), FW_SEMIBOLD (600), FW_DEMIBOLD (600), FW_BOLD (700), FW_EXTRABOLD (800), FW_ULTRABOLD (800), FW_HEAVY (900), FW_BLACK (900) |
+| *bItalic* | Italic flag. CTRUE or FALSE. |
+| *bUnderline* | Underline flag. CTRUE or FALSE. |
+| *bStrikeOut* | StrikeOut flag. CTRUE or FALSE |
+| *bCharSet* | Specifies the character set. The following values are predefined:<br>ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET.<br>Korean Windows: JOHAB_CHARSET.<br>Middle-Eastern Windows: HEBREW_CHARSET, ARABIC_CHARSET.<br>Thai Windows: THAI_CHARSET.<br>The OEM_CHARSET value specifies a character set that is operating-system dependent. DEFAULT_CHARSET is set to a value based on the current system locale. For example, when the system locale is English (United States), it is set as ANSI_CHARSET. Fonts with other character sets may exist in the operating system. If an application uses a font with an unknown character set, it should not attempt to translate or interpret strings that are rendered with that font. This parameter is important in the font mapping process. To ensure consistent results, specify a specific character set. If you specify a typeface name in the *wszFaceName* parameter, make sure that the *bCharSet* value matches the character set of the typeface specified in *wszFaceName*. |
+
+#### Return value
+
+The handle of the font or NULL on failure.
+
+#### Remarks
+
+The returned font must be destroyed with **DeleteObject** or the macro **DeleteFont** when no longer needed to prevent memory leaks.
+
+#### Usage examples
+
+```
+hFont = AfxCreateFont("MS Sans Serif", 8, , FW_NORMAL, , , , DEFAULT_CHARSET)
+hFont = AfxCreateFont("Courier New", 10, 96 , FW_BOLD, , , , DEFAULT_CHARSET)
+hFont = AfxCreateFont("Marlett", 8, -1, FW_NORMAL, , , , SYMBOL_CHARSET)
+```
 
