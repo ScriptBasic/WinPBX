@@ -90,8 +90,8 @@ Assorted Windows procedures.
 | [AfxGetDpi](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch. |
 | [AfxGetDpiX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
 | [AfxGetDpiY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
-| AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
-| AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
+| [AfxGetMonitorHorizontalScaling](#AfxGetMonitorHorizontalScaling) | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
+| [AfxGetMonitorVerticalScaling](#AfxGetMonitorVerticalScaling) | Returns the vertical scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
 | AfxGetMonitorLogicalWidth | Returns the logical width of the monitor that the window is currently displayed on. |
 | AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
@@ -1476,3 +1476,35 @@ Retrieves the number of pixels per logical inch along the screen height. In a sy
 FUNCTION AfxLogPixelsY () AS LONG
 FUNCTION AfxGetDpiY () AS LONG
 ```
+
+# <a name="AfxGetMonitorHorizontalScaling"></a>AfxGetMonitorHorizontalScaling
+
+Returns the horizontal scaling of the monitor that the window is currently displayed on.
+
+```
+FUNCTION AfxGetMonitorHorizontalScaling (BYVAL hwnd AS HWND = NULL) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. A handle to the window. If NULL, the desktop window handle will be used. |
+
+#### Remarks
+
+If the application to which the window belongs is not DPI aware, a computer using 192 DPI, will return an scaling ratio of 2.
+
+# <a name="AfxGetMonitorVerticalScaling"></a>AfxGetMonitorVerticalScaling
+
+Returns the vertical scaling of the monitor that the window is currently displayed on.
+
+```
+FUNCTION AfxGetMonitorVerticalScaling (BYVAL hwnd AS HWND = NULL) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. A handle to the window. If NULL, the desktop window handle will be used. |
+
+#### Remarks
+
+If the application to which the window belongs is not DPI aware, a computer using 192 DPI, will return an scaling ratio of 2.
