@@ -2251,3 +2251,23 @@ FUNCTION AfxSetWindowIcon (BYVAL hwnd AS HWND, BYVAL nIconType AS LONG, BYVAL hI
 #### Return value
 
 The return value is a handle to the previous large or small icon, depending on the value of *nIconType*. It is NULL if the window previously had no icon of the type indicated by *nIconType*.
+
+# <a name="AfxSetWindowLocation"></a>AfxSetWindowLocation
+
+Sets the location of the top left corner of the window, in pixels.The location is relative to the upper-left corner of the client area in the parent window.
+
+```
+FUNCTION AfxSetWindowLocation (BYVAL hwnd AS HWND, BYVAL nLeft AS LONG, BYVAL nTop AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nLeft* | The new position of the left side of the window, in client coordinates. |
+| *nTop* | The new position of the top side of the window, in client coordinates. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE.
+
+If the function fails, the return value is FALSE. To get extended error information, call **GetLastError**.
