@@ -29,8 +29,8 @@ Assorted Windows procedures.
 | [AfxRedrawNonClientArea](#AfxRedrawNonClientArea) | Redraws the non-client area of the specified window. |
 | [AfxRedrawWindow](#AfxRedrawWindow) | Redraws the specified window. |
 | [AfxSetWindowClientSize](#AfxSetWindowClientSize) | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
-| AfxSetWindowIcon | Associates a new large icon with a window. |
-| AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
+| [AfxSetWindowIcon](#AfxSetWindowIcon) | Associates a new large icon with a window. |
+| [AfxSetWindowLocation](#AfxSetWindowLocation) | Sets the location of the top left corner of the window, in pixels. |
 | AfxSetWindowSize | Sets the size of the specified window, in pixels. |
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
@@ -2233,3 +2233,21 @@ SUB AfxSetWindowClientSize (BYVAL hwnd AS HWND, BYVAL nWidth AS LONG, BYVAL nHei
 | *nHeight* | The new height of the client area of the window. |
 | *rxRatio* | Horizontal scaling ratio. |
 | *ryRatio* | Vertical scaling ratio. |
+
+# <a name="AfxSetWindowIcon"></a>AfxSetWindowIcon
+
+Associates a new large icon with a window. The system displays the large icon in the ALT+TAB dialog box, and the small icon in the window caption.
+
+```
+FUNCTION AfxSetWindowIcon (BYVAL hwnd AS HWND, BYVAL nIconType AS LONG, BYVAL hIcon AS HICON) AS HICON
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nIconType* | The type of icon to be set. This parameter can be one of the following values.<br>**ICON_BIG** : Set the large icon for the window.<br>**ICON_SMALL** : Set the small icon for the window. |
+| *hIcon* | A handle to the new large icon. If this parameter is NULL, the icon is removed. |
+
+#### Return value
+
+The return value is a handle to the previous large or small icon, depending on the value of *nIconType*. It is NULL if the window previously had no icon of the type indicated by *nIconType*.
