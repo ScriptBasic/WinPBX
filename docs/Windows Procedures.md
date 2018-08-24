@@ -28,7 +28,7 @@ Assorted Windows procedures.
 | [AfxGetWorkAreaWidth](#AfxGetWorkAreaWidth) | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | [AfxRedrawNonClientArea](#AfxRedrawNonClientArea) | Redraws the non-client area of the specified window. |
 | [AfxRedrawWindow](#AfxRedrawWindow) | Redraws the specified window. |
-| AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
+| [AfxSetWindowClientSize](#AfxSetWindowClientSize) | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | AfxSetWindowIcon | Associates a new large icon with a window. |
 | AfxSetWindowLocation | Sets the location of the top left corner of the window, in pixels. |
 | AfxSetWindowSize | Sets the size of the specified window, in pixels. |
@@ -2216,3 +2216,20 @@ Redraws the specified window.
 ```
 SUB AfxRedrawWindow (BYVAL hwnd AS HWND)
 ```
+
+# <a name="AfxSetWindowClientSize"></a>AfxSetWindowClientSize
+
+Adjusts the bounding rectangle of a window based on the desired size of the client area.
+
+```
+SUB AfxSetWindowClientSize (BYVAL hwnd AS HWND, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG, _
+   BYVAL rxRatio AS SINGLE = 1, BYVAL ryRatio AS SINGLE = 1)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nWidth* | The new width of the client area of the window. |
+| *nHeight* | The new height of the client area of the window. |
+| *rxRatio* | Horizontal scaling ratio. |
+| *ryRatio* | Vertical scaling ratio. |
