@@ -20,8 +20,8 @@ Assorted Windows procedures.
 | [AfxGetWindowHeight](#AfxGetWindowHeight) | Returns the height of a window, in pixels. |
 | [AfxGetWindowLocation](#AfxGetWindowLocation) | Returns the location of the top left corner of the window, in pixels. |
 | [AfxGetWindowRect](#AfxGetWindowRect) | Retrieves the dimensions of the bounding rectangle of the specified window. |
-| AfxGetWindowText | Gets the text of a window. |
-| AfxGetWindowTextLength | Gets the length of the text of a window. |
+| [AfxGetWindowText](#AfxGetWindowText) | Gets the text of a window. |
+| [AfxGetWindowTextLength](#AfxGetWindowTextLength) | Gets the length of the text of a window. |
 | [AfxGetWindowWidth](#AfxGetWindowWidth) | Returns the width of a window, in pixels. |
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
@@ -2115,3 +2115,55 @@ FUNCTION AfxGetWindowRect (BYVAL hwnd AS HWND) AS RECT
 #### Return value
 
 A RECT structure with the retrieved dimensions.
+
+# <a name="AfxGetWindowText"></a>AfxGetWindowText
+
+Gets the text of a window. This function can also be used to retrieve the text of buttons, edit and static controls.
+
+```
+FUNCTION AfxGetWindowText (BYVAL hwnd AS HWND) AS CWSTR
+```
+
+#### Return value
+
+The text of the window.
+
+For an edit control, the text returned is the content of the edit control. For a combo box, the text is the content of the edit control (or static-text) portion of the combo box. For a button, the text is the button name. For other windows, the text is the window title. To retrieve the text of an item in a list box, an application can use the **ListBox_GetText** function. 
+
+Rich Edit: If the text to be copied exceeds 64K, use either the EM_STREAMOUT or EM_GETSELTEXT message.
+
+#### Remarks
+
+This function uses the WM_GETTEXT message because **GetWindowText** cannot retrieve the text of a window in another application.
+
+#### Usage examples
+
+DIM cwsText AS CWSTR = AfxGetWindowText(hwnd)
+MessageBoxW 0, cwsText, "", MB_OK
+
+# <a name="AfxGetWindowTextLength"></a>AfxGetWindowTextLength
+
+Retrieves the length of the text of a window. This function can also be used to retrieve the length of the text of buttons, edit and static controls.
+
+```
+FUNCTION AfxGetWindowTextLength (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Return value
+
+If the function succeeds, the return value is the length of the text in characters, not including the terminating null character.
+
+If the function fails, the return value is zero.
+
+For an edit control, the text returned is the content of the edit control. For a combo box, the text is the content of the edit control (or static-text) portion of the combo box. For a button, the text is the button name. For other windows, the text is the window title. To retrieve the text of an item in a list box, an application can use the **ListBox_GetTextLength** function. 
+
+**AfxGetWindowTextLength** sends a WM_GETTEXTLENGTH message. When the WM_GETTEXTLENGTH message is sent, the **DefWindowProc** function returns the length, in characters, of the text. Under certain conditions, the **DefWindowProc** function returns a value that is larger than the actual length of the text. This occurs with certain mixtures of ANSI and Unicode, and is due to the system allowing for the possible existence of double-byte character set (DBCS) characters within the text. The return value, however, will always be at least as large as the actual length of the text; you can thus always use it to guide buffer allocation. This behavior can occur when an application uses both ANSI functions and common dialogs, which use Unicode.
+
+To obtain the exact length of the text, use the WM_GETTEXT, LB_GETTEXT, or CB_GETLBTEXT messages, or the **GetWindowText** function.
+
+Sending a WM_GETTEXTLENGTH message to a non-text static control, such as a static bitmap or static icon control, does not return a string value. Instead, it returns zero.
+
