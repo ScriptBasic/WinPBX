@@ -17,12 +17,12 @@ Assorted Windows procedures.
 | [AfxGetWindowClientHeight](#AfxGetWindowClientHeight) | Returns the height of the client area of window, in pixels. |
 | [AfxGetWindowClientRect](#AfxGetWindowClientRect) | Retrieves the coordinates of a window's client area. |
 | [AfxGetWindowClientWidth](#AfxGetWindowClientWidth) | Returns the width of the client area of a window, in pixels. |
-| AfxGetWindowHeight | Returns the height of a window, in pixels. |
-| AfxGetWindowLocation | Returns the location of the top left corner of the window, in pixels. |
+| [AfxGetWindowHeight](#AfxGetWindowHeight) | Returns the height of a window, in pixels. |
+| [AfxGetWindowLocation](#AfxGetWindowLocation) | Returns the location of the top left corner of the window, in pixels. |
 | AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
 | AfxGetWindowText | Gets the text of a window. |
 | AfxGetWindowTextLength | Gets the length of the text of a window. |
-| AfxGetWindowWidth | Returns the width of a window, in pixels. |
+| [AfxGetWindowWidth](#AfxGetWindowWidth) | Returns the width of a window, in pixels. |
 | AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
 | AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
@@ -2065,3 +2065,41 @@ FUNCTION AfxGetWindowClientWidth (BYVAL hwnd AS HWND) AS LONG
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle to the window. |
+
+# <a name="AfxGetWindowHeight"></a>AfxGetWindowHeight
+
+Returns the height of a window, in pixels.
+
+```
+FUNCTION AfxGetWindowHeight (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+# <a name="AfxGetWindowWidth"></a>AfxGetWindowWidth
+
+Returns the width of a window, in pixels.
+
+```
+FUNCTION AfxGetWindowWidth (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+# <a name="AfxGetWindowLocation"></a>AfxGetWindowLocation
+
+Returns the location of the top left corner of the window, in pixels. The location is relative to the upper-left corner of the client area in the parent window.
+
+```
+SUB AfxGetWindowLocation (BYVAL hwnd AS HWND, BYREF nLeft AS LONG, BYREF nTop AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nLeft* | Out. The horizontal location. |
+| *nTop* | Out. The vertical location. |
