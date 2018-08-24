@@ -25,7 +25,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [SetBalance](#SetBalance) | Sets the balance for the audio signal. |
 | [SetNotifyWindow](#SetNotifyWindow) | Registers a window to process event notifications. |
 | [SetPositions](#SetPositions) | Sets the current position and the stop position. |
-| SetVolume | Sets the volume (amplitude) of the audio signal. |
+| [SetVolume](#SetVolume) | Sets the volume (amplitude) of the audio signal. |
 | Stop | Stops all the filters in the filter graph. |
 | WaitForCompletion | Waits for the filter graph to render all available data. |
 
@@ -287,3 +287,23 @@ FUNCTION SetPositions (BYREF pCurrent AS LONGLONG, BYREF pStop AS LONGLONG, _
 | E_INVALIDARG | Invalid argument. |
 | E_NOTIMPL | Method is not supported. |
 | E_POINTER | NULL pointer argument. |
+
+# <a name="SetVolume"></a>SetVolume
+
+Sets the volume (amplitude) of the audio signal.
+
+```
+FUNCTION SetVolume (BYVAL nVol AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nVol* | The volume (amplitude) of the audio signal. Specifies the volume, as a number from –10,000 to 0, inclusive. Full volume is 0, and –10,000 is silence. Multiply the desired decibel level by 100. For example, –10,000 = –100 dB. |
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | Success. |
+| E_FAIL | The underlying audio device returned an error. |
+| E_INVALIDARG | The value of *nVol* is invalid. |
+| E_NOTIMPL | The filter graph does not contain an audio renderer filter. (Possibly the source does not contain an audio stream.) |
+| E_POINTER | The **IBasicAudio** interface pointer is null. |
