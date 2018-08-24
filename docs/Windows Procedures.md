@@ -32,7 +32,7 @@ Assorted Windows procedures.
 | [AfxSetWindowIcon](#AfxSetWindowIcon) | Associates a new large icon with a window. |
 | [AfxSetWindowLocation](#AfxSetWindowLocation) | Sets the location of the top left corner of the window, in pixels. |
 | [AfxSetWindowSize](#AfxSetWindowSize) | Sets the size of the specified window, in pixels. |
-| AfxSetWindowText | Sets the text of a window. |
+| [AfxSetWindowText](#AfxSetWindowText) | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
 
 # Messages
@@ -2286,3 +2286,21 @@ FUNCTION AfxSetWindowSize (BYVAL hwnd AS HWND, BYVAL nWidth AS LONG, BYVAL nHeig
 | *nWidth* | The new width of the window. |
 | *nHeight* | The new height of the window. |
 
+# <a name="AfxSetWindowText"></a>AfxSetWindowText
+
+Sets the text of a window. This function can also be used to set the text of buttons, edit and static controls.
+
+```
+FUNCTION AfxSetWindowText (BYVAL hwnd AS HWND, BYVAL pwszText AS WSTRING PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *pwszText* | The text to set. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE.
+
+If the function fails, the return value is FALSE.
