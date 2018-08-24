@@ -10,7 +10,7 @@ Assorted Windows procedures.
 | ---------- | ----------- |
 | [AfxCenterWindow](#AfxCenterWindow) | Centers a window on the screen or over another window. |
 | [AfxForceSetForegroundWindow](#AfxForceSetForegroundWindow) | Brings the thread that created the specified window into the foreground and activates the window. |
-| AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
+| [AfxGetTopEnabledWindow](#AfxGetTopEnabledWindow) | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
 | AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
 | AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
@@ -1965,3 +1965,15 @@ Replacement for the **SetForegroundWindow** API function, that sometimes fails.
 
 Don't use it. Apparently, **AttachThreadInput** can lead to a deadlock.
 See: [The dangers of attaching input queues](https://blogs.msdn.microsoft.com/oldnewthing/20080801-00/?p=21393)
+
+# <a name="AfxGetTopEnabledWindow"></a>AfxGetTopEnabledWindow
+
+Retrieves the handle of the enabled and visible window at the top of the z-order in an application.
+
+```
+FUNCTION AfxGetTopEnabledWindow () AS HWND
+```
+
+#### Return value
+
+Handle of the window at top of z-order or NULL.
