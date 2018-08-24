@@ -1508,3 +1508,37 @@ FUNCTION AfxGetMonitorVerticalScaling (BYVAL hwnd AS HWND = NULL) AS DWORD
 #### Remarks
 
 If the application to which the window belongs is not DPI aware, a computer using 192 DPI, will return an scaling ratio of 2.
+
+# <a name="AfxGetMonitorLogicalHeight"></a>AfxGetMonitorLogicalHeight
+
+Returns the logical height of the monitor that the window is currently displayed on.
+
+```
+FUNCTION AfxGetMonitorLogicalHeight (BYVAL hwnd AS HWND = NULL) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. A handle to the window. If NULL, the desktop window handle will be used. |
+
+#### Remarks
+
+If the application to which the window belongs is not DPI aware, a monitor with an height resolution of 1080 pixels in a computer using 192 DPI, will return 540 pixels.
+
+# <a name="AfxGetMonitorLogicalWidth"></a>AfxGetMonitorLogicalWidth
+
+Returns the logical width of the monitor that the window is currently displayed on.
+
+```
+FUNCTION AfxGetMonitorLogicalWidth (BYVAL hwnd AS HWND = NULL) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. A handle to the window. If NULL, the desktop window handle will be used. |
+
+#### Remarks
+
+If the application to which the window belongs is not DPI aware, a monitor with a width resolution of 1920 pixels in a computer using 192 DPI, will return 960 pixels.
+
+
