@@ -60,3 +60,95 @@ DIM pAudio AS CCDAudio
 pAudio.Open
 pAudio.Play
 ```
+
+# <a name="Backward"></a>Backward
+
+Moves to the previous track.
+
+```
+FUNCTION Backward () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="Close"></a>Close
+
+Closes the device or file and any associated resources. MCI unloads a device when all instances of the device or all files are closed. 
+
+```
+FUNCTION Close () AS MCIERROR
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="CloseDoor"></a>CloseDoor
+
+Closes the CDRom door.
+
+```
+FUNCTION CloseDoor () AS MCIERROR
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="Forward"></a>Forward
+
+Moves to the next track.
+
+```
+FUNCTION Forward () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="GetAllTracksLength"></a>GetAllTracksLength
+
+Returns the total length in seconds of all the tracks.
+
+```
+FUNCTION GetAllTracksLength () AS LONG
+```
+
+#### Return value
+
+The total length in seconds of all the tracks as a string.
+
+# <a name="GetAllTracksLengthString"></a>GetAllTracksLengthString
+
+Returns the total length of all the tracks.
+
+```
+FUNCTION GetAllTracksLength () AS LONG
+```
+
+# <a name="GetCurrentPos"></a>GetCurrentPos
+
+Returns the current track position in seconds.
+
+```
+FUNCTION GetCurrentPos () AS LONG
+```
+
+# <a name="GetCurrentPosString"></a>GetCurrentPosString
+
+Returns the current track position as a string.
+
+```
+FUNCTION GetCurrentPosString () AS CWSTR
+```
+
+# <a name="GetCurrentTrack"></a>GetCurrentTrack
+
+Returns the current track number.
+
+```
+FUNCTION GetCurrentTrack () AS LONG
+```
