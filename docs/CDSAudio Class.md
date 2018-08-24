@@ -83,7 +83,7 @@ The messages will be processed in the window callback procedure:
          WEND
 ```
 
-Once loaded, you can start playing the audio file calling the Run method:
+Once loaded, you can start playing the audio file calling the **Run** method:
 
 ```
 pCDSAudio.Run
