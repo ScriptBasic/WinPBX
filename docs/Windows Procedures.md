@@ -1575,7 +1575,7 @@ FUNCTION AfxIsResolutionAtLeast (BYVAL cxMin AS LONG, BYVAL cyMin AS LONG) AS BO
 
 TRUE or FALSE.
 
-# <a name="SetProcessDPIAware"></a>SetProcessDPIAware
+# <a name=AfxSetProcessDPIAware"></a>AfxSetProcessDPIAware
 
 Sets the current process as dots per inch (dpi) aware.
 
