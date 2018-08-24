@@ -686,7 +686,7 @@ The retrieved name or an empty string.
 
 # <a name="AfxGetDefaultMailClientPath"></a>AfxGetDefaultMailClientPath
 
-Retrieves the àth of the default client mail application.
+Retrieves the path of the default client mail application.
 
 ```
 FUNCTION AfxGetDefaultMailClientPath () AS CWSTR
