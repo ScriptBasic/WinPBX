@@ -9,7 +9,7 @@ Assorted Windows procedures.
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxCenterWindow](#AfxCenterWindow) | Centers a window on the screen or over another window. |
-| AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
+| [AfxForceSetForegroundWindow](#AfxForceSetForegroundWindow) | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
 | AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
@@ -1944,3 +1944,24 @@ SUB AfxCenterWindow (BYVAL hwnd AS HWND = NULL, BYVAL hwndParent AS HWND = NULL)
 | ---------- | ----------- |
 | *hwnd* | Optional. Handle to the window. |
 | *hwndParent* | Optional. Handle to the parent window. |
+
+# <a name="AfxForceSetForegroundWindow"></a>AfxForceSetForegroundWindow
+
+Brings the thread that created the specified window into the foreground and activates the window. Keyboard input is directed to the window, and various visual cues are changed for the user. The system assigns a slightly higher priority to the thread that created the foreground window than it does to other threads.
+
+```
+SUB AfxForceSetForegroundWindow (BYVAL hwnd AS HWND)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Remarks
+
+Replacement for the SetForegroundWindow API function, that sometimes fails.
+
+#### Warning
+
+Don't use it. Apparently, AttachThreadInput can lead to a deadlock.
+See: [The dangers of attaching input queues](https://blogs.msdn.microsoft.com/oldnewthing/20080801-00/?p=21393)
