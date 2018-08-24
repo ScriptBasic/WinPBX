@@ -1978,14 +1978,18 @@ FUNCTION AfxGetTopEnabledWindow () AS HWND
 
 Handle of the window at top of z-order or NULL.
 
-# <a name="AfxGetTopEnabledWindow"></a>AfxGetTopEnabledWindow
+# <a name="AfxGetTopLevelWindow"></a>AfxGetTopLevelWindow
 
-Retrieves the window's top-level parent window.
+Retrieves the window's top-level parent or owner window.
 
 ```
-FUNCTION AfxGetTopEnabledWindow () AS HWND
+FUNCTION AfxGetTopLevelWindow (BYVAL hwnd AS HWND) AS HWND
 ```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
 
 #### Return value
 
-Handle of the top-level parent window.
+Handle of the top-level parent or owner window.
