@@ -174,12 +174,12 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxGetBrowserHandle | Retrieves the handle of the top level window of the web browser. |
-| AfxGetDefaultBrowserName | Retrieves the name of the default browser. |
-| AfxGetDefaultBrowserPath | Retrieves the path of the default browser. |
-| AfxGetDefaultMailClientName | Retrieves the name of the default client mail application. |
-| AfxGetDefaultMailClientPath | Retrieves the path of the default mail client application. |
-| AfxGetInternetExplorerVersion | Returns the Internet Explorer version installed. |
+| [AfxGetBrowserHandle](#AfxGetBrowserHandle) | Retrieves the handle of the top level window of the web browser. |
+| [AfxGetDefaultBrowserName](#AfxGetDefaultBrowserName) | Retrieves the name of the default browser. |
+| [AfxGetDefaultBrowserPath](#AfxGetDefaultBrowserPath) | Retrieves the path of the default browser. |
+| [AfxGetDefaultMailClientName](#AfxGetDefaultMailClientName) | Retrieves the name of the default client mail application. |
+| [AfxGetDefaultMailClientPath](#AfxGetDefaultMailClientPath) | Retrieves the path of the default mail client application. |
+| [AfxGetInternetExplorerVersion](#AfxGetInternetExplorerVersion) | Returns the Internet Explorer version installed. |
 
 # Miscellaneous procedures
 
@@ -616,3 +616,94 @@ FUNCTION AfxShowSysInfo (BYVAL hwnd AS HWND) AS BOOLEAN
 #### Return value
 
 If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
+
+# <a name="AfxGetBrowserHandle"></a>AfxGetBrowserHandle
+
+Retrieves the handle of the top level window of the web browser.
+
+```
+FUNCTION AfxGetBrowserHandle (BYVAL pwszClassName AS WSTRING PTR) AS HWND
+FUNCTION AfxGetInternetExplorerHandle () AS HWND
+FUNCTION AfxGetFireFoxHandle () AS HWND
+FUNCTION AfxGetGoogleChromeHandle () AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszClassName* | Class name of the browser. |
+
+#### Return value
+
+The handle of the top level window of the browser. If there is not any instance of the browser running, it will return NULL.
+
+#### Examples
+
+```
+DIM hwndBrowser AS HWND = AfxGetBrowserHandle("IEFrame")              ' // Internet Explorer
+DIM hwndBrowser AS HWND = AfxGetBrowserHandle("MozillaWindowClass")   ' // Firefox
+DIM hwndBrowser AS HWND = AfxGetBrowserHandle("Chrome_WidgetWin_1")   ' // Chrome
+```
+
+#### Remarks
+
+**AfxGetInternetExplorerHandle**, **AfxGetFireFoxHandle** and **AfxGetGoogleChromeHandle** are wrappers functions that call AfxGetBrowserHandle passing the appropriate class name ("IEFrame", "MozillaWindowClass" and "Chrome_WidgetWin_1").
+
+# <a name="AfxGetDefaultBrowserName"></a>AfxGetDefaultBrowserName
+
+Retrieves the name of the default browser.
+
+```
+FUNCTION AfxGetDefaultBrowserName () AS CWSTR
+```
+
+#### Return value
+
+The retrieved name or an empty string.
+
+# <a name="AfxGetDefaultBrowserPath"></a>AfxGetDefaultBrowserPath
+
+Retrieves the path of the default browser.
+
+```
+FUNCTION AfxGetDefaultBrowserPath () AS CWSTR
+```
+
+#### Return value
+
+The retrieved path or an empty string.
+
+# <a name="AfxGetDefaultMailClientName"></a>AfxGetDefaultMailClientName
+
+Retrieves the name of the default client mail application.
+
+```
+FUNCTION AfxGetDefaultMailClientName () AS CWSTR
+```
+
+#### Return value
+
+The retrieved name or an empty string.
+
+# <a name="AfxGetDefaultMailClientPath"></a>AfxGetDefaultMailClientPath
+
+Retrieves the àth of the default client mail application.
+
+```
+FUNCTION AfxGetDefaultMailClientPath () AS CWSTR
+```
+
+#### Return value
+
+The retrieved path or an empty string.
+
+# <a name="AfxGetInternetExplorerVersion"></a>AfxGetInternetExplorerVersion
+
+Returns the Internet Explorer version installed.
+
+```
+FUNCTION AfxGetInternetExplorerVersion () AS SINGLE
+```
+
+#### Return value
+
+The Internet Explorer version (major.minor).
