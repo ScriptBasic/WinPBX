@@ -56,14 +56,14 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxAddWindowExStyle | Adds a new extended style to the specified window. |
-| AfxAddWindowStyle | Adds a new style to the specified window. |
-| AfxGetWindowExStyle | Retrieves the extended window styles. |
-| AfxGetWindowStyle | Retrieves the window styles. |
-| AfxRemoveWindowExStyle | Removes an extended style from the specified window. |
-| AfxRemoveWindowStyle | Removes a style from the specified window. |
-| AfxSetWindowExStyle | Sets the extended style(s) of the specified window. |
-| AfxSetWindowStyle | Sets the style(s) of the specified window. |
+| [AfxAddWindowExStyle](#AfxAddWindowExStyle) | Adds a new extended style to the specified window. |
+| [AfxAddWindowStyle](#AfxAddWindowStyle) | Adds a new style to the specified window. |
+| [AfxGetWindowExStyle](#AfxGetWindowExStyle) | Retrieves the extended window styles. |
+| [AfxGetWindowStyle](#AfxGetWindowStyle) | Retrieves the window styles. |
+| [AfxRemoveWindowExStyle](#AfxRemoveWindowExStyle) | Removes an extended style from the specified window. |
+| [AfxRemoveWindowStyle](#AfxRemoveWindowStyle) | Removes a style from the specified window. |
+| [AfxSetWindowExStyle](#AfxSetWindowExStyle) | Sets the extended style(s) of the specified window. |
+| [AfxSetWindowStyle](#AfxSetWindowStyle) | Sets the style(s) of the specified window. |
 
 # Display
 
@@ -1727,3 +1727,108 @@ Returns TRUE if the OS uses DPI scaling; FALSE otherwise.
 FUNCTION AfxUseDpiScaling () AS BOOLEAN
 ```
 
+# <a name="AfxAddWindowExStyle"></a>AfxAddWindowExStyle
+
+Adds a new extended style to the specified window.
+
+```
+FUNCTION AfxAddWindowExStyle (BYVAL hwnd AS HWND, BYVAL dwExStyle AS DWORD) AS DWORD
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwExStyle* | Extended style to add. |
+
+#### Return value
+
+The previous window extended styles.
+
+#### Usage example
+
+```
+AfxAddWindowExStyle(hwnd, WS_EX_COMPOSITED)
+```
+
+#### Remarks
+
+If the window has a class style of CS_CLASSDC or CS_OWNDC, do not set the extended window styles WS_EX_COMPOSITED or WS_EX_LAYERED.
+
+# <a name="AfxAddWindowStyle"></a>AfxAddWindowStyle
+
+Adds a new style to the specified window.
+
+```
+FUNCTION AfxAddWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DWORD
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwStyle* | Style to add. |
+
+#### Return value
+
+The previous window styles.
+
+#### Usage example
+
+```
+AfxAddWindowStyle(hwnd, WS_HSCROLL)
+```
+
+# <a name="AfxGetWindowExStyle"></a>AfxGetWindowExStyle
+
+Retrieves the extended window styles.
+
+```
+FUNCTION AfxGetWindowExStyle (BYVAL hwnd AS HWND) AS DWORD
+
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+# <a name="AfxGetWindowStyle"></a>AfxGetWindowStyle
+
+Retrieves the window styles.
+
+```
+FUNCTION AfxGetWindowStyle (BYVAL hwnd AS HWND) AS DWORD
+
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+# <a name="AfxRemoveWindowExStyle"></a>AfxRemoveWindowExStyle
+
+Removes an extended style from the specified window.
+
+```
+FUNCTION AfxRemoveWindowExStyle (BYVAL hwnd AS HWND, BYVAL dwExStyle AS DWORD) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwExStyle* | The extended style to remove. |
+
+#### Return value
+
+The previous extended window styles.
+
+# <a name="AfxRemoveWindowStyle"></a>AfxRemoveWindowStyle
+
+Removes an extended style from the specified window.
+
+```
+FUNCTION AfxRemoveWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwStyle* | The style to remove. |
+
+#### Return value
+
+The previous extended window styles.
