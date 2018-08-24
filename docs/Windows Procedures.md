@@ -97,7 +97,7 @@ Assorted Windows procedures.
 | [AfxIsDPIResolutionAtLeast](#AfxIsDPIResolutionAtLeast) | Determines if screen resolution meets minimum requirements in relative pixels. |
 | [AfxIsProcessDPIAware](#AfxIsProcessDPIAware) | Determines whether the current process is dots per inch (dpi) aware. |
 | [AfxIsResolutionAtLeast](#AfxIsResolutionAtLeast) | Determines if screen resolution meets minimum requirements. |
-| AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
+| [AfxLoadIconMetric](#AfxLoadIconMetric) Loads a specified icon resource with a client-specified system metric. |
 | [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
 | [AfxLogPixelsY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
@@ -1616,3 +1616,35 @@ FUNCTION AfxIsProcessDPIAware () AS BOOLEAN
 #### Return value
 
 TRUE if the process is dpi aware; otherwise, FALSE.
+
+# <a name="AfxLoadIconMetric"></a>AfxLoadIconMetric
+
+Loads a specified icon resource with a client-specified system metric.
+
+```
+FUNCTION AfxLoadIconMetric (BYVAL hinst AS HINSTANCE, BYVAL pwszName AS WSTRING PTR, _
+   BYVAL lims AS LONG, BYVAL phico AS HICON PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hinst* | A handle to the module of either a DLL or executable (.exe) file that contains the icon to be loaded. For more information, see **GetModuleHandle**. To load a predefined icon or a standalone icon file, set this parameter to NULL. |
+| *pwszName* | A pointer to a null-terminated, Unicode buffer that contains location information about the icon to load. It is interpreted as follows: If *hinst* is NULL, *pwszName* can specify one of two things.<br>1) The identifier of a predefined icon to load. These identifiers are recognized: IDI_APPLICATION, IDI_INFORMATION, IDI_ERROR, IDI_WARNING, IDI_SHIELD, IDI_QUESTION.<br>To pass these constants to the **AfxLoadIconMetric** function, use the MAKEINTRESOURCE macro. For example, to load the IDI_ERROR icon, pass MAKEINTRESOURCE(IDI_ERROR) as the *pwszName* parameter and NULL as the *hinst* parameter.<br>2) The name of a standalone icon (.ico) file.<br>If hinst is non-null, *pwszName* can specify one of two things.<br>1) The name of the icon resource, if the icon resource is to be loaded by name from the module.<br>2) The icon ordinal, if the icon resource is to be loaded by ordinal from the module. This ordinal must be packaged by using the MAKEINTRESOURCE macro. |
+| *lims* | The desired metric. One of the following values:<>**LIM_SMALL** : Corresponds to SM_CXSMICON, the recommended pixel width of a small icon.<br>**LIM_LARGE** : Corresponds to SM_CXICON, the default pixel width of an icon. |
+| *phico* | When this function returns, contains a pointer to the handle of the loaded icon. |
+
+#### Return value
+
+Returns S_OK if successful, otherwise an error, including the following value: *E_INVALIDARG* : The contents of the buffer pointed to by pszName do not fit any of the expected interpretations.
+
+#### Remarks
+
+**LoadIconMetric** is similar to **LoadIcon**, but with the capability to specify the icon metric. It is used in place of LoadIcon when the calling application wants to ensure a high quality icon. This is particularly useful in high dots per inch (dpi) situations.
+
+Icons are extracted or created as follows.
+
+1) If an exact size match is found in the resource, that icon is used.<br>
+2) If an exact size match cannot be found and a larger icon is available, a new icon is created by scaling the larger version down to the desired size.<br>
+3) If an exact size match cannot be found and no larger icon is available, a new icon is created by scaling a smaller icon up to the desired size.
+
+
