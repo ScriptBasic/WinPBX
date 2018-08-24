@@ -50,7 +50,7 @@ The **CCDAudio** class allows to play a CD Rom using MCI.
 Creates an instance of the **CCDAudio** class.
 
 ```
-CONSTRUCTOR CDSAudio
+CONSTRUCTOR CCDAudio
 ```
 
 #### Usage example:
