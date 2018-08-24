@@ -24,7 +24,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [Run](#Run) | Runs all the filters in the filter graph. |
 | [SetBalance](#SetBalance) | Sets the balance for the audio signal. |
 | [SetNotifyWindow](#SetNotifyWindow) | Registers a window to process event notifications. |
-| SetPositions | Sets the current position and the stop position. |
+| [SetPositions](#SetPositions) | Sets the current position and the stop position. |
 | SetVolume | Sets the volume (amplitude) of the audio signal. |
 | Stop | Stops all the filters in the filter graph. |
 | WaitForCompletion | Waits for the filter graph to render all available data. |
@@ -262,3 +262,28 @@ FUNCTION SetNotifyWindow (BYVAL hwnd AS HWND, BYVAL lMsg AS LONG, BYVAL lParam A
 #### Return value
 
 Returns S_OK if successful or E_INVALIDARG if the hwnd parameter is not a valid handle to a window.
+
+# <a name="SetPositions"></a>SetPositions
+
+Sets the current position and the stop position.
+
+```
+FUNCTION SetPositions (BYREF pCurrent AS LONGLONG, BYREF pStop AS LONGLONG, _
+   BYVAL bAbsolutePositioning AS BOOLEAN) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pCurrent* | In/Out. Pointer to a variable that specifies the current position, in units of the current time format. |
+| *pStop* | In/Out. Pointer to a variable that specifies the stop time, in units of the current time format. |
+| *lInstanceData* | In. TRUE or FALSE. If TRUE, the specified position is absolute. If FALSE, the specified position is relative. |
+
+#### Return value
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | Success. |
+| S_FALSE | No position change. (Both flags specify no seeking.) |
+| E_INVALIDARG | Invalid argument. |
+| E_NOTIMPL | Method is not supported. |
+| E_POINTER | NULL pointer argument. |
