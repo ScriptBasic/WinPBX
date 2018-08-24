@@ -2203,7 +2203,7 @@ Redraws the non-client area of the specified window.
 FUNCTION AfxRedrawNonClientArea (BYVAL hwnd AS HWND) AS BOOLEAN
 ```
 
-Return value
+#### Return value
 
 If the function succeeds, the return value is TRUE.
 
