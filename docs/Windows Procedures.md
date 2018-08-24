@@ -1033,4 +1033,37 @@ hbmp = AfxCreateDIBSection(hdcWindow, 10, 10, @pvBits)
 ReleaseDC(hwnd, hdcWindow)
 ```
 
+# <a name="AfxDibLoadImage"></a>AfxDibLoadImage
+
+Loads a DIB in memory and returns a pointer to it.
+
+```
+FUNCTION AfxDibLoadImage (BYVAL pwszFileName AS WSTRING PTR) AS BITMAPFILEHEADER PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszFileName* | Path of the bitmap file. |
+
+#### Return value
+
+A pointer to the bitmap file header. You must release it with **CoTaskMemFree** when no longer needed.
+
+
+# <a name="AfxDibSaveImage"></a>AfxDibSaveImage
+
+Saves a DIB to a file.
+
+```
+FUNCTION AfxDibSaveImage (BYVAL pwszFileName AS WSTRING PTR, BYVAL pbmfh AS BITMAPFILEHEADER PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszFileName* | Path of the bitmap file. |
+| *pbmfh* | Pointer to the bitmap file header. |
+
+#### Return value
+
+TRUE if the DIB has been saved successfully; FALSE otherwise.
 
