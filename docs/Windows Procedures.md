@@ -594,7 +594,7 @@ FUNCTION AfxControlRunDLL (BYVAL hwnd AS HWND, BYVAL hInst AS HINSTANCE, _
 | SW_SHOWNOACTIVATE | Displays a window in its most recent size and position. This value is similar to SW_SHOWNORMAL, except that the window is not activated. |
 | SW_SHOWNORMAL | Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time. |
 
-####Usage examples
+#### Usage examples
 
 ```
 AfxControlRunDLL(0, 0, "", SW_SHOWNORMAL)   ' Opens the control panel
