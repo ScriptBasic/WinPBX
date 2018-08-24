@@ -1884,18 +1884,18 @@ FUNCTION AfxGetControlHandle (BYVAL hwnd AS HWND, BYVAL wCtrlID AS WORD) AS HWND
 
 Returns the handle of the control or NULL.
 
-# <a name="AfxGetFolderName"></a>AfxGetFolderName
+# <a name="AfxGetFormHandle"></a>AfxGetFormHandle
 
-Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name.
+Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. The reference handle is the handle of any control on the form.
 
 ```
-FUNCTION AfxGetFolderName (BYREF wszPath AS WSTRING) AS CWSTR
+FUNCTION AfxGetFormHandle (BYVAL hwnd AS HWND) AS HWND
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *wszPath* | The path/filename string. |
+| *hwnd* | A handle to the control. |
 
 #### Return value
 
-The name of the folder.
+Handle of the ancestor window.
