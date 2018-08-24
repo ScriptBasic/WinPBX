@@ -140,6 +140,7 @@ FUNCTION GetEvent(BYREF lEventCode AS LONG, BYREF lParam1 AS LONG_PTR, _
 | *msTimeout* | In. Time-out interval, in milliseconds. Use INFINITE to block until there is an event. |
 
 | Result code | Description |
+| ---------- | ----------- |
 | S_OK | Success. |
 | E_ABORT | Timeout expired. |
 | E_POINTER | The **IMediaEventEx** interface pointer is null. |
