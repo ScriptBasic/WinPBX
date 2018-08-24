@@ -1468,7 +1468,7 @@ FUNCTION AfxGetDpi () AS LONG
 FUNCTION AfxGetDpiX () AS LONG
 ```
 
-# <a name="AfxLogPixelsX"></a>AfxLogPixelsX / AfxGetDpiY
+# <a name="AfxLogPixelsY"></a>AfxLogPixelsX / AfxGetDpiY
 
 Retrieves the number of pixels per logical inch along the screen height. In a system with multiple display monitors, this value is the same for all monitors.
 
