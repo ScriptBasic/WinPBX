@@ -1400,6 +1400,6 @@ To get extended error information call **GetLastError**.
 
 #### Remarks
 
-The application should call the DeleteObject function to delete the font when it is no longer needed; for example, after it destroys the control.
+The application should call the **DeleteObject** function to delete the font when it is no longer needed; for example, after it destroys the control.
 
 The size of the control does not change as a result of receiving this message. To avoid clipping text that does not fit within the boundaries of the control, the application should correct the size of the control window before it sets the font.
