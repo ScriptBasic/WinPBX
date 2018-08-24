@@ -97,7 +97,7 @@ Assorted Windows procedures.
 | [AfxIsDPIResolutionAtLeast](#AfxIsDPIResolutionAtLeast) | Determines if screen resolution meets minimum requirements in relative pixels. |
 | [AfxIsProcessDPIAware](#AfxIsProcessDPIAware) | Determines whether the current process is dots per inch (dpi) aware. |
 | [AfxIsResolutionAtLeast](#AfxIsResolutionAtLeast) | Determines if screen resolution meets minimum requirements. |
-| [AfxLoadIconMetric](#AfxLoadIconMetric) Loads a specified icon resource with a client-specified system metric. |
+| [AfxLoadIconMetric](#AfxLoadIconMetric) | Loads a specified icon resource with a client-specified system metric. |
 | [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
 | [AfxLogPixelsY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
