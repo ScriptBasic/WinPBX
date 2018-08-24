@@ -94,9 +94,9 @@ Assorted Windows procedures.
 | [AfxGetMonitorVerticalScaling](#AfxGetMonitorVerticalScaling) | Returns the vertical scaling of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorLogicalHeight](#AfxGetMonitorLogicalHeight) | Returns the logical height of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorLogicalWidth](#AfxGetMonitorLogicalWidth) | Returns the logical width of the monitor that the window is currently displayed on. |
-| AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
+| [AfxIsDPIResolutionAtLeast] | Determines if screen resolution meets minimum requirements in relative pixels. |
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
-| AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
+| [AfxIsResolutionAtLeast](#AfxIsResolutionAtLeast) | Determines if screen resolution meets minimum requirements. |
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
 | [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
 | [AfxLogPixelsY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
@@ -1540,5 +1540,40 @@ FUNCTION AfxGetMonitorLogicalWidth (BYVAL hwnd AS HWND = NULL) AS DWORD
 #### Remarks
 
 If the application to which the window belongs is not DPI aware, a monitor with a width resolution of 1920 pixels in a computer using 192 DPI, will return 960 pixels.
+
+# <a name="AfxIsDPIResolutionAtLeast"></a>AfxIsDPIResolutionAtLeast
+
+Determines if screen resolution meets minimum requirements in relative pixels, e.g. for a screen resolution of 1920x1080 pixels and a DPI of 192 (scaling ratio = 2), the maximum relative pixels for a DPI aware application is 960x540.
+
+```
+FUNCTION AfxIsDPIResolutionAtLeast (BYVAL cxMin AS LONG, BYVAL cyMin AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cxMin* | Minimum screen resolution width in relative pixels. |
+| *cyMin* | Minimum screen resolution height in relative pixels. |
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="AfxIsResolutionAtLeast"></a>AfxIsResolutionAtLeast
+
+Determines if screen resolution meets minimum requirements.
+
+```
+FUNCTION AfxIsResolutionAtLeast (BYVAL cxMin AS LONG, BYVAL cyMin AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cxMin* | Minimum screen resolution width in relative pixels. |
+| *cyMin* | Minimum screen resolution height in relative pixels. |
+
+#### Return value
+
+TRUE or FALSE.
+
 
 
