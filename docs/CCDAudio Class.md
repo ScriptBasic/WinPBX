@@ -8,22 +8,6 @@ The **CCDAudio** class allows to play a CD Rom using MCI.
 | ---------- | ----------- |
 | [Constructor](#Constructor) | Creates an instance of the **CCDAudio** class. |
 
-# <a name="Constructor"></a>Constructor
-
-Creates an instance of the **CCDAudio** class.
-
-```
-CONSTRUCTOR CDSAudio
-```
-
-#### Usage example:
-
-```
-DIM pAudio AS CCDAudio
-pAudio.Open
-pAudio.Play
-```
-
 ### Methods
 
 | Name       | Description |
@@ -60,3 +44,19 @@ pAudio.Play
 | [ToEnd](#ToEnd) | Sets the position to the end of the audio CD. |
 | [ToStart](#ToStart) | Sets the position to the start of the audio CD. |
 
+
+# <a name="Constructor"></a>Constructor
+
+Creates an instance of the **CCDAudio** class.
+
+```
+CONSTRUCTOR CDSAudio
+```
+
+#### Usage example:
+
+```
+DIM pAudio AS CCDAudio
+pAudio.Open
+pAudio.Play
+```
