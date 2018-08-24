@@ -154,21 +154,21 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxHiMetricToPixelsX | Converts from HiMetric to Pixels (horizontal resolution). |
-| AfxHiMetricToPixelsY | Converts from HiMetric to Pixels (vertical resolution). |
-| AfxPixelsToHiMetricX | Converts from Pixels to HiMetric (horizontal resolution). |
-| AfxPixelsToHiMetricY | Converts from Pixels to HiMetric (vertical resolution). |
-| AfxPixelsToPointsX | Converts pixels to points size (1/72 of an inch) (horizontal resolution). |
-| AfxPixelsToPointsY | Converts pixels to points size (1/72 of an inch) (vertical resolution). |
-| AfxPixelsToTwipsX | Converts pixels to twips (horizontal resolution). |
-| AfxPixelsToTwipsY | Converts pixels to twips (vertical resolution). |
-| AfxPointSizeToDip | Converts point size to DIP (device independent pixel). |
-| AfxPointsToPixelsX | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
-| AfxPointsToPixelsY | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
-| AfxTwipsPerPixelX | Returns the width of a pixel in twips (horizontal resolution). |
-| AfxTwipsPerPixelY | Returns the width of a pixel in twips (vertical resolution). |
-| AfxTwipsToPixelsX | Converts twips to pixels (horizontal resolution). |
-| AfxTwipsToPixelsY | Converts twips to pixels (vertical resolution). |
+| [AfxHiMetricToPixelsX](#AfxHiMetricToPixelsX) | Converts from HiMetric to Pixels (horizontal resolution). |
+| [AfxHiMetricToPixelsY](#AfxHiMetricToPixelsY) | Converts from HiMetric to Pixels (vertical resolution). |
+| [AfxPixelsToHiMetricX](#AfxPixelsToHiMetricX) | Converts from Pixels to HiMetric (horizontal resolution). |
+| [AfxPixelsToHiMetricY](#AfxPixelsToHiMetricY) | Converts from Pixels to HiMetric (vertical resolution). |
+| [AfxPixelsToPointsX](#AfxPixelsToPointsX) | Converts pixels to points size (1/72 of an inch) (horizontal resolution). |
+| [AfxPixelsToPointsY](#AfxPixelsToPointsY) | Converts pixels to points size (1/72 of an inch) (vertical resolution). |
+| [AfxPixelsToTwipsX](#AfxPixelsToTwipsX) | Converts pixels to twips (horizontal resolution). |
+| [AfxPixelsToTwipsY](#AfxPixelsToTwipsY) | Converts pixels to twips (vertical resolution). |
+| [AfxPointSizeToDip](#AfxPointSizeToDip) | Converts point size to DIP (device independent pixel). |
+| [AfxPointsToPixelsX](#AfxPointsToPixelsX) | Converts a point size (1/72 of an inch) to pixels (horizontal resolution). |
+| [AfxPointsToPixelsY](#AfxPointsToPixelsY) | Converts a point size (1/72 of an inch) to pixels (vertical resolution). |
+| [AfxTwipsPerPixelX](#AfxTwipsPerPixelX) | Returns the width of a pixel in twips (horizontal resolution). |
+| [AfxTwipsPerPixelY](#AfxTwipsPerPixelY) | Returns the width of a pixel in twips (vertical resolution). |
+| [AfxTwipsToPixelsX](#AfxTwipsToPixelsX) | Converts twips to pixels (horizontal resolution). |
+| [AfxTwipsToPixelsY](#AfxTwipsToPixelsY) | Converts twips to pixels (vertical resolution). |
 
 # Mail and Internet
 
@@ -707,3 +707,236 @@ FUNCTION AfxGetInternetExplorerVersion () AS SINGLE
 #### Return value
 
 The Internet Explorer version (major.minor).
+
+# <a name="AfxHiMetricToPixelsX"></a>AfxHiMetricToPixelsX
+
+Converts from HiMetric to Pixels (horizontal resolution). Himetric is a scaling unit similar to twips used in computing. It is one thousandth of a centimeter and is independent of the screen resolution. HiMetric per inch = 2540; 1 inch = 2.54 mm.
+
+```
+SUB AfxHiMetricToPixelsX (BYVAL hm AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hm* | The size in HiMetric units. |
+
+#### Return value
+
+The size in pixels.
+
+# <a name="AfxHiMetricToPixelsY"></a>AfxHiMetricToPixelsY
+
+Converts from HiMetric to Pixels (vertical resolution). Himetric is a scaling unit similar to twips used in computing. It is one thousandth of a centimeter and is independent of the screen resolution. HiMetric per inch = 2540; 1 inch = 2.54 mm.
+
+```
+SUB AfxHiMetricToPixelsY (BYVAL hm AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hm* | The size in HiMetric units. |
+
+#### Return value
+
+The size in pixels.
+
+
+# <a name="AfxPixelsToHiMetricX"></a>AfxPixelsToHiMetricX
+
+Converts from Pixels to HiMetric (horizontal resolution). Himetric is a scaling unit similar to twips used in computing. It is one thousandth of a centimeter and is independent of the screen resolution. HiMetric per inch = 2540; 1 inch = 2.54 mm.
+
+```
+SUB AfxPixelsToHiMetricX (BYVAL cx AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cx* | The size in pixels. |
+
+#### Return value
+
+The size in HiMetric units.
+
+# <a name="AfxPixelsToHiMetricY"></a>AfxPixelsToHiMetricY
+
+Converts from Pixels to HiMetric (vertical resolution). Himetric is a scaling unit similar to twips used in computing. It is one thousandth of a centimeter and is independent of the screen resolution. HiMetric per inch = 2540; 1 inch = 2.54 mm.
+
+```
+SUB AfxPixelsToHiMetricY (BYVAL cx AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cy* | The size in pixels. |
+
+#### Return value
+
+The size in HiMetric units.
+
+# <a name="AfxPixelsToPointsX"></a>AfxPixelsToPointsX
+
+Converts pixels to points size (1/72 of an inch). Horizontal resolution.
+
+```
+SUB AfxPixelsToPointsX (BYVAL pix AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pix* | The number of pixels. |
+
+#### Return value
+
+The number of points.
+
+# <a name="AfxPixelsToPointsY"></a>AfxPixelsToPointsY
+
+Converts pixels to points size (1/72 of an inch). Vertical resolution.
+
+```
+SUB AfxPixelsToPointsY (BYVAL pix AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pix* | The number of pixels. |
+
+#### Return value
+
+The number of points.
+
+# <a name="AfxPixelsToTwipsX"></a>AfxPixelsToTwipsX
+
+Converts pixels to twips. Horizontal resolution.
+
+```
+FUNCTION AfxPixelsToTwipsX (BYVAL nPixels AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPixels* | The number of pixels. |
+
+#### Return value
+
+The number of twips.
+
+# <a name="AfxPixelsToTwipsY"></a>AfxPixelsToTwipsY
+
+Converts pixels to twips. Vertical resolution.
+
+```
+FUNCTION AfxPixelsToTwipsY (BYVAL nPixels AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPixels* | The number of pixels. |
+
+#### Return value
+
+The number of twips.
+
+# <a name="AfxPointSizeToDip"></a>AfxPointSizeToDip
+
+Converts point size to DIP (device independent pixel). DIP is defined as 1/96 of an inch and a point is 1/72 of an inch.
+
+```
+FUNCTION AfxPointSizeToDip (BYVAL ptsize AS SINGLE) AS SINGLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ptsize* | The point size to convert. |
+
+#### Return value
+
+The number of DIP pixels.
+
+# <a name="AfxPointsToPixelsX"></a>AfxPointsToPixelsX
+
+Converts a point size (1/72 of an inch) to pixels. Horizontal resolution.
+
+```
+FUNCTION AfxPointsToPixelsX (BYVAL pts AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pts* | The number of points. |
+
+#### Return value
+
+The number of pixels.
+
+# <a name="AfxPointsToPixelsY"></a>AfxPointsToPixelsY
+
+Converts a point size (1/72 of an inch) to pixels. Vertical resolution.
+
+```
+FUNCTION AfxPointsToPixelsY (BYVAL pts AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pts* | The number of points. |
+
+#### Return value
+
+The number of pixels.
+
+# <a name="AfxTwipsPerPixelX"></a>AfxTwipsPerPixelX
+
+Returns the width of a pixel in twips (horizontal resolution). Pixel dimensions can vary between systems and may not always be square, so separate functions for pixel width and height are required.
+
+```
+FUNCTION AfxTwipsPerPixelX () AS LONG
+```
+
+#### Return value
+
+The number of twips per pixel.
+
+# <a name="AfxTwipsPerPixelY"></a>AfxTwipsPerPixelY
+
+Returns the width of a pixel in twips (vertical resolution). Pixel dimensions can vary between systems and may not always be square, so separate functions for pixel width and height are required.
+
+```
+FUNCTION AfxTwipsPerPixelY () AS LONG
+```
+
+#### Return value
+
+The number of twips per pixel.
+
+# <a name="AfxTwipsToPixelsX"></a>AfxTwipsToPixelsX
+
+Converts twips to pixels. Horizontal resolution.
+
+```
+FUNCTION AfxTwipsToPixelsX (BYVAL nTwips AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTwips* | The number of twips. |
+
+#### Return value
+
+The number of pixels.
+
+# <a name="AfxTwipsToPixelsY"></a>AfxTwipsToPixelsY
+
+Converts twips to pixels. Vertical resolution.
+
+```
+FUNCTION AfxTwipsToPixelsY (BYVAL nTwips AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTwips* | The number of twips. |
+
+#### Return value
+
+The number of pixels.
