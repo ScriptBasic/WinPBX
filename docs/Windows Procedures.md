@@ -13,7 +13,7 @@ Assorted Windows procedures.
 | [AfxGetTopEnabledWindow](#AfxGetTopEnabledWindow) | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | [AfxGetTopLevelParent](#AfxGetTopLevelParent) | Retrieves the window's top-level parent window. |
 | [AfxGetTopLevelWindow](#AfxGetTopLevelWindow) | Retrieves the window's top-level parent or owner window. |
-| AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
+| [AfxGetWindowClassName](#AfxGetWindowClassName) | Retrieves the name of the class to which the specified window belongs. |
 | AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
 | AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
 | AfxGetWindowClientWidth | Returns the width of the client area of a window, in pixels. |
@@ -2009,3 +2009,19 @@ FUNCTION AfxGetTopLevelWindow (BYVAL hwnd AS HWND) AS HWND
 #### Return value
 
 Handle of the top-level parent or owner window.
+
+# <a name="AfxGetWindowClassName"></a>AfxGetWindowClassName
+
+Retrieves the name of the class to which the specified window belongs. 
+
+```
+FUNCTION AfxGetWindowClassName (BYVAL hwnd AS HWND) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Return value
+
+The name of the class.
