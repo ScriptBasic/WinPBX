@@ -70,10 +70,10 @@ Assorted Windows procedures.
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxForceVisibleDisplay](#AfxForceVisibleDisplay) | Force visibility of an off-screen window. |
-| AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
-| AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
-| AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
-| AfxGetDisplayPixelsWidth | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
+| [AfxGetDisplayBitsPerPixel](#AfxGetDisplayBitsPerPixel) | Returns the color resolution, in bits per pixel, of the display device. |
+| [AfxGetDisplayFrequency](#AfxGetDisplayFrequency) | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
+| [AfxGetDisplayPixelsHeight](#AfxGetDisplayPixelsHeight) | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
+| [AfxGetDisplayPixelsWidth](#AfxGetDisplayPixelsWidth) | Returns the width, in pixels, of the current display device on the computer on which the calling thread is running. |
 
 # Dialogs
 
@@ -1421,3 +1421,39 @@ SUB AfxForceVisibleDisplay (BYVAL hwnd AS HWND)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle to the window. |
+
+# <a name="AfxGetDisplayBitsPerPixel"></a>AfxGetDisplayBitsPerPixel
+
+Returns the color resolution, in bits per pixel, of the display device.
+
+```
+FUNCTION AfxGetDisplayBitsPerPixel () AS DWORD
+```
+
+# <a name="AfxGetDisplayFrequency"></a>AfxGetDisplayFrequency
+
+Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. This value is also known as the display device's vertical refresh rate.
+
+```
+FUNCTION AfxGetDisplayBitsPerPixel () AS DWORD
+```
+
+# <a name="AfxGetDisplayPixelsHeight"></a>AfxGetDisplayPixelsHeight
+
+Returns the height, in pixels, of the current display device on the computer on which the calling thread is running.
+
+```
+FUNCTION AfxGetDisplayPixelsHeight () AS DWORD
+```
+
+# <a name="AfxGetDisplayPixelsWidth"></a>AfxGetDisplayPixelsWidth
+
+Returns the width, in pixels, of the current display device on the computer on which the calling thread is running.
+
+```
+FUNCTION AfxGetDisplayPixelsWidth () AS DWORD
+```
+
+#### Remarks
+
+Contrarily to **GetSystemMetrics** or **GetDeviceCaps**, it returns the real width even when it is called from an application that is not DPI aware, e.g. an application running virtualized in a monitor 1920 pixels width and a DPI of 192, will return 960 pixels if it calls **GetSystemMetrics** or **GetDeviceCaps**, but will return 1920 pixels calling **AfxGetDisplayPixelsWidth**.
