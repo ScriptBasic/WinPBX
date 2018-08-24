@@ -2272,7 +2272,7 @@ If the function succeeds, the return value is TRUE.
 
 If the function fails, the return value is FALSE. To get extended error information, call **GetLastError**.
 
-# <a name="AfxSetWindowClientSize"></a>AfxSetWindowClientSize
+# <a name="AfxSetWindowSize"></a>AfxSetWindowSize
 
 Sets the size of the specified window, in pixels.
 
