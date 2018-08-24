@@ -18,7 +18,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [CurrentPosition](#CurrentPosition) | Gets the current position, relative to the total duration of the stream. |
 | [GetDuration](#GetDuration) | Gets the duration of the stream, in 100-nanosecond units. |
 | [GetEvent](#GetEvent) | Retrieves the next event notification from the event queue. |
-| GetVolume | Gets the volume (amplitude) of the audio signal. |
+| [GetVolume](#GetVolume) | Gets the volume (amplitude) of the audio signal. |
 | Load | Builds a filter graph that renders the specified file. |
 | Pause | Pauses all the filters in the filter graph. |
 | Run | Runs all the filters in the filter graph. |
@@ -145,4 +145,15 @@ FUNCTION GetEvent(BYREF lEventCode AS LONG, BYREF lParam1 AS LONG_PTR, _
 | E_ABORT | Timeout expired. |
 | E_POINTER | The **IMediaEventEx** interface pointer is null. |
 
+# <a name="GetVolume"></a>GetVolume
+
+Gets the volume (amplitude) of the audio signal.
+
+```
+FUNCTION GetVolume () AS LONG
+```
+
+#### Return value
+
+The volume (amplitude) of the audio signal. Specifies the volume, as a number from –10,000 to 0, inclusive. Full volume is 0, and –10,000 is silence. Multiply the desired decibel level by 100. For example, –10,000 = –100 dB.
 
