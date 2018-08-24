@@ -1832,3 +1832,37 @@ FUNCTION AfxRemoveWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DW
 #### Return value
 
 The previous window styles.
+
+# <a name="AfxSetWindowExStyle"></a>AfxSetWindowExStyle
+
+Sets the extended style(s) of the specified window.
+
+```
+FUNCTION AfxSetWindowExStyle (BYVAL hwnd AS HWND, BYVAL dwExStyle AS DWORD) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwExStyle* | The extended style(s) to set. |
+
+#### Return value
+
+The previous extended window styles.
+
+# <a name="AfxSetWindowStyle"></a>AfxSetWindowStyle
+
+Sets the style(s) of the specified window.
+
+```
+FUNCTION AfxSetWindowStyle (BYVAL hwnd AS HWND, BYVAL dwStyle AS DWORD) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *dwStyle* | The style(s) to set. |
+
+#### Return value
+
+The previous window styles.
