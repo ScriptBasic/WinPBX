@@ -1639,7 +1639,7 @@ Returns S_OK if successful, otherwise an error, including the following value: *
 
 #### Remarks
 
-**LoadIconMetric** is similar to **LoadIcon**, but with the capability to specify the icon metric. It is used in place of LoadIcon when the calling application wants to ensure a high quality icon. This is particularly useful in high dots per inch (dpi) situations.
+**LoadIconMetric** is similar to **LoadIcon**, but with the capability to specify the icon metric. It is used in place of **LoadIcon** when the calling application wants to ensure a high quality icon. This is particularly useful in high dots per inch (dpi) situations.
 
 Icons are extracted or created as follows.
 
