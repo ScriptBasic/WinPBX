@@ -19,7 +19,7 @@ Assorted Windows procedures.
 | [AfxGetWindowClientWidth](#AfxGetWindowClientWidth) | Returns the width of the client area of a window, in pixels. |
 | [AfxGetWindowHeight](#AfxGetWindowHeight) | Returns the height of a window, in pixels. |
 | [AfxGetWindowLocation](#AfxGetWindowLocation) | Returns the location of the top left corner of the window, in pixels. |
-| AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
+| [AfxGetWindowRect](#AfxGetWindowRect) | Retrieves the dimensions of the bounding rectangle of the specified window. |
 | AfxGetWindowText | Gets the text of a window. |
 | AfxGetWindowTextLength | Gets the length of the text of a window. |
 | [AfxGetWindowWidth](#AfxGetWindowWidth) | Returns the width of a window, in pixels. |
@@ -2103,3 +2103,15 @@ SUB AfxGetWindowLocation (BYVAL hwnd AS HWND, BYREF nLeft AS LONG, BYREF nTop AS
 | *hwnd* | Handle to the window. |
 | *nLeft* | Out. The horizontal location. |
 | *nTop* | Out. The vertical location. |
+
+# <a name="AfxGetWindowRect"></a>AfxGetWindowRect
+
+Retrieves the dimensions of the bounding rectangle of the specified window. The dimensions are given in screen coordinates that are relative to the upper-left corner of the screen.
+
+```
+FUNCTION AfxGetWindowRect (BYVAL hwnd AS HWND) AS RECT
+```
+
+#### Return value
+
+A RECT structure with the retrieved dimensions.
