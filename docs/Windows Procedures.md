@@ -31,7 +31,7 @@ Assorted Windows procedures.
 | [AfxSetWindowClientSize](#AfxSetWindowClientSize) | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
 | [AfxSetWindowIcon](#AfxSetWindowIcon) | Associates a new large icon with a window. |
 | [AfxSetWindowLocation](#AfxSetWindowLocation) | Sets the location of the top left corner of the window, in pixels. |
-| AfxSetWindowSize | Sets the size of the specified window, in pixels. |
+| [AfxSetWindowSize](#AfxSetWindowSize) | Sets the size of the specified window, in pixels. |
 | AfxSetWindowText | Sets the text of a window. |
 | AfxShowWindowState | Sets the specified window's show state. |
 
@@ -2271,3 +2271,18 @@ FUNCTION AfxSetWindowLocation (BYVAL hwnd AS HWND, BYVAL nLeft AS LONG, BYVAL nT
 If the function succeeds, the return value is TRUE.
 
 If the function fails, the return value is FALSE. To get extended error information, call **GetLastError**.
+
+# <a name="AfxSetWindowClientSize"></a>AfxSetWindowClientSize
+
+Sets the size of the specified window, in pixels.
+
+```
+FUNCTION AfxSetWindowSize (BYVAL hwnd AS HWND, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nWidth* | The new width of the window. |
+| *nHeight* | The new height of the window. |
+
