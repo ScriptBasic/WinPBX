@@ -152,3 +152,151 @@ Returns the current track number.
 ```
 FUNCTION GetCurrentTrack () AS LONG
 ```
+
+# <a name="GetErrorString"></a>GetErrorString
+
+Retrieves a string that describes the specified MCI error code.
+
+```
+FUNCTION GetErrorString (BYVAL dwError AS MCIERROR = 0) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwError* | Optional. The MCI error code. If this parameter is omitted, the last error code is used. |
+
+# <a name="GetLastError"></a>GetLastError
+
+Returns the last MCI error code.
+
+```
+FUNCTION GetLastError () AS MCIERROR
+```
+
+# <a name="GetTrackLength"></a>GetTrackLength
+
+Returns the length in seconds of the given track.
+
+```
+FUNCTION GetTrackLength (BYVAL nTrack AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTrack* | The track number. |
+
+# <a name="GetTrackLengthString"></a>GetTrackLengthString
+
+Returns the length of the given track as a string.
+
+```
+FUNCTION GetTrackLengthString (BYVAL nTrack AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTrack* | The track number. |
+
+# <a name="GetTracksCount"></a>GetTracksCount
+
+Returns the count of tracks.
+
+```
+FUNCTION GetTracksCount () AS LONG
+```
+
+# <a name="GetTrackStartTime"></a>GetTrackStartTime
+
+Returns the start time of the given track.
+
+```
+FUNCTION GetTrackStartTime (BYVAL nTrack AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTrack* | The track number. |
+
+# <a name="GetTrackStartTimeString"></a>GetTrackStartTimeString
+
+Returns the start time of the given track as a string.
+
+```
+FUNCTION GetTrackStartTimeString (BYVAL nTrack AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTrack* | The track number. |
+
+# <a name="IsMediaInserted"></a>IsMediaInserted
+
+Checks whether CD media is inserted.
+
+```
+FUNCTION IsMediaInserted () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="IsPaused"></a>IsPaused
+
+Checks whether is in paused mode.
+
+```
+FUNCTION IsPaused () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="IsPlaying"></a>IsPlaying
+
+Checks whether is in play mode.
+
+```
+FUNCTION IsPlaying () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="IsReady"></a>IsReady
+
+Checks if the device is ready.
+
+```
+FUNCTION IsReady () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="IsSeeking"></a>IsSeeking
+
+Checks whether is in seeking mode.
+
+```
+FUNCTION IsSeeking () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="IsStopped"></a>IsStopped
+
+Checks whether is in stopped mode.
+
+```
+FUNCTION IsStopped () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
