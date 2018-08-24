@@ -26,7 +26,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [SetNotifyWindow](#SetNotifyWindow) | Registers a window to process event notifications. |
 | [SetPositions](#SetPositions) | Sets the current position and the stop position. |
 | [SetVolume](#SetVolume) | Sets the volume (amplitude) of the audio signal. |
-| Stop | Stops all the filters in the filter graph. |
+| [Stop](#Stop) | Stops all the filters in the filter graph. |
 | WaitForCompletion | Waits for the filter graph to render all available data. |
 
 # <a name="Constructor"></a>Constructor
@@ -212,7 +212,7 @@ FUNCTION Pause () AS HRESULT
 Runs all the filters in the filter graph.
 
 ```
-FUNCTION Pause () AS HRESULT
+FUNCTION Run () AS HRESULT
 ```
 
 #### Return value
@@ -300,10 +300,49 @@ FUNCTION SetVolume (BYVAL nVol AS LONG) AS HRESULT
 | ---------- | ----------- |
 | *nVol* | The volume (amplitude) of the audio signal. Specifies the volume, as a number from –10,000 to 0, inclusive. Full volume is 0, and –10,000 is silence. Multiply the desired decibel level by 100. For example, –10,000 = –100 dB. |
 
+
+# <a name="Stop"></a>Stop
+
+Stops all the filters in the filter graph.
+
+```
+FUNCTION Stop () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK if successful, or an HRESULT value that indicates the cause of the error.
+
+# <a name="WaitForCompletion"></a>WaitForCompletion
+
+Waits for the filter graph to render all available data.
+
+```
+FUNCTION WaitForCompletion (BYVAL msTimeout AS LONG, BYREF EvCode AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *msTimeout* | Duration of the time-out, in milliseconds. Pass zero to return immediately. To block indefinitely, pass INFINITE. |
+| *EvCode* | Out. Event that terminated the wait. This value can be one of the following:<br>**EC_COMPLETE** : Operation completed.<br>**EC_ERRORABORT** : Error. Playback cannot continue.<br>**EC_USERABORT** : User terminated the operation.<br>**Zero** (0) = Operation has not completed. |
+
+#### Return value
+
 | Result code | Description |
 | ----------- | ----------- |
 | S_OK | Success. |
-| E_FAIL | The underlying audio device returned an error. |
-| E_INVALIDARG | The value of *nVol* is invalid. |
-| E_NOTIMPL | The filter graph does not contain an audio renderer filter. (Possibly the source does not contain an audio stream.) |
-| E_POINTER | The **IBasicAudio** interface pointer is null. |
+| E_ABORT | Time-out expired. |
+| E_POINTER | The **IMediaEventEx** interface is null. |
+| VFW_E_WRONG_STATE | The filter graph is not running. |
+
+#### Remarks
+
+This method blocks until the time-out expires, or one of the following events occurs:
+
+**EC_COMPLETE**
+**EC_ERRORABORT**
+**EC_USERABORT**
+
+During the wait, the method discards all other event notifications.
+
+If the return value is S_OK, the *EvCode* parameter receives the event code that ended the wait. When the method returns, the filter graph is still running. The application can pause or stop the graph, as appropriate.
