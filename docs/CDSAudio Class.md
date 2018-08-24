@@ -15,7 +15,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | Name       | Description |
 | ---------- | ----------- |
 | [GetBalance](#GetBalance) | Gets the balance for the audio signal. |
-| CurrentPosition | Gets the current position, relative to the total duration of the stream. |
+| [CurrentPosition](#CurrentPosition) | Gets the current position, relative to the total duration of the stream. |
 | GetDuration | Gets the duration of the stream, in 100-nanosecond units. |
 | GetEvent | Retrieves the next event notification from the event queue. |
 | GetVolume | Gets the volume (amplitude) of the audio signal. |
@@ -106,3 +106,11 @@ The balance for the audio signal.
 #### Remarks
 
 The balance ranges from -10,000 to 10,000. The value -10,000 means the right channel is attenuated by 100 dB and is effectively silent. The value 10,000 means the left channel is silent. The neutral value is 0, which means that both channels are at full volume. When one channel is attenuated, the other remains at full volume.
+
+# <a name="CurrentPosition"></a>CurrentPosition
+
+Gets the current position, relative to the total duration of the stream.
+
+```
+FUNCTION CurrentPosition () AS LONG
+```
