@@ -206,3 +206,19 @@ FUNCTION Pause () AS HRESULT
 | S_OK | All filters in the graph completed the transition to a paused state. |
 | S_FALSE | The graph paused successfully, but some filters have not completed the state transition. |
 | E_POINTER | The **IMediaControl** interface pointer is null. |
+
+# <a name="Run"></a>Run
+
+Runs all the filters in the filter graph.
+
+```
+FUNCTION Pause () AS HRESULT
+```
+
+#### Return value
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | All filters in the graph completed the transition to a running state. |
+| S_FALSE | The graph is preparing to run, but some filters have not completed the transition to a running state. |
+| E_POINTER | The **IMediaControl** interface pointer is null. |
