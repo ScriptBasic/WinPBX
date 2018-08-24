@@ -23,9 +23,9 @@ Assorted Windows procedures.
 | [AfxGetWindowText](#AfxGetWindowText) | Gets the text of a window. |
 | [AfxGetWindowTextLength](#AfxGetWindowTextLength) | Gets the length of the text of a window. |
 | [AfxGetWindowWidth](#AfxGetWindowWidth) | Returns the width of a window, in pixels. |
-| AfxGetWorkAreaHeight | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
-| AfxGetWorkAreaRect | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
-| AfxGetWorkAreaWidth | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
+| [AfxGetWorkAreaHeight](#AfxGetWorkAreaHeight) | Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. |
+| [AfxGetWorkAreaRect](#AfxGetWorkAreaRect) | Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates |
+| [AfxGetWorkAreaWidth](#AfxGetWorkAreaWidth) | Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. |
 | AfxRedrawNonClientArea | Redraws the non-client area of the specified window. |
 | AfxRedrawWindow | Redraws the specified window. |
 | AfxSetWindowClientSize | Adjusts the bounding rectangle of a window based on the desired size of the client area. |
@@ -2167,3 +2167,30 @@ To obtain the exact length of the text, use the WM_GETTEXT, LB_GETTEXT, or CB_GE
 
 Sending a WM_GETTEXTLENGTH message to a non-text static control, such as a static bitmap or static icon control, does not return a string value. Instead, it returns zero.
 
+# <a name="AfxGetWorkAreaHeight"></a>AfxGetWorkAreaHeight
+
+Retrieves the height of the work area on the primary display monitor expressed in virtual screen coordinates. The work area is the portion of the screen not obscured by the system taskbar or by application desktop toolbars. To get the work area of a monitor other than the primary display monitor, call the **GetMonitorInfo** function.
+
+```
+FUNCTION AfxGetWorkAreaHeight () AS LONG
+```
+
+# <a name="AfxGetWorkAreaRect"></a>AfxGetWorkAreaRect
+
+Retrieves the coordinates of the work area on the primary display monitor expressed in virtual screen coordinates. The work area is the portion of the screen not obscured by the system taskbar or by application desktop toolbars. To get the work area of a monitor other than the primary display monitor, call the **GetMonitorInfo** function.
+
+```
+FUNCTION AfxGetWorkAreaRect () AS RECT
+```
+
+#### Return value
+
+A RECT structure with the retrieved coordinates.
+
+# <a name="AfxGetWorkAreaWidth"></a>AfxGetWorkAreaWidth
+
+Retrieves the width of the work area on the primary display monitor expressed in virtual screen coordinates. The work area is the portion of the screen not obscured by the system taskbar or by application desktop toolbars. To get the work area of a monitor other than the primary display monitor, call the **GetMonitorInfo** function.
+
+```
+FUNCTION AfxGetWorkAreaWidth () AS LONG
+```
