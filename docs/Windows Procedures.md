@@ -49,7 +49,7 @@ Assorted Windows procedures.
 | ---------- | ----------- |
 | [AfxGetControlHandle](#AfxGetControlHandle) | Returns the handle of the control with the specified identifier. |
 | [AfxGetFormHandle](#AfxGetFormHandle) | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
-| AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
+| [AfxGetHwndFromPID](#AfxGetHwndFromPID) | Retrieves a window handle given it's process identifier. |
 | AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 
 # Window styles
@@ -1899,3 +1899,19 @@ FUNCTION AfxGetFormHandle (BYVAL hwnd AS HWND) AS HWND
 #### Return value
 
 Handle of the ancestor window.
+
+# <a name="AfxGetHwndFromPID"></a>AfxGetHwndFromPID
+
+Retrieves a window handle given it's process identifier.
+
+```
+FUNCTION AfxGetHwndFromPID (BYVAL PID AS DWORD) AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *PID* | The process identifier. |
+
+#### Return value
+
+The window handle or NULL.
