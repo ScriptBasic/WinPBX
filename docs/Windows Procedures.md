@@ -138,9 +138,9 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxCaptureDisplay | Captures the display and returns an handle to a bitmap. |
-| AfxGetBitmapHeight | Retrieves the height of the specified bitmap. |
-| AfxGetBitmapWidth | Retrieves the width of the specified bitmap. |
+| [AfxCaptureDisplay](#AfxCaptureDisplay) | Captures the display and returns an handle to a bitmap. |
+| [AfxGetBitmapHeight](#AfxGetBitmapHeight) | Retrieves the height of the specified bitmap. |
+| [AfxGetBitmapWidth](#AfxGetBitmapWidth) | Retrieves the width of the specified bitmap. |
 
 # Device Independent Bitmap (DIB)
 
@@ -940,3 +940,54 @@ FUNCTION AfxTwipsToPixelsY (BYVAL nTwips AS LONG) AS LONG
 #### Return value
 
 The number of pixels.
+
+# <a name="AfxCaptureDisplay"></a>AfxCaptureDisplay
+
+Captures the display and returns an handle to a bitmap.
+
+```
+FUNCTION AfxCaptureDisplay () AS HBITMAP
+```
+
+#### Return value
+
+The handle of a bitmap.
+
+#### Usage example
+
+```
+DIM hBitmap AS HBITMAP = AfxCaptureDisplay
+```
+
+# <a name="AfxGetBitmapHeight"></a>AfxGetBitmapHeight
+
+Retrieves the height of the specified bitmap.
+
+```
+FUNCTION AfxGetBitmapHeight (BYVAL hBitmap AS HBITMAP) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hBitmap* | Handle to the bitmap. |
+
+#### Return value
+
+The height of the bitmap on success or 0 on failure.
+
+# <a name="AfxGetBitmapWidth"></a>AfxGetBitmapWidth
+
+Retrieves the width of the specified bitmap.
+
+```
+FUNCTION AfxGetBitmapWidth (BYVAL hBitmap AS HBITMAP) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hBitmap* | Handle to the bitmap. |
+
+#### Return value
+
+The width of the bitmap on success or 0 on failure.
+
