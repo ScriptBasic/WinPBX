@@ -234,7 +234,7 @@ Platform 2:
   601 Windows 7
   602 Windows 8
   603 Windows 8.1
-1000 Windows 10
+ 1000 Windows 10
 ```
 
 **Note**: As Windows 95 and Windows NT return the same version number, we also need to call GetWindowsPlatform to differentiate them.
