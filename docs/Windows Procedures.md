@@ -119,7 +119,7 @@ Assorted Windows procedures.
 | [AfxGetWindowFont](#AfxGetWindowFont) | Retrieves the font with which the control is currently drawing its text. |
 | [AfxGetWindowsFontInfo](#AfxGetWindowsFontInfo) | Retrieves information about the fonts used by Windows. |
 | [AfxGetWindowsFontPointSize](#AfxGetWindowsFontPointSize) | Retrieves the point size of the fonts used by Windows. |
-| [AfxModifyFontFaceName]/#AfxModifyFontFaceName) | Modifies the face name of the font of a window or control. |
+| [AfxModifyFontFaceName](#AfxModifyFontFaceName) | Modifies the face name of the font of a window or control. |
 | [AfxModifyFontHeight](#AfxModifyFontHeight) | Modifies the height of the font used by a window of control. |
 | [AfxModifyFontSettings](#AfxModifyFontSettings) | Modifies settings of the font used by a window of control. |
 | [AfxSetWindowFont](#AfxSetWindowFont) | Sets the font that a control is to use when drawing text. |
