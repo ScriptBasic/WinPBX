@@ -33,7 +33,7 @@ Assorted Windows procedures.
 | [AfxSetWindowLocation](#AfxSetWindowLocation) | Sets the location of the top left corner of the window, in pixels. |
 | [AfxSetWindowSize](#AfxSetWindowSize) | Sets the size of the specified window, in pixels. |
 | [AfxSetWindowText](#AfxSetWindowText) | Sets the text of a window. |
-| AfxShowWindowState | Sets the specified window's show state. |
+| [AfxShowWindowState](#AfxShowWindowState) | Sets the specified window's show state. |
 
 # Messages
 
@@ -2304,3 +2304,51 @@ FUNCTION AfxSetWindowText (BYVAL hwnd AS HWND, BYVAL pwszText AS WSTRING PTR) AS
 If the function succeeds, the return value is TRUE.
 
 If the function fails, the return value is FALSE.
+
+# <a name="AfxShowWindowState"></a>AfxShowWindowState
+
+Sets the specified window's show state.
+
+```
+FUNCTION AfxShowWindowState (BYVAL hwnd AS HWND, BYVAL nShowState AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *nShowState* | Controls how the window is to be shown. This parameter is ignored the first time an application calls **AfxShowWindowState**, if the program that launched the application provides a STARTUPINFO structure. Otherwise, the first time **AfxShowWindowState** is called, the value should be the value obtained by the **WinMain** function in its *nCmdShow* parameter. In subsequent calls, this parameter can be one of the values listed below. |
+
+| Value      | Maning |
+| ---------- | ----------- |
+| SW_FORCEMINIMIZE | Minimizes a window, even if the thread that owns the window is not responding. This flag should only be used when minimizing windows from a different thread. |
+| SW_HIDE | Hides the window and activates another window. |
+| SW_MAXIMIZE | Maximizes the specified window. |
+| SW_MINIMIZE | Minimizes the specified window and activates the next top-level window in the Z order. |
+| SW_RESTORE | Activates and displays the window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when restoring a minimized window. |
+| SW_SHOW | Activates the window and displays it in its current size and position. |
+| SW_SHOWDEFAULT | Sets the show state based on the SW_ value specified in the STARTUPINFO structure passed to the CreateProcess function by the program that started the application. |
+| SW_SHOWMAXIMIZED | Activates the window and displays it as a maximized window. |
+| SW_SHOWMINIMIZED | Activates the window and displays it as a minimized window. |
+| SW_SHOWMINNOACTIVE | Displays the window as a minimized window. This value is similar to SW_SHOWMINIMIZED, except the window is not activated. |
+| SW_SHOWNA | Displays the window in its current size and position. This value is similar to SW_SHOW, except that the window is not activated. |
+| SW_SHOWNOACTIVATE | Displays a window in its most recent size and position. This value is similar to SW_SHOWNORMAL, except that the window is not activated. |
+| SW_SHOWNORMAL | Activates and displays a window. If the window is minimized or maximized, the system restores it to its original size and position. An application should specify this flag when displaying the window for the first time. |
+
+#### Return value
+
+If the window was previously visible, the return value is TRUE.
+
+If the window was previously hidden, the return value is FALSE.
+
+#### Remarks
+
+To perform certain special effects when showing or hiding a window, use **AnimateWindow**.
+
+The first time an application calls **AfxShowWindowState**, it should use the **WinMain** function's *nCmdShow* parameter as its *nCmdShow* parameter. Subsequent calls to **AfxShowWindowState** must use one of the values in the given list, instead of the one specified by the **WinMain** function's *nCmdShow* parameter.
+
+As noted in the discussion of the *nCmdShow* parameter, the *nCmdShow* value is ignored in the first call to **AfxShowWindowState** if the program that launched the application specifies startup information in the structure. In this case, **AfxShowWindowState** uses the information specified in the **STARTUPINFO** structure to show the window. On subsequent calls, the application must call **AfxShowWindowState** with *nCmdShow* set to SW_SHOWDEFAULT to use the startup information provided by the program that launched the application. This behavior is designed for the following situations:
+
+* Applications create their main window by calling **CreateWindow** with the WS_VISIBLE flag set.
+* Applications create their main window by calling **CreateWindow** with the WS_VISIBLE flag cleared, and later call **AfxShowWindowState** with the SW_SHOW flag set to make it visible.
+
+
