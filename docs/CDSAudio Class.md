@@ -339,8 +339,8 @@ FUNCTION WaitForCompletion (BYVAL msTimeout AS LONG, BYREF EvCode AS LONG) AS HR
 
 This method blocks until the time-out expires, or one of the following events occurs:
 
-**EC_COMPLETE**
-**EC_ERRORABORT**
+**EC_COMPLETE**<br>
+**EC_ERRORABORT**<br>
 **EC_USERABORT**
 
 During the wait, the method discards all other event notifications.
