@@ -14,9 +14,9 @@ Assorted Windows procedures.
 | [AfxGetTopLevelParent](#AfxGetTopLevelParent) | Retrieves the window's top-level parent window. |
 | [AfxGetTopLevelWindow](#AfxGetTopLevelWindow) | Retrieves the window's top-level parent or owner window. |
 | [AfxGetWindowClassName](#AfxGetWindowClassName) | Retrieves the name of the class to which the specified window belongs. |
-| AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
-| AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
-| AfxGetWindowClientWidth | Returns the width of the client area of a window, in pixels. |
+| [AfxGetWindowClientHeight](#AfxGetWindowClientHeight) | Returns the height of the client area of window, in pixels. |
+| [AfxGetWindowClientRect](#AfxGetWindowClientRect) | Retrieves the coordinates of a window's client area. |
+| [AfxGetWindowClientWidth](#AfxGetWindowClientWidth) | Returns the width of the client area of a window, in pixels. |
 | AfxGetWindowHeight | Returns the height of a window, in pixels. |
 | AfxGetWindowLocation | Returns the location of the top left corner of the window, in pixels. |
 | AfxGetWindowRect | Retrieves the dimensions of the bounding rectangle of the specified window. |
@@ -2025,3 +2025,43 @@ FUNCTION AfxGetWindowClassName (BYVAL hwnd AS HWND) AS CWSTR
 #### Return value
 
 The name of the class.
+
+# <a name="AfxGetWindowClientHeight"></a>AfxGetWindowClientHeight
+
+Returns the height of the client area of window, in pixels.
+
+```
+FUNCTION AfxGetWindowClientHeight (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+# <a name="AfxGetWindowClientRect"></a>AfxGetWindowClientRect
+
+Retrieves the coordinates of a window's client area. The client coordinates specify the upper-left and lower-right corners of the client area. Because client coordinates are relative to the upper-left corner of a window's client area, the coordinates of the upper-left corner are (0,0).
+
+```
+FUNCTION AfxGetWindowClientRect (BYVAL hwnd AS HWND) AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Return value
+
+A RECT structure with the retrieved coordinates of the window's client area.
+
+# <a name="AfxGetWindowClientWidth"></a>AfxGetWindowClientWidth
+
+Returns the width of the client area of a window, in pixels.
+
+```
+FUNCTION AfxGetWindowClientWidth (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
