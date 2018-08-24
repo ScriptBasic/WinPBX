@@ -117,13 +117,9 @@ Returns the total length in seconds of all the tracks.
 FUNCTION GetAllTracksLength () AS LONG
 ```
 
-#### Return value
-
-The total length in seconds of all the tracks as a string.
-
 # <a name="GetAllTracksLengthString"></a>GetAllTracksLengthString
 
-Returns the total length of all the tracks.
+Returns the total length of all the tracks as a string.
 
 ```
 FUNCTION GetAllTracksLength () AS LONG
