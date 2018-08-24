@@ -300,3 +300,108 @@ FUNCTION IsStopped () AS BOOLEAN
 #### Return value
 
 TRUE or FALSE.
+
+# <a name="Open"></a>Open
+
+Initializes the device.
+
+```
+FUNCTION Open () AS DWORD
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="OpenDoor"></a>OpenDoor
+
+Opens the CDRom door.
+
+```
+FUNCTION OpenDoor () AS MCIERROR
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="Pause"></a>Pause
+
+Pauses playing CD Audio.
+
+```
+FUNCTION Pause () AS MCIERROR
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="Play"></a>Play
+
+Starts playing CD Audio.
+
+```
+FUNCTION Play () AS MCIERROR
+```
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="PlayFrom"></a>PlayFrom
+
+Starts playing CD Audio on the given track.
+
+```
+FUNCTION PlayFrom (BYVAL nTrack AS LONG) AS MCIERROR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTrack* | The track number. |
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="PlayFromTo"></a>PlayFromTo
+
+Starts playing CD Audio from a given track to a given track.
+
+```
+FUNCTION PlayFromTo (BYVAL nStartTrack AS LONG, BYVAL nEndTrack AS LONG) AS MCIERROR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStartTrack* | The starting track number. |
+| *nEndTrack* | The ending track number. |
+
+#### Return value
+
+Returns zero if successful or an error otherwise.
+
+# <a name="Stop"></a>Stop
+
+Stops playing CD Audio.
+
+```
+FUNCTION Stop () AS MCIERROR
+```
+
+# <a name="ToEnd"></a>ToEnd
+
+Sets the position to the end of the audio CD.
+
+```
+FUNCTION ToEnd () AS MCIERROR
+```
+
+# <a name="ToStart"></a>ToStart
+
+Sets the position to the start of the audio CD.
+
+```
+FUNCTION ToStart () AS MCIERROR
+```
