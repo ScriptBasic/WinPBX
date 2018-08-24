@@ -16,7 +16,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | ---------- | ----------- |
 | [GetBalance](#GetBalance) | Gets the balance for the audio signal. |
 | [CurrentPosition](#CurrentPosition) | Gets the current position, relative to the total duration of the stream. |
-| GetDuration | Gets the duration of the stream, in 100-nanosecond units. |
+| [GetDuration](#GetDuration) | Gets the duration of the stream, in 100-nanosecond units. |
 | GetEvent | Retrieves the next event notification from the event queue. |
 | GetVolume | Gets the volume (amplitude) of the audio signal. |
 | Load | Builds a filter graph that renders the specified file. |
@@ -113,4 +113,12 @@ Gets the current position, relative to the total duration of the stream.
 
 ```
 FUNCTION CurrentPosition () AS LONG
+```
+
+# <a name="GetDuration"></a>GetDuration
+
+Gets the duration of the stream, in 100-nanosecond units.
+
+```
+FUNCTION GetDuration () AS LONG
 ```
