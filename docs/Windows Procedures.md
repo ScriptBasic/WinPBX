@@ -94,7 +94,7 @@ Assorted Windows procedures.
 | [AfxGetMonitorVerticalScaling](#AfxGetMonitorVerticalScaling) | Returns the vertical scaling of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorLogicalHeight](#AfxGetMonitorLogicalHeight) | Returns the logical height of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorLogicalWidth](#AfxGetMonitorLogicalWidth) | Returns the logical width of the monitor that the window is currently displayed on. |
-| [AfxIsDPIResolutionAtLeast] | Determines if screen resolution meets minimum requirements in relative pixels. |
+| [AfxIsDPIResolutionAtLeast](#AfxIsDPIResolutionAtLeast) | Determines if screen resolution meets minimum requirements in relative pixels. |
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
 | [AfxIsResolutionAtLeast](#AfxIsResolutionAtLeast) | Determines if screen resolution meets minimum requirements. |
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
