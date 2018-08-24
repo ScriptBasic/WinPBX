@@ -21,8 +21,8 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [GetVolume](#GetVolume) | Gets the volume (amplitude) of the audio signal. |
 | [Load](#Load) | Builds a filter graph that renders the specified file. |
 | [Pause](#Pause) | Pauses all the filters in the filter graph. |
-| Run | Runs all the filters in the filter graph. |
-| SetBalance | Sets the balance for the audio signal. |
+| [Run](#Run) | Runs all the filters in the filter graph. |
+| [SetBalance](#SetBalance) | Sets the balance for the audio signal. |
 | SetNotifyWindow | Registers a window to process event notifications. |
 | SetPositions | Sets the current position and the stop position. |
 | SetVolume | Sets the volume (amplitude) of the audio signal. |
@@ -222,3 +222,26 @@ FUNCTION Pause () AS HRESULT
 | S_OK | All filters in the graph completed the transition to a running state. |
 | S_FALSE | The graph is preparing to run, but some filters have not completed the transition to a running state. |
 | E_POINTER | The **IMediaControl** interface pointer is null. |
+
+# <a name="SetBalance"></a>SetBalance
+
+Sets the balance for the audio signal.
+
+```
+FUNCTION SetBalance (BYVAL nBalance AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nBalance* | The balance ranges from -10,000 to 10,000. The value -10,000 means the right channel is attenuated by 100 dB and is effectively silent. The value 10,000 means the left channel is silent. The neutral value is 0, which means that both channels are at full volume. When one channel is attenuated, the other remains at full volume. |
+
+#### Return value
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | Success. |
+| E_FAIL | The underlying audio device returned an error. |
+| E_INVALIDARG | The value of *nBalance* is invalid. |
+| E_NOTIMPL | The filter graph does not contain an audio renderer filter. (Possibly the source does not contain an audio stream.) |
+| E_POINTER | The **IBasicAudio** interface pointer is null. |
+
