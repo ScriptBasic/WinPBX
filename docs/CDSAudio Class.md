@@ -23,7 +23,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [Pause](#Pause) | Pauses all the filters in the filter graph. |
 | [Run](#Run) | Runs all the filters in the filter graph. |
 | [SetBalance](#SetBalance) | Sets the balance for the audio signal. |
-| SetNotifyWindow | Registers a window to process event notifications. |
+| [SetNotifyWindow](#SetNotifyWindow) | Registers a window to process event notifications. |
 | SetPositions | Sets the current position and the stop position. |
 | SetVolume | Sets the volume (amplitude) of the audio signal. |
 | Stop | Stops all the filters in the filter graph. |
@@ -245,3 +245,20 @@ FUNCTION SetBalance (BYVAL nBalance AS LONG) AS HRESULT
 | E_NOTIMPL | The filter graph does not contain an audio renderer filter. (Possibly the source does not contain an audio stream.) |
 | E_POINTER | The **IBasicAudio** interface pointer is null. |
 
+# <a name="SetNotifyWindow"></a>SetNotifyWindow
+
+Sets the balance for the audio signal.
+
+```
+FUNCTION SetNotifyWindow (BYVAL hwnd AS HWND, BYVAL lMsg AS LONG, BYVAL lParam AS LONG_PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *lMsg* | Window message to be passed as the notification. |
+| *lInstanceData* | Value to be passed as the lParam parameter for the lMsg message. |
+
+#### Return value
+
+Returns S_OK if successful or E_INVALIDARG if the hwnd parameter is not a valid handle to a window.
