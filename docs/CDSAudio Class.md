@@ -8,7 +8,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 
 | Name       | Description |
 | ---------- | ----------- |
-| CONSTRUCTOR | Creates an instance of the **CDSAudio** class and loads the specified audio file. |
+| [Constructor](#Constructor) | Creates an instance of the **CDSAudio** class and loads the specified audio file. |
 
 ### Methods
 
@@ -29,9 +29,9 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | Stop | Stops all the filters in the filter graph. |
 | WaitForCompletion | Waits for the filter graph to render all available data. |
 
-# Constructor
+# <a name="Constructor"></a>Constructor
 
-Creates an instance of the CDSAudio class and loads the specified audio file.
+Creates an instance of the **CDSAudio** class and loads the specified audio file.
 
 ```
 CONSTRUCTOR CDSAudio (BYREF wszFileName AS WSTRING)
@@ -91,7 +91,7 @@ pCDSAudio.Run
 
 There are other methods to get/set the volume and balance, to get the duration and current position, to set the positions, and to pause or stop.
 
-# GetBalance
+# <a name="GetBalance"></a>GetBalance
 
 Gets the balance for the audio signal.
 
