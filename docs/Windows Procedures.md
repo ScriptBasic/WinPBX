@@ -104,7 +104,7 @@ Assorted Windows procedures.
 | AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
 | AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxScaleY | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxSetProcessDPIAware | Sets the current process as dots per inch (dpi) aware. |
+| [AfxSetProcessDPIAware](#AfxSetProcessDPIAware) | Sets the current process as dots per inch (dpi) aware. |
 | AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
 | AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
@@ -1604,3 +1604,15 @@ DLLs should accept the dpi setting of the host process rather than call **SetPro
  ...
 </assembly>
 ```
+
+# <a name="AfxIsProcessDPIAware"></a>AfxIsProcessDPIAware
+
+Determines whether the current process is dots per inch (dpi) aware such that it adjusts the sizes of UI elements to compensate for the dpi setting.
+
+```
+FUNCTION AfxIsProcessDPIAware () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE if the process is dpi aware; otherwise, FALSE.
