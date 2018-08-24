@@ -48,7 +48,7 @@ Assorted Windows procedures.
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxGetControlHandle](#AfxGetControlHandle) | Returns the handle of the control with the specified identifier. |
-| AfxGetFormHandle | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
+| [AfxGetFormHandle](#AfxGetFormHandle) | Finds the handle of the top-level window or MDI child window that is the ancestor of the specified window handle. |
 | AfxGetHwndFromPID | Retrieves a window handle given it's process identifier. |
 | AfxGetPathFromWindowHandle | Retrieves the path of the executable file that created the specified window. |
 
@@ -1883,3 +1883,19 @@ FUNCTION AfxGetControlHandle (BYVAL hwnd AS HWND, BYVAL wCtrlID AS WORD) AS HWND
 #### Return value
 
 Returns the handle of the control or NULL.
+
+# <a name="AfxGetFolderName"></a>AfxGetFolderName
+
+Returns a string containing the name of the folder for a specified path, i.e. the path minus the file name.
+
+```
+FUNCTION AfxGetFolderName (BYREF wszPath AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | The path/filename string. |
+
+#### Return value
+
+The name of the folder.
