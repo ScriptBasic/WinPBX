@@ -92,8 +92,8 @@ Assorted Windows procedures.
 | [AfxGetDpiY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
 | [AfxGetMonitorHorizontalScaling](#AfxGetMonitorHorizontalScaling) | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorVerticalScaling](#AfxGetMonitorVerticalScaling) | Returns the vertical scaling of the monitor that the window is currently displayed on. |
-| AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
-| AfxGetMonitorLogicalWidth | Returns the logical width of the monitor that the window is currently displayed on. |
+| [AfxGetMonitorLogicalHeight](#AfxGetMonitorLogicalHeight) | Returns the logical height of the monitor that the window is currently displayed on. |
+| [AfxGetMonitorLogicalWidth](#AfxGetMonitorLogicalWidth) | Returns the logical width of the monitor that the window is currently displayed on. |
 | AfxIsDPIResolutionAtLeast | Determines if screen resolution meets minimum requirements in relative pixels. |
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
 | AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
