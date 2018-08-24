@@ -122,7 +122,7 @@ FUNCTION GetAllTracksLength () AS LONG
 Returns the total length of all the tracks as a string.
 
 ```
-FUNCTION GetAllTracksLength () AS LONG
+FUNCTION GetAllTracksLengthString () AS CWSTR
 ```
 
 # <a name="GetCurrentPos"></a>GetCurrentPos
