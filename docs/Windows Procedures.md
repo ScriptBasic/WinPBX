@@ -114,15 +114,15 @@ Assorted Windows procedures.
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxCreateFont](#AfxCreateFont) | Creates a logical font. |
-| AfxGetFontHeight | Returns the logical height of a font given its point size. |
-| AfxGetFontPointSize | Returns the point size of a font given its logical height. |
-| AfxGetWindowFont | Retrieves the font with which the control is currently drawing its text. |
-| AfxGetWindowsFontInfo | Retrieves information about the fonts used by Windows. |
-| AfxGetWindowsFontPointSize | Retrieves the point size of the fonts used by Windows. |
-| AfxModifyFontFaceName | Modifies the face name of the font of a window or control. |
-| AfxModifyFontFaceName | Modifies the height of the font used by a window of control. |
-| AfxModifyFontSettings | Modifies settings of the font used by a window of control. |
-| AfxSetWindowFont | Sets the font that a control is to use when drawing text. |
+| [AfxGetFontHeight](#AfxGetFontHeight) | Returns the logical height of a font given its point size. |
+| [AfxGetFontPointSize](#AfxGetFontPointSize) | Returns the point size of a font given its logical height. |
+| [AfxGetWindowFont](#AfxGetWindowFont) | Retrieves the font with which the control is currently drawing its text. |
+| [AfxGetWindowsFontInfo](#AfxGetWindowsFontInfo) | Retrieves information about the fonts used by Windows. |
+| [AfxGetWindowsFontPointSize](#AfxGetWindowsFontPointSize) | Retrieves the point size of the fonts used by Windows. |
+| [AfxModifyFontFaceName]/#AfxModifyFontFaceName) | Modifies the face name of the font of a window or control. |
+| [AfxModifyFontHeight](#AfxModifyFontHeight) | Modifies the height of the font used by a window of control. |
+| [AfxModifyFontSettings](#AfxModifyFontSettings) | Modifies settings of the font used by a window of control. |
+| [AfxSetWindowFont](#AfxSetWindowFont) | Sets the font that a control is to use when drawing text. |
 
 # Clipboard
 
@@ -1243,3 +1243,165 @@ hFont = AfxCreateFont("Courier New", 10, 96 , FW_BOLD, , , , DEFAULT_CHARSET)
 hFont = AfxCreateFont("Marlett", 8, -1, FW_NORMAL, , , , SYMBOL_CHARSET)
 ```
 
+# <a name="AfxGetFontHeight"></a>AfxGetFontHeight
+
+Returns the logical height of a font given its point size.
+
+```
+FUNCTION AfxGetFontHeight (BYVAL nPointSize AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPointSize* | The point size of the font. |
+
+# <a name="AfxGetFontPointSize"></a>AfxGetFontPointSize
+
+Returns the point size of a font given its logical height.
+
+```
+FUNCTION AfxGetFontPointSize (BYVAL nHeight AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nHeight* | The logical height of the font. |
+
+# <a name="AfxGetWindowFont"></a>AfxGetWindowFont
+
+Retrieves the font with which the control is currently drawing its text.
+
+```
+FUNCTION AfxGetWindowFont (BYVAL hwnd AS HWND) AS HFONT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | A handle to a window. |
+
+# <a name="AfxGetWindowsFontInfo"></a>AfxGetWindowsFontInfo
+
+Retrieves information about the fonts used by Windows.
+
+```
+FUNCTION AfxGetWindowsFontInfo (BYVAL nType AS LONG, BYVAL plfw AS LOGFONTW PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nType* | The type of the font: AFX_FONT_CAPTION, AFX_FONT_SMALLCAPTION, AFX_FONT_MENU, AFX_FONT_STATUS, AFX_FONT_MESSAGE. |
+| *plfw* | Pointer to a LOGFONTW structure that receives the font information. |
+
+#### Return value
+
+TRUE on succes or FALSE on failure. To get extended error information, call **GetLastError**.
+
+# <a name="AfxGetWindowsFontPointSize"></a>AfxGetWindowsFontPointSize
+
+Retrieves the point size of the fonts used by Windows.
+
+```
+FUNCTION AfxGetWindowsFontPointSize (BYVAL nType AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nType* | The type of the font: AFX_FONT_CAPTION, AFX_FONT_SMALLCAPTION, AFX_FONT_MENU, AFX_FONT_STATUS, AFX_FONT_MESSAGE. |
+
+# <a name="AfxModifyFontFaceName"></a>AfxModifyFontFaceName
+
+Modifies the face name of the font of a window or control.
+
+```
+FUNCTION AfxModifyFontFaceName (BYVAL hwnd AS HWND, BYREF wszNewFaceName AS WSTRING) AS HFONT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *wszNewFaceName* | The new face name of the font. |
+
+#### Return value
+
+The handle of the new font on success, or NULL on failure.
+
+To get extended error information call **GetLastError**.
+
+#### Remarks
+
+The returned font must be destroyed with **DeleteObject** or the macro **DeleteFont** when no longer needed to prevent memory leaks.
+
+# <a name="AfxModifyFontHeight"></a>AfxModifyFontHeight
+
+Modifies the height of the font used by a window of control.
+
+```
+FUNCTION AfxModifyFontHeight (BYVAL hwnd AS HWND, BYVAL nValue AS LONG) AS HFONT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *nValue* | The base is 100. To increase the font a 20% pass 120; to reduce it a 20% pass 80%. |
+
+#### Return value
+
+The handle of the new font on success, or NULL on failure.
+
+To get extended error information call **GetLastError**.
+
+#### Remarks
+
+The returned font must be destroyed with **DeleteObject** or the macro **DeleteFont** when no longer needed to prevent memory leaks.
+
+# <a name="AfxModifyFontSettings"></a>AfxModifyFontSettings
+
+Modifies settings of the font used by a window of control.
+
+```
+FUNCTION AfxModifyFontSettings (BYVAL hwnd AS HWND, BYVAL nSetting AS LONG, BYVAL nValue AS LONG) AS HFONT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *nSetting* | One of the AFX_FONT_xxx constants (see below). |
+| *nValue* | Depends of the nSetting value.
+AFX_FONT_HEIGHT: The base is 100. To increase the font a 20% pass 120; to reduce it a 20% pass 80%.
+AFX_FONT_WEIGHT: The weight of the font in the range 0 through 1000. For example, 400 is normal and  700 is bold. If this value is zero, a default weight is used. The following values are defined for convenience. FW_DONTCARE (0), FW_THIN (100), FW_EXTRALIGHT (200), FW_ULTRALIGHT (200), FW_LIGHT (300), FW_NORMAL (400), FW_REGULAR (400), FW_MEDIUM (500), FW_SEMIBOLD (600), FW_DEMIBOLD (600), FW_BOLD (700), FW_EXTRABOLD (800), FW_ULTRABOLD (800), FW_HEAVY (900), FW_BLACK (900)<br>**AFX_FONT_ITALIC** : TRUE or FALSE.<br>**AFX_FONT_UNDERLINE** : TRUE or FALSE.<br>**AFX_FONT_STRIKEOUT** : TRUE or FALSE.<br>**AFX_FONT_CHARSET**: The following values are predefined: ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET, VIETNAMESE_CHARSET, JOHAB_CHARSET (Korean language edition of Windows), ARABIC_CHARSET and HEBREW_CHARSET (Middle East language edition of Windows), THAI_CHARSET (Thai language edition of Windows). The OEM_CHARSET value specifies a character set that is operating-system dependent. DEFAULT_CHARSET is set to a value based on the current system locale. For example, when the system locale is English (United States), it is set as ANSI_CHARSET. |
+
+#### Return value
+
+The handle of the new font on success, or NULL on failure.
+
+To get extended error information call **GetLastError**.
+
+#### Remarks
+
+The returned font must be destroyed with **DeleteObject** or the macro **DeleteFont** when no longer needed to prevent memory leaks.
+
+# <a name="AfxSetWindowFont"></a>AfxSetWindowFont
+
+Sets the font that a control is to use when drawing text.
+
+```
+SUB AfxSetWindowFont (BYVAL hwnd AS HWND, BYVAL hFont AS HFONT, BYVAL fRedraw AS LONG = CTRUE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *hFont* | A handle to the font. If this parameter is NULL, the control uses the default system font to draw text. |
+| *fRedraw* | Optional. Specifies whether the control should be redrawn immediately upon setting the font. If this parameter is CTRUE, the control redraws itself. |
+
+#### Return value
+
+The handle of the new font on success, or NULL on failure.
+
+To get extended error information call **GetLastError**.
+
+#### Remarks
+
+The application should call the DeleteObject function to delete the font when it is no longer needed; for example, after it destroys the control.
+
+The size of the control does not change as a result of receiving this message. To avoid clipping text that does not fit within the boundaries of the control, the application should correct the size of the control window before it sets the font.
