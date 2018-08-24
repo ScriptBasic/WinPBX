@@ -100,14 +100,14 @@ Assorted Windows procedures.
 | [AfxLoadIconMetric](#AfxLoadIconMetric) | Loads a specified icon resource with a client-specified system metric. |
 | [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
 | [AfxLogPixelsY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
-| AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
-| AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
-| AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxScaleY | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| [AfxScaleRatioX](#AfxScaleRatioX) | Retrieves the desktop horizontal scaling ratio. |
+| [AfxScaleRatioY](#AfxScaleRatioY) | Retrieves the desktop vertical scaling ratio. |
+| [AfxScaleX](#AfxScaleX) | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| [AfxScaleY](#AfxScaleY) | Scales an vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
 | [AfxSetProcessDPIAware](#AfxSetProcessDPIAware) | Sets the current process as dots per inch (dpi) aware. |
-| AfxUnscaleX | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxUnscaleY | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
-| AfxUseDpiScaling | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
+| [AfxUnscaleX](#AfxUnscaleX) | Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
+| [AfxUnscaleY](#AfxUnscaleY) | Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system. |
+| [AfxUseDpiScaling](#AfxUseDpiScaling) | Returns TRUE if the Windows Platform is NT; FALSE, otherwise. |
 
 # Fonts
 
@@ -1647,4 +1647,83 @@ Icons are extracted or created as follows.
 2) If an exact size match cannot be found and a larger icon is available, a new icon is created by scaling the larger version down to the desired size.<br>
 3) If an exact size match cannot be found and no larger icon is available, a new icon is created by scaling a smaller icon up to the desired size.
 
+# <a name="AfxScaleRatioX"></a>AfxScaleRatioX
+
+Retrieves the desktop horizontal scaling ratio.
+
+```
+FUNCTION AfxScaleRatioX () AS LONG
+```
+
+# <a name="AfxScaleRatioY"></a>AfxScaleRatioY
+
+Retrieves the desktop vertical scaling ratio.
+
+```
+FUNCTION AfxScaleRatioY () AS LONG
+```
+
+# <a name="AfxScaleX"></a>AfxScaleX
+
+Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system.
+
+```
+FUNCTION AfxScaleX (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+Return value
+
+The scaled coordinate.
+
+# <a name="AfxScaleY"></a>AfxScaleY
+
+Scales a vertical coordinate according the DPI (dots per pixel) being used by the operating system.
+
+```
+FUNCTION AfxScaleY (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+Return value
+
+The scaled coordinate.
+
+# <a name="AfxUnscaleX"></a>AfxUnscaleX
+
+Unscales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system.
+
+```
+FUNCTION AfxUnscaleX (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cx* | The value of the horizontal coordinate, in pixels. |
+
+Return value
+
+The unscaled coordinate.
+
+# <a name="AfxUnscaleY"></a>AfxUnscaleY
+
+Unscales a vertical coordinate according the DPI (dots per pixel) being used by the operating system.
+
+```
+FUNCTION AfxUnscaleY (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cy* | The value of the vertical coordinate, in pixels. |
+
+Return value
+
+The unscaled coordinate.
+
+# <a name="AfxUseDpiScaling"></a>AfxUseDpiScaling
+
+Returns TRUE if the OS uses DPI scaling; FALSE otherwise.
+
+```
+FUNCTION AfxUseDpiScaling () AS BOOLEAN
+```
 
