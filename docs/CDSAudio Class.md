@@ -17,7 +17,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [GetBalance](#GetBalance) | Gets the balance for the audio signal. |
 | [CurrentPosition](#CurrentPosition) | Gets the current position, relative to the total duration of the stream. |
 | [GetDuration](#GetDuration) | Gets the duration of the stream, in 100-nanosecond units. |
-| GetEvent | Retrieves the next event notification from the event queue. |
+| [GetEvent](#GetEvent) | Retrieves the next event notification from the event queue. |
 | GetVolume | Gets the volume (amplitude) of the audio signal. |
 | Load | Builds a filter graph that renders the specified file. |
 | Pause | Pauses all the filters in the filter graph. |
@@ -122,3 +122,26 @@ Gets the duration of the stream, in 100-nanosecond units.
 ```
 FUNCTION GetDuration () AS LONG
 ```
+
+# <a name="GetEvent"></a>GetEvent
+
+Retrieves the next event notification from the event queue.
+
+```
+FUNCTION GetEvent(BYREF lEventCode AS LONG, BYREF lParam1 AS LONG_PTR, _
+   BYREF lParam2 AS LONG_PTR, BYVAL msTimeout AS LONG = 0) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lEventCode* | Out. Variable that receives the event code. |
+| *lParam1* | Out. Variable that receives the first event parameter. |
+| *lParam2* | Out. Variable that receives the second event parameter. |
+| *msTimeout* | In. Time-out interval, in milliseconds. Use INFINITE to block until there is an event. |
+
+| Result code | Description |
+| S_OK | Success. |
+| E_ABORT | Timeout expired. |
+| E_POINTER | The **IMediaEventEx** interface pointer is null. |
+
+
