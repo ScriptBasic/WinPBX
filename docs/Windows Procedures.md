@@ -12,7 +12,7 @@ Assorted Windows procedures.
 | [AfxForceSetForegroundWindow](#AfxForceSetForegroundWindow) | Brings the thread that created the specified window into the foreground and activates the window. |
 | [AfxGetTopEnabledWindow](#AfxGetTopEnabledWindow) | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | [AfxGetTopLevelParent](#AfxGetTopLevelParent) | Retrieves the window's top-level parent window. |
-| AfxGetTopLevelWindow | Retrieves the window's top-level parent or owner window. |
+| [AfxGetTopLevelWindow](#AfxGetTopLevelWindow) | Retrieves the window's top-level parent or owner window. |
 | AfxGetWindowClassName | Retrieves the name of the class to which the specified window belongs. |
 | AfxGetWindowClientHeight | Returns the height of the client area of window, in pixels. |
 | AfxGetWindowClientRect | Retrieves the coordinates of a window's client area. |
@@ -1977,6 +1977,22 @@ FUNCTION AfxGetTopEnabledWindow () AS HWND
 #### Return value
 
 Handle of the window at top of z-order or NULL.
+
+# <a name="AfxGetTopLevelParent"></a>AfxGetTopLevelParent
+
+Retrieves the window's top-level parent window.
+
+```
+FUNCTION AfxGetTopEnabledWindow () AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Return value
+
+Handle of the top-level parent window.
 
 # <a name="AfxGetTopLevelWindow"></a>AfxGetTopLevelWindow
 
