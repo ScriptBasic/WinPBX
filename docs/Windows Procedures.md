@@ -87,9 +87,9 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxGetDpi | Retrieves the number of pixels per logical inch. |
-| AfxGetDpiX | Retrieves the number of pixels per logical inch along the screen width. |
-| AfxGetDpiY | Retrieves the number of pixels per logical inch along the screen height. |
+| [AfxGetDpi](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch. |
+| [AfxGetDpiX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
+| [AfxGetDpiY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxGetMonitorHorizontalScaling | Returns the horizontal scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorVerticalScaling | Returns the vertical scaling of the monitor that the window is currently displayed on. |
 | AfxGetMonitorLogicalHeight | Returns the logical height of the monitor that the window is currently displayed on. |
@@ -98,8 +98,8 @@ Assorted Windows procedures.
 | AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
 | AfxIsResolutionAtLeast | Determines if screen resolution meets minimum requirements. |
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
-| AfxLogPixelsX | Retrieves the number of pixels per logical inch along the screen width. |
-| AfxLogPixelsY | Retrieves the number of pixels per logical inch along the screen height. |
+| [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
+| [AfxLogPixelsY](#AfxLogPixelsY) | Retrieves the number of pixels per logical inch along the screen height. |
 | AfxScaleRatioX | Retrieves the desktop horizontal scaling ratio. |
 | AfxScaleRatioY | Retrieves the desktop vertical scaling ratio. |
 | AfxScaleX | Scales an horizontal coordinate according the DPI (dots per pixel) being used by the operating system. |
@@ -1457,3 +1457,22 @@ FUNCTION AfxGetDisplayPixelsWidth () AS DWORD
 #### Remarks
 
 Contrarily to **GetSystemMetrics** or **GetDeviceCaps**, it returns the real width even when it is called from an application that is not DPI aware, e.g. an application running virtualized in a monitor 1920 pixels width and a DPI of 192, will return 960 pixels if it calls **GetSystemMetrics** or **GetDeviceCaps**, but will return 1920 pixels calling **AfxGetDisplayPixelsWidth**.
+
+# <a name="AfxLogPixelsX"></a>AfxLogPixelsX / AfxGetDpi / AfxGetDpiX
+
+Retrieves the number of pixels per logical inch along the screen width. In a system with multiple display monitors, this value is the same for all monitors.
+
+```
+FUNCTION AfxLogPixelsX () AS LONG
+FUNCTION AfxGetDpi () AS LONG
+FUNCTION AfxGetDpiX () AS LONG
+```
+
+# <a name="AfxLogPixelsX"></a>AfxLogPixelsX / AfxGetDpiY
+
+Retrieves the number of pixels per logical inch along the screen height. In a system with multiple display monitors, this value is the same for all monitors.
+
+```
+FUNCTION AfxLogPixelsY () AS LONG
+FUNCTION AfxGetDpiY () AS LONG
+```
