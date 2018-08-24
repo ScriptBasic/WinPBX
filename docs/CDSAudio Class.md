@@ -20,7 +20,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 | [GetEvent](#GetEvent) | Retrieves the next event notification from the event queue. |
 | [GetVolume](#GetVolume) | Gets the volume (amplitude) of the audio signal. |
 | [Load](#Load) | Builds a filter graph that renders the specified file. |
-| Pause | Pauses all the filters in the filter graph. |
+| [Pause](#Pause) | Pauses all the filters in the filter graph. |
 | Run | Runs all the filters in the filter graph. |
 | SetBalance | Sets the balance for the audio signal. |
 | SetNotifyWindow | Registers a window to process event notifications. |
@@ -190,3 +190,19 @@ FUNCTION Load (BYREF wszFileName AS WSTRING) AS HRESULT
 | VFW_E_NOT_FOUND | An object or name was not found.. |
 | VFW_E_UNKNOWN_FILE_TYPE | The media type of this file is not recognized.. |
 | VFW_E_UNSUPPORTED_STREAM | Cannot play back the file: the format is not supported.. |
+
+# <a name="Pause"></a>Pause
+
+Pauses all the filters in the filter graph.
+
+```
+FUNCTION Pause () AS HRESULT
+```
+
+#### Return value
+
+| Result code | Description |
+| ----------- | ----------- |
+| S_OK | All filters in the graph completed the transition to a paused state. |
+| S_FALSE | The graph paused successfully, but some filters have not completed the state transition. |
+| E_POINTER | The **IMediaControl** interface pointer is null. |
