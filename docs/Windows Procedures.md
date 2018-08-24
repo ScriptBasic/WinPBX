@@ -1123,3 +1123,15 @@ Retrieves data from the clipboard in the specified format.
 #### Return value
 
 If the function succeeds, the return value is the handle to the data. If the function fails, the return value is NULL.
+
+# <a name="AfxGetClipboardText"></a>AfxGetClipboardText
+
+Returns a text string from the clipboard.
+
+```
+FUNCTION AfxGetClipboardText () AS CWSTR
+```
+
+#### Return value
+
+The retrieved text string.
