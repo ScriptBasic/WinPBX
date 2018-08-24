@@ -2316,7 +2316,7 @@ FUNCTION AfxShowWindowState (BYVAL hwnd AS HWND, BYVAL nShowState AS LONG) AS BO
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle to the window. |
-| *nShowState* | Controls how the window is to be shown. This parameter is ignored the first time an application calls **AfxShowWindowState**, if the program that launched the application provides a STARTUPINFO structure. Otherwise, the first time **AfxShowWindowState** is called, the value should be the value obtained by the **WinMain** function in its *nCmdShow* parameter. In subsequent calls, this parameter can be one of the values listed below. |
+| *nShowState* | Controls how the window is to be shown. This parameter is ignored the first time an application calls **AfxShowWindowState**, if the program that launched the application provides a **STARTUPINFO** structure. Otherwise, the first time **AfxShowWindowState** is called, the value should be the value obtained by the **WinMain** function in its *nCmdShow* parameter. In subsequent calls, this parameter can be one of the values listed below. |
 
 | Value      | Maning |
 | ---------- | ----------- |
