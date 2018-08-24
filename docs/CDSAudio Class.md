@@ -14,7 +14,7 @@ The **CDSAudio** class allows to play audio files of a variety of formats using 
 
 | Name       | Description |
 | ---------- | ----------- |
-| GetBalance | Gets the balance for the audio signal. |
+| [GetBalance](#GetBalance) | Gets the balance for the audio signal. |
 | CurrentPosition | Gets the current position, relative to the total duration of the stream. |
 | GetDuration | Gets the duration of the stream, in 100-nanosecond units. |
 | GetEvent | Retrieves the next event notification from the event queue. |
@@ -90,3 +90,19 @@ pCDSAudio.Run
 ```
 
 There are other methods to get/set the volume and balance, to get the duration and current position, to set the positions, and to pause or stop.
+
+# GetBalance
+
+Gets the balance for the audio signal.
+
+```
+FUNCTION GetBalance () AS LONG
+```
+
+#### Return value
+
+The balance for the audio signal.
+
+#### Remarks
+
+The balance ranges from -10,000 to 10,000. The value -10,000 means the right channel is attenuated by 100 dB and is effectively silent. The value 10,000 means the left channel is silent. The neutral value is 0, which means that both channels are at full volume. When one channel is attenuated, the other remains at full volume.
