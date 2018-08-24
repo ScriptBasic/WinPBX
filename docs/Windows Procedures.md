@@ -8,7 +8,7 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxCenterWindow | Centers a window on the screen or over another window. |
+| [AfxCenterWindow](#AfxCenterWindow) | Centers a window on the screen or over another window. |
 | AfxForceSetForegroundWindow | Brings the thread that created the specified window into the foreground and activates the window. |
 | AfxGetTopEnabledWindow | Retrieves the handle of the enabled and visible window at the top of the z-order in an application. |
 | AfxGetTopLevelParent | Retrieves the window's top-level parent window. |
@@ -1931,3 +1931,16 @@ FUNCTION AfxGetPathFromWindowHandle (BYVAL hwnd AS HWND) AS CWSTR
 #### Return value
 
 The path of the executable file.
+
+# <a name="AfxCenterWindow"></a>AfxCenterWindow
+
+Centers a window on the screen or over another window. It also ensures that the placement is done within the work area.
+
+```
+SUB AfxCenterWindow (BYVAL hwnd AS HWND = NULL, BYVAL hwndParent AS HWND = NULL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. Handle to the window. |
+| *hwndParent* | Optional. Handle to the parent window. |
