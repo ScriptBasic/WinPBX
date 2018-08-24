@@ -95,7 +95,7 @@ Assorted Windows procedures.
 | [AfxGetMonitorLogicalHeight](#AfxGetMonitorLogicalHeight) | Returns the logical height of the monitor that the window is currently displayed on. |
 | [AfxGetMonitorLogicalWidth](#AfxGetMonitorLogicalWidth) | Returns the logical width of the monitor that the window is currently displayed on. |
 | [AfxIsDPIResolutionAtLeast](#AfxIsDPIResolutionAtLeast) | Determines if screen resolution meets minimum requirements in relative pixels. |
-| AfxIsProcessDPIAware | Determines whether the current process is dots per inch (dpi) aware. |
+| [AfxIsProcessDPIAware](#AfxIsProcessDPIAware) | Determines whether the current process is dots per inch (dpi) aware. |
 | [AfxIsResolutionAtLeast](#AfxIsResolutionAtLeast) | Determines if screen resolution meets minimum requirements. |
 | AfxLoadIconMetric | Loads a specified icon resource with a client-specified system metric. |
 | [AfxLogPixelsX](#AfxLogPixelsX) | Retrieves the number of pixels per logical inch along the screen width. |
@@ -1575,5 +1575,32 @@ FUNCTION AfxIsResolutionAtLeast (BYVAL cxMin AS LONG, BYVAL cyMin AS LONG) AS BO
 
 TRUE or FALSE.
 
+# <a name="SetProcessDPIAware"></a>SetProcessDPIAware
 
+Sets the current process as dots per inch (dpi) aware.
 
+Note: **SetProcessDPIAware** is subject to a possible race condition if a DLL caches dpi settings during initialization. For this reason, it is recommended that dpi-aware be set through the application (.exe) manifest rather than by calling **SetProcessDPIAware**.
+
+```
+FUNCTION AfxSetProcessDPIAware () AS BOOLEAN
+```
+
+#### Return value
+
+If the function succeeds, the return value is TRUE. Otherwise, the return value is FALSE.
+
+#### Remarks
+
+DLLs should accept the dpi setting of the host process rather than call **SetProcessDPIAware** themselves. To be set properly, *dpiAware* should be specified as part of the application (.exe) manifest. (*dpiAware* defined in an embedded DLL manifest has no affect.) The following markup shows how to set *dpiAware* as part of an application (.exe) manifest.
+
+```
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" >
+ ...
+  <asmv3:application>
+    <asmv3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">
+      <dpiAware>true</dpiAware>
+    </asmv3:windowsSettings>
+  </asmv3:application>
+ ...
+</assembly>
+```
