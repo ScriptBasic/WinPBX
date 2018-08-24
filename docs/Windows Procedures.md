@@ -69,7 +69,7 @@ Assorted Windows procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| AfxForceVisibleDisplay | Force visibility of an off-screen window. |
+| [AfxForceVisibleDisplay](#AfxForceVisibleDisplay) | Force visibility of an off-screen window. |
 | AfxGetDisplayBitsPerPixel | Returns the color resolution, in bits per pixel, of the display device. |
 | AfxGetDisplayFrequency | Returns the frequency, in hertz (cycles per second), of the display device in a particular mode. |
 | AfxGetDisplayPixelsHeight | Returns the height, in pixels, of the current display device on the computer on which the calling thread is running. |
@@ -1403,3 +1403,21 @@ To get extended error information call **GetLastError**.
 The application should call the **DeleteObject** function to delete the font when it is no longer needed; for example, after it destroys the control.
 
 The size of the control does not change as a result of receiving this message. To avoid clipping text that does not fit within the boundaries of the control, the application should correct the size of the control window before it sets the font.
+
+# <a name="AfxForceVisibleDisplay"></a>AfxForceVisibleDisplay
+
+If you use dual (or even triple/quad) displays then you have undoubtedly encountered the following situation: You change the physical order of your displays, or otherwise reconfigure the logical ordering using your display software. This sometimes has the side-effect of changing your desktop coordinates from zero-based to negative starting coordinates (i.e. the top-left coordinate of your desktop changes from 0,0 to -1024,-768).
+
+This effects many Windows programs which restore their last on-screen position whenever they are started. Should the user reorder their display configuration this can sometimes result in a Windows program subsequently starting in an off-screen position (i.e. at a location that used to be visible) - and is now effectively invisible, preventing the user from closing it down or otherwise moving it back on-screen.
+
+The **AfxForceVisibleDisplay** function can be called at program start-time right after the main window has been created and positioned 'on-screen'. Should the window be positioned in an off-screen position, it is forced back onto the nearest display to its last position. The user will be unaware this is happening and won't even realize to thank you for keeping their user-interface visible, even though they changed their display settings.
+
+Source: Catch-22 web site.
+
+```
+SUB AfxForceVisibleDisplay (BYVAL hwnd AS HWND)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
