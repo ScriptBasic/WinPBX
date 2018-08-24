@@ -1579,7 +1579,7 @@ TRUE or FALSE.
 
 Sets the current process as dots per inch (dpi) aware.
 
-Note: **SetProcessDPIAware** is subject to a possible race condition if a DLL caches dpi settings during initialization. For this reason, it is recommended that dpi-aware be set through the application (.exe) manifest rather than by calling **SetProcessDPIAware**.
+Note: **AfxSetProcessDPIAware** is subject to a possible race condition if a DLL caches dpi settings during initialization. For this reason, it is recommended that dpi-aware be set through the application (.exe) manifest rather than by calling **AfxSetProcessDPIAware**.
 
 ```
 FUNCTION AfxSetProcessDPIAware () AS BOOLEAN
@@ -1591,7 +1591,7 @@ If the function succeeds, the return value is TRUE. Otherwise, the return value 
 
 #### Remarks
 
-DLLs should accept the dpi setting of the host process rather than call **SetProcessDPIAware** themselves. To be set properly, *dpiAware* should be specified as part of the application (.exe) manifest. (*dpiAware* defined in an embedded DLL manifest has no affect.) The following markup shows how to set *dpiAware* as part of an application (.exe) manifest.
+DLLs should accept the dpi setting of the host process rather than call **AfxSetProcessDPIAware** themselves. To be set properly, *dpiAware* should be specified as part of the application (.exe) manifest. (*dpiAware* defined in an embedded DLL manifest has no affect.) The following markup shows how to set *dpiAware* as part of an application (.exe) manifest.
 
 ```
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" >
