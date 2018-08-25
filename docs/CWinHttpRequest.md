@@ -56,6 +56,19 @@ FUNCTION GetAllResponseHeaders () AS CBSTR
 
 The resulting header information.
 
+# <a name="GetErrorInfo"></a>GetErrorInfo
+
+Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
+
+```
+FUNCTION GetErrorInfo() AS CBSTR
+```
+
+#### Return value
+
+A localized description of the error.
+
+
 #### GetLastResult
 
 Returns S_OK (0) if successful or an error value otherwise.
@@ -76,16 +89,23 @@ FUNCTION GetLastResult () AS HRESULT
 
 The result code returned by the last executed method. The **WinHttpRequest** object uses the **IErrorInfo** interface to provide error data. A description of the error can be obtained calling the **GetOleErrorInfo** method.
 
-# <a name="GetErrorInfo"></a>GetErrorInfo
+# <a name="GetOption"></a>GetOption
 
-Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
+Retrieves a Microsoft Windows HTTP Services (WinHTTP) option value.
 
 ```
-FUNCTION GetErrorInfo() AS CBSTR
+FUNCTION GetOption (BYVAL nOption AS WinHttpRequestOption) AS CVAR
 ```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nOption* | Value of type **WinHttpRequestOption** that specifies the option to retrieve. |
 
 #### Return value
 
-A localized description of the error.
+Variant that contains the option value.
 
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
 
