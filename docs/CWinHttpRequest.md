@@ -214,3 +214,22 @@ Returns S_OK (0) if successful or an error value otherwise.
 #### Remarks
 
 Invoke this method only after the **Send** method has been called.
+
+#### Example
+
+```
+#include "Afx/CWinHttpRequest.inc"
+using Afx
+
+' // Create an instance of the CWinHttp class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "http://microsoft.com"
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+' // Wait for response with a timeout of 5 seconds
+DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
+' // Get the response headers
+DIM cbsResponseHeader AS CBSTR = pWHttp.GetResponseHeader("Date")
+PRINT cbsResponseHeader
+```
