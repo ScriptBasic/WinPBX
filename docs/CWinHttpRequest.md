@@ -277,3 +277,22 @@ This method can only be invoked after the **Send** method has been called.
 When using this property in synchronous mode, the limit to the number of characters it returns is approximately 2,169,895.
 
 
+# <a name="GetStatus"></a>GetStatus
+
+FUNCTION GetStatus () AS LONG
+
+```
+FUNCTION GetStatus () AS LONG
+```
+
+#### Return value
+
+Value of type LONG that receives the returned status code.
+
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+The results of this method are valid only after the **Send** method has successfully completed. For a list of status codes see HTTP Status Codes.
