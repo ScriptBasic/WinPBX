@@ -338,3 +338,19 @@ The return value is S_OK (0) on success or an error value otherwise.
 #### Remarks
 
 This method opens a connection to the resource identified in *cbsUrl* using the HTTP verb given in *cbsMethod*.
+
+#### Example
+
+```
+#include "Afx/CWinHttpRequest.inc"
+using Afx
+
+' // Create an instance of the CWinHttp class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "http://microsoft.com"
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+' // Wait for response with a timeout of 5 seconds
+DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
+```
