@@ -138,10 +138,6 @@ Retrieves the response entity body as an array of unsigned bytes.
 FUNCTION GetResponseBody () AS STRING
 ```
 
-| Parameter  | Description |
-| ---------- | ----------- |
-| *nOption* | Value of type **WinHttpRequestOption** that specifies the option to retrieve. |
-
 #### Return value
 
 An string containing the response entity body as an array of unsigned bytes. This array contains the raw data as received directly from the server.
@@ -172,7 +168,6 @@ DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
 DIM strResponseBody AS STRING = pWHttp.GetResponseBody
 PRINT strResponseBody
 ```
-
 ```
 #include once "Afx/CWinHttpRequest.inc"
 #include once "Afx/CStream.inc"
