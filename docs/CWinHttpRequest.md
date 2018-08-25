@@ -244,13 +244,36 @@ FUNCTION GetResponseStream () AS IStream PTR
 
 #### Return value
 
-Returns a pointer to an IStream interface if successful or NULL otherwise.
+Returns a pointer to an **IStream** interface if successful or NULL otherwise.
 
 #### GetLastResult
 
-Returns S_OK if successful or an error value otherwise.
+Returns S_OK (0) if successful or an error value otherwise.
 
 #### Remarks
 
 This method can only be invoked after the **Send** method has been called.
+
+# <a name="GetResponseText"></a>GetResponseText
+
+Retrieves the response entity body as a CBSTR.
+
+```
+FUNCTION GetResponseText () AS CBSTR
+```
+
+#### Return value
+
+A CBSTR containing the entity body of the response as text.
+
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+This method can only be invoked after the **Send** method has been called.
+
+When using this property in synchronous mode, the limit to the number of characters it returns is approximately 2,169,895.
+
 
