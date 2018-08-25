@@ -8,6 +8,7 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | ---------- | ----------- |
 | [Abort](#Abort) | Aborts a WinHTTP **Send** method. |
 | [GetAllResponseHeaders](#GetAllResponseHeaders) | Gets all HTTP response headers. |
+| [GetErrorInfo](#GetErrorInfo) | Returns the description of the most recent error. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [GetOption](#GetOption) | Retrieves a Microsoft Windows HTTP Services (WinHTTP) option value. |
 | [GetResponseBody](#GetResponseBody) | Retrieves the response entity body as an array of unsigned bytes. |
@@ -73,6 +74,18 @@ FUNCTION GetLastResult () AS HRESULT
 
 #### Return value
 
-The result code returned by the last executed method.
-The **WinHttpRequest** object uses the **IErrorInfo** interface to provide error data. A description of the error can be obtained calling the **AfxGetOleErrorInfo** function.
+The result code returned by the last executed method. The **WinHttpRequest** object uses the **IErrorInfo** interface to provide error data. A description of the error can be obtained calling the **GetOleErrorInfo** method.
+
+# <a name="GetErrorInfo"></a>GetErrorInfo
+
+Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
+
+```
+FUNCTION GetErrorInfo() AS CBSTR
+```
+
+#### Return value
+
+A localized description of the error.
+
 
