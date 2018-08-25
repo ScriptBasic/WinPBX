@@ -327,8 +327,8 @@ FUNCTION Open (BYREF cbsMethod AS CBSTR, BYREF cbsUrl AS CBSTR, BYVAL bAsync AS 
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsMethod* | A value of type CBSTR that specifies the HTTP verb used for the Open method, such as "GET" or "PUT". Always use uppercase as some servers ignore lowercase HTTP verbs. |
-| *cbsUrl* | A value of type CBSTR that contains the name of the resource. This must be an absolute URL. |
+| *cbsMethod* | An unicode strring that specifies the HTTP verb used for the Open method, such as "GET" or "PUT". Always use uppercase as some servers ignore lowercase HTTP verbs. |
+| *cbsUrl* | An unicode string that contains the name of the resource. This must be an absolute URL. |
 | *bAsync* | Optional. A value of type Boolean that specifies whether to open in asynchronous mode.<br>**TRUE**: Opens the HTTP connection in asynchronous mode.<br>**FALSE**: Opens the HTTP connection in synchronous mode. A call to Send does not return until WinHTTP has completely received the response. |
 
 #### Return value
