@@ -279,7 +279,7 @@ When using this property in synchronous mode, the limit to the number of charact
 
 # <a name="GetStatus"></a>GetStatus
 
-FUNCTION GetStatus () AS LONG
+Retrieves the HTTP status code from the last response.
 
 ```
 FUNCTION GetStatus () AS LONG
@@ -296,3 +296,23 @@ Returns S_OK (0) if successful or an error value otherwise.
 #### Remarks
 
 The results of this method are valid only after the **Send** method has successfully completed. For a list of status codes see HTTP Status Codes.
+
+# <a name="GetStatusText"></a>GetStatusText
+
+Retrieves the HTTP status code from the last response.
+
+```
+FUNCTION GetStatusText () AS CBSTR
+```
+
+#### Return value
+
+A CBSTR containing the HTTP status text.
+
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+Retrieves the text portion of the server response line, making available the "user-friendly" equivalent to the numeric HTTP status code. The results of this property are valid only after the Send method has successfully completed.
