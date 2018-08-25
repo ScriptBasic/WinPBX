@@ -45,10 +45,10 @@ You can abort both asynchronous and synchronous **Send** methods. To abort a syn
 
 # <a name="GetAllResponseHeaders"></a>GetAllResponseHeaders
 
-FUNCTION GetAllResponseHeaders () AS CBSTR
+Gets all HTTP response headers.
 
 ```
-FUNCTION Abort () AS HRESULT
+FUNCTION GetAllResponseHeaders () AS CBSTR
 ```
 
 #### Return value
