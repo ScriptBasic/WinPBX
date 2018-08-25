@@ -56,18 +56,6 @@ FUNCTION GetAllResponseHeaders () AS CBSTR
 
 The resulting header information.
 
-# <a name="GetErrorInfo"></a>GetErrorInfo
-
-Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
-
-```
-FUNCTION GetErrorInfo() AS CBSTR
-```
-
-#### Return value
-
-A localized description of the error.
-
 
 #### GetLastResult
 
@@ -96,6 +84,19 @@ DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
 DIM cbsResponseHeaders AS CBSTR = pWHttp.GetAllResponseHeaders
 PRINT cbsResponseHeaders
 ```
+
+# <a name="GetErrorInfo"></a>GetErrorInfo
+
+Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
+
+```
+FUNCTION GetErrorInfo() AS CBSTR
+```
+
+#### Return value
+
+A localized description of the error.
+
 
 # <a name="GetLastResult"></a>GetLastResult
 
