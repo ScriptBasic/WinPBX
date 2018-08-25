@@ -233,3 +233,24 @@ DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
 DIM cbsResponseHeader AS CBSTR = pWHttp.GetResponseHeader("Date")
 PRINT cbsResponseHeader
 ```
+
+# <a name="GetResponseStream"></a>GetResponseStream
+
+Retrieves the response entity body as a stream.
+
+```
+FUNCTION GetResponseStream () AS IStream PTR
+```
+
+#### Return value
+
+Returns a pointer to an IStream interface if successful or NULL otherwise.
+
+#### GetLastResult
+
+Returns S_OK if successful or an error value otherwise.
+
+#### Remarks
+
+This method can only be invoked after the **Send** method has been called.
+
