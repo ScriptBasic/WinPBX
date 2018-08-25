@@ -316,3 +316,25 @@ Returns S_OK (0) if successful or an error value otherwise.
 #### Remarks
 
 Retrieves the text portion of the server response line, making available the "user-friendly" equivalent to the numeric HTTP status code. The results of this property are valid only after the Send method has successfully completed.
+
+# <a name="Open"></a>Open
+
+Opens an HTTP connection to an HTTP resource.
+
+```
+FUNCTION Open (BYREF cbsMethod AS CBSTR, BYREF cbsUrl AS CBSTR, BYVAL bAsync AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsMethod* | A value of type CBSTR that specifies the HTTP verb used for the Open method, such as "GET" or "PUT". Always use uppercase as some servers ignore lowercase HTTP verbs. |
+| *cbsUrl* | A value of type CBSTR that contains the name of the resource. This must be an absolute URL. |
+| *bAsync* | Optional. A value of type Boolean that specifies whether to open in asynchronous mode.<br>**TRUE**: Opens the HTTP connection in asynchronous mode.<br>**FALSE**: Opens the HTTP connection in synchronous mode. A call to Send does not return until WinHTTP has completely received the response. |
+
+#### Return value
+
+The return value is S_OK (0) on success or an error value otherwise.
+
+#### Remarks
+
+This method opens a connection to the resource identified in *cbsUrl* using the HTTP verb given in *cbsMethod*.
