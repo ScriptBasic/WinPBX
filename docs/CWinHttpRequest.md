@@ -190,3 +190,27 @@ IF pFileStream.Open("image.jpg", STGM_CREATE OR STGM_WRITE) = S_OK then
    pFileStream.WriteTextA(st)
 END IF
 ```
+
+# <a name="GetResponseHeader"></a>GetResponseHeader
+
+Gets the specified HTTP response header.
+
+```
+FUNCTION GetResponseHeader (BYREF cbsHeader AS CBSTR) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsHeader* | The case-insensitive header name. |
+
+#### Return value
+
+The resulting header information.
+
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+Invoke this method only after the **Send** method has been called.
