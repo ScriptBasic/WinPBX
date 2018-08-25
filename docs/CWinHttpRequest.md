@@ -77,6 +77,26 @@ Returns S_OK (0) if successful or an error value otherwise.
 
 This method returns all of the headers contained in the most recent server response. The individual headers are delimited by a carriage return and line feed combination (ASCII 13 and 10). The last entry is followed by two delimiters (13, 10, 13, 10). Invoke this method only after the **Send** method has been called.
 
+#### Example
+
+```
+#include once "windows.bi"
+#include once "Afx/CWinHttpRequest.inc"
+using Afx
+
+' // Create an instance of the CWinHttpRequest class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "http://microsoft.com"
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+' // Wait for response with a timeout of 5 seconds
+DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
+' // Get the response headers
+DIM cbsResponseHeaders AS CBSTR = pWHttp.GetAllResponseHeaders
+PRINT cbsResponseHeaders
+```
+
 # <a name="GetLastResult"></a>GetLastResult
 
 Returns the last result code.
@@ -109,3 +129,68 @@ Variant that contains the option value.
 
 Returns S_OK (0) if successful or an error value otherwise.
 
+# <a name="GetResponseBody"></a>GetResponseBody
+
+Retrieves the response entity body as an array of unsigned bytes.
+
+```
+FUNCTION GetResponseBody () AS STRING
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nOption* | Value of type **WinHttpRequestOption** that specifies the option to retrieve. |
+
+#### Return value
+
+An string containing the response entity body as an array of unsigned bytes. This array contains the raw data as received directly from the server.
+
+#### GetLastResult
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+This method returns the response data in an array of unsigned bytes. If the response does not have a response body, an empty variant is returned. This method can only be invoked after the **Send** method has been called.
+
+#### Examples
+
+```
+#include once "Afx/CWinHttpRequest.inc"
+using Afx
+
+' // Create an instance of the CWinHttpRequest class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "http://microsoft.com"
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+' // Wait for response with a timeout of 5 seconds
+DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
+' // Get the response body
+DIM strResponseBody AS STRING = pWHttp.GetResponseBody
+PRINT strResponseBody
+```
+
+```
+#include once "Afx/CWinHttpRequest.inc"
+#include once "Afx/CStream.inc"
+using Afx
+
+' // Create an instance of the CWinHttpRequest class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "https://i.ytimg.com/vi/nPUi1XNiRzQ/maxresdefault.jpg"
+print pWHttp.GetErrorInfo
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+' // Wait for response with a timeout of 5 seconds
+DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
+' // Get the reponse body and sae it into a file
+DIM st AS STRING = pWHttp.GetResponseBody
+' // Open a file stream
+DIM pFileStream AS CFileStream
+IF pFileStream.Open("image.jpg", STGM_CREATE OR STGM_WRITE) = S_OK then
+   pFileStream.WriteTextA(st)
+END IF
+```
