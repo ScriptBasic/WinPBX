@@ -676,3 +676,256 @@ END FUNCTION
 ' ========================================================================================
 ```
 
+### <a name="Topic5"></a>Using PNG icons in toolbars
+
+**AfxGdiplus.inc** provides functions that allow to use alphablended PNG icons in toolbars.
+
+**AfxGdipIconFromFile** loads the images from disk and **AfxGdipIconFromRes** from a resource file embedded in the application.
+
+We need to create an image list for the toolbar of the appropriate size. To calculate the size, I'm using the following formula: 16 * pWindow.DPI \ 96. Where 16 is the size of a normal icon (personally, for toolbars it may be preferibñe to use 20 to make them a bit bigger), pWindow.DPI the DPI being used by the computer and 96 the DPI used by applications that are not DPI aware.
+
+```
+' // Create an image list for the toolbar
+DIM hImageList AS HIMAGELIST
+DIM cx AS LONG = 16 * pWindow.DPI \ 96
+hImageList = ImageList_Create(cx, cx, ILC_COLOR32 OR ILC_MASK, 4, 0)
+IF hImageList THEN
+   AfxGdipAddIconFromRes(hImageList, hInst, "IDI_ARROW_LEFT_32")
+   AfxGdipAddIconFromRes(hImageList, hInst, "IDI_ARROW_RIGHT_48")
+   AfxGdipAddIconFromRes(hImageList, hInst, "IDI_HOME_48")
+   AfxGdipAddIconFromRes(hImageList, hInst, "IDI_SAVE_48")
+END IF
+SendMessageW hToolBar, TB_SETIMAGELIST, 0, CAST(LPARAM, hImageList)
+```
+
+We are using 48 bit icons in this example, that usually resize well to adapt to different DPI settings. This way, we can use only a set of icons instead of several sets of icons of different sizes. However, for best quality, it is advisable to use the appropriate icon size.
+
+**AfxGdipIconFromFile** and **AfxGdipIconFromRes** also provide two optional parameters, *dimPercent* and *bGrayScale*. With *dimPercent* you can indicate a percentage of dimming, and *bGrayScale* is a boolean value (TRUE or FALSE) that tells these functions to convert the icon colors to shades of gray. This allows to create an image list for disabled items with the same icon set. The following code creates a disabled image using the same color PNG icons, but dimming them a 60% and converting them to gray:
+
+```
+' // Create a disabled image list for the toolbar
+DIM hDisabledImageList AS HIMAGELIST
+DIM cx AS LONG = 16 * pWindow.DPI \ 96
+hDisabledImageList = ImageList_Create(cx, cx, ILC_COLOR32 OR ILC_MASK, 4, 0)
+IF hDisabledImageList THEN
+   AfxGdipAddIconFromRes(hDisabledImageList, hInst, "IDI_ARROW_LEFT_32", 60, TRUE))
+   AfxGdipAddIconFromRes(hDisabledImageList, hInst, "IDI_ARROW_RIGHT_48", 60, TRUE))
+   AfxGdipAddIconFromRes(hDisabledImageList, hInst, "IDI_HOME_48", 60, TRUE))
+   AfxGdipAddIconFromRes(hDisabledImageList, hInst, "IDI_SAVE_48", 60, TRUE))
+END IF
+SendMessageW hToolBar, TB_SETDISABLEDIMAGELIST, 0, CAST(LPARAM, hDisabledImageList)
+```
+
+**Resource file**:
+
+```
+//=============================================================================
+// Manifest
+//=============================================================================
+
+1 24 "WThemes.xml"
+
+//=============================================================================
+// Toolbar icons
+//=============================================================================
+
+// Toolbar, normal
+IDI_ARROW_LEFT_48       RCDATA "arrow_left_48.png"
+IDI_ARROW_RIGHT_48      RCDATA "arrow_right_48.png"
+IDI_HOME_48             RCDATA "home_48.png"
+IDI_SAVE_48             RCDATA "save_48.png"
+
+Manifest:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+
+      <assemblyIdentity version="1.0.0.0"
+         processorArchitecture="*"
+         name="ApplicationName"
+         type="win32"/>
+      <description>Optional description of your application</description>
+
+      <asmv3:application>
+         <asmv3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">
+            <dpiAware>true</dpiAware>
+         </asmv3:windowsSettings>
+      </asmv3:application>
+
+      <!-- Compatibility section -->
+      <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
+         <application>
+            <!--The ID below indicates application support for Windows Vista -->
+            <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"/>
+            <!--The ID below indicates application support for Windows 7 -->
+            <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/>
+            <!--This Id value indicates the application supports Windows 8 functionality-->
+            <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/>
+            <!--This Id value indicates the application supports Windows 8.1 functionality-->
+            <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/>
+         </application>
+       </compatibility>
+
+      <!-- Trustinfo section -->
+      <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
+         <security>
+            <requestedPrivileges>
+               <requestedExecutionLevel
+                  level="asInvoker"
+                  uiAccess="false"/>
+               </requestedPrivileges>
+         </security>
+      </trustInfo>
+
+      <dependency>
+         <dependentAssembly>
+            <assemblyIdentity
+               type="win32"
+               name="Microsoft.Windows.Common-Controls"
+               version="6.0.0.0"
+               processorArchitecture="*"
+               publicKeyToken="6595b64144ccf1df"
+               language="*" />
+         </dependentAssembly>
+      </dependency>
+
+   </assembly>
+```
+
+#### Example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: CWindow with a toolbar
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define unicode
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CWindow.inc"
+#INCLUDE ONCE "Afx/AfxCtl.inc"
+#INCLUDE ONCE "Afx/AfxGdiplus.inc"
+USING Afx
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+CONST IDC_TOOLBAR = 1001
+enum
+   IDM_LEFTARROW = 28000
+   IDM_RIGHTARROW
+   IDM_HOME
+   IDM_SAVEFILE
+end enum
+
+' ========================================================================================
+' Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   DIM pWindow AS CWindow PTR
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application sending an WM_CLOSE message
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+'            CASE IDM_CUT   ' etc.
+'               MessageBoxW hwnd, "You have clicked the Cut button", "Toolbar", MB_OK
+'               EXIT FUNCTION
+         END SELECT
+
+      CASE WM_SIZE
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Update the size and position of the Toolbar control
+            SendMessageW GetDlgItem(hWnd, IDC_TOOLBAR), TB_AUTOSIZE, 0, 0
+            ' // Resize the buttons
+            pWindow = CAST(CWindow PTR, GetWindowLongPtrW(hwnd, 0))
+            pWindow->MoveWindow GetDlgItem(hwnd, IDCANCEL), pWindow->ClientWidth - 95, pWindow->ClientHeight - 35, 75, 23, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         ' // Destroy the image list
+         ImageList_Destroy CAST(HIMAGELIST, SendMessageW(GetDlgItem(hwnd, IDC_TOOLBAR), TB_SETIMAGELIST, 0, 0))
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+'   AfxSetProcessDPIAware
+
+   DIM pWindow AS CWindow
+   pWindow.Create(NULL, "CWindow with a toolbar", @WndProc)
+   ' // Disable background erasing
+   pWindow.ClassStyle = CS_DBLCLKS
+   ' // Set the client size
+   pWindow.SetClientSize(600, 300)
+   ' // Center the window
+   pWindow.Center
+
+   ' // Add a button
+   pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close")
+
+   ' // Add a tooolbar
+   DIM hToolBar AS HWND = pWindow.AddControl("Toolbar", pWindow.hWindow, IDC_TOOLBAR)
+   ' // Module instance handle
+   DIM hInst AS HINSTANCE = GetModuleHandle(NULL)
+   ' // Create an image list for the toolbar
+   DIM hImageList AS HIMAGELIST
+   DIM cx AS LONG = 16 * pWindow.DPI \ 96
+   hImageList = ImageList_Create(cx, cx, ILC_COLOR32 OR ILC_MASK, 4, 0)
+   IF hImageList THEN
+      ImageList_ReplaceIcon(hImageList, -1, AfxGdipIconFromRes(hInst, "IDI_ARROW_LEFT_48"))
+      ImageList_ReplaceIcon(hImageList, -1, AfxGdipIconFromRes(hInst, "IDI_ARROW_RIGHT_48"))
+      ImageList_ReplaceIcon(hImageList, -1, AfxGdipIconFromRes(hInst, "IDI_HOME_48"))
+      ImageList_ReplaceIcon(hImageList, -1, AfxGdipIconFromRes(hInst, "IDI_SAVE_48"))
+   END IF
+   SendMessageW hToolBar, TB_SETIMAGELIST, 0, CAST(LPARAM, hImageList)
+
+   ' // Add buttons to the toolbar
+   Toolbar_AddButton hToolBar, 0, IDM_LEFTARROW
+   Toolbar_AddButton hToolBar, 1, IDM_RIGHTARROW
+   Toolbar_AddButton hToolBar, 2, IDM_HOME
+   Toolbar_AddButton hToolBar, 3, IDM_SAVEFILE
+
+   ' // Size the toolbar
+   SendMessageW hToolBar, TB_AUTOSIZE, 0, 0
+
+   ' // Process event messages
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+```
+
