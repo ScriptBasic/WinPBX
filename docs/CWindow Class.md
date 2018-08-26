@@ -53,8 +53,8 @@ DIM pWindow AS CWindow = "MyClassName"
 | [Using PNG icons in toolbars](Topic5) |
 | [Keyboard accelerators](Topic7) |
 | [Scrollable windows](Topic8) |
-
-
+| [TabPages](Topic9) |
+| [Layout Manager](Topic10) |
 
 
 ### Methods and Properties
