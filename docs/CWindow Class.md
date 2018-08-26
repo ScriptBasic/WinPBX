@@ -3495,7 +3495,7 @@ PROPERTY InstanceHandle (BYVAL hInst AS HINSTANCE)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *hInst* | The instance handle.. |
+| *hInst* | The instance handle. |
 
 #### Return value
 
@@ -3508,4 +3508,22 @@ DIM hInstance = pWindow.InstanceHandle
 ```
 ```
 pWindow.InstanceHandle = pInstance
+```
+
+# <a name="MDICLassName"></a>MDICLassName
+
+Sets the class name of the MDI frame window.
+
+```
+PROPERTY MDICLassName (BYREF wszMDIClassName AS WSTRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMDIClassName* | The name of the class of the MDI frame window. This property is optional: if you don't set it, **CWindow** assigns a default one, "FBFrameClass". However, you need to set it if you use CWindow to create a GUI outside the main application, for example in a DLL. |
+
+#### Usage example
+
+```
+pWindow.MDIClassName = "MyClassName"
 ```
