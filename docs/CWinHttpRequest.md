@@ -436,7 +436,7 @@ FUNCTION SetCredentials (BYREF cbsUserName AS CBSTR, BYREF cbsPassword AS CBSTR,
 | ---------- | ----------- |
 | *cbsUserName* | An string that specifies the user name for authentication. |
 | *cwsPassword* | An string specifies the password for authentication. This parameter is ignored if *cbsUserName* is NULL or missing. |
-| *Flags* | A value that specifies when IWinHttpRequest uses credentials. Can be one of the below values. |
+| *Flags* | A value that specifies when **CWinHttpRequest** uses credentials. Can be one of the below values. |
 
 | Flag       | Meaning     |
 | ---------- | ----------- |
