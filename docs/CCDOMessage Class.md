@@ -457,7 +457,7 @@ FUNCTION ReplyTo (BYREF cbsReplyTo AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsReplyTo* | The default value of the ReplyTo property is an empty string. |
+| *cbsReplyTo* | The messaging address or addresses to which replies are to be sent. The default value of the **ReplyTo** property is an empty string. |
 
 #### Return value
 
