@@ -2798,3 +2798,56 @@ PROPERTY ControlClientWidth (BYVAL hwnd AS HWND) AS LONG
 DIM nHeight AS LONG = pWindow.ControlClientWidth(hwnd)
 ```
 
+### <a name="ControlHandle"></a>ControlHandle
+
+Retrieves a handle to the child control specified by its identifier.
+
+```
+FUNCTION ControlHandle (BYVAL cID AS LONG) AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cID* | The child control identifier. |
+
+#### Usage example
+
+```
+DIM hCtl AS HWND = pWindow.ControlHandle(cID)
+```
+
+### <a name="ControlHeight"></a>ControlHeight
+
+Returns the unscaled height of the specified window.
+
+```
+FUNCTION ControlHeight (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+
+#### Usage example
+
+```
+DIM nHeight AS LONG = pWindow.ControlHeight(hwnd)
+```
+
+### <a name="ControlWidth"></a>ControlWidth
+
+Returns the unscaled width of the specified window.
+
+```
+FUNCTION ControlWidth (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+
+#### Usage example
+
+```
+DIM nWidth AS LONG = pWindow.ControlWidth(hwnd)
+```
