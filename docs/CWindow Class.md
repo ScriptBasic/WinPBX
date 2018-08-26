@@ -3527,3 +3527,40 @@ PROPERTY MDICLassName (BYREF wszMDIClassName AS WSTRING)
 ```
 pWindow.MDIClassName = "MyClassName"
 ```
+
+# <a name="MoveWindow"></a>MoveWindow
+
+Changes the position and dimensions of the specified window. For a top-level window, the position and dimensions are relative to the upper-left corner of the screen. For a child window, they are relative to the upper-left corner of the parent window's client area. This method scales the window by multiplying the size and coordinates according the DPI setting; therefore, you must pass unscaled values to it.
+
+```
+FUNCTION MoveWindow (BYVAL hwnd AS HWND, BYVAL x AS LONG, BYVAL y AS LONG, _
+   BYVAL nWidth AS LONG, BYVAL nHeight AS LONG, BYVAL bRepaint AS WINBOOL) AS WINBOOL
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+| *x* | The new position of the left side of the window. |
+| *y* | The new position of the top of the window. |
+| *nWidth* | The new width of the window. |
+| *nHeight* | The new height of the window. |
+| *bRepaint* | Indicates whether the window is to be repainted. If this parameter is CTRUE, the window receives a message. If the parameter is FALSE, no repainting of any kind occurs. This applies to the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent window uncovered as a result of moving a child window. |
+
+#### Return value
+
+If the function succeeds, the return value is nonzero.
+
+If the function fails, the return value is zero. To get extended error information, call **GetLastError**.
+
+#### Remarks
+
+If the *bRepaint* parameter is CTRUE, the system sends the WM_PAINT message to the window procedure immediately after moving the window (that is, the **MoveWindow** method calls the UpdateWindow function). If *bRepaint* is FALSE, the application must explicitly invalidate or redraw any parts of the window and parent window that need redrawing.
+
+**MoveWindow** sends the WM_WINDOWPOSCHANGING, WM_WINDOWPOSCHANGED, WM_MOVE, WM_SIZE, and WM_NCCALCSIZE messages to the window.
+
+#### Usage example
+
+```
+pWindow.MoveWindow GetDlgItem(hwnd, IDCANCEL), pWindow.ClientWidth, _
+   pWindow-ClientHeight, 75, 23, CTRUE
+```
