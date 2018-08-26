@@ -255,7 +255,23 @@ FUNCTION FollowUpTo (BYREF cbsFollowUpTo AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsFollowUpTo* | The string in the **FollowUpTo** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, and multiple newsgroups in the list are separated by commas, as shown in the following examples:<br>name.public.discussion<br>alt.sample,sample.newsgroup.name.public.chat<br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br>If the **FollowUpTo** property is not set, responses are posted to the newsgroups specified by the Newsgroups property.<br>The default value of the **FollowUpTo** property is an empty string. |
+| *cbsFollowUpTo* | The string in the **FollowUpTo** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, and multiple newsgroups in the list are separated by commas, as shown in the following examples:<br><br>name.public.discussion<br><br>alt.sample,sample.newsgroup.name.public.chat<br><br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br>If the **FollowUpTo** property is not set, responses are posted to the newsgroups specified by the Newsgroups property.<br>The default value of the **FollowUpTo** property is an empty string. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="From"></a>From
+
+The messaging address of the principal author of the message.
+
+```
+FUNCTION From (BYREF cbsFrom AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFrom* | The string in the From method represents the full messaging addresses of the message author or authors, as shown in the following example: "Jane Doe" \<example@example.com>, \<example@example.com>, example2@example.com<br>Commas serve as address separators; however, commas are not parsed as separators when they appear in an address that is enclosed in double quotes, such as the following: "John Jones, Jr." \<example@example.com>, "Jane Doe" \<example@example.com><br>If you do not set the **From** property before calling the **Send** method, Microsoft Collaboration Data Objects (CDO) uses the IMessage.Sender property if it is present. If neither the From and Sender properties are set before calling the Send method, an exception is raised.<br>The **Sender** property is not used with Network News Transfer Protocol (NTTP).<br>The difference between the **From** and **Sender** properties is that the **Sender** property represents the messaging user that actually submits the message, while the **From** property designates its principal author or authors. If the author and the sender are the same, it is only necessary to set the **From** property, and it is recommended to leave the **Sender** property unset in this case.  |
 
 #### Return value
 
