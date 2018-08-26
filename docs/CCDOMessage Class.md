@@ -417,7 +417,7 @@ S_OK (0) or an HRESULT code.
 
 # <a name="Post"></a>Post
 
-The organization of the sender.
+Submits this message to the specified newsgroups.
 
 ```
 FUNCTION Post () AS HRESULT
@@ -433,7 +433,7 @@ S_OK (0) or an HRESULT code.
 
 # <a name="Recipients"></a>Recipients
 
-The newsgroup recipients for the message.
+The principal (To) recipients for this message.
 
 ```
 FUNCTION Recipients (BYVAL cbsRecipients AS CBSTR) AS HRESULT
