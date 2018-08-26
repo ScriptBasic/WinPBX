@@ -463,3 +463,15 @@ FUNCTION ReplyTo (BYREF cbsReplyTo AS CBSTR) AS HRESULT
 
 S_OK (0) or an HRESULT code.
 
+# <a name="Send"></a>Send
+
+Sends the message.
+
+```
+FUNCTION Send () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
