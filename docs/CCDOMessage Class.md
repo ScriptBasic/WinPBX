@@ -4,7 +4,7 @@ Collaboration Data Objects (CDO) is a Component Object Model (COM) component des
 
 **CCDOMessage** is a Free Basic class that allows to send messages using CDO.
 
-**Include file:** CCDoMessage.inc.
+**Include file:** CCDOMail.inc.
 
 #### Example
 
