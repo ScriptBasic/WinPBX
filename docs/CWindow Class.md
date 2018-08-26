@@ -2997,3 +2997,36 @@ pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
 pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
 DIM hAccel AS HACCEL = pWindow.CreateAcceleratorTable
 ```
+
+# <a name="CreateFont"></a>CreateFont
+
+Creates a DPI aware logical font.
+
+```
+FUNCTION CreateFont (BYREF wszFaceName AS WSTRING, BYVAL lPointSize AS LONG, _
+   BYVAL lWeight AS LONG = FW_NORMAL, BYVAL bItalic AS UBYTE = FALSE, _
+   BYVAL bUnderline AS UBYTE = FALSE, BYVAL bStrikeOut AS UBYTE = FALSE, _
+   BYVAL bCharSet AS UBYTE = DEFAULT_CHARSET) AS HFONT
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *wszFaceName* | A string that specifies the typeface name of the font. The length of this string must not exceed 31 characters. The **EnumFontFamilies** function can be used to enumerate the typeface names of all currently available fonts. If *wszFaceName* is an empty string, GDI uses the first font that matches the other specified attributes. |
+| *lPointSize* | Specifies the height, in logical units, of the font's character cell or character. |
+| *lWeight* | Specifies the weight of the font in the range 0 through 1000. If this value is zero, a default weight is used. |
+| *bItalic* | Specifies an italic font if set to CTRUE. |
+| *bUnderline* | Specifies an underlined font if set to CTRUE. |
+| *bStrikeOut* | Specifies a strikeout font if set to CTRUE. |
+| *bCharSet* | Specifies the character set. The following values are predefined:<br>ANSI_CHARSET, BALTIC_CHARSET, CHINESEBIG5_CHARSET, DEFAULT_CHARSET, EASTEUROPE_CHARSET, GB2312_CHARSET, GREEK_CHARSET, HANGUL_CHARSET, MAC_CHARSET, OEM_CHARSET, RUSSIAN_CHARSET, SHIFTJIS_CHARSET, SYMBOL_CHARSET, TURKISH_CHARSET.<br>Korean Windows: JOHAB_CHARSET.<br>Middle-Eastern Windows: HEBREW_CHARSET, ARABIC_CHARSET.<br>Thai Windows: THAI_CHARSET.<br>The OEM_CHARSET value specifies a character set that is operating-system dependent. DEFAULT_CHARSET is set to a value based on the current system locale. For example, when the system locale is English (United States), it is set as ANSI_CHARSET. Fonts with other character sets may exist in the operating system. If an application uses a font with an unknown character set, it should not attempt to translate or interpret strings that are rendered with that font. This parameter is important in the font mapping process. To ensure consistent results, specify a specific character set. If you specify a typeface name in the *wszFaceName* parameter, make sure that the *bCharSet* value matches the character set of the typeface specified in *wszFaceName*. |
+
+#### Return value
+
+A handle to a logical font indicates success. NULL indicates failure. To get extended error information, call **GetLastError**.
+
+#### Examples
+
+```
+hFont = CWindow.CreateFont("MS Sans Serif", 8, FW_NORMAL, , , , DEFAULT_CHARSET)
+hFont = CWindow.CreateFont("Courier New", 10, FW_BOLD, , , , DEFAULT_CHARSET)
+hFont = CWindow.CreateFont("Marlett", 8, FW_NORMAL, , , , SYMBOL_CHARSET)
+```
