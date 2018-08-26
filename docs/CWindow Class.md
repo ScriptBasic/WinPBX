@@ -1454,3 +1454,267 @@ ShowWindow pTabPage1->hTabPage, SW_SHOW
 ' // Set the focus to the first tab
 SendMessageW hTab, TCM_SETCURFOCUS, 0, 0
 ```
+
+### <a name="Topic9"></a>Tab pages
+
+The **CTabPage** class extends the **CWindow** class and allows to create generic windows used as a tab pages of a tab control.
+
+**FreeBasic template**:
+
+```
+' ####################################################################################
+' Microsoft Windows
+' Contents: CWindow Tab Control template
+' Remarks: Demonstrates the use of the CTabPage class
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ####################################################################################
+
+#define unicode
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CWindow.inc"
+USING Afx
+
+CONST IDC_TAB       = 1001
+CONST IDC_EDIT1     = 1002
+CONST IDC_EDIT2     = 1003
+CONST IDC_BTNSUBMIT = 1004
+CONST IDC_COMBO     = 1005
+CONST IDC_LISTBOX   = 1006
+
+' // Forward declarations
+DECLARE FUNCTION TabPage1_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE FUNCTION TabPage2_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE FUNCTION TabPage3_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(""), NULL, COMMAND(), SW_NORMAL)
+
+' ====================================================================================
+' Window procedure
+' ====================================================================================
+FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            ' // If ESC key pressed, close the application sending an WM_CLOSE message
+            CASE IDCANCEL
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_NOTIFY
+
+         DIM nPage AS DWORD              ' // Page number
+         DIM pTabPage AS CTabPage PTR    ' // Tab page object reference
+         DIM tci AS TCITEMW              ' // TCITEMW structure
+
+         DIM ptnmhdr AS NMHDR PTR   ' // Information about a notification message
+         ptnmhdr = CAST(NMHDR PTR, lParam)
+         SELECT CASE ptnmhdr->idFrom
+            CASE IDC_TAB
+               SELECT CASE ptnmhdr->code
+                  CASE TCN_SELCHANGE
+                     ' // Show the selected page
+                     nPage = SendMessage(ptnmhdr->hwndFrom, TCM_GETCURSEL, 0, 0)
+                     tci.mask = TCIF_PARAM
+                     IF SendMessageW(ptnmhdr->hwndFrom, TCM_GETITEMW, nPage, CAST(lParam, @tci)) THEN
+                        IF tci.lParam THEN
+                           pTabPage = CAST(CTabPage PTR, tci.lParam)
+                           ShowWindow pTabPage->hTabPage, SW_SHOW
+                        END IF
+                     END IF
+                  CASE TCN_SELCHANGING
+                     ' // Hide the current page
+                     nPage = SendMessage(ptnmhdr->hwndFrom, TCM_GETCURSEL, 0, 0)
+                     tci.mask = TCIF_PARAM
+                     IF SendMessageW(ptnmhdr->hwndFrom, TCM_GETITEMW, nPage, CAST(lParam, @tci)) THEN
+                        IF tci.lParam THEN
+                           pTabPage = CAST(CTabPage PTR, tci.lParam)
+                           ShowWindow pTabPage->hTabPage, SW_HIDE
+                        END IF
+                     END IF
+               END SELECT
+
+         END SELECT
+
+    	CASE WM_DESTROY
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ====================================================================================
+
+' ====================================================================================
+' Main
+' ====================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   DIM pWindow AS CWindow
+   pWindow.Create(NULL, "CWindow with a Tab Control", @WndProc)
+   pWindow.SetClientSize(500, 320)
+   pWindow.Center
+
+   ' // Add a tab control
+   DIM hTab AS HWND = pWindow.AddControl("Tab", pWindow.hWindow, IDC_TAB, "", 10, 10, pWindow.ClientWidth - 20, pWindow.ClientHeight - 42)
+
+   ' // Create the first tab page
+   DIM pTabPage1 AS CTabPage PTR = NEW CTabPage
+   pTabPage1->InsertPage(hTab, 0, "Tab 1", -1, @TabPage1_WndProc)
+   ' // Add controls to the first page
+   pTabPage1->AddControl("Label", pTabPage1->hTabPage, -1, "First name", 15, 15, 121, 21)
+   pTabPage1->AddControl("Label", pTabPage1->hTabPage, -1, "Last name", 15, 50, 121, 21)
+   pTabPage1->AddControl("Edit", pTabPage1->hTabPage, IDC_EDIT1, "", 165, 15, 186, 21)
+   pTabPage1->AddControl("Edit", pTabPage1->hTabPage, IDC_EDIT2, "", 165, 50, 186, 21)
+   pTabPage1->AddControl("Button", pTabPage1->hTabPage, IDC_BTNSUBMIT, "Submit", 340, 185, 76, 26, BS_DEFPUSHBUTTON)
+
+   ' // Create the second tab page
+   DIM pTabPage2 AS CTabPage PTR = NEW CTabPage
+   pTabPage2->InsertPage(hTab, 1, "Tab 2", -1, @TabPage2_WndProc)
+   ' // Add controls to the second page
+   DIM hComboBox AS HWND = pTabPage2->AddControl("ComboBox", pTabPage2->hTabPage, IDC_COMBO, "", 20, 20, 191, 105)
+
+   ' // Create the third tab page
+   DIM pTabPage3 AS CTabPage PTR = NEW CTabPage
+   pTabPage3->InsertPage(hTab, 2, "Tab 3", -1, @TabPage3_WndProc)
+   ' // Add controls to the third page
+'   DIM hListBox AS HWND = pTabPage3->AddControl("ListBox", pTabPage3->hTabPage, IDC_LISTBOX, "", 15, 20, 161, 120)
+   DIM hListBox AS HWND = pTabPage3->AddControl("ListBox", pTabPage3->hTabPage, IDC_LISTBOX)
+   pTabPage3->SetWindowPos hListBox, NULL, 15, 20, 161, 120, SWP_NOZORDER
+
+   ' // Fill the controls with some data
+   DIM i AS LONG = 1, wszText AS WSTRING * 260
+   FOR i = 1 TO 9
+      wszText = "Item " & RIGHT("00" & STR(i), 2)
+      SendMessageW(hComboBox, CB_ADDSTRING, 0, CAST(LPARAM, @wszText))
+      SendMessageW(hListBox, LB_ADDSTRING, 0, CAST(LPARAM, @wszText))
+   NEXT
+   ' // Select the first item in the combo box and the list box
+   SendMessageW(hComboBox, CB_SETCURSEL, 0, 0)
+   SendMessageW(hListBox, LB_SETCURSEL, 0, 0)
+
+   ' // Add a button
+   pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close", 415, 292, 75, 23)
+
+   ' // Display the first tab page
+   ShowWindow pTabPage1->hTabPage, SW_SHOW
+
+   ' // Set the focus to the first tab
+   SendMessageW hTab, TCM_SETCURFOCUS, 0, 0
+
+   ' // Dispatch messages
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+   ' // Delete the tab pages
+   Delete pTabPage3
+   Delete pTabPage2
+   Delete pTabPage1
+
+END FUNCTION
+' ====================================================================================
+
+' ====================================================================================
+' Tab page 1 window procedure
+' ====================================================================================
+FUNCTION TabPage1_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDC_BTNSUBMIT
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  MessageBoxW(hWnd, "Submit", "Tab 1", MB_OK)
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ====================================================================================
+
+' ====================================================================================
+' Tab page 2 window procedure
+' ====================================================================================
+FUNCTION TabPage2_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   DIM hBrush AS HBRUSH, rc AS RECT, tlb AS LOGBRUSH
+
+   SELECT CASE uMsg
+
+      CASE WM_ERASEBKGND
+         GetClientRect hWnd, @rc
+         ' Create custom brush
+         tlb.lbStyle = BS_SOLID
+         tlb.lbColor = &H00CB8734
+         tlb.lbHatch = 0
+         hBrush = CreateBrushIndirect(@tlb)
+         ' Erase background
+         FillRect CAST(HDC, wParam), @rc, hBrush
+         DeleteObject hBrush
+         FUNCTION = CTRUE
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ====================================================================================
+
+' ====================================================================================
+' Tab page 3 window procedure
+' ====================================================================================
+FUNCTION TabPage3_WndProc(BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   DIM hBrush AS HBRUSH, rc AS RECT, tlb AS LOGBRUSH
+
+   SELECT CASE uMsg
+
+      CASE WM_ERASEBKGND
+         GetClientRect hWnd, @rc
+         ' Create custom brush
+         tlb.lbStyle = BS_SOLID
+         tlb.lbColor = &H0000FF00
+         tlb.lbHatch = 0
+         hBrush = CreateBrushIndirect(@tlb)
+         ' Erase background
+         FillRect CAST(HDC, wParam), @rc, hBrush
+         DeleteObject hBrush
+         FUNCTION = CTRUE
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ====================================================================================
+```
