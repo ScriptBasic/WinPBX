@@ -40,3 +40,16 @@ To send messages using gmail, simply change the values of the server name and th
 pMsg.ConfigValue(cdoSMTPServer, "smtp.gmail.com")
 pMsg.ConfigValue(cdoSMTPServerPort, 465)
 ```
+
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [AddAttachment](#AddAttachment) | Adds an attachment to the message. |
+| [BCC](#BCC) | The blind carbon copy (Bcc) recipients for the message. |
+| [CC](#CC) | The secondary (carbon copy) recipients for this message. |
+| [ConfigUpdate](#ConfigUpdate) | Saves the changes you make to the **Fields** collection of the CDO **IConfiguration** interface. |
+| [ConfigValue](#ConfigValue) | Sets the value of the specified configuration field. |
+| [DSNOptions](#DSNOptions) | Includes a request for a return report on the delivery status of the message. |
+| [FollowUpTo](#FollowUpTo) | Newsgroups to which any responses to this message are posted. |
+| [From](#From) | The messaging address of the principal author of the message. |
