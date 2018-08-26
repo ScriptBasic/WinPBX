@@ -35,7 +35,7 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | [WinHttpRequestAutoLogonPolicy](#WinHttpRequestAutoLogonPolicy) | Includes possible settings for the Automatic Logon Policy. |
 | [WinHttpRequestOption](#WinHttpRequestOption) | Includes options that can be set or retrieved for the current Microsoft Windows HTTP Services (WinHTTP) session. |
 | [WinHttpRequestSecureProtocols](#WinHttpRequestSecureProtocols) | Type of secure protocol. |
-| [WinHttpRequestSslErrorFlags](#WinHttpRequestSslErrorFlags) | SSL error flags. |
+| [WinHttpRequestSslErrorFlags](#WinHttpRequestSslErrorFlags) | SSL certificate errors. |
 
 # <a name="Abort"></a>Abort
 
@@ -674,7 +674,7 @@ Types of secure protocols.
 
 # <a name="WinHttpRequestSslErrorFlags"></a>WinHttpRequestSslErrorFlags Enumeration
 
-Ignore SSL certificate errors.
+SSL certificate errors.
 
 | Constant   | Description |
 | ---------- | ----------- |
