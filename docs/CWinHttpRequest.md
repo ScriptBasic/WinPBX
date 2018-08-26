@@ -37,6 +37,12 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | [WinHttpRequestSecureProtocols](#WinHttpRequestSecureProtocols) | Type of secure protocol. |
 | [WinHttpRequestSslErrorFlags](#WinHttpRequestSslErrorFlags) | SSL certificate errors. |
 
+### HTTP Status Codes
+
+| Name       | Description |
+| ---------- | ----------- |
+| [HTTP Status Codes](#HTTPStatusCodes) | These constants and corresponding values indicate HTTP status codes returned by servers on the Internet. |
+
 # <a name="Abort"></a>Abort
 
 Aborts a WinHTTP **Send** method.
