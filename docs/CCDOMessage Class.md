@@ -217,3 +217,30 @@ pMsg.ConfigValue(cdoSendPassword, "xxxxxxxx")
 pMsg.ConfigValue(cdoSMTPUseSSL, 1)
 pMsg.ConfigUpdate
 ```
+
+# <a name="DSNOptions"></a>DSNOptions
+
+Includes a request for a return report on the delivery status of the message.
+
+```
+FUNCTION DSNOptions (BYVAL BYVAL pDSNOptions AS CdoDSNOptions) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pDSNOptions* | Delivery Status Notifications are essentially requests for receipts of message delivery status. The request can be for the enumerated delivery conditions. Note that Delivery Status Notifications can pass through numerous message transfer agents and thus return receipts can have different meanings. *DSNOptions* defines the type of Delivery Status Notification requested per Request for Comments (RFC) 1894. The RFC covers the nature and uses of Delivery Status Notifications in depth. |
+
+The **CdoDSNOptions** enumeration is provided for this property.
+
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **cdoDSNDefault** | 0 | No delivery status notifications are issued. |
+| **cdoDSNNever** | 1 | No delivery status notifications are issued. |
+| **cdoDSNFailure** | 2 | Returns a delivery status notification if delivery fails. |
+| **cdoDSNSuccess** | 4 | Returns a delivery status notification if delivery succeeds. |
+| **cdoDSNDelay** | 8 | Returns a delivery status notification if delivery is delayed. |
+| **cdoDSNSuccessFailOrDelay** | 14 | Returns a delivery status notification if delivery succeeds, fails, or is delayed. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
