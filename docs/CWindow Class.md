@@ -3651,3 +3651,25 @@ DIM cy AS LONG = pWindow.ScaleY
 
 A SINGLE datatype is used instead of a long to avoid rounding errors in the calculation.
 
+
+# <a name="ScrollWindowPtr"></a>ScrollWindowPtr
+
+Gets/sets a pointer to the scroll window class.
+
+```
+PROPERTY ScrollWindowPtr () AS CScrollWindow PTR
+PROPERTY ScrollWindowPtr (BYVAL pScrollWindow AS CScrollWindow PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pScrollWindow* | A pointer to the CScrollWindow class or NULL. |
+
+#### Usage example
+
+```
+DIM pScrollWindow AS CScrollWindowPtr = pWindow.ScrollWondowPtr
+```
+```
+pWindow.ScrollWondowPtr = pScrollWindow
+```
