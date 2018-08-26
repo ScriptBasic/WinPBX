@@ -117,4 +117,20 @@ FUNCTION BCC (BYREF cbsBCC AS CBSTR PTR) AS HRESULT
 
 #### Return value
 
-S_OK or an HRESULT code.
+S_OK (0) or an HRESULT code.
+
+# <a name="CC"></a>CC
+
+The secondary (carbon copy) recipients for this message.
+
+```
+FUNCTION CC (BYREF cbsCC AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsCC* | The string in the BCC method can represent a single recipient or multiple recipients. Each address in the list must be a full messaging address, such as "User" \<example@example.com> or example@example.com.<br>In lists of multiple recipients, commas separate addresses, as follows: "User1" \<example1@example.com >, "User 2" \<example2@example.com>, "User3" \<example3@example.com><br>A comma is not valid in any part of a messaging address unless it is enclosed in quotation marks.<br>To maintain the privacy intended by blind copies, **CC** is regarded as an envelope property rather than a message property; accordingly, the corresponding header field and its contents are removed when the message is delivered, and the **CC** property is always empty on a received message.<br>The default value of the **CC** property is an empty string. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
