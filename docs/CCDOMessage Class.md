@@ -55,6 +55,7 @@ pMsg.ConfigValue(cdoSMTPServerPort, 465)
 | [DSNOptions](#DSNOptions) | Includes a request for a return report on the delivery status of the message. |
 | [FollowUpTo](#FollowUpTo) | Newsgroups to which any responses to this message are posted. |
 | [From](#From) | The messaging address of the principal author of the message. |
+| [GetErrorInfo](#GetErrorInfo) | Returns the description of the most recent error. |
 | [GetLastResult](#GetLastResult) | Returns the last result code. |
 | [HTMLBody](#HTMLBody) | The Hypertext Markup Language (HTML) representation of the message. |
 | [Keywords](#Keywords) | The list of keywords for the message. |
@@ -276,3 +277,28 @@ FUNCTION From (BYREF cbsFrom AS CBSTR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="GetErrorInfo"></a>GetErrorInfo
+
+Returns the description of the most recent OLE error in the current logical thread and clears the error state for the thread. It should be called as soon as possible after calling a method of this class. The numerical error code can obtained calling the **GetLastResult** method.
+
+```
+FUNCTION GetErrorInfo() AS CBSTR
+```
+
+#### Return value
+
+A localized description of the error.
+
+
+# <a name="GetLastResult"></a>GetLastResult
+
+Returns the last result code.
+
+```
+FUNCTION GetLastResult () AS HRESULT
+```
+
+#### Return value
+
+The result code returned by the last executed method. CDO uses the **IErrorInfo** interface to provide error data. A description of the error can be obtained calling the **GetOleErrorInfo** method.
