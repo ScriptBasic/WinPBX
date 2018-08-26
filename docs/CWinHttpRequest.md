@@ -453,3 +453,50 @@ This method returns an error value if a call to **Open** has not completed succe
 
 To authenticate with both the server and the proxy, the application must call **SetCredentials** twice; first with the *Flags* parameter set to HTTPREQUEST_SETCREDENTIALS_FOR_SERVER, and second, with the *Flags* parameter set to HTTPREQUEST_SETCREDENTIALS_FOR_PROXY.
 
+
+# <a name="SetOption"></a>SetOption
+
+Sets a Microsoft Windows HTTP Services (WinHTTP) option value.
+
+```
+FUNCTION SetOption (BYVAL nOption AS WinHttpRequestOption, BYREF cvValue AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nOption* | Value of type **WinHttpRequestOption** that specifies the option to set. |
+| *cvValue* | CVAR. Value to set. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Example
+
+```
+#include "Afx/CWinHttpRequest.inc"
+using Afx
+
+' // Create an instance of the CWinHttpRequest class
+DIM pWHttp AS CWinHttpRequest
+' // Open an HTTP connection to an HTTP resource
+pWHttp.Open "GET", "http://microsoft.com"
+' // Specify the user agent
+pWHttp.SetOption(WinHttpRequestOption_UserAgentString, "A WinHttpRequest Example Program")
+
+' // Send an HTTP request to the HTTP server
+pWHttp.Send
+IF pWHttp.GetLastResult = S_OK THEN
+   ' // Get user agent string.
+   DIM cvText AS CVAR = pWHttp.GetOption(WinHttpRequestOption_UserAgentString)
+   PRINT cvText
+   ' // We can also use:
+   ' PRINT pWHttp.GetOption(WinHttpRequestOption_UserAgentString)
+   ' // Get URL
+   PRINT pWHttp.GetOption(WinHttpRequestOption_URL)
+   ' // Get URL Code Page.
+   PRINT pWHttp.GetOption(WinHttpRequestOption_URLCodePage)
+   ' // Convert percent symbols to escape sequences.
+   PRINT pWHttp.GetOption(WinHttpRequestOption_EscapePercentInURL)
+END IF
+```
