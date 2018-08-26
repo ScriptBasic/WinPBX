@@ -3041,7 +3041,6 @@ FUNCTION Create (BYVAL cID AS LONG_PTR = NULL, BYVAL x AS LONG, BYVAL y AS LONG,
    BYVAL dwExStyle AS UINT, BYVAL hSubMenu AS HANDLE, BYVAL lpfnWndProc AS WNDPROC) AS HWND
 ```
 
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *cID* | The control identifier. |
@@ -3133,3 +3132,28 @@ DIM hwindowMenu AS HMENU
 hwindowMenu = GetSubMenu(hMenu, 2)
 pWindow.CreateMDIWindow(101, 0, 0, 0, 0, 0, 0, hwindowMenu, @MDIWindowProc)
 ```
+
+# <a name="DefaultFontSize"></a>DefaultFontSize
+
+Gets/sets the point size of the default font.
+
+```
+PROPERTY DefaultFontSize () AS LONG
+PROPERTY DefaultFontSize (BYVAL nPointSize AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPointSize* | The point size of the font |
+
+#### Return value
+
+The point size of the font.
+
+#### Usage examples
+
+```
+DIM nSize AS LONG = pWindow.DefaultFontSize
+pWindow.DefaultFontSize = 12
+```
+
