@@ -554,6 +554,6 @@ Returns S_OK if successful or an error value otherwise.
 
 Headers are transferred across redirects. This can create a security vulnerability. To avoid having headers transferred if a redirect occurs, use the WINHTTP_STATUS_CALLBACK callback to correct the specific headers when a redirect occurs.
 
-The **SetRequestHeader** method enables the calling application to add or delete an HTTP request header prior to sending the request. The header name is given in *cbsHeader*, and the header token or value is given in *cbsValue*. To add a header, supply a header name and value. If another header already exists with this name, it is replaced. To delete a header, set *cbsrHeader* to the name of the header to delete and set *cbsValue* to NULL.
+The **SetRequestHeader** method enables the calling application to add or delete an HTTP request header prior to sending the request. The header name is given in *cbsHeader*, and the header token or value is given in *cbsValue*. To add a header, supply a header name and value. If another header already exists with this name, it is replaced. To delete a header, set *cbsHeader* to the name of the header to delete and set *cbsValue* to NULL.
 
 The name and value of request headers added with this method are validated. Headers must be well formed. For more information about valid HTTP headers, see RFC 2616. If an invalid header is used, an error occurs and the header is not added.
