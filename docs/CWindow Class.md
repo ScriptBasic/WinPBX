@@ -42,6 +42,21 @@ DIM pWindow AS CWindow
 DIM pWindow AS CWindow = "MyClassName"
 ```
 
+### Tutorial
+
+| Topic      |
+| ---------- |
+| [Creating the main window](Topic1) |
+| [Getting a pointer to the CWindow class](Topic2) |
+| [Adding controls](Topic3) |
+| [Popup windows](Topic4) |
+| [Using PNG icons in toolbars](Topic5) |
+| [Keyboard accelerators](Topic7) |
+| [Scrollable windows](Topic8) |
+
+
+
+
 ### Methods and Properties
 
 | Name       | Description |
