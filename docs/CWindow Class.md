@@ -1265,3 +1265,192 @@ FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
 END FUNCTION
 ' ========================================================================================
 ```
+
+### <a name="Topic8"></a>Scrollable windows
+
+**CWindow** windows can be made scrollable with the help of the **CScrollWindow** class.
+
+The technique is to create a window big enough to display all its child controls...
+
+```
+DIM pWindow AS CWindow
+DIM hwndMain AS HWND = pWindow.Create(NULL, "Scrollable window", @WndProc)
+pWindow.ClassStyle = CS_DBLCLKS   ' // Change the window style to avoid flicker
+' // Set a client size big enough to display all the controls
+pWindow.SetClientSize(320, 335)
+```
+
+Add the controls, e.g.
+
+```
+' // Add a listbox
+DIM hListBox AS HWND
+hListBox = pWindow.AddControl("ListBox", , IDC_LISTBOX)
+pWindow.SetWindowPos hListBox, NULL, 8, 8, 300, 280, SWP_NOZORDER
+```
+
+Create an instance of the **CScrollWindow** class, attach the window to it and then shrink the client size of the window.
+
+```
+' // Create an instance of the CScrollWindow class and attach the main window to it
+DIM pScrollWindow AS CScrollWindow PTR = NEW CScrollWindow(hwndMain)
+' // Store the pointer in the class of the parent window for later deletion
+pWindow.ScrollWindowPtr = pScrollWindow
+' // Shrink the client size
+pWindow.SetClientSize(250, 260)
+```
+
+We can also make an scrollable CWindow with its controls child of another **CWindow**, e.g.
+
+```
+' // Create the main window
+DIM pWindow AS CWindow
+pWindow.Create(NULL, "Scrollable Child CWindow Example", @WndProc)
+pWindow.SetClientSize 455, 180
+pWindow.Center
+
+' // Add controls
+pWindow.AddControl("GroupBox", , IDC_GROUPBOX, "GroupBox", 340, 8, 100, 155)
+pWindow.AddControl("Button", , IDCANCEL, "&Close", 250, 140, 76, 23)
+' // Add a combobox control
+DIM hCombobox AS HWND = pWindow.AddControl("ComboBox", , IDC_COMBOBOX, "", 350, 30, 80, 100)
+' // Fill the control with some data
+DIM i AS LONG = 1, wszText AS WSTRING * 260
+FOR i = 1 TO 9
+   wszText = "Item " & RIGHT("00" & STR(i), 2)
+   SendMessageW(hComboBox, CB_ADDSTRING, 0, CAST(LPARAM, @wszText))
+NEXT
+
+' ***************************************************************************************
+' // Child dialog
+DIM pChildDlg AS CWindow
+pChildDlg.Create(pWindow.hWindow, "", @ChildDlg_WndProc, 15, 15, , , _
+   WS_VISIBLE OR WS_CHILD OR WS_CLIPSIBLINGS OR WS_CLIPCHILDREN OR WS_BORDER, WS_EX_CONTROLPARENT)
+pChildDlg.ClassStyle = CS_DBLCLKS
+' // Set a client size big enough to display all the controls
+pChildDlg.SetClientSize(310, 180)
+' // Add an Edit control
+DIM hEdit AS HWND = pChildDlg.AddControl("Edit", , IDC_EDIT1, "", 10, 15, 275, 23)
+' // Add three radio buttons (the first one should have the WS_GROUP style)
+pChildDlg.AddControl("RadioButton", , IDC_OPTION1, "Option 1", 10, 50, 75, 23, WS_GROUP)
+pChildDlg.AddControl("RadioButton", , IDC_OPTION2, "Option 2", 10, 70, 75, 23)
+pChildDlg.AddControl("RadioButton", , IDC_OPTION3, "Option 3", 10, 90, 75, 23)
+' // Add a date time picker control
+pChilddlg.AddControl("SysDateTimePick32", , IDC_DTPICKER, "", 135, 55, 150, 23)
+' // Add a button
+pChildDlg.AddControl("Button", , IDOK, "&Ok", 205, 140, 76, 23)
+' // Create an instance of the CScrollWindow class and attach the child dialog to it
+DIM pScrollChildDlg AS CScrollWindow PTR = NEW CScrollWindow(pChildDlg.hWindow)
+' // Store the pointer in the class of the child dialog for later deletion
+pChildDlg.ScrollWindowPtr = pScrollChildDlg
+' // Shrink the client size
+pChildDlg.SetClientSize(310, 110)
+' // Set the focus in the first edit control
+SetFocus hEdit
+' ***************************************************************************************
+
+' // OPTIONAL: Anchor the controls
+DIM pLayout AS CLayout = pWindow.hWindow
+pWindow.UserData(AFX_LAYOUTPTRIDX) = CAST(LONG_PTR, @pLayout)
+pLayout.AnchorControl(IDCANCEL, AFX_ANCHOR_BOTTOM_RIGHT)
+pLayout.AnchorControl(IDC_GROUPBOX, AFX_ANCHOR_HEIGHT_RIGHT)
+pLayout.AnchorControl(IDC_COMBOBOX, AFX_ANCHOR_RIGHT)
+
+' // Anchor the child CWindow
+pLayout.AnchorControl(pChildDlg.hWindow, AFX_ANCHOR_HEIGHT_WIDTH)
+' // We could also anchor the child controls of this window with
+' // DIM pChildLayout AS CLayout = pChildDlg.hWindow
+' // pChildLayout.AnchorControl(IDC_EDIT1, AFX_ANCHOR_WIDTH)
+' // etc.
+
+or child of a tab page created with the CTabPage class:
+
+' // Create the main window
+DIM pWindow AS CWindow
+pWindow.Create(NULL, "CWindow with a Tab Control", @WndProc)
+pWindow.SetClientSize(500, 320)
+pWindow.Center
+
+' // Add a tab control
+DIM hTab AS HWND = pWindow.AddControl("Tab", , IDC_TAB, "", 10, 10, pWindow.ClientWidth - 20, pWindow.ClientHeight - 42)
+
+' // Create the first tab page
+DIM pTabPage1 AS CTabPage PTR = NEW CTabPage
+pTabPage1->DPI = pWindow.DPI   ' --> for testing purposes; not usully needed
+pTabPage1->InsertPage(hTab, 0, "Tab 1", -1, @TabPage1_WndProc)
+' // Add controls to the first page
+pTabPage1->AddControl("Label", pTabPage1->hTabPage, -1, "First name", 15, 15, 121, 21)
+pTabPage1->AddControl("Label", pTabPage1->hTabPage, -1, "Last name", 15, 50, 121, 21)
+pTabPage1->AddControl("Edit", pTabPage1->hTabPage, IDC_EDIT1, "", 165, 15, 186, 21)
+pTabPage1->AddControl("Edit", pTabPage1->hTabPage, IDC_EDIT2, "", 165, 50, 186, 21)
+pTabPage1->AddControl("Button", pTabPage1->hTabPage, IDC_BTNSUBMIT, "Submit", 340, 185, 76, 26, BS_DEFPUSHBUTTON)
+
+' // Create the second tab page
+DIM pTabPage2 AS CTabPage PTR = NEW CTabPage
+pTabPage2->DPI = pWindow.DPI   ' --> for testing purposes; not usully needed
+pTabPage2->InsertPage(hTab, 1, "Tab 2", -1, @TabPage2_WndProc)
+' // Add controls to the second page
+DIM hComboBox AS HWND = pTabPage2->AddControl("ComboBox", pTabPage2->hTabPage, IDC_COMBO, "", 20, 20, 191, 105)
+
+' // Create the third tab page
+DIM pTabPage3 AS CTabPage PTR = NEW CTabPage
+pTabPage3->DPI = pWindow.DPI   ' --> for testing purposes; not usully needed
+pTabPage3->InsertPage(hTab, 2, "Tab 3", -1, @TabPage3_WndProc)
+' // Add controls to the third page
+'   DIM hListBox AS HWND = pTabPage3->AddControl("ListBox", pTabPage3->hTabPage, IDC_LISTBOX, "", 15, 20, 161, 120)
+DIM hListBox AS HWND = pTabPage3->AddControl("ListBox", pTabPage3->hTabPage, IDC_LISTBOX)
+pTabPage3->SetWindowPos hListBox, NULL, 15, 20, 161, 120, SWP_NOZORDER
+
+' // Fill the controls with some data
+DIM i AS LONG = 1, wszText AS WSTRING * 260
+FOR i = 1 TO 9
+   wszText = "Item " & RIGHT("00" & STR(i), 2)
+   SendMessageW(hComboBox, CB_ADDSTRING, 0, CAST(LPARAM, @wszText))
+   SendMessageW(hListBox, LB_ADDSTRING, 0, CAST(LPARAM, @wszText))
+NEXT
+' // Select the first item in the combo box and the list box
+SendMessageW(hComboBox, CB_SETCURSEL, 0, 0)
+SendMessageW(hListBox, LB_SETCURSEL, 0, 0)
+
+' // Add a button
+pWindow.AddControl("Button", , IDCANCEL, "&Close", 415, 292, 75, 23)
+
+' // Get the client size of the first page and make it greater
+DIM nWidth AS LONG = pTabPage1->ClientWidth
+DIM nHeight AS LONG = pTabPage1->ClientHeight
+pTabPage1->SetClientSize(nWidth + 150, nHeight + 150)
+' // Create an instance of the CScrollWindow class and attach the tab page handle to it
+DIM pScrollWindow AS CScrollWindow PTR = NEW CScrollWindow(pTabPage1->hTabPage)
+' // Store the pointer in the tab page for later deletion
+pTabPage1->ScrollWindowPtr = pScrollWindow
+' // Shrink the client size back to original
+pTabPage1->SetClientSize(nWidth, nHeight)
+
+' // Get the client size of the second page and make it greater
+nWidth = pTabPage2->ClientWidth
+nHeight = pTabPage2->ClientHeight
+pTabPage2->SetClientSize(nWidth + 150, nHeight + 150)
+' // Create an instance of the CScrollWindow class and attach the tab page handle to it
+pScrollWindow = NEW CScrollWindow(pTabPage2->hTabPage)
+' // Store the pointer in the tab page for later deletion
+pTabPage2->ScrollWindowPtr = pScrollWindow
+' // Shrink the client size back to original
+pTabPage2->SetClientSize(nWidth, nHeight)
+
+' // Get the client size of the second page and make it greater
+nWidth = pTabPage3->ClientWidth
+nHeight = pTabPage3->ClientHeight
+pTabPage3->SetClientSize(nWidth + 150, nHeight + 150)
+' // Create an instance of the CScrollWindow class and attach the tab page handle to it
+pScrollWindow = NEW CScrollWindow(pTabPage3->hTabPage)
+' // Store the pointer in the tab page for later deletion
+pTabPage3->ScrollWindowPtr = pScrollWindow
+' // Shrink the client size back to original
+pTabPage3->SetClientSize(nWidth, nHeight)
+
+' // Display the first tab page
+ShowWindow pTabPage1->hTabPage, SW_SHOW
+
+' // Set the focus to the first tab
+SendMessageW hTab, TCM_SETCURFOCUS, 0, 0
+```
