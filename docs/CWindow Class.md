@@ -2670,3 +2670,28 @@ pWindow.Brush = GetStockObject(WHITE_BRUSH)
 ' // Make the background of the window blue
 pWindow.Brush = CreateSolidBrush(BGR(0, 0, 255))
 ```
+
+### <a name="Center"></a>Center
+
+Centers a window on the screen or over another window. It also ensures that the placement is done within the work area.
+
+```
+SUB Center (BYVAL hwnd AS HWND = NULL, BYVAL hwndParent AS HWND = NULL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Optional. Handle to the window. If NULL, the handle of the main window is used. |
+| *hwndParent* | Optional. Handle to the parent window. If NULL, the coordinates of the work area of the desktop window are used for the calculations. |
+
+#### Example
+
+```
+' // Creates the main window
+DIM pWindow AS CWindow
+pWindow.Create(NULL, "CWindow test", @WndProc)
+' // Sizes it by setting the wanted width and height of its client area
+pWindow.SetClientSize(500, 320)
+' // Centers the window
+pWindow.Center
+```
