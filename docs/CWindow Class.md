@@ -46,16 +46,16 @@ DIM pWindow AS CWindow = "MyClassName"
 
 | Topic      |
 | ---------- |
-| [Creating the main window](Topic1) |
-| [Getting a pointer to the CWindow class](Topic2) |
-| [Adding controls](Topic3) |
-| [Popup windows](Topic4) |
-| [Using PNG icons in toolbars](Topic5) |
-| [Keyboard accelerators](Topic7) |
-| [Scrollable windows](Topic8) |
-| [MDI WIndows](Topic9) |
-| [TabPages](Topic10) |
-| [Layout Manager](Topic11) |
+| [Creating the main window](#Topic1) |
+| [Getting a pointer to the CWindow class](#Topic2) |
+| [Adding controls](#Topic3) |
+| [Popup windows](#Topic4) |
+| [Using PNG icons in toolbars](#Topic5) |
+| [Keyboard accelerators](#Topic6) |
+| [Scrollable windows](#Topic7) |
+| [MDI WIndows](#Topic8) |
+| [TabPages](#Topic9) |
+| [Layout Manager](#Topic10) |
 
 ### Methods and Properties
 
