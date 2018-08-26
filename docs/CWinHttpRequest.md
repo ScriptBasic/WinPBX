@@ -623,11 +623,11 @@ The WinHttpRequestAutoLogonPolicy enumeration includes possible settings for the
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| AutoLogonPolicy_Always | An authenticated log on, using the default credentials, is performed for all requests. |
-| AutoLogonPolicy_OnlyIfBypassProxy | An authenticated log on, using the default credentials, is performed only for requests on the local intranet. The local intranet is considered to be any server on the proxy bypass list in the current proxy configuration. |
-| AutoLogonPolicy_Never | Authentication is not used automatically. |
+| **AutoLogonPolicy_Always** | An authenticated log on, using the default credentials, is performed for all requests. |
+| **AutoLogonPolicy_OnlyIfBypassProxy** | An authenticated log on, using the default credentials, is performed only for requests on the local intranet. The local intranet is considered to be any server on the proxy bypass list in the current proxy configuration. |
+| **AutoLogonPolicy_Never** | Authentication is not used automatically. |
 
 #### Remarks
 
-To set the automatic logon policy, call the SetAutoLogonPolicy method and specify one of the preceding constants.
+To set the automatic logon policy, call the **SetAutoLogonPolicy** method and specify one of the preceding constants.
 
