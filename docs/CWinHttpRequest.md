@@ -221,7 +221,7 @@ Invoke this method only after the **Send** method has been called.
 #include "Afx/CWinHttpRequest.inc"
 using Afx
 
-' // Create an instance of the CWinHttp class
+' // Create an instance of the CWinHttpRequest class
 DIM pWHttp AS CWinHttpRequest
 ' // Open an HTTP connection to an HTTP resource
 pWHttp.Open "GET", "http://microsoft.com"
@@ -345,7 +345,7 @@ This method opens a connection to the resource identified in *cbsUrl* using the 
 #include "Afx/CWinHttpRequest.inc"
 using Afx
 
-' // Create an instance of the CWinHttp class
+' // Create an instance of the CWinHttpRequest class
 DIM pWHttp AS CWinHttpRequest
 ' // Open an HTTP connection to an HTTP resource
 pWHttp.Open "GET", "http://microsoft.com"
@@ -354,3 +354,23 @@ pWHttp.Send
 ' // Wait for response with a timeout of 5 seconds
 DIM iSucceeded AS LONG = pWHttp.WaitForResponse(5)
 ```
+
+# <a name="Send"></a>Send
+
+Sends an HTTP request to an HTTP server.
+
+```
+FUNCTION Send (BYREF cvBody AS CVAR = "") AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvBody* | Optional. Data to be sent to the server. |
+
+#### Return  value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+The request to be sent was defined in a prior call to the **Open** method. The calling application can provide data to be sent to the server through the cvBody parameter. If the HTTP verb of the object's Open is "GET", this method sends the request without *cvBody*, even if it is provided by the calling application.
