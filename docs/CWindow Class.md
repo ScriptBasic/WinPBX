@@ -3753,7 +3753,7 @@ FUNCTION SetWindowPos (BYVAL hwnd AS HWND, BYVAL hwndInsertAfter AS HWND, _
 | SWP_DRAWFRAME | Draws a frame (defined in the window's class description) around the window. |
 | SWP_FRAMECHANGED | Applies new frame styles set using the **SetWindowLongPtrW** function. Sends a **WM_NCCALCSIZE** message to the window, even if the window's size is not being changed. If this flag is not specified, **WM_NCCALCSIZE** is sent only when the window's size is being changed. |
 | SWP_HIDEWINDOW | Hides the window. |
-| SWP_NOACTIVATE | Does not activate the window. If this flag is not set, the window is activated and moved to the top of either the topmost or non-topmost group (depending on the setting of the hWndInsertAfter parameter). |
+| SWP_NOACTIVATE | Does not activate the window. If this flag is not set, the window is activated and moved to the top of either the topmost or non-topmost group (depending on the setting of the *hWndInsertAfter* parameter). |
 | SWP_NOCOPYBITS | Discards the entire contents of the client area. If this flag is not specified, the valid contents of the client area are saved and copied back into the client area after the window is sized or repositioned. |
 | SWP_NOMOVE | Retains the current position (ignores X and Y parameters). |
 | SWP_NOOWNERZORDER | Does not change the owner window's position in the Z order. |
