@@ -501,7 +501,7 @@ FUNCTION Subject (BYREF cbsSubject AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsSubject* | The default value of the Subject property is an empty string. |
+| *cbsSubject* | The default value of the **Subject** property is an empty string. |
 
 #### Return value
 
