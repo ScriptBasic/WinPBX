@@ -3483,3 +3483,29 @@ PROPERTY hwndClient () AS HWND
 ```
 DIM hwnd AS HWND = pWindow.hwndClient
 ```
+
+# <a name="InstanceHandle"></a>InstanceHandle
+
+Gets/sets the instance handle.
+
+```
+PROPERTY InstanceHandle () AS HINSTANCE
+PROPERTY InstanceHandle (BYVAL hInst AS HINSTANCE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInst* | The instance handle.. |
+
+#### Return value
+
+The instance handle.
+
+#### Usage example
+
+```
+DIM hInstance = pWindow.InstanceHandle
+```
+```
+pWindow.InstanceHandle = pInstance
+```
