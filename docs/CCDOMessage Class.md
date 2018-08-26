@@ -441,7 +441,7 @@ FUNCTION Recipients (BYVAL cbsRecipients AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsRecipients* | The string in the **Recipients** property can represent a single recipient or multiple recipients. For example, each of the following qualifies as a full messaging address:<br><br>"User Address" \<example@example.com><br>\<example@example.com><br>example@example.com<br><br>In lists with multiple recipients, addresses are separated by commas:<br><br>"User 1" \<example1@example.com>, example2@example.com, \<example3@example.com><br><br>A comma is not allowed in any part of a messaging address unless it is contained within quotation marks.<br><br>The default value of the Recipients property is an empty string. |
+| *cbsRecipients* | The string in the **Recipients** property can represent a single recipient or multiple recipients. For example, each of the following qualifies as a full messaging address:<br><br>"User Address" \<example@example.com><br>\<example@example.com><br>example@example.com<br><br>In lists with multiple recipients, addresses are separated by commas:<br><br>"User 1" \<example1@example.com>, example2@example.com, \<example3@example.com><br><br>A comma is not allowed in any part of a messaging address unless it is contained within quotation marks.<br><br>The default value of the **Recipients** property is an empty string. |
 
 #### Return value
 
