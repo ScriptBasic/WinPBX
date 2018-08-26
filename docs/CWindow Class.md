@@ -117,9 +117,9 @@ DIM pWindow AS CWindow = "MyClassName"
 
 | Name       | Description |
 | ---------- | ----------- |
-| [AfxCWindowPtr](#AfxCWindowPtr) | Returns a pointer to the CWindow class given the handle of the main window or the CREATESTRUCT structure associated with it. |
-| [AfxCWindowOwnerPtr](#AfxCWindowOwnerPtr) | Returns a pointer to the CWindow class given the handle of the window created with it or the handle of any of it's children windows or controls. |
-| [AfxScrollWindowPtr](#AfxScrollWindowPtr) | Returns a pointer to the CScrollWindow class given the handle of the window attached to it. |
+| [AfxCWindowPtr](#AfxCWindowPtr) | Returns a pointer to the **CWindow** class given the handle of the main window or the CREATESTRUCT structure associated with it. |
+| [AfxCWindowOwnerPtr](#AfxCWindowOwnerPtr) | Returns a pointer to the **CWindow** class given the handle of the window created with it or the handle of any of it's children windows or controls. |
+| [AfxScrollWindowPtr](#AfxScrollWindowPtr) | Returns a pointer to the **CScrollWindow** class given the handle of the window attached to it. |
 
 ### Dialog
 
@@ -3933,3 +3933,31 @@ DIM dwStyle AS ULONG_PTR = pWindow.WindowStyle
 pWindow.WindowStyle = WS_POPUPWINDOW OR WS_CAPTION   ' // Creates a popup window
 ```
 
+# <a name="AfxCWindowPtr"></a>AfxCWindowPtr
+
+Returns a pointer to the **CWindow** class given the handle of the main window or the **CREATESTRUCT** structure associated with it. To retrieve it from the handle of any of its child windows or controls, use **AfxCWindowOwnerPtr**.
+
+```
+FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CWindow PTR
+FUNCTION AfxCWindowPtr (BYVAL lParam AS LPARAM) AS CWindow PTR
+FUNCTION AfxCWindowPtr (BYVAL pCreateStruct AS CREATESTRUCT PTR) AS CWindow PTR
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the main window created with the **Create** method of the **CWindow** class. |
+| *lParam* | Value passed by Windows to the **WM_CREATE** message. |
+| *pCreateStruct* | Pointer to the **CREATESTRUCT** structure used by Windows during the window creation and passed to the window procedure as the *lParam* parameter of the **WM_CREATE** message. |
+
+#### Return value
+
+The style(s) used by the window.
+
+#### Usage examples
+
+```
+DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+```
+```
+DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
+```
