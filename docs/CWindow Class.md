@@ -3881,3 +3881,55 @@ pWindow.UserData(1) = value
 DIM value AS LONG_PTR = pWindow.UserData(1)
 ```
 
+# <a name="WindowExStyle"></a>WindowExStyle
+
+Gets/sets the window extended styles.
+
+```
+PROPERTY WindowExStyle () AS ULONG_PTR
+PROPERTY WindowExStyle (BYVAL dwExStyle AS ULONG_PTR)
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *dwExStyle* | The extended style(s) to set. |
+
+#### Return value
+
+The extended style(s) used by the window.
+
+#### Usage examples
+
+```
+DIM dwExStyle AS ULONG_PTR = pWindow.WindowExStyle
+```
+```
+pWindow.WindowExStyle = WS_EX_CLIENTEDGE
+```
+
+# <a name="WindowStyle"></a>WindowStyle
+
+Gets/sets the window styles.
+
+```
+PROPERTY WindowStyle () AS ULONG_PTR
+PROPERTY WindowStyle (BYVAL dwStyle AS ULONG_PTR)
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *dwStyle* | The style(s) to set. |
+
+#### Return value
+
+The style(s) used by the window.
+
+#### Usage examples
+
+```
+DIM dwStyle AS ULONG_PTR = pWindow.WindowStyle
+```
+```
+pWindow.WindowStyle = WS_POPUPWINDOW OR WS_CAPTION   ' // Creates a popup window
+```
+
