@@ -28,6 +28,15 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | [SetTimeouts](#SetTimeouts) | Specifies the individual time-out components of a send/receive operation, in milliseconds. |
 | [WaitForResponse](#WaitForResponse) | Waits for an asynchronous Send method to complete, with optional time-out value, in seconds. |
 
+### Enumerations
+
+| Name       | Description |
+| ---------- | ----------- |
+| [WinHttpRequestAutoLogonPolicy](#WinHttpRequestAutoLogonPolicy) | Includes possible settings for the Automatic Logon Policy. |
+| [WinHttpRequestOption](#WinHttpRequestOption) | Includes options that can be set or retrieved for the current Microsoft Windows HTTP Services (WinHTTP) session. |
+| [WinHttpRequestSecureProtocols](#WinHttpRequestSecureProtocols) | Type of secure protocol. |
+| [WinHttpRequestSslErrorFlags](#WinHttpRequestSslErrorFlags) | Request error flags. |
+
 # <a name="Abort"></a>Abort
 
 Aborts a WinHTTP **Send** method.
@@ -606,4 +615,19 @@ TRUE or FALSE.
 This method suspends execution while waiting for a response to an asynchronous request. This method should be called after a **Send**. Calling applications can specify an optional Timeout value, in seconds. If this method times out, the request is not aborted. This way, the calling application can continue to wait for the request, if desired, in a subsequent call to this method.
 
 Calling this property after a synchronous **Send** method returns immediately and has no effect.
+
+
+# <a name="WinHttpRequestAutoLogonPolicy"></a>WinHttpRequestAutoLogonPolicy Enumeration
+
+The WinHttpRequestAutoLogonPolicy enumeration includes possible settings for the Automatic Logon Policy.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| AutoLogonPolicy_Always | An authenticated log on, using the default credentials, is performed for all requests. |
+| AutoLogonPolicy_OnlyIfBypassProxy | An authenticated log on, using the default credentials, is performed only for requests on the local intranet. The local intranet is considered to be any server on the proxy bypass list in the current proxy configuration. |
+| AutoLogonPolicy_Never | Authentication is not used automatically. |
+
+#### Remarks
+
+To set the automatic logon policy, call the SetAutoLogonPolicy method and specify one of the preceding constants.
 
