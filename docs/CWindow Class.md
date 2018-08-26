@@ -473,7 +473,7 @@ Both of these methods are optional. Therefore, you can use your own way to subcl
 
 ### <a name="Topic4"></a>Popup Windows
 
-To create a popup window you simply create a new instance of the CWindow class and, in the **Create** method, you make it child of the main window and use the WS_POPUPWINDOW style.
+To create a popup window you simply create a new instance of the **CWindow** class and, in the **Create** method, you make it child of the main window and use the WS_POPUPWINDOW style.
 
 ```
 DIM pWindow AS CWindow
