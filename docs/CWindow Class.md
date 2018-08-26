@@ -2386,7 +2386,7 @@ END FUNCTION
 ' ========================================================================================
 ```
 
-### <a name="AccelHandle"></a>AccelHandle
+# <a name="AccelHandle"></a>AccelHandle
 
 Gets/sets the accelerator table handle.
 
@@ -2414,7 +2414,7 @@ You can destroy the current accelerator table by setting the property with a nul
 DIM hAccel AS HACCEL = pWindow.AccelHandle
 
 
-### <a name="AddAccelerator"></a>AddAccelerator
+# <a name="AddAccelerator"></a>AddAccelerator
 
 Adds an accelerator key to the table.
 
@@ -2445,7 +2445,7 @@ pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
 pWindow.CreateAcceleratorTable
 ```
 
-### <a name="AddControl"></a>AddControl
+# <a name="AddControl"></a>AddControl
 
 Adds a control to the window.
 
@@ -2626,7 +2626,7 @@ Two of the added benefits are that you can use the same subclass procedure for s
 **SetWindowSubclass** was made available for the first time in ComCtl32.dll version 6 and, therefore, can only be used with Windows XP or superior. ComCtl32.dll version 6 is Unicode only. The common controls supported by ComCtl32.dll version 6 should not be subclassed (or superclassed) with ANSI window procedures.
 
 
-### <a name="BigIcon"></a>BigIcon
+# <a name="BigIcon"></a>BigIcon
 
 Associates a new large icon with the main window. The system displays the large icon in the ALT+TAB dialog box.
 
@@ -2644,7 +2644,7 @@ PROPERTY BigIcon (BYVAL hIcon AS HICON)
 pWindow.BigIcon = LoadImage(hInstance, MAKEINTRESOURCE(101), IMAGE_ICON, 48, 48, LR_SHARED)
 ```
 
-### <a name="Brush"></a>Brush
+# <a name="Brush"></a>Brush
 
 Gets/sets the background brush.
 
@@ -2671,7 +2671,7 @@ pWindow.Brush = GetStockObject(WHITE_BRUSH)
 pWindow.Brush = CreateSolidBrush(BGR(0, 0, 255))
 ```
 
-### <a name="Center"></a>Center
+# <a name="Center"></a>Center
 
 Centers a window on the screen or over another window. It also ensures that the placement is done within the work area.
 
@@ -2696,7 +2696,7 @@ pWindow.SetClientSize(500, 320)
 pWindow.Center
 ```
 
-### <a name="ClassStyle"></a>ClassStyle
+# <a name="ClassStyle"></a>ClassStyle
 
 Gets/sets the style of the class.
 
@@ -2734,7 +2734,7 @@ pWindow.Create(NULL, "CWindow test", @WndProc)
 pWindow.ClassStyle = CS_DBLCLKS
 ```
 
-### <a name="ClientHeight"></a>ClientHeight
+# <a name="ClientHeight"></a>ClientHeight
 
 Returns the unscaled client height of the main window.
 
@@ -2748,7 +2748,7 @@ PROPERTY ClientHeight () AS LONG
 DIM nHeight AS LONG = pWindow.ClientHeight
 ```
 
-### <a name="ClientWidth"></a>ClientWidth
+# <a name="ClientWidth"></a>ClientWidth
 
 Returns the unscaled client width of the main window.
 
@@ -2762,7 +2762,7 @@ PROPERTY ClientWidth () AS LONG
 DIM nWidth AS LONG = pWindow.ClientWidth
 ```
 
-### <a name="ControlClientHeight"></a>ControlClientHeight
+# <a name="ControlClientHeight"></a>ControlClientHeight
 
 Returns the unscaled client height of the specified window or control.
 
@@ -2780,7 +2780,7 @@ PROPERTY ControlClientHeight (BYVAL hwnd AS HWND) AS LONG
 DIM nHeight AS LONG = pWindow.ControlClientHeight(hwnd)
 ```
 
-### <a name="ControlClientWidth"></a>ControlClientWidth
+# <a name="ControlClientWidth"></a>ControlClientWidth
 
 Returns the unscaled client width of the specified window or control.
 
@@ -2798,7 +2798,7 @@ PROPERTY ControlClientWidth (BYVAL hwnd AS HWND) AS LONG
 DIM nHeight AS LONG = pWindow.ControlClientWidth(hwnd)
 ```
 
-### <a name="ControlHandle"></a>ControlHandle
+# <a name="ControlHandle"></a>ControlHandle
 
 Retrieves a handle to the child control specified by its identifier.
 
@@ -2816,7 +2816,7 @@ FUNCTION ControlHandle (BYVAL cID AS LONG) AS HWND
 DIM hCtl AS HWND = pWindow.ControlHandle(cID)
 ```
 
-### <a name="ControlHeight"></a>ControlHeight
+# <a name="ControlHeight"></a>ControlHeight
 
 Returns the unscaled height of the specified window.
 
@@ -2834,7 +2834,7 @@ FUNCTION ControlHeight (BYVAL hwnd AS HWND) AS LONG
 DIM nHeight AS LONG = pWindow.ControlHeight(hwnd)
 ```
 
-### <a name="ControlWidth"></a>ControlWidth
+# <a name="ControlWidth"></a>ControlWidth
 
 Returns the unscaled width of the specified window.
 
@@ -2852,7 +2852,7 @@ FUNCTION ControlWidth (BYVAL hwnd AS HWND) AS LONG
 DIM nWidth AS LONG = pWindow.ControlWidth(hwnd)
 ```
 
-### <a name="Create"></a>Create
+# <a name="Create"></a>Create
 
 **Create** creates a new window. If you don't specify the window styles, it creates an overlaped window with the styles WS_OVERLAPPEDWINDOW OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS and the extended styles WS_EX_CONTROLPARENT OR WS_EX_WINDOWEDGE.
 
