@@ -485,7 +485,7 @@ FUNCTION Sender (BYREF cbsSender AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsSender* | The difference between the **From** and **Sender** properties is that the **Sender** property identifies the address of the user or entity that actually submits the message, whereas the **From** property designates its principal author or authors. By convention, which is outlined in Request for Comments (RFC) 822, multiple addressees are not identified in the **Sender** property.<br><br>The **Sender** property is normally used under the following circumstances:<br><br>Multiple addressees are listed in the **From** header. The sender is the e-mail address of the user or entity in the From field that actually submitted the message.<br><br>The user or entity that is submitting the message is not included in the From field. |
+| *cbsSender* | The difference between the **From** and **Sender** properties is that the **Sender** property identifies the address of the user or entity that actually submits the message, whereas the **From** property designates its principal author or authors. By convention, which is outlined in Request for Comments (RFC) 822, multiple addressees are not identified in the **Sender** property.<br><br>The **Sender** property is normally used under the following circumstances:<br><br>Multiple addressees are listed in the **From** header. The sender is the e-mail address of the user or entity in the From field that actually submitted the message.<br><br>The user or entity that is submitting the message is not included in the **From** field. |
 
 #### Return value
 
