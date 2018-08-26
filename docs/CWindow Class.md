@@ -2625,3 +2625,48 @@ Two of the added benefits are that you can use the same subclass procedure for s
 
 **SetWindowSubclass** was made available for the first time in ComCtl32.dll version 6 and, therefore, can only be used with Windows XP or superior. ComCtl32.dll version 6 is Unicode only. The common controls supported by ComCtl32.dll version 6 should not be subclassed (or superclassed) with ANSI window procedures.
 
+
+### <a name="BigIcon"></a>BigIcon
+
+Associates a new large icon with the main window. The system displays the large icon in the ALT+TAB dialog box.
+
+```
+PROPERTY BigIcon (BYVAL hIcon AS HICON)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hIcon* | The icon handle. If this parameter is NULL, the icon is removed. |
+
+#### Example
+
+```
+pWindow.BigIcon = LoadImage(hInstance, MAKEINTRESOURCE(101), IMAGE_ICON, 48, 48, LR_SHARED)
+```
+
+### <a name="Brush"></a>Brush
+
+Gets/sets the background brush.
+
+```
+PROPERTY Brush () AS HBRUSH
+PROPERTY Brush (BYVAL hbrBackground AS HBRUSH)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hbrBackground* | A handle to the class background brush. This member can be a handle to the physical brush to be used for painting the background, or it can be a color value. A color value must be one of the following standard system colors (the value 1 must be added to the chosen color), e.g. COLOR_WINDOW + 1. |
+
+#### Usage examples
+
+```
+pWindow.Brush = CAST(HBRUSH, COLOR_WINDOW + 1)
+```
+```
+' // Make the background of the window white
+pWindow.Brush = GetStockObject(WHITE_BRUSH)
+```
+```
+' // Make the background of the window blue
+pWindow.Brush = CreateSolidBrush(BGR(0, 0, 255))
+```
