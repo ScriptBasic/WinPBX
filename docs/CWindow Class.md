@@ -2444,3 +2444,184 @@ pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
 pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
 pWindow.CreateAcceleratorTable
 ```
+
+### <a name="AddControl"></a>AddControl
+
+Adds a control to the window.
+
+```
+FUNCTION AddControl (BYREF wszClassName AS WSTRING, BYVAL hParent AS HWND = NULL, _
+   BYVAL cID AS LONG_PTR = 0,    BYREF wszTitle AS WSTRING = "", BYVAL x AS LONG = 0, _
+   BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, _
+   BYVAL dwStyle AS LONG = -1, BYVAL dwExStyle AS LONG = -1, _
+   BYVAL lpParam AS LONG_PTR = 0, BYVAL pWndProc AS WNDPROC = NULL, _
+   BYVAL uIdSubclass AS UINT_PTR = &HFFFFFFFF, _
+   BYVAL dwRefData AS DWORD_PTR = NULL) AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszClassName* | The window class name. The class name can be any name registered with **RegisterClass** or **RegisterClassEx**, provided that the module that registers the class is also the module that creates the window. The class name can also be any of the predefined system class names. |
+| *hParent* | A handle to the parent or owner window of the control being created. If this parameter is omitted, the handle of the main window beloging to the **CWindow** class is used. |
+| *cID* | The control identifier, an integer value used to notify its parent about events. The application determines the control identifier; it must be unique for all controls with the same parent window. |
+| *wszTitle* | The window name. If the window style specifies a title bar, the window title is displayed in the title bar. When creating controls, such as buttons, check boxes, and static controls, use wszTitle to specify the text of the control. When creating a static control with the SS_ICON style, use wszTitle to specify the icon name or identifier. To specify an identifier, use the syntax *"#num"*. |
+| *x* | The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *y* | The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *nWidth* | The width of the window. |
+| *nHeight* | The height of the window. |
+| *dwStyle* | The style of the window being created. |
+| *dwExStyle* | The extended window style of the control being created. |
+| *lpParam* | Optional. Pointer to a value to be passed to the window through the CREATESTRUCT structure (lpCreateParams member) pointed to by the lParam param of the WM_CREATE message. This message is sent to the created window by this function before it returns. |
+| *pWndProc* | Optional. Address of the window callback procedure. |
+| *uidSubclass* | Optional. The subclass ID. |
+| *dwRefData* | Optional. Pointer to reference data |
+
+#### Return value
+
+If the method succeeds, the return value is a handle to the new control.
+
+If the method fails, the return value is NULL. To get extended error information, call **GetLastError**.
+
+This method typically fails for one of the following reasons:
+
+* An invalid parameter value
+* The system class was registered by a different module
+* The WH_CBT hook is installed and returns a failure code
+* If the control is not registered or its window window procedure fails WM_CREATE or WM_NCCREATE.
+
+#### Predefined class names and styles
+
+| Class name | Styles      |
+| ---------- | ----------- |
+| **"BUTTON"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_PUSHBUTTON OR BS_CENTER OR BS_VCENTER.<br>**BS_FLAT**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_PUSHBUTTON OR BS_CENTER OR BS_VCENTER OR BS_FLAT.<br>**BS_DEFPUSHBUTTON**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_CENTER OR BS_VCENTER OR BS_DEFPUSHBUTTON.<br>**BS_OWNERDRAW**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_OWNERDRAW.<br>**BS_SPLITBUTTON**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_CENTER OR BS_VCENTER OR BS_SPLITBUTTON>.<br>**BS_DEFSPLITBUTTON**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_CENTER OR BS_VCENTER OR BS_DEFSPLITBUTTON. |
+| **"CUSTOMBUTTON"**, **"OWNERDRAWBUTTON"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_OWNERDRAW. |
+| **"RADIOBUTTON"**, **"OPTION"** | **Default**: Default: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_AUTORADIOBUTTON OR BS_LEFT OR BS_VCENTER-<br>**WS_GROUP**: WS_VISIBLE OR WS_TABSTOP OR BS_AUTORADIOBUTTON OR BS_LEFT OR BS_VCENTER OR WS_GROUP. |
+| **"CHECKBOX"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_AUTOCHECKBOX OR BS_LEFT OR BS_VCENTER. |
+| **"CHECK3STATE"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_AUTO3STATE OR BS_LEFT OR BS_VCENTER. |
+| **"LABEL"** | **Default**: WS_CHILD, WS_VISIBLE OR SS_LEFT OR WS_GROUP OR SS_NOTIFY. |
+| **"BITMAPLABEL"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_GROUP OR SS_BITMAP.<br>**Default extended style**: WS_EX_TRANSPARENT. |
+| **"ICONLABEL"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_GROUP OR SS_ICON.<br>**Default extended style**: WS_EX_TRANSPARENT. |
+| **"BITMAPBUTTON"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_PUSHBUTTON OR BS_BITMAP. |
+| **"ICONBUTTON"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR BS_PUSHBUTTON OR BS_ICON. |
+| **"CUSTOMLABEL"** | **Default**: WS_VISIBLE OR WS_GROUP OR SS_OWNERDRAW. |
+| **"FRAME"**. **"FRAMEWINDOW** | **Default**: WS_CHILD, WS_VISIBLE OR WS_CLIPSIBLINGS OR WS_GROUP OR SS_BLACKFRAME.<br>**Default extended style**: WS_EX_TRANSPARENT. |
+| **"GROUPBOX"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_CLIPSIBLINGS OR WS_GROUP OR BS_GROUPBOX.<br>**Default extended style**: WS_EX_TRANSPARENT. |
+| **"LINE"** | **Default**: WS_CHILD, WS_VISIBLE OR SS_ETCHEDFRAME.<br>**Default extended style**: WS_EX_TRANSPARENT. |
+| **"EDIT"**, **"TEXTBOX"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"EDITMULTILINE"**, **"MULTILINETEXTBOX"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL OR ES_MULTILINE OR ES_NOHIDESEL OR ES_WANTRETURN.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"COMBOBOX"** | **Default**: WS_CHILD OR WS_VISIBLE OR WS_VSCROLL OR WS_BORDER OR WS_TABSTOP OR CBS_DROPDOWN OR CBS_HASSTRINGS OR CBS_SORT.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"COMBOBOXEX"**, **"COMBOBOXEX32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_BORDER OR WS_TABSTOP OR CBS_DROPDOWNLIST. |
+| **"LISTBOX"** | **Default**: WS_VISIBLE OR WS_HSCROLL OR WS_VSCROLL OR WS_BORDER OR WS_TABSTOP OR LBS_STANDARD OR LBS_HASSTRINGS OR LBS_SORT OR LBS_NOTIFY.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"PROGRESSBAR"**, **"MSCTLS_PROGRESS32"** | **Default**: WS_CHILD, WS_VISIBLE. |
+| **"HEADER"**, **"SYSHEADER32"** | **Default**: WS_CHILD, WS_VISIBLE OR CCS_TOP OR HDS_HORZ OR HDS_BUTTONS. |
+| **"TREEVIEW"**, **"SYSTREEVIEW32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_BORDER OR WS_TABSTOP OR TVS_HASBUTTONS OR TVS_HASLINES OR TVS_LINESATROOT OR TVS_SHOWSELALWAYS.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"LISTVIEW"**, **"SYSLISTVIEW32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_CLIPCHILDREN OR WS_TABSTOP OR LVS_REPORT OR LVS_SHOWSELALWAYS OR LVS_SHAREIMAGELISTS OR LVS_AUTOARRANGE OR LVS_EDITLABELS OR LVS_ALIGNTOP.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"TOOLBAR"**, **"TOOLBARWINDOW32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS OR CCS_TOP OR WS_BORDER OR TBSTYLE_FLAT OR TBSTYLE_TOOLTIPS. |
+| **"REBAR"**, **"REBARWINDOW32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_BORDER OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS OR CCS_NODIVIDER OR RBS_VARHEIGHT OR RBS_BANDBORDERS. |
+| **"DATETIMEPICKER"**, **"SYSDATETIMEPICK32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR DTS_SHORTDATEFORMAT. |
+| **"MONTHCALENDAR"**, **"MONTHCAL"**, **"SYSMONTHCAL32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"IPADDRESS"**, **"SYSIPADDRESS32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"HOTKEY"**, **"MSCTLS_HOTKEY32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+| **"ANIMATE"**, **"ANIMATION"**, **"SYSANIMATE32"** | **Default**: WS_CHILD, WS_VISIBLE OR ACS_TRANSPARENT. |
+| **"SYSLINK"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP. |
+| **"PAGER"**, **"SYSPAGER"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP  OR PGS_HORZ. |
+| **"TAB"**, **"TABCONTROL"**, **"SYSTABCONTROL32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_GROUP OR WS_TABSTOP OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS OR TCS_TABS OR TCS_SINGLELINE OR TCS_RAGGEDRIGHT.<br>**Default extended style**: WS_EX_CONTROLPARENT. |
+| **"STATUSBAR"**, **"MSCTLS_STATUSBAR32"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS OR CCS_BOTTOM OR SBARS_SIZEGRIP. |
+| **"SIZEBAR"**, **"SIZEBOX"**, **"SIZEGRIP"** | **Default**: WS_CHILD, WS_VISIBLE OR SBS_SIZEGRIP OR SBS_SIZEBOXBOTTOMRIGHTALIGN. |
+| **"HSCROLLBAR"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR SBS_HORZ. |
+| **"VSCROLLBAR"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR SBS_VERT. |
+| **"TRACKBAR"**, **"MSCTLS_TRACKBAR32"**, **"SLIDER"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR TBS_AUTOTICKS OR TBS_HORZ OR TBS_BOTTOM. |
+| **"UPDOWN"**, **"MSCTLS_UPDOWN32"** | **Default**: WS_VISIBLE OR UDS_WRAP OR UDS_ARROWKEYS OR UDS_ALIGNRIGHT OR UDS_SETBUDDYINT. |
+| **"RICHEDIT"**, **"RichEdit50W"** | **Default**: WS_CHILD, WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR WS_HSCROLL OR WS_VSCROLL OR ES_AUTOHSCROLL OR ES_AUTOVSCROLL OR ES_MULTILINE OR ES_WANTRETURN OR ES_NOHIDESEL OR ES_SAVESEL.<br>**Default extended style**: WS_EX_CLIENTEDGE. |
+
+#### Remarks
+
+For the "BITMAPBUTTON", "BITMAPLABEL", "ICONBUTTON" and "ICONLABEL" controls you must pass in the *wszTitle* parameter the name of the bitmap in the resource file (.RES). If the image resource uses an integral identifier, the name should begin with a number symbol (#) followed by the identifier in an ASCII format, e.g., "#998". Otherwise, use the text identifier name for the image.
+
+#### Subclassing
+
+This method supports two ways of subclassing:
+
+1) Pass in the *pWndProc* parameter the address of the subclass procedure.
+
+Example of subclass procedure:
+
+```
+' =======================================================
+' Processes messages for the subclassed control.
+' =======================================================
+FUNCTION SubclassProc ( _
+   BYVAL hwnd   AS HWND, _                 ' // Control window handle
+   BYVAL uMsg   AS UINT, _                 ' // Type of message
+   BYVAL wParam AS WPARAM, _               ' // First message parameter
+   BYVAL lParam AS LPARAM _                ' // Second message parameter
+   ) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_GETDLGCODE
+         ' // All keyboard input
+         FUNCTION = DLGC_WANTALLKEYS
+         EXIT FUNCTION
+
+      CASE WM_KEYDOWN   ' etc.
+         ...
+         ...
+         EXIT FUNCTION
+
+      CASE WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         SetWindowLongPtrW hwnd, GWLP_WNDPROC, _
+            CAST(LONG_PTR, RemovePropW(hwnd, "OLDWNDPROC"))
+
+   END SELECT
+
+   FUNCTION = CallWindowProcW(GetPropW(hwnd, "OLDWNDPROC"), hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' =======================================================
+
+2) Subclassing passing the address of the subclass procedure in pWndProc, the subclass ID in uIdSubclass and an optional pointer to reference data in dwRefData.
+
+Example of subclass procedure:
+
+' =======================================================
+' Processes messages for the subclassed Button window.
+' =======================================================
+FUNCTION SubclassProc ( _
+   BYVAL hwnd   AS HWND, _                 ' // Control window handle
+   BYVAL uMsg   AS UINT, _                 ' // Type of message
+   BYVAL wParam AS WPARAM, _               ' // First message parameter
+   BYVAL lParam AS LPARAM, _               ' // Second message parameter
+   BYVAL uIdSubclass AS UINT_PTR, _        ' // The subclass ID
+   BYVAL dwRefData AS DWORD_PTR _          ' // Pointer to reference data
+   ) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_GETDLGCODE
+         ' // All keyboard input
+         FUNCTION = DLGC_WANTALLKEYS
+         EXIT FUNCTION
+
+      CASE WM_KEYDOWN   ' etc.
+         EXIT FUNCTION
+
+      CASE WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         RemoveWindowSubclass hwnd, @SubclassProc, uIdSubclass
+
+   END SELECT
+
+   FUNCTION = DefSubclassProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' =======================================================
+```
+
+For the *uIdSubclass* parameter you can use any positive value except &hFFFFFFFF. **CWindow** uses the reserved default value of &hFFFFFFF to know if it has to use the old way of subclassing or the new way with **SetWindowSubclass**.
+
+Two of the added benefits are that you can use the same subclass procedure for several controls and identify them thanks to the uIdSubclass (for example passing the ID of the control), and that you can pass a pointer to reference data.
+
+**SetWindowSubclass** was made available for the first time in ComCtl32.dll version 6 and, therefore, can only be used with Windows XP or superior. ComCtl32.dll version 6 is Unicode only. The common controls supported by ComCtl32.dll version 6 should not be subclassed (or superclassed) with ANSI window procedures.
+
