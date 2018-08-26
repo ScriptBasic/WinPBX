@@ -157,7 +157,7 @@ Creates a generic window used as a tab page of a tab control.
 | [AfxResizeTabPages](#AfxResizeTabPages) | Resizes all the tab pages associated with a tab control. |
 | [AfxScrollTabPagePtr](#AfxScrollTabPagePtr) | Returns a pointer to the CScrollWindow class given the handle of the tab control to which the tab page is associated and the zero-based tab index. |
 
-# <a name="Topic1"></a>Creating the main window
+### <a name="Topic1"></a>Creating the main window
 
 To use **CWindow** you must first include "CWindow.inc" and allow all symbols of its namespace to be accessed adding **USING Afx**.
 
@@ -307,7 +307,7 @@ Each instance of the **CWindow** class has an user data area consisting in an ar
 
 These values are set and retrieved using the **UserData** property and an index from 0 to 99.
 
-# <a name="Topic2"></a>Getting a pointer to the CWindow class
+### <a name="Topic2"></a>Getting a pointer to the CWindow class
 
 At any time, you can get a pointer to the **CWindow** class by using:
 
