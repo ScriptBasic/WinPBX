@@ -3663,7 +3663,7 @@ PROPERTY ScrollWindowPtr (BYVAL pScrollWindow AS CScrollWindow PTR)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pScrollWindow* | A pointer to the CScrollWindow class or NULL. |
+| *pScrollWindow* | A pointer to the **CScrollWindow** class or NULL. |
 
 #### Usage example
 
