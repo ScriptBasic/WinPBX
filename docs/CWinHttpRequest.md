@@ -500,3 +500,35 @@ IF pWHttp.GetLastResult = S_OK THEN
    PRINT pWHttp.GetOption(WinHttpRequestOption_EscapePercentInURL)
 END IF
 ```
+
+# <a name="SetProxy"></a>SetProxy
+
+Sets proxy server information.
+
+```
+FUNCTION SetProxy (BYVAL ProxySetting AS HTTPREQUEST_PROXY_SETTING, BYREF cvProxyServer AS CVAR = "", _
+   BYVAL cvBypassList AS CVAR = "") AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ProxySetting* | A value of type LONG that receives the flags that control this method. Can be one of the values in the table below. |
+| *cvProxyServer* | Optional. A value of type Variant that is set to a proxy server string when ProxySetting equals HTTPREQUEST_PROXYSETTING_PROXY. |
+| *cvBypassList* | Optional. A value of type Variant that is set to a domain bypass list string when ProxySetting equals HTTPREQUEST_PROXYSETTING_PROXY. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| HTTPREQUEST_PROXYSETTING_DEFAULT | Default proxy setting. Equivalent to HTTPREQUEST_PROXYSETTING_PRECONFIG. |
+| HTTPREQUEST_PROXYSETTING_PRECONFIG | Indicates that the proxy settings should be obtained from the registry. This assumes that Proxycfg.exe has been run. If Proxycfg.exe has not been run and HTTPREQUEST_PROXYSETTING_PRECONFIG is specified, then the behavior is equivalent to HTTPREQUEST_PROXYSETTING_DIRECT. |
+| HTTPREQUEST_PROXYSETTING_DIRECT | Indicates that all HTTP and HTTPS servers should be accessed directly. Use this command if there is no proxy server. |
+| HTTPREQUEST_PROXYSETTING_PROXY | When HTTPREQUEST_PROXYSETTING_PROXY is specified, *cvProxyServer* should be set to a proxy server string and *cvBypassList* should be set to a domain bypass list string. This proxy configuration applies only to the current instance of the WinHttpRequest object. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+Enables the calling application to specify use of default proxy information (configured by the proxy configuration tool) or to override Proxycfg.exe. This method must be called before calling the Send method. If this method is called after the **Send** method, it has no effect.
+
+**CWinHttpRequest** passes these parameters to Microsoft Windows HTTP Services (WinHTTP).
