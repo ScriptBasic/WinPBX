@@ -146,3 +146,75 @@ FUNCTION ConfigUpdate () AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="ConfigValue"></a>ConfigValue
+
+Sets the value of the specified configuration field.
+
+```
+FUNCTION ConfigValue (BYREF cbsField AS CBSTR, BYREF cbsValue AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsField* | The http://schemas.microsoft.com/cdo/configuration/ namespace defines the majority of fields used to set configurations for various CDO objects. These configuration fields are set using an implementation of the **IConfiguration.Fields** collection.<br>Many CDO objects use information stored in an associated **Configuration** object to define configuration settings. One example is the **Message** object, where you use its associated **Configuration** object to set fields such as sendusing. This field defines whether to send the message using the local SMTP service drop directory (if the local machine has the SMTP service installed), an SMTP service directly over the network. If sending over the network, you set smtpserver to specify the IP address or DNS name of the machine hosting the SMTP service, and optionally, smtpserverport to specify a port value. If credentials are required for connecting to an SMTP service, you can specify them by setting the sendusername and sendpassword.<br>A similar set of fields exists for posting messages using either a local NNTP service pickup directory, or over the network. |
+| *cbsValue* | The value to set. |
+| *cbsValue* | The value to set. |
+
+All of the names listed below are also defined as string constants in the file **AfxCDOSys.bi** for convenience.
+
+```
+cdoAutoPromoteBodyParts = "http://schemas.microsoft.com/cdo/configuration/autopromotebodyparts"
+cdoFlushBuffersOnWrite = "http://schemas.microsoft.com/cdo/configuration/flushbuffersonwrite"
+cdoHTTPCookies = "http://schemas.microsoft.com/cdo/configuration/httpcookies"
+cdoLanguageCode = "http://schemas.microsoft.com/cdo/configuration/languagecode"
+cdoNNTPAccountName = "http://schemas.microsoft.com/cdo/configuration/nntpaccountname"
+cdoNNTPAuthenticate = "http://schemas.microsoft.com/cdo/configuration/nntpauthenticate"
+cdoNNTPConnectionTimeout = "http://schemas.microsoft.com/cdo/configuration/nntpconnectiontimeout"
+cdoNNTPServer = "http://schemas.microsoft.com/cdo/configuration/nntpserver"
+cdoNNTPServerPickupDirectory = "http://schemas.microsoft.com/cdo/configuration/nntpserverpickupdirectory"
+cdoNNTPServerPort = "http://schemas.microsoft.com/cdo/configuration/nntpserverport"
+cdoNNTPUseSSL = "http://schemas.microsoft.com/cdo/configuration/nntpusessl"
+cdoPostEmailAddress = "http://schemas.microsoft.com/cdo/configuration/postemailaddress"
+cdoPostPassword = "http://schemas.microsoft.com/cdo/configuration/postpassword"
+cdoPostUserName = "http://schemas.microsoft.com/cdo/configuration/postusername"
+cdoPostUserReplyEmailAddress = "http://schemas.microsoft.com/cdo/configuration/postuserreplyemailaddress"
+cdoPostUsingMethod = "http://schemas.microsoft.com/cdo/configuration/postusing"
+cdoSaveSentItems = "http://schemas.microsoft.com/cdo/configuration/savesentitems"
+cdoSendEmailAddress = "http://schemas.microsoft.com/cdo/configuration/sendemailaddress"
+cdoSendPassword = "http://schemas.microsoft.com/cdo/configuration/sendpassword"
+cdoSendUserName = "http://schemas.microsoft.com/cdo/configuration/sendusername"
+cdoSendUserReplyEmailAddress = "http://schemas.microsoft.com/cdo/configuration/senduserreplyemailaddress"
+cdoSendUsingMethod = "http://schemas.microsoft.com/cdo/configuration/sendusing"
+cdoSMTPAccountName = "http://schemas.microsoft.com/cdo/configuration/smtpaccountname"
+cdoSMTPAuthenticate = "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate"
+cdoSMTPConnectionTimeout = "http://schemas.microsoft.com/cdo/configuration/smtpconnectiontimeout"
+cdoSMTPServer = "http://schemas.microsoft.com/cdo/configuration/smtpserver"
+cdoSMTPServerPickupDirectory = "http://schemas.microsoft.com/cdo/configuration/smtpserverpickupdirectory"
+cdoSMTPServerPort = "http://schemas.microsoft.com/cdo/configuration/smtpserverport"
+cdoSMTPUseSSL = "http://schemas.microsoft.com/cdo/configuration/smtpusessl"
+cdoURLGetLatestVersion = "http://schemas.microsoft.com/cdo/configuration/urlgetlatestversion"
+cdoURLProxyBypass = "http://schemas.microsoft.com/cdo/configuration/urlproxybypass"
+cdoURLProxyServer = "http://schemas.microsoft.com/cdo/configuration/urlproxyserver"
+cdoUseMessageResponseText = "http://schemas.microsoft.com/cdo/configuration/usemessageresponsetext"
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+### Example
+
+```
+' // Create an instance of the CCdoMessage class
+DIM pMsg AS CCdoMessage
+' // Configuration
+pMsg.ConfigValue(cdoSendUsingMethod, CdoSendUsingPort)
+pMsg.ConfigValue(cdoSMTPServer, "smtp.xxxxx.xxx")
+pMsg.ConfigValue(cdoSMTPServerPort, 25)
+pMsg.ConfigValue(cdoSMTPAuthenticate, 1)
+pMsg.ConfigValue(cdoSendUserName, "xxxx@xxxx.xxx")
+pMsg.ConfigValue(cdoSendPassword, "xxxxxxxx")
+pMsg.ConfigValue(cdoSMTPUseSSL, 1)
+pMsg.ConfigUpdate
+```
