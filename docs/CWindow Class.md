@@ -3386,3 +3386,33 @@ pWindow.GetWindowRect(@rc)
 DIM rc AS RECT = pWindow.GetWindowRect
 ```
 
+# <a name="GetWorkArea"></a>GetWorkArea
+
+Retrieves the unscaled size of the work area on the primary display monitor. The work area is the portion of the screen not obscured by the system taskbar or by application desktop toolbars.
+
+```
+SUB GetWorkArea (BYVAL lpRect AS LPRECT)
+```
+```
+FUNCTION GetWorkArea () AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *lpRect* | Pointer to a **RECT** structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window.  |
+
+#### Remarks
+
+In conformance with conventions for the **RECT** structure, the bottom-right coordinates of the returned rectangle are exclusive. In other words, the pixel at (right, bottom) lies immediately outside the rectangle.
+
+#### Usage examples
+
+```
+DIM rc AS RECT
+pWindow.GetWorkArea(@rc)
+```
+```
+DIM rc AS RECT = pWindow.GetWorkArea
+```
+
