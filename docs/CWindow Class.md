@@ -470,3 +470,209 @@ END FUNCTION
 Both of these methods are optional. Therefore, you can use your own way to subclass controls.
 
 **Warning**: You cannot use the subclassing helper functions to subclass a window across threads.
+
+### <a name="Topic4"></a>Popup Windows
+
+To create a popup window you simply create a new instance of the CWindow class and, in the **Create** method, you make it child of the main window and use the WS_POPUPWINDOW style.
+
+```
+DIM pWindow AS CWindow
+pWindow.Create(hParent, "Popup window", @PopupWndProc, , , , , _
+   WS_VISIBLE OR WS_CAPTION OR WS_POPUPWINDOW OR WS_THICKFRAME, WS_EX_WINDOWEDGE)
+```
+
+The window created this way is modeless. To make it modal, we need to disable the parent window:
+
+```
+CASE WM_CREATE
+   EnableWindow GetParent(hwnd), FALSE
+```
+
+When the popup dialog is closed, we need to enable the parent window:
+
+```
+CASE WM_CLOSE
+   ' // Enables parent window keeping parent's zorder
+   EnableWindow GetParent(hwnd), CTRUE
+```
+
+#### Example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' File: CW_PopupWindow.fbtpl
+' Contents: CWindow with a modal popup window
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CWindow.inc"
+USING Afx
+
+CONST IDC_POPUP = 1001
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+DECLARE FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE FUNCTION PopupWindow (BYVAL hParent AS HWND) AS LONG
+DECLARE FUNCTION PopupWndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   DIM pWindow AS CWindow
+   pWindow.Create(NULL, "CWindow with a popup window", @WndProc)
+   pWindow.SetClientSize(500, 320)
+   pWindow.Center
+
+   ' // Add a button without position or size (it will be resized in the WM_SIZE message).
+   pWindow.AddControl("Button", pWindow.hWindow, IDC_POPUP, "&Popup", 350, 250, 75, 23)
+
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   DIM hDC AS HDC
+   DIM pPaint AS PAINTSTRUCT
+   DIM rc AS RECT
+   DIM pWindow AS CWindow PTR
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         ' // If ESC key pressed, close the application sending an WM_CLOSE message
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+            CASE IDC_POPUP
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  PopupWindow(hwnd)
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_SIZE
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Resize the buttons
+            pWindow = CAST(CWindow PTR, GetWindowLongPtrW(hwnd, 0))
+            pWindow->MoveWindow GetDlgItem(hwnd, IDCANCEL), pWindow->ClientWidth - 120, pWindow->ClientHeight - 50, 75, 23, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Popup window procedure
+' ========================================================================================
+FUNCTION PopupWindow (BYVAL hParent AS HWND) AS LONG
+
+   DIM pWindow AS CWindow
+   pWindow.Create(hParent, "Popup window", @PopupWndProc, , , , , _
+      WS_VISIBLE OR WS_CAPTION OR WS_POPUPWINDOW OR WS_THICKFRAME, WS_EX_WINDOWEDGE)
+   pWindow.Brush = GetStockObject(WHITE_BRUSH)
+   pWindow.SetClientSize(300, 200)
+   pWindow.Center(pWindow.hWindow, hParent)
+   ' / Process Windows messages
+   FUNCTION = pWindow.DoEvents
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Popup window procedure
+' ========================================================================================
+FUNCTION PopupWndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   DIM hOldFont AS HFONT
+   STATIC hNewFont AS HFONT
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         ' // Get a pointer to the CWindow class from the CREATESTRUCT structure
+         DIM pCreateStruct AS CREATESTRUCT PTR = CAST(CREATESTRUCT PTR, lParam)
+         DIM pWindow AS CWindow PTR = CAST(CWindow PTR, pCreateStruct->lpCreateParams)
+         ' // Create a new font scaled according the DPI ratio
+         IF pWindow->DPI <> 96 THEN hNewFont = pWindow->CreateFont("Tahoma", 9)
+         ' Disable parent window to make popup window modal
+         EnableWindow GetParent(hwnd), FALSE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            ' // If ESC key pressed, close the application sending an WM_CLOSE message
+            CASE IDCANCEL
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_PAINT
+    		DIM rc AS RECT, ps AS PAINTSTRUCT, hDC AS HANDLE
+         hDC = BeginPaint(hWnd, @ps)
+         IF hNewFont THEN hOldFont = CAST(HFONT, SelectObject(hDC, CAST(HGDIOBJ, hNewFont)))
+         GetClientRect(hWnd, @rc)
+         DrawTextW(hDC, "Hello, World!", -1, @rc, DT_SINGLELINE or DT_CENTER or DT_VCENTER)
+         IF hNewFont THEN SelectObject(hDC, CAST(HGDIOBJ, CAST(HFONT, hOldFont)))
+         EndPaint(hWnd, @ps)
+         EXIT FUNCTION
+
+      CASE WM_CLOSE
+         ' // Enables parent window keeping parent's zorder
+         EnableWindow GetParent(hwnd), CTRUE
+         ' // Don't exit; let DefWindowProcW perform the default action
+
+    	CASE WM_DESTROY
+         ' // Destroy the new font
+         IF hNewFont THEN DeleteObject(CAST(HGDIOBJ, hNewFont))
+         ' // End the application by sending an WM_QUIT message
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+```
+
