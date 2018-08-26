@@ -3857,3 +3857,27 @@ A SINGLE datatype is used instead of a long to avoid rounding errors in the calc
 #### Usage example
 
 DIM cy AS SINGLE = pWindow.UnScaleY(250)
+
+# <a name="UserData"></a>UserData
+
+Gets/sets a value in the user data area of the window.
+
+```
+PROPERTY UserData (BYVAL idx AS LONG) AS LONG_PTR
+PROPERTY UserData (BYVAL idx AS LONG, BYVAL newValue AS LONG_PTR)
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *idx* | The index number of the user data value to retrieve, in the range 0 to 99 inclusive. |
+| *newValue* | The value to set. |
+
+#### Usage examples
+
+```
+pWindow.UserData(1) = value
+```
+```
+DIM value AS LONG_PTR = pWindow.UserData(1)
+```
+
