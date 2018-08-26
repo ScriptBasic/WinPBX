@@ -3564,3 +3564,17 @@ If the *bRepaint* parameter is CTRUE, the system sends the WM_PAINT message to t
 pWindow.MoveWindow GetDlgItem(hwnd, IDCANCEL), pWindow.ClientWidth, _
    pWindow-ClientHeight, 75, 23, CTRUE
 ```
+
+# <a name="Resize"></a>Resize
+
+Resizes the window sending a WM_SIZE message with the  SIZE_RESTORED value.
+
+```
+SUB Resize
+```
+
+#### Usage example
+
+```
+pWindow.Resize
+```
