@@ -19,6 +19,8 @@ The default **CWindow_WindowProc** and **CWindowMDIProc** callback procedures ha
 
 The default message pump (**CWindow.DoEvents**), should be enough for most applications, but you can replace it with your own.
 
+**Include file**: CWindow.inc.
+
 # Constructor
 
 Registers the class name and initializes the common controls library.
