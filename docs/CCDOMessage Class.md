@@ -507,3 +507,19 @@ FUNCTION Subject (BYREF cbsSubject AS CBSTR) AS HRESULT
 
 S_OK (0) or an HRESULT code.
 
+# <a name="TextBody"></a>TextBody
+
+The plain text representation of the message.
+
+```
+FUNCTION TextBody (BYREF cbsTextBody AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsTextBody* | The default value of the **TextBody** property is an empty string. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
