@@ -255,7 +255,7 @@ FUNCTION FollowUpTo (BYREF cbsFollowUpTo AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsFollowUpTo* | The string in the **FollowUpTo** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, and multiple newsgroups in the list are separated by commas, as shown in the following examples:<br><br>name.public.discussion<br><br>alt.sample,sample.newsgroup.name.public.chat<br><br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br>If the **FollowUpTo** property is not set, responses are posted to the newsgroups specified by the Newsgroups property.<br>The default value of the **FollowUpTo** property is an empty string. |
+| *cbsFollowUpTo* | The string in the **FollowUpTo** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, and multiple newsgroups in the list are separated by commas, as shown in the following examples:<br><br>name.public.discussion<br>alt.sample,sample.newsgroup.name.public.chat<br><br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br>If the **FollowUpTo** property is not set, responses are posted to the newsgroups specified by the Newsgroups property.<br>The default value of the **FollowUpTo** property is an empty string. |
 
 #### Return value
 
