@@ -303,7 +303,36 @@ WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
 WEND
 FUNCTION = uMsg.wParam
 ```
-
 Each instance of the **CWindow** class has an user data area consisting in an array of 99 LONG_PTR values that you can use to store information that you find useful.
 
 These values are set and retrieved using the **UserData** property and an index from 0 to 99.
+
+# <a name="Topic2"></a>Getting a pointer to the CWindow class
+
+At any time, you can get a pointer to the **CWindow** class by using:
+
+```
+DIM pWindow AS CWindow PTR = CAST(CWindow PTR, GetWindowLongPtrW(hwnd, 0))
+- or -
+DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+```
+where *hwnd* is the handle of its associated window handle.
+
+If the handle of the main window its not available, the function **AfxCWindowOwnerPtr** allows the use of the handle of any of it's child controls.
+
+An special case is the WM_CREATE message.
+
+At the time in which this message is processed in the window callback, **CWindow** has not yet been able to store the pointer in the extra bytes of the window class.
+
+To solve this problem, the **Create** method passes the pointer to the class in the *lParam* parameter when calling the API function **CreateWindowEx** to create the window.
+
+This pointer can be retrieved in WM_CREATE using:
+
+```
+CASE WM_CREATE
+   DIM pCreateStruct AS CREATESTRUCT PTR = CAST(CREATESTRUCT PTR, lParam)
+   DIM pWindow AS CWindow PTR = CAST(CWindow PTR, pCreateStruct->lpCreateParams)
+- or -
+CASE WM_CREATE
+   DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
+```
