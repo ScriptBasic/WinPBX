@@ -90,17 +90,17 @@ Return value
 
 S_OK or an HRESULT code.
 
-Remarks
+#### Remarks
 
-The AddAttachment method adds the attachment by first retrieving the resource specified by the Uniform Resource Locator (URL) and then adding the content to the message's Attachments collection within a BodyPart object.
+The **AddAttachment** method adds the attachment by first retrieving the resource specified by the Uniform Resource Locator (URL) and then adding the content to the message's **Attachments** collection within a **BodyPart** object.
 
 The URL prefixes supported in the URL parameter are file://, ftp://, http://, and https://. The default prefix is file://. This facilitates designation of paths starting with drive letters and of universal naming convention (UNC) paths.
 
-The MIMEFormatted property determines how the attachment is formatted when the message is serialized for delivery to a Simple Mail Transfer Protocol (SMTP) service. If this property is set to True, the attachment is formatted using Multipurpose Internet Mail Extensions (MIME). If the property is set to False, the attachment is added to the serialized content stream in Uuencoded format.
+The **MIMEFormatted** property determines how the attachment is formatted when the message is serialized for delivery to a Simple Mail Transfer Protocol (SMTP) service. If this property is set to True, the attachment is formatted using Multipurpose Internet Mail Extensions (MIME). If the property is set to False, the attachment is added to the serialized content stream in Uuencoded format.
 
-If you populate the HTMLBody property before calling the AddAttachment method, any inline images are displayed as part of the message.
+If you populate the **HTMLBody** property before calling the **AddAttachment** method, any inline images are displayed as part of the message.
 
-Use the UserName and Password parameters when you are requesting Web pages using Hypertext Transfer Protocol (HTTP) from a server that requires client authentication. If the Web server supports only the basic authentication mechanism, these credentials must be supplied. If the Web server supports the NTLM authentication mechanism, by default, the current process security context is used to authenticate; however, you can specify alternate credentials for NTLM authentication with the **UserName** and **Password** properties.
+Use the **UserName** and **Password** parameters when you are requesting Web pages using Hypertext Transfer Protocol (HTTP) from a server that requires client authentication. If the Web server supports only the basic authentication mechanism, these credentials must be supplied. If the Web server supports the NTLM authentication mechanism, by default, the current process security context is used to authenticate; however, you can specify alternate credentials for NTLM authentication with the **UserName** and **Password** properties.
 
 Important Storing user names and passwords inside source code can lead to security vulnerabilities in your software. Do not store user names and passwords in your production code.
 
