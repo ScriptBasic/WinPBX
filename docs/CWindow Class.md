@@ -929,3 +929,185 @@ END FUNCTION
 ' ========================================================================================
 ```
 
+### Visual style menus
+
+Windows Vista and posterior Windows versions provide menus that are part of the visual schema. These menus are rendered using visual styles, which can be added to existing applications. Adding code for new features to existing code must be done carefully to avoid breaking existing application behavior. Certain situations can cause visual styling to be disabled in an application. These situations include:
+
+* Customizing menus using owner-draw menu items (MFT_OWNERDRAW)
+* Using menu breaks (MFT_MENUBREAK or MFT_MENUBARBREAK)
+* Using HBMMENU_CALLBACK to defer bitmap rendering
+* Using a destroyed menu handle
+
+These situations prevent visual style menus from being rendered. Owner-draw menus can be used in Windows Vista and posterior Windows versions, but the menus will not be visually styled. Windows Vista and posterior Windows versions provide alpha-blended bitmaps, which enables menu items to be shown without using owner-draw menu items.
+
+**Requirements**:
+
+* The bitmap is a 32bpp DIB section.
+* The DIB section has BI_RGB compression.
+* The bitmap contains pre-multiplied alpha pixels.
+* The bitmap is stored in hbmpChecked, hbmpUnchecked, or hbmpItem fields.
+
+**Note**: MFT_BITMAP items do not support PARGB32 bitmaps.
+
+The **AfxAddIconToMenuItem** function included in **AfxMenu.inc** allows to use alphablended icons in visually styled menus.
+
+```
+DIM hSubMenu AS HMENU = GetSubMenu(hMenu, 1)
+DIM hIcon AS HICON
+hIcon = LoadImageW(NULL, "MyIcon.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE)
+IF hIcon THEN AfxAddIconToMenuItem(hSubMenu, 0, TRUE, hIcon)
+```
+
+PNG icons can be used by converting them first to an icon with **AfxGdipImageFromFile**:
+
+```
+hIcon = AfxGdipImageFromFileEx("MyIcon.png")
+IF hIcon THEN AfxAddIconToMenuItem(hSubMenu, 0, TRUE, hIcon)
+```
+
+But, in general, we are more interested in loading the icons from a resource file embedded in the application. We can achieve it using the **AfxGdipIconFromRes** function.
+
+```
+DIM hSubMenu AS HMENU = GetSubMenu(hMenu, 0)
+AfxAddIconToMenuItem(hSubMenu, 0, TRUE, AfxGdipIconFromRes(hInst, "IDI_ARROW_LEFT_48"))
+```
+
+The following code uses the same resource file that the one for the "Using PNG icons in toolbars example" to demonstrate that we can use just one set of icons for both toolbars and menus.
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: CWindow with a menu
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define _WIN32_WINNT &h0602
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "win/uxtheme.bi"
+#INCLUDE ONCE "Afx/CWindow.inc"
+#INCLUDE ONCE "Afx/AfxGdiplus.inc"
+#INCLUDE ONCE "Afx/AfxMenu.inc"
+using Afx
+
+' // Menu identifiers
+#define IDM_UNDO     1001   ' Undo
+#define IDM_REDO     1002   ' Redo
+#define IDM_HOME     1003   ' Home
+#define IDM_SAVE     1004   ' Save file
+#define IDM_EXIT     1005   ' Exit
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' ========================================================================================
+' Build the menu
+' ========================================================================================
+FUNCTION BuildMenu () AS HMENU
+
+   DIM hMenu AS HMENU
+   DIM hPopUpMenu AS HMENU
+
+   hMenu = CreateMenu
+   hPopUpMenu = CreatePopUpMenu
+      AppendMenuW hMenu, MF_POPUP OR MF_ENABLED, CAST(UINT_PTR, hPopUpMenu), "&File"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_UNDO, "&Undo" & CHR(9) & "Ctrl+U"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_REDO, "&Redo" & CHR(9) & "Ctrl+R"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_HOME, "&Home" & CHR(9) & "Ctrl+H"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_SAVE, "&Save" & CHR(9) & "Ctrl+S"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_EXIT, "E&xit" & CHR(9) & "Alt+F4"
+   FUNCTION = hMenu
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application sending an WM_CLOSE message
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+            CASE IDM_UNDO
+               MessageBox hwnd, "Undo option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_REDO
+               MessageBox hwnd, "Redo option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_HOME
+               MessageBox hwnd, "Home option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_SAVE
+               MessageBox hwnd, "Save option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+         END SELECT
+
+    	CASE WM_DESTROY
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   DIM pWindow AS CWindow
+   pWindow.Create(NULL, "CWindow with a menu", @WndProc)
+   pWindow.SetClientSize(400, 250)
+   pWindow.Center
+
+   ' // Add a button
+   pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close", 280, 180, 75, 23)
+
+   ' // Module instance handle
+   DIM hInst AS HINSTANCE = GetModuleHandle(NULL)
+
+   ' // Create the menu
+   DIM hMenu AS HMENU = BuildMenu
+   SetMenu pWindow.hWindow, hMenu
+
+   ' // Add icons to the items of the File menu
+   DIM hSubMenu AS HMENU = GetSubMenu(hMenu, 0)
+   AfxAddIconToMenuItem(hSubMenu, 0, TRUE, AfxGdipIconFromRes(hInst, "IDI_ARROW_LEFT_48"))
+   AfxAddIconToMenuItem(hSubMenu, 1, TRUE, AfxGdipIconFromRes(hInst, "IDI_ARROW_RIGHT_48"))
+   AfxAddIconToMenuItem(hSubMenu, 2, TRUE, AfxGdipIconFromRes(hInst, "IDI_HOME_48"))
+   AfxAddIconToMenuItem(hSubMenu, 3, TRUE, AfxGdipIconFromRes(hInst, "IDI_SAVE_48"))
+
+   ' // Process Windows messages
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+```
+
