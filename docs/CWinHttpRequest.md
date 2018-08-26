@@ -696,7 +696,7 @@ SSL certificate errors.
 These constants and corresponding values indicate HTTP status codes returned by servers on the Internet.
 
 | Constant   | Value | Description |
-| ---------- | ----- |----------- |
+| ---------- | ----- |------------ |
 | HTTP_STATUS_CONTINUE | 100 | The request can be continued. |
 | HTTP_STATUS_SWITCH_PROTOCOLS | 101 | The server has switched protocols in an upgrade header. |
 | HTTP_STATUS_OK | 200 | The request completed successfully. |
@@ -737,4 +737,3 @@ These constants and corresponding values indicate HTTP status codes returned by 
 | HTTP_STATUS_SERVICE_UNAVAIL | 503 | The service is temporarily overloaded. |
 | HTTP_STATUS_GATEWAY_TIMEOUT | 504 | The request was timed out waiting for a gateway. |
 | HTTP_STATUS_VERSION_NOT_SUP | 505 | The server does not support the HTTP protocol version that was used in the request message.  |
-
