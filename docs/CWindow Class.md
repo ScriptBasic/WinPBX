@@ -2974,3 +2974,26 @@ DIM hwndMain AS HWND = pWindow.Create(NULL, "CWindow Test", @WndProc), 0, 0, 525
 DIM hwndMain AS HWND = pWindow.Create(NULL, "CWindow Test", @WndProc, 0, 0, 525, 395, _
    WS_OVERLAPPEDWINDOW OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS, WS_EX_CONTROLPARENT OR WS_EX_WINDOWEDGE)
 ```
+
+# <a name="CreateAcceleratorTable"></a>CreateAcceleratorTable
+
+Creates the accelerator table.
+
+```
+FUNCTION CreateAcceleratorTable () AS HACCEL
+```
+
+#### Return value
+
+The handle of the new accelerator table.
+
+#### Example
+
+```
+' // Create a keyboard accelerator table
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "U", IDM_UNDO ' // Ctrl+U - Undo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "R", IDM_REDO ' // Ctrl+R - Redo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
+DIM hAccel AS HACCEL = pWindow.CreateAcceleratorTable
+```
