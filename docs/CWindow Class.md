@@ -2644,6 +2644,24 @@ PROPERTY BigIcon (BYVAL hIcon AS HICON)
 pWindow.BigIcon = LoadImage(hInstance, MAKEINTRESOURCE(101), IMAGE_ICON, 48, 48, LR_SHARED)
 ```
 
+# <a name="BigIcon"></a>BigIcon
+
+Associates a new small icon with the main window. The system displays the small icon in the in the window caption.
+
+```
+PROPERTY SmallIcon (BYVAL hIcon AS HICON)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hIcon* | The icon handle. If this parameter is NULL, the icon is removed. |
+
+#### Example
+
+```
+pWindow.SmallIcon = LoadImage(hInstance, MAKEINTRESOURCE(100), IMAGE_ICON, 32, 32, LR_SHARED)
+```
+
 # <a name="Brush"></a>Brush
 
 Gets/sets the background brush.
