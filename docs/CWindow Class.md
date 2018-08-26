@@ -2393,8 +2393,8 @@ Gets/sets the accelerator table handle.
 ```
 PROPERTY AccelHandle () AS HACCEL
 PROPERTY AccelHandle (BYVAL hAccel AS HACCEL)
-
 ```
+
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hAccel* | The new accelerator table handle. |
@@ -2413,3 +2413,34 @@ You can destroy the current accelerator table by setting the property with a nul
 
 DIM hAccel AS HACCEL = pWindow.AccelHandle
 
+
+### <a name="AddAccelerator"></a>AddAccelerator
+
+Adds an accelerator key to the table.
+
+```
+SUB AddAccelerator (BYVAL fvirt AS UBYTE, BYVAL wKey AS WORD, BYVAL cmd AS WORD)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *fvirt* | The accelerator behavior. This member can be one or more of the following values:<br>**FALT (&H10)** : The ALT key must be held down when the accelerator key is pressed.<br>**FCONTROL (&H08)** : The CTRL key must be held down when the accelerator key is pressed.<br>**FNOINVERT (&H02)** : No top-level menu item is highlighted when the accelerator is used. If this flag is not specified, a top-level menu item will be highlighted, if possible, when the accelerator is used. This attribute is obsolete and retained only for backward compatibility with resource files designed for 16-bit Windows.<br>**FSHIFT (&H04)** : The SHIFT key must be held down when the accelerator key is pressed.<br>**FVIRTKEY (TRUE)**: The key member specifies a virtual-key code. If this flag is not specified, key is assumed to specify a character code. |
+| *vKey* | The accelerator key. This member can be either a virtual-key code or a character code. |
+| *cmd* | The accelerator identifier. This value is placed in the low-order word of the wParam parameter of the WM_COMMAND or WM_SYSCOMMAND message when the accelerator is pressed. |
+
+#### Remarks
+
+#### Remarks
+
+To create an accelerator table, first add all the keys using this method and then call the **CreateAcceleratorTable** method.
+
+#### Example
+
+```
+' // Create a keyboard accelerator table
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "U", IDM_UNDO ' // Ctrl+U - Undo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "R", IDM_REDO ' // Ctrl+R - Redo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
+pWindow.CreateAcceleratorTable
+```
