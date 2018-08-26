@@ -345,7 +345,7 @@ FUNCTION Keywords (BYREF cbsKeywords AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsKeywords* | The keywords of a message can be useful for determining if the message is of interest to the reader, or for searching for relevant messages in a collection.<br><br>The string in the Keywords property can represent a single keyword or multiple keywords. A keyword string can optionally contain spaces, such as the following:<br><br>"1997 payroll"<br><br>Multiple keywords in the list are separated by commas, as in the following example:<br><br>"operating systems,Windows NT,functions"<br><br>Because the comma is the delimiter of this field, a keyword cannot contain a comma. If you add a keyword that contains a comma, the result will be two keywords that are separated by the comma.<br><br>The default value of the **Keywords** property is an empty string.  |
+| *cbsKeywords* | The keywords of a message can be useful for determining if the message is of interest to the reader, or for searching for relevant messages in a collection.<br><br>The string in the **Keywords** property can represent a single keyword or multiple keywords. A keyword string can optionally contain spaces, such as the following:<br><br>"1997 payroll"<br><br>Multiple keywords in the list are separated by commas, as in the following example:<br><br>"operating systems,Windows NT,functions"<br><br>Because the comma is the delimiter of this field, a keyword cannot contain a comma. If you add a keyword that contains a comma, the result will be two keywords that are separated by the comma.<br><br>The default value of the **Keywords** property is an empty string.  |
 
 #### Return value
 
