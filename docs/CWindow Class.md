@@ -3578,3 +3578,76 @@ SUB Resize
 ```
 pWindow.Resize
 ```
+
+# <a name="rxRatio"></a>rxRatio
+
+Returns the horizontal scaling ratio.
+
+```
+PROPERTY rxRatio () AS SINGLE
+```
+
+#### Usage example
+
+```
+DIM rx AS LONG = pWindow.rxRatio
+```
+
+# <a name="ryRatio"></a>ryRatio
+
+Returns the vertical scaling ratio.
+
+```
+PROPERTY ryRatio () AS SINGLE
+```
+
+#### Usage example
+
+```
+DIM ry AS LONG = pWindow.ryRatio
+```
+
+# <a name="ScaleX"></a>ScaleX
+
+Scales an horizontal coordinate according the DPI setting.
+
+```
+PROPERTY ScaleX (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cx* | The value of the horizontal coordinate, in pixels. |
+
+#### Usage example
+
+```
+DIM cx AS LONG = pWindow.ScaleX
+```
+
+#### Remarks
+
+A SINGLE datatype is used instead of a long to avoid rounding errors in the calculation.
+
+# <a name="ScaleY"></a>ScaleY
+
+Scales an vertical coordinate according the DPI setting.
+
+```
+PROPERTY ScaleY (BYVAL cy AS SINGLE) AS SINGLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cy* | The value of the vertical coordinate, in pixels. |
+
+#### Usage example
+
+```
+DIM cy AS LONG = pWindow.ScaleY
+```
+
+#### Remarks
+
+A SINGLE datatype is used instead of a long to avoid rounding errors in the calculation.
+
