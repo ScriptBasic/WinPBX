@@ -557,3 +557,30 @@ Headers are transferred across redirects. This can create a security vulnerabili
 The **SetRequestHeader** method enables the calling application to add or delete an HTTP request header prior to sending the request. The header name is given in *cbsHeader*, and the header token or value is given in *cbsValue*. To add a header, supply a header name and value. If another header already exists with this name, it is replaced. To delete a header, set *cbsHeader* to the name of the header to delete and set *cbsValue* to NULL.
 
 The name and value of request headers added with this method are validated. Headers must be well formed. For more information about valid HTTP headers, see RFC 2616. If an invalid header is used, an error occurs and the header is not added.
+
+# <a name="SetTimeouts"></a>SetTimeouts
+
+Specifies the individual time-out components of a send/receive operation, in milliseconds.
+
+```
+FUNCTION SetTimeouts (BYVAL ResolveTimeout AS LONG, BYVAL ConnectTimeout AS LONG, _
+   BYVAL SendTimeout AS LONG, BYVAL ReceiveTimeout AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ResolveTimeout* | Time-out value applied when resolving a host name (such as www.microsoft.com) to an IP address (such as 192.168.131.199), in milliseconds. The default value is zero, meaning no time-out (infinite). If DNS timeout is specified using NAME_RESOLUTION_TIMEOUT, there is an overhead of one thread per request. |
+| *ConnectTimeout* | Time-out value applied when establishing a communication socket with the target server, in milliseconds. The default value is 60,000 (60 seconds). |
+| *SendTimeout* | Time-out value applied when sending an individual packet of request data on the communication socket to the target server, in milliseconds. A large request sent to an HTTP server are normally be broken up into multiple packets; the send time-out applies to sending each packet individually. The default value is 30,000 (30 seconds). |
+| *ReceiveTimeout* | Time-out value applied when receiving a packet of response data from the target server, in milliseconds. Large responses are be broken up into multiple packets; the receive time-out applies to fetching each packet of data off the socket. The default value is 30,000 (30 seconds). |
+
+#### Return value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+All parameters are required. A value of 0 or -1 sets a time-out to wait infinitely. A value greater than 0 sets the time-out value in milliseconds. For example, 30,000 would set the time-out to 30 seconds. All negative values other than -1 cause this method to fail.
+
+Time-out values are applied at the Winsock layer.
+
