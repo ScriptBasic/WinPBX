@@ -414,3 +414,19 @@ FUNCTION Organization (BYREF cbsOrganization AS CBSTR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="Post"></a>Post
+
+The organization of the sender.
+
+```
+FUNCTION Post () AS HRESULT
+```
+
+#### Remarks
+
+How the message is posted depends on the current configuration. This configuration is defined in the associated Configuration object that is referenced by the **Configuration** property on this interface. Consult a specific Component Object Model (COM) class implementation for a list of configuration settings used when posting messages.
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
