@@ -2959,7 +2959,7 @@ The following are the window styles. After the window has been created, these st
 | WS_EX_TRANSPARENT | The window should not be painted until siblings beneath the window (that were created by the same thread) have been painted. The window appears transparent because the bits of underlying sibling windows have already been painted. To achieve transparency without these restrictions, use the **SetWindowRgn** function. |
 | WS_EX_WINDOWEDGE | The window has a border with a raised edge. |
 
-####Usage examples
+#### Usage examples
 
 ```
 DIM hwndMain AS HWND = pWindow.Create
@@ -3154,6 +3154,22 @@ The point size of the font.
 
 ```
 DIM nSize AS LONG = pWindow.DefaultFontSize
+```
+```
 pWindow.DefaultFontSize = 12
+```
+
+# <a name="DestroyAcceleratorTable"></a>DestroyAcceleratorTable
+
+Destroys the accelerator table.
+
+```
+SUB DestroyAcceleratorTable
+```
+
+#### Usage example
+
+```
+pWindow.DestroyAcceleratorTable
 ```
 
