@@ -2032,6 +2032,8 @@ When the user opens or creates a document, the client window creates a child win
 
 An MDI application can support more than one kind of document. For example, a typical spreadsheet application enables the user to work with both charts and spreadsheets. For each type of document that it supports, an MDI application must register a child window class and provide a window procedure to support the windows belonging to that class.
 
+**MSDN documentation**: [Multiple Document Interface](https://msdn.microsoft.com/en-us/library/windows/desktop/ms632591(v=vs.85).aspx)
+
 To create a child window, **CWindow** provides the **CreateMDIWindow** method.
 
 **CWindow MDI Framework Demo**
