@@ -14,7 +14,7 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | [GetResponseBody](#GetResponseBody) | Retrieves the response entity body as an array of unsigned bytes. |
 | [GetResponseHeader](#GetResponseHeader) | Gets the specified HTTP response header. |
 | [GetResponseStream](#GetResponseStream) | Retrieves the response entity body as a stream. |
-| [GetResponseText](#GetResponseText) | Retrieves the response entity body as a string. |
+| [GetResponseText](#GetResponseText) | Retrieves the response entity body as an string. |
 | [GetStatus](#GetStatus) | Retrieves the HTTP status code from the last response. |
 | [GetStatusText](#GetStatusText) | Retrieves the HTTP status text. |
 | [Open](#Open) | Opens an HTTP connection to an HTTP resource. |
@@ -413,7 +413,7 @@ FUNCTION SetClientCertificate (BYREF cbsClientCertificate AS CBSTR) AS HRESULT
 
 Returns S_OK (0) if successful or an error value otherwise.
 
-####Remarks
+#### Remarks
 
 The string specified in the *cbsClientCertificate* parameter consists of the certificate location, certificate store, and subject name delimited by backslashes. For more information about the components of the certificate string, see [Client Certificates](https://docs.microsoft.com/en-us/windows/desktop/winhttp/ssl-in-winhttp).
 
@@ -422,3 +422,34 @@ The certificate store name and location are optional. However, if you specify a 
 Call **SetClientCertificate** to select a certificate before calling **Send** to send the request.
 
 Microsoft Windows HTTP Services (WinHTTP) does not provide client certificates to proxy servers that request certificates for authentication.
+
+# <a name="SetCredentials"></a>SetCredentials
+
+Sets credentials to be used with an HTTP server, whether it is a proxy server or an originating server.
+
+```
+FUNCTION SetCredentials (BYREF cbsUserName AS CBSTR, BYREF cbsPassword AS CBSTR, _
+   BYVAL Flags AS HTTPREQUEST_SETCREDENTIALS_FLAGS) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsUserName* | An string that specifies the user name for authentication. |
+| *cwsPassword* | An string specifies the password for authentication. This parameter is ignored if *cbsUserName* is NULL or missing. |
+| *Flags* | A value that specifies when IWinHttpRequest uses credentials. Can be one of the below values. |
+
+| Flag       | Meaning     |
+| ---------- | ----------- |
+| HTTPREQUEST_SETCREDENTIALS_FOR_SERVER | Credentials are passed to a server. |
+| HTTPREQUEST_SETCREDENTIALS_FOR_PROXY | Credentials are passed to a proxy. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+This method returns an error value if a call to **Open** has not completed successfully. It is assumed that some measure of interaction with a proxy server or origin server must occur before users can set credentials for the session. Moreover, until users know which authentication scheme(s) are supported, they cannot format the credentials.
+
+To authenticate with both the server and the proxy, the application must call **SetCredentials** twice; first with the *Flags* parameter set to HTTPREQUEST_SETCREDENTIALS_FOR_SERVER, and second, with the *Flags* parameter set to HTTPREQUEST_SETCREDENTIALS_FOR_PROXY.
+
