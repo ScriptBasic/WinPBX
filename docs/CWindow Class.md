@@ -3363,6 +3363,7 @@ Retrieves the unscaled dimensions of the bounding rectangle of the main window. 
 ```
 SUB GetWindowRect (BYVAL hwnd AS HWND, BYVAL lpRect AS LPRECT)
 ```
+```
 FUNCTION GetWindowRect (BYVAL hwnd AS HWND) AS RECT
 ```
 
