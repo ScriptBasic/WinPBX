@@ -3673,3 +3673,22 @@ DIM pScrollWindow AS CScrollWindowPtr = pWindow.ScrollWondowPtr
 ```
 pWindow.ScrollWondowPtr = pScrollWindow
 ```
+
+# <a name="SetClientSize"></a>SetClientSize
+
+Adjusts the bounding rectangle of the window based on the desired size of the client area. The sizes are scaled according the DPI seeting.
+
+```
+SUB SetClientSize (BYVAL nWidth AS LONG, BYVAL nHeight AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nWidth* | The new width of the client area of the window. |
+| *nHeight* | The new height of the client area of the window. |
+
+#### Usage example
+
+```
+pWindow.SetClientSize(400, 250)
+```
