@@ -393,7 +393,23 @@ FUNCTION Newsgroups (BYREF cbsNewgroups AS CBSTR) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsNewgroups* | The string in the **Newsgroups** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, as shown in the following example:<br><br>name.public.discussion<br><br>In a list of multiple newsgroups, commas separate the names of the newsgroups, as follows:<br><br>alt.sample,sample.newsgroup.name,name.public.chat<br><br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br><br>The **Newsgroups** property is required on news messages. If you do not set the **Newsgroups** property before calling the **Post** method, an error is returned.<br><br>Responses to this message are posted to the same newsgroups unless the **FollowUpTo** property is set.<br><br>The default value of the **Newsgroups** property is an empty string.  |
+| *cbsNewgroups* | The string in the **Newsgroups** property can represent a single newsgroup or multiple newsgroups. A newsgroup name is a set of words concatenated by periods, as shown in the following example:<br><br>name.public.discussion<br><br>In a list of multiple newsgroups, commas separate the names of the newsgroups, as follows:<br><br>alt.sample,sample.newsgroup.name,name.public.chat<br><br>A newsgroup name cannot contain a comma, and only existing newsgroups should be specified. If a newsgroup with a particular name does not exist, posting to that name does not cause the newsgroup to be created.<br><br>The **Newsgroups** property is required on news messages. If you do not set the **Newsgroups** property before calling the **Post** method, an error is returned.<br><br>Responses to this message are posted to the same newsgroups unless the **FollowUpTo** property is set.<br><br>The default value of the **Newsgroups** property is an empty string. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="Organization"></a>Organization
+
+The organization of the sender.
+
+```
+FUNCTION Organization (BYREF cbsOrganization AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsOrganization* | The **Organization** property is used for the Network News Transfer Protocol (NNTP) Organization header field. This field supplies a short phrase that meaningfully describes the sender's organization, such as "Sample Corporation, Payroll Department". A phrase such as this can be easier to recognize than a cryptic messaging address like "Q1006453@example.com".<br><br>The default value of the **Organization** property is an empty string. |
 
 #### Return value
 
