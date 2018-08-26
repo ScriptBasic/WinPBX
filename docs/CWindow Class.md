@@ -2733,3 +2733,68 @@ pWindow.Create(NULL, "CWindow test", @WndProc)
 ' // Change the class style
 pWindow.ClassStyle = CS_DBLCLKS
 ```
+
+### <a name="ClientHeight"></a>ClientHeight
+
+Returns the unscaled client height of the main window.
+
+```
+PROPERTY ClientHeight () AS LONG
+```
+
+#### Usage example
+
+```
+DIM nHeight AS LONG = pWindow.ClientHeight
+```
+
+### <a name="ClientWidth"></a>ClientWidth
+
+Returns the unscaled client width of the main window.
+
+```
+PROPERTY ClientWidth () AS LONG
+```
+
+#### Usage example
+
+```
+DIM nWidth AS LONG = pWindow.ClientWidth
+```
+
+### <a name="ControlClientHeight"></a>ControlClientHeight
+
+Returns the unscaled client height of the specified window or control.
+
+```
+PROPERTY ControlClientHeight (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+
+#### Usage example
+
+```
+DIM nHeight AS LONG = pWindow.ControlClientHeight(hwnd)
+```
+
+### <a name="ControlClientWidth"></a>ControlClientWidth
+
+Returns the unscaled client width of the specified window or control.
+
+```
+PROPERTY ControlClientWidth (BYVAL hwnd AS HWND) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+
+#### Usage example
+
+```
+DIM nHeight AS LONG = pWindow.ControlClientWidth(hwnd)
+```
+
