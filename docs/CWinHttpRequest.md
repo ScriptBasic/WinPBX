@@ -28,6 +28,15 @@ Wrapper class for Microsoft WinHTTP Services, version 5.1
 | [SetTimeouts](#SetTimeouts) | Specifies the individual time-out components of a send/receive operation, in milliseconds. |
 | [WaitForResponse](#WaitForResponse) | Waits for an asynchronous Send method to complete, with optional time-out value, in seconds. |
 
+### Events
+
+| Name       | Description |
+| ---------- | ----------- |
+| [OnError](#OnError) | Occurs when there is a run-time error in the application. |
+| [OnResponseDataAvailable](#OnResponseDataAvailable) | Occurs when data is available from the response. |
+| [OnResponseFinished](#OnResponseFinished) | Occurs when the response data is complete. |
+| [OnResponseStart](#OnResponseStart) | Occurs when the response data starts to be received. |
+
 ### Enumerations
 
 | Name       | Description |
@@ -737,3 +746,53 @@ These constants and corresponding values indicate HTTP status codes returned by 
 | HTTP_STATUS_SERVICE_UNAVAIL | 503 | The service is temporarily overloaded. |
 | HTTP_STATUS_GATEWAY_TIMEOUT | 504 | The request was timed out waiting for a gateway. |
 | HTTP_STATUS_VERSION_NOT_SUP | 505 | The server does not support the HTTP protocol version that was used in the request message.  |
+
+# <a name="OnError"></a>OnError Event
+
+Occurs when there is a run-time error in the application.
+
+```
+SUB OnError (BYVAL ErrorNumber AS LONG, BYVAL ErrorDescription AS BSTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ErrorNumber* | Value of type long that receives the numerical value of the error. |
+| *ErrorDescription* | Value of type BSTR that specifies a short description of the error which occurred. |
+
+# <a name="OnResponseDataAvailable"></a>OnResponseDataAvailable Event
+
+Occurs when data is available from the response.
+
+```
+SUB OnResponseDataAvailable (BYVAL pData AS SAFEARRAY PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pData* | A zero-based array of bytes that receives the response data received by Microsoft Windows HTTP Services (WinHTTP) up to the point that this event occurs. This is a safe array of type VT_UI1. |
+
+# <a name="OnResponseFinished"></a>OnResponseFinished Event
+
+Occurs when the response data is complete.
+
+```
+SUB OnResponseFinished
+```
+
+# <a name="OnResponseStart"></a>OnResponseStart Event
+
+Occurs when the response data starts to be received.
+
+```
+SUB OnResponseStart (BYVAL Status AS LONG, BYVAL ContentType AS BSTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *Status* | Receives the standard status code returned with the response data. Status codes are defined in RFC 2616. |
+| *ContentType* | Specifies the type of content received, such as "text/html" or "image/gif". |
+
+#### Remarks
+
+For this event to occur, use **Open** to send an HTTP connection in asynchronous mode and use **Send** to send a data request to an Internet server. This is the first WinHTTP event to occur after the **Send**.
