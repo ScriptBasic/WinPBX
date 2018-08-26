@@ -377,7 +377,7 @@ FUNCTION MimeFormatted (BYVAL pMimeFormatted AS VARIANT_BOOL) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pMimeFormatted* | If the **MimeFormatted** property is set to False and you set the HTMLBody property, Microsoft Collaboration Data Objects (CDO) sets the **MimeFormatted** property to True. If you set the **MimeFormatted** property to False, the **HTMLBody** property is removed from the message and the Hypertext Markup Language (HTML) text is lost.<br><br>If you prepare a message with the **MimeFormatted** property set to True and later change it to False, all of the body parts are made into attachments and marked for encoding with the Uuencode mechanism. Encoding takes place only when you call the **Send** or **Post** method.<br><br>The default value of the **MimeFormatted** property is True. |
+| *pMimeFormatted* | If the **MimeFormatted** property is set to False and you set the **HTMLBody** property, Microsoft Collaboration Data Objects (CDO) sets the **MimeFormatted** property to True. If you set the **MimeFormatted** property to False, the **HTMLBody** property is removed from the message and the Hypertext Markup Language (HTML) text is lost.<br><br>If you prepare a message with the **MimeFormatted** property set to True and later change it to False, all of the body parts are made into attachments and marked for encoding with the Uuencode mechanism. Encoding takes place only when you call the **Send** or **Post** method.<br><br>The default value of the **MimeFormatted** property is True. |
 
 #### Return value
 
