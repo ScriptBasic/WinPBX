@@ -396,3 +396,29 @@ Returns S_OK (0) if successful or an error value otherwise.
 The default policy is **AutoLogonPolicy_OnlyIfBypassProxy**.
 
 Call **SetAutoLogonPolicy** to set the automatic logon policy before calling **Send** to send the request.
+
+# <a name="SetClientCertificate"></a>SetClientCertificate
+
+Selects a client certificate to send to a Secure Hypertext Transfer Protocol (HTTPS) server.
+
+```
+FUNCTION SetClientCertificate (BYREF cbsClientCertificate AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsClientCertificate* | An string that specifies the location, certificate store, and subject of a client certificate. |
+
+#### Return value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+####Remarks
+
+The string specified in the *cbsClientCertificate* parameter consists of the certificate location, certificate store, and subject name delimited by backslashes. For more information about the components of the certificate string, see [Client Certificates](https://docs.microsoft.com/en-us/windows/desktop/winhttp/ssl-in-winhttp).
+
+The certificate store name and location are optional. However, if you specify a certificate store, you must also specify the location of that certificate store. The default location is CURRENT_USER and the default certificate store is "MY". A blank subject indicates that the first certificate in the certificate store should be used.
+
+Call **SetClientCertificate** to select a certificate before calling **Send** to send the request.
+
+Microsoft Windows HTTP Services (WinHTTP) does not provide client certificates to proxy servers that request certificates for authentication.
