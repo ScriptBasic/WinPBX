@@ -584,3 +584,26 @@ All parameters are required. A value of 0 or -1 sets a time-out to wait infinite
 
 Time-out values are applied at the Winsock layer.
 
+
+# <a name="WaitForResponse"></a>WaitForResponse
+
+Waits for an asynchronous **Send** method to complete, with optional time-out value, in seconds.
+
+```
+FUNCTION WaitForResponse (BYVAL nTimeout AS LONG = 0) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTimeout* | Optional. Time-out value, in seconds. Default time-out is infinite. To explicitly set time-out to infinite, use the value -1. |
+
+#### Return value
+
+TRUE or FALSE.
+
+#### Remarks
+
+This method suspends execution while waiting for a response to an asynchronous request. This method should be called after a **Send**. Calling applications can specify an optional Timeout value, in seconds. If this method times out, the request is not aborted. This way, the calling application can continue to wait for the request, if desired, in a subsequent call to this method.
+
+Calling this property after a synchronous **Send** method returns immediately and has no effect.
+
