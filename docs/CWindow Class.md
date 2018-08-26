@@ -3246,3 +3246,25 @@ DIM dpi AS LONG = pWindow.DPI
 ```
 pWindow.DPI = 96
 ```
+
+# <a name="Font"></a>Font
+
+Gets/sets the font used as default.
+
+```
+PROPERTY Font () AS HFONT
+PROPERTY Font (BYVAL hFont AS HFONT)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hFont* | A handle to the font. |
+
+#### Usage examples
+
+```
+DIM hFont AS HFONT = pWindow.Font
+```
+```
+pWindow.Font = hFont
+```
