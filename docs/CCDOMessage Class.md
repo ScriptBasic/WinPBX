@@ -53,3 +53,17 @@ pMsg.ConfigValue(cdoSMTPServerPort, 465)
 | [DSNOptions](#DSNOptions) | Includes a request for a return report on the delivery status of the message. |
 | [FollowUpTo](#FollowUpTo) | Newsgroups to which any responses to this message are posted. |
 | [From](#From) | The messaging address of the principal author of the message. |
+| [GetLastResult](#GetLastResult) | Returns the last result code. |
+| [HTMLBody](#HTMLBody) | The Hypertext Markup Language (HTML) representation of the message. |
+| [Keywords](#Keywords) | The list of keywords for the message. |
+| [MDNRequested](#MDNRequested) | Indicates whether a Message Disposition Notification is requested on a message. |
+| [MimeFormatted](#MimeFormatted) | Indicates whether a Message Disposition Notification is requested on a message. |
+| [Newsgroups](#Newsgroups) | The newsgroup recipients for the message. |
+| [Organization](#Organization) | The organization of the sender. |
+| [Post](#Post) | Submits this message to the specified newsgroups. |
+| [Recipients](#Recipients) | The principal (To) recipients for this message. |
+| [ReplyTo](#ReplyTo) | The messaging addresses to which replies to this message should be sent. |
+| [Send](#Send) | Sends the message. |
+| [Sender](#Sender) | The messaging address of the message submitter. |
+| [Subject](#Subject) | The message subject. |
+| [TextBody](#TextBody) | The plain text representation of the message. |
