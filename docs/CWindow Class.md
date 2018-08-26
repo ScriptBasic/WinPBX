@@ -112,7 +112,7 @@ DIM pWindow AS CWindow = "MyClassName"
 | [WindowExStyle](#WindowExStyle) | Gets/sets the window extended styles. |
 | [WindowStyle](#WindowStyle) | Gets/sets the window styles. |
 
-# Procedures
+### Procedures
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -120,7 +120,7 @@ DIM pWindow AS CWindow = "MyClassName"
 | [AfxCWindowOwnerPtr](#AfxCWindowOwnerPtr) | Returns a pointer to the CWindow class given the handle of the window created with it or the handle of any of it's children windows or controls. |
 | [AfxScrollWindowPtr](#AfxScrollWindowPtr) | Returns a pointer to the CScrollWindow class given the handle of the window attached to it. |
 
-# Dialog
+### Dialog
 
 | Name       | Description |
 | ---------- | ----------- |
