@@ -3326,3 +3326,32 @@ pWindow.GetControlClientRect(hCtl, @rc)
 DIM rc AS RECT = pWindow.GetControlClientRect(hCtl)
 ```
 
+# <a name="GetControlWindowRect"></a>GetControlWindowRect
+
+Retrieves the unscaled dimensions of the bounding rectangle of the specified window. The dimensions are given in screen coordinates that are relative to the upper-left corner of the screen.
+```
+SUB GetControlWindowRect (BYVAL hwnd AS HWND, BYVAL lpRect AS LPRECT)
+```
+```
+FUNCTION GetControlWindowRect (BYVAL hwnd AS HWND) AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *lpRect* | Pointer to a **RECT** structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window.  |
+
+#### Remarks
+
+In conformance with conventions for the **RECT** structure, the bottom-right coordinates of the returned rectangle are exclusive. In other words, the pixel at (right, bottom) lies immediately outside the rectangle.
+
+#### Usage examples
+
+```
+DIM rc AS RECT
+pWindow.GetControlWindowRect(hCtl, @rc)
+```
+```
+DIM rc AS RECT = pWindow.GetControlWindowRect(hCtl)
+```
+
