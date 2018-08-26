@@ -3159,17 +3159,44 @@ DIM nSize AS LONG = pWindow.DefaultFontSize
 pWindow.DefaultFontSize = 12
 ```
 
-# <a name="DestroyAcceleratorTable"></a>DestroyAcceleratorTable
+# <a name="DoEvents"></a>DoEvents
 
-Destroys the accelerator table.
+Processes windows messages.
 
 ```
-SUB DestroyAcceleratorTable
+FUNCTION DoEvents (BYVAL nCmdShow AS LONG = 0) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nCmdShow* | Optional. Specifies how the window is to be shown. If **DoEvents** is called in the main window, the value should be the value obtained by the WinMain function in its *nCmdShow* parameter. |
+
+#### Return value
+
+The application exit code. This is the value sent when calling the **PostQuitMessage** API function.
+
+#### Remarks
+
+This is the default message pump and should be enough for most applications, but you can replace it with your own.
+
+By default, it uses **IsDialogMessage** in the message pump.
+
+To process arrow keys, characters, enter, insert, backspace or delete keys, you can #define USEDLGMSG 0, or you can leave it as is and process the WM_GETDLGCODE message:
+
+```
+CASE WM_GETDLGCODE
+   FUNCTION = DLGC_WANTALLKEYS
+```
+
+If you are only interested in arrow keys and characters...
+
+```
+CASE WM_GETDLGCODE
+   FUNCTION = DLGC_WANTARROWS OR DLGC_WANTCHARS
 ```
 
 #### Usage example
 
 ```
-pWindow.DestroyAcceleratorTable
+FUNCTION = pWindow.DoEvents(nCmdShow)
 ```
-
