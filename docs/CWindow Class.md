@@ -3416,3 +3416,31 @@ pWindow.GetWorkArea(@rc)
 DIM rc AS RECT = pWindow.GetWorkArea
 ```
 
+# <a name="Height"></a>Height
+
+Returns the unscaled height of the main window.
+
+```
+PROPERTY Height () AS LONG
+```
+
+#### Usage example
+
+```
+DIM nHeight AS LONG = pWindow.Height
+```
+
+# <a name="Width"></a>Width
+
+Returns the unscaled width of the main window.
+
+```
+PROPERTY Width () AS LONG
+```
+
+#### Usage example
+
+```
+DIM nWidth AS LONG = pWindow.Width
+```
+
