@@ -3280,7 +3280,7 @@ FUNCTION GetClientRect () AS RECT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lpRect* | Pointer to a RECT structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window. |
+| *lpRect* | Pointer to a **RECT** structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window. |
 
 #### Remarks
 
@@ -3295,3 +3295,34 @@ pWindow.GetClientRect(@rc)
 ```
 DIM rc AS RECT = pWindow.GetClientRect
 ```
+
+# <a name="GetClientRect"></a>GetClientRect
+
+Retrieves the unscaled coordinates of a window's client area. The client coordinates specify the upper-left and lower-right corners of the client area. Because client coordinates are relative to the upper-left corner of a window's client area, the coordinates of the upper-left corner are (0,0). 
+
+```
+SUB GetControlClientRect (BYVAL hwnd AS HWND, BYVAL lpRect AS LPRECT)
+```
+```
+FUNCTION GetControlClientRect (BYVAL hwnd AS HWND) AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window or control. |
+| *lpRect* | Pointer to a **RECT** structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window.  |
+
+#### Remarks
+
+In conformance with conventions for the **RECT** structure, the bottom-right coordinates of the returned rectangle are exclusive. In other words, the pixel at (right, bottom) lies immediately outside the rectangle.
+
+#### Usage examples
+
+```
+DIM rc AS RECT
+pWindow.GetControlClientRect(hCtl, @rc)
+```
+```
+DIM rc AS RECT = pWindow.GetControlClientRect(hCtl)
+```
+
