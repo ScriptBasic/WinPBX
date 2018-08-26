@@ -336,3 +336,137 @@ CASE WM_CREATE
 CASE WM_CREATE
    DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
 ```
+
+### <a name="Topic3"></a>Adding Controls
+
+To add controls to the window you can use the **AddControl** method. Alternatively, you can use the API function **CreateWindowEx**, but then you will have to do scaling by yourself.
+
+Besides the registered class names for the controls, in many cases you can use easier to remember aliases. For example. you can use "STATUSBAR" instead of "MSCTLS_STATUSBAR32".
+
+The **AddControl** method also provides default styles for all the Windows controls. Therefore, you can save typing unless you need to use different styles.
+
+For example, to add a button you can use
+
+```
+pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close", 350, 250, 75, 23)
+```
+
+instead of
+
+```
+pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close", 350, 250, 75, 23, _
+   WS_CHILD OR WS_VISIBLE OR WS_TABSTOP OR BS_PUSHBUTTON OR BS_CENTER OR BS_VCENTER
+```
+
+For a list of predefined class names and styles, see the **AddControl** method.
+
+If the application is DPI aware, controls created with the **AddControl** method are scaled according to the DPI setting.
+
+**AddControl** also provides two ways for easily subclassing a control.
+
+For the first way, used before Windows XP, you need to pass the address of the subclassed procedure, e.g.
+
+```
+pWindow.AddControl("Button", pWindow.hWindow, IDC_BUTTON, "Click me", 350, 250, 75, 23, , , , CAST(WNDPROC, @Button_SubclassProc))
+```
+
+and use a callback like this one:
+
+```
+' ========================================================================================
+' Processes messages for the subclassed Button window.
+' ========================================================================================
+FUNCTION Button_SubclassProc ( _
+   BYVAL hwnd   AS HWND, _                 ' // Control window handle
+   BYVAL uMsg   AS UINT, _                 ' // Type of message
+   BYVAL wParam AS WPARAM, _               ' // First message parameter
+   BYVAL lParam AS LPARAM _                ' // Second message parameter
+   ) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_GETDLGCODE
+         ' // All keyboard input
+         FUNCTION = DLGC_WANTALLKEYS
+         EXIT FUNCTION
+
+      CASE WM_LBUTTONDOWN
+         MessageBoxW(GetParent(hwnd), "Click", "FreeBasic", MB_OK)
+         EXIT FUNCTION
+
+      CASE WM_KEYDOWN
+         SELECT CASE LOWORD(wParam)
+            CASE VK_ESCAPE
+               SendMessageW(GetParent(hwnd), WM_CLOSE, 0, 0)
+               EXIT FUNCTION
+         END SELECT
+
+      CASE WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         SetWindowLongPtrW hwnd, GWLP_WNDPROC, CAST(LONG_PTR, RemovePropW(hwnd, "OLDWNDPROC"))
+
+   END SELECT
+
+   FUNCTION = CallWindowProcW(GetPropW(hwnd, "OLDWNDPROC"), hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+```
+
+The second way uses the API function **SetWindowSubclass**. Besides passing the address of the callback procedure, it allows to pass the identifier of the control and a pointer to the **CWindow** class.
+
+```
+pWindow.AddControl("Button", pWindow.hWindow, IDC_BUTTON, "Click me", 350, 250, 75, 23, , , ,  _
+      CAST(WNDPROC, @Button_SubclassProc), IDC_BUTTON, CAST(DWORD_PTR, @pWindow))
+```
+
+The main advantage of this method is that we can use the same callback for all the subclassed controls and easily identify which one is firing the messages and also have a pointer to his parent **CWindow class** if we need to use it. **SetWindowSubclass** also eliminates the disadvantages of the old subclassing approach explained in this thread: [Subclassing Controls](https://docs.microsoft.com/en-us/windows/desktop/controls/subclassing-overview).
+
+Example of a callback function for controls subclassed with this method:
+
+```
+' ========================================================================================
+' Processes messages for the subclassed Button window.
+' ========================================================================================
+FUNCTION Button_SubclassProc ( _
+   BYVAL hwnd   AS HWND, _                 ' // Control window handle
+   BYVAL uMsg   AS UINT, _                 ' // Type of message
+   BYVAL wParam AS WPARAM, _               ' // First message parameter
+   BYVAL lParam AS LPARAM, _               ' // Second message parameter
+   BYVAL uIdSubclass AS UINT_PTR, _        ' // The subclass ID
+   BYVAL dwRefData AS DWORD_PTR _          ' // Pointer to reference data
+   ) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_GETDLGCODE
+         ' // All keyboard input
+         FUNCTION = DLGC_WANTALLKEYS
+         EXIT FUNCTION
+
+      CASE WM_LBUTTONDOWN
+         MessageBoxW(GetParent(hwnd), "Click", "FreeBasic", MB_OK)
+         EXIT FUNCTION
+
+      CASE WM_KEYDOWN
+         SELECT CASE LOWORD(wParam)
+            CASE VK_ESCAPE
+               SendMessageW(GetParent(hwnd), WM_CLOSE, 0, 0)
+               EXIT FUNCTION
+         END SELECT
+
+      CASE WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         RemoveWindowSubclass hwnd, @Button_SubclassProc, uIdSubclass
+
+   END SELECT
+
+   FUNCTION = DefSubclassProc(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+```
+
+Both of these methods are optional. Therefore, you can use your own way to subclass controls.
+
+**Warning**: You cannot use the subclassing helper functions to subclass a window across threads.
