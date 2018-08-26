@@ -621,7 +621,7 @@ Calling this property after a synchronous **Send** method returns immediately an
 
 The WinHttpRequestAutoLogonPolicy enumeration includes possible settings for the Automatic Logon Policy.
 
-| Parameter  | Description |
+| Constant   | Description |
 | ---------- | ----------- |
 | **AutoLogonPolicy_Always** | An authenticated log on, using the default credentials, is performed for all requests. |
 | **AutoLogonPolicy_OnlyIfBypassProxy** | An authenticated log on, using the default credentials, is performed only for requests on the local intranet. The local intranet is considered to be any server on the proxy bypass list in the current proxy configuration. |
@@ -635,7 +635,7 @@ To set the automatic logon policy, call the **SetAutoLogonPolicy** method and sp
 
 The WinHttpRequestOption enumeration includes options that can be set or retrieved for the current Microsoft Windows HTTP Services (WinHTTP) session.
 
-| Parameter  | Description |
+| Constant   | Description |
 | ---------- | ----------- |
 | **WinHttpRequestOption_UserAgentString** | Sets or retrieves a VARIANT that contains the user agent string. |
 | **WinHttpRequestOption_URL** | Retrieves a VARIANT that contains the URL of the resource. This value is read-only; you cannot set the URL using this property. The URL cannot be read until the **Open** method is called. This option is useful for checking the URL after the **Send** method is finished to verify that any redirection occurred. |
@@ -660,4 +660,15 @@ The WinHttpRequestOption enumeration includes options that can be set or retriev
 #### Remarks
 
 Set an option by specifying one of the preceding constants as the parameter of the **Option** property.
+
+# <a name="WinHttpRequestSecureProtocols"></a>WinHttpRequestSecureProtocols Enumeration
+
+The WinHttpRequestOption enumeration includes options that can be set or retrieved for the current Microsoft Windows HTTP Services (WinHTTP) session.
+
+| Constant   | Description |
+| ---------- | ----------- |
+| **SecureProtocol_SSL2** | SSL 2.0 |
+| **SecureProtocol_SSL3** | SSL 3.0 |
+| **SecureProtocol_TLS1** | Transport Layer Security (TLS) 1.0. |
+| **SecureProtocol_ALL** | All the protocols. |
 
