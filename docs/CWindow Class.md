@@ -53,9 +53,9 @@ DIM pWindow AS CWindow = "MyClassName"
 | [Using PNG icons in toolbars](#Topic5) |
 | [Keyboard accelerators](#Topic6) |
 | [Scrollable windows](#Topic7) |
-| [MDI WIndows](#Topic8) |
-| [TabPages](#Topic9) |
-| [Layout Manager](#Topic10) |
+| [TabPages](#Topic8) |
+| [Layout Manager](#Topic9) |
+| [MDI WIndows](#Topic10) |
 
 ### Methods and Properties
 
@@ -1111,3 +1111,156 @@ END FUNCTION
 ' ========================================================================================
 ```
 
+### <a name="Topic7"></a>Keyboard Accelerators
+
+Accelerators are closely related to menus — both provide the user with access to an application's command set. Typically, users rely on an application's menus to learn the command set and then switch over to using accelerators as they become more proficient with the application. Accelerators provide faster, more direct access to commands than menus do. At a minimum, an application should provide accelerators for the more commonly used commands. Although accelerators typically generate commands that exist as menu items, they can also generate commands that have no equivalent menu items. 
+
+Creating an accelerator table with **CWindow** is very simple. You only need to build the table with calls to the **AddAccelerator** method and then call the **CreateAcceleratorTable** method. The accelerator table will be destroyed automatically when the window is destroyed or the applications ends. If you need to change the accelerator table, you can first destroy it calling the **DestroyAcceleratorTable** method, build a new table with **AddAccelerator** and then call **CreateAcceleratorTable**.
+
+```
+' // Create a keyboard accelerator table
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "U", IDM_UNDO ' // Ctrl+U - Undo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "R", IDM_REDO ' // Ctrl+R - Redo
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
+pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
+pWindow.CreateAcceleratorTable
+```
+
+#### Example
+
+The following example creates a menu and an accelerator table.
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: CWindow with a menu
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CWindow.inc"
+#INCLUDE ONCE "Afx/AfxMenu.inc"
+using Afx
+
+' // Menu identifiers
+#define IDM_UNDO     1001   ' Undo
+#define IDM_REDO     1002   ' Redo
+#define IDM_HOME     1003   ' Home
+#define IDM_SAVE     1004   ' Save file
+#define IDM_EXIT     1005   ' Exit
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' ========================================================================================
+' Build the menu
+' ========================================================================================
+FUNCTION BuildMenu () AS HMENU
+
+   DIM hMenu AS HMENU
+   DIM hPopUpMenu AS HMENU
+
+   hMenu = CreateMenu
+   hPopUpMenu = CreatePopUpMenu
+      AppendMenuW hMenu, MF_POPUP OR MF_ENABLED, CAST(UINT_PTR, hPopUpMenu), "&File"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_UNDO, "&Undo" & CHR(9) & "Ctrl+U"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_REDO, "&Redo" & CHR(9) & "Ctrl+R"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_HOME, "&Home" & CHR(9) & "Ctrl+H"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_SAVE, "&Save" & CHR(9) & "Ctrl+S"
+         AppendMenuW hPopUpMenu, MF_ENABLED, IDM_EXIT, "E&xit" & CHR(9) & "Alt+F4"
+   FUNCTION = hMenu
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application sending an WM_CLOSE message
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+            CASE IDM_UNDO
+               MessageBox hwnd, "Undo option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_REDO
+               MessageBox hwnd, "Redo option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_HOME
+               MessageBox hwnd, "Home option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+            CASE IDM_SAVE
+               MessageBox hwnd, "Save option clicked", "Menu", MB_OK
+               EXIT FUNCTION
+         END SELECT
+
+    	CASE WM_DESTROY
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   AfxSetProcessDPIAware
+
+   DIM pWindow AS CWindow
+   pWindow.Create(NULL, "CWindow with a menu", @WndProc)
+   pWindow.SetClientSize(400, 250)
+   pWindow.Center
+
+   ' // Add a button
+   DIM hButton AS HWND = pWindow.AddControl("Button", pWindow.hWindow, IDCANCEL, "&Close", 280, 180, 75, 23)
+   SetFocus hButton
+
+   ' // Module instance handle
+   DIM hInst AS HINSTANCE = GetModuleHandle(NULL)
+
+   ' // Create the menu
+   DIM hMenu AS HMENU = BuildMenu
+   SetMenu pWindow.hWindow, hMenu
+
+   ' // Create a keyboard accelerator table
+   pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "U", IDM_UNDO ' // Ctrl+U - Undo
+   pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "R", IDM_REDO ' // Ctrl+R - Redo
+   pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "H", IDM_HOME ' // Ctrl+H - Home
+   pWindow.AddAccelerator FVIRTKEY OR FCONTROL, "S", IDM_SAVE ' // Ctrl+S - Save
+   pWindow.CreateAcceleratorTable
+
+   ' // Process Windows messages
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+```
