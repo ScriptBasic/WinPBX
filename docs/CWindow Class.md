@@ -416,8 +416,8 @@ END FUNCTION
 The second way uses the API function **SetWindowSubclass**. Besides passing the address of the callback procedure, it allows to pass the identifier of the control and a pointer to the **CWindow** class.
 
 ```
-pWindow.AddControl("Button", pWindow.hWindow, IDC_BUTTON, "Click me", 350, 250, 75, 23, , , ,  _
-      CAST(WNDPROC, @Button_SubclassProc), IDC_BUTTON, CAST(DWORD_PTR, @pWindow))
+pWindow.AddControl("Button", pWindow.hWindow, IDC_BUTTON, "Click me", 350, 250, 75, 23, , , , _
+   CAST(WNDPROC, @Button_SubclassProc), IDC_BUTTON, CAST(DWORD_PTR, @pWindow))
 ```
 
 The main advantage of this method is that we can use the same callback for all the subclassed controls and easily identify which one is firing the messages and also have a pointer to his parent **CWindow class** if we need to use it. **SetWindowSubclass** also eliminates the disadvantages of the old subclassing approach explained in this thread: [Subclassing Controls](https://docs.microsoft.com/en-us/windows/desktop/controls/subclassing-overview).
