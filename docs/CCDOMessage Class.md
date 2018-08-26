@@ -350,3 +350,19 @@ FUNCTION Keywords (BYREF cbsKeywords AS CBSTR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="MDNRequested"></a>MDNRequested
+
+Indicates whether a Message Disposition Notification is requested on a message.
+
+```
+FUNCTION MDNRequested (BYVAL BYVAL pMDNRequested AS VARIANT_BOOL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pMDNRequested* | A Message Disposition Notificationis a request for information to be returned on the status of this message. The message sender or an intermediary Message Transfer Agent may request Message Disposition Notifications. The message to be returned is nested in a message with a content type of multipart/report. Request for Comments (RFC) 2298 describes Message Disposition Notifications, their function, and their format.  |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
