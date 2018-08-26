@@ -2386,3 +2386,30 @@ END FUNCTION
 ' ========================================================================================
 ```
 
+### <a name="AccelHandle"></a>AccelHandle
+
+Gets/sets the accelerator table handle.
+
+```
+PROPERTY AccelHandle () AS HACCEL
+PROPERTY AccelHandle (BYVAL hAccel AS HACCEL)
+
+```
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hAccel* | The new accelerator table handle. |
+
+#### Return value
+
+The current accelerator table handle.
+
+#### Remarks
+
+If a previous table was attached to the target dialog, the table is automatically destroyed when the new table is attached in its place. The accelerator table is also destroyed automatically when the class is destroyed.
+
+You can destroy the current accelerator table by setting the property with a null handle.
+
+#### Usage example
+
+DIM hAccel AS HACCEL = pWindow.AccelHandle
+
