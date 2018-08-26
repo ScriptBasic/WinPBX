@@ -51,11 +51,12 @@ DIM pWindow AS CWindow = "MyClassName"
 | [Adding controls](#Topic3) |
 | [Popup windows](#Topic4) |
 | [Using PNG icons in toolbars](#Topic5) |
-| [Keyboard accelerators](#Topic6) |
-| [Scrollable windows](#Topic7) |
-| [TabPages](#Topic8) |
-| [Layout Manager](#Topic9) |
-| [MDI WIndows](#Topic10) |
+| [Visual style menus](#Topic6) |
+| [Keyboard accelerators](#Topic7) |
+| [Scrollable windows](#Topic8) |
+| [TabPages](#Topic9) |
+| [Layout Manager](#Topic10) |
+| [MDI WIndows](#Topic11) |
 
 ### Methods and Properties
 
@@ -337,7 +338,7 @@ CASE WM_CREATE
    DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
 ```
 
-### <a name="Topic3"></a>Adding Controls
+### <a name="Topic3"></a>Adding controls
 
 To add controls to the window you can use the **AddControl** method. Alternatively, you can use the API function **CreateWindowEx**, but then you will have to do scaling by yourself.
 
@@ -471,7 +472,7 @@ Both of these methods are optional. Therefore, you can use your own way to subcl
 
 **Warning**: You cannot use the subclassing helper functions to subclass a window across threads.
 
-### <a name="Topic4"></a>Popup Windows
+### <a name="Topic4"></a>Popup windows
 
 To create a popup window you simply create a new instance of the **CWindow** class and, in the **Create** method, you make it child of the main window and use the WS_POPUPWINDOW style.
 
@@ -929,7 +930,7 @@ END FUNCTION
 ' ========================================================================================
 ```
 
-### Visual style menus
+### <a name="Topic6"></a>Visual style menus
 
 Windows Vista and posterior Windows versions provide menus that are part of the visual schema. These menus are rendered using visual styles, which can be added to existing applications. Adding code for new features to existing code must be done carefully to avoid breaking existing application behavior. Certain situations can cause visual styling to be disabled in an application. These situations include:
 
