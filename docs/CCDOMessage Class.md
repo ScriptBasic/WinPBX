@@ -302,3 +302,35 @@ FUNCTION GetLastResult () AS HRESULT
 #### Return value
 
 The result code returned by the last executed method. CDO uses the **IErrorInfo** interface to provide error data. A description of the error can be obtained calling the **GetOleErrorInfo** method.
+
+# <a name="HTMLBody"></a>HTMLBody
+
+The Hypertext Markup Language (HTML) representation of the message.
+
+```
+FUNCTION HTMLBody (BYREF cbsHTMLBody AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsHTMLBody* | The default value of the **HTMLBody** property is an empty string.  |
+
+Example:
+
+```
+DIM cbsHTML AS CBSTR
+cwsHTML = "<!DOCTYPE HTML PUBLIC ""-//IETF//DTD HTML//EN"">" & $LF
+cwsHTML += "<HTML>"
+cwsHTML += "  <HEAD>"
+cwsHTML += "    <TITLE>Sample GIF</TITLE>"
+cwsHTML += "  </HEAD>"
+cwsHTML += "  <BODY><P>"
+cwsHTML += "   <IMG src=""XYZ.gif""></p><p>Inline graphics</P>"
+cwsHTML += "  </BODY>"
+cwsHTML += "</HTML>"
+pMsg.HtmlBody(cbsHTML)
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
