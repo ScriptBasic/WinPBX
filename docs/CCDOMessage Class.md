@@ -102,7 +102,7 @@ If you populate the **HTMLBody** property before calling the **AddAttachment** m
 
 Use the **UserName** and **Password** parameters when you are requesting Web pages using Hypertext Transfer Protocol (HTTP) from a server that requires client authentication. If the Web server supports only the basic authentication mechanism, these credentials must be supplied. If the Web server supports the NTLM authentication mechanism, by default, the current process security context is used to authenticate; however, you can specify alternate credentials for NTLM authentication with the **UserName** and **Password** properties.
 
-Important Storing user names and passwords inside source code can lead to security vulnerabilities in your software. Do not store user names and passwords in your production code.
+**Important**: Storing user names and passwords inside source code can lead to security vulnerabilities in your software. Do not store user names and passwords in your production code.
 
 # <a name="BCC"></a>BCC
 
