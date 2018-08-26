@@ -108,3 +108,34 @@ DIM pWindow AS CWindow = "MyClassName"
 | Name       | Description |
 | ---------- | ----------- |
 | [AfxInputBox](#AfxInputBox) | Input box dialog. |
+
+# CLayout Class
+
+This class allows to anchor child windows to a parent window. When the parent window is resized, it manages the location and size of the anchored child windows according to the new dimensions of the parent.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructor](#Constructor_Layout) | Creates an instance of the CLayout class. |
+| [AnchorControl](#AnchorControl) | Anchors a window or control to its parent window. |
+| [AdjustControls](#AdjustControls) | Adjusts the size and location of the child controls to the dimensions of its parent window. |
+
+# CTabPage Class
+
+Creates a generic window used as a tab page of a tab control.
+
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [hTabPage](#hTabPage) | Returns the window handle of the tab page. |
+| [InsertPage](#InsertPage) | Adds a tab page and creates a generic window that will be associated with the page. |
+
+### Procedures
+
+| Name       | Description |
+| ---------- | ----------- |
+| [AfxCTabPagePtr](#AfxCTabPagePtr) | Returns a pointer to the **CTabPage** class given the handle of the tab control to which the tab page is associated and the zero-based tab index. |
+| [AfxDestroyTabPage](#AfxDestroyTabPage) | Detroys a tab page. |
+| [AfxDestroyAllTabPages](#AfxDestroyAllTabPages) | Detroys all the tab pages. |
+| [AfxResizeTabPages](#AfxResizeTabPages) | Resizes all the tab pages associated with a tab control. |
+| [AfxScrollTabPagePtr](#AfxScrollTabPagePtr) | Returns a pointer to the CScrollWindow class given the handle of the tab control to which the tab page is associated and the zero-based tab index. |
