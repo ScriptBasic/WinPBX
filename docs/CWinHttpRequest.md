@@ -663,7 +663,7 @@ Set an option by specifying one of the preceding constants as the parameter of t
 
 # <a name="WinHttpRequestSecureProtocols"></a>WinHttpRequestSecureProtocols Enumeration
 
-The WinHttpRequestOption enumeration includes options that can be set or retrieved for the current Microsoft Windows HTTP Services (WinHTTP) session.
+Types of secure protocols.
 
 | Constant   | Description |
 | ---------- | ----------- |
@@ -671,4 +671,16 @@ The WinHttpRequestOption enumeration includes options that can be set or retriev
 | **SecureProtocol_SSL3** | SSL 3.0 |
 | **SecureProtocol_TLS1** | Transport Layer Security (TLS) 1.0. |
 | **SecureProtocol_ALL** | All the protocols. |
+
+# <a name="WinHttpRequestSslErrorFlags"></a>WinHttpRequestSslErrorFlags Enumeration
+
+Ignore SSL certificate errors.
+
+| Constant   | Description |
+| ---------- | ----------- |
+| **SslErrorFlag_UnknownCA** | Unknown certificate. |
+| **SslErrorFlag_CertWrongUsage** | Certificate wrong usage. |
+| **SslErrorFlag_CertCNInvalid** | Invalid certificate common name. |
+| **SslErrorFlag_CertDateInvalid** | Invalid certificate date. |
+| **SslErrorFlag_Ignore_All** | Ignore all. |
 
