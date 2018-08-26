@@ -134,3 +134,15 @@ FUNCTION CC (BYREF cbsCC AS CBSTR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="ConfigUpdate"></a>ConfigUpdate
+
+Saves the changes you make to the **Fields** collection of the CDO **IConfiguration** interface.
+
+```
+FUNCTION ConfigUpdate () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
