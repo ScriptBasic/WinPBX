@@ -446,3 +446,20 @@ FUNCTION Recipients (BYVAL cbsRecipients AS CBSTR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="ReplyTo"></a>ReplyTo
+
+The messaging addresses to which replies to this message should be sent.
+
+```
+FUNCTION ReplyTo (BYREF cbsReplyTo AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsReplyTo* | The default value of the ReplyTo property is an empty string.  |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
