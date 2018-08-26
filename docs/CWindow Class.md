@@ -3444,3 +3444,42 @@ PROPERTY Width () AS LONG
 DIM nWidth AS LONG = pWindow.Width
 ```
 
+# <a name="hWindow"></a>hWindow
+
+Gets/sets the main window handle.
+
+```
+PROPERTY hWindow () AS HWND
+PROPERTY hWindow (BYVAL hwnd AS HWND)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window. |
+
+#### Return value
+
+The window handle.
+
+#### Usage examples
+
+```
+DIM hwnd AS HWND = pWindow.hWindow
+```
+```
+pWindow.hWindow = hwnd
+```
+
+# <a name="hwndClient"></a>hwndClient
+
+Gets the MDI client window handle.
+
+```
+PROPERTY hwndClient () AS HWND
+```
+
+#### Usage example
+
+```
+DIM hwnd AS HWND = pWindow.hwndClient
+```
