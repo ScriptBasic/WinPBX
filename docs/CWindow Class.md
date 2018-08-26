@@ -3296,7 +3296,7 @@ pWindow.GetClientRect(@rc)
 DIM rc AS RECT = pWindow.GetClientRect
 ```
 
-# <a name="GetClientRect"></a>GetClientRect
+# <a name="GetControlClientRect"></a>GetControlClientRect
 
 Retrieves the unscaled coordinates of a window's client area. The client coordinates specify the upper-left and lower-right corners of the client area. Because client coordinates are relative to the upper-left corner of a window's client area, the coordinates of the upper-left corner are (0,0). 
 
