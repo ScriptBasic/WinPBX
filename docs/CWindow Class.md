@@ -3818,3 +3818,42 @@ SetWindowPos(hwnd, NULL, 0, 0, cx, cy, _
    SWP_NOZORDER OR SWP_NOMOVE OR SWP_NOACTIVATE)
 ```
 
+# <a name="UnScaleX"></a>UnScaleX
+
+Unscales an horizontal coordinate according the DPI setting.
+
+```
+PROPERTY UnScaleX (BYVAL cx AS SINGLE) AS SINGLE
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *cx* | The value of the horizontal coordinate, in pixels. |
+
+#### Remarks
+
+A SINGLE datatype is used instead of a long to avoid rounding errors in the calculation.
+
+#### Usage example
+
+DIM cx AS SINGLE = pWindow.UnScaleX(250)
+
+# <a name="UnScaleY"></a>UnScaleY
+
+Unscales a vertical coordinate according the DPI setting.
+
+```
+PROPERTY UnScaleY (BYVAL cy AS SINGLE) AS SINGLE
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *cy* | The value of the vertical coordinate, in pixels. |
+
+#### Remarks
+
+A SINGLE datatype is used instead of a long to avoid rounding errors in the calculation.
+
+#### Usage example
+
+DIM cy AS SINGLE = pWindow.UnScaleY(250)
