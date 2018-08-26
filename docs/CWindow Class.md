@@ -1866,12 +1866,12 @@ FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM
 END FUNCTION
 ' ========================================================================================
 
-Example
+#### Example
 
 ' ########################################################################################
 ' Microsoft Windows
 ' Contents: Demonstrates the use of the Layout manager
-' Note: In this test, we hame made the combobox child of the group box.
+' Note: In this test, we have made the combobox child of the group box.
 ' Compiler: FreeBasic 32 & 64 bit
 ' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
 ' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
