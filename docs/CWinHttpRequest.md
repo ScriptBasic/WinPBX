@@ -513,8 +513,8 @@ FUNCTION SetProxy (BYVAL ProxySetting AS HTTPREQUEST_PROXY_SETTING, BYREF cvProx
 | Parameter  | Description |
 | ---------- | ----------- |
 | *ProxySetting* | A value of type LONG that receives the flags that control this method. Can be one of the values in the table below. |
-| *cvProxyServer* | Optional. A value of type Variant that is set to a proxy server string when ProxySetting equals HTTPREQUEST_PROXYSETTING_PROXY. |
-| *cvBypassList* | Optional. A value of type Variant that is set to a domain bypass list string when ProxySetting equals HTTPREQUEST_PROXYSETTING_PROXY. |
+| *cvProxyServer* | Optional. A value of type Variant that is set to a proxy server string when *ProxySetting* equals HTTPREQUEST_PROXYSETTING_PROXY. |
+| *cvBypassList* | Optional. A value of type Variant that is set to a domain bypass list string when *ProxySetting* equals HTTPREQUEST_PROXYSETTING_PROXY. |
 
 | Flag       | Description |
 | ---------- | ----------- |
@@ -532,3 +532,28 @@ Returns S_OK (0) if successful or an error value otherwise.
 Enables the calling application to specify use of default proxy information (configured by the proxy configuration tool) or to override Proxycfg.exe. This method must be called before calling the Send method. If this method is called after the **Send** method, it has no effect.
 
 **CWinHttpRequest** passes these parameters to Microsoft Windows HTTP Services (WinHTTP).
+
+# <a name="SetRequestHeader"></a>SetRequestHeader
+
+Adds, changes, or deletes an HTTP request header.
+
+```
+FUNCTION SetRequestHeader (BYREF cbsHeader AS CBSTR, BYREF cbsValue AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsHeader* | A value of type CBSTR that specifies the name of the header to be set, for example, "depth". This parameter should not contain a colon and must be the actual text of the HTTP header. |
+| *cbsValue* | An string that specifies the value of the header, for example, "infinity". |
+
+Return value
+
+Returns S_OK if successful or an error value otherwise.
+
+#### Remarks
+
+Headers are transferred across redirects. This can create a security vulnerability. To avoid having headers transferred if a redirect occurs, use the WINHTTP_STATUS_CALLBACK callback to correct the specific headers when a redirect occurs.
+
+The **SetRequestHeader** method enables the calling application to add or delete an HTTP request header prior to sending the request. The header name is given in *cbsHeader*, and the header token or value is given in *cbsValue*. To add a header, supply a header name and value. If another header already exists with this name, it is replaced. To delete a header, set *cbsrHeader* to the name of the header to delete and set *cbsValue* to NULL.
+
+The name and value of request headers added with this method are validated. Headers must be well formed. For more information about valid HTTP headers, see RFC 2616. If an invalid header is used, an error occurs and the header is not added.
