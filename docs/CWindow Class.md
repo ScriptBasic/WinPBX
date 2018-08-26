@@ -2644,7 +2644,7 @@ PROPERTY BigIcon (BYVAL hIcon AS HICON)
 pWindow.BigIcon = LoadImage(hInstance, MAKEINTRESOURCE(101), IMAGE_ICON, 48, 48, LR_SHARED)
 ```
 
-# <a name="BigIcon"></a>BigIcon
+# <a name="SmallIcon"></a>SmallIcon
 
 Associates a new small icon with the main window. The system displays the small icon in the in the window caption.
 
