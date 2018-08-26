@@ -3268,3 +3268,30 @@ DIM hFont AS HFONT = pWindow.Font
 ```
 pWindow.Font = hFont
 ```
+
+# <a name="GetClientRect"></a>GetClientRect
+
+Retrieves the unscaled coordinates of the main window client area. The client coordinates specify the upper-left and lower-right corners of the client area. Because client coordinates are relative to the upper-left corner of a window's client area, the coordinates of the upper-left corner are (0,0). 
+
+```
+SUB GetClientRect (BYVAL lpRect AS LPRECT)
+FUNCTION GetClientRect () AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpRect* | Pointer to a RECT structure that receives the client coordinates. The left and top members are zero. The right and bottom members contain the width and height of the window. |
+
+#### Remarks
+
+In conformance with conventions for the **RECT** structure, the bottom-right coordinates of the returned rectangle are exclusive. In other words, the pixel at (right, bottom) lies immediately outside the rectangle.
+
+#### Usage examples
+
+```
+DIM rc AS RECT
+pWindow.GetClientRect(@rc)
+```
+```
+DIM rc AS RECT = pWindow.GetClientRect
+```
