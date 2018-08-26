@@ -53,9 +53,9 @@ DIM pWindow AS CWindow = "MyClassName"
 | [Using PNG icons in toolbars](Topic5) |
 | [Keyboard accelerators](Topic7) |
 | [Scrollable windows](Topic8) |
-| [TabPages](Topic9) |
-| [Layout Manager](Topic10) |
-
+| [MDI WIndows](Topic9) |
+| [TabPages](Topic10) |
+| [Layout Manager](Topic11) |
 
 ### Methods and Properties
 
@@ -156,3 +156,154 @@ Creates a generic window used as a tab page of a tab control.
 | [AfxDestroyAllTabPages](#AfxDestroyAllTabPages) | Detroys all the tab pages. |
 | [AfxResizeTabPages](#AfxResizeTabPages) | Resizes all the tab pages associated with a tab control. |
 | [AfxScrollTabPagePtr](#AfxScrollTabPagePtr) | Returns a pointer to the CScrollWindow class given the handle of the tab control to which the tab page is associated and the zero-based tab index. |
+
+# <a name="Topic1"></a>Creating the main window
+
+To use **CWindow** you must first include "CWindow.inc" and allow all symbols of its namespace to be accessed adding **USING Afx**.
+
+```
+#INCLUDE ONCE "CWindow.inc"
+USING Afx
+```
+
+The first step is to create an instance of the class:
+
+```
+DIM pWindow AS CWindow
+```
+
+The **CWindow** constructor registers a class for the window with the name "FBWindowClass:xxx", where xxx is a counter number. Alternatively, you can force the use of your own class name by specifying it, e.g.
+
+```
+DIM pWindow AS CWindow = "MyClassName"
+```
+
+The constructor also checks if the application is DPI aware and calculates de scaling ratios and the default font name and point size ("Tahoma", 8 pt, for Windows XP and below; "Segoe UI", 9 pt, for Windows Vista and above").
+
+You can override it by setting your own DPI and/or font before creating the window, e.g.
+
+```
+DIM pWindow AS CWindow
+pWindow. DPI = 96
+pWindow.SetFont("Times New Roman", 10, FW_NORMAL, , , , DEFAULT_CHARSET)
+```
+
+By default, **CWindow** uses a standard COLOR_3DFACE + 1 brush. You can override it calling the **Brush** property:
+
+```
+DIM pWindow AS CWindow
+pWindow.Brush = GetStockObject(WHITE_BRUSH)
+```
+
+This makes the background of the window white.
+
+The window class uses CS_HREDRAW OR CS_VREDRAW as default window styles. Without them, the background is not repainted and the controls leave garbage in it when resized. With them, windows with many controls cause heavy flicker. To avoid flicker, you can change the windows style using e.g. pWindow.ClassStyle = CS_DBLCLKS and take care yourself of repainting.
+
+The next step is to create the window.
+
+The **Create** method has many parameters, all of which are optional:
+
+```
+hParent     = Parent window handle
+wszTitle    = Window caption
+lpfnWndProc = Address of the callback function
+x           = Horizontal position
+y           = Vertical position
+nWidth      = Window width
+nHeight     = Window height
+dwStyle     = Window style
+dwExStyle   = Extended style
+```
+
+The most verbose way to call it is:
+
+```
+DIM hwndMain AS HWND = pWindow.Create(NULL, "CWindow Test", @WndProc, 0, 0, 525, 395, _
+   WS_OVERLAPPEDWINDOW OR WS_CLIPCHILDREN OR WS_CLIPSIBLINGS, WS_EX_CONTROLPARENT OR WS_EX_WINDOWEDGE)
+```
+
+But just using
+
+```
+pWindow.Create
+```
+
+a working window is created and sized using CW_USEDEFAULT.
+
+Unless the window has to use all the available desktop space, it may be preferible to use the **SetClientSize** method to size the window because Windows UI elements such the caption and borders have different sizes depending of the Windows version and/or the styles used. Therefore, to make sure that you have enough room for your controls, sizing the window according the client size seems more adequate.
+
+We may need to process Windows messages, so we need to provide a callback function, e.g.
+
+```
+' ========================================================================================
+' Window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hWnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application sending an WM_CLOSE message
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+    	CASE WM_DESTROY
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   FUNCTION = DefWindowProcW(hWnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+```
+
+and we have to pass the address of that callback function:
+
+```
+pWindow.Create(NULL, "CWindow Test", @WndProc)
+pWindow.SetClientSize(500, 320)   ' The size may vary
+```
+
+Optionally, we can automatically center the window in the destop calling the **Center** method, e.g.
+
+```
+pWindow.Create(NULL, "CWindow Test", @WndProc)
+pWindow.SetClientSize(500, 320)   ' The size may vary
+pWindow.Center
+```
+
+To process Windows messages we need a message pump. **CWindow** provides a default one calling the **DoEvents** method:
+
+```
+FUNCTION = pWindow.DoEvents(nCmdShow)
+```
+
+This default message pump displays the window and processes the messages. It can be used with most applications, but, in case of need, you can replace it with your own, e.g.
+
+```
+' // Displays the window
+DIM hwndMain AS HWND = pWindow.hWindow
+ShowWindow(hwndMain, nCmdShow)
+UpdateWindow(hwndMain)
+
+' // Processes Windows messages
+DIM uMsg AS MSG
+WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
+   IF IsDialogMessageW(hWndMain, @uMsg) = 0 THEN
+      TranslateMessage(@uMsg)
+      DispatchMessageW(@uMsg)
+   END IF
+WEND
+FUNCTION = uMsg.wParam
+```
+
+Each instance of the **CWindow** class has an user data area consisting in an array of 99 LONG_PTR values that you can use to store information that you find useful.
+
+These values are set and retrieved using the **UserData** property and an index from 0 to 99.
