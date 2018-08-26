@@ -361,7 +361,23 @@ FUNCTION MDNRequested (BYVAL BYVAL pMDNRequested AS VARIANT_BOOL) AS HRESULT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pMDNRequested* | A Message Disposition Notificationis a request for information to be returned on the status of this message. The message sender or an intermediary Message Transfer Agent may request Message Disposition Notifications. The message to be returned is nested in a message with a content type of multipart/report. Request for Comments (RFC) 2298 describes Message Disposition Notifications, their function, and their format.  |
+| *pMDNRequested* | A Message Disposition Notificationis a request for information to be returned on the status of this message. The message sender or an intermediary Message Transfer Agent may request Message Disposition Notifications. The message to be returned is nested in a message with a content type of multipart/report. Request for Comments (RFC) 2298 describes Message Disposition Notifications, their function, and their format. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="MimeFormatted"></a>MimeFormatted
+
+Indicates whether a Message Disposition Notification is requested on a message.
+
+```
+FUNCTION MimeFormatted (BYVAL pMimeFormatted AS VARIANT_BOOL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pMimeFormatted* | If the **MimeFormatted** property is set to False and you set the HTMLBody property, Microsoft Collaboration Data Objects (CDO) sets the **MimeFormatted** property to True. If you set the **MimeFormatted** property to False, the **HTMLBody** property is removed from the message and the Hypertext Markup Language (HTML) text is lost.<br><br>If you prepare a message with the **MimeFormatted** property set to True and later change it to False, all of the body parts are made into attachments and marked for encoding with the Uuencode mechanism. Encoding takes place only when you call the **Send** or **Post** method.<br><br>The default value of the MimeFormatted property is True. |
 
 #### Return value
 
