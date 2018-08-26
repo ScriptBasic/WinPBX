@@ -373,4 +373,26 @@ Returns S_OK (0) if successful or an error value otherwise.
 
 #### Remarks
 
-The request to be sent was defined in a prior call to the **Open** method. The calling application can provide data to be sent to the server through the cvBody parameter. If the HTTP verb of the object's Open is "GET", this method sends the request without *cvBody*, even if it is provided by the calling application.
+The request to be sent was defined in a prior call to the **Open** method. The calling application can provide data to be sent to the server through the *cvBody* parameter. If the HTTP verb of the object's Open is "GET", this method sends the request without *cvBody*, even if it is provided by the calling application.
+
+# <a name="SetAutoLogonPolicy"></a>SetAutoLogonPolicy
+
+Sets the current Automatic Logon Policy.
+
+```
+FUNCTION SetAutoLogonPolicy (BYVAL AutoLogonPolicy AS WinHttpRequestAutoLogonPolicy) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *AutoLogonPolicy* | A value of type **WinHttpRequestAutoLogonPolicy** that specifies the current automatic logon policy. |
+
+#### Return  value
+
+Returns S_OK (0) if successful or an error value otherwise.
+
+#### Remarks
+
+The default policy is **AutoLogonPolicy_OnlyIfBypassProxy**.
+
+Call **SetAutoLogonPolicy** to set the automatic logon policy before calling **Send** to send the request.
