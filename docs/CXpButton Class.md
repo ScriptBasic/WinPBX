@@ -351,3 +351,108 @@ PROPERTY Cursor (BYVAL hCursor AS HCURSOR)
 
 The cursor handle.
 
+
+# <a name="NormalImageHandle"></a>NormalImageHandle
+
+Returns the handle of the normal image.
+
+```
+PROPERTY NormalImageHandle () AS HANDLE
+```
+# <a name="DisabledImageHandle"></a>DisabledImageHandle
+
+Returns the handle of the disabled image.
+
+```
+PROPERTY DisabledImageHandle () AS HANDLE
+```
+
+# <a name="HotImageHandle"></a>HotImageHandle
+
+Returns the handle of the hot image.
+
+```
+PROPERTY HotImageHandle () AS HANDLE
+```
+
+# <a name="Font"></a>Font
+
+Gets/sets the handle of the font used by the button.
+
+```
+PROPERTY Font () AS HFONT
+PROPERTY Font (BYVAL hFont AS HFONT)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hFont* | Handle to the font. |
+
+#### Return value
+
+The font handle.
+
+# <a name="ImageHeight"></a>ImageHeight
+
+Gets/sets the heigth of the image.
+
+```
+PROPERTY ImageHeight () AS LONG
+PROPERTY ImageHeight (BYVAL nHeight AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nHeight* | Height of the image, in pixels. |
+
+#### Return value
+
+The height of the image, in pixels.
+
+# <a name="ImageMargin"></a>ImageMargin
+
+Gets/sets the image margin.
+
+```
+PROPERTY ImageMargin () AS LONG
+PROPERTY ImageMargin (BYVAL nMargin AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMargin* | Margin (in pixels). |
+
+#### Return value
+
+The margin of the image, in pixels.
+
+# <a name="ImagePos"></a>ImagePos
+
+Gets/sets the image position.
+
+```
+PROPERTY ImagePos () AS LONG
+PROPERTY ImagePos (BYVAL nPos AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPos* | The position of the image. Can be one of the following values: |
+
+| Value      | Description |
+| ---------- | ----------- |
+| XPBI_NONE | No image. |
+| XPBI_LEFT | Left side (default). |
+| XPBI_RIGHT | Right side. |
+| XPBI_CENTER | Center. |
+| XPBI_VCENTER | Vertically centered. |
+| XPBI_TOP | Top. |
+| XPBI_BOTTOM | Bottom. |
+| XPBI_ABOVE | Above the text. |
+| XPBI_BELOW | Below the text. |
+| XPBI_CENTECENTER | Center-center (no text). |
+
+#### Return value
+
+The position of th image.
+
