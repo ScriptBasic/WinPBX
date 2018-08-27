@@ -71,25 +71,21 @@ A pointer to the CImageCtx class.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Clear](#Clear) | Clears the graphic control with the specified RGB color. |
-| [CreateBitmapFromFile](#CreateBitmapFromFile) | Loads and displays the specified image in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
-| [DrawBitmap](#DrawBitmap) | Draws a bitmap in the Graphic Control. |
-| [GetBits](#GetBits) | Returns the location of the DIB bit values. |
-| [GethBmp](#GethBmp) | Returns the handle of the compatible bitmap. |
-| [GethRC](#GethRC) | If OpenGL is enabled, it returns the handle of the rendering context of the control. |
-| [GetMemDC](#GetMemDC) | Handle to  the memory device context of the control. |
-| [GetVirtualBufferHeight](#GetVirtualBufferHeight) | Returns the height of the virtual buffer. |
-| [GetVirtualBufferWidth](#GetVirtualBufferWidth) | Returns the width of the virtual buffer. |
+| [Clear](#Clear) | Clears the contents of the controlr. |
+| [GetBkColor](#GetBkColor) | Gets the background RGB color used by the **CImageCtx** control. |
+| [GetImageAdjustment](#GetImageAdjustment) | Gets the image adjustment setting used by the control. |
+| [GetImageHeight](#GetImageHeight) | Gets the height of the image, in pixels, currently loaded in the **CImageCtx** control. |
+| [GetImagePtr](#GetImagePtr) | Gets a pointer to the GDI+ GpImage object used by the control to render the loaded image. |
+| [GetImageWidth](#GetImageWidth) | Gets the width of the image, in pixels, currently loaded in the control. |
+| [GetInterpolationMode](#GetInterpolationMode) | Gets the interpolation mode used by GDI+. |
 | [hWindow](#hWindow) | Returns the handle of the control. |
-| [LoadImageFromFile](#LoadImageFromFile) | Loads and displays the specified image in the Graphic Control. |
-| [LoadImageFromRes](#LoadImageFromRes) | Loads the specified image from a resource file in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
-| [MakeCurrent](#MakeCurrent) | Redirects OpenGL calls are directed to the correct rendering context. |
-| [PrintImage](#PrintImage) | Prints the image in the default printer. |
-| [Resizable](#Resizable) | Gets/sets the value of the Resizable property. |
-| [SaveImage](#SaveImage) | Saves the image to a file. |
-| [SetVirtualBufferSize](#SetVirtualBufferSize) | Sets the size of the virtual buffer. |
-| [Stretchable](#Stretchable) | Gets/sets the value of the Stretchable property. |
-| [StretchMode](#StretchMode) | Gets/sets the value of the StretchMode property. |
+| [LoadBitmapFromResource](#LoadBitmapFromResource) | Loads a bitmap from a resource file into the control. |
+| [LoadImageFromFile](#LoadImageFromFile) | Loads an image from disk into the control. |
+| [LoadImageFromResource](#LoadImageFromResource) | Loads an image from a resource file into the control. |
+| [Redraw](#Redraw) | Redraws the CImageCtx control. |
+| [SetBkColor](#SetBkColor) | Sets the background RGB color used by the CImageCtx control. |
+| [SetImageAdjustment](#SetImageAdjustment) | Sets the image adjustment setting used by the control. |
+| [SetInterpolationMode](#SetInterpolationMode) | Sets the interpolation mode used by GDI+. |
 
 ### Notification Messages
 
@@ -221,3 +217,11 @@ END IF
 #### Remarks
 
 IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="Clear"></a>Clear
+
+Clears the contents of the control.
+
+```
+SUB Clear
+```
