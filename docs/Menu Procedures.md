@@ -539,7 +539,8 @@ The return value specifies the previous state of the menu item (either MF_CHECKE
 Unchecks a menu item.
 
 ```
-FUNCTION AfxUnCheckMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, BYVAL fByPosition AS LONG = FALSE) AS LONG
+FUNCTION AfxUnCheckMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS LONG
 ```
 
 | Parameter  | Description |
