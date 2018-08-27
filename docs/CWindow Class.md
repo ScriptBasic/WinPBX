@@ -4121,3 +4121,15 @@ DIM pChildLayout AS CLayout = pChildDlg.hWindow
 pChildLayout.AnchorControl(IDC_EDIT1, AFX_ANCHOR_WIDTH)
 ' etc.
 ```
+
+# <a name="AdjustControls"></a>AdjustControls
+
+Adjusts the size and location of the child controls to the dimensions of its parent window.
+
+```
+SUB AdjustControls
+```
+
+#### Example
+
+### <a name="Topic10"></a>Layout manager
