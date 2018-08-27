@@ -68,3 +68,13 @@ FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 | [Stretchable](#Stretchable) | Gets/sets the value of the Stretchable property. |
 | [StretchMode](#StretchMode) | Gets/sets the value of the StretchMode property. |
 
+# Notification Messages
+
+| Name       | Description |
+| ---------- | ----------- |
+| [NM_CLICK](#NM_CLICK) | Sent by the control when the user clicks it with the left mouse button. |
+| [NM_DBLCLK](#NM_DBLCLK) | Sent by the control when the user double clicks it with the left mouse button. |
+| [NM_KILLFOCUS](#NM_KILLFOCUS) | Notifies a control's parent window that the control has lost the input focus. |
+| [NM_RCLICK](#NM_RCLICK) | Sent by the control when the user clicks it with the right mouse button. |
+| [NM_RDBLCLK](#NM_RDBLCLK) | Sent by the control when the user double clicks it with the right mouse button. |
+| [NM_SETFOCUS](#NM_SETFOCUS) | Notifies a control's parent window that the control has received the input focus. |
