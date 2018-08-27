@@ -21,7 +21,7 @@ The default message pump (**CWindow.DoEvents**), should be enough for most appli
 
 **Include file**: CWindow.inc.
 
-# Constructor
+### Constructor
 
 Registers the class name and initializes the common controls library.
 
@@ -131,9 +131,9 @@ DIM pWindow AS CWindow = "MyClassName"
 
 This class allows to anchor child windows to a parent window. When the parent window is resized, it manages the location and size of the anchored child windows according to the new dimensions of the parent.
 
-# Constructor (CLayout)
+### Constructor (CLayout)
 
-Creates an instance of the *CLayout** class.
+Creates an instance of the **CLayout** class.
 
 ```
 CONSTRUCTOR CLayout (BYVAL hwndParent AS HWND)
@@ -157,8 +157,11 @@ DIM pLayout AS CLayout = pWindow.hWindow
 | [AnchorControl](#AnchorControl) | Anchors a window or control to its parent window. |
 | [AdjustControls](#AdjustControls) | Adjusts the size and location of the child controls to the dimensions of its parent window. |
 
-
 # CTabPage Class
+
+Creates a generic window used as a tab page of a tab control.
+
+### Constructor (CTabPage)
 
 Creates a generic window used as a tab page of a tab control.
 
