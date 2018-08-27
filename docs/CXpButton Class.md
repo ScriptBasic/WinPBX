@@ -232,7 +232,7 @@ SUB SetImageFromFile (BYREF wszPath AS WSTRING, BYVAL ImageState AS LONG, _
 | *bGrayScale* | CTRUE or FALSE. Convert to gray scale. |
 | *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
 
-# <a name="SetImageFromFile"></a>SetImageFromFile
+# <a name="SetImageFromRes"></a>SetImageFromRes
 
 Loads an image from file and sets it as the image of the button.
 
