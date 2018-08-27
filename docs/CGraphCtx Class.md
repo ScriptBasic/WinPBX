@@ -21,7 +21,7 @@ CONSTRUCTOR CGraphCtx (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, _
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pWindow* | Pointer to the CWindow class of the parent window. |
+| *pWindow* | Pointer to the **CWindow** class of the parent window. |
 | *cID* | Control identifier. |
 | *wszTitle* | The window caption. If "OPENGL" is used as the caption, support for OpenGL is added to the control. |
 | *x* | The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
