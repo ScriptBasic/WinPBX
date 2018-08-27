@@ -311,3 +311,87 @@ InterpolationModeNearestNeighbor = 5
 InterpolationModeHighQualityBilinear = 6
 InterpolationModeHighQualityBicubic = 7
 ```
+
+# <a name="hWindow"></a>hWindow
+
+Returns the handle of the control.
+
+```
+FUNCTION hWindow () AS HWND
+```
+
+# <a name="LoadBitmapFromResource"></a>LoadBitmapFromResource
+
+Loads a bitmap from a resource file into the control.
+
+```
+FUNCTION LoadBitmapFromResource (BYVAL hInstance AS HINSTANCE, BYREF wszResourceName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | Handle to the instance of the module whose executable file contains the resource. A value of NULL specifies the module handle associated with the image file that the operating system used to create the current process.  |
+| *wszResourceName* | The name of the resource. |
+
+#### Return value
+
+Ok (0) or an error code.
+
+# <a name="LoadImageFromFile"></a>LoadImageFromFile
+
+Loads an image from disk into the control.
+
+```
+FUNCTION LoadImageFromFile (BYREF wszFileName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Fully qualified path and filename of the image file to load. |
+
+#### Return value
+
+Ok (0) or an error code.
+
+# <a name="LoadImageFromResource"></a>LoadImageFromResource
+
+Loads an image from a resource file into the control.
+**Note**: In Windows 7, it fails to load .jpg and .tif files. Works with .bmp and .png files.
+
+```
+FUNCTION LoadImageFromResource (BYVAL hInstance AS HINSTANCE, BYREF wszResourceName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | Handle to the instance of the module whose executable file contains the resource. A value of NULL specifies the module handle associated with the image file that the operating system used to create the current process.  |
+| *wszResourceName* | The name of the resource. |
+
+#### Return value
+
+Ok (0) or an error code.
+
+# <a name="Redraw"></a>Redraw
+
+Redraws the CImageCtx control.
+
+```
+SUB Redraw
+```
+
+# <a name="SetBkColor"></a>SetBkColor
+
+Sets the background RGB color used by the CImageCtx control.
+
+```
+FUNCTION SetBkColor (BYVAL clr AS LONG, BYVAL fRedraw AS BOOLEAN = FALSE) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *clr* | The new RGB background color. |
+| *fRedraw* | Optional. TRUE to redraw the control to reflect the changes. |
+
+#### Return value
+
+The previous background color.
