@@ -193,3 +193,25 @@ DIM RTLKEY_MSCOMCT2 AS WSTRING * 260 = "651A8940-87C5-11d1-8BE3-0000F8754DA1"
 DIM pAxHost AS CAxHost PTR = CAxHost(@pWindow, IDC_WEBBROWSER, wszLibName, CLSID_MSComCtl2_MonthView, _
     IID_MSComCtl2_MonthView, RTLKEY_MSCOMCT2, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
 ```
+
+# Advise
+
+Establishes a connection between a connection point object and the client's sink.
+
+```
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYVAL riid AS IID PTR) AS HRESULT
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYVAL riid AS CONST IID) AS HRESULT
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYREF riid AS IID) AS HRESULT
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYVAL riid AS IID PTR) AS HRESULT
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYREF riid AS CONST IID) AS HRESULT
+FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYREF riid AS IID) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pEvtObj* | Pointer to the sink event's class. The client's sink receives outgoing calls from the connection point. |
+| *riid* | IID of the events interface of the hosted OCX. |
+
+Return value
+
+S_OK (0) or an error code.
