@@ -395,3 +395,30 @@ FUNCTION SetBkColor (BYVAL clr AS LONG, BYVAL fRedraw AS BOOLEAN = FALSE) AS LON
 #### Return value
 
 The previous background color.
+
+# <a name="SetImageAdjustment"></a>SetImageAdjustment
+
+Sets the image adjustment setting used by the control.
+
+```
+FUNCTION SetImageAdjustment (BYVAL ImageAdjustment AS LONG, BYVAL fRedraw AS BOOLEAN = FALSE) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ImageAdjustment* | The setting to set. Can be one of the values listed below. |
+| *fRedraw* | Optional. TRUE to redraw the control to reflect the changes. |
+
+### Image adjustment constants
+
+| Value      | Description |
+| ---------- | ----------- |
+| **GDIP_IMAGECTX_AUTOSIZE** | Autoadjusts the image to the width or height of the control. |
+| **GDIP_IMAGECTX_ACTUALSIZE** | Shows the image with its actual size. |
+| **GDIP_IMAGECTX_FITTOWIDTH** | Adjusts the image to the width of the control. |
+| **GDIP_IMAGECTX_FITTOHEIGHT** | Adjusts the image to the height of the control. |
+| **GDIP_IMAGECTX_STRETCH*** | Adjusts the image to the height and width of the control. |
+
+#### Return value
+
+The previous setting value.
