@@ -156,3 +156,43 @@ FUNCTION AfxGetMenuFont (BYVAL plfw AS LOGFONTW PTR) AS BOOLEAN
 
 TRUE or FALSE. To get extended error information, use the **GetLastError** function.
 
+# <a name="AfxGetMenuFontPointSize"></a>AfxGetMenuFontPointSize
+
+Retrieves the point size of the font used in menu bars.
+
+```
+FUNCTION AfxGetMenuFontPointSize () AS LONG
+```
+
+#### Return value
+
+The point size of the font. If the function fails, the return value is 0.
+
+# <a name="AfxGetMenuItemState"></a>AfxGetMenuItemState
+
+Retrieves the state of the specified menu item.
+
+```
+FUNCTION AfxGetMenuItemState (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS DWORD
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+#### Return value
+
+0 on failure or one or more of the following values:
+
+MFS_CHECKED   The item is checked
+MFS_DEFAULT   The menu item is the default.
+MFS_DISABLED  The item is disabled.
+MFS_ENABLED   The item is enabled.
+MFS_GRAYED    The item is grayed.
+MFS_HILITE    The item is highlighted
+MFS_UNCHECKED The item is unchecked.
+MFS_UNHILITE  The item is not highlighed.
+
