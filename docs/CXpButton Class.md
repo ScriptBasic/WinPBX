@@ -595,8 +595,40 @@ PROPERTY TextFormat (BYVAL dwTextFlags AS DWORD)
 
 **Default value**: DT_CENTER OR DT_VCENTER OR DT_SINGLELINE.
 
-
 #### Return value
 
 The method of formatting the text.
 
+# <a name="TextMargin"></a>TextMargin
+
+Gets/sets the the margin of the text of the button.
+
+```
+PROPERTY TextMargin () AS LONG
+PROPERTY TextMargin (BYVAL nMargin AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMargin* | Margin (in pixels). |
+
+#### Return value
+
+The text margin.
+
+# <a name="Toggle"></a>Toggle
+
+Gets/sets button to toggle state (TRUE) or to pushbutton state (FALSE).
+
+```
+PROPERTY Toggle () AS LONG
+PROPERTY Toggle (BYVAL fToggle AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *fToggle* | Toggled state (CTRUE or FALSE). |
+
+#### Return value
+
+Returns CTRUE if the button is toggled or FALSE otherwise.
