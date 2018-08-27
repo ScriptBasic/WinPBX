@@ -4060,3 +4060,64 @@ The edited string.
 ```
 DIM cws AS CWSTR = AfxInputBox(hwnd, 0, 0, "InputBox test", "What's your name?", "My name is José")
 ```
+
+# <a name="AnchorControl"></a>AnchorControl
+
+Anchors a window or control to its parent window.
+
+```
+FUNCTION AnchorControl (BYVAL hwndCtl AS HWND, BYVAL nAnchorMode AS LONG) AS BOOLEAN
+```
+```
+FUNCTION AnchorControl (BYVAL cID AS LONG, BYVAL nAnchorMode AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwndCtl* | Handle to the child window or control. |
+| *cID* | Identifier of the child window or control. |
+| *nAnchorMode* | One of the following constants. |
+
+#### Constants
+
+```
+ENUM AFX_ANCHORPOINT
+   AFX_ANCHOR_NONE =  0
+   AFX_ANCHOR_WIDTH
+   AFX_ANCHOR_RIGHT
+   AFX_ANCHOR_CENTER_HORZ
+   AFX_ANCHOR_HEIGHT
+   AFX_ANCHOR_HEIGHT_WIDTH
+   AFX_ANCHOR_HEIGHT_RIGHT
+   AFX_ANCHOR_BOTTOM
+   AFX_ANCHOR_BOTTOM_WIDTH
+   AFX_ANCHOR_BOTTOM_RIGHT
+   AFX_ANCHOR_CENTER_HORZ_BOTTOM
+   AFX_ANCHOR_CENTER_VERT
+   AFX_ANCHOR_CENTER_VERT_RIGHT
+   AFX_ANCHOR_CENTER
+END ENUM
+```
+
+#### Example
+
+```
+DIM pLayout AS CLayout = pWindow.hWindow
+pLayout.AnchorControl(IDCANCEL, AFX_ANCHOR_BOTTOM_RIGHT)
+pLayout.AnchorControl(IDC_GROUPBOX, AFX_ANCHOR_HEIGHT_RIGHT)
+pLayout.AnchorControl(IDC_COMBOBOX, AFX_ANCHOR_RIGHT)
+```
+
+We can also anchor a child **CWindow**
+
+```
+DIM pChildDlg AS CWindow
+pChildDlg.Create(pWindow.hWindow, "", @ChildDlg_WndProc, 15, 15, , , _
+   WS_VISIBLE OR WS_CHILD OR WS_CLIPSIBLINGS OR WS_CLIPCHILDREN OR WS_BORDER, WS_EX_CONTROLPARENT)
+pChildDlg.ClassStyle = CS_DBLCLKS
+' // Set a client size big enough to display all the controls
+pChildDlg.SetClientSize(310, 180)
+DIM pChildLayout AS CLayout = pChildDlg.hWindow
+pChildLayout.AnchorControl(IDC_EDIT1, AFX_ANCHOR_WIDTH)
+' etc.
+```
