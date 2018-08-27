@@ -253,3 +253,24 @@ FUNCTION GuidText (BYVAL classID AS CLSID) AS STRING
 #### Return value
 
 The GUID as a human readable string.
+
+# <a name="hWindow"></a>hWindow
+
+Returns the handle of the hosting window.
+
+```
+FUNCTION hWindow () AS HWND
+```
+
+# <a name="OcxDispObj"></a>OcxDispObj
+
+Returns a reference to the control's default interface given the handle of the window that hosts it. This is a reference counted pointer, so you must release it calling the **Releas** method of the interface, the **IUnknown_Release** macro or the **AfxSaRelease** function.
+
+```
+FUNCTION OcxDispObj () AS IDispatch PTR
+```
+
+#### Return value
+
+IDispatch. A reference to the ActiveX control's default interface.
+
