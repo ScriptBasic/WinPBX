@@ -52,9 +52,9 @@ As the **CGraphCtx** graphic control uses DIBs, to draw a **CMemBmp** memory bit
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor(Width, Height)](#Constructor1) | Creates an empty memory bitmap of the specified size. |
-| [Constructor(File Name)](#Constructor2) | Creates a memory bitmap of the same size that the specified image to load. |
-| [Constructor(Resource File)](#Constructor3) | Creates a memory bitmap of the same size that the specified image to load from a resource file. |
+| [Constructor(Width,Height)](#Constructor1) | Creates an empty memory bitmap of the specified size. |
+| [Constructor(FileName)](#Constructor2) | Creates a memory bitmap of the same size that the specified image to load. |
+| [Constructor(ResourceFile)](#Constructor3) | Creates a memory bitmap of the same size that the specified image to load from a resource file. |
 
 # Methods
 
