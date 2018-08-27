@@ -4132,4 +4132,5 @@ SUB AdjustControls
 
 #### Example
 
-### <a name="Topic10"></a>Layout manager
+See **Layout manager** in the Tutorial.
+
