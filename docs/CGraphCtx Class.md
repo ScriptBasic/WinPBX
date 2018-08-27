@@ -267,7 +267,7 @@ Returns OK (0) on success or a GdiPlus status code on failure.
 
 #### Remarks
 
-If both x and y are ommited, the image is draw starting at position 0, 0.
+If both *x* and *y* are ommited, the image is draw starting at position 0, 0.
 
 If *nRight* and *nBottom* are specified, the image is draw stretched in the bounding rectangle formed by *x*, *y*, *nRight* and *nBottom*.
 
