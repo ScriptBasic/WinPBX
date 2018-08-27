@@ -456,3 +456,147 @@ PROPERTY ImagePos (BYVAL nPos AS LONG)
 
 The position of th image.
 
+# <a name="ImageType"></a>ImageType
+
+Returns the image type
+
+```
+PROPERTY ImageType () AS LONG
+```
+
+#### Return value
+
+The image type: IMAGE_ICON or IMAGE_BITMAP.
+
+# <a name="ImageWidth"></a>ImageWidth
+
+Gets/sets the width of the image.
+
+```
+PROPERTY ImageWidth () AS LONG
+PROPERTY ImageWidth (BYVAL nWidth AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nWidth* | Margin (in pixels). |
+
+#### Return value
+
+The width of the image, in pixels.
+
+# <a name="TextBkColor"></a>TextBkColor
+
+Gets/sets the text background color of the button.
+
+```
+PROPERTY TextBkColor () AS COLORREF
+PROPERTY TextBkColor (BYVAL textColor AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *textColor* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The text background color of the button as a COLORREF value.
+
+# <a name="TextBkColorDown"></a>TextBkColorDown
+
+Gets/sets the text background color of the button when it is down (pressed).
+
+```
+PROPERTY TextBkColorDown () AS COLORREF
+PROPERTY TextBkColorDown (BYVAL textColor AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *textColor* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The text background color of the button when it is down (pressed) as a COLORREF value.
+
+# <a name="TextForeColor"></a>TextForeColor
+
+Gets/sets the text foreground color of the button.
+
+```
+PROPERTY TextForeColor () AS COLORREF
+PROPERTY TextForeColor (BYVAL textColor AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *textColor* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The text foreground color of the button as a COLORREF value.
+
+# <a name="TextForeColorDown"></a>TextForeColorDown
+
+Gets/sets the text foreground color of the button when it is down (pressed).
+
+```
+PROPERTY TextForeColorDown () AS COLORREF
+PROPERTY TextForeColorDown (BYVAL textColor AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *textColor* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The text foreground color of the button when it is down (pressed) as a COLORREF value.
+
+# <a name="TextFormat"></a>TextFormat
+
+Gets/sets the method of formatting the text.
+
+```
+PROPERTY TextFormat () AS DWORD
+PROPERTY TextFormat (BYVAL dwTextFlags AS DWORD)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwTextFlags* | Specifies the method of formatting the text. This parameter can be one or more of the following values: |
+
+| Value      | Meaning |
+| ---------- | ----------- |
+| DT_BOTTOM | Justifies the text to the bottom of the rectangle. This value is used only with the DT_SINGLELINE value. |
+| DT_CALCRECT | Determines the width and height of the rectangle. If there are multiple lines of text, DrawText uses the width of the rectangle pointed to by the lpRect parameter and extends the base of the rectangle to bound the last line of text. If the largest word is wider than the rectangle, the width is expanded. If the text is less than the width of the rectangle, the width is reduced. If there is only one line of text, DrawText modifies the right side of the rectangle so that it bounds the last character in the line. In either case, DrawText returns the height of the formatted text but does not draw the text. |
+| DT_CENTER | Centers text horizontally in the rectangle. |
+| DT_EDITCONTROL | Duplicates the text-displaying characteristics of a multiline edit control. Specifically, the average character width is calculated in the same manner as for an edit control, and the function does not display a partially visible last line. |
+| DT_END_ELLIPSIS | For displayed text, if the end of a string does not fit in the rectangle, it is truncated and ellipses are added. If a word that is not at the end of the string goes beyond the limits of the rectangle, it is truncated without ellipses. The string is not modified unless the DT_MODIFYSTRING flag is specified. Compare with DT_PATH_ELLIPSIS and DT_WORD_ELLIPSIS. |
+| DT_EXPANDTABS | Expands tab characters. The default number of characters per tab is eight. The DT_WORD_ELLIPSIS, DT_PATH_ELLIPSIS, and DT_END_ELLIPSIS values cannot be used with the DT_EXPANDTABS value. |
+| DT_EXTERNALLEADING | Includes the font external leading in line height. Normally, external leading is not included in the height of a line of text. |
+| DT_HIDEPREFIX | Includes the font external leading in line height. Normally, external leading is not included in the height of a line of text.<br>Windows 2000/XP: Ignores the ampersand (&) prefix character in the text. The letter that follows will not be underlined, but other mnemonic-prefix characters are still processed.<br>Example: input string: "A&bc&&d", normal: "Abc&d", DT_HIDEPREFIX: "Abc&d". Compare with DT_NOPREFIX and DT_PREFIXONLY. |
+| DT_INTERNAL | Uses the system font to calculate text metrics. |
+| DT_LEFT | Aligns text to the left. |
+| DT_MODIFYSTRING | Modifies the specified string to match the displayed text. This value has no effect unless DT_END_ELLIPSIS or DT_PATH_ELLIPSIS is specified. |
+| DT_NOCLIP | Draws without clipping. **DrawText** is somewhat faster when DT_NOCLIP is used. |
+| DT_NOFULLWIDTHCHARBREAK | Windows 98/Me, Windows 2000/XP: Prevents a line break at a DBCS (double-wide character string), so that the line breaking rule is equivalent to SBCS strings. For example, this can be used in Korean windows, for more readability of icon labels. This value has no effect unless DT_WORDBREAK is specified. |
+| DT_NOPREFIX | Uses the system font to calculate text metrics.Turns off processing of prefix characters. Normally, DrawText interprets the mnemonic-prefix character & as a directive to underscore the character that follows, and the mnemonic-prefix characters && as a directive to print a single &. By specifying DT_NOPREFIX, this processing is turned off.<br>Example: input string: "A&bc&&d", normal: "Abc&d", DT_NOPREFIX: "A&bc&&d". Compare with DT_HIDEPREFIX and DT_PREFIXONLY. |
+| DT_PATH_ELLIPSIS | For displayed text, replaces characters in the middle of the string with ellipses so that the result fits in the specified rectangle. If the string contains backslash (\) characters, DT_PATH_ELLIPSIS preserves as much as possible of the text after the last backslash. The string is not modified unless the DT_MODIFYSTRING flag is specified. Compare with DT_END_ELLIPSIS and DT_WORD_ELLIPSIS. |
+| DT_PREFIXONLY | Windows 2000/XP: Draws only an underline at the position of the character following the ampersand (&) prefix character. Does not draw any other characters in the string.<br>Example: input string: "A&bc&&d", normal: "Abc&d", DT_PREFIXONLY: " _ ". Compare with DT_HIDEPREFIX and DT_NOPREFIX. |
+| DT_RIGHT | Aligns text to the right. |
+| DT_RTLREADING | Layout in right-to-left reading order for bi-directional text when the font selected into the hdc is a Hebrew or Arabic font. The default reading order for all text is left-to-right. |
+| DT_SINGLELINE | Displays text on a single line only. Carriage returns and line feeds do not break the line. |
+| DT_TABSTOP | Sets tab stops. Bits 15-8 (high-order byte of the low-order word) of the uFormat parameter specify the number of characters for each tab. The default number of characters per tab is eight. The DT_CALCRECT, DT_EXTERNALLEADING, DT_INTERNAL, DT_NOCLIP, and DT_NOPREFIX values cannot be used with the DT_TABSTOP value. |
+| DT_TOP | Justifies the text to the top of the rectangle. |
+| DT_VCENTER | Centers text vertically. This value is used only with the DT_SINGLELINE value. |
+| DT_WORDBREAK | Breaks words. Lines are automatically broken between words if a word would extend past the edge of the rectangle specified by the lpRect parameter. A carriage return-line feed sequence also breaks the line. If this is not specified, output is on one line. |
+| DT_WORD_ELLIPSIS | Truncates any word that does not fit in the rectangle and adds ellipses. Compare with DT_END_ELLIPSIS and DT_PATH_ELLIPSIS. |
+
+**Default value**: DT_CENTER OR DT_VCENTER OR DT_SINGLELINE.
+
+
+#### Return value
+
+The method of formatting the text.
+
