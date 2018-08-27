@@ -431,7 +431,7 @@ FUNCTION AfxCAxHostWindow (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS HWND
 
 The handle of the window or NULL.
 
-# <a name="AfxCAxHostWindow"></a>AfxCAxHostWindow
+# <a name="AfxCAxHostForwardMessage"></a>AfxCAxHostForwardMessage
 
 Forwards the Windows messages to the OLE Container window for processing.
 
