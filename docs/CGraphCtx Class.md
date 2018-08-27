@@ -415,3 +415,46 @@ FUNCTION PrintImage (BYVAL bStretch AS BOOLEAN = FALSE, _
 #### Return value
 
 Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
+
+# <a name="Resizable"></a>Resizable
+
+Gets/sets the value of the Resizable property.
+
+```
+PROPERTY Resizable () AS BOOLEAN
+PROPERTY Resizable (BYVAL bResizable AS BOOLEAN)
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+##### Remarks
+
+Resizable and stretchable are mutually exclusive.
+
+# <a name="SaveImage"></a>SaveImage
+
+Saves the image to a file.
+
+```
+FUNCTION SaveImage (BYREF wszFileName AS WSTRING, BYREF wszMimeType AS WSTRING) AS LONG
+```
+```
+FUNCTION SaveImageAsBmp (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveImageAsJpeg (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveImageAsPng (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveImageAsGif (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveImageAsTiff (BYREF wszFileName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Absolute path name of the file. |
+| *wszMimeType* | The mime type.<br>"image/bmp" = Bitmap (.bmp)<br>"image/gif" = GIF (.gif)<br>"image/jpeg" = JPEG (.jpg)<br>"image/png" = PNG (.png)<br>"image/tiff" = TIFF (.tiff) |
+
+#### Return value
+
+If the method succeeds, it returns Ok, which is an element of the GDI+ Status enumeration.
+
+If the method fails, it returns one of the other elements of the GDI+ Status enumeration.
