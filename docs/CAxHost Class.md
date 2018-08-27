@@ -119,7 +119,7 @@ CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS INTEGER, _
 | *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
 
 
-# <a name="Constructor2"></a>Constructor(CldId)
+# <a name="Constructor2"></a>Constructor(ClsId)
 
 Creates an instance of the OLE container using a ClsId.
 
