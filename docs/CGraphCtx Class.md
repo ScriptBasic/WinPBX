@@ -376,7 +376,7 @@ SUB LoadImageFromRes (BYVAL hInst AS HINSTANCE, BYREF wszImageName AS WSTRING, _
 
 # <a name="MakeCurrent"></a>MakeCurrent
 
-As more than one instance of this control can be used on a form, we need to make sure that OpenGL calls are directed to the correct rendering context. This is achieved by calling the MakeCurrent method.
+As more than one instance of this control can be used on a form, we need to make sure that OpenGL calls are directed to the correct rendering context. This is achieved by calling the **MakeCurrent** method.
 
 ```
 FUNCTION MakeCurrent () AS BOOLEAN
