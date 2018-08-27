@@ -493,7 +493,7 @@ PROPERTY Stretchable (BYVAL bStretchable AS BOOLEAN)
 
 TRUE or FALSE.
 
-# <a name="Stretchable"></a>Stretchable
+# <a name="StretchMode"></a>StretchMode
 
 Gets/sets the value of the **StretchMode** property.
 
