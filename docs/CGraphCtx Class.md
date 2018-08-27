@@ -32,12 +32,12 @@ CONSTRUCTOR CGraphCtx (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, _
 | *dwExStyle* | The extended window style of the control being created. Pass -1 to use the default styles. |
 | *lpParam* | Pointer to custom data. |
 
-### Helper Procedure: AfxCWindowPtr
+### Helper Procedure: AfxCGraphPtr
 
 Returns a pointer to the CGraphCtx class given the handle of its associated window.
 
 ```
-FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
+FUNCTION AfxCGraphPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 ```
 
 | Parameter  | Description |
