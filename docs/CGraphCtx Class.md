@@ -315,3 +315,103 @@ Returns the handle of the memory device context of the control.
 ```
 FUNCTION GetMemDC () AS HDC
 ```
+
+# <a name="GetVirtualBufferHeight"></a>GetVirtualBufferHeight
+
+Returns the height of the virtual buffer.
+
+```
+FUNCTION GetVirtualBufferHeight () AS LONG
+```
+
+# <a name="GetVirtualBufferWidth"></a>GetVirtualBufferWidth
+
+Returns the width of the virtual buffer.
+
+```
+FUNCTION GetVirtualBufferWidth () AS LONG
+```
+
+# <a name="hWindow"></a>hWindow
+
+Returns the handle of the control.
+
+```
+FUNCTION hWindow () AS HWND
+```
+
+# <a name="LoadImageFromFile"></a>LoadImageFromFile
+
+Loads and displays the specified image in the Graphic Control.
+
+```
+SUB LoadImageFromFile (BYREF wszFileName AS WSTRING)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Absolute path to the file. |
+
+#### Remarks
+
+A quirk in the GDI+ **GdipCreateBitmapFromFile** function causes that black and white images are loaded with increased contrast. Therefore, it's better to use the **CreateBitmapFromFile** for black and white images.
+
+# <a name="LoadImageFromRes"></a>LoadImageFromRes
+
+Loads the specified image from a resource file in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image.
+
+```
+SUB LoadImageFromRes (BYVAL hInst AS HINSTANCE, BYREF wszImageName AS WSTRING, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, _
+   BYVAL clrBackground AS ARGB = 0)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInst* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
+| *wszImageName* | Name of the image in the resource file (.RES). If the image resource uses an integral identifier, wszImage should begin with a number symbol (#) followed by the identifier in an ASCII format, e.g., "#998". Otherwise, use the text identifier name for the image. Only images embedded as raw data (type RCDATA) are valid. These must be icons in format .png, .jpg, .gif, .tiff. |
+| *dimPercent* | Percent of dimming (1-99). |
+| *bGrayScale* | TRUE or FALSE. Convert to gray scale. |
+| *clrBackground* | The background color. This parameter is ignored if the bitmap is totally opaque. |
+
+# <a name="MakeCurrent"></a>MakeCurrent
+
+As more than one instance of this control can be used on a form, we need to make sure that OpenGL calls are directed to the correct rendering context. This is achieved by calling the MakeCurrent method.
+
+```
+FUNCTION MakeCurrent () AS BOOLEAN
+```
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="PrintImage"></a>PrintImage
+
+Prints the image in the default printer.
+
+```
+FUNCTION PrintImage (BYVAL bStretch AS BOOLEAN = FALSE, _
+   BYVAL nStretchMode AS LONG = InterpolationModeHighQualityBicubic) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bStretch* | Optional. Stretch the image. |
+| *nStretchMode* | Optional. Stretching mode.<br>Default value = InterpolationModeHighQualityBicubic. |
+
+#### InterpolationMode Enumeration
+
+| Constant   | Description |
+| ---------- | ----------- |
+| **InterpolationModeDefault** | Specifies the default interpolation mode. |
+| **InterpolationModeLowQuality** | Specifies a low-quality mode. |
+| **InterpolationModeHighQuality** | Specifies a high-quality mode. |
+| **InterpolationModeBilinear** | Specifies bilinear interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 50 percent of its original size. |
+| **InterpolationModeBicubic** | Specifies bicubic interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 25 percent of its original size. |
+| **InterpolationModeNearestNeighbor** | Specifies nearest-neighbor interpolation. |
+| **InterpolationModeHighQualityBilinear** | Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking. |
+| **InterpolationModeHighQualityBicubic** | Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
+
+#### Return value
+
+Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
