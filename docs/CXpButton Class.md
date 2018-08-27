@@ -321,3 +321,33 @@ The background color of button when it is hot (the mouse is over it).
 #### Remarks
 
 Only available if the button is not themed. Call **DisableTheming** to disable theming.
+
+# <a name="ButtonState"></a>ButtonState
+
+Returns the button state.
+
+```
+PROPERTY ButtonState () AS LONG
+```
+
+#### Return value
+
+The button state: Pushed (BST_PUSHED) or unpushed.
+
+# <a name="Cursor"></a>Cursor
+
+Gets/sets the cursor for the button.
+
+```
+PROPERTY Cursor () AS HCURSOR
+PROPERTY Cursor (BYVAL hCursor AS HCURSOR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hCursor* | Handle to the cursor. |
+
+#### Return value
+
+The cursor handle.
+
