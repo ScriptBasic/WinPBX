@@ -32,7 +32,7 @@ CONSTRUCTOR CGraphCtx (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, _
 | *dwExStyle* | The extended window style of the control being created. Pass -1 to use the default styles. |
 | *lpParam* | Pointer to custom data. |
 
-# Helper Procedure
+# Helper Procedure: AfxCWindowPtr
 
 Returns a pointer to the CGraphCtx class given the handle of its associated window.
 
@@ -43,3 +43,28 @@ FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle of the window associated with the graphic control. Call the **hWindow** method of the CGraphCtx class to retrieve it. |
+
+# Methods and Properties
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Clear](#Clear) | Clears the graphic control with the specified RGB color. |
+| [CreateBitmapFromFile](#CreateBitmapFromFile) | Loads and displays the specified image in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
+| [DrawBitmap](#DrawBitmap) | Draws a bitmap in the Graphic Control. |
+| [GetBits](#GetBits) | Returns the location of the DIB bit values. |
+| [GethBmp](#GethBmp) | Returns the handle of the compatible bitmap. |
+| [GethRC](#GethRC) | If OpenGL is enabled, it returns the handle of the rendering context of the control. |
+| [GetMemDC](#GetMemDC) | Handle to  the memory device context of the control. |
+| [GetVirtualBufferHeight](#GetVirtualBufferHeight) | Returns the height of the virtual buffer. |
+| [GetVirtualBufferWidth](#GetVirtualBufferWidth) | Returns the width of the virtual buffer. |
+| [hWindow](#hWindow) | Returns the handle of the control. |
+| [LoadImageFromFile](#LoadImageFromFile) | Loads and displays the specified image in the Graphic Control. |
+| [LoadImageFromRes](#LoadImageFromRes) | Loads the specified image from a resource file in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
+| [MakeCurrent](#MakeCurrent) | Redirects OpenGL calls are directed to the correct rendering context. |
+| [PrintImage](#PrintImage) | Prints the image in the default printer. |
+| [Resizable](#Resizable) | Gets/sets the value of the Resizable property. |
+| [SaveImage](#SaveImage) | Saves the image to a file. |
+| [SetVirtualBufferSize](#SetVirtualBufferSize) | Sets the size of the virtual buffer. |
+| [Stretchable](#Stretchable) | Gets/sets the value of the Stretchable property. |
+| [StretchMode](#StretchMode) | Gets/sets the value of the StretchMode property. |
+
