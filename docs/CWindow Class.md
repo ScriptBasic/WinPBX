@@ -182,6 +182,8 @@ Creates a generic window used as a tab page of a tab control.
 | [AfxResizeTabPages](#AfxResizeTabPages) | Resizes all the tab pages associated with a tab control. |
 | [AfxScrollTabPagePtr](#AfxScrollTabPagePtr) | Returns a pointer to the CScrollWindow class given the handle of the tab control to which the tab page is associated and the zero-based tab index. |
 
+# Tutorial
+
 ### <a name="Topic1"></a>Creating the main window
 
 To use **CWindow** you must first include "CWindow.inc" and allow all symbols of its namespace to be accessed adding **USING Afx**.
@@ -4185,3 +4187,111 @@ pTabPage->AddControl("Edit", pTabPage->hTabPage, IDC_EDIT2, "", 165, 50, 186, 21
 pTabPage->AddControl("Button", pTabPage->hTabPage, IDC_BTNSUBMIT, "Submit", 340, 185, 76, 26, BS_DEFPUSHBUTTON)
 ```
 
+# <a name="AfxCTabPagePtr"></a>AfxCTabPagePtr
+
+Returns a pointer to the **CTabPage** class given the handle of the tab control to which the tab page is associated and the zero-based tab index.
+
+```
+FUNCTION AfxCTabPagePtr (BYVAL hTab AS HWND, BYVAL idx AS LONG = -1) AS CTabPage PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+| *hTab* | Optional. Zero-based index of the tab. If this parameter is ommited, the function will return the pointer of the currently selected tab, if any. |
+
+#### Usage example
+
+```
+DIM pTabPage AS CTabPage PTR = AfxCTabPagePtr(hTab, 1)
+```
+
+# <a name="AfxDestroyTabPage"></a>AfxDestroyTabPage
+
+Detroys the specified tab page.
+
+```
+FUNCTION AfxDestroyTabPage (BYVAL hTab AS HWND, BYVAL idx AS LONG) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+| *hTab* | Zero-based index of the tab. If this parameter is ommited, the function will return the pointer of the currently selected tab, if any. |
+
+#### Return value
+
+TRUE or FALSE.
+
+#### Usage example
+
+```
+AfxDestroyTabPage(hTab, 1)
+```
+
+# <a name="AfxDestroyAllTabPages"></a>AfxDestroyAllTabPages
+
+Detroys all the tab pages.
+
+```
+FUNCTION AfxDestroyAllTabPages (BYVAL hTab AS HWND) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+
+#### Return value
+
+TRUE or FALSE.
+
+#### Usage example
+
+```
+AfxDestroyAllTabPages(hTab)
+```
+
+# <a name="AfxResizeTabPages"></a>AfxResizeTabPages
+
+Resizes all the tab pages associated with a tab control.
+
+```
+FUNCTION AfxResizeTabPages (BYVAL hTab AS HWND) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+
+#### Return value
+
+TRUE or FALSE.
+
+#### Usage example
+
+```
+AfxResizeTabPages(hTab)
+```
+
+# <a name="AfxScrollTabPagePtr"></a>AfxScrollTabPagePtr
+
+Returns a pointer to the **CScrollWindow** class given the handle of the tab control to which the tab page is associated and the zero-based tab index.
+
+```
+FUNCTION AfxScrollTabPagePtr (BYVAL hTab AS HWND, BYVAL idx AS LONG) AS CScrollWindow PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+| *idx* | Zero-based index of the tab page. If idx is -1, the function will return the pointer associated to the selected tab, if any. |
+
+#### Return value
+
+A pointer to the CScrollWindow class or NULL.
+
+#### Usage example
+
+```
+DIM pScrollWindow AS CScrollWindow PTR = AfxScrollTabPagePtr(hTab, 1)
+```
