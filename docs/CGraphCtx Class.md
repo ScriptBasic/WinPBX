@@ -418,7 +418,7 @@ Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
 
 # <a name="Resizable"></a>Resizable
 
-Gets/sets the value of the Resizable property.
+Gets/sets the value of the **Resizable** property.
 
 ```
 PROPERTY Resizable () AS BOOLEAN
