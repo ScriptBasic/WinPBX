@@ -299,3 +299,19 @@ Returns the handle of the compatible bitmap.
 ```
 FUNCTION GethBmp () AS HBITMAP
 ```
+
+# <a name="GethRC"></a>GethRC
+
+If OpenGL is enabled, it returns the handle of the rendering context of the control.
+
+```
+FUNCTION GethRC () AS HGLRC
+```
+
+# <a name="GetMemDC"></a>GetMemDC
+
+Returns the handle of the memory device context of the control.
+
+```
+FUNCTION GetMemDC () AS HDC
+```
