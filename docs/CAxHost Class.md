@@ -363,3 +363,36 @@ FUNCTION Unadvise () AS HRESULT
 #### Retgurn value
 
 S_OK (0) or an error code.
+
+# <a name="AfxCAxHostDispObj"></a>AfxCAxHostDispObj
+
+Returns a reference to the control's default interface given the handle of the window that hosts it. This is a reference counted pointer, so you must release it calling the **Release** method of the interface, the **IUnknown_Release** macro or the **AfxSafeRelease** function.
+
+```
+FUNCTION AfxCAxHostDispObj (BYVAL hwnd AS HWND) AS IDispatch PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window that hosts he ActiveX control. If you don't know the value of this handle, you can get it calling the **AfxCAxHostWindow** function. |
+
+#### Return value
+
+IDispatch. A reference to the ActiveX control's default interface.
+
+# <a name="AfxCAxHostDispPtr"></a>AfxCAxHostDispPtr
+
+Returns a reference to the OLE container class given the handle of its associated window. This is not and AddRefed pointer, so don't release it.
+
+```
+FUNCTION AfxCAxHostDispPtr (BYVAL hwnd AS HWND) AS IDispatch PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window that hosts he ActiveX control. If you don't know the value of this handle, you can get it calling the **AfxCAxHostWindow** function. |
+
+#### Return value
+
+IDispatch. A reference to the ActiveX control's default interface.
+
