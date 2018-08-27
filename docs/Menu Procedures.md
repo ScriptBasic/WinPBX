@@ -186,7 +186,7 @@ FUNCTION AfxGetMenuItemState (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 #### Return value
 
 0 on failure or one or more of the following values:
-
+```
 MFS_CHECKED   The item is checked
 MFS_DEFAULT   The menu item is the default.
 MFS_DISABLED  The item is disabled.
@@ -195,4 +195,5 @@ MFS_GRAYED    The item is grayed.
 MFS_HILITE    The item is highlighted
 MFS_UNCHECKED The item is unchecked.
 MFS_UNHILITE  The item is not highlighed.
+```
 
