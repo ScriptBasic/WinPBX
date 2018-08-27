@@ -82,8 +82,8 @@ A pointer to the CImageCtx class.
 | [LoadBitmapFromResource](#LoadBitmapFromResource) | Loads a bitmap from a resource file into the control. |
 | [LoadImageFromFile](#LoadImageFromFile) | Loads an image from disk into the control. |
 | [LoadImageFromResource](#LoadImageFromResource) | Loads an image from a resource file into the control. |
-| [Redraw](#Redraw) | Redraws the CImageCtx control. |
-| [SetBkColor](#SetBkColor) | Sets the background RGB color used by the CImageCtx control. |
+| [Redraw](#Redraw) | Redraws the **CImageCtx** control. |
+| [SetBkColor](#SetBkColor) | Sets the background RGB color used by the **CImageCtx** control. |
 | [SetImageAdjustment](#SetImageAdjustment) | Sets the image adjustment setting used by the control. |
 | [SetInterpolationMode](#SetInterpolationMode) | Sets the interpolation mode used by GDI+. |
 
