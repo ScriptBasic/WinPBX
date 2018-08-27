@@ -8,7 +8,7 @@ To use the control, include the CGraphCtx.inc file in your program and use the n
 
 **Include file**: CGraphCtx.inc
 
-# Constructor
+### Constructor
 
 Registers the class name and creates an instance of the control.
 
@@ -44,7 +44,7 @@ FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 | ---------- | ----------- |
 | *hwnd* | Handle of the window associated with the graphic control. Call the **hWindow** method of the CGraphCtx class to retrieve it. |
 
-# Methods and Properties
+### Methods and Properties
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -68,7 +68,7 @@ FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 | [Stretchable](#Stretchable) | Gets/sets the value of the Stretchable property. |
 | [StretchMode](#StretchMode) | Gets/sets the value of the StretchMode property. |
 
-# Notification Messages
+### Notification Messages
 
 | Name       | Description |
 | ---------- | ----------- |
