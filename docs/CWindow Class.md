@@ -4288,7 +4288,7 @@ FUNCTION AfxScrollTabPagePtr (BYVAL hTab AS HWND, BYVAL idx AS LONG) AS CScrollW
 
 #### Return value
 
-A pointer to the CScrollWindow class or NULL.
+A pointer to the **CScrollWindow** class or NULL.
 
 #### Usage example
 
