@@ -632,3 +632,25 @@ PROPERTY Toggle (BYVAL fToggle AS LONG)
 #### Return value
 
 Returns CTRUE if the button is toggled or FALSE otherwise.
+
+# <a name="ToggleState"></a>ToggleState
+
+Gets/sets the toggle state: pushed (CTRUE) or unpushed (FALSE).
+
+```
+PROPERTY ToggleState () AS LONG
+PROPERTY ToggleState (BYVAL fState AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *fState* | Toggle state (TRUE or FALSE). |
+
+#### Return value
+
+Returns CTRUE if the button is toggled or FALSE otherwise.
+
+#### Return value
+
+Returns CTRUE if the button is toggled or FALSE otherwise.
+
