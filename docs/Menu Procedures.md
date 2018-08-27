@@ -428,3 +428,65 @@ SUB AfxRemoveCloseMenu (BYVAL hwnd AS HWND) AS BOOLEAN
 #### Return value
 
 TRUE or FALSE.
+
+# <a name="AfxRightJustifyMenuItem"></a>AfxRightJustifyMenuItem
+
+Right justifies a top level menu item.
+
+```
+FUNCTION AfxRightJustifyMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window that owns the menu. |
+| *uItem* | The zero-based position of the top level menu item to justify. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
+
+#### Remarks
+
+This is usually used to have the Help menu item right-justified on the menu bar.
+
+# <a name="AfxSetMenuItemBold"></a>AfxSetMenuItemBold
+
+Changes the text of a menu item to bold.
+
+```
+FUNCTION AfxSetMenuItemBold (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window that owns the menu. |
+| *uItem* | The zero-based position of the top level menu item to bold. |
+
+#### Return value
+
+If the function succeeds, the return value is TRUE. If the function fails, the return value is FALSE.
+
+# <a name="AfxSetMenuItemState"></a>AfxSetMenuItemState
+
+Sets the state of the specified menu item.
+
+```
+FUNCTION AfxSetMenuItemState (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fState AS DWORD, BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fState* | The menu item state. It can be one or more of these values:<br>MFS_CHECKED: Checks the menu item.<br>MFS_DEFAULT: Specifies that the menu item is the default.<br>MFS_DISABLED: Disables the menu item and grays it so that it cannot be selected.<br>MFS_ENABLED: Enables the menu item so that it can be selected. This is the default state.<br>MFS_GRAYED: Disables the menu item and grays it so that it cannot be selected.<br>MFS_HILITE: Highlights the menu item.<br>MFS_UNCHECKED: Unchecks the menu item.<br>MFS_UNHILITE: Removes the highlight from the menu item. This is the default state. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+#### Return value
+
+TRUE or FALSE. To get extended error information, use the **GetLastError** function.
+
+#### Remarks
+
+The application must call the **DrawMenuBar** function whenever a menu changes, whether or not the menu is in a displayed window.
