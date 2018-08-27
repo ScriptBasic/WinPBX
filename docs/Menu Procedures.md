@@ -246,3 +246,22 @@ FUNCTION AfxGetMenuRect OVERLOAD (BYVAL hwnd AS HWND, BYVAL hmenu AS HMENU) AS R
 | ---------- | ----------- |
 | *hwnd* | Handle of the window that owns the menu. |
 | *hMenu* | Handle to the menu. |
+
+# <a name="AfxGrayMenuItem"></a>AfxGrayMenuItem
+
+Grays the specified menu item.
+
+```
+FUNCTION AfxGrayMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+#### Remarks
+
+The application must call the **DrawMenuBar** function whenever a menu changes, whether or not the menu is in a displayed window.
