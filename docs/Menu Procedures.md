@@ -75,7 +75,7 @@ DIM hSubMenu AS HMENU = GetSubMenu(hMenu, 1)
 AfxAddIconToMenuItem(hSubMenu, 0, TRUE, AfxGdipIconFromRes(hInstance, "IDI_UNDO_32"))
 ```
 
-# <a name="AfxAddIconToMenuItem"></a>AfxAddIconToMenuItem
+# <a name="AfxCheckMenuItem"></a>AfxCheckMenuItem
 
 Checks a menu item.
 
