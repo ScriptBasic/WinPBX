@@ -3949,10 +3949,6 @@ FUNCTION AfxCWindowPtr (BYVAL pCreateStruct AS CREATESTRUCT PTR) AS CWindow PTR
 | *lParam* | Value passed by Windows to the **WM_CREATE** message. |
 | *pCreateStruct* | Pointer to the **CREATESTRUCT** structure used by Windows during the window creation and passed to the window procedure as the *lParam* parameter of the **WM_CREATE** message. |
 
-#### Return value
-
-The style(s) used by the window.
-
 #### Usage examples
 
 ```
@@ -3960,4 +3956,22 @@ DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
 ```
 ```
 DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
+```
+
+# <a name="AfxCWindowPtr"></a>AfxCWindowPtr
+
+Returns a pointer to the **CWindow** class given the handle of the window created with it or the handle of any of it's children windows or controls.
+
+```
+FUNCTION AfxCWindowOwnerPtr (BYVAL hwnd AS HWND) AS CWindow PTR
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window created with it or the handle of any of it's children windows or controls. |
+
+#### Usage example
+
+```
+DIM pWindow AS CWindow PTR = AfxCWindowOwnerPtr(hwnd)
 ```
