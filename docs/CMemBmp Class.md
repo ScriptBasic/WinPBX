@@ -47,3 +47,28 @@ To create a DIB (device-independent bitmap) from the memory bitmap, use the func
 To create a GDI+ bitmap from the memory bitmap, use the function **GdipCreateBitmapFromHBITMAP**.
 
 As the **CGraphCtx** graphic control uses DIBs, to draw a **CMemBmp** memory bitmap into it call the method DrawBitmap of the **CGraphCtx** class.
+
+# Constructors
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructor(Width, Height)](#Constructor1) | Creates an empty memory bitmap of the specified size. |
+| [Constructor(File Name)](#Constructor2) | Creates a memory bitmap of the same size that the specified image to load. |
+| [Constructor(Resource File)](#Constructor3) | Creates a memory bitmap of the same size that the specified image to load from a resource file. |
+
+# Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [DrawBitmap](#DrawBitmap) | Draws a bitmap in the memory bitmap. |
+| [GetBitsPixel](#GetBitsPixel) | Returns the number of bits required to indicate the color of a pixel. |
+| [GethBmp] | Returns the handle of the compatible memory bitmap. |
+| [GetHeight](#GetHeight) | Returns the height of the memory bitmap in pixels. |
+| [GetMemDC](#GetMemDC) | Returns the handle of the memory device context of the bitmap. |
+| [GetPixel](#GetPixel) | Retrieves the red, green, blue (RGB) color value of the pixel at the specified coordinates. |
+| [GetPlanes](#GetPlanes) | Returns the count of color planes of the memory bitmap. |
+| [GetWidth](#GetWidth) | Returns the width of the memory bitmap in pixels. |
+| [GetWidthBytes](#GetWidthBytes) | Returns the number of bytes in each scan line of the memory bitmap. |
+| [PrintBtmap](#PrintBtmap) | Prints the bitmap in the default printer. |
+| [SaveBitmap](#SaveBitmap) | Saves the bitmap to a file. |
+| [SetPixel](#SetPixel) | Sets the pixel at the specified coordinates to the specified color. |
