@@ -351,3 +351,15 @@ DIM pFontDisp AS IFontDisp = CAxHost.CreateFontDisp("MS Sans Serif", 8, FW_NORMA
 DIM pFontDisp AS IFontDisp = CAxHost.CreateFontDisp("Courier New", 10, FW_BOLD, , , , DEFAULT_CHARSET)
 DIM pFontDisp AS IFontDisp = CAxHost.CreateFontDisp("Marlett", 8, FW_NORMAL, , , , SYMBOL_CHARSET)
 ```
+
+# <a name="Unadvise"></a>Unadvise
+
+Terminates an advisory connection previously established by the **Advise** method between a connection point object and a client's sink.
+
+```
+FUNCTION Unadvise () AS HRESULT
+```
+
+#### Retgurn value
+
+S_OK (0) or an error code.
