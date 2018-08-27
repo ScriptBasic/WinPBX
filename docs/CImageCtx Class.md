@@ -256,7 +256,7 @@ The current adjustment setting, that can be one of the following values:
 
 # <a name="GetImageHeight"></a>GetImageHeight
 
-Gets the height of the image, in pixels, currently loaded in the CImageCtx control.
+Gets the height of the image, in pixels, currently loaded in the **CImageCtx** control.
 
 ```
 FUNCTION GetImageHeight () AS LONG
