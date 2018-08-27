@@ -414,3 +414,20 @@ FUNCTION AfxCAxHostPtr (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS CAxHost PTR
 
 A pointer to the **CAxHost** class or NULL.
 
+# <a name="AfxCAxHostWindow"></a>AfxCAxHostWindow
+
+Returns the OLE container window handle given the handle of the form, or any control in the form, and its control identifier.
+
+```
+FUNCTION AfxCAxHostWindow (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window that hosts he ActiveX control. If you don't know the value of this handle, you can get it calling the **AfxCAxHostWindow** function. |
+| *cID* | Identifier of the control, e.g. IDC_WEBBROWSER. |
+
+#### Return value
+
+The handle of the window or NULL.
+
