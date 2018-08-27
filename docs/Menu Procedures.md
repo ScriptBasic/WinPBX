@@ -262,6 +262,169 @@ FUNCTION AfxGrayMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 | *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
 | *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
 
+#### Return value
+
+TRUE or FALSE. To get extended error information, use the **GetLastError** function.
+
 #### Remarks
 
 The application must call the **DrawMenuBar** function whenever a menu changes, whether or not the menu is in a displayed window.
+
+# <a name="AfxHiliteMenuItem"></a>AfxHiliteMenuItem
+
+Highlights the specified menu item.
+
+```
+FUNCTION AfxHiliteMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+#### Return value
+
+TRUE or FALSE. To get extended error information, use the **GetLastError** function.
+
+#### Remarks
+
+The application must call the **DrawMenuBar** function whenever a menu changes, whether or not the menu is in a displayed window.
+
+# <a name="AfxIsMenuItemChecked"></a>AfxIsMenuItemChecked
+
+Returns TRUE if the specified menu item is checked; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemChecked (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemDisabled"></a>AfxIsMenuItemDisabled
+
+Returns TRUE if the specified menu item is disabled; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemDisabled (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemEnabled"></a>AfxIsMenuItemEnabled
+
+Returns TRUE if the specified menu item is enabled; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemEnabled (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemGrayed"></a>AfxIsMenuItemGrayed
+
+Returns TRUE if the specified menu item is grayed; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemGrayed (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemHighlighted"></a>AfxIsMenuItemHighlighted
+
+Returns TRUE if the specified menu item is highlighted; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemHighlighted (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemOwnerDraw"></a>AfxIsMenuItemOwnerDraw
+
+Returns TRUE if the specified menu item is a ownerdraw; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemOwnerDraw (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemPopup"></a>AfxIsMenuItemPopup
+
+Returns TRUE if the specified menu item is a submenu; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemPopup (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxIsMenuItemSeparator"></a>AfxIsMenuItemSeparator
+
+Returns TRUE if the specified menu item is a separator; FALSE otherwise.
+
+```
+FUNCTION AfxIsMenuItemSeparator (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG = FALSE) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxRemoveCloseMenu"></a>AfxRemoveCloseMenu
+
+Removes the system menu close option and disables the X button.
+
+```
+SUB AfxRemoveCloseMenu (BYVAL hwnd AS HWND) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window that owns the menu. |
+
+#### Return value
+
+TRUE or FALSE.
