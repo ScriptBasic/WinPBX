@@ -23,7 +23,6 @@
 | [hWindow](#hWindow) | Returns the handle of the hosting window. |
 | [OcxDispObj](#OcxDispObj) | Returns a reference to the control's default interface given the handle of the window that hosts it. |
 | [OcxDispPtr](#OcxDispPtr) | Returns a reference to the control's default interface given the handle of the window that hosts it. |
-
 | [OleCreateFont](#OleCreateFont) | Creates a standard IFont object. |
 | [OleCreateFontDisp](#OleCreateFontDisp) | Creates a standard IFont object. |
 | [Unadvise](#Unadvise) | Terminates an advisory connection previously established by the **Advise** method between a connection point object and a client's sink. |
