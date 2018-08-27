@@ -4134,3 +4134,54 @@ SUB AdjustControls
 
 See **Layout manager** in the Tutorial.
 
+
+# <a name="hTabPage"></a>hTabPage
+
+Returns the window handle of the tab page.
+
+```
+PROPERTY hTabPage () AS HWND
+```
+
+#### Usage example
+
+```
+DIM hTabPage AS HWND = pTabPage.hTabPage
+```
+
+# <a name="InsertPage"></a>InsertPage
+
+Adds a tab page and creates a generic window that will be associated with the page.
+
+```
+FUNCTION InsertPage (BYVAL hTab AS HWND, BYVAL nPage AS LONG, BYREF wszTitle AS WSTRING = "", _
+   BYVAL nImage AS LONG = -1, BYVAL lpfnWndProc AS WNDPROC = NULL, _
+   BYVAL dwStyle AS DWORD = WS_CLIPSIBLINGS OR WS_CLIPCHILDREN, BYVAL dwExStyle AS DWORD = 0) AS HWND
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hTab* | Handle to the Tab control. |
+| *nPage* | The zero based position of the page to be inserted. |
+| *wszTitle* | Optional. The text to be displayed of the tab area. |
+| *nImage* | Optional. Index in the tab control's image list, or -1 if there is no image for the tab. |
+| *lpfnWndProc* | Address of the window callback procedure. |
+
+#### Return value
+
+The handle of the new tab page.
+
+#### Usage example
+
+```
+' // Create a tab page
+DIM pTabPage AS CTabPage PTR = NEW CTabPage
+pTabPage->InsertPage(hTab, 0, "Tab 1", -1, @TabPage_WndProc)
+' // Add controls to it
+pTabPage->AddControl("Label", pTabPage->hTabPage, -1, "First name", 15, 15, 121, 21)
+pTabPage->AddControl("Label", pTabPage->hTabPage, -1, "Last name", 15, 50, 121, 21)
+pTabPage->AddControl("Edit", pTabPage->hTabPage, IDC_EDIT1, "", 165, 15, 186, 21)
+pTabPage->AddControl("Edit", pTabPage->hTabPage, IDC_EDIT2, "", 165, 50, 186, 21)
+pTabPage->AddControl("Button", pTabPage->hTabPage, IDC_BTNSUBMIT, "Submit", 340, 185, 76, 26, BS_DEFPUSHBUTTON)
+```
+
