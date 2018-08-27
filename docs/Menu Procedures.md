@@ -233,3 +233,16 @@ FUNCTION AfxGetMenuItemTextLen (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 | *hMenu* | Handle to the menu that contains the menu item. |
 | *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
 | *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+# <a name="AfxGetMenuRect"></a>AfxGetMenuRect
+
+Returns the dimensions of a menu bar or a drop-down menu.
+
+```
+FUNCTION AfxGetMenuRect OVERLOAD (BYVAL hwnd AS HWND, BYVAL hmenu AS HMENU) AS RECT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window that owns the menu. |
+| *hMenu* | Handle to the menu. |
