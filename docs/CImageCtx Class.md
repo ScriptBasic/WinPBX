@@ -66,3 +66,158 @@ FUNCTION AfxCImageCtxPtr (BYVAL hParent AS HWND, BYVAL cID AS LONG) AS CImageCtx
 #### Return value
 
 A pointer to the CImageCtx class.
+
+### Methods and Properties
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Clear](#Clear) | Clears the graphic control with the specified RGB color. |
+| [CreateBitmapFromFile](#CreateBitmapFromFile) | Loads and displays the specified image in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
+| [DrawBitmap](#DrawBitmap) | Draws a bitmap in the Graphic Control. |
+| [GetBits](#GetBits) | Returns the location of the DIB bit values. |
+| [GethBmp](#GethBmp) | Returns the handle of the compatible bitmap. |
+| [GethRC](#GethRC) | If OpenGL is enabled, it returns the handle of the rendering context of the control. |
+| [GetMemDC](#GetMemDC) | Handle to  the memory device context of the control. |
+| [GetVirtualBufferHeight](#GetVirtualBufferHeight) | Returns the height of the virtual buffer. |
+| [GetVirtualBufferWidth](#GetVirtualBufferWidth) | Returns the width of the virtual buffer. |
+| [hWindow](#hWindow) | Returns the handle of the control. |
+| [LoadImageFromFile](#LoadImageFromFile) | Loads and displays the specified image in the Graphic Control. |
+| [LoadImageFromRes](#LoadImageFromRes) | Loads the specified image from a resource file in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image. |
+| [MakeCurrent](#MakeCurrent) | Redirects OpenGL calls are directed to the correct rendering context. |
+| [PrintImage](#PrintImage) | Prints the image in the default printer. |
+| [Resizable](#Resizable) | Gets/sets the value of the Resizable property. |
+| [SaveImage](#SaveImage) | Saves the image to a file. |
+| [SetVirtualBufferSize](#SetVirtualBufferSize) | Sets the size of the virtual buffer. |
+| [Stretchable](#Stretchable) | Gets/sets the value of the Stretchable property. |
+| [StretchMode](#StretchMode) | Gets/sets the value of the StretchMode property. |
+
+### Notification Messages
+
+| Name       | Description |
+| ---------- | ----------- |
+| [NM_CLICK](#NM_CLICK) | Sent by the control when the user clicks it with the left mouse button. |
+| [NM_DBLCLK](#NM_DBLCLK) | Sent by the control when the user double clicks it with the left mouse button. |
+| [NM_KILLFOCUS](#NM_KILLFOCUS) | Notifies a control's parent window that the control has lost the input focus. |
+| [NM_RCLICK](#NM_RCLICK) | Sent by the control when the user clicks it with the right mouse button. |
+| [NM_RDBLCLK](#NM_RDBLCLK) | Sent by the control when the user double clicks it with the right mouse button. |
+| [NM_SETFOCUS](#NM_SETFOCUS) | Notifies a control's parent window that the control has received the input focus. |
+
+# <a name="NM_CLICK"></a>NM_CLICK Notification Message
+
+Sent by the control when the user clicks it with the left mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_CLICK
+            ' Left button clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_DBLCLK"></a>NM_DBLCLK Notification Message
+
+Sent by the control when the user double clicks it with the left mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_DBLCLK
+            ' Left button double clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_KILLFOCUS"></a>NM_KILLFOCUS Notification Message
+
+Notifies a control's parent window that the control has lost the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_KILLFOCUS
+            ' The control has lost focus
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_RCLICK"></a>NM_RCLICK Notification Message
+
+Notifies a control's parent window that the control has lost the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_RCLICK
+            ' Right button clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_RDBLCLK"></a>NM_RDBLCLK Notification Message
+
+Sent by the control when the user double clicks it with the right mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_RDBLCLK
+            ' Right button double clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_SETFOCUS"></a>NM_SETFOCUS Notification Message
+
+Notifies a control's parent window that the control has received the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_IMGCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_SETFOCUS
+            ' The control has gained focus
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_IMGCTX is the constant value used as identifier of the control. Change it if needed.
