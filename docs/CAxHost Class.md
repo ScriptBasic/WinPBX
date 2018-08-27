@@ -150,3 +150,46 @@ CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS INTEGER, _
 | *dwStyle* | The style of the window being created. |
 | *dwExStyle* | The extended style of the window being created. |
 | *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
+
+# <a name="Constructor3"></a>Constructor(LibName)
+
+Creates an instance of the OLE container using an unregistered OCX.
+
+```
+CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, _
+   BYREF wszLibName AS WSTRING, BYREF classID AS CONST CLSID, BYREF riid AS CONST IID, _
+   BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, _
+   BYVAL nHeight AS LONG = 0, BYVAL dwStyle AS DWORD = 0, BYVAL dwExStyle AS DWORD = 0, _
+   BYVAL pAmbientDisp AS CAXHOST_AMBIENTDISP = NULL)
+```
+```
+CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS INTEGER, _
+   BYREF wszLibName AS WSTRING, BYREF classID AS CONST CLSID, BYREF riid AS CONST IID, _
+   BYREF wszLicKey AS WSTRING, BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, _
+   BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, BYVAL dwStyle AS DWORD = 0, _
+   BYVAL dwExStyle AS DWORD = 0, BYVAL pAmbientDisp AS CAXHOST_AMBIENTDISP PTR = NULL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWindow* | Pointer to the instance of the **CWindow** class used to create the form. |
+| *cID* | The identifier of the control. It must be unique. |
+| *wszLibName* | The full qualified path to the OCX file. |
+| *classID* | The **CLSID** of the object to create, such "{8E27C92B-1264-101C-8A2F-040224009C02}" |
+| *riid* | The **IID** of the object to create, such "{8E27C92C-1264-101C-8A2F-040224009C02}". |
+| *wszLicKey* | The license key of the control, if the control is licensed. |
+| *x, y* | The coordinates of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *nWidth* | The width of the window. |
+| *nHeight* | The height of the window. |
+| *dwStyle* | The style of the window being created. |
+| *dwExStyle* | The extended style of the window being created. |
+| *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
+
+```
+DIM wszLibName AS WSTRING * 260 = ExePath & "\MSCOMCT2.OCX"
+DIM CLSID_MSComCtl2_MonthView AS CLSID = (&h232E456A, &h87C3, &h11D1, {&h8B, &hE3,&h00, &h00, &hF8, &h75, &h4D, &hA1})
+DIM IID_MSComCtl2_MonthView AS CLSID = (&h232E4565, &h87C3, &h11D1, {&h8B, &hE3,&h00, &h00, &hF8, &h75, &h4D, &hA1})
+DIM RTLKEY_MSCOMCT2 AS WSTRING * 260 = "651A8940-87C5-11d1-8BE3-0000F8754DA1"
+DIM pAxHost AS CAxHost PTR = CAxHost(@pWindow, IDC_WEBBROWSER, wszLibName, CLSID_MSComCtl2_MonthView, _
+    IID_MSComCtl2_MonthView, RTLKEY_MSCOMCT2, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+```
