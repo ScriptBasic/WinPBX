@@ -396,3 +396,19 @@ FUNCTION AfxCAxHostDispPtr (BYVAL hwnd AS HWND) AS IDispatch PTR
 
 IDispatch. A reference to the ActiveX control's default interface.
 
+# <a name="AfxCAxHostPtr"></a>AfxCAxHostPtr
+
+Returns a reference to the OLE container class given the handle of its associated window.
+
+```
+FUNCTION AfxCAxHostPtr (BYVAL hwnd AS HWND) AS CAxHost PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window that hosts he ActiveX control. If you don't know the value of this handle, you can get it calling the **AfxCAxHostWindow** function. |
+
+#### Return value
+
+A pointer to the **CAxHost** class or NULL.
+
