@@ -458,3 +458,20 @@ FUNCTION SaveImageAsTiff (BYREF wszFileName AS WSTRING) AS LONG
 If the method succeeds, it returns Ok, which is an element of the GDI+ Status enumeration.
 
 If the method fails, it returns one of the other elements of the GDI+ Status enumeration.
+
+# <a name="SetVirtualBufferSize"></a>SetVirtualBufferSize
+
+Sets the size of the virtual buffer.
+
+```
+FUNCTION SetVirtualBufferSize (BYVAL nWidth AS LONG, BYVAL nHeight AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nWidth* | Width, in pixels, of the virtual buffer. |
+| *nHeight* | Height, in pixels, of the virtual buffer. |
+
+#### Return value
+
+If the function succeeds, the return value is S_OK (0).
