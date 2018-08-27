@@ -198,3 +198,85 @@ END IF
 #### Remarks
 
 IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="Clear"></a>Clear
+
+Clears the graphic control with the specified RGB color.
+
+```
+FUNCTION Clear (BYVAL RGBColor AS COLORREF) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *RGBColor* | RGB color used to fill the control. |
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="CreateBitmapFromFile"></a>CreateBitmapFromFile
+
+Loads and displays the specified image in the Graphic Control. It also allows to convert the image to gray scale and/or dim the image.
+
+```
+SUB CreateBitmapFromFile (BYREF wszFileName AS WSTRING, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Absolute path to the file. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | TRUE or FALSE. Convert to gray scale. |
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="DrawBitmap"></a>DrawBitmap
+
+Draws a bitmap in the Graphic Control.
+
+```
+SUB DrawBitmap (BYVAL hbmp AS HBITMAP, BYVAL x AS SINGLE = 0, BYVAL y AS SINGLE = 0, _
+   BYVAL nRight AS SINGLE = 0, BYVAL nBottom AS SINGLE = 0) AS GpStatus
+```
+```
+SUB DrawBitmap (BYVAL pBitmap AS GpBitmap PTR, BYVAL x AS SINGLE = 0, BYVAL y AS SINGLE = 0, _
+   BYVAL nRight AS SINGLE = 0, BYVAL nBottom AS SINGLE = 0) AS GpStatus
+```
+```
+SUB DrawBitmap (BYREF pMemBmp AS CMemBmp, BYVAL x AS SINGLE = 0, BYVAL y AS SINGLE = 0, _
+   BYVAL nRight AS SINGLE = 0, BYVAL nBottom AS SINGLE = 0) AS GpStatus
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hbmp* | A handle to the bitmap. |
+| *pBitmap* | Pointer to a GDI+ bitmap. |
+| *pMemBmp* | Reference to a memory bitmap (CMemBmp class). |
+| *x* | Optional. Left position. |
+| *y* | Optional. Top position. |
+| *nRight* | Optional. Right position.. |
+| *nBottom* | Optional. Bottom position.. |
+
+#### Return value
+
+Returns OK (0) on success or a GdiPlus status code on failure.
+
+#### Remarks
+
+If both x and y are ommited, the image is draw starting at position 0, 0.
+
+If *nRight* and *nBottom* are specified, the image is draw stretched in the bounding rectangle formed by *x*, *y*, *nRight* and *nBottom*.
+
+#### Sample code
+
+```
+DIM pMemBmp AS CMemBmp = CMemBmp($"C:\Users\Pepe\Pictures\Cole_Kyla_01.jpg")
+Rectangle pMemBmp.GetMemDC, 10, 10, 150, 150
+LineTo pMemBmp.GetMemDC, 30, 180
+pGraphCtx.DrawBitmap pMemBmp
+```
+
