@@ -46,7 +46,7 @@ FUNCTION AfxAddIconToMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 | *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
 | *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
 | *hIcon* | Handle of the icon to add to the menu. |
-| *fAutoDestroy* | TRUE (the default) or FALSE. If TRUE, **AddIconToMenuItem** destroys the icon before returning. |
+| *fAutoDestroy* | TRUE (the default) or FALSE. If TRUE, **AfxAddIconToMenuItem** destroys the icon before returning. |
 | *phbmp* | Out. Location where the bitmap representation of the icon is stored. Can be NULL. |
 
 #### Return value
