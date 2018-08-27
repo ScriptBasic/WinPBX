@@ -118,3 +118,35 @@ CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS INTEGER, _
 | *dwExStyle* | The extended style of the window being created. |
 | *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
 
+
+# <a name="Constructor2"></a>Constructor(CldId)
+
+Creates an instance of the OLE container using a ClsId.
+
+```
+CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, _
+   BYREF classID AS CONST CLSID, BYREF riid AS CONST IID, BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, _
+   BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, BYVAL dwStyle AS DWORD = 0, _
+   BYVAL dwExStyle AS DWORD = 0, BYVAL pAmbientDisp AS CAXHOST_AMBIENTDISP PTR = NULL)
+```
+```
+CONSTRUCTOR CAxHost (BYVAL pWindow AS CWindow PTR, BYVAL cID AS INTEGER, _
+   BYREF classID AS CONST CLSID, BYREF riid AS CONST IID, BYREF wszLicKey AS WSTRING, _
+   BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, _
+   BYVAL dwStyle AS DWORD = 0, BYVAL dwExStyle AS DWORD = 0, _
+   BYVAL pAmbientDisp AS CAXHOST_AMBIENTDISP PTR = NULL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWindow* | Pointer to the instance of the **CWindow** class used to create the form. |
+| *cID* | The identifier of the control. It must be unique. |
+| *classID* | The **CLSID** of the object to create, such "{8E27C92B-1264-101C-8A2F-040224009C02}" |
+| *riid* | The **IID** of the object to create, such "{8E27C92C-1264-101C-8A2F-040224009C02}". |
+| *wszLicKey* | The license key of the control, if the control is licensed. |
+| *x, y* | The coordinates of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *nWidth* | The width of the window. |
+| *nHeight* | The height of the window. |
+| *dwStyle* | The style of the window being created. |
+| *dwExStyle* | The extended style of the window being created. |
+| *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
