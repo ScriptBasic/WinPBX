@@ -48,3 +48,21 @@ DIM pImageCtx AS CImageCtx = CImageCtx(@pWindow, IDC_IMAGECTX, "", 0, 0, pWindow
 pImageCtx.LoadImageFromFile ExePath & "\image.jpg"
 ```
 
+### Helper Procedure: AfxCImageCtxPtr
+
+Returns a pointer to the CIMageCtx class given the handle of its associated window.
+
+```
+FUNCTION AfxCImageCtxPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
+FUNCTION AfxCImageCtxPtr (BYVAL hParent AS HWND, BYVAL cID AS LONG) AS CImageCtx PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window associated with the graphic control. Call the **hWindow** method of the **CImageCtx** class to retrieve it. |
+| *hParent* | The handle of the parent window of the control. |
+| *cID* | The identifier of the control. |
+
+#### Return value
+
+A pointer to the CImageCtx class.
