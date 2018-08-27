@@ -194,7 +194,7 @@ DIM pAxHost AS CAxHost PTR = CAxHost(@pWindow, IDC_WEBBROWSER, wszLibName, CLSID
     IID_MSComCtl2_MonthView, RTLKEY_MSCOMCT2, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
 ```
 
-# Advise
+# <a name="Advise"></a>Advise
 
 Establishes a connection between a connection point object and the client's sink.
 
