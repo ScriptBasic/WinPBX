@@ -42,6 +42,7 @@ A pointer to the new instance of the class.
 | ---------- | ----------- |
 | [DisableTheming](#DisableTheming) | Disables theming. |
 | [EnableTheming](#EnableTheming) | Enables theming. |
+| [GetImage](#GetImage) | Returns the handle of the image. |
 | [hWindow](#hWindow) | Returns the handle of the button. |
 | [IsThemed](#IsThemed) | Returns CTRUE if themes are enabled or FALSE otherwise. |
 | [Redraw](#Redraw) | Redraws the button. |
@@ -77,5 +78,6 @@ A pointer to the new instance of the class.
 | [TextForeColor](#TextForeColor) | Gets/sets the text foreground color of the button. |
 | [TextForeColorDown](#TextForeColorDown) | Gets/sets the text foreground color of the button when it is down (pressed). |
 | [TextFormat](#TextFormat) | Gets/sets the method of formatting the text. |
+| [TextMargin](#TextMargin) | Gets/sets the margin of the text of the button. |
 | [Toggle](#Toggle) | Gets/sets button to toggle state (CTRUE) or to pushbutton state (FALSE). |
 | [ToggleState](#ToggleState) | Gets/sets the toggle state: pushed (CTRUE) or unpushed (FALSE). |
