@@ -239,7 +239,7 @@ FUNCTION AfxGetMenuItemTextLen (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 Returns the dimensions of a menu bar or a drop-down menu.
 
 ```
-FUNCTION AfxGetMenuRect OVERLOAD (BYVAL hwnd AS HWND, BYVAL hmenu AS HMENU) AS RECT
+FUNCTION AfxGetMenuRect (BYVAL hwnd AS HWND, BYVAL hmenu AS HMENU) AS RECT
 ```
 
 | Parameter  | Description |
