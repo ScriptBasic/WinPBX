@@ -431,3 +431,38 @@ FUNCTION AfxCAxHostWindow (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS HWND
 
 The handle of the window or NULL.
 
+# <a name="AfxCAxHostWindow"></a>AfxCAxHostWindow
+
+Forwards the Windows messages to the OLE Container window for processing.
+
+```
+FUNCTION AfxCAxHostForwardMessage (BYVAL hctl AS HWND, BYVAL pMsg AS tagMSG PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hctl* | Handle of the control. |
+| *pMsg* | A pointer to a **MSG** structure that contains information about a message |
+
+#### Return value
+
+TRUE if the message was processed, FALSE if not.
+
+#### Remarks
+
+Active in-place objects must always be given the first chance at translating accelerator keystrokes. You can provide this opportunity by calling **IOleInPlaceActiveObject.TranslateAccelerator** from your container's message loop before doing any other translation. You should apply your own translation only when this method returns FALSE.
+
+#### Usage example
+
+```
+' // Dispatch Windows messages
+DIM uMsg AS MSG
+WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
+   IF AfxForwardMessage(GetFocus, @uMsg) = FALSE THEN
+      IF IsDialogMessageW(hWndMain, @uMsg) = 0 THEN
+         TranslateMessage(@uMsg)
+         DispatchMessageW(@uMsg)
+      END IF
+   END IF
+WEND
+```
