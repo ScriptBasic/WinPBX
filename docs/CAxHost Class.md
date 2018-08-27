@@ -215,3 +215,41 @@ FUNCTION Advise (BYVAL pEvtObj AS IDispatch PTR, BYREF riid AS IID) AS HRESULT
 Return value
 
 S_OK (0) or an error code.
+
+# <a name="CtrlID"></a>CtrlID
+
+Returns the identifier of the container's window.
+
+```
+FUNCTION CtrlID () AS LONG
+```
+
+# <a name="GuidFromStr"></a>GuidFromStr
+
+Converts a string into a 16-byte (128-bit) Globally Unique Identifier (GUID)
+
+```
+FUNCTION GuidFromStr (BYVAL pwszGuidText AS WSTRING PTR = NULL) AS GUID
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszGuidText* | To be valid, the string must contain exactly 32 hexadecimal digits, delimited by hyphens and enclosed by curly braces. For example: {B09DE715-87C1-11D1-8BE3-0000F8754DA1}. If pwszGuidText is omited, **GuidFromStr** generates a new unique guid. |
+
+# <a name="GuidText"></a>GuidText
+
+Returns a 38-byte human-readable guid string from a 16-byte GUID.
+
+```
+FUNCTION GuidText (BYVAL classID AS CLSID PTR) AS STRING
+FUNCTION GuidText (BYVAL riid AS REFIID) AS STRING
+FUNCTION GuidText (BYVAL classID AS CLSID) AS STRING
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *classID, riid* | The 16-byte GUID. |
+
+#### Return value
+
+The GUID as a human readable string.
