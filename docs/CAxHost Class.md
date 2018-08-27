@@ -402,11 +402,13 @@ Returns a reference to the OLE container class given the handle of its associate
 
 ```
 FUNCTION AfxCAxHostPtr (BYVAL hwnd AS HWND) AS CAxHost PTR
+FUNCTION AfxCAxHostPtr (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS CAxHost PTR
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle of the window that hosts he ActiveX control. If you don't know the value of this handle, you can get it calling the **AfxCAxHostWindow** function. |
+| *cID* | Identifier of the control, e.g. IDC_WEBBROWSER. |
 
 #### Return value
 
