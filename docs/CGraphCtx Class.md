@@ -78,3 +78,123 @@ FUNCTION AfxCWindowPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 | [NM_RCLICK](#NM_RCLICK) | Sent by the control when the user clicks it with the right mouse button. |
 | [NM_RDBLCLK](#NM_RDBLCLK) | Sent by the control when the user double clicks it with the right mouse button. |
 | [NM_SETFOCUS](#NM_SETFOCUS) | Notifies a control's parent window that the control has received the input focus. |
+
+# <a name="NM_CLICK"></a>NM_CLICK Notification Message
+
+Sent by the control when the user clicks it with the left mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_CLICK
+            ' Left button clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_DBLCLK"></a>NM_DBLCLK Notification Message
+
+Sent by the control when the user double clicks it with the left mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_DBLCLK
+            ' Left button double clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_KILLFOCUS"></a>NM_KILLFOCUS Notification Message
+
+Notifies a control's parent window that the control has lost the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_KILLFOCUS
+            ' The control has lost focus
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_RCLICK"></a>NM_RCLICK Notification Message
+
+Notifies a control's parent window that the control has lost the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_RCLICK
+            ' Right button clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_RDBLCLK"></a>NM_RDBLCLK Notification Message
+
+Sent by the control when the user double clicks it with the right mouse button. This notification code is sent in the form of a WM_NOTIFY message.
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_RDBLCLK
+            ' Right button double clicked
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
+
+# <a name="NM_SETFOCUS"></a>NM_SETFOCUS Notification Message
+
+Notifies a control's parent window that the control has received the input focus. This notification code is sent in the form of a WM_NOTIFY message. 
+
+```
+CASE WM_NOTIFY
+   DIM phdr AS NMHDR PTR = CAST(NMHDR PTR, lParam)
+   IF wParam = IDC_GRCTX THEN
+      SELECT CASE phdr->code
+         CASE NM_SETFOCUS
+            ' The control has gained focus
+      END SELECT
+   END IF
+END IF
+```
+
+#### Remarks
+
+IDC_GRCTX is the constant value used as identifier of the control. Change it if needed.
