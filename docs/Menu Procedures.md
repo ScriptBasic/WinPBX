@@ -10,6 +10,7 @@
 | [AfxGetMenuFontPointSize](#AfxGetMenuFontPointSize) | Retrieves the point size of the font used in menu bars. |
 | [AfxGetMenuItemState](#AfxGetMenuItemState) | Retrieves the state of the specified menu item. |
 | [AfxGetMenuItemText](#AfxGetMenuItemText) | Retrieves the text of the specified menu item. |
+| [AfxGetMenuItemTextLen](#AfxGetMenuItemTextLen) | Retrieves lenth of the of the specified menu item. |
 | [AfxGetMenuRect](#AfxGetMenuRect) | Calculates the size of a menu bar or a drop-down menu. |
 | [AfxGrayMenuItem](#AfxGrayMenuItem) | Grays the specified menu item. |
 | [AfxHiliteMenuItem](#AfxHiliteMenuItem) | Highlights the specified menu item. |
@@ -218,4 +219,17 @@ FUNCTION AfxGetMenuItemText (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
 DIM cwsText AS CWSTR = AfxGetMenuItemText(hMenu, 1, TRUE)
 ```
 
+# <a name="AfxGetMenuItemTextLen"></a>AfxGetMenuItemTextLen
 
+Returns the lengnth of the specified menu item.
+
+```
+FUNCTION AfxGetMenuItemTextLen (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
