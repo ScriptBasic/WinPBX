@@ -62,7 +62,7 @@ As the **CGraphCtx** graphic control uses DIBs, to draw a **CMemBmp** memory bit
 | ---------- | ----------- |
 | [DrawBitmap](#DrawBitmap) | Draws a bitmap in the memory bitmap. |
 | [GetBitsPixel](#GetBitsPixel) | Returns the number of bits required to indicate the color of a pixel. |
-| [GethBmp] | Returns the handle of the compatible memory bitmap. |
+| [GethBmp](#GethBmp) | Returns the handle of the compatible memory bitmap. |
 | [GetHeight](#GetHeight) | Returns the height of the memory bitmap in pixels. |
 | [GetMemDC](#GetMemDC) | Returns the handle of the memory device context of the bitmap. |
 | [GetPixel](#GetPixel) | Retrieves the red, green, blue (RGB) color value of the pixel at the specified coordinates. |
