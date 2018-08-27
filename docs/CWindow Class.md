@@ -3949,6 +3949,10 @@ FUNCTION AfxCWindowPtr (BYVAL pCreateStruct AS CREATESTRUCT PTR) AS CWindow PTR
 | *lParam* | Value passed by Windows to the **WM_CREATE** message. |
 | *pCreateStruct* | Pointer to the **CREATESTRUCT** structure used by Windows during the window creation and passed to the window procedure as the *lParam* parameter of the **WM_CREATE** message. |
 
+#### Return value
+
+A pointer to the **CWindow** class or NULL.
+
 #### Usage examples
 
 ```
@@ -3958,7 +3962,7 @@ DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
 DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
 ```
 
-# <a name="AfxCWindowPtr"></a>AfxCWindowPtr
+# <a name="AfxCWindowOwnerPtr"></a>AfxCWindowOwnerPtr
 
 Returns a pointer to the **CWindow** class given the handle of the window created with it or the handle of any of it's children windows or controls.
 
@@ -3970,8 +3974,69 @@ FUNCTION AfxCWindowOwnerPtr (BYVAL hwnd AS HWND) AS CWindow PTR
 | ---------- | ----------- |
 | *hwnd* | Handle of the window created with it or the handle of any of it's children windows or controls. |
 
+#### Return value
+
+A pointer to the **CWindow** class or NULL.
+
 #### Usage example
 
 ```
 DIM pWindow AS CWindow PTR = AfxCWindowOwnerPtr(hwnd)
+```
+
+# <a name="AfxScrollWindowPtr"></a>AfxScrollWindowPtr
+
+Returns a pointer to the **CScrollWindow** class given the handle of the window attached to it.
+
+```
+FUNCTION AfxScrollWindowPtr (BYVAL hwnd AS HWND) AS CScrollWindow PTR
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle to the window attached to the **CScrollWindow** class. |
+
+#### Return value
+
+A pointer to the **CScrollWindow** class or NULL.
+
+#### Usage example
+
+```
+DIM pWindow AS CScrollWindow PTR = AfxScrollWindowPtr(hwnd)
+```
+
+# <a name="AfxInputBox"></a>AfxInputBox
+
+Input box dialog.
+
+```
+FUNCTION AfxInputBox (BYVAL hParent AS HWND = NULL, BYVAL x AS LONG = 0, _
+   BYVAL y AS LONG = 0, BYREF cwsCaption AS CWSTR = "", BYREF cwsPrompt AS CWSTR = "", _
+   BYREF cwsText AS CWSTR = "", BYVAL nLen AS LONG = 260, _
+   BYVAL bPassword AS BOOLEAN = FALSE) AS CWSTR
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| *hParent* | Optional. The handle of the parent main window. |
+| *x, y* | Optional. The location of the dialog. If both are 0, the dialog is centered. |
+| *cwsCaption* | Optional. The caption of the dialog. |
+| *cwsPrompt* | Optional. The prompt displayed in the dialog. |
+| *cwsText* | Optional. The text to edit. |
+| *nLen* | Optional. Maximum length of the string to edit.<br>The default length is 260 characters.<br>The maximum length is 2048 characters. |
+| *bPassword* | Optional. TRUE or FALSE. Displays all characters as an asterisk (\*) as they are typed into the edit control. |
+
+#### Return value
+
+The edited string.
+
+#### Return value
+
+A pointer to the **CScrollWindow** class or NULL.
+
+#### Usage example
+
+```
+DIM pWindow AS CScrollWindow PTR = AfxScrollWindowPtr(hwnd)
 ```
