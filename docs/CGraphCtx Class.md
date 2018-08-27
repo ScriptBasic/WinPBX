@@ -42,7 +42,7 @@ FUNCTION AfxCGraphPtr (BYVAL hwnd AS HWND) AS CGraphCtx PTR
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *hwnd* | Handle of the window associated with the graphic control. Call the **hWindow** method of the CGraphCtx class to retrieve it. |
+| *hwnd* | Handle of the window associated with the graphic control. Call the **hWindow** method of the **CGraphCtx** class to retrieve it. |
 
 ### Methods and Properties
 
