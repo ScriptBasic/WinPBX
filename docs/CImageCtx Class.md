@@ -422,3 +422,33 @@ FUNCTION SetImageAdjustment (BYVAL ImageAdjustment AS LONG, BYVAL fRedraw AS BOO
 #### Return value
 
 The previous setting value.
+
+# <a name="SetInterpolationMode"></a>SetInterpolationMode
+
+Sets the interpolation mode used by GDI+. The interpolation mode determines the algorithm that is used when images are scaled or rotated. 
+
+```
+SUB SetInterpolationMode (BYVAL InterpolationMode AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *InterpolationMode* | The interpolation mode. Should be one of the following values: |
+
+### Interpolation modes
+
+```
+InterpolationModeInvalid = -1
+InterpolationModeDefault = 0
+InterpolationModeLowQuality = 1
+InterpolationModeHighQuality = 2
+InterpolationModeBilinear = 3
+InterpolationModeBicubic = 4
+InterpolationModeNearestNeighbor = 5
+InterpolationModeHighQualityBilinear = 6
+InterpolationModeHighQualityBicubic = 7
+```
+
+#### Return value
+
+The previous setting value.
