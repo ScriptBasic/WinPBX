@@ -46,7 +46,7 @@ To create a DIB (device-independent bitmap) from the memory bitmap, use the func
 
 To create a GDI+ bitmap from the memory bitmap, use the function **GdipCreateBitmapFromHBITMAP**.
 
-As the **CGraphCtx** graphic control uses DIBs, to draw a **CMemBmp** memory bitmap into it call the method DrawBitmap of the **CGraphCtx** class.
+As the **CGraphCtx** graphic control uses DIBs, to draw a **CMemBmp** memory bitmap into it call the method **DrawBitmap** of the **CGraphCtx** class.
 
 # Constructors
 
