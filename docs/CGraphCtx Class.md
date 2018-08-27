@@ -280,3 +280,22 @@ LineTo pMemBmp.GetMemDC, 30, 180
 pGraphCtx.DrawBitmap pMemBmp
 ```
 
+# <a name="GetBits"></a>GetBits
+
+Returns the location of the DIB bit values.
+
+```
+FUNCTION GetBits () AS ANY PTR
+```
+
+#### Return value
+
+Pointer to the location of the DIB bit values.
+
+# <a name="GethBmp"></a>GethBmp
+
+Returns the handle of the compatible bitmap.
+
+```
+FUNCTION GethBmp () AS HBITMAP
+```
