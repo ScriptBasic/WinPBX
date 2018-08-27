@@ -225,3 +225,58 @@ Clears the contents of the control.
 ```
 SUB Clear
 ```
+
+# <a name="GetBkColor"></a>GetBkColor
+
+Gets the background RGB color used by the **CImageCtx** control.
+
+```
+FUNCTION GetBkColor () AS LONG
+```
+
+# <a name="GetImageAdjustment"></a>GetImageAdjustment
+
+Gets the image adjustment setting used by the control.
+
+```
+FUNCTION GetImageAdjustment () AS LONG
+```
+
+#### Return value
+
+The current adjustment setting, that can be one of the following values:
+
+| Value      | Description |
+| ---------- | ----------- |
+| **GDIP_IMAGECTX_AUTOSIZE** | Autoadjusts the image to the width or height of the control. |
+| **GDIP_IMAGECTX_ACTUALSIZE** | Shows the image with its actual size. |
+| **GDIP_IMAGECTX_FITTOWIDTH** | Adjusts the image to the width of the control. |
+| **GDIP_IMAGECTX_FITTOHEIGHT** | Adjusts the image to the height of the control. |
+| **GDIP_IMAGECTX_STRETCH** | Adjusts the image to the height and width of the control. |
+
+# <a name="GetImageHeight"></a>GetImageHeight
+
+Gets the height of the image, in pixels, currently loaded in the CImageCtx control.
+
+```
+FUNCTION GetImageHeight () AS LONG
+```
+
+# <a name="GetImagePtr"></a>GetImagePtr
+
+Gets a pointer to the GDI+ **GpImage** object used by the control to render the loaded image.
+
+```
+FUNCTION GetImagePtr () AS GpImage PTR
+```
+
+#### Return value
+
+A copy of the pointer to the **GpImage** object used by the control to render the loaded image.
+
+### Remarks
+
+The returned pointer can be used to call GDI+ Image functions.
+
+Don't dispose the returned pointer. The control keeps a copy of it and calls **GdipDisposeImage** when it is destroyed.
+
