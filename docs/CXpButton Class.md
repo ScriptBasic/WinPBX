@@ -250,3 +250,74 @@ SUB SetImageFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName AS WSTRING
 | *dimPercent* | Percent of dimming (1-99) |
 | *bGrayScale* | CTRUE or FALSE. Convert to gray scale. |
 | *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="BkBrush"></a>BkBrush
+
+Returns the background color brush.
+
+```
+PROPERTY BkBrush () AS HBRUSH
+```
+
+# <a name="ButtonBkColor"></a>ButtonBkColor
+
+Gets/sets the background color of button.
+
+```
+PROPERTY ButtonBkColor () AS COLORREF
+PROPERTY ButtonBkColor (BYVAL bkColor AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bkColor* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The background color of the button as a COLORREF value.
+
+#### Remarks
+
+Only available if the button is not themed. Call **DisableTheming** to disable theming.
+
+# <a name="ButtonBkColorDown"></a>ButtonBkColorDown
+
+Gets/sets the background color of button when it is down (pressed or toggled).
+
+```
+PROPERTY ButtonBkColorDown () AS COLORREF
+PROPERTY ButtonBkColorDown (BYVAL bkColorDown AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bkColorDown* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The background color of button when it is down (pressed or toggled).
+
+#### Remarks
+
+Only available if the button is not themed. Call **DisableTheming** to disable theming.
+
+# <a name="ButtonBkColorHot"></a>ButtonBkColorHot
+
+Gets/sets the background color of button when it is hot (the mouse is over it).
+
+```
+PROPERTY ButtonBkColorHot () AS COLORREF
+PROPERTY ButtonBkColorHot (BYVAL bkColorHot AS COLORREF)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bkColorHot* | A COLORREF color value. Use the FreeBasic BGR function. |
+
+#### Return value
+
+The background color of button when it is hot (the mouse is over it).
+
+#### Remarks
+
+Only available if the button is not themed. Call **DisableTheming** to disable theming.
