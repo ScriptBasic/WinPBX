@@ -2,7 +2,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [AfxAddIconToMenuItem](#AfxAddIconToMenuItem) | Converts a hIcon to a bitmap and adds it to the specified hbmpItem field of HMENU item. |
+| [AfxAddIconToMenuItem](#AfxAddIconToMenuItem) | Converts an icon handle to a bitmap and adds it to the specified *hbmpItem* field of HMENU item. |
 | [AfxCheckMenuItem](#AfxCheckMenuItem) | Checks a menu item. |
 | [AfxDisableMenuItem](#AfxDisableMenuItem) | Disables the specified menu item. |
 | [AfxEnableMenuItem](#AfxEnableMenuItem) | Enables the specified menu item. |
@@ -32,7 +32,7 @@
 
 # <a name="AfxAddIconToMenuItem"></a>AfxAddIconToMenuItem
 
-Converts a hIcon to a bitmap and adds it to the specified *hbmpItem field* of **HMENU** item.
+Converts an icon handle to a bitmap and adds it to the specified *hbmpItem field* of **HMENU** item.
 
 ```
 FUNCTION AfxAddIconToMenuItem (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
