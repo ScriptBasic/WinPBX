@@ -197,3 +197,25 @@ MFS_UNCHECKED The item is unchecked.
 MFS_UNHILITE  The item is not highlighed.
 ```
 
+# <a name="AfxGetMenuItemText"></a>AfxGetMenuItemText
+
+Retrieves the text of the specified menu item.
+
+```
+FUNCTION AfxGetMenuItemText (BYVAL hMenu AS HMENU, BYVAL uItem AS DWORD, _
+   BYVAL fByPosition AS LONG) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hMenu* | Handle to the menu that contains the menu item. |
+| *uItem* | The identifier or position of the menu item to get information about. The meaning of this parameter depends on the value of *fByPosition*. |
+| *fByPosition* | The meaning of *uItem*. If this parameter is FALSE, *uItem* is a menu item identifier. Otherwise, it is a menu item position. |
+
+#### Usage example
+
+```
+DIM cwsText AS CWSTR = AfxGetMenuItemText(hMenu, 1, TRUE)
+```
+
+
