@@ -280,3 +280,34 @@ The returned pointer can be used to call GDI+ Image functions.
 
 Don't dispose the returned pointer. The control keeps a copy of it and calls **GdipDisposeImage** when it is destroyed.
 
+# <a name="GetImageWidth"></a>GetImageWidth
+
+Gets the with of the image, in pixels, currently loaded in the **CImageCtx** control.
+
+```
+FUNCTION GetImageWidth () AS LONG
+```
+
+# <a name="GetInterpolationMode"></a>GetInterpolationMode
+
+Gets the interpolation mode used by GDI+.
+
+```
+FUNCTION GetInterpolationMode () AS LONG
+```
+
+#### Return value
+
+The current interpolation mode value.
+
+```
+InterpolationModeInvalid = -1
+InterpolationModeDefault = 0
+InterpolationModeLowQuality = 1
+InterpolationModeHighQuality = 2
+InterpolationModeBilinear = 3
+InterpolationModeBicubic = 4
+InterpolationModeNearestNeighbor = 5
+InterpolationModeHighQualityBilinear = 6
+InterpolationModeHighQualityBicubic = 7
+```
