@@ -3051,7 +3051,7 @@ FUNCTION CreateFont (BYREF wszFaceName AS WSTRING, BYVAL lPointSize AS LONG, _
    BYVAL bCharSet AS UBYTE = DEFAULT_CHARSET) AS HFONT
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *wszFaceName* | A string that specifies the typeface name of the font. The length of this string must not exceed 31 characters. The **EnumFontFamilies** function can be used to enumerate the typeface names of all currently available fonts. If *wszFaceName* is an empty string, GDI uses the first font that matches the other specified attributes. |
 | *lPointSize* | Specifies the height, in logical units, of the font's character cell or character. |
@@ -3746,7 +3746,7 @@ FUNCTION SetFont (BYREF wszFaceName AS WSTRING, BYVAL lPointSize AS LONG, _
    BYVAL bCharSet AS UBYTE = DEFAULT_CHARSET) AS LONG
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *wszFaceName* | A string that specifies the typeface name of the font. The length of this string must not exceed 31 characters. The **EnumFontFamilies** function can be used to enumerate the typeface names of all currently available fonts. If *wszFaceName* is an empty string, GDI uses the first font that matches the other specified attributes. |
 | *lPointSize* | Specifies the height, in logical units, of the font's character cell or character. |
@@ -3778,7 +3778,7 @@ FUNCTION SetWindowPos (BYVAL hwnd AS HWND, BYVAL hwndInsertAfter AS HWND, _
    BYVAL uFlags AS UINT) AS WINBOOL
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle to the window. |
 | *hwndInsertAfter* | A handle to the window to precede the positioned window in the Z order. This parameter must be a window handle or one of the following values.<br>**HWND_BOTTOM**: Places the window at the bottom of the Z order. If the *hWnd* parameter identifies a topmost window, the window loses its topmost status and is placed at the bottom of all other windows.<br>**HWND_NOTOPMOST**: Places the window above all non-topmost windows (that is, behind all topmost windows). This flag has no effect if the window is already a non-topmost window.<br>**HWND_TOP**: Places the window at the top of the Z order.<br>**HWND_TOPMOST**: Places the window above all non-topmost windows. The window maintains its topmost position even when it is deactivated.<br>For more information about how this parameter is used, see the **Remarks** section. |
@@ -3850,7 +3850,7 @@ Unscales an horizontal coordinate according the DPI setting.
 PROPERTY UnScaleX (BYVAL cx AS SINGLE) AS SINGLE
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *cx* | The value of the horizontal coordinate, in pixels. |
 
@@ -3870,7 +3870,7 @@ Unscales a vertical coordinate according the DPI setting.
 PROPERTY UnScaleY (BYVAL cy AS SINGLE) AS SINGLE
 ```
 
-| Constant   | Description |
+| Parameter   | Description |
 | ---------- | ----------- |
 | *cy* | The value of the vertical coordinate, in pixels. |
 
@@ -3891,7 +3891,7 @@ PROPERTY UserData (BYVAL idx AS LONG) AS LONG_PTR
 PROPERTY UserData (BYVAL idx AS LONG, BYVAL newValue AS LONG_PTR)
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *idx* | The index number of the user data value to retrieve, in the range 0 to 99 inclusive. |
 | *newValue* | The value to set. |
@@ -3914,7 +3914,7 @@ PROPERTY WindowExStyle () AS ULONG_PTR
 PROPERTY WindowExStyle (BYVAL dwExStyle AS ULONG_PTR)
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *dwExStyle* | The extended style(s) to set. |
 
@@ -3940,7 +3940,7 @@ PROPERTY WindowStyle () AS ULONG_PTR
 PROPERTY WindowStyle (BYVAL dwStyle AS ULONG_PTR)
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *dwStyle* | The style(s) to set. |
 
@@ -3967,7 +3967,7 @@ FUNCTION AfxCWindowPtr (BYVAL lParam AS LPARAM) AS CWindow PTR
 FUNCTION AfxCWindowPtr (BYVAL pCreateStruct AS CREATESTRUCT PTR) AS CWindow PTR
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle of the main window created with the **Create** method of the **CWindow** class. |
 | *lParam* | Value passed by Windows to the **WM_CREATE** message. |
@@ -3994,7 +3994,7 @@ Returns a pointer to the **CWindow** class given the handle of the window create
 FUNCTION AfxCWindowOwnerPtr (BYVAL hwnd AS HWND) AS CWindow PTR
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle of the window created with it or the handle of any of it's children windows or controls. |
 
@@ -4016,7 +4016,7 @@ Returns a pointer to the **CScrollWindow** class given the handle of the window 
 FUNCTION AfxScrollWindowPtr (BYVAL hwnd AS HWND) AS CScrollWindow PTR
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *hwnd* | Handle to the window attached to the **CScrollWindow** class. |
 
@@ -4041,7 +4041,7 @@ FUNCTION AfxInputBox (BYVAL hParent AS HWND = NULL, BYVAL x AS LONG = 0, _
    BYVAL bPassword AS BOOLEAN = FALSE) AS CWSTR
 ```
 
-| Constant   | Description |
+| Parameter  | Description |
 | ---------- | ----------- |
 | *hParent* | Optional. The handle of the parent main window. |
 | *x, y* | Optional. The location of the dialog. If both are 0, the dialog is centered. |
@@ -4055,12 +4055,8 @@ FUNCTION AfxInputBox (BYVAL hParent AS HWND = NULL, BYVAL x AS LONG = 0, _
 
 The edited string.
 
-#### Return value
-
-A pointer to the **CScrollWindow** class or NULL.
-
 #### Usage example
 
 ```
-DIM pWindow AS CScrollWindow PTR = AfxScrollWindowPtr(hwnd)
+DIM cws AS CWSTR = AfxInputBox(hwnd, 0, 0, "InputBox test", "What's your name?", "My name is José")
 ```
