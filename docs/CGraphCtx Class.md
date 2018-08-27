@@ -475,3 +475,20 @@ FUNCTION SetVirtualBufferSize (BYVAL nWidth AS LONG, BYVAL nHeight AS LONG) AS L
 #### Return value
 
 If the function succeeds, the return value is S_OK (0).
+
+# <a name="Stretchable"></a>Stretchable
+
+Gets/sets the value of the **Stretchable** property.
+
+```
+PROPERTY Stretchable () AS BOOLEAN
+PROPERTY Stretchable (BYVAL bStretchable AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bStretchable* | TRUE or FALSE. |
+
+#### Return value
+
+TRUE or FALSE.
