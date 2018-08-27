@@ -113,3 +113,140 @@ FUNCTION GetImage (BYVAL ImageState AS LONG) AS HANDLE
 #### Return value
 
 Returns the handle of the requested image.
+
+# <a name="hWindow"></a>hWindow
+
+Returns the handle of the button.
+
+```
+FUNCTION hWindow () AS HWND
+```
+
+# <a name="IsThemed"></a>IsThemed
+
+Returns CTRUE if themes are enabled or FALSE otherwise.
+
+```
+FUNCTION IsThemed () AS LONG
+```
+
+# <a name="Redraw"></a>Redraw
+
+Redraws the button.
+
+```
+SUB Redraw
+```
+
+# <a name="SetBitmap"></a>SetBitmap
+
+Sets the bitmap for the button.
+
+```
+SUB SetBitmap (BYVAL hBitmap AS HBITMAP, _
+   BYVAL ImageState AS LONG, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hBitmap* | Handle to the bitmap. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetBitmapFromFile"></a>SetBitmapFromFile
+
+Loads a bitmap from file and sets it as the image of tbe button.
+
+```
+SUB SetBitmapFromFile (BYVAL pwszPath AS WSTRING PTR, _
+   BYVAL ImageState AS LONG, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszPath* | Full path of the bitmap's file. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetIcon"></a>SetIcon
+
+Sets the icon for the button.
+
+```
+SUB SetIcon (BYVAL hIcon AS HICON, _
+   BYVAL ImageState AS LONG, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hIcon* | Handle to the icon. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetIconFromFile"></a>SetIconFromFile
+
+Loads an icon from file and sets it as the image of tbe button.
+
+```
+SUB SetIconFromFile (BYVAL pwszPath AS WSTRING PTR, _
+   BYVAL ImageState AS LONG, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszPath* | Full path of the icon's file. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetImage"></a>SetImage
+
+Sets the image for the button.
+
+```
+SUB SetImage (BYVAL hImage AS HANDLE, BYVAL ImageType AS LONG, _
+   BYVAL ImageState AS LONG, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hImage* | Handle to the image. |
+| *ImageType* | IMAGE_ICON or IMAGE_BITMAP. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetImageFromFile"></a>SetImageFromFile
+
+Loads an image from file and sets it as the image of the button.
+
+```
+SUB SetImageFromFile (BYREF wszPath AS WSTRING, BYVAL ImageState AS LONG, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, _
+   BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszPath* | Full path of the image's file. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *dimPercent* | Percent of dimming (1-99) |
+| *bGrayScale* | CTRUE or FALSE. Convert to gray scale. |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
+
+# <a name="SetImageFromFile"></a>SetImageFromFile
+
+Loads an image from file and sets it as the image of the button.
+
+```
+SUB SetImageFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName AS WSTRING, _
+   BYVAL ImageState AS LONG, BYVAL dimPercent AS LONG = 0, _
+   BYVAL bGrayScale AS LONG = FALSE, BYVAL fRedraw AS LONG = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
+| *wszImageName* | Name of the image in the resource file (.RES). If the image resource uses an integral identifier, wszImage should begin with a number symbol (#) followed by the identifier in an ASCII format, e.g., "#998". Otherwise, use the text identifier name for the image. Only images embedded as raw data (type RCDATA) are valid. These must be icons in format .png, .jpg, .gif, .tiff. |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+| *dimPercent* | Percent of dimming (1-99) |
+| *bGrayScale* | CTRUE or FALSE. Convert to gray scale. |
+| *fRedraw* | Optional. CTRUE or FALSE (redraws the button to reflect the changes). |
