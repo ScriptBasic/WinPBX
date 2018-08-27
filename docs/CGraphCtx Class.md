@@ -399,7 +399,7 @@ FUNCTION PrintImage (BYVAL bStretch AS BOOLEAN = FALSE, _
 | *bStretch* | Optional. Stretch the image. |
 | *nStretchMode* | Optional. Stretching mode.<br>Default value = InterpolationModeHighQualityBicubic. |
 
-#### InterpolationMode Enumeration
+### InterpolationMode Enumeration
 
 | Constant   | Description |
 | ---------- | ----------- |
