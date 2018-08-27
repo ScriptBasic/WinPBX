@@ -81,3 +81,35 @@ A pointer to the new instance of the class.
 | [TextMargin](#TextMargin) | Gets/sets the margin of the text of the button. |
 | [Toggle](#Toggle) | Gets/sets button to toggle state (CTRUE) or to pushbutton state (FALSE). |
 | [ToggleState](#ToggleState) | Gets/sets the toggle state: pushed (CTRUE) or unpushed (FALSE). |
+
+# <a name="DisableTheming"></a>DisableTheming
+
+Disables theming.
+
+```
+SUB DisableTheming
+```
+
+# <a name="EnableTheming"></a>EnableTheming
+
+Enables theming.
+
+```
+SUB EnableTheming
+```
+
+# <a name="GetImage"></a>GetImage
+
+Returns the handle of the image.
+
+```
+FUNCTION GetImage (BYVAL ImageState AS LONG) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ImageState* | One of the following values:<br>XPBI_NORMAL = 1, XPBI_HOT = 2, XPBI_DISABLED = 3 |
+
+#### Return value
+
+Returns the handle of the requested image.
