@@ -373,7 +373,7 @@ Ok (0) or an error code.
 
 # <a name="Redraw"></a>Redraw
 
-Redraws the CImageCtx control.
+Redraws the **CImageCtx** control.
 
 ```
 SUB Redraw
@@ -381,7 +381,7 @@ SUB Redraw
 
 # <a name="SetBkColor"></a>SetBkColor
 
-Sets the background RGB color used by the CImageCtx control.
+Sets the background RGB color used by the **CImageCtx** control.
 
 ```
 FUNCTION SetBkColor (BYVAL clr AS LONG, BYVAL fRedraw AS BOOLEAN = FALSE) AS LONG
