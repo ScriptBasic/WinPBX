@@ -57,7 +57,7 @@ A pointer to the new instance of the class.
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| [BkBrush](#BkBrush( | Returns the background color brush. |
+| [BkBrush](#BkBrush) | Returns the background color brush. |
 | [ButtonBkColor](#ButtonBkColor) | Gets/sets the background color of button. |
 | [ButtonBkColorDown](#ButtonBkColorDown) | Gets/sets the background color of button when it is down (pressed or toggled). |
 | [ButtonBkColorHot](#ButtonBkColorHot) | Gets/sets the background color of button when it is hot (the mouse is over it). |
