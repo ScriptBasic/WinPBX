@@ -27,14 +27,13 @@ CONSTRUCTOR CComplex (BYREF cpx AS _complex)
 
 #### Examples
 
-'''
+```
 DIM cpx AS CComplex = TYPE(3, 4)
 DIM cpx2 AS CComplex = cpx
-'''
-
-'''
+```
+```
 DIM cpx AS CComplex = TYPE<_complex>(3, 4)
-'''
+```
 
 ### Operators
 
