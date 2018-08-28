@@ -1190,3 +1190,74 @@ DIM cpx AS CComplex = CComplex(1, 1)
 Print cpx.CReciprocal
 Output: 0.5 -0.5 * i
 ```
+
+# <a name="CSec"></a>CSec
+
+Returns the complex secant of this complex number.
+
+```
+FUNCTION CSec () AS CComplex
+```
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CSec
+Output: 0.4983370305551869 +0.591083841721045 * i
+```
+
+# <a name="CSecH"></a>CSecH
+
+Returns the complex hyperbolic secant of this complex number.
+
+```
+FUNCTION CSecH () AS CComplex
+```
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CSecH
+Output: 0.4983370305551869 -0.591083841721045 * i
+```
+
+# <a name="CSet"></a>CSet
+
+Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number.
+
+```
+PROPERTY CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x, y* | Double values. |
+
+```
+DIM cpx AS CComplex : cpx.CSet = 3, 4
+DIM cpx AS CComplex : cpx.CRect = 3, 4
+```
+
+# <a name="CSin"></a>CSin
+
+Returns the sign of this complex number.<br>
+If number is greater than zero, then CSgn returns 1.<br>
+If number is equal to zero, then CSgn returns 0.<br>
+If number is less than zero, then CSgn returns -1.
+
+```
+PROPERTY CSin () AS CSin
+```
+
+# <a name="CSinH"></a>CSinH
+
+Returns the complex hyperbolic sine of this complex number.
+
+```
+FUNCTION CSinH () AS CComplex
+```
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CSinH
+Output: 0.6349639147847361 +1.298457581415977 * i
+
+```
