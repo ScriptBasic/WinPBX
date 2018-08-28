@@ -39,8 +39,8 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Operator LET](#Operator1) | Assigns a value to a **CCUR** variable. |
-| [CAST operators](#Operator2) | Converts a CCUR into another data type. |
+| [Operator LET](#Operator1) | Assigns a value to a **CComplex** variable. |
+| [CAST operators](#Operator2) | Converts a **CComplex** into another data type. |
 | [Comparison operators](#Operator3) | Compares currency numbers. |
 | [Math operators](#Operator4) | Add, subtract, multiply or divide currency numbers. |
 
@@ -55,7 +55,7 @@ OPERATOR LET (BYREF z AS _complex)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *z* | An instance of the CComplex class or a _complex structure. |
+| *z* | An instance of the **CComplex** class or a **\_complex** structure. |
 
 ```
 DIM cpx AS CComplex = TYPE(3, 4)
@@ -71,7 +71,7 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 
 # <a name="Operator2"></a>Operator CAST
 
-Returns the underlying **_complex** number.
+Returns the underlying **\_complex** number.
 
 ```
 OPERATOR CAST () AS _complex
