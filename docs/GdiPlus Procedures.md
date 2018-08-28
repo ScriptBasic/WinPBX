@@ -50,8 +50,6 @@ FUNCTION AfxGdipAddIconFromFile (BYVAL hIml AS HIMAGELIST, BYREF wszFileName AS 
    BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE) AS LONG
 ```
 
-#### Return value
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hIml* | Handle to the image list. |
@@ -71,8 +69,6 @@ Loads an image from a resource file, converts it to an icon and adds it to speci
 FUNCTION AfxGdipAddIconFromRes (BYVAL hIml AS HIMAGELIST, BYVAL hInstance AS HINSTANCE, _
    BYREF wszFileName AS WSTRING, BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE) AS LONG
 ```
-
-#### Return value
 
 | Parameter  | Description |
 | ---------- | ----------- |
@@ -94,8 +90,6 @@ Converts an image stored in a buffer into a bitmap and returns the handle.
 FUNCTION AfxGdipBitmapFromBuffer (BYVAL pBuffer AS ANY PTR, BYVAL bufferSize AS SIZE_T_, _
    BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
 ```
-
-#### Return value
 
 | Parameter  | Description |
 | ---------- | ----------- |
@@ -120,8 +114,6 @@ FUNCTION AfxGdipBitmapFromFile (BYREF wszFileName AS WSTRING, BYVAL dimPercent A
    BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
 ```
 
-#### Return value
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszFileName* | Path of the image to load and convert. |
@@ -144,8 +136,6 @@ FUNCTION AfxGdipBitmapFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName 
    BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
 ```
 
-#### Return value
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *hInstance* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
@@ -167,3 +157,15 @@ Returns the version of Gdiplus.dll, e.g. 601 for version 6.01.
 ```
 FUNCTION AfxGdipDllVersion () AS LONG
 ```
+
+# <a name="AfxGdipGetEncoderClsid"></a>AfxGdipGetEncoderClsid
+
+Retrieves the encoder's clsid.
+
+```
+FUNCTION AfxGdipGetEncoderClsid (BYREF wszMimeType AS WSTRING) AS GUID
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMimeType* | The mime type. |
