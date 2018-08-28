@@ -539,8 +539,8 @@ FUNCTION GDIP_BGRA (BYVAL b AS UBYTE, BYVAL g AS UBYTE, BYVAL r AS UBYTE, BYVAL 
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *g* | The green component value. |
 | *b*| The bue ponent value. |
+| *g* | The green component value. |
 | *r* | The red component value. |
 | *a* | The alpha component value. |
 
