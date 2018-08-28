@@ -14,8 +14,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireCylinder](#AfxGlutCylinder) | Draws a wireframe cylinder. |
 | [AfxGlutSolidDodecahedron](#AfxGlutDodecahedron) | Draws a solid dodecahedron. |
 | [AfxGlutWireDodecahedron](#AfxGlutDodecahedron) | Draws a wireframe dodecahedron. |
-| [AfxGlutSolidIcosahedron](#AfxGlutSolidIcosahedron) | Draws a solid icosahedron. |
-| [AfxGlutWireIcosahedron](#AfxGlutWireIcosahedron) | Draws a wireframe icosahedron. |
+| [AfxGlutSolidIcosahedron](#AfxGlutIcosahedron) | Draws a solid icosahedron. |
+| [AfxGlutWireIcosahedron](#AfxGlutIcosahedron) | Draws a wireframe icosahedron. |
 | [AfxGlutSolidOctahedron](#AfxGlutSolidOctahedron) | Draws a solid octahedron. |
 | [AfxGlutWireOctahedron](#AfxGlutWireOctahedron) | Draws a wireframe octahedron. |
 | [AfxGlutSolidRhombicDodecahedron](#AfxGlutSolidRhombicDodecahedron) | Draws a solid rhombic dodecahedron. |
@@ -89,4 +89,12 @@ Renders a solid dodecahedron (12-sided Platonic solid). The **AfxGlutSolidDodeca
 ```
 SUB AfxGlutSolidDodecahedron
 SUB AfxGlutWireDodecahedron
+```
+
+# <a name="AfxGlutIcosahedron"></a>AfxGlutSolidIcosahedron / AfxGlutWireIcosahedron
+
+Draws a solid icosahedron (twenty-sided Platonic solid). The **AfxGlutSolidIcosahedron** procedure renders an icosahedron whose corners are each a unit distance from the origin. The length of each side is slightly greater than one. Two of the corners lie on the positive and negative X-axes.
+```
+SUB AfxGlutSolidIcosahedron
+SUB AfxGlutWireIcosahedron
 ```
