@@ -40,3 +40,25 @@ Assorted GDI+ helper procedures.
 | [GDIP_RECT](#GDIP_RECT) | Returns a GpRect structure initialized with the specified values for the x, y, width, and height components. |
 | [GDIP_RECTF](#GDIP_RECTF) | Returns a GpRectF structrure initialized with the specified values for the x, y, width, and height components. |
 | [GDIP_XRGB](#GDIP_XRGB) | Returns a XRGB color value initialized with the specified values for the red, green, and blue components. |
+
+# <a name="AfxGdipAddIconFromFile"></a>AfxGdipAddIconFromFile
+
+Loads an image from a file, converts it to an icon and adds it to specified image list.
+
+```
+FUNCTION AfxGdipAddIconFromFile (BYVAL hIml AS HIMAGELIST, BYREF wszFileName AS WSTRING, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE) AS LONG
+```
+
+#### Return value
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hIml* | Handle to the image list. |
+| *wszFileName* | Path of the image to load and convert. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+
+#### Return value
+
+Returns the index of the image if successful, or -1 otherwise.
