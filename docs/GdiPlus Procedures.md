@@ -591,6 +591,18 @@ FUNCTION GDIP_GetBlue (BYVAL argbcolor AS COLORREF) AS BYTE
 | ---------- | ----------- |
 | *argbcolor* | The ARGB color value. |
 
+# <a name="GDIP_GetGreen"></a>GDIP_GetGreen
+
+Returns the green component of an ARGB color value.
+
+```
+FUNCTION GDIP_GetGreen (BYVAL argbcolor AS COLORREF) AS BYTE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *argbcolor* | The ARGB color value. |
+
 # <a name="GDIP_GetRed"></a>GDIP_GetRed
 
 Returns the red component of an ARGB color value.
