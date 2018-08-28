@@ -875,7 +875,6 @@ FUNCTION CDiv (BYREF z AS CComplex) AS CComplex
 FUNCTION CDiv (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
 ```
 
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *z* | A complex number. |
@@ -922,7 +921,6 @@ Divides by a real number.
 FUNCTION CDivReal (BYVAL x AS DOUBLE) AS CComplex
 ```
 
-
 | Parameter  | Description |
 | ---------- | ----------- |
 | *x* | A double value. |
@@ -932,4 +930,222 @@ FUNCTION CDivReal (BYVAL x AS DOUBLE) AS CComplex
 ```
 DIM cpx AS CComplex = CComplex(5, 6)
 cpx = cpx.CDivReal(10)
+```
+
+# <a name="CExp"></a>CExp
+
+Returns the complex exponential of this complex number.
+
+```
+FUNCTION CExp () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CExp
+Output: 1.468693939915885 +2.287355287178842 * i
+```
+
+# <a name="CImag"></a>CImag
+
+Gets/sets the imaginary part of a complex number.
+
+```
+PROPERTY CImag () AS DOUBLE
+PROPERTY CImag (BYVAL x AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex : cpx.CImag = 4
+DIM d AS DOUBLE = cpx.CImag
+```
+
+# <a name="CLog"></a>CLog
+
+Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis.
+
+```
+FUNCTION CLog () AS CComplex
+FUNcTION CLog (BYVAL baseValue AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *baseValue* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CLog
+Output: 0.3465735902799727 +0.7853981633974483 * i
+```
+```
+DIM cpx AS CComplex = CComplex(0, 0)
+PRINT cpx.CLog
+Output: -1.#INF
+```
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CLog(10)
+Output: 0.1505149978319906 +0.3410940884604603 * i
+```
+
+# <a name="CLog10"></a>CLog10
+
+Returns the complex base-10 logarithm of this complex number.
+
+```
+FUNCTION CLog10 () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CLog10
+Output: 0.1505149978319906 +0.3410940884604603 * i
+```
+
+# <a name="CLog10"></a>CLog10
+
+Returns the natural logarithm of the magnitude of the complex number z, log|z|. It allows an accurate evaluation of \log|z| when |z| is close to one. The direct evaluation of log(CAbs(z)) would lead to a loss of precision in this case.
+
+```
+FUNCTION CLogAbs () AS DOUBLE
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1.1, 0.1)
+PRINT cpx.CLogAbs
+Output: 0.09942542937258279
+```
+
+# <a name="CMul"></a>CMul
+
+Multiplies by a complex number.<br>
+Multiplies by a real and an imaginary number.
+
+```
+FUNCTION CMul (BYREF z AS CComplex) AS CComplex
+FUNCTION CMul (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | A complex number. |
+| *x, y* | Double values representing the real and imaginary parts. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+DIM cpx2 AS CComplex = CComplex(2, 3)
+cpx = cpx.CMul(cpx2)
+' --or-- cpx = cpx.CMul(CComplex(2, 3))
+```
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CMul(2, 3)
+```
+
+# <a name="CMulImag"></a>CMulImag
+
+Multiplies by an imaginary number.
+
+```
+FUNCTION CMulImag (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cx = cpx.CMulImag(3)
+```
+
+# <a name="CMulReal"></a>CMulReal
+
+Multiplies by a real number.
+
+```
+FUNCTION CMulReal (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CMulReal(2)
+```
+
+# <a name="CNegate"></a>CNegate / CNeg / CNegative
+
+Negates the complex number.
+
+```
+FUNCTION CNeg (BYREF z AS _complex) AS _complex
+FUNCTION CNegate (BYREF z AS _complex) AS _complex
+FUNCTION CNegative (BYREF z AS _complex) AS _complex
+```
+
+# <a name="CPolar"></a>CPolar
+
+Sets the complex number from the polar representation.
+
+```
+FUNCTION CPolar (BYVAL r AS DOUBLE, BYVAL theta AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *r* | The modulus of complex number. |
+| *theta* | The angle with the positive direction of x-axis. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(3, 4)
+```
+
+# <a name="CPow"></a>CPow
+
+Returns this complex number raised to a complex power.<br>
+Returns this complex number raised to a real number.
+
+```
+FUNCTION CPow (BYREF power AS CComplex) AS CComplex
+FUNCTION CPow (BYVAL power AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *power* | TA complex or a double number. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+DIM b AS CComplex = CComplex(2, 2)
+PRINT cpx.CPow(b)
+Output: -0.2656539988492412 +0.3198181138561362 * i
+```
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CPow(2)
+Output: 1.224606353822378e-016 +2 * i
 ```
