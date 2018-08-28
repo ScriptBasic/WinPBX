@@ -441,3 +441,28 @@ FUNCTION CACosHReal (BYVAL value AS DOUBLE) AS CComplex
 | Parameter  | Description |
 | ---------- | ----------- |
 | *value* | A double value representing the real part of a complex number. |
+
+# <a name="CArcCosReal"></a>CArcCosReal / CACosReal
+
+Returns the complex arccosine of a real number.<br>
+For a between -1 and 1, the function returns a real value in the range \[0, pi].<br>
+For a less than -1 the result has a real part of pi and a negative imaginary part.<br>
+For a greater than 1 the result is purely imaginary and positive.
+
+```
+FUNCTION CArcCosReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CACosReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing the real part of a complex number. |
+
+#### Example
+
+```
+DIM cpx AS CComplex
+print cpx.CArcCosReal(1) ' = 0 0 * i
+print cpx.CArcCosReal(-1) ' = 3.141592653589793 0 * i
+print cpx.CArcCosReal(2) ' = 0 +1.316957896924817 * i
+```
