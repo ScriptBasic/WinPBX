@@ -719,3 +719,217 @@ DIM cpx AS CComplex
 PRINT cpx.CArcSinReal(1)
 Output: 1.570796326794897 +0 * i
 ```
+
+# <a name="CArg"></a>CArg / CArgument / CPhase
+
+Returns the argument of this complex number.
+
+```
+FUNCTION CArg () AS DOUBLE
+FUNCTION CArgument () AS DOUBLE
+FUNCTION CPhase () AS DOUBLE
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 0)
+PRINT cpx.CArg
+Output: 0.0
+```
+```
+DIM cpx AS CComplex = CComplex(0, 1)
+PRINT cpx.CArg
+Output: 1.570796326794897
+```
+```
+DIM cpx AS CComplex = CComplex(0, -1)
+PRINT cpx.CArg
+Output: -1.570796326794897
+```
+```
+DIM cpx AS CComplex = CComplex(-1, 0)
+PRINT cpx.CArg
+Output: 3.141592653589793
+```
+
+# <a name="CConjugate"></a>CConjugate / CConj
+
+Returns the complex conjugate of this complex number.
+
+```
+FUNCTION CConjugate () AS CComplex
+FUNCTION CConj () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CConjugate
+```
+
+# <a name="CCos"></a>CCos
+
+Returns the complex conjugate of this complex number.
+
+```
+FUNCTION CCos () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCos
+Output: 0.8337300251311491 -0.9888977057628651 * i
+```
+
+# <a name="CCosH"></a>CCosH
+
+Returns the complex hyperbolic cosine of this complex number.
+
+```
+FUNCTION CCosH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCosH
+Output: 0.8337300251311491 +0.9888977057628651 * i
+```
+
+# <a name="CCot"></a>CCot
+
+Returns the complex cotangent of this complex number.
+
+```
+FUNCTION CCot () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCot
+Output: 0.2176215618544027 -0.8680141428959249 * i
+```
+
+# <a name="CCotH"></a>CCotH
+
+Returns the complex hyperbolic cotangent of this complex number.
+
+```
+FUNCTION CCotH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCotH
+Output: 0.8680141428959249 -0.2176215618544029 * i
+```
+
+# <a name="CCsc"></a>CCsc
+
+Returns the complex cosecant of this complex number.
+
+```
+FUNCTION CCsc () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCsc
+Output: 0.6215180171704285 -0.3039310016284265 * i
+```
+
+# <a name="CCscH"></a>CCscH
+
+Returns the complex hyperbolic cosecant of this complex number.
+
+```
+FUNCTION CCscH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CCscH
+Output: 0.3039310016284265 -0.6215180171704285 * i
+```
+
+# <a name="CDiv"></a>CDiv
+
+Divides by a complex number.<br>
+Divides by a real and an imaginary number.
+
+```
+FUNCTION CDiv (BYREF z AS CComplex) AS CComplex
+FUNCTION CDiv (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
+```
+
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | A complex number. |
+| *x, y* | Double values representing the real and imaginary parts. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+DIM cpx2 AS CComplex = CComplex(2, 3)
+cpx = cpx.CDiv(cpx2)
+' --or-- cpx = cpx.CDiv(CComplex(2, 3))
+```
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CDiv(2, 3)
+```
+
+# <a name="CDivImag"></a>CDivImag
+
+Divides by an imaginary number.
+
+```
+FUNCTION CDivImag (BYVAL x AS DOUBLE) AS CComplex
+```
+
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CDivImag(10)
+```
+
+# <a name="CDivReal"></a>CDivReal
+
+Divides by a real number.
+
+```
+FUNCTION CDivReal (BYVAL x AS DOUBLE) AS CComplex
+```
+
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CDivReal(10)
+```
