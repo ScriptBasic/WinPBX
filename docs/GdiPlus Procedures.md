@@ -617,7 +617,7 @@ FUNCTION GDIP_GetRed (BYVAL argbcolor AS COLORREF) AS BYTE
 
 # <a name="GDIP_POINT"></a>GDIP_POINT
 
-Returns a GpPoint color value initialized with the specified values for the x and y coordinates.
+Returns a GpPoint color value initialized with the specified values for the *x* and *y* coordinates.
 
 ```
 FUNCTION GDIP_POINT (BYVAL x AS LONG, BYVAL y AS LONG) AS GpPoint
