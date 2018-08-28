@@ -44,6 +44,37 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 | [Comparison operators](#Operator3) | Compares currency numbers. |
 | [Math operators](#Operator4) | Add, subtract, multiply or divide currency numbers. |
 
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [ArcCosH](#ArcCosH) | Calculates the inverse hyperbolic cosine. |
+| [ArcTanH](#ArcTanH) | Returns the inverse hyperbolic tangent of a number. |
+| [CAbs](#CAbs) | Returns the magnitude of this complex number. Alias: **CMagnitude**. |
+| [CAbs2](#CAbs2) | Returns the squared magnitude of this complex number, otherwise known as the complex norm. Alias: **CNorm**. |
+| [CAdd](#CAdd) | Adds a complex number. |
+| [CAddImag](#CAddImag) | Adds an imaginary number. |
+| [CAddReal](#CAddReal) | Adds a real number. |
+| [CArcCos](#CArcCos) | Returns the complex arccosine of this complex number. Alias: **CACos**. |
+| [CArcCosH](#CArcCosH) | Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1. Alias: **CACosH**. |
+| [CArcCosHReal](#CArcCosHReal) | Returns the complex arccosine of this complex number. Alias: **CACos**. |
+| [CArcCosHReal](#CArcCosHReal) | Returns the complex hyperbolic arccosine of a real number. Alias: **CACosHReal**. |
+| [CArcCosReal](#CArcCosReal) | Returns the complex arccosine of a real number. Alias: **CACosReal**. |
+| [CArcCot](#CArcCot) | Returns the complex arccotangent of this complex number. Alias: **CACot**. |
+| [CArcCotH](#CArcCotH) | Returns the complex hyperbolic arccotangent of this complex number. Alias: **CACotH**. |
+| [CArcCotH](#CArcCotH) | Returns the complex hyperbolic arccotangent of this complex number. Alias: **CACotH**. |
+| [CArcCsc](#CArcCsc) | Returns the complex arccosecant of this complex number. Alias: **CACsc**. |
+| [CArcCscH](#CArcCscH) | Returns the complex hyperbolic arccosecant of this complex number. Alias: **CACscH**. |
+| [CArcCscReal](#CArcCscReal) | Returns the complex arccosecant of a real number. Alias: **CACscReal**. |
+| [CArcSec](#CArcSec) | Returns the complex arcsecant of this complex number. Alias: **CASec**. |
+| [CArcSecH](#CArcSecH) | Returns the complex hyperbolic arcsecant of this complex number. Alias: **CASecH**. |
+| [CArcSecReal](#CArcSecReal) | Returns the complex arcsecant of a real number. Alias: **CASecReal**. |
+| [CArcSin](#CArcSin) | Returns the complex arcsine of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1. Alias. **CASin**. |
+| [CArcSinH](#CArcSinH) | Returns the complex hyperbolic arcsine of this complex number. The branch cuts are on the imaginary axis, below -i and above i. Alias: **CASinH**. |
+| [CArcSinReal](#CArcSinReal) | Returns the complex arcsine of a real number. Alias: **CASinReal**. |
+| [CArcTan](#CArcTan) | Returns the complex arctangent of this complex number. The branch cuts are on the imaginary axis, below -i and above i. Alias: **CATan**. |
+| [CArcTanH](#CArcTanH) | Returns the complex hyperbolic arctangent of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1. Alias: **CATanH**. |
+
 # <a name="Operator1"></a>Operator LET (=)
 
 Assigns a value to a CComplex variable.
