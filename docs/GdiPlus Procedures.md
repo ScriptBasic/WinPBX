@@ -111,4 +111,51 @@ If the function succeeds, the return value is the handle of the created icon or 
 
 If the function fails, the return value is NULL.
 
+# <a name="AfxGdipBitmapFromFile"></a>AfxGdipBitmapFromFile
 
+Loads an image from a file, converts it to a bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipBitmapFromFile (BYREF wszFileName AS WSTRING, BYVAL dimPercent AS LONG = 0, _
+   BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+#### Return value
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Path of the image to load and convert. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created bitmap.
+
+If the function fails, the return value is NULL.
+
+# <a name="AfxGdipBitmapFromRes"></a>AfxGdipBitmapFromRes
+
+Loads an image from a resource, converts it to a bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipBitmapFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName AS WSTRING, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+#### Return value
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
+| *wszFileName* | Name of the image in the resource file (.RES). If the image resource uses an integral identifier, wszImage should begin with a number symbol (#) followed by the identifier in an ASCII format, e.g., "#998". Otherwise, use the text identifier name for the image. Only images embedded as raw data (type RCDATA) are valid. These must be icons in format .png, .jpg, .gif, .tiff. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created bitmap.
+
+If the function fails, the return value is NULL.
