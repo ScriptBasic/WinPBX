@@ -255,3 +255,50 @@ FUNCTION AfxGdipIconFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName AS
 If the function succeeds, the return value is the handle of the created icon.
 
 If the function fails, the return value is NULL.
+
+# <a name="AfxGdipImageFromBuffer"></a>AfxGdipImageFromBuffer
+
+Converts an image stored in a buffer into an icon or bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipImageFromBuffer (BYVAL pBuffer AS ANY PTR, BYVAL bufferSize AS SIZE_T_, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, _
+   BYVAL imageType AS LONG = IMAGE_ICON, BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pBuffer* | Pointer to the buffer. |
+| *bufferSize* | Size of the buffer |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *imageType* | Optional. IMAGE_ICON or IMAGE_BITMAP. Default value: IMAGE_ICON. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image type is IMAGE_ICON or the bitmap is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon or bitmap.
+
+If the function fails, the return value is NULL.
+
+#### Usage example
+
+```
+DIM wszFileName AS WSTRING * MAX_PATH
+wszFileName = ExePath & "\arrow_left_256.png"
+DIM bufferSize AS SIZE_T_
+DIM nFile AS LONG
+nFile = FREEFILE
+OPEN wszFileName FOR BINARY AS nFile
+IF ERR THEN EXIT FUNCTION
+bufferSize = LOF(nFile)
+DIM pBuffer AS UBYTE PTR
+pBuffer = CAllocate(1, bufferSize)
+GET #nFile, , *pBuffer, bufferSize
+CLOSE nFile
+IF pBuffer THEN
+   ImageList_ReplaceIcon(hImageList, -1, AfxGdipIconFromBuffer(pBuffer, ImageSize))
+   DeAllocate(pBuffer)
+END IF
+```
+
