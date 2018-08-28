@@ -299,3 +299,44 @@ Same as **FormatCurrency** but without adding the currency symbol.
 DIM c AS CCUR = 12345.1234
 PRINT c.FormatNumber   --> 12.345,12 (Spain)
 ```
+
+# <a name="GetFraction"></a>GetFraction
+
+Returns the fractional component of a currency value.
+
+```
+FUNCTION GetFraction () AS SHORT
+```
+
+# <a name="GetInteger"></a>GetInteger
+
+Returns the integer component of a currency value.
+
+```
+FUNCTION GetInteger () AS LONGLONG
+```
+
+# <a name="Round"></a>Round
+
+Rounds the currency to a specified number of decimal places.
+
+```
+FUNCTION Round (BYVAL nDecimals AS LONG) AS CCUR
+```
+
+# <a name="SetValues"></a>SetValues
+
+Sets the integer and fractional components.
+
+```
+FUNCTION SetValues (BYVAL nInteger AS LONGLONG, BYVAL nFraction AS SHORT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nInteger* | The value to be assigned to the integer component of the m_currency data member. The sign of the integer component must match the sign of the existing fractional component. *nInteger* must be in the range CY_MIN_INTEGER to CY_MAX_INTEGER inclusive. |
+| *nFraction* | The value to be assigned to the fractional component of the m_currency data member.The sign of the fractional component must the same as the integer component, and the value must be in range -9999 (CY_MIN_FRACTION) to +9999 (CY_MAX_FRACTION). |
+
+#### Remarks
+
+Based on 4 digits. To set .2, pass 2000, to set .0002, pass a 2.
