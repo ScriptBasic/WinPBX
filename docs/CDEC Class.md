@@ -69,7 +69,7 @@ DIM dec AS CDEC = CDEC("-79,228,162,514,264,337,593,543,950.335", 1033)
 
 | Name       | Description |
 | ---------- | ----------- |
-| [OPerator LET](#Operator1) | Assigns a value to a **CCUR** variable. |
+| [Operator LET](#Operator1) | Assigns a value to a **CCUR** variable. |
 | [CAST operators](#Operator2) | Converts a CCUR into another data type. |
 | [Operator \*](#Operator3) | Returns the address of the underlying **CURRENCY** structure. |
 | [Comparison operators](#Operator4) | Compares currency numbers. |
