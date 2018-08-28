@@ -378,3 +378,19 @@ FUNCTION AfxGdipImageFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName A
 If the function succeeds, the return value is the handle of the created icon or bitmap.
 
 If the function fails, the return value is NULL.
+
+# <a name="AfxGdipInit"></a>AfxGdipInit
+
+Initializes GDI+.
+
+```
+FUNCTION AfxGdipInit (BYVAL version AS UINT32 = 1) AS ULONG_PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *version* | Optional. The GDI+ version number. Must be 1. |
+
+#### Return value
+
+Returns a token on success or 0 in failure. The returned token will be used in the call to GdiplusShutdown when you have finished using GDI+.
