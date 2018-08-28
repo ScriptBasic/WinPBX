@@ -9,6 +9,8 @@ TYPE _complex
 END TYPE
 ```
 
+**Include file**: CComplex.inc.
+
 ### Constructors
 
 Create a new instance of the **CComplex** class and assigns the values passed to it.
@@ -307,3 +309,32 @@ cpx2 /= cpx1
 DIM cpx1 AS CComplex = CComplex(3, 4)
 DIM cpx2 AS CComplex = -cpx1
 ```
+
+# <a name="ArcCosH"></a>ArcCosH
+
+Calculates the inverse hyperbolic cosine.
+
+```
+FUNCTION ArcCosH (BYVAL x AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM AS double pi = 3.1415926535
+DIM AS double x, y
+DIM c AS CComplex
+x = cosh(pi / 4)
+y = c.ArcCosH(x)
+print "cosh = ", pi/4, x
+print "ArcCosH = ", x, y
+
+Output:
+cosh =  0.785398163375      1.324609089232506
+acosh = 1.324609089232506   0.7853981633749999
+```
+
