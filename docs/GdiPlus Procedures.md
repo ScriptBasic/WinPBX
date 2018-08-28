@@ -302,3 +302,26 @@ IF pBuffer THEN
 END IF
 ```
 
+# <a name="AfxGdipImageFromFile"></a>AfxGdipImageFromFile
+
+Loads an image from a file, converts it to an icon or bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipImageFromFile (BYREF wszFileName AS WSTRING, BYVAL dimPercent AS LONG = 0, _
+   BYVAL bGrayScale AS LONG = FALSE, BYVAL imageType AS LONG = IMAGE_ICON, _
+   BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Path of the image to load and convert. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *imageType* | Optional. IMAGE_ICON or IMAGE_BITMAP. Default value: IMAGE_ICON. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image type is IMAGE_ICON or the bitmap is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon or bitmap.
+
+If the function fails, the return value is NULL.
