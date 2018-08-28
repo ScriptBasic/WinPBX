@@ -86,3 +86,29 @@ FUNCTION AfxGdipAddIconFromRes (BYVAL hIml AS HIMAGELIST, BYVAL hInstance AS HIN
 
 Returns the index of the image if successful, or -1 otherwise.
 
+# <a name="AfxGdipBitmapFromBuffer"></a>AfxGdipBitmapFromBuffer
+
+Converts an image stored in a buffer into a bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipBitmapFromBuffer (BYVAL pBuffer AS ANY PTR, BYVAL bufferSize AS SIZE_T_, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+#### Return value
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pBuffer* | Pointer to the buffer. |
+| *bufferSize* | Size of the buffer |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon or bitmap.
+
+If the function fails, the return value is NULL.
+
+
