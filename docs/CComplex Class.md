@@ -2,23 +2,23 @@
 
 Complex numbers are represented using the type _complex. The real and imaginary part are stored in the members x and y.
 
-'''
+```
 TYPE _complex
    x AS DOUBLE   ' real part
    y AS DOUBLE   ' imaginary part
 END TYPE
-'''
+```
 
 ### Constructors
 
 Create a new instance of the **CComplex** class and assigns the values passed to it.
 
-'''
+```
 CONSTRUCTOR CComplex
 CONSTRUCTOR CComplex (BYVAL x AS DOUBLE = 0, BYVAL y AS DOUBLE = 0)
 CONSTRUCTOR CComplex (BYREF cpx AS CComplex)
 CONSTRUCTOR CComplex (BYREF cpx AS _complex)
-'''
+```
 
 | Parameter  | Description |
 | ---------- | ----------- |
