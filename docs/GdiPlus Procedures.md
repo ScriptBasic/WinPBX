@@ -528,3 +528,178 @@ FUNCTION GDIP_ARGB (BYVAL a AS UBYTE, BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL 
 #### Return value
 
 The ARGB value.
+
+# <a name="GDIP_BGRA"></a>GDIP_BGRA
+
+Returns a BGRA color value initialized with the specified values for the blue, green, red and alpha components.
+
+```
+FUNCTION GDIP_BGRA (BYVAL b AS UBYTE, BYVAL g AS UBYTE, BYVAL r AS UBYTE, BYVAL a AS UBYTE) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *g* | The green component value. |
+| *b*| The bue ponent value. |
+| *r* | The red component value. |
+| *a* | The alpha component value. |
+
+#### Return value
+
+The GBRA value.
+
+# <a name="GDIP_COLOR"></a>GDIP_COLOR
+
+Returns an ARGB color value initialized with the specified values for the alpha, red, green, and blue components.
+
+```
+FUNCTION GDIP_COLOR (BYVAL a AS UBYTE, BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL b AS UBYTE) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *a* | The alpha component value. |
+| *r* | The red component value. |
+| *g* | The green component value. |
+| *b*| The bue ponent value. |
+
+#### Return value
+
+The ARGB value.
+
+# <a name="GDIP_GetAlpha"></a>GDIP_GetAlpha
+
+Returns the alpha component of an ARGB color value.
+
+```
+FUNCTION GDIP_GetAlpha (BYVAL argbcolor AS COLORREF) AS BYTE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *argbcolor* | The ARGB color value. |
+
+# <a name="GDIP_GetBlue"></a>GDIP_GetBlue
+
+Returns the blue component of an ARGB color value.
+
+```
+FUNCTION GDIP_GetBlue (BYVAL argbcolor AS COLORREF) AS BYTE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *argbcolor* | The ARGB color value. |
+
+# <a name="GDIP_GetRed"></a>GDIP_GetRed
+
+Returns the red component of an ARGB color value.
+
+```
+FUNCTION GDIP_GetRed (BYVAL argbcolor AS COLORREF) AS BYTE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *argbcolor* | The ARGB color value. |
+
+# <a name="GDIP_POINT"></a>GDIP_POINT
+
+Returns a GpPoint color value initialized with the specified values for the x and y coordinates.
+
+```
+FUNCTION GDIP_POINT (BYVAL x AS LONG, BYVAL y AS LONG) AS GpPoint
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x coordinate. |
+| *y* | The y coordinate. |
+
+# <a name="GDIP_POINTF"></a>GDIP_POINTF
+
+Returns a GpPointF color value initialized with the specified values for the x and y coordinates.
+
+```
+FUNCTION GDIP_POINTF (BYVAL x AS SINGLE, BYVAL y AS SINGLE) AS GpPointF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x coordinate. |
+| *y* | The y coordinate. |
+
+# <a name="GDIP_RGBA"></a>GDIP_RGBA
+
+Returns a RGBA color value initialized with the specified values for the red, green, blue and alpha components.
+
+```
+FUNCTION GDIP_RGBA (BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL b AS UBYTE, BYVAL a AS UBYTE) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *r* | The red component value. |
+| *g* | The green component value. |
+| *b*| The bue ponent value. |
+| *a* | The alpha component value. |
+
+#### Return value
+
+The RGBA value.
+
+# <a name="GDIP_RECT"></a>GDIP_RECT
+
+Returns a GpRect structure initialized with the specified values for the x, y, width, and height components.
+
+```
+FUNCTION GDIP_RECT (BYVAL x AS LONG, BYVAL y AS LONG, BYVAL nWidth AS LONG, BYVAL nHeight AS LONG) AS GpRect
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x coordinate. |
+| *y* | The y coordinate. |
+| *nWidth*| The width. |
+| *nHeight* | The height. |
+
+#### Return value
+
+The filled GpRect structure.
+
+# <a name="GDIP_RECTF"></a>GDIP_RECTF
+
+Returns a GpRectF structure initialized with the specified values for the x, y, width, and height components.
+
+```
+FUNCTION GDIP_RECT (BYVAL x AS SINGLE, BYVAL y AS SINGLE, BYVAL nWidth AS SINGLE, BYVAL nHeight AS SINGLE) AS GpRectF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x coordinate. |
+| *y* | The y coordinate. |
+| *nWidth*| The width. |
+| *nHeight* | The height. |
+
+#### Return value
+
+The filled GpRectF structure.
+
+# <a name="GDIP_XRGB"></a>GDIP_XRGB
+
+Returns a XRGB color value initialized with the specified values for the red, green, and blue components.
+
+```
+FUNCTION GDIP_XRGB (BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL b AS UBYTE) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *g* | The green component value. |
+| *b*| The bue ponent value. |
+| *a* | The alpha component value. |
+
+#### Return value
+
+The XRGB value.
