@@ -12,8 +12,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireCube](#AfxGlutCube) | Draws a wireframe cube. |
 | [AfxGlutSolidCylinder](#AfxGlutCylinder) | Draws a solid cylinder. |
 | [AfxGlutWireCylinder](#AfxGlutCylinder) | Draws a wireframe cylinder. |
-| [AfxGlutSolidDodecahedron](#AfxGlutSolidDodecahedron) | Draws a solid dodecahedron. |
-| [AfxGlutWireDodecahedron](#AfxGlutWireDodecahedron) | Draws a wireframe dodecahedron. |
+| [AfxGlutSolidDodecahedron](#AfxGlutDodecahedron) | Draws a solid dodecahedron. |
+| [AfxGlutWireDodecahedron](#AfxGlutDodecahedron) | Draws a wireframe dodecahedron. |
 | [AfxGlutSolidIcosahedron](#AfxGlutSolidIcosahedron) | Draws a solid icosahedron. |
 | [AfxGlutWireIcosahedron](#AfxGlutWireIcosahedron) | Draws a wireframe icosahedron. |
 | [AfxGlutSolidOctahedron](#AfxGlutSolidOctahedron) | Draws a solid octahedron. |
@@ -81,3 +81,12 @@ SUB AfxGlutWireCylinder (BYVAL radius AS DOUBLE, BYVAL height AS DOUBLE, _
 | *height* | The desired height of the cylinder. |
 | *slices* | The desired number of slices around the cylinder. |
 | *stacks* | The desired number of segments between the base and the top of the cylinder (the number of points, including the tip, is stacks + 1). |
+
+# <a name="AfxGlutDodecahedron"></a>AfxGlutSolidDodecahedron / AfxGlutWireDodecahedron
+
+Renders a solid dodecahedron (12-sided Platonic solid). The **AfxGlutSolidDodecahedron** procedure renders a dodecahedron whose corners are each a distance of sqrt(3) from the origin. The length of each side is sqrt(5)-1. There are twenty corners; interestingly enough, eight of them coincide with the corners of a cube with sizes of length 2.
+
+```
+SUB AfxGlutSolidDodecahedron
+SUB AfxGlutWireDodecahedron
+```
