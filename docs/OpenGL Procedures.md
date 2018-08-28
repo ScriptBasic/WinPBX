@@ -2,7 +2,7 @@
 
 Assorted helper OpenGL procedures.
 
-Include File: AfxGlut.inc.
+**Include File**: AfxGlut.inc.
 
 | Name       | Description |
 | ---------- | ----------- |
