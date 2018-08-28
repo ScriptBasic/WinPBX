@@ -6,8 +6,8 @@ Assorted helper OpenGL procedures.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [AfxGlutSolidCone](#AfxGlutSolidCone) | Draws a solid cone. |
-| [AfxGlutWireCone](#AfxGlutWireCone) | Draws a wireframe cone. |
+| [AfxGlutSolidCone](#AfxGlutCone) | Draws a solid cone. |
+| [AfxGlutWireCone](#AfxGlutCone) | Draws a wireframe cone. |
 | [AfxGlutSolidCube](#AfxGlutSolidCube) | Draws a solid cube. |
 | [AfxGlutWireCube](#AfxGlutWireCube) | Draws a wireframe cube. |
 | [AfxGlutSolidCylinder](#AfxGlutSolidCylinder) | Draws a solid cylinder. |
@@ -28,3 +28,19 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireTetrahedron](#AfxGlutWireTetrahedron) | Renders a wireframe tetrahedron. |
 | [AfxGlutSolidTorus](#AfxGlutSolidTorus) | Renders a solid torus (doughnut shape). |
 | [AfxGlutWireTorus](#AfxGlutWireTorus) | Renders a wireframe torus (doughnut shape). |
+
+# <a name="AfxGlutCone"></a>AfxGlutSolidCone / AfxGlutWireCone
+
+Renders a right circular cone with a base centered at the origin and in the X-Y plane and its tip on the positive Z-axis. The wire cone is rendered with triangular elements.
+
+```
+SUB AfxGlutSolidCone (BYVAL dbase AS DOUBLE, BYVAL height AS DOUBLE, _
+   BYVAL slices AS LONG, BYVAL stacks AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbase* | The desired radius of the base of the cone. |
+| *height* | The desired height of the cone. |
+| *slices* | The desired number of slices around the cone. |
+| *stacks* | The desired number of segments between the base and the tip of the cone (the number of points, including the tip, is stacks + 1). |
