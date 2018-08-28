@@ -44,7 +44,7 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 | [Comparison operators](#Operator3) | Compares currency numbers. |
 | [Math operators](#Operator4) | Add, subtract, multiply or divide currency numbers. |
 
-### Methods
+### Methods and Properties
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -74,6 +74,45 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 | [CArcSinReal](#CArcSinReal) | Returns the complex arcsine of a real number. Alias: **CASinReal**. |
 | [CArcTan](#CArcTan) | Returns the complex arctangent of this complex number. The branch cuts are on the imaginary axis, below -i and above i. Alias: **CATan**. |
 | [CArcTanH](#CArcTanH) | Returns the complex hyperbolic arctangent of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1. Alias: **CATanH**. |
+| [CArcTanHReal](#CArcTanHReal) | Returns the complex hyperbolic arctangent of a real number. Alias: **CATanHReal**. |
+| [CArg](#CArcTanHReal) | Returns the argument of this complex number. Alias: **CArgument**, **CPhase**. |
+| [CConjugate](#CConjugate) | Returns the complex conjugate of this complex number. Alias: **CConj**. |
+| [CCos](#CCos) | Returns the complex cosine of this complex number. |
+| [CCosH](#CCosH) | Returns the complex hyperbolic cosine of this complex number. |
+| [CCot](#CCot) | Returns the complex cotangent of this complex number. |
+| [CCotH](#CCotH) | Returns the complex hyperbolic cotangent of this complex number. |
+| [CCsc](#CCsc) | Returns the complex cosecant of this complex number. |
+| [CCscH](#CCscH) | Returns the complex hyperbolic cosecant of this complex number. |
+| [CDiv](#CDiv) | Divides by a complex number. |
+| [CDivImag](#CDivImag) | Divides by an imaginary number. |
+| [CDivReal](#CDivReal) | Divides by a real number. |
+| [CExp](#CExp) | Returns the complex exponential of this complex number. |
+| [CImag](#CImag) | Gets/sets the imaginary part of a complex number. |
+| [CLog](#CLog) | Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis. |
+| [CLog10](#CLog10) | Returns the complex base-10 logarithm of this complex number. |
+| [CLogAbs](#CLogAbs) | Returns the natural logarithm of the magnitude of a complex number. |
+| [CMul](#CMul) | Multiplies by a complex number. |
+| [CMulImag](#CMulImag) | Multiplies by an imaginary number. |
+| [CMulReal](#CMulReal) | Multiplies by a real number. |
+| [CNegate](#CNegate) | Negates the complex number. Aliases: **CNeg**, **CNegative**. |
+| [CPolar](#CPolar) | Sets the complex number from the polar representation. |
+| [CPow](#CPow) | Returns this complex number raised to a complex power or to a real number. |
+| [CReal](#CReal) | Gets/sets the real part of a complex number. |
+| [CReciprocal](#CReciprocal) | Returns the inverse, or reciprocal, of a complex number. Alias: **CInverse**. |
+| [CSec](#CSec) | Returns the complex secant of this complex number. |
+| [CSecH](#CSecH) | Returns the complex hyperbolic secant of this complex number. |
+| [CSet](#CSet) | Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number. Alias: **CRect**. |
+| [CSgn](#CSgn) | Returns the sign of this complex number. |
+| [CSin](#CSin) | Returns the complex sine of this complex number. |
+| [CSinH](#CSinH) | Returns the complex hyperbolic sine of this complex number. |
+| [CSqr](#CSqr) | Returns the square root of the complex number z. The branch cut is the negative real axis. The result always lies in the right half of the complex plane. Alias: **CSqrt**. |
+| [CSub](#CSub) | Subtracts a complex number. |
+| [CSubImag](#CSubImag) | Subtracts an imaginary number. |
+| [CSubReal](#CSubReal) | Subtracts a real number. |
+| [CSwap](#CSwap) | Exchanges the contents of two complex numbers. |
+| [CTan](#CTan) | Returns the complex tangent of this complex number. |
+| [CTanH](#CTanH) | Returns the complex hyperbolic tangent of this complex number. |
+| [IsInfinity](#IsInfinity) | Determines whether the argument is an infinity.  Alias: **IsInf**. |
 
 # <a name="Operator1"></a>Operator LET (=)
 
