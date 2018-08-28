@@ -551,3 +551,20 @@ DIM cpx AS CComplex = CComplex(1, 1)
 print cpx.CArcCscReal(1)
 Output: 1.570796326794897 0 * i
 ```
+
+# <a name="CArcSec"></a>CArcSec / CASec
+
+Returns the complex arcsecant of this complex number.
+
+```
+FUNCTION CArcSec () AS CComplex
+FUNCTION CASec () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex
+print cpx.CArcSec(1.1)
+Output: 1.118517879643706 +0.5306375309525176 * i
+```
