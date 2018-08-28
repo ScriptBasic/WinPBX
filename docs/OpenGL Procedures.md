@@ -158,3 +158,23 @@ Renders a tetrahedron whose corners are each a distance of one from the origin. 
 SUB AfxGlutSolidTetrahedron
 SUB AfxGlutWireTetrahedron
 ```
+
+# <a name="AfxGlutTorus"></a>AfxGlutSolidTorus / AfxGlutWireTorus
+
+Renders a torus centered at the origin of the modeling coordinate system. The torus is circularly symmetric about the Z-axis and starts at the positive X-axis.
+
+```
+SUB AfxGlutSolidTorus (BYVAL innerRadius AS DOUBLE, BYVAL outerRadius AS DOUBLE, _
+   BYVAL nsides AS LONG, BYVAL rings AS LONG)
+```
+```
+SUB AfxGlutWireTorus (BYVAL innerRadius AS DOUBLE, BYVAL outerRadius AS DOUBLE, _
+   BYVAL nsides AS LONG, BYVAL rings AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *innerRadius* | Inner radius of the torus. |
+| *outerRadius* | Outer radius of the torus. |
+| *nsides* | Number of sides for each radial section. |
+| *rings* | Number of radial divisions for the torus. |
