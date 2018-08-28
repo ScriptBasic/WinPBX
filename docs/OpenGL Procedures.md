@@ -10,8 +10,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireCone](#AfxGlutCone) | Draws a wireframe cone. |
 | [AfxGlutSolidCube](#AfxGlutCube) | Draws a solid cube. |
 | [AfxGlutWireCube](#AfxGlutCube) | Draws a wireframe cube. |
-| [AfxGlutSolidCylinder](#AfxGlutSolidCylinder) | Draws a solid cylinder. |
-| [AfxGlutWireCylinder](#AfxGlutWireCylinder) | Draws a wireframe cylinder. |
+| [AfxGlutSolidCylinder](#AfxGlutCylinder) | Draws a solid cylinder. |
+| [AfxGlutWireCylinder](#AfxGlutCylinder) | Draws a wireframe cylinder. |
 | [AfxGlutSolidDodecahedron](#AfxGlutSolidDodecahedron) | Draws a solid dodecahedron. |
 | [AfxGlutWireDodecahedron](#AfxGlutWireDodecahedron) | Draws a wireframe dodecahedron. |
 | [AfxGlutSolidIcosahedron](#AfxGlutSolidIcosahedron) | Draws a solid icosahedron. |
@@ -61,3 +61,23 @@ SUB AfxGlutWireCube (BYVAL dbSize AS DOUBLE)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *dbSize* | The desired length of an edge of the cube. |
+
+# <a name="AfxGlutCylinder"></a>AfxGlutSolidCylinder / AfxGlutWireCylinder
+
+Renders a right circular cone with a base centered at the origin and in the X-Y plane and its tip on the positive Z-axis. The wire cone is rendered with triangular elements.
+
+```
+SUB AfxGlutSolidCylinder (BYVAL radius AS DOUBLE, BYVAL height AS DOUBLE, _
+   BYVAL slices AS LONG, BYVAL stacks AS LONG)
+```
+```
+SUB AfxGlutWireCylinder (BYVAL radius AS DOUBLE, BYVAL height AS DOUBLE, _
+   BYVAL slices AS LONG, BYVAL stacks AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *radius* | The desired radius of the cylinder. |
+| *height* | The desired height of the cylinder. |
+| *slices* | The desired number of slices around the cylinder. |
+| *stacks* | The desired number of segments between the base and the top of the cylinder (the number of points, including the tip, is stacks + 1). |
