@@ -169,3 +169,24 @@ FUNCTION AfxGdipGetEncoderClsid (BYREF wszMimeType AS WSTRING) AS GUID
 | Parameter  | Description |
 | ---------- | ----------- |
 | *wszMimeType* | The mime type. |
+
+# <a name="AfxGdipGetImageSizeFromFile"></a>AfxGdipGetImageSizeFromFile
+
+Returns the size of the image.
+
+```
+FUNCTION AfxGdipGetImageSizeFromFile (BYREF wszFileName AS WSTRING, BYVAL nWidth AS DWORD PTR, _
+   BYVAL nHeight AS DWORD PTR) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | The filename path. |
+| *nWidth* | Pointer to a DWORD variable that will receive the width, in pixels, of the image. |
+| *nHeight* | Pointer to a DWORD variable that will receive the height, in pixels, of the image. |
+
+#### Return value
+
+If the function succeeds, it returns Ok, which is an element of the Status enumeration.
+
+If the function fails, it returns one of the other elements of the Status enumeration.
