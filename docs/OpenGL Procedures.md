@@ -20,8 +20,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireOctahedron](#AfxGlutOctahedron) | Draws a wireframe octahedron. |
 | [AfxGlutSolidRhombicDodecahedron](#AfxGlutRhombicDodecahedron) | Draws a solid rhombic dodecahedron. |
 | [AfxGlutWireRhombicDodecahedron](#AfxGlutRhombicDodecahedron) | Draws a wireframe rhombic dodecahedron. |
-| [AfxGlutSolidSphere](#AfxGlutSolidSphere) | Renders a solid sphere centered at the origin of the modeling coordinate system. |
-| [AfxGlutWireSphere](#AfxGlutWireSphere) | Renders a wireframe sphere centered at the origin of the modeling coordinate system. |
+| [AfxGlutSolidSphere](#AfxGlutSphere) | Renders a solid sphere centered at the origin of the modeling coordinate system. |
+| [AfxGlutWireSphere](#AfxGlutSphere) | Renders a wireframe sphere centered at the origin of the modeling coordinate system. |
 | [AfxGlutSolidTeapot](#AfxGlutSolidTeapot) | Renders a solid teapot of the desired size, centered at the origin. |
 | [AfxGlutSolidTeapot](#AfxGlutSolidTeapot) | Renders a wireframe teapot of the desired size, centered at the origin. |
 | [AfxGlutSolidTetrahedron](#AfxGlutSolidTetrahedron) | Renders a solid tetrahedron. |
@@ -84,7 +84,7 @@ SUB AfxGlutWireCylinder (BYVAL radius AS DOUBLE, BYVAL height AS DOUBLE, _
 
 # <a name="AfxGlutDodecahedron"></a>AfxGlutSolidDodecahedron / AfxGlutWireDodecahedron
 
-Renders a solid dodecahedron (12-sided Platonic solid). The **AfxGlutSolidDodecahedron** procedure renders a dodecahedron whose corners are each a distance of sqrt(3) from the origin. The length of each side is sqrt(5)-1. There are twenty corners; interestingly enough, eight of them coincide with the corners of a cube with sizes of length 2.
+Renders a dodecahedron whose corners are each a distance of sqrt(3) from the origin. The length of each side is sqrt(5)-1. There are twenty corners; interestingly enough, eight of them coincide with the corners of a cube with sizes of length 2.
 
 ```
 SUB AfxGlutSolidDodecahedron
@@ -93,7 +93,7 @@ SUB AfxGlutWireDodecahedron
 
 # <a name="AfxGlutIcosahedron"></a>AfxGlutSolidIcosahedron / AfxGlutWireIcosahedron
 
-Draws a solid icosahedron (twenty-sided Platonic solid). The **AfxGlutSolidIcosahedron** procedure renders an icosahedron whose corners are each a unit distance from the origin. The length of each side is slightly greater than one. Two of the corners lie on the positive and negative X-axes.
+Renders an icosahedron whose corners are each a unit distance from the origin. The length of each side is slightly greater than one. Two of the corners lie on the positive and negative X-axes.
 
 ```
 SUB AfxGlutSolidIcosahedron
@@ -102,7 +102,7 @@ SUB AfxGlutWireIcosahedron
 
 # <a name="AfxGlutOctahedron"></a>AfxGlutSolidOctahedron / AfxGlutWireOctahedron
 
-Draws a solid octahedron (eight-sided Platonic solid). The **AfxGlutSolidOctahedron** procedure renders an octahedron whose corners are each a distance of one from the origin. The length of each side is sqrt(2). The corners are on the positive and negative coordinate axes.
+Renders an octahedron whose corners are each a distance of one from the origin. The length of each side is sqrt(2). The corners are on the positive and negative coordinate axes.
 
 ```
 SUB AfxGlutSolidOctahedron
@@ -117,3 +117,18 @@ Draws a solid rhombic dodecahedron (twelve-sided semi-regular solid). The **AfxG
 SUB AfxGlutSolidRhombicDodecahedron
 SUB AfxGlutWireRhombicDodecahedron
 ```
+
+# <a name="AfxGlutSphere"></a>AfxGlutSolidSphere / AfxGlutWireSphere
+
+Renders a sphere centered at the origin of the modeling coordinate system. The north and south poles of the sphere are on the positive and negative Z-axes respectively and the prime meridian crosses the positive X-axis.
+
+```
+SUB AfxGlutSolidSphere (BYVAL radius AS DOUBLE, BYVAL slices AS LONG, BYVAL stacks AS LONG)
+SUB AfxGlutWireSphere (BYVAL radius AS DOUBLE, BYVAL slices AS LONG, BYVAL stacks AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *radius* | The desired radius of the sphere. |
+| *slices* | The desired number of slices (divisions in the longitudinal direction) in the sphere. |
+| *stacks* | The desired number of stacks (divisions in the latitudinal direction) in the sphere. The number of points in this direction, including the north and south poles, is stacks+1. |
