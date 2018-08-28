@@ -393,3 +393,20 @@ DIM cpx AS CComplex = CComplex(2, 3)
 PRINT cpx.CAbs2
 Output: 13
 ```
+
+# <a name="CArcCos"></a>CArcCos / CACos
+
+Returns the complex arccosine of this complex number.
+
+```
+FUNCTION CArcCos () AS CComplex
+FUNCTION CACos () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+print cpx.CArcCos(z)
+Output: 0.9045568943023814 -1.061275061905036 * i
+```
