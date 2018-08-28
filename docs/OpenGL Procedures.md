@@ -64,7 +64,7 @@ SUB AfxGlutWireCube (BYVAL dbSize AS DOUBLE)
 
 # <a name="AfxGlutCylinder"></a>AfxGlutSolidCylinder / AfxGlutWireCylinder
 
-Renders a right circular cone with a base centered at the origin and in the X-Y plane and its tip on the positive Z-axis. The wire cone is rendered with triangular elements.
+Draws a cylinder.
 
 ```
 SUB AfxGlutSolidCylinder (BYVAL radius AS DOUBLE, BYVAL height AS DOUBLE, _
