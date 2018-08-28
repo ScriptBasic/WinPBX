@@ -585,3 +585,24 @@ DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CArcSecH
 Output: 0.5306375309525178 -1.118517879643706 * i
 ```
+
+# <a name="CArcSecReal"></a>CArcSecReal / CASecReal
+
+Returns the complex arcsecant of a real number.
+
+```
+FUNCTION CArcSecReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CASecReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing the real part of a complex number. |
+
+#### Example
+
+```
+DIM cpx AS CComplex
+print cpx.CArcSecReal(1.1)
+Output: 0.4296996661514246 0 * i
+```
