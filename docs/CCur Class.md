@@ -340,3 +340,20 @@ FUNCTION SetValues (BYVAL nInteger AS LONGLONG, BYVAL nFraction AS SHORT) AS HRE
 #### Remarks
 
 Based on 4 digits. To set .2, pass 2000, to set .0002, pass a 2.
+
+# <a name="Round"></a>Round
+
+Returns the currency as a VT_CY variant.
+
+```
+FUNCTION ToVar () AS VARIANT
+```
+
+#### Remarks
+
+Can be used to assign a currency directly to a CVAR variable.
+
+```
+DIM c AS CCUR = 12345.1234
+DIM cv AS CVAR = c.ToVar
+```
