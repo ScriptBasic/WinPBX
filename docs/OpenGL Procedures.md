@@ -22,8 +22,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireRhombicDodecahedron](#AfxGlutRhombicDodecahedron) | Draws a wireframe rhombic dodecahedron. |
 | [AfxGlutSolidSphere](#AfxGlutSphere) | Renders a solid sphere centered at the origin of the modeling coordinate system. |
 | [AfxGlutWireSphere](#AfxGlutSphere) | Renders a wireframe sphere centered at the origin of the modeling coordinate system. |
-| [AfxGlutSolidTeapot](#AfxGlutSolidTeapot) | Renders a solid teapot of the desired size, centered at the origin. |
-| [AfxGlutSolidTeapot](#AfxGlutSolidTeapot) | Renders a wireframe teapot of the desired size, centered at the origin. |
+| [AfxGlutSolidTeapot](#AfxGlutTeapot) | Renders a solid teapot of the desired size, centered at the origin. |
+| [AfxGlutWireTeapot](#AfxGlutTeapot) | Renders a wireframe teapot of the desired size, centered at the origin. |
 | [AfxGlutSolidTetrahedron](#AfxGlutSolidTetrahedron) | Renders a solid tetrahedron. |
 | [AfxGlutWireTetrahedron](#AfxGlutWireTetrahedron) | Renders a wireframe tetrahedron. |
 | [AfxGlutSolidTorus](#AfxGlutSolidTorus) | Renders a solid torus (doughnut shape). |
@@ -132,3 +132,16 @@ SUB AfxGlutWireSphere (BYVAL radius AS DOUBLE, BYVAL slices AS LONG, BYVAL stack
 | *radius* | The desired radius of the sphere. |
 | *slices* | The desired number of slices (divisions in the longitudinal direction) in the sphere. |
 | *stacks* | The desired number of stacks (divisions in the latitudinal direction) in the sphere. The number of points in this direction, including the north and south poles, is stacks+1. |
+
+# <a name="AfxGlutTeapot"></a>AfxGlutSolidTeapot / AfxGlutWireTeapot
+
+Renders a solid teapot of the desired size, centered at the origin.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbSize* | The desired size of the teapot. |
+
+```
+SUB AfxGlutSolidTeapot
+SUB AfxGlutWireTeapot
+```
