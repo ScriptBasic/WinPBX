@@ -263,3 +263,25 @@ FUNCTION SaveBimapAsTiff (BYREF wszFileName AS WSTRING) AS LONG
 | *wszFileName* | Absolute path name of the file. |
 | *wszMimeType* | The mime type.<br>"image/bmp" = Bitmap (.bmp)<br>"image/gif" = GIF (.gif)<br>"image/jpeg" = JPEG (.jpg)<br>"image/png" = PNG (.png)<br>"image/tiff" = TIFF (.tiff) |
 
+
+# <a name="SetPixel"></a>SetPixel
+
+Sets the pixel at the specified coordinates to the specified color.
+
+```
+FUNCTION SetPixel (BYVAL x AS LONG, BYVAL y AS LONG, BYVAL crColor AS COLORREF) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x-coordinate, in logical units, of the point to be set. |
+| *y* | The y-coordinate, in logical units, of the point to be set. |
+| *crColor* | The color to be used to paint the point. To create a COLORREF color value, use the BGR macro. |
+
+#### Return value
+
+If the function succeeds, the return value is the RGB value that the function sets the pixel to. This value may differ from the color specified by **crColor**; that occurs when an exact match for the specified color cannot be found. If the function fails, the return value is CLR_INVALID (hFFFFFFFF defined in Wingdi.bi).
+
+#### Remarks
+
+The function fails if the pixel coordinates lie outside of the current clipping region.
