@@ -159,3 +159,11 @@ FUNCTION AfxGdipBitmapFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName 
 If the function succeeds, the return value is the handle of the created bitmap.
 
 If the function fails, the return value is NULL.
+
+# <a name="AfxGdipDllVersion"></a>AfxGdipDllVersion
+
+Returns the version of Gdiplus.dll, e.g. 601 for version 6.01.
+
+```
+FUNCTION AfxGdipDllVersion () AS LONG
+```
