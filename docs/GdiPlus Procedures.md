@@ -190,3 +190,46 @@ FUNCTION AfxGdipGetImageSizeFromFile (BYREF wszFileName AS WSTRING, BYVAL nWidth
 If the function succeeds, it returns Ok, which is an element of the Status enumeration.
 
 If the function fails, it returns one of the other elements of the Status enumeration.
+
+# <a name="AfxGdipIconFromBuffer"></a>AfxGdipIconFromBuffer
+
+Converts an image stored in a buffer into an icon and returns the handle.
+
+```
+FUNCTION AfxGdipIconFromBuffer (BYVAL pBuffer AS ANY PTR, BYVAL bufferSize AS SIZE_T_, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pBuffer* | Pointer to the buffer. |
+| *bufferSize* | Size of the buffer |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon.
+
+If the function fails, the return value is NULL.
+
+# <a name="AfxGdipIconFromFile"></a>AfxGdipIconFromFile
+
+Loads an image from a file, converts it to an icon and returns the handle.
+
+```
+FUNCTION AfxGdipIconFromFile (BYREF wszFileName AS WSTRING, BYVAL dimPercent AS LONG = 0, _
+   BYVAL bGrayScale AS LONG = FALSE) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Path of the image to load and convert. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon.
+
+If the function fails, the return value is NULL.
