@@ -448,3 +448,52 @@ FUNCTION AfxGdipPrintHBITMAP (BYVAL hbmp AS HBITMAP, BYVAL bStretch AS BOOLEAN =
 #### Return value
 
 Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
+
+# <a name="AfxGdipSaveHBITMAPToFile"></a>AfxGdipSaveHBITMAPToFile
+
+Saves a Windows bitmap to file.
+
+```
+FUNCTION AfxGdipSaveHBITMAPToFile (BYVAL hbmp AS HBITMAP, BYREF wszFileName AS WSTRING, _
+   BYREF wszMimeType AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hbmp* | Handle to a Windows bitmap. |
+| *wszFileName* | Path name for the image to be saved. |
+| *wszMimeType* | The mime type.<br>"image/bmp" = Bitmap (.bmp)<br>"image/gif" = GIF (.gif)<br>"image/jpeg" = JPEG (.jpg)<br>"image/png" = PNG (.png)<br>"image/tiff" = TIFF (.tiff) |
+
+#### Return value
+
+If the method succeeds, it returns Ok, which is an element of the Status enumeration.
+
+If the method fails, it returns one of the other elements of the Status enumeration.
+
+# <a name="AfxGdipSaveImageToFile"></a>AfxGdipSaveImageToFile
+
+Saves a GDI+ image to file.
+
+```
+FUNCTION AfxGdipSaveImageToFile (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING, _
+   BYREF wszMimeType AS WSTRING) AS LONG
+```
+```
+FUNCTION AfxGdipSaveImageToBmp (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION AfxGdipSaveImageToJpeg (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION AfxGdipSaveImageToPng (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION AfxGdipSaveImageToGif (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION AfxGdipSaveImageToTiff (BYVAL pImage AS GpImage PTR, BYREF wszFileName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pImage* | Pointer to the GDI+ image to save. |
+| *wszFileName* | Path name for the image to be saved. |
+| *wszMimeType* | The mime type.<br>"image/bmp" = Bitmap (.bmp)<br>"image/gif" = GIF (.gif)<br>"image/jpeg" = JPEG (.jpg)<br>"image/png" = PNG (.png)<br>"image/tiff" = TIFF (.tiff) |
+
+#### Return value
+
+If the method succeeds, it returns Ok, which is an element of the Status enumeration.
+
+If the method fails, it returns one of the other elements of the Status enumeration.
