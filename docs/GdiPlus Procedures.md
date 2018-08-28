@@ -497,3 +497,15 @@ FUNCTION AfxGdipSaveImageToTiff (BYVAL pImage AS GpImage PTR, BYREF wszFileName 
 If the method succeeds, it returns Ok, which is an element of the Status enumeration.
 
 If the method fails, it returns one of the other elements of the Status enumeration.
+
+# <a name="AfxGdipShutdown"></a>AfxGdipShutdown
+
+Cleans up resources used by Windows GDI+. Each call to **GdiplusStartup** should be paired with a call to **GdiplusShutdown**.
+
+```
+SUB AfxGdipShutdown (BYVAL token AS ULONG_PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *token* | Token returned by a previous call to **GdiplusStartup**. |
