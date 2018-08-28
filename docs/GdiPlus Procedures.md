@@ -684,7 +684,8 @@ The filled GpRect structure.
 Returns a GpRectF structure initialized with the specified values for the x, y, width, and height components.
 
 ```
-FUNCTION GDIP_RECT (BYVAL x AS SINGLE, BYVAL y AS SINGLE, BYVAL nWidth AS SINGLE, BYVAL nHeight AS SINGLE) AS GpRectF
+FUNCTION GDIP_RECT (BYVAL x AS SINGLE, BYVAL y AS SINGLE, BYVAL nWidth AS SINGLE, _
+   BYVAL nHeight AS SINGLE) AS GpRectF
 ```
 
 | Parameter  | Description |
