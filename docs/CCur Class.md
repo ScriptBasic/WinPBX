@@ -249,5 +249,41 @@ Same as **FormatNumber** but adding the currency symbol.
 
 ```
 DIM c AS CCUR = 12345.1234
-PRINT c.FormatNumber   --> 12.345,12 € (Spain)
+PRINT c.FormatCurrency   --> 12.345,12 € (Spain)
+```
+
+# <a name="FormatNumber"></a>FormatNumber
+
+Formats a currency into a string form.
+
+```
+FUNCTION FormatCurrency (BYVAL iNumDig AS LONG = -1, BYVAL ilncLead AS LONG = -2, _
+   BYVAL iUseParens AS LONG = -2, BYVAL iGroup AS LONG = -2, BYVAL dwFlags AS DWORD = 0) AS STRING
+```
+```
+FUNCTION FormatCurrencyW (BYVAL iNumDig AS LONG = -1, BYVAL ilncLead AS LONG = -2, _
+   BYVAL iUseParens AS LONG = -2, BYVAL iGroup AS LONG = -2, BYVAL dwFlags AS DWORD = 0) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iNumDig* | The number of digits to pad to after the decimal point. Specify -1 to use the system default value. |
+| *ilncLead* | Specifies whether to include the leading digit on numbers.<br>-2 : Use the system default.<br>-1 : Include the leading digit.<br> 0 : Do not include the leading digit. |
+| *iUseParens* | Specifies whether negative numbers should use parentheses.<br>-2 : Use the system default.<br>-1 : Use parentheses.<br> 0 : Do not use parentheses. |
+| *iGroup* | Specifies whether thousands should be grouped. For example 10,000 versus 10000.<br>-2 : Use the system default.<br>-1 : Group thousands.<br> 0 : Do not group thousands. |
+| *dwFlags* | VAR_CALENDAR_HIJRI is the only flag that can be set.  |
+
+#### Return value
+
+A string containing the formatted value.
+
+#### Remarks
+
+Same as **FormatCurrency** but without adding the currency symbol.
+
+#### Example
+
+```
+DIM c AS CCUR = 12345.1234
+PRINT c.FormatNumber   --> 12.345,12 (Spain)
 ```
