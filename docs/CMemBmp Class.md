@@ -180,7 +180,7 @@ Returns the handle of the memory device context of the bitmap.
 FUNCTION GetMemDC () AS HDC
 ```
 
-# <a name="GetMemDC"></a>GetMemDC
+# <a name="GetPixel"></a>GetPixel
 
 Retrieves the red, green, blue (RGB) color value of the pixel at the specified coordinates.
 
