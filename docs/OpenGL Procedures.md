@@ -8,8 +8,8 @@ Assorted helper OpenGL procedures.
 | ---------- | ----------- |
 | [AfxGlutSolidCone](#AfxGlutCone) | Draws a solid cone. |
 | [AfxGlutWireCone](#AfxGlutCone) | Draws a wireframe cone. |
-| [AfxGlutSolidCube](#AfxGlutSolidCube) | Draws a solid cube. |
-| [AfxGlutWireCube](#AfxGlutWireCube) | Draws a wireframe cube. |
+| [AfxGlutSolidCube](#AfxGlutCube) | Draws a solid cube. |
+| [AfxGlutWireCube](#AfxGlutCube) | Draws a wireframe cube. |
 | [AfxGlutSolidCylinder](#AfxGlutSolidCylinder) | Draws a solid cylinder. |
 | [AfxGlutWireCylinder](#AfxGlutWireCylinder) | Draws a wireframe cylinder. |
 | [AfxGlutSolidDodecahedron](#AfxGlutSolidDodecahedron) | Draws a solid dodecahedron. |
@@ -37,6 +37,10 @@ Renders a right circular cone with a base centered at the origin and in the X-Y 
 SUB AfxGlutSolidCone (BYVAL dbase AS DOUBLE, BYVAL height AS DOUBLE, _
    BYVAL slices AS LONG, BYVAL stacks AS LONG)
 ```
+```
+SUB AfxGlutWireCone (BYVAL dbase AS DOUBLE, BYVAL height AS DOUBLE, _
+   BYVAL slices AS LONG, BYVAL stacks AS LONG)
+```
 
 | Parameter  | Description |
 | ---------- | ----------- |
@@ -44,3 +48,16 @@ SUB AfxGlutSolidCone (BYVAL dbase AS DOUBLE, BYVAL height AS DOUBLE, _
 | *height* | The desired height of the cone. |
 | *slices* | The desired number of slices around the cone. |
 | *stacks* | The desired number of segments between the base and the tip of the cone (the number of points, including the tip, is stacks + 1). |
+
+# <a name="AfxGlutCube"></a>AfxGlutSolidCube / AfxGlutWireCube
+
+Renders a cube of the desired size, centered at the origin. Its faces are normal to the coordinate directions.
+
+```
+SUB AfxGlutSolidCube (BYVAL dbSize AS DOUBLE)
+SUB AfxGlutWireCube (BYVAL dbSize AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbSize* | The desired length of an edge of the cube. |
