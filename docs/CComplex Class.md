@@ -499,5 +499,21 @@ FUNCTION CACotH () AS CComplex
 DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CArcCotH
 Output: 0.4023594781085251 -0.5535743588970452 * i
+```
 
+# <a name="CArcCsc"></a>CArcCsc / CACsc
+
+Returns the complex arccosecant of this complex number.
+
+```
+FUNCTION CArcCsc () AS CComplex
+FUNCTION CACsc () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+print cpx.CArcCsc
+Output: 0.4522784471511907 -0.5306375309525178 * i
 ```
