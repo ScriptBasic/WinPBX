@@ -18,8 +18,8 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireIcosahedron](#AfxGlutIcosahedron) | Draws a wireframe icosahedron. |
 | [AfxGlutSolidOctahedron](#AfxGlutOctahedron) | Draws a solid octahedron. |
 | [AfxGlutWireOctahedron](#AfxGlutOctahedron) | Draws a wireframe octahedron. |
-| [AfxGlutSolidRhombicDodecahedron](#AfxGlutSolidRhombicDodecahedron) | Draws a solid rhombic dodecahedron. |
-| [AfxGlutWireRhombicDodecahedron](#AfxGlutWireRhombicDodecahedron) | Draws a wireframe rhombic dodecahedron. |
+| [AfxGlutSolidRhombicDodecahedron](#AfxGlutRhombicDodecahedron) | Draws a solid rhombic dodecahedron. |
+| [AfxGlutWireRhombicDodecahedron](#AfxGlutRhombicDodecahedron) | Draws a wireframe rhombic dodecahedron. |
 | [AfxGlutSolidSphere](#AfxGlutSolidSphere) | Renders a solid sphere centered at the origin of the modeling coordinate system. |
 | [AfxGlutWireSphere](#AfxGlutWireSphere) | Renders a wireframe sphere centered at the origin of the modeling coordinate system. |
 | [AfxGlutSolidTeapot](#AfxGlutSolidTeapot) | Renders a solid teapot of the desired size, centered at the origin. |
@@ -107,4 +107,13 @@ Draws a solid octahedron (eight-sided Platonic solid). The **AfxGlutSolidOctahed
 ```
 SUB AfxGlutSolidOctahedron
 SUB AfxGlutWireOctahedron
+```
+
+# <a name="AfxGlutRhombicDodecahedron"></a>AfxGlutSolidRhombicDodecahedron / AfxGlutWireRhombicDodecahedron
+
+Draws a solid rhombic dodecahedron (twelve-sided semi-regular solid). The **AfxGlutSolidRhombicDodecahedron** procedure renders a rhombic dodecahedron whose corners are at most a distance of one from the origin. The rhombic dodecahedron has faces which are identical rhombuses (rhombi?) but which have some vertices at which three faces meet and some vertices at which four faces meet. The length of each side is sqrt(3)/2. Vertices at which four faces meet are found at (0, 0, +/- 1) and (+/- sqrt(2)/2, +/- sqrt(2)/2, 0). 
+
+```
+SUB AfxGlutSolidRhombicDodecahedron
+SUB AfxGlutWireRhombicDodecahedron
 ```
