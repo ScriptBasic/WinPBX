@@ -295,7 +295,7 @@ Returns the scale of the DECIMAL number.
 FUNCTION Scale () AS UBYTE
 ```
 
-# <a name="Sign"></a>Scale
+# <a name="Sign"></a>Sign
 
 Returns 0 if it is not signed of &h80 (128) if it is signed.
 
