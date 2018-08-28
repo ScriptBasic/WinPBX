@@ -546,7 +546,7 @@ FUNCTION GDIP_BGRA (BYVAL b AS UBYTE, BYVAL g AS UBYTE, BYVAL r AS UBYTE, BYVAL 
 
 #### Return value
 
-The GBRA value.
+The BGRA value.
 
 # <a name="GDIP_COLOR"></a>GDIP_COLOR
 
