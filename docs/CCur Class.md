@@ -52,9 +52,9 @@ CONSTRUCTOR CCur (BYVAL pDispSrc AS IDispatch PTR)
 | [SetValues](#SetValues) | Sets the integer and fractional components. |
 | [ToVar](#ToVar) | Returns the currency as a VT_CY variant. |
 
-# Operator LET
+# <a name="Operator1"></a>Operator LET (=)
 
-Assigns a value to a CCUR variable.
+Assigns a value to a **CCUR** variable.
 
 ```
 OPERATOR LET (BYREF cSrc AS CCUR)
