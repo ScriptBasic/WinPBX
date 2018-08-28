@@ -362,7 +362,7 @@ Output: -0.1003353477310756
 
 # <a name="CAbs"></a>CAbs / CMagnitude
 
-Returns the magnitude of this complex number. Alias: CMagnitude.
+Returns the magnitude of this complex number.
 
 ```
 FUNCTION CAbs () AS DOUBLE
@@ -375,4 +375,21 @@ FUNCTION CMagnitude () AS DOUBLE
 DIM cpx AS CComplex = CComplex(2, 3)
 PRINT cpx.CAbs
 Output: 3.60555127546399
+```
+
+# <a name="CAbs2"></a>CAbs2 / CNorm
+
+Returns the squared magnitude of this complex number, otherwise known as the complex norm.
+
+```
+FUNCTION CAbs2 () AS DOUBLE
+FUNCTION CNorm () AS DOUBLE
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(2, 3)
+PRINT cpx.CAbs2
+Output: 13
 ```
