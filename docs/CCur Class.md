@@ -341,7 +341,7 @@ FUNCTION SetValues (BYVAL nInteger AS LONGLONG, BYVAL nFraction AS SHORT) AS HRE
 
 Based on 4 digits. To set .2, pass 2000, to set .0002, pass a 2.
 
-# <a name="Round"></a>Round
+# <a name="ToVar"></a>ToVar
 
 Returns the currency as a VT_CY variant.
 
