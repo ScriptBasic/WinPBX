@@ -429,3 +429,15 @@ print cpx.CArcCosH
 Output: 1.061275061905036 +0.9045568943023813 * i
 ```
 
+# <a name="CArcCosHReal"></a>CArcCosHReal / CACosHReal
+
+Returns the complex hyperbolic arccosine of a real number.
+
+```
+FUNCTION CArcCosHReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CACosHReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing the real part of a complex number. |
