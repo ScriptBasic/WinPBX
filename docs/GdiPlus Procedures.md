@@ -709,9 +709,9 @@ FUNCTION GDIP_XRGB (BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL b AS UBYTE) AS COL
 
 | Parameter  | Description |
 | ---------- | ----------- |
+| *r* | The red component value. |
 | *g* | The green component value. |
 | *b*| The bue ponent value. |
-| *a* | The alpha component value. |
 
 #### Return value
 
