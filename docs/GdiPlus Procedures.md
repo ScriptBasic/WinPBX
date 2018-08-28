@@ -426,6 +426,7 @@ PRIVATE FUNCTION AfxGdipLoadTexture (BYVAL hInstance AS HINSTANCE, BYREF wszReso
 
 #### Return value
 
-ERROR_FILE_NOT_FOUND = File not found.
-ERROR_INVALID_DATA = Bad image size.
+ERROR_FILE_NOT_FOUND = File not found.<br>
+ERROR_INVALID_DATA = Bad image size..<br>
 A GdiPlus status value.
+
