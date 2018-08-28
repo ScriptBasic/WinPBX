@@ -517,3 +517,20 @@ DIM cpx AS CComplex = CComplex(1, 1)
 print cpx.CArcCsc
 Output: 0.4522784471511907 -0.5306375309525178 * i
 ```
+
+# <a name="CArcCscH"></a>CArcCscH / CACscH
+
+Returns the complex hyperbolic arccosecant of this complex number.
+
+```
+FUNCTION CArcCscH () AS CComplex
+FUNCTION CACscH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CArcCscH
+Output: 0.5306375309525179 -0.4522784471511906 * i
+```
