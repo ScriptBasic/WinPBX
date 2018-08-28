@@ -30,6 +30,16 @@ CONSTRUCTOR CCur (BYVAL varSrc AS VARIANT)
 CONSTRUCTOR CCur (BYVAL pDispSrc AS IDispatch PTR)
 ```
 
+#### Examples
+
+```
+DIM c AS CCUR = 123
+DIM c AS CCUR = CCUR(123, 45)
+DIM c AS CCUR = 12345.1234
+DIM c AS CCUR = "77777.999"
+```
+
+
 ### Operators
 
 | Name       | Description |
@@ -60,7 +70,6 @@ Assigns a value to a **CCUR** variable.
 OPERATOR LET (BYREF cSrc AS CCUR)
 OPERATOR LET (BYVAL cySrc AS CURRENCY)
 OPERATOR LET (BYVAL nInteger AS LONGLONG)
-OPERATOR LET (BYVAL nInteger AS LONGLONG, BYVAL nFraction AS SHORT)
 OPERATOR LET (BYVAL bSrc AS BYTE)
 OPERATOR LET (BYVAL ubSrc AS UBYTE)
 OPERATOR LET (BYVAL sSrc AS SHORT)
@@ -73,6 +82,15 @@ OPERATOR LET (BYVAL dSrc AS DECIMAL)
 OPERATOR LET (BYREF szSrc AS STRING)
 OPERATOR LET (BYVAL varSrc AS VARIANT)
 OPERATOR LET (BYVAL pDispSrc AS IDispatch PTR)
+```
+
+#### Examples
+
+```
+DIM c AS CCUR
+c = 123
+c = 12345.1234
+c = "77777.999"
 ```
 
 # <a name="Operator2"></a>CAST Operators
@@ -197,3 +215,39 @@ c = NOT c
 ```
 
 Other FreeBasic operators such AND, MOD, OR, SHL and SHR can also be used with CCUR variables, e.g. c = c AND 1, c = c MOD 5, etc.
+
+# <a name="FormatCurrency"></a>FormatCurrency
+
+Formats a currency into a string form.
+
+```
+FUNCTION FormatCurrency (BYVAL iNumDig AS LONG = -1, BYVAL ilncLead AS LONG = -2, _
+   BYVAL iUseParens AS LONG = -2, BYVAL iGroup AS LONG = -2, BYVAL dwFlags AS DWORD = 0) AS STRING
+```
+```
+FUNCTION FormatCurrencyW (BYVAL iNumDig AS LONG = -1, BYVAL ilncLead AS LONG = -2, _
+   BYVAL iUseParens AS LONG = -2, BYVAL iGroup AS LONG = -2, BYVAL dwFlags AS DWORD = 0) AS CBSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iNumDig* | The number of digits to pad to after the decimal point. Specify -1 to use the system default value. |
+| *ilncLead* | Specifies whether to include the leading digit on numbers.<br>-2 : Use the system default.<br>-1 : Include the leading digit.<br> 0 : Do not include the leading digit. |
+| *iUseParens* | Specifies whether negative numbers should use parentheses.<br>-2 : Use the system default.<br>-1 : Use parentheses.<br> 0 : Do not use parentheses. |
+| *iGroup* | Specifies whether thousands should be grouped. For example 10,000 versus 10000.<br>-2 : Use the system default.<br>-1 : Group thousands.<br> 0 : Do not group thousands. |
+| *dwFlags* | VAR_CALENDAR_HIJRI is the only flag that can be set.  |
+
+#### Return value
+
+A string containing the formatted value.
+
+#### Remarks
+
+Same as **FormatNumber** but adding the currency symbol.
+
+#### Example
+
+```
+DIM c AS CCUR = 12345.1234
+PRINT c.FormatNumber   --> 12.345,12 € (Spain)
+```
