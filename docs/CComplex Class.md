@@ -1134,7 +1134,7 @@ FUNCTION CPow (BYVAL power AS DOUBLE) AS CComplex
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *power* | TA complex or a double number. |
+| *power* | A complex or a double number. |
 
 #### Example
 
@@ -1148,4 +1148,45 @@ Output: -0.2656539988492412 +0.3198181138561362 * i
 DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CPow(2)
 Output: 1.224606353822378e-016 +2 * i
+```
+
+# <a name="CReal"></a>CReal
+
+Gets/sets the real part of a complex number.
+
+```
+PROPERTY CReal () AS DOUBLE
+PROPERTY CReal (BYVAL x AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex : cpx.CReal = 3
+DIM d AS DOUBLE = cpx.CReal
+```
+
+# <a name="CReciprocal"></a>CReciprocal
+
+Returns the inverse, or reciprocal, of a complex number.
+
+```
+FUNCTION CReciprocal () AS CComplex
+FUNCTION CInverse () AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+Print cpx.CReciprocal
+Output: 0.5 -0.5 * i
 ```
