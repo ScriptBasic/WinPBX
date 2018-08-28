@@ -568,3 +568,20 @@ DIM cpx AS CComplex
 print cpx.CArcSec(1.1)
 Output: 1.118517879643706 +0.5306375309525176 * i
 ```
+
+# <a name="CArcSecH"></a>CArcSecH / CASecH
+
+Returns the complex hyperbolic arcsecant of this complex number.
+
+```
+FUNCTION CArcSecH () AS CComplex
+FUNCTION CASecH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CArcSecH
+Output: 0.5306375309525178 -1.118517879643706 * i
+```
