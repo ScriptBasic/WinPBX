@@ -24,10 +24,10 @@ Assorted helper OpenGL procedures.
 | [AfxGlutWireSphere](#AfxGlutSphere) | Renders a wireframe sphere centered at the origin of the modeling coordinate system. |
 | [AfxGlutSolidTeapot](#AfxGlutTeapot) | Renders a solid teapot of the desired size, centered at the origin. |
 | [AfxGlutWireTeapot](#AfxGlutTeapot) | Renders a wireframe teapot of the desired size, centered at the origin. |
-| [AfxGlutSolidTetrahedron](#AfxGlutSolidTetrahedron) | Renders a solid tetrahedron. |
-| [AfxGlutWireTetrahedron](#AfxGlutWireTetrahedron) | Renders a wireframe tetrahedron. |
-| [AfxGlutSolidTorus](#AfxGlutSolidTorus) | Renders a solid torus (doughnut shape). |
-| [AfxGlutWireTorus](#AfxGlutWireTorus) | Renders a wireframe torus (doughnut shape). |
+| [AfxGlutSolidTetrahedron](#AfxGlutTetrahedron) | Renders a solid tetrahedron. |
+| [AfxGlutWireTetrahedron](#AfxGlutTetrahedron) | Renders a wireframe tetrahedron. |
+| [AfxGlutSolidTorus](#AfxGlutTorus) | Renders a solid torus (doughnut shape). |
+| [AfxGlutWireTorus](#AfxGlutTorus) | Renders a wireframe torus (doughnut shape). |
 
 # <a name="AfxGlutCone"></a>AfxGlutSolidCone / AfxGlutWireCone
 
@@ -144,4 +144,17 @@ Renders a solid teapot of the desired size, centered at the origin.
 ```
 SUB AfxGlutSolidTeapot
 SUB AfxGlutWireTeapot
+```
+
+# <a name="AfxGlutTetrahedron"></a>AfxGlutSolidTetrahedron / AfxGlutSolidTetrahedron
+
+Renders a tetrahedron whose corners are each a distance of one from the origin. The length of each side is 2/3 sqrt(6). One corner is on the positive X-axis and another is in the X-Y plane with a positive Y-coordinate.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbSize* | The desired size of the teapot. |
+
+```
+SUB AfxGlutSolidTetrahedron
+SUB AfxGlutWireTetrahedron
 ```
