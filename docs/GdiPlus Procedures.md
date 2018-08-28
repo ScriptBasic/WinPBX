@@ -62,3 +62,27 @@ FUNCTION AfxGdipAddIconFromFile (BYVAL hIml AS HIMAGELIST, BYREF wszFileName AS 
 #### Return value
 
 Returns the index of the image if successful, or -1 otherwise.
+
+# <a name="AfxGdipAddIconFromRes"></a>AfxGdipAddIconFromRes
+
+Loads an image from a resource file, converts it to an icon and adds it to specified image list.
+
+```
+FUNCTION AfxGdipAddIconFromRes (BYVAL hIml AS HIMAGELIST, BYVAL hInstance AS HINSTANCE, _
+   BYREF wszFileName AS WSTRING, BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE) AS LONG
+```
+
+#### Return value
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hIml* | Handle to the image list. |
+| *hInstance* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
+| *wszFileName* | Path of the image to load and convert. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+
+#### Return value
+
+Returns the index of the image if successful, or -1 otherwise.
+
