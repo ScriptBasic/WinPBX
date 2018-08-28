@@ -38,7 +38,13 @@ DIM c AS CCUR = CCUR(123, 45)
 DIM c AS CCUR = 12345.1234
 DIM c AS CCUR = "77777.999"
 ```
+#### Remark
 
+The constructor that accepts a DOUBLE value is particulary useful, because it allows to set the integer and fractionary parts at the same time with just a number, e.g.
+
+```
+DIM c AS CCUR = 12345.1234
+```
 
 ### Operators
 
@@ -91,6 +97,12 @@ DIM c AS CCUR
 c = 123
 c = 12345.1234
 c = "77777.999"
+```
+
+The operator that accepts a DOUBLE value is particulary useful, because it allows to set the integer and fractionary parts at the same time with just a number, e.g.
+
+```
+DIM c AS CCUR = 12345.1234
 ```
 
 # <a name="Operator2"></a>CAST Operators
