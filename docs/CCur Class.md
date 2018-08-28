@@ -74,3 +74,31 @@ OPERATOR LET (BYREF szSrc AS STRING)
 OPERATOR LET (BYVAL varSrc AS VARIANT)
 OPERATOR LET (BYVAL pDispSrc AS IDispatch PTR)
 ```
+
+# <a name="Operator2"></a>CAST Operators
+
+Converts a CCUR into another data type.
+
+```
+OPERATOR CAST () AS DOUBLE
+OPERATOR CAST () AS STRING
+```
+
+These operators aren't called directly, They perform the conversion when the target is not a CCUR variable. For example, when assigning a CCUR variable to an standard numeric variable, the CAST() AS DOUBLE operator is implicity called.
+
+```
+OPERATOR CAST () AS CURRENCY
+OPERATOR CAST () AS VARIANT
+```
+
+The casts to CURRENCY and VARIANT allow to assign a currency value to a CVAR:
+
+```
+DIM c AS CCUR = 12345.12
+DIM cv AS CVAR
+cv = cast(CY, c)
+```
+--or--
+```
+cv = cast(VARIANT, c)
+```
