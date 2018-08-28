@@ -353,3 +353,28 @@ If the function fails, the return value is NULL.
 #### Remarks
 
 A quirk in the GDI+ **GdipLoadImageFromFile** function causes that dim gray images (often used for disabled icons) are converted to darker shades of gray. Therefore, is better to use **AfxGdipImageFromFile**.
+
+# <a name="AfxGdipImageFromRes"></a>AfxGdipImageFromRes
+
+Loads an image from a resource, converts it to an icon or bitmap and returns the handle.
+
+```
+FUNCTION AfxGdipImageFromRes (BYVAL hInstance AS HINSTANCE, BYREF wszImageName AS WSTRING, _
+   BYVAL dimPercent AS LONG = 0, BYVAL bGrayScale AS LONG = FALSE, _
+   BYVAL imageType AS LONG = IMAGE_ICON, BYVAL clrBkg AS ARGB = 0) AS HANDLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | A handle to the module whose portable executable file or an accompanying MUI file contains the resource. If this parameter is NULL, the function searches the module used to create the current process. |
+| *wszImageName* | Name of the image in the resource file (.RES). If the image resource uses an integral identifier, wszImage should begin with a number symbol (#) followed by the identifier in an ASCII format, e.g., "#998". Otherwise, use the text identifier name for the image. Only images embedded as raw data (type RCDATA) are valid. These must be icons in format .png, .jpg, .gif, .tiff. |
+| *dimPercent* | Optional. Percent of dimming (1-99). |
+| *bGrayScale* | Optional. TRUE or FALSE. Convert to gray scale. |
+| *imageType* | Optional. IMAGE_ICON or IMAGE_BITMAP. Default value: IMAGE_ICON. |
+| *clrBkg* | Optional. The background color. This parameter is ignored if the image type is IMAGE_ICON or the bitmap is totally opaque. |
+
+#### Return value
+
+If the function succeeds, the return value is the handle of the created icon or bitmap.
+
+If the function fails, the return value is NULL.
