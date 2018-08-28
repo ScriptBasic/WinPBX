@@ -483,3 +483,21 @@ DIM cpx AS CComplex = CComplex(1, 1)
 print cpx.CArcCot
 Output: 0.5535743588970452 -0.4023594781085251 * i
 ```
+
+# <a name="CArcCotH"></a>CArcCotH / CACotH
+
+Returns the complex hyperbolic arccotangent of this complex number. Alias: CACotH.
+
+```
+FUNCTION CArcCotH () AS CComplex
+FUNCTION CACotH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CArcCotH
+Output: 0.4023594781085251 -0.5535743588970452 * i
+
+```
