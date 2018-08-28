@@ -394,3 +394,38 @@ FUNCTION AfxGdipInit (BYVAL version AS UINT32 = 1) AS ULONG_PTR
 #### Return value
 
 Returns a token on success or 0 in failure. The returned token will be used in the call to GdiplusShutdown when you have finished using GDI+.
+
+# <a name="AfxGdipLoadTexture"></a>AfxGdipLoadTexture
+
+Loads an image from disk or a resource an converts it to a texture for use with OpenGL.
+
+```
+FUNCTION AfxGdipLoadTexture (BYREF wszFileName AS WSTRING, BYREF TextureWidth AS LONG, _
+   BYREF TextureHeight AS LONG, BYREF strTextureData AS STRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | The path of the image. |
+| *TextureWidth* | Out. Width of the texture. |
+| *TextureHeight* | Out. Height of the texture. |
+| *strTextureData* | Out. The texture data. |
+
+```
+PRIVATE FUNCTION AfxGdipLoadTexture (BYVAL hInstance AS HINSTANCE, BYREF wszResourceName AS WSTRING, _
+   BYREF TextureWidth AS LONG, BYREF TextureHeight AS LONG, BYREF strTextureData AS STRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hInstance* | The instance handle. |
+| *wszResourceName* | The name of the resource |
+| *TextureWidth* | Out. Width of the texture. |
+| *TextureHeight* | Out. Height of the texture. |
+| *strTextureData* | Out. The texture data. |
+
+#### Return value
+
+ERROR_FILE_NOT_FOUND = File not found.
+ERROR_INVALID_DATA = Bad image size.
+A GdiPlus status value.
