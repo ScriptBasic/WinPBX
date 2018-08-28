@@ -79,12 +79,14 @@ DIM dec AS CDEC = CDEC("-79,228,162,514,264,337,593,543,950.335", 1033)
 
 | Name       | Description |
 | ---------- | ----------- |
-| [FormatCurrency](#FormatCurrency) | Formats a currency into a string form. |
-| [FormatNumber](#FormatNumber) | Formats a currency into a string form. |
-| [GetFraction](#GetFraction) | Returns the fractional component of a currency value. |
-| [GetInteger](#GetInteger) | Returns the integer component of a currency value. |
-| [Round](#Round) | Rounds the currency to a specified number of decimal places. |
-| [SetValues](#SetValues) | Sets the integer and fractional components. |
+| [DecAbs](#DecAbs) | Returns the absolute value of a decimal data type. |
+| [DecFix](#DecFix) | Returns integer portion of a decimal data type. |
+| [DecInt](#DecInt) | Returns integer portion of a decimal data type. |
+| [DecRound](#DecRound) | Rounds the DECIMAL to a specified number of decimal places. |
+| [IsSigned](#IsSigned) | Returns true if this number is signed or false otherwise. |
+| [IsUnsigned](#IsUnsigned) | Returns true if this number is unsigned or false otherwise. |
+| [Scale](#Scale) | Returns the scale of the DECIMAL number. |
+| [Sign](#Sign) | Returns 0 if it is not signed of &h80 (128) if it is signed. |
 | [ToVar](#ToVar) | Returns the currency as a VT_CY variant. |
 
 # <a name="Operator1"></a>Operator LET (=)
@@ -236,6 +238,70 @@ dec = -dec
 ```
 
 Other FreeBasic operators such AND, MOD, OR, SHL and SHR can also be used with CDEC variables, e.g. c = c AND 1, c = c MOD 5, etc.
+
+# <a name="DecAbs"></a>DecAbs
+
+Returns the absolute value of a decimal data type.
+
+```
+FUNCTION DecAbs () AS CDEC
+```
+
+# <a name="DecFix"></a>DecFix
+
+Returns integer portion of a decimal data type. If the value is negative, then the first negative integer greater than or equal to the value is returned.
+
+```
+FUNCTION DecFix () AS CDEC
+```
+
+# <a name="DecInt"></a>DecInt
+
+Returns integer portion of a decimal data type. If the value is negative, then the first negative integer less than or equal to the value is returned.
+
+```
+FUNCTION DecInt () AS CDEC
+```
+
+# <a name="DecRound"></a>DecRound
+
+Rounds the DECIMAL to a specified number of decimal places.
+
+```
+FUNCTION DecRound () AS CDEC
+```
+
+# <a name="IsSigned"></a>IsSigned
+
+Returns true if this number is signed or false otherwise.
+
+```
+FUNCTION IsSigned () AS BOOLEAN
+```
+
+# <a name="IsUnsigned"></a>IsUnsigned
+
+Returns true if this number is unsigned or false otherwise.
+
+```
+FUNCTION IsUnsigned () AS BOOLEAN
+```
+
+# <a name="Scale"></a>Scale
+
+Returns the scale of the DECIMAL number.
+
+```
+FUNCTION Scale () AS UBYTE
+```
+
+# <a name="Sign"></a>Scale
+
+Returns 0 if it is not signed of &h80 (128) if it is signed.
+
+```
+FUNCTION Sign () AS UBYTE
+```
 
 # <a name="ToVar"></a>ToVar
 
