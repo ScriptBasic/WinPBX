@@ -630,7 +630,7 @@ FUNCTION GDIP_POINT (BYVAL x AS LONG, BYVAL y AS LONG) AS GpPoint
 
 # <a name="GDIP_POINTF"></a>GDIP_POINTF
 
-Returns a GpPointF color value initialized with the specified values for the x and y coordinates.
+Returns a GpPointF color value initialized with the specified values for the *x* and *y* coordinates.
 
 ```
 FUNCTION GDIP_POINTF (BYVAL x AS SINGLE, BYVAL y AS SINGLE) AS GpPointF
