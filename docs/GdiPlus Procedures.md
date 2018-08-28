@@ -509,3 +509,22 @@ SUB AfxGdipShutdown (BYVAL token AS ULONG_PTR)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *token* | Token returned by a previous call to **GdiplusStartup**. |
+
+# <a name="GDIP_ARGB"></a>GDIP_ARGB
+
+Returns an ARGB color value initialized with the specified values for the alpha, red, green, and blue components.
+
+```
+FUNCTION GDIP_ARGB (BYVAL a AS UBYTE, BYVAL r AS UBYTE, BYVAL g AS UBYTE, BYVAL b AS UBYTE) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *a* | The alpha component value. |
+| *r* | The red component value. |
+| *g* | The green component value. |
+| *b*| The bue ponent value. |
+
+#### Return value
+
+The ARGB value.
