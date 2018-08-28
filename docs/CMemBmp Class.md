@@ -200,3 +200,46 @@ The return value is the COLORREF value that specifies the RGB of the pixel. If t
 #### Remarks
 
 The function fails if the pixel coordinates lie outside of the current clipping region.
+
+# <a name="GetPlanes"></a>GetPlanes
+
+Returns the count of color planes of the memory bitmap.
+
+```
+FUNCTION GetPlanes () AS LONG
+```
+
+# <a name="GetWidth"></a>GetWidth
+
+Returns the width of the memory bitmap in pixels.
+
+```
+FUNCTION GetWidth () AS LONG
+```
+
+# <a name="GetWidthBytes"></a>GetWidthBytes
+
+Returns the number of bytes in each scan line of the memory bitmap.
+
+```
+FUNCTION GetWidthBytes () AS LONG
+```
+
+# <a name="PrintBtmap"></a>PrintBtmap
+
+Prints the bitmap in the default printer.
+
+```
+FUNCTION PrintBtmap (BYVAL bStretch AS BOOLEAN = FALSE, _
+   BYVAL nStretchMode AS LONG = InterpolationModeHighQualityBicubic) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bStretch* | Optional. Stretch the image (TRUE or FALSE). |
+| *nStretchMode* | Stretching mode.<br>InterpolationModeLowQuality = 1<br>InterpolationModeHighQuality = 2<br>InterpolationModeBilinear = 3<br>InterpolationModeBicubic = 4<br>InterpolationModeNearestNeighbor = 5<br>InterpolationModeHighQualityBilinear = 6<br>InterpolationModeHighQualityBicubic = 7<br>Default value = InterpolationModeHighQualityBicubic.|
+
+#### Return value
+
+Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
+
