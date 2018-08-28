@@ -357,5 +357,22 @@ print atanh(0.76159416)
 Output: 1.00000000962972
 
 print atanh(-0.1)
-Output: -0.1003353477310756```
+Output: -0.1003353477310756
+```
+
+# <a name="CAbs"></a>CAbs / CMagnitude
+
+Returns the magnitude of this complex number. Alias: CMagnitude.
+
+```
+FUNCTION CAbs () AS DOUBLE
+FUNCTION CMagnitude () AS DOUBLE
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(2, 3)
+PRINT cpx.CAbs
+Output: 3.60555127546399
 ```
