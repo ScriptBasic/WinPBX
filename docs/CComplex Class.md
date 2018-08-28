@@ -534,3 +534,20 @@ DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CArcCscH
 Output: 0.5306375309525179 -0.4522784471511906 * i
 ```
+
+# <a name="CArcCscReal"></a>CArcCscReal / CACscReal
+
+Returns the complex arccosecant of a real number. 
+
+```
+FUNCTION CArcCscReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CACscReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+print cpx.CArcCscReal(1)
+Output: 1.570796326794897 0 * i
+```
