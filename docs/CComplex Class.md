@@ -23,7 +23,7 @@ CONSTRUCTOR CComplex (BYREF cpx AS _complex)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *x, y* | Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number. |
-| *cpx* | An instance of the CComplex class or a _complex structure. |
+| *cpx* | An instance of the **CComplex** class or a **\_complex** structure. |
 
 #### Examples
 
