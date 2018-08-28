@@ -466,3 +466,20 @@ print cpx.CArcCosReal(1) ' = 0 0 * i
 print cpx.CArcCosReal(-1) ' = 3.141592653589793 0 * i
 print cpx.CArcCosReal(2) ' = 0 +1.316957896924817 * i
 ```
+
+# <a name="CArcCot"></a>CArcCot / CACot
+
+Returns the complex arccotangent of this complex number.
+
+```
+FUNCTION CArcCot () AS CComplex
+FUNCTION CACot () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+print cpx.CArcCot
+Output: 0.5535743588970452 -0.4023594781085251 * i
+```
