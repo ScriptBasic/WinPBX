@@ -606,3 +606,116 @@ DIM cpx AS CComplex
 print cpx.CArcSecReal(1.1)
 Output: 0.4296996661514246 0 * i
 ```
+
+# <a name="CArcSin"></a>CArcSin / CASin
+
+Returns the complex arcsine of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1.
+
+```
+FUNCTION CArcSin () AS CComplex
+FUNCTION CASin () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex
+PRINT cpx.CArcSin(1, 1)
+Output: 0.6662394324925152 +1.061275061905036 * i
+```
+
+# <a name="CArcSinH"></a>CArcSinH / CASinH
+
+Returns the complex hyperbolic arcsine of this complex number. The branch cuts are on the imaginary axis, below -i and above i.
+
+```
+FUNCTION CArcSinH () AS CComplex
+FUNCTION CASinH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CArcSinH
+Output: 1.061275061905036 +0.6662394324925153 * i
+```
+
+# <a name="CArcSinReal"></a>CArcSinReal / CASinReal
+
+Returns the complex arcsine of a real number.<br>
+For a between -1 and 1, the function returns a real value in the range \[-pi/2, pi/2].<br>
+For a less than -1 the result has a real part of -pi/2 and a positive imaginary part.<br>
+For a greater than 1 the result has a real part of pi/2 and a negative imaginary part.
+
+```
+FUNCTION CArcSinReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CASinReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing the real part of a complex number. |
+
+#### Example
+
+```
+DIM cpx AS CComplex
+PRINT cpx.CArcSinReal(1)
+Output: 1.570796326794897 +0 * i
+```
+
+# <a name="CArcTan"></a>CArcTan / CATan
+
+Returns the complex arctangent of this complex number. The branch cuts are on the imaginary axis, below -i and above i.
+
+```
+FUNCTION CArcTan () AS CComplex
+FUNCTION CATan () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex
+PRINT cpx.CArcTan(1, 1)
+Output: 1.017221967897851 +0.4023594781085251 * i
+```
+
+# <a name="CArcTanH"></a>CArcTanH / CATanH
+
+Returns the complex hyperbolic arctangent of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1.
+
+```
+FUNCTION CArcTanH () AS CComplex
+FUNCTION CATanH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CArcTanH
+Output: 0.4023594781085251 +1.017221967897851 * i
+```
+
+# <a name="CArcTanHReal"></a>CArcTanHReal / CATanHReal
+
+Returns the complex hyperbolic arctangent of a real number.
+
+```
+FUNCTION CArcTanHReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CATanHReal (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing the real part of a complex number. |
+
+#### Example
+
+```
+DIM cpx AS CComplex
+PRINT cpx.CArcSinReal(1)
+Output: 1.570796326794897 +0 * i
+```
