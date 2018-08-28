@@ -1,0 +1,54 @@
+# CCUR Class
+
+**CCUR** is a wrapper class for the **CURRENCY** data type. CURRENCY is implemented as an 8-byte two's-complement integer value scaled by 10,000. This gives a fixed-point number with 15 digits to the left of the decimal point and 4 digits to the right. The CURRENCY data type is extremely useful for calculations involving money, or for any fixed-point calculations where accuracy is important.
+
+The **CCUR** wrapper implements arithmetic, assignment, and comparison operations for this fixed-point type, and provides access to the numbers on either side of the decimal point in the form of two components: an integer component which stores the value to the left of the decimal point, and a fractional component which stores the value to the right of the decimal point. The fractional component is stored internally as an integer value between -9999 (CY_MIN_FRACTION) and +9999 (CY_MAX_FRACTION). The function GetFraction returns a value scaled by a factor of 10000 (CY_SCALE).
+
+When specifying the integer and fractional components of a **CCUR** object, remember that the fractional component is a number in the range 0 to 9999. This is important when dealing with a currency such as the US dollar that expresses amounts using only two significant digits after the decimal point. Even though the last two digits are not displayed, they must be taken into account.
+
+### Constructors
+
+Create a new instance of the **CCUR** class and assigns the values passed to it.
+
+```
+CONSTRUCTOR CCur
+CONSTRUCTOR CCur (BYREF cSrc AS CCUR)
+CONSTRUCTOR CCur (BYVAL cySrc AS CURRENCY)
+CONSTRUCTOR CCur (BYVAL nInteger AS LONGLONG)
+CONSTRUCTOR CCur (BYVAL nInteger AS LONGLONG, BYVAL nFraction AS SHORT)
+CONSTRUCTOR CCur (BYVAL bSrc AS BYTE)
+CONSTRUCTOR CCur (BYVAL ubSrc AS UBYTE)
+CONSTRUCTOR CCur (BYVAL sSrc AS SHORT)
+CONSTRUCTOR CCur (BYVAL usSrc AS USHORT)
+CONSTRUCTOR CCur (BYVAL lSrc AS LONG)
+CONSTRUCTOR CCur (BYVAL ulSrc AS ULONG)
+CONSTRUCTOR CCur (BYVAL fSrc AS SINGLE)
+CONSTRUCTOR CCur (BYVAL dSrc AS DOUBLE)
+CONSTRUCTOR CCur (BYVAL dSrc AS DECIMAL)
+CONSTRUCTOR CCur (BYREF szSrc AS STRING)
+CONSTRUCTOR CCur (BYVAL varSrc AS VARIANT)
+CONSTRUCTOR CCur (BYVAL pDispSrc AS IDispatch PTR)
+```
+
+### Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [OPerator LET](#Operator1) | Assigns a value to a **CCUR** variable. |
+| [CAST operators](#Operator2) | Converts a CCUR into another data type. |
+| [Operator \*](#Operator3) | Returns the address of the underlying **CURRENCY** structure. |
+| [Comparison operators](#Operator4) | Compares currency numbers. |
+| [Math operators](#Operator5) | Add, subtract, multiply or divide currency numbers. |
+
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [FormatCurrency](#FormatCurrency) | Formats a currency into a string form. |
+| [FormatNumber](#FormatNumber) | Formats a currency into a string form. |
+| [GetFraction](#GetFraction) | Returns the fractional component of a currency value. |
+| [GetInteger](#GetInteger) | Returns the integer component of a currency value. |
+| [Round](#Round) | Rounds the currency to a specified number of decimal places. |
+| [SetValues](#SetValues) | Sets the integer and fractional components. |
+| [ToVar](#ToVar) | Returns the currency as a VT_CY variant. |
+
