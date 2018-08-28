@@ -121,3 +121,25 @@ CONSTRUCTOR CMemBmp (BYVAL hInst AS HINSTANCE, BYREF wszImageName AS WSTRING, BY
 | *dimPercent* | Optional. The height of the bitmap. |
 | *bGrayScale* | Optional. A handle to a device context. If no device context is provided, the one of the screen will be used. |
 | *clrBackground* | Optional. The background color of the bitmap. Default is white. |
+
+# <a name="DrawBitmap"></a>DrawBitmap
+
+Draws a bitmap in the memory bitmap.
+
+```
+SUB DrawBitmap (BYVAL hbmp AS HBITMAP, BYVAL x AS SINGLE = 0, BYVAL y AS SINGLE = 0, _
+   BYVAL nRight AS SINGLE = 0, BYVAL nBottom AS SINGLE = 0) AS GpStatus
+```
+```
+SUB DrawBitmap (BYVAL pBitmap AS GpBitmap PTR, BYVAL x AS SINGLE = 0, BYVAL y AS SINGLE = 0, _
+   BYVAL nRight AS SINGLE = 0, BYVAL nBottom AS SINGLE = 0) AS GpStatus
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hbmp* | A handle to the bitmap. |
+| *pBitmap* | A pointer to a GDI+ bitmap |
+| *x* | Optional. Left position. |
+| *y* | Optional. Top position. |
+| *nRight* | Optional. Right position. |
+| *nBottom* | Optional. Bottom position. |
