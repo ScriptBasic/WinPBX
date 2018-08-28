@@ -243,3 +243,23 @@ FUNCTION PrintBtmap (BYVAL bStretch AS BOOLEAN = FALSE, _
 
 Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
 
+# <a name="SaveBitmap"></a>SaveBitmap
+
+Saves the bitmap to a file.
+
+```
+FUNCTION SaveBitmap (BYREF wszFileName AS WSTRING, BYREF wszMimeType AS WSTRING) AS LONG
+```
+```
+FUNCTION SaveBitmapAsBmp (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveBitmapAsJpeg (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveBitmapAsPng (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveBitmapAsGif (BYREF wszFileName AS WSTRING) AS LONG
+FUNCTION SaveBimapAsTiff (BYREF wszFileName AS WSTRING) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFileName* | Absolute path name of the file. |
+| *wszMimeType* | The mime type.<br>"image/bmp" = Bitmap (.bmp)<br>"image/gif" = GIF (.gif)<br>"image/jpeg" = JPEG (.jpg)<br>"image/png" = PNG (.png)<br>"image/tiff" = TIFF (.tiff) |
+
