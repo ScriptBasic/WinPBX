@@ -146,7 +146,7 @@ SUB AfxGlutSolidTeapot
 SUB AfxGlutWireTeapot
 ```
 
-# <a name="AfxGlutTetrahedron"></a>AfxGlutSolidTetrahedron / AfxGlutSolidTetrahedron
+# <a name="AfxGlutTetrahedron"></a>AfxGlutSolidTetrahedron / AfxGlutWireTetrahedron
 
 Renders a tetrahedron whose corners are each a distance of one from the origin. The length of each side is 2/3 sqrt(6). One corner is on the positive X-axis and another is in the X-Y plane with a positive Y-coordinate.
 
