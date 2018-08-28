@@ -143,3 +143,60 @@ SUB DrawBitmap (BYVAL pBitmap AS GpBitmap PTR, BYVAL x AS SINGLE = 0, BYVAL y AS
 | *y* | Optional. Top position. |
 | *nRight* | Optional. Right position. |
 | *nBottom* | Optional. Bottom position. |
+
+#### Return value
+
+Returns OK (0) on success or a GdiPlus status code on failure.
+
+# <a name="GetBitsPixel"></a>GetBitsPixel
+
+Returns the number of bits required to indicate the color of a pixel.
+
+```
+FUNCTION GetBitsPixel () AS LONG
+```
+
+# <a name="GethBmp"></a>GethBmp
+
+Returns the handle of the compatible memory bitmap.
+
+```
+FUNCTION GethBmp () AS HBITMAP
+```
+
+# <a name="GetHeight"></a>GetHeight
+
+Returns the height of the memory bitmap in pixels.
+
+```
+FUNCTION GetHeight () AS LONG
+```
+
+# <a name="GetMemDC"></a>GetMemDC
+
+Returns the handle of the memory device context of the bitmap.
+
+```
+FUNCTION GetMemDC () AS HDC
+```
+
+# <a name="GetMemDC"></a>GetMemDC
+
+Retrieves the red, green, blue (RGB) color value of the pixel at the specified coordinates.
+
+```
+FUNCTION GetPixel (BYVAL x AS LONG, BYVAL y AS LONG) AS COLORREF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | The x-coordinate, in logical units, of the pixel to be examined. |
+| *y* | The y-coordinate, in logical units, of the pixel to be examined. |
+
+#### Return value
+
+The return value is the COLORREF value that specifies the RGB of the pixel. If the pixel is outside of the current clipping region, the return value is CLR_INVALID (hFFFFFFFF defined in Wingdi.bi).
+
+#### Remarks
+
+The function fails if the pixel coordinates lie outside of the current clipping region.
