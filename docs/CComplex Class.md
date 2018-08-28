@@ -338,3 +338,24 @@ cosh =  0.785398163375      1.324609089232506
 acosh = 1.324609089232506   0.7853981633749999
 ```
 
+# <a name="ArcTanH"></a>ArcTanH
+
+Returns the inverse hyperbolic tangent of a number.
+
+```
+FUNCTION ArcTanH (BYVAL x AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+print atanh(0.76159416)
+Output: 1.00000000962972
+
+print atanh(-0.1)
+Output: -0.1003353477310756```
+```
