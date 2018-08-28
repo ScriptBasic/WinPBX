@@ -430,3 +430,21 @@ ERROR_FILE_NOT_FOUND = File not found.<br>
 ERROR_INVALID_DATA = Bad image size..<br>
 A GdiPlus status value.
 
+# <a name="AfxGdipPrintHBITMAP"></a>AfxGdipPrintHBITMAP
+
+Prints a Windows bitmap in the default printer.
+
+```
+FUNCTION AfxGdipPrintHBITMAP (BYVAL hbmp AS HBITMAP, BYVAL bStretch AS BOOLEAN = FALSE, _
+   BYVAL nStretchMode AS LONG = InterpolationModeHighQualityBicubic) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hbmp* | Handle to a Windows bitmap. |
+| *bStretch* | Optional. Stretch the image. |
+| *nStretchMode* | Optional. Stretching mode.<br>InterpolationModeLowQuality = 1<br>InterpolationModeHighQuality = 2<br>InterpolationModeBilinear = 3<br>InterpolationModeBicubic = 4<br>InterpolationModeNearestNeighbor = 5<br>InterpolationModeHighQualityBilinear = 6<br>InterpolationModeHighQualityBicubic = 7<br>Default value = InterpolationModeHighQualityBicubic. |
+
+#### Return value
+
+Returns TRUE if the bitmap has been printed successfully, or FALSE otherwise.
