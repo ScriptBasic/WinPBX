@@ -55,6 +55,7 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 | [CAbs](#CAbs) | Returns the magnitude of this complex number. |
 | [CAbs2](#CAbs2) | Returns the squared magnitude of this complex number, otherwise known as the complex norm. |
 | [CACos](#CArcCos) | Returns the complex arccosine of this complex number. |
+| [CACosH](#CArcCosH) | Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1. |
 | [CACosHReal](#CArcCosHReal) | Returns the complex arccosine of this complex number. |
 | [CACosReal](#CArcCosReal) | Returns the complex arccosine of a real number. |
 | [CACot](#CArcCot) | Returns the complex arccotangent of this complex number. |
@@ -66,7 +67,7 @@ DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 | [CAddImag](#CAddImag) | Adds an imaginary number. |
 | [CAddReal](#CAddReal) | Adds a real number. |
 | [CArcCos](#CArcCos) | Returns the complex arccosine of this complex number. |
-| [CArcCosH](#CArcCosH) | Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1. Alias: **CACosH**. |
+| [CArcCosH](#CArcCosH) | Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1. |
 | [CArcCosHReal](#CArcCosHReal) | Returns the complex arccosine of this complex number. |
 | [CArcCosReal](#CArcCosReal) | Returns the complex arccosine of a real number. |
 | [CArcCot](#CArcCot) | Returns the complex arccotangent of this complex number. |
@@ -410,3 +411,21 @@ DIM cpx AS CComplex = CComplex(1, 1)
 print cpx.CArcCos(z)
 Output: 0.9045568943023814 -1.061275061905036 * i
 ```
+
+# <a name="CArcCosH"></a>CArcCosH / CACosH
+
+Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1.
+
+```
+FUNCTION CArcCosH () AS CComplex
+FUNCTION CACosH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+print cpx.CArcCosH
+Output: 1.061275061905036 +0.9045568943023813 * i
+```
+
