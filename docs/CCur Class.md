@@ -168,6 +168,7 @@ OPERATOR /= (BYVAL nOperand AS DOUBLE)
 
 #### Examples
 
+```
 DIM c AS CCUR = 12345.1234
 c = c + 111.11
 c = c - 111.11
@@ -177,4 +178,22 @@ c += 123
 c -= 123
 c *= 2.3
 c /= 2.3
+```
 
+#### Remarks
+
+The version OPERATOR - (BYREF cur AS CCUR) AS CCUR changes the sign of a currency number.
+
+```
+DIM c AS CCUR = 123
+c = -c
+```
+
+Or you can use the NOT operator:
+
+```
+DIM c AS CCUR = 123
+c = NOT c
+```
+
+Other FreeBasic operators such AND, MOD, OR, SHL and SHR can also be used with CCUR variables, e.g. c = c AND 1, c = c MOD 5, etc.
