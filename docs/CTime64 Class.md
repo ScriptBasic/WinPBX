@@ -504,7 +504,9 @@ OPERATOR >= (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
 
 #### Remarks
 
-\+ Adds a CTimeSpan value to another CTimeSpan object.
-\- Subtracts a CTimeSpan value from another CTimeSpan object.
-\+= Adds a CTimeSpan value to this CTimeSpan object.
-\-= Subtracts a CTimeSpan value from this CTimeSpan object.
+```
++ Adds a CTimeSpan value to another CTimeSpan object.
+- Subtracts a CTimeSpan value from another CTimeSpan object.
++= Adds a CTimeSpan value to this CTimeSpan object.
+-= Subtracts a CTimeSpan value from this CTimeSpan object.
+```
