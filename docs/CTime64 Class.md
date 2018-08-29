@@ -510,3 +510,81 @@ OPERATOR >= (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
 += Adds a CTimeSpan value to this CTimeSpan object.
 -= Subtracts a CTimeSpan value from this CTimeSpan object.
 ```
+
+# <a name="GetDays"></a>GetDays (CTimeSpan)
+
+Returns a value that represents the number of days in this **CTimeSpan**.
+
+```
+FUNCTION GetDays () AS LONG
+```
+
+# <a name="GetHours"></a>GetHours (CTimeSpan)
+
+Returns a value that represents the number of hours in the current day (–23 through 23).
+
+```
+FUNCTION GetHours () AS LONG
+```
+
+# <a name="GetMinutes"></a>GetMinutes (CTimeSpan)
+
+Returns a value that represents the number of minutes in the current hour (–59 through 59).
+
+```
+FUNCTION GetMinutes () AS LONG
+```
+
+# <a name="GetSeconds"></a>GetSeconds (CTimeSpan)
+
+Returns a value that represents the number of seconds in the current hour (–59 through 59).
+
+```
+FUNCTION GetSeconds () AS LONG
+```
+
+# <a name="GetTimespan"></a>GetTimespan (CTimeSpan)
+
+Returns the underlying time value from this **CTimeSpan** object.
+
+```
+FUNCTION GetTimespan () AS LONG
+```
+
+# <a name="GetTotalHours"></a>GetTotalHours (CTimeSpan)
+
+Returns a value that represents the total number of complete hours in this **CTimeSpan**.
+
+```
+FUNCTION GetTotalHours () AS LONG
+```
+
+# <a name="GetTotalMinutes"></a>GetTotalMinutes (CTimeSpan)
+
+Returns a value that represents the total number of complete minutes in this **CTimeSpan**.
+
+```
+FUNCTION GetTotalMinutes () AS LONG
+```
+
+# <a name="GetTotalSeconds"></a>GetTotalSeconds (CTimeSpan)
+
+Retrieves this date/time-span value expressed in seconds.
+
+```
+FUNCTION GetTotalSeconds () AS LONG
+```
+
+# <a name="SetTimeSpan"></a>SetTimeSpan (CTimeSpan)
+
+Sets the value of this date/time-span value.
+
+```
+SUB SetTimeSpan (BYVAL lltime AS LONGLONG)
+SUB SetTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins AS LONG, BYVAL nSecs AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lltime* | A \_\_time64_t (LONGLONG) value. |
+| *lDays / nHours / nMins / nSecs* | Indicates the day and time values to be copied into the **CTimeSpan** object. |
