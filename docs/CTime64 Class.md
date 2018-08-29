@@ -459,7 +459,7 @@ CONSTRUCTOR CTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins AS
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *lltime* | A \_\_time64_t (LONGLONG) value. |
+| *lltime* | A **\_\_time64_t** (LONGLONG) value. |
 | *lDays / nHours / nMins / nSecs* | Indicates the day and time values to be copied into the new **CTimeSpan** object. |
 
 # <a name="CastOp2"></a>CAST Operator (CTimeSpan)
