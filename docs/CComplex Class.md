@@ -1237,7 +1237,7 @@ DIM cpx AS CComplex : cpx.CReal = 3
 DIM d AS DOUBLE = cpx.CReal
 ```
 
-# <a name="CReciprocal"></a>CReciprocal
+# <a name="CReciprocal"></a>CReciprocal / CInverse
 
 Returns the inverse, or reciprocal, of a complex number.
 
