@@ -172,7 +172,7 @@ OPERATOR >= (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
 -= Subtracts a CTimeSpan object from this CTime64 object.
 ```
 
-# <a name="Format"></a>Format (CTime64)
+# <a name="Format"></a>Format / FormatGmt (CTime64)
 
 Converts a **CTime64** object to a string.
 
