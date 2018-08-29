@@ -150,3 +150,72 @@ OPERATOR > (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
 OPERATOR <= (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
 OPERATOR >= (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
 ```
+
+# <a name="Format"></a>Format (COleDateTime)
+
+Converts a **COleDateTime** to a formatted string.
+
+```
+FUNCTION Format (BYREF wszFmt AS WSTRING) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszFmt* | A format string which contains special formatting codes that are preceded by a percent sign (%). |
+
+```
+FUNCTION Format (BYVAL dwFlags AS DWORD = 0, BYVAL lcid AS LCID = LANG_USER_DEFAULT) AS CWSTR
+```
+
+Formatting codes:
+
+| Code       | Meaning     |
+| ---------- | ----------- |
+| %a | Abbreviated weekday name |
+| %A | Full weekday name |
+| %b | Abbreviated month name |
+| %B | Full month name |
+| %c | Date and time representation appropriate for locale |
+| %d | Day of month as decimal number (01 – 31) |
+| %H | Hour in 24-hour format (00 – 23) |
+| %I | Hour in 12-hour format (01 – 12) |
+| %j | Day of year as decimal number (001 – 366) |
+| %m | Month as decimal number (01 – 12) |
+| %M | Minute as decimal number (00 – 59) |
+| %p | Current locale's A.M./P.M. indicator for 12-hour clock |
+| %S | Second as decimal number (00 – 59) |
+| %U | Week of year as decimal number, with Sunday as first day of week (00 – 53) |
+| %w | Weekday as decimal number (0 – 6; Sunday is 0) |
+| %W | Week of year as decimal number, with Monday as first day of week (00 – 53) |
+| %x | Date representation for current locale |
+| %X | Time representation for current locale |
+| %y | Year without century, as decimal number (00 – 99) |
+| %Y | Year with century, as decimal number |
+| %z, %Z | Either the time-zone name or time zone abbreviation, depending on registry settings; no characters if time zone is unknown |
+| %% | Percent sign |
+
+The # flag may prefix any formatting code. In that case, the meaning of the format code is changed as follows.
+
+* %#a, %#A, %#b, %#B, %#p, %#X, %#z, %#Z, %#%: # flag is ignored.
+* %#c: Long date and time representation, appropriate for current locale. For example: "Tuesday, March 14, 1995, 12:41:29".
+* %#x* Long date representation, appropriate to current locale. For example: "Tuesday, March 14, 1995".
+* %#d, %#H, %#I, %#j, %#m, %#M, %#S, %#U, %#w, %#W, %#y, %#Y: Remove leading zeros (if any).
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dwFlags* | One or more of the following flags. |
+| *lcid* | The locale identifier. Default value: LANG_USER_DEFAULT. |
+
+| Flag       | Meaning |
+| ---------- | ----------- |
+| LOCALE_NOUSEROVERRIDE | Uses the system default locale settings, rather than custom locale settings. |
+| VAR_CALENDAR_HIJRI | If set then the Hijri calendar is used. Otherwise the calendar set in the control panel is used. |
+| VAR_CALENDAR_THAI | If set then the Buddhist year is used. |
+| VAR_CALENDAR_GREGORIAN | If set the Gregorian year is used. |
+| VAR_FOURDIGITYEARS | Use 4-digit years instead of 2-digit years. |
+| VAR_TIMEVALUEONLY | Omits the date portion of a VT_DATE and returns only the time. Applies to conversions to or from dates. |
+| VAR_DATEVALUEONLY | Omits the time portion of a VT_DATE and returns only the date. Applies to conversions to or from dates. |
+
+#### Return value
+
+The **COleDateTime** as a formatted string.
