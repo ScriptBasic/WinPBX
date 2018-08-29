@@ -636,3 +636,59 @@ Returns the current local hour. The valid values are 0 through 23.
 ```
 FUNCTION AfxLocalHour () AS WORD
 ```
+
+# <a name="AfxLocalMonth"></a>AfxLocalMonth
+
+Returns the current local month. The valid values are 1 thorugh 12 (1 = January, etc.).
+
+```
+FUNCTION AfxLocalMonth () AS WORD
+```
+
+# <a name="AfxLocalMonthName"></a>AfxLocalMonthName
+
+Returns the localized name of today's local month.
+
+```
+FUNCTION AfxLocalMonthName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxLocalShortMonthName"></a>AfxLocalShortMonthName
+
+Returns the localized short name of today's local month.
+
+```
+FUNCTION AfxLocalShortMonthName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxLocalSystemTime"></a>AfxLocalSystemTime
+
+Returns the current local time as a SYSTEMTIME structure.
+
+```
+FUNCTION AfxLocalSystemTime () AS SYSTEMTIME
+```
+
+# <a name="AfxLocalTime64"></a>AfxLocalTime64
+
+Converts a FILETIME to a \_\_time64_t (LONGLONG) value.
+
+```
+FUNCTION AfxLocalTime64 (BYVAL t64 AS LONGLONG) AS tm
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *t64* | A \_\_time64_t (LONGLONG) value.  The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
+
+#### Return value
+
+Returns a tm structure. The fields of the returned structure hold the evaluated value of the time argument in UTC rather than in local time.
