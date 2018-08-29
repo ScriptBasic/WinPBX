@@ -1325,10 +1325,7 @@ PROPERTY CSgn () AS LONG
 
 # <a name="CSin"></a>CSin
 
-Returns the sign of this complex number.<br>
-If number is greater than zero, then CSgn returns 1.<br>
-If number is equal to zero, then CSgn returns 0.<br>
-If number is less than zero, then CSgn returns -1.
+Returns the complex sine of this complex number.
 
 ```
 PROPERTY CSin () AS CSin
