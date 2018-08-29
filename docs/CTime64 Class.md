@@ -6,6 +6,8 @@ A companion class, CTimeSpan, represents a time interval.
 
 The upper date limit is 12/31/3000. The lower limit is 1/1/1970 12:00:00 AM GMT.
 
+**Include file**: CTime64.inc
+
 | Name       | Description |
 | ---------- | ----------- |
 | [Constructors](#Constructors1) | Create new **CTime64** objects initialized to the specified value. |
