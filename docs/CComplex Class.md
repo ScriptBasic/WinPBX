@@ -36,14 +36,14 @@ DIM cpx AS CComplex = TYPE(3, 4)
 DIM cpx2 AS CComplex = cpx
 ```
 
-An instance of the CComplex class.
+An instance of the **CComplex** class.
 
 ```
 DIM cpx AS CComplex = TYPE(3, 4)
 DIM cpx2 AS CComplex = cpx
 ```
 
-A _complex structure.
+A **\_complex** structure.
 
 ```
 DIM cpx AS CComplex = TYPE<_complex>(3, 4)
