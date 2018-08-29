@@ -366,3 +366,20 @@ tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight sa
 
 Replacement for **\_gmtime64**, not available in msvcrt.dll.
 
+# <a name="AfxGregorianToJulian"></a>AfxGregorianToJulian
+
+Converts a Gregorian date to a Julian date. The year must be a 4 digit year.
+
+```
+FUNCTION AfxGregorianToJulian (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+The converted date.
