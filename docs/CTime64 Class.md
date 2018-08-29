@@ -543,7 +543,7 @@ Returns a value that represents the number of seconds in the current hour (–59
 FUNCTION GetSeconds () AS LONG
 ```
 
-# <a name="GetTimespan"></a>GetTimespan (CTimeSpan)
+# <a name="GetTimeSpan"></a>GetTimeSpan (CTimeSpan)
 
 Returns the underlying time value from this **CTimeSpan** object.
 
