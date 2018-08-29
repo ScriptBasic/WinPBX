@@ -15,6 +15,7 @@ Represents an absolute time and date.
 | [LET Operator](#LetOp1) | Assigns a value to a **CTime64** object. |
 | [Operators](#Operators1) | Adds, subtracts or compares **CTime64** objects. |
 | [Format](#Format) | Converts a **CTime64** object to a string. |
+| [FormatGmt](#Format) | Converts a **CTime64** object to a string. |
 | [GetAsFileTime](#GetAsFileTime) | Returns the time as a **FILETIME** structure. |
 | [GetAsSystemTime](#GetAsSystemTime) | Returns the time as a **SYSTEMTIME** structure. |
 | [GetCurrentTime](#GetCurrentTime) | Returns a **CTime64** object that represents the current system date and time. |
@@ -177,6 +178,7 @@ Converts a **CTime64** object to a string.
 
 ```
 FUNCTION Format (BYREF wszFmt AS WSTRING) AS CWSTR
+FUNCTION FormatGmt (BYREF wszFmt AS WSTRING) AS CWSTR
 ```
 Formatting codes:
 
