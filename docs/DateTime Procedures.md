@@ -854,3 +854,52 @@ Picture string used to form the time.
 #### Return value
 
 The formatted time.
+
+# <a name="AfxShortDate"></a>AfxShortDate
+
+Returns the current date in short format.
+
+```
+FUNCTION AfxShortDate (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxShortMonthName"></a>AfxShortMonthName
+
+Returns the localized short name of the specified month.
+
+```
+FUNCTION AfxShortMonthName (BYVAL nMonth AS LONG, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMonth* | Valid values are between 1 and 12. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxSystemDay"></a>AfxSystemDay
+
+Returns the current system day. The valid values are 1 through 31.
+
+```
+FUNCTION AfxSystemDay () AS WORD
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxSystemDayName"></a>AfxSystemDayName
+
+Returns the localized name of today.
+
+```
+FUNCTION AfxSystemDayName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
