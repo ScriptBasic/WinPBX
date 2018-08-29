@@ -1309,6 +1309,17 @@ DIM cpx AS CComplex : cpx.CSet = 3, 4
 DIM cpx AS CComplex : cpx.CRect = 3, 4
 ```
 
+# <a name="CSgn"></a>CSgn
+
+Returns the sign of this complex number.<br>
+If number is greater than zero, then CSgn returns 1.<br>
+If number is equal to zero, then CSgn returns 0.<br>
+If number is less than zero, then CSgn returns -1.
+
+```
+PROPERTY CSgn () AS LONG
+```
+
 # <a name="CSin"></a>CSin
 
 Returns the sign of this complex number.<br>
