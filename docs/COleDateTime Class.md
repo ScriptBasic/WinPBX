@@ -224,3 +224,19 @@ FUNCTION Format (BYVAL dwFlags AS DWORD = 0, BYVAL lcid AS LCID = LANG_USER_DEFA
 #### Return value
 
 The **COleDateTime** as a formatted string.
+
+# <a name="GetAsDBTIMESTAMP"></a>GetAsDBTIMESTAMP
+
+Returns the date/time the of this **COleDateTime** object as a **DBTIMESTAMP** data structure.
+
+```
+FUNCTION GetAsDBTIMESTAMP (BYREF sysTime AS DBTIMESTAMP) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *sysTime* | A reference to a **DBTIMESTAMP** structure to receive the converted date/time value from the **COleDateTime** object. |
+
+#### Return value
+
+TRUE or FALSE.
