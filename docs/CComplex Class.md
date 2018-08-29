@@ -1333,9 +1333,11 @@ PROPERTY CSin () AS CSin
 
 #### Example
 
+```
 DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CSin
 Output: 1.298457581415977 +0.6349639147847361 * i
+```
 
 # <a name="CSinH"></a>CSinH
 
