@@ -361,3 +361,31 @@ FUNCTION GetTime () AS LONGLONG
 DIM cft AS CFileTime = CFileTime().GetCurrentTime()
 print cft.GetTime
 ```
+
+# <a name="SetTime"></a>SetTime (CFileTime)
+
+Sets the date and time of this **CFileTime** object
+
+```
+FUNCTION SetTime (BYVAL nTime AS ULONGLONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTime* | The date and time expressed as a 64-bit value. |
+
+# <a name="LocalToUTC"></a>LocalToUTC (CFileTime)
+
+Converts a local file time to a file time based on the Coordinated Universal Time (UTC).
+
+```
+FUNCTION LocalToUTC () AS CFileTime
+```
+
+# <a name="UTCToLocal"></a>UTCToLocal (CFileTime)
+
+Converts time based on the Coordinated Universal Time (UTC) to local file time.
+
+```
+FUNCTION UTCToLocal () AS CFileTime
+```
