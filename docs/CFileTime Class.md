@@ -57,7 +57,7 @@ The CFileTimeSpan object can be created using an existing CFileTimeSpan object, 
 | [SetTimeSpan](#SetTimeSpan) | Sets the date and time of this **CFileTimeSpan** object. |
 | [Week](#Week) | Returns the number of 100-nanosecond intervals that make up one week. |
 
-# <a name="Constructors1"></a>Constructors(CFileTime)
+# <a name="Constructors1"></a>Constructors (CFileTime)
 
 Create new **CFileTime** objects initialized to the specified value.
 
@@ -86,4 +86,25 @@ print cft.GetTime
 ```
 DIM cft AS CFileTime = AfxLocalSystemTime
 print cft.GetTime
+```
+
+# <a name="Constructors2"></a>Constructors (CFileTimeSpan)
+
+Create new **CFileTimeSpan** objects initialized to the specified value.
+
+```
+CONSTRUCTOR CFileTimeSpan
+CONSTRUCTOR CFileTimeSpan (BYVAL nSpan AS ULONGLONG)
+CONSTRUCTOR CFileTimeSpan (BYREF cSpan AS CFileTimeSpan)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSpan* | A period of time in milliseconds. |
+| *cSpan* | A **CFileTimeSpan** object. |
+
+#### Example
+
+```
+DIM cSpan AS CFileTimeSpan = CFileTime_Day
 ```
