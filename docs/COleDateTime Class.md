@@ -286,7 +286,7 @@ The current date/time as a **COleDateTime**.
 ```
 DIM ct AS COleDateTime = COleDateTime().GetCurrentTime()
 ```
-' --or--
+--or--
 ```
 DIM ct AS COleDateTime
 ct = ct.GetCurrentTime()
