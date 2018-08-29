@@ -226,3 +226,227 @@ Formats the value by using the format string which contains special formatting c
 print ct.Format("%A, %B %d, %Y %H:%M:%S")
 print ct.FormatGmt("%A, %B %d, %Y %H:%M:%S")
 ```
+
+# <a name="GetAsFileTime"></a>GetAsFileTime (CTime64)
+
+Converts the time information stored in the **CTime64** object to a Win32–compatible FILETIME structure. A **FILETIME** structure contains a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
+
+```
+FUNCTION GetAsFileTime () AS FILETIME
+```
+
+# <a name="GetAsSystemTime"></a>GetAsSystemTime (CTime64)
+
+Converts the time information stored in the **CTime64** object to a Win32–compatible **SYSTEMTIME** structure.
+
+```
+FUNCTION GetAsSystemTime () AS SYSTEMTIME
+```
+
+# <a name="GetCurrentTime"></a>GetCurrentTime (CTime64)
+
+Returns a **CTime64** object that represents the current time.
+
+```
+FUNCTION GetCurrentTime () AS CTime64
+```
+
+# <a name="GetDay"></a>GetDay (CTime64)
+
+Returns the day represented by the **CTime64** object.
+
+```
+FUNCTION GetDay () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetDay
+```
+
+# <a name="GetDayOfWeek"></a>GetDayOfWeek (CTime64)
+
+Returns the day of the week represented by the **CTime64** object.
+
+```
+FUNCTION GetDayOfWeek () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetDayOfWeek
+```
+
+# <a name="GetGmtTime"></a>GetGmtTime (CTime64)
+
+Gets a **tm** structure that contains a decomposition of the time contained in this **CTime64** object.
+
+```
+FUNCTION GetGmtTime () AS tm
+```
+
+#### Remarks
+
+The fields of the structure type tm store the following values, each of which is an int:
+
+```
+tm_sec : Seconds after minute (0 – 59).
+tm_min : Minutes after hour (0 – 59).
+tm_hour : Hours after midnight (0 – 23).
+tm_mday : Day of month (1 – 31).
+tm_mon : Month (0 – 11; January = 0).
+tm_year : Year (current year minus 1900).
+tm_wday : Day of week (0 – 6; Sunday = 0).
+tm_yday : Day of year (0 – 365; January 1 = 0).
+tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight saving time is not in effect; negative value if status of daylight saving time is unknown.
+```
+
+# <a name="GetHour"></a>GetHour (CTime64)
+
+Returns the hour represented by the **CTime64** object.
+
+```
+FUNCTION GetHour () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetHour
+```
+
+# <a name="GetLocalTime"></a>GetLocalTime (CTime64)
+
+Gets a **tm** structure that contains a decomposition of the time contained in this **CTime64** object.
+
+```
+FUNCTION GetLocalTime () AS tm
+```
+
+#### Remarks
+
+The fields of the structure type tm store the following values, each of which is an int:
+
+```
+tm_sec : Seconds after minute (0 – 59).
+tm_min : Minutes after hour (0 – 59).
+tm_hour : Hours after midnight (0 – 23).
+tm_mday : Day of month (1 – 31).
+tm_mon : Month (0 – 11; January = 0).
+tm_year : Year (current year minus 1900).
+tm_wday : Day of week (0 – 6; Sunday = 0).
+tm_yday : Day of year (0 – 365; January 1 = 0).
+tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight saving time is not in effect; negative value if status of daylight saving time is unknown.
+```
+
+# <a name="GetMinute"></a>GetMinute (CTime64)
+
+Returns the minute represented by the **CTime64** object.
+
+```
+FUNCTION GetMinute () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetMinute
+```
+
+# <a name="GetMonth"></a>GetMonth (CTime64)
+
+Returns the month represented by the **CTime64** object.
+
+```
+FUNCTION GetMonth () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetMonth
+```
+
+# <a name="GetSecond"></a>GetSecond (CTime64)
+
+Returns the second represented by the **CTime64** object.
+
+```
+FUNCTION GetSecond () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetSecond
+```
+
+# <a name="GetTime"></a>GetTime (CTime64)
+
+Returns a \_\_time64_t (LONGLONG) value for the given **CTime64** object.
+
+```
+FUNCTION GetTime () AS LONGLONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+```
+
+# <a name="GetYear"></a>GetYear (CTime64)
+
+Returns the year represented by the **CTime64** object.
+
+```
+FUNCTION GetYear () AS LONG
+```
+
+#### Example
+
+```
+DIM ct AS CTime64
+ct = ct.GetTime
+PRINT ct.GetYear
+```
+
+# <a name="SetDateTime"></a>SetDateTime (CTime64)
+
+Sets the date and time of this **CTime64** object.
+
+```
+FUNCTION SetDateTime (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS WORD, _
+   BYVAL nHour AS WORD = 0, BYVAL nMin AS WORD = 0, BYVAL nSec AS WORD = 0) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear* | The year (1970-3000). |
+| *nMonth* | The month (1-12). |
+| *nDay* | The day (1-31). |
+| *nHour* | The hour (0-23). |
+| *nMinute* | The minutes (0-59). |
+| *nHour* | The seconds (0-59). |
+
+#### Example
+
+```
+' // Year = 2017, Month = 10 (October), Day = 9, Hour = 11, Minutes = 32, Seconds = 45
+DIM ct AS CTime64 = CTime64(2017, 10, 9, 11, 32, 45)
+```
