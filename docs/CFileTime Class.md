@@ -389,3 +389,23 @@ Converts time based on the Coordinated Universal Time (UTC) to local file time.
 ```
 FUNCTION UTCToLocal () AS CFileTime
 ```
+
+# <a name="GetTimeSpan"></a>GetTimeSpan (CFileTimeSpan)
+
+Returns the value of the **CFileTimeSpan** object.
+
+```
+FUNCTION GetTimeSpan () AS LONGLONG
+```
+
+# <a name="SetTimeSpan"></a>SetTimeSpan (CFileTimeSpan)
+
+Sets the date and time of this **CFileTimeSpan** object.
+
+```
+FUNCTION SetTimeSpan (BYVAL nSpan AS LONGLONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSpan* | The new value for the time span in milliseconds. |
