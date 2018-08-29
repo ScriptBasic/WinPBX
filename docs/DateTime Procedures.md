@@ -175,3 +175,20 @@ FUNCTION AfxDateDiff (BYVAL nDay1 AS LONG, BYVAL nMonth1 AS LONG, BYVAL nYear1 A
 
 The days of difference between the two dates.
 
+# <a name="AfxDayOfYear"></a>AfxDayOfYear
+
+Returns the day of the year, where Jan 1 is the first day of the year.
+
+```
+FUNCTION AfxDayOfYear (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+The day of the year.
