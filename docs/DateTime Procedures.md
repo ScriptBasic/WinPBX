@@ -352,16 +352,15 @@ Returns a tm structure. The fields of the returned structure hold the evaluated 
 
 The fields of the structure type tm store the following values, each of which is an int:
 
-tm_sec : Seconds after minute (0 – 59).
-tm_min : Minutes after hour (0 – 59).
-tm_hour : Hours after midnight (0 – 23).
-tm_mday : Day of month (1 – 31).
-tm_mon : Month (0 – 11; January = 0).
-tm_year : Year (current year minus 1900).
-tm_wday : Day of week (0 – 6; Sunday = 0).
-tm_yday : Day of year (0 – 365; January 1 = 0).
-tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight saving
-time is not in effect; negative value if status of daylight saving time is unknown.
+tm_sec : Seconds after minute (0 – 59).<br>
+tm_min : Minutes after hour (0 – 59).<br>
+tm_hour : Hours after midnight (0 – 23).<br>
+tm_mday : Day of month (1 – 31).<br>
+tm_mon : Month (0 – 11; January = 0).<br>
+tm_year : Year (current year minus 1900).<br>
+tm_wday : Day of week (0 – 6; Sunday = 0).<br>
+tm_yday : Day of year (0 – 365; January 1 = 0).<br>
+tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight saving time is not in effect; negative value if status of daylight saving time is unknown.
 
 #### Remarks
 
