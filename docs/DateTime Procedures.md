@@ -903,3 +903,158 @@ FUNCTION AfxSystemDayName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
 | Parameter  | Description |
 | ---------- | ----------- |
 | *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxSystemDayOfWeek"></a>AfxSystemDayOfWeek
+
+Returns the current day of week. It is a numeric value in the range of 0-6 representing Sunday through Saturday: 0 = Sunday, 1 = Monday, etc.
+
+```
+FUNCTION AfxSystemDayOfWeek () AS WORD
+```
+
+# <a name="AfxSystemDayShortName"></a>AfxSystemDayShortName
+
+Returns the localized short name of today.
+
+```
+FUNCTION AfxSystemDayShortName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxSystemFileTime"></a>AfxSystemFileTime
+
+Returns the current system time as a FILETIME structure.
+
+```
+FUNCTION AfxSystemFileTime () AS FILETIME
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxSystemHour"></a>AfxSystemHour
+
+Returns the current system hour. The valid values are 0 through 23.
+
+```
+FUNCTION AfxSystemHour () AS WORD
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxSystemMonth"></a>AfxSystemMonth
+
+Returns the current system month. The valid values are 1 thorugh 12 (1 = January, etc.).
+
+```
+FUNCTION AfxSystemMonth () AS WORD
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxSystemMonthName"></a>AfxSystemMonthName
+
+Returns the localized name of today's system month.
+
+```
+FUNCTION AfxSystemMonthName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxSystemShortMonthName"></a>AfxSystemShortMonthName
+
+Returns the localized short name of today's system month.
+
+```
+FUNCTION AfxSystemShortMonthName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxSystemSystemTime"></a>AfxSystemSystemTime
+
+Returns the current system time as a SYSTEMTIME structure.
+
+```
+FUNCTION AfxSystemSystemTime () AS SYSTEMTIME
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxSystemTimeToTime64"></a>AfxSystemTimeToTime64
+
+Converts a system time to a \_\_time64_t (LONGLONG).
+
+```
+FUNCTION AfxSystemTimeToTime64 (BYREF st AS SYSTEMTIME) AS LONGLONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *st* | A SYSTEMTIME structure. |
+
+
+#### Remarks
+
+The converted time.
+
+# <a name="AfxSystemTimeToDateStr"></a>AfxSystemTimeToDateStr
+
+Converts a SYSTEMTIME type to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy".
+
+```
+FUNCTION AfxSystemTimeToDateStr (BYREF st AS SYSTEMTIME, BYREF wszMask AS WSTRING, _
+   BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *st* | A SYSTEMTIME structure. |
+| *wszMask* | A picture string that is used to form the date.<br>The format types "d", and "y" must be lowercase and the letter "M" must be uppercase.<br>For example, to get the date string "Wed, Aug 31 94", the application uses the picture string "ddd', ' MMM dd yy". |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+The following table defines the format types used to represent days.
+
+| Format type | Meaning |
+| ----------- | ----------- |
+| d | Day of the month as digits without leading zeros for single-digit days. |
+| dd | Day of the month as digits with leading zeros for single-digit days. |
+| ddd | Abbreviated day of the week, for example, "Mon" in English (United States). |
+| dddd | Day of the week. |
+
+The following table defines the format types used to represent months.
+
+| Format type | Meaning |
+| ----------- | ----------- |
+| M | Month as digits without leading zeros for single-digit months. |
+| MM | Month as digits with leading zeros for single-digit months. |
+| MMM | Abbreviated month, for example, "Nov" in English (United States). |
+| MMMM | Month value, for example, "November" for English (United States), and "Noviembre" for Spanish (Spain). |
+
+The following table defines the format types used to represent years.
+
+| Format type | Meaning |
+| ----------- | ----------- |
+| y | Year represented only by the last digit. |
+| yy | Year represented only by the last two digits. A leading zero is added for single-digit years. |
+| yyyy | Year represented by a full four or five digits, depending on the calendar used. Thai Buddhist and Korean calendars have five-digit years. The "yyyy" pattern shows five digits for these two calendars, and four digits for all other supported calendars. Calendars that have single-digit or two-digit years, such as for the Japanese Emperor era, are represented differently. A single-digit year is represented with a leading zero, for example, "03". A two-digit year is represented with two digits, for example, "13". No additional leading zeros are displayed. |
+| yyyyy | Behaves identically to "yyyy". |
+
+#### Remarks
+
+The formatted date.
