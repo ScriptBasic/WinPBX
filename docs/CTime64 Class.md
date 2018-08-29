@@ -73,7 +73,7 @@ CONSTRUCTOR CTime64 (BYVAL nYear AS LONG, BYVAL nMonth AS LONG, BYVAL nDay AS LO
 | *timeSrc* | A \_\_time64_t (LONGLONG) value. |
 | *systimeSrc* | A **SYSTEMTIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into the new **CTime64** object. |
 | *filetimeSrc* | A **FILETIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
-| *nYear / nMonth / nDay / nHour / nMin / nSec* |  Indicates the date and time values to be copied into the new **CTime64** object. |
+| *nYear / nMonth / nDay / nHour / nMin / nSec* | Indicates the date and time values to be copied into the new **CTime64** object. |
 
 #### Examples
 
@@ -446,3 +446,65 @@ FUNCTION SetDateTime (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS W
 ' // Year = 2017, Month = 10 (October), Day = 9, Hour = 11, Minutes = 32, Seconds = 45
 DIM ct AS CTime64 = CTime64(2017, 10, 9, 11, 32, 45)
 ```
+
+# <a name="Constructors2"></a>Constructors (CTimeSpan)
+
+Create new **CTimespan** objects initialized to the specified value.
+
+```
+CONSTRUCTOR CTimeSpan
+CONSTRUCTOR CTimeSpan (BYVAL lltime AS LONGLONG)
+CONSTRUCTOR CTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins AS LONG, BYVAL nSecs AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lltime* | A \_\_time64_t (LONGLONG) value. |
+| *lDays / nHours / nMins / nSecs* | Indicates the day and time values to be copied into the new **CTimeSpan** object. |
+
+# <a name="CastOp2"></a>CAST Operator (CTimeSpan)
+
+Returns the underlying value from this **CTimeSpan** object.
+
+```
+OPERATOR CAST () AS LONGLONG
+```
+
+# <a name="LetOp2"></a>LET Operator (=) (CTimeSpan)
+
+Assigns a value to a **CTimeSpan** object.
+
+```
+OPERATOR LET (BYVAL nSpan AS LONGLONG)
+OPERATOR LET (BYREF cSpan AS CTimeSpan)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSpan* | A \_\_time64_t (LONGLONG) value. |
+| *cSpan* | A **CTimeSpan** object. |
+
+# <a name="Operators2"></a>Operators (CTimeSpan)
+
+Adds, subtracts or compares **CTimeSpan** objects.
+
+```
+OPERATOR + (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS CTime64
+OPERATOR - (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS CTime64
+OPERATOR - (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS CTimeSpan
+OPERATOR += (BYREF cSpan AS CTimeSpan)
+OPERATOR -= (BYREF cSpan AS CTimeSpan)
+OPERATOR = (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+OPERATOR <> (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+OPERATOR < (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+OPERATOR > (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+OPERATOR <= (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+OPERATOR >= (BYREF cSpan1 AS CTimeSpan, BYREF cSpan2 AS CTimeSpan) AS BOOLEAN
+```
+
+#### Remarks
+
+\+ Adds a CTimeSpan value to another CTimeSpan object.
+\- Subtracts a CTimeSpan value from another CTimeSpan object.
+\+= Adds a CTimeSpan value to this CTimeSpan object.
+\-= Subtracts a CTimeSpan value from this CTimeSpan object.
