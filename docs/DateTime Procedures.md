@@ -552,3 +552,87 @@ The following table defines the format types used to represent years.
 #### Return value
 
 The current local date in string format.
+
+# <a name="AfxLocalDay"></a>AfxLocalDay
+
+Returns the current local day. The valid values are 1 through 31.
+
+```
+FUNCTION AfxLocalDay () AS WORD
+```
+
+# <a name="AfxLocalDayName"></a>AfxLocalDayName
+
+Returns the current local day. The valid values are 1 through 31.
+
+```
+FUNCTION AfxLocalDayName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxLocalDayOfWeek"></a>AfxLocalDayOfWeek
+
+Returns the current day of week. It is a numeric value in the range of 0-6 representing Sunday through Saturday: 0 = Sunday, 1 = Monday, etc.
+
+```
+FUNCTION AfxLocalDayOfWeek () AS WORD
+```
+
+# <a name="AfxLocalDayOfWeekName"></a>AfxLocalDayOfWeekName
+
+Returns the localized name of the day of the week.
+
+```
+FUNCTION AfxLocalDayOfWeekName (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG, _
+   BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A number between 1-31. |
+| *nMonth* | A number between 1-12. |
+| *nYear* | A four digit year, e.g. 2011. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxLocalDayOfWeekShortName"></a>AfxLocalDayOfWeekShortName
+
+Returns the localized short name of the day of the week.
+
+```
+FUNCTION AfxLocalDayOfWeekShortName (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, _
+   BYVAL nYear AS LONG, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A number between 1-31. |
+| *nMonth* | A number between 1-12. |
+| *nYear* | A four digit year, e.g. 2011. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+# <a name="AfxLocalDayShortName"></a>AfxLocalDayShortName
+
+Returns the localized short name of today.
+
+```
+FUNCTION AfxLocalDayShortName (BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+# <a name="AfxLocalFileTime"></a>AfxLocalFileTime
+
+Returns the current local time as a FILETIME structure.
+
+```
+FUNCTION AfxLocalFileTime () AS FILETIME
+```
+
+# <a name="AfxLocalHour"></a>AfxLocalHour
+
+Returns the current local hour. The valid values are 0 through 23.
+
+```
+FUNCTION AfxLocalHour () AS WORD
+```
