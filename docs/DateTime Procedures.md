@@ -86,3 +86,32 @@ Assorted date and time procedures.
 | [AfxWeekOne](#AfxWeekOne) | Returns the first day of the first week of a year. The year must be a 4 digit year. |
 | [AfxWeeksInMonth](#AfxWeeksInMonth) | Returns the number of weeks in the specified month. Will be 4 or 5. |
 | [AfxWeeksInYear](#AfxWeeksInYear) | Returns the number of weeks in the year, where weeks are taken to start on Monday. Will be 52 or 53. |
+
+# <a name="AfxAstroDay"></a>AfxAstroDay
+
+Returns the Astronomical Day for any given date.
+
+```
+FUNCTION AfxAstroDay (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+The astronomical day.
+
+#### Remarks
+
+Among other things, can be used to find the number of days between any two dates, e.g.:
+
+```
+PRINT AfxAstroDay(1, 3, -12400) - AfxAstroDay(28, 2, -12400)  ' Prints 2
+PRINT AfxAstroDay(1, 3, 12000) - AfxAstroDay(28, 2, -12000)  ' Prints 8765822
+PRINT AfxAstroDay(28, 2, 1902) - AfxAstroDay(1, 3, 1898)  ' Prints 1459 days
+```
+
