@@ -53,3 +53,68 @@ An amount of time, which is internally stored as the number of seconds in the ti
 | [GetTotalMinutes](#GetTotalMinutes) | Returns a value that represents the total number of complete minutes in this **CTimeSpan**. |
 | [GetTotalSeconds](#GetTotalSeconds) | Retrieves this date/time-span value expressed in seconds. |
 | [SetTimeSpan](#SetTimeSpan) | Sets the value of this date/time-span value. |
+
+# <a name="Constructors1"></a>Constructors (CTime64)
+
+Create new **CTime64** objects initialized to the specified value.
+
+```
+CONSTRUCTOR CTime64
+CONSTRUCTOR CTime64 (BYVAL timeSrc AS LONGLONG)
+CONSTRUCTOR CTime64 (BYREF systimeSrc AS SYSTEMTIME)
+CONSTRUCTOR CTime64 (BYREF filetimeSrc AS FILETIME)
+CONSTRUCTOR CTime64 (BYVAL nYear AS LONG, BYVAL nMonth AS LONG, BYVAL nDay AS LONG, _
+   BYVAL nHour AS LONG, BYVAL nMin AS LONG, BYVAL nSec AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *timeSrc* | A \_\_time64_t (LONGLONG) value. |
+| *systimeSrc* | A SYSTEMTIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into the new **CTime64** object. |
+| *filetimeSrc* | A FILETIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
+| *nYear / nMonth / nDay / nHour / nMin / nSec* |  Indicates the date and time values to be copied into the new **CTime64** object. |
+
+#### Examples
+
+Initializes a CTime64 object from an existing \_\_time64_t value.
+
+```
+DIM ct1 AS CTime64 = CTime64().GetCurrentTime()
+DIM ct2 AS CTime64 = ct1.GetTime
+```
+
+**Note**: You can also use DIM ct2 AS CTime64 = ct1
+
+Initializes a **CTime64** object from individual date/time values.
+
+```
+' // Year = 2017, Month = 10 (October), Day = 9, Hour = 11, Minutes = 32, Seconds = 45
+DIM ct AS CTime64 = CTime64(2017, 10, 9, 11, 32, 45)
+```
+
+Initializes a CTime64 object from a SYSTEMTIME structure.
+
+```
+' // Year = 2017, Month = 10 (October), Day = 9, Hour = 11, Minutes = 32, Seconds = 45
+DIM st AS SYSTEMTIME 
+st.wYear = 2017
+st.wMonth = 10
+st.wDayOfWeek = 0
+st.wDay = 9
+st.wHour = 11
+st.wMinute = 32
+st.wSecond = 45
+st.wMilliseconds = 0
+' --or--
+DIM st AS SYSTEMTIME = (2017, 10, 0, 9, 11, 32, 45, 0)
+DIM ct AS CTime64 = st
+' --or--
+DIM ct AS CTime64
+ct.SetDateTime(2017, 10, 9, 11, 32, 45)
+DIM st AS SYSTEMTIME = ct.GetAsSystemtime
+DIM ct2 AS CTime64 = st
+' --or--
+DIM ct AS CTime64
+ct.SetDateTime(2017, 10, 9, 11, 32, 45)
+DIM ct2 AS CTime64 = ct.GetAsSystemtime
+```
