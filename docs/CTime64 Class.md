@@ -27,7 +27,7 @@ Represents an absolute time and date.
 | [GetMinute](#GetMinute) | Returns the minute represented by the **CTime64** object. |
 | [GetMonth](#GetMonth) | Returns the month represented by the **CTime64** object. |
 | [GetSecond](#GetSecond) | Returns the second represented by the **CTime64** object. |
-| [GetTime](#GetTime) | Returns a \_\_time64_t (LONGLONG) value for the given **CTime64** object. |
+| [GetTime](#GetTime) | Returns a **\_\_time64_t** (LONGLONG) value for the given **CTime64** object. |
 | [GetYear](#GetYear) | Returns the year represented by the **CTime64** object. |
 | [SetDateTime](#SetDateTime) | Sets the date and time of this **CTime64** object. |
 
