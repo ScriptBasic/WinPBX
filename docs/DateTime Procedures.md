@@ -133,3 +133,23 @@ FUNCTION AfxAstroDayOfWeek (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYea
 
 A number between 0-6, where 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
 
+# <a name="AfxDateAddDays"></a>AfxDateAddDays
+
+Adds the specified number of days to a given date.
+
+```
+FUNCTION AfxDateAddDays (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG, _
+   BYVAL nDays AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+| *nDays* | The number of days to add (or subtract, if it is negative). |
+
+#### Return value
+
+The new date in Julian format. To convert it to Gregorian, call functions such **AfxJulianToGregorian** or **AfxJulianToGregorianStr**.
+
