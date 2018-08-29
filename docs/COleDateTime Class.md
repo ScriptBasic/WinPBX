@@ -97,7 +97,7 @@ CONSTRUCTOR COleDateTime (BYREF wsz AS WSTRING, BYVAL dwFlags AS DWORD = 0, _
 
 The status of the new **COleDateTime** object is set to valid.
 
-# <a name="CastOp1"></a>CAST OPERATOR (COleDateTime)
+# <a name="CastOp1"></a>CAST Operator (COleDateTime)
 
 Returns the underlying **DATE** value from this **COleDateTime** object.
 
@@ -105,7 +105,7 @@ Returns the underlying **DATE** value from this **COleDateTime** object.
 OPERATOR CAST () AS DATE_
 ```
 
-# <a name="LetOp1"></a>LET OPERATOR (=) (COleDateTime)
+# <a name="LetOp1"></a>LET Operator (=) (COleDateTime)
 
 Assigns a value to a **COleDateTime** object.
 
@@ -133,3 +133,20 @@ OPERATOR LET (BYREF wsz AS WSTRING)
 | *ud* | The UDATE value is converted and copied into this **COleDateTime** object. If the conversion is successful, the status of this object is set to valid; if unsuccessful, it is set to invalid. A UDATE structure represents an "unpacked" date. See the function **VarDateFromUdate** for more details. |
 | *wsz* | A null-terminated unicode string which is to be parsed. This parameter can take a variety of formats. For example, the following strings contain acceptable date/time formats:<br>"25 January 1996"<br>"8:30:00"<br>"20:30:00"<br>"January 25, 1996 8:30:00"<br>"8:30:00 Jan. 25, 1996"<br>"1/25/1996 8:30:00" // always specify the full year, even in a 'short date' format.<br>Note that the locale ID will also affect whether the string format is acceptable for conversion to a date/time value. In the case of VAR_DATEVALUEONLY, the time value is set to time 0, or midnight. In the case of VAR_TIMEVALUEONLY, the date value is set to date 0, meaning 30 December 1899. |
 
+# <a name="Operators"></a>Operators (COleDateTime)
+
+Adds, subtracts or compares **COleDateTime** objects.
+
+```
+OPERATOR + (BYREF dt AS COleDateTime, BYREF dateSpan AS COleDateTimeSpan) AS COleDateTime
+OPERATOR - (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS COleDateTimeSpan
+OPERATOR - (BYREF dt AS COleDateTime, BYREF dateSpan AS COleDateTimeSpan) AS COleDateTime
+OPERATOR += (BYREF dateSpan AS COleDateTimeSpan)
+OPERATOR -= (BYREF dateSpan AS COleDateTimeSpan)
+OPERATOR = (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+OPERATOR <> (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+OPERATOR < (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+OPERATOR > (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+OPERATOR <= (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+OPERATOR >= (BYREF dt1 AS COleDateTime, BYREF dt2 AS COleDateTime) AS BOOLEAN
+```
