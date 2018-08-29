@@ -1087,7 +1087,7 @@ PRINT cpx.CLog10
 Output: 0.1505149978319906 +0.3410940884604603 * i
 ```
 
-# <a name="CLog10"></a>CLog10
+# <a name="CLogAbs"></a>CLogAbs
 
 Returns the natural logarithm of the magnitude of the complex number z, log|z|. It allows an accurate evaluation of \log|z| when |z| is close to one. The direct evaluation of log(CAbs(z)) would lead to a loss of precision in this case.
 
