@@ -692,3 +692,35 @@ FUNCTION AfxLocalTime64 (BYVAL t64 AS LONGLONG) AS tm
 #### Return value
 
 Returns a tm structure. The fields of the returned structure hold the evaluated value of the time argument in UTC rather than in local time.
+
+# <a name="AfxLocalTimeStr"></a>AfxLocalTimeStr
+
+Retuns the current local time based on the specified mask, e.g. "hh':'mm':'ss".
+
+```
+FUNCTION AfxLocalTimeStr (BYREF wszMask AS WSTRING, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *wszMask* | A picture string that is used to form the time. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+Picture string used to form the time.
+
+| Picture    | Meaning |
+| ---------- | ----------- |
+| h | Hours with no leading zero for single-digit hours; 12-hour clock |
+| hh | Hours with leading zero for single-digit hours; 12-hour clock |
+| H | Hours with no leading zero for single-digit hours; 24-hour clock |
+| HH | Hours with leading zero for single-digit hours; 24-hour clock |
+| m | Minutes with no leading zero for single-digit minutes |
+| mm | Minutes with leading zero for single-digit minutes |
+| s | Seconds with no leading zero for single-digit seconds |
+| ss | Seconds with leading zero for single-digit seconds |
+| t | One character time marker string, such as A or P |
+| tt | Multi-character time marker string, such as AM or PM |
+
+#### Return value
+
+The formatted time.
