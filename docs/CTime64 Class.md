@@ -37,3 +37,19 @@ An amount of time, which is internally stored as the number of seconds in the ti
 * The **CTimeSpan** methods convert seconds to various combinations of days, hours, minutes, and seconds.
 * The **CTimeSpan** object is stored in a \_\_time64_t structure, which is 8 bytes.
 * A companion class, **CTime64**, represents an absolute time.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#Constructors2) | Create new **CTimeSpan** objects initialized to the specified value. |
+| [CAST Operator](#CastOp2) | Returns the **CTimeSpan** value as a long integer. |
+| [LET Operator](#LetOp12 | Assigns a value to a **CTimeSpan** object. |
+| [Operators](#Operators2) | Adds, subtracts or compares **CTimeSpan** objects. |
+| [GetDays](#GetDays) | Returns a value that represents the number of days in this **CTimeSpan**. |
+| [GetHours](#GetHours) | Returns a value that represents the number of hours in the current day (–23 through 23). |
+| [GetMinutes](#GetMinutes) | Returns a value that represents the number of minutes in the current hour (–59 through 59). |
+| [GetSeconds](#GetSeconds) | Returns a value that represents the number of seconds in the current hour (–59 through 59). |
+| [GetTimeSpan](#GetTimeSpan) | Returns the underlying time value from this **CTimeSpan** object. |
+| [GetTotalHours](#GetTotalHours) | Returns a value that represents the total number of complete hours in this **CTimeSpan**. |
+| [GetTotalMinutes](#GetTotalMinutes) | Returns a value that represents the total number of complete minutes in this **CTimeSpan**. |
+| [GetTotalSeconds](#GetTotalSeconds) | Retrieves this date/time-span value expressed in seconds. |
+| [SetTimeSpan](#SetTimeSpan) | Sets the value of this date/time-span value. |
