@@ -216,3 +216,51 @@ OPERATOR > (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOO
 OPERATOR <= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
 OPERATOR >= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
 ```
+
+# <a name="Day"></a>Day
+
+Returns the number of 100-nanosecond intervals that make up one day.
+
+```
+FUNCTION Day () AS ULONGLONG
+```
+
+# <a name="Hour"></a>Hour
+
+Returns the number of 100-nanosecond intervals that make up one hour.
+
+```
+FUNCTION Hour () AS ULONGLONG
+```
+
+# <a name="Millisecond"></a>Millisecond
+
+Returns the number of 100-nanosecond intervals that make up one millisecond.
+
+```
+FUNCTION Millisecond () AS ULONGLONG
+```
+
+# <a name="Minute"></a>Minute
+
+Returns the number of 100-nanosecond intervals that make up one minute.
+
+```
+FUNCTION Minute () AS ULONGLONG
+```
+
+# <a name="Second"></a>Second
+
+Returns the number of 100-nanosecond intervals that make up one second.
+
+```
+FUNCTION Second () AS ULONGLONG
+```
+
+# <a name="Week"></a>Week
+
+Returns the number of 100-nanosecond intervals that make up one week.
+
+```
+FUNCTION Week () AS ULONGLONG
+```
