@@ -70,8 +70,8 @@ CONSTRUCTOR CTime64 (BYVAL nYear AS LONG, BYVAL nMonth AS LONG, BYVAL nDay AS LO
 | Parameter  | Description |
 | ---------- | ----------- |
 | *timeSrc* | A \_\_time64_t (LONGLONG) value. |
-| *systimeSrc* | A SYSTEMTIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into the new **CTime64** object. |
-| *filetimeSrc* | A FILETIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
+| *systimeSrc* | A **SYSTEMTIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into the new **CTime64** object. |
+| *filetimeSrc* | A **FILETIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
 | *nYear / nMonth / nDay / nHour / nMin / nSec* |  Indicates the date and time values to be copied into the new **CTime64** object. |
 
 #### Examples
@@ -140,5 +140,5 @@ OPERATOR LET (BYREF ft AS FILETIME)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *timeSrc* | A \_\_time64_t (LONGLONG) value. |
-| *st* | A SYSTEMTIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into the new **CTime64** object. |
-| *ft* | A FILETIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
+| *st* | A **SYSTEMTIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into the new **CTime64** object. |
+| *ft* | A **FILETIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
