@@ -15,6 +15,7 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 | [LET Operator](#LetOp1) | Assigns a value to a **COleDateTime** object. |
 | [Operators](#Operators1) | Adds, subtracts or compares **COleDateTime** objects. |
 | [Format](#Format) | Converts a **COleDateTime** object to a string. |
+| [Format (Overload)](#Format2) | Converts a **COleDateTime** object to a string. |
 | [GetAsDBTIMESTAMP](#GetAsDBTIMESTAMP) | Returns the date/time the of this **COleDateTime** object as a **DBTIMESTAMP** data structure. |
 | [GetAsSystemTime](#GetAsSystemTime) | Returns the date/time the of this **COleDateTime** object as a **SYSTEMTIME** data structure. |
 | [GetAsUdate](#GetAsUdate) | Returns the date/time the of this **COleDateTime** object as a UDATE structure. |
@@ -163,10 +164,6 @@ FUNCTION Format (BYREF wszFmt AS WSTRING) AS CWSTR
 | ---------- | ----------- |
 | *wszFmt* | A format string which contains special formatting codes that are preceded by a percent sign (%). |
 
-```
-FUNCTION Format (BYVAL dwFlags AS DWORD = 0, BYVAL lcid AS LCID = LANG_USER_DEFAULT) AS CWSTR
-```
-
 Formatting codes:
 
 | Code       | Meaning     |
@@ -200,6 +197,14 @@ The # flag may prefix any formatting code. In that case, the meaning of the form
 * %#c: Long date and time representation, appropriate for current locale. For example: "Tuesday, March 14, 1995, 12:41:29".
 * %#x* Long date representation, appropriate to current locale. For example: "Tuesday, March 14, 1995".
 * %#d, %#H, %#I, %#j, %#m, %#M, %#S, %#U, %#w, %#W, %#y, %#Y: Remove leading zeros (if any).
+
+# <a name="Format2"></a>Format (Overload) (COleDateTime)
+
+Converts a **COleDateTime** to a formatted string.
+
+```
+FUNCTION Format (BYVAL dwFlags AS DWORD = 0, BYVAL lcid AS LCID = LANG_USER_DEFAULT) AS CWSTR
+```
 
 | Parameter  | Description |
 | ---------- | ----------- |
