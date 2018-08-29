@@ -6,12 +6,14 @@ The date and time value is stored as a 64-bit value representing the number of 1
 
 The following static const member variables are provided to simplify calculations (number of 100-nanosecond intervals):
 
+```
 CFileTime_Millisecond    10,000
 CFileTime_Second         CFileTime_Millisecond * 1,000
 CFileTime_Minute         CFileTime_Second * 60
 CFileTime_Hour           CFileTime_Minute * 60
 CFileTime_Day            CFileTime_Hour * 24
 CFileTime_Week           CFileTime_Day * 7
+```
 
 **Note**: Not all file systems can record creation and last access time and not all file systems record them in the same manner. For example, on the Windows NT FAT file system, create time has a resolution of 10 milliseconds, write time has a resolution of 2 seconds, and access time has a resolution of 1 day (the access date). On NTFS, access time has a resolution of 1 hour. Furthermore, FAT records times on disk in local time, but NTFS records times on disk in UTC. 
 
