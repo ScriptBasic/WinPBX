@@ -214,3 +214,74 @@ FUNCTION AfxDaysBetween (BYVAL nDay1 AS LONG, BYVAL nMonth1 AS LONG, BYVAL nYear
 #### Return value
 
 The number of days.
+
+# <a name="AfxDaysInMonth"></a>AfxDaysInMonth
+
+Returns the number of days in the specified month/year.
+
+```
+FUNCTION AfxDaysInMonth (BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMonth* | A month ordinal number (1-12). |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+The number of days in the specified month/year.
+
+# <a name="AfxDaysInYear"></a>AfxDaysInYear
+
+Returns the number of days in the specified year.
+
+```
+FUNCTION AfxDaysInYear (BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+The number of days: 365 (not leap year) or 366 (leap year).
+
+# <a name="AfxFileTimeToDateStr"></a>AfxFileTimeToDateStr
+
+Converts a FILETIME type to a string containing the date based on the specified mask, e.g. "dd-MM-yyyy".
+
+```
+FUNCTION AfxFileTimeToDateStr (BYREF ft AS FILETIME, BYREF wszMask AS WSTRING, _
+   BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ft* | A FILETIME structure. |
+| *wszMask* | A picture string that is used to form the date.<br>The format types "d", and "y" must be lowercase and the letter "M" must be uppercase.<br>For example, to get the date string "Wed, Aug 31 94", the application uses the picture string "ddd',' MMM dd yy". |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+The following table defines the format types used to represent days.
+
+| Format type | Meaning |
+| ----------- | ----------- |
+| M | Month as digits without leading zeros for single-digit months. |
+| MM | Month as digits with leading zeros for single-digit months. |
+| MMM | Abbreviated month, for example, "Nov" in English (United States). |
+| MMMM | Month value, for example, "November" for English (United States), and "Noviembre" for Spanish (Spain). |
+
+The following table defines the format types used to represent years.
+
+| Format type | Meaning |
+| ----------- | ----------- |
+| y | Year represented only by the last digit. |
+| yy | Year represented only by the last two digits. A leading zero is added for single-digit years. |
+| yyyy | Year represented by a full four or five digits, depending on the calendar used. Thai Buddhist and Korean calendars have five-digit years. The "yyyy" pattern shows five digits for these two calendars, and four digits for all other supported calendars. Calendars that have single-digit or two-digit years, such as for the Japanese Emperor era, are represented differently. A single-digit year is represented with a leading zero, for example, "03". A two-digit year is represented with two digits, for example, "13". No additional leading zeros are displayed. |
+| yyyyy | Behaves identically to "yyyy". |
+
+#### Return value
+
+The formatted date.
+
