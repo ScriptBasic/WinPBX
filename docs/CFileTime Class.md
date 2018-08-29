@@ -46,7 +46,7 @@ The CFileTimeSpan object can be created using an existing CFileTimeSpan object, 
 | ---------- | ----------- |
 | [Constructors](#Constructors2) | Create new **CFileTimeSpan** objects initialized to the specified value. |
 | [CAST Operator](#CastOp2) | Returns the **CFileTimeSpan** value as a long integer. |
-| [LET Operator](#LetO2p) | Assigns a value to a **CFileTimeSpan** object. |
+| [LET Operator](#LetOp2) | Assigns a value to a **CFileTimeSpan** object. |
 | [Operators](#Operators2) | Adds, subtracts or compares **CFileTimeSpan** objects. |
 | [Day](#Day) | Returns the number of 100-nanosecond intervals that make up one day. |
 | [GetTimeSpan](#GetTimeSpan) | Returns the value of the **CFileTimeSpan** object. |
@@ -108,3 +108,74 @@ CONSTRUCTOR CFileTimeSpan (BYREF cSpan AS CFileTimeSpan)
 ```
 DIM cSpan AS CFileTimeSpan = CFileTime_Day
 ```
+
+# <a name="CastOp1"></a>CAST Operator (CFileTime)
+
+Returns the **CFileTime** value as a long integer.
+
+```
+OPERATOR CAST () AS LONGLONG
+```
+
+#### Examples
+
+```
+DIM cft AS CFileTime = CFileTime().GetCurrentTime()
+DIM nTime AS LONGLONG = cft
+print nTime
+```
+```
+DIM cft AS CFileTime = CFileTime().GetCurrentTime()
+DIM cft2 AS CFileTime = cft
+```
+
+# <a name="CastOp2"></a>CAST Operator (CFileTimeSpan)
+
+Returns the **CFileTimeSpan** value as a long integer.
+
+```
+OPERATOR CAST () AS LONGLONG
+```
+
+# <a name="LetOp1"></a>LET Operator (=) (CFileTime)
+
+Assigns a value to a **CFileTime** object.
+
+```
+OPERATOR LET (BYVAL nTime AS ULONGLONG)
+OPERATOR LET (BYREF ft AS FILETIME)
+OPERATOR LET (BYREF st AS SYSTEMTIME)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nTime* | A date and time expressed as a 64-bit value. |
+| *ft* | A FILETIME structure. |
+| *st* | A SYSTEMTIME structure. |
+
+#### Examples
+
+```
+DIM cft AS CFileTime
+cft = AfxLocalFileTime
+print cft.GetTime
+```
+```
+DIM cft AS CFileTime
+cft = AfxLocalSystemTime
+print cft.GetTime
+```
+
+# <a name="LetOp2"></a>LET Operator (=) (CFileTimeSpan)
+
+Assigns a value to a **CFileTimeSpan** object.
+
+```
+OPERATOR LET (BYVAL nSpan AS LONGLONG)
+OPERATOR LET (BYREF cSpan AS CFileTimeSpan)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSpan* | A period of time in milliseconds. |
+| *cSpan* | A **CFileTimeSpan** object. |
