@@ -1280,3 +1280,104 @@ FUNCTION AfxVariantDateTimeToStr (BYVAL vbDate AS DATE_, BYVAL lcid AS LCID = LO
 #### Return value
 
 The formatted date and time.
+
+# <a name="AfxVariantDateToStr"></a>AfxVariantDateToStr
+
+Converts a DATE_ type to a string containing only the date
+
+```
+FUNCTION AfxVariantDateToStr (BYVAL vbDate AS DATE_, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vbDate* | A variant representation of time. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+#### Return value
+
+The formatted date.
+
+# <a name="AfxVariantTimeToStr"></a>AfxVariantTimeToStr
+
+Converts a DATE_ type to a string containing only the time.
+
+```
+FUNCTION AfxVariantTimeToStr (BYVAL vbDate AS DATE_, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vbDate* | A variant representation of time. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+
+#### Return value
+
+The formatted time.
+
+# <a name="AfxVariantTimeToSystemTime"></a>AfxVariantTimeToSystemTime
+
+Converts a DATE_ (double) to a SYSTEMTIME.
+
+```
+FUNCTION AfxVariantTimeToSystemTime (BYVAL dt AS DATE_) AS SYSTEMTIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dt* | The DATE_ value. |
+
+#### Return value
+
+The date and time in SYSTEMTIME format.
+
+# <a name="AfxWeekNumber"></a>AfxWeekNumber
+
+Returns the week number for a given date. The year must be a 4 digit year.
+
+```
+FUNCTION AfxWeekNumber (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+# <a name="AfxWeekOne"></a>AfxWeekOne
+
+Returns the first day of the first week of a year. The year must be a 4 digit year.
+
+```
+FUNCTION AfxWeekOne (BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear* | A four digit year. |
+
+# <a name="AfxWeeksInMonth"></a>AfxWeeksInMonth
+
+Returns the number of weeks in the specified month. Will be 4 or 5.
+
+```
+FUNCTION AfxWeeksInMonth (BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYenMonthar* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+# <a name="AfxWeeksInYear"></a>AfxWeeksInYear
+
+Returns the number of weeks in the year, where weeks are taken to start on Monday. Will be 52 or 53.
+
+```
+FUNCTION AfxWeeksInYear (BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear* | A four digit year. |
