@@ -230,13 +230,66 @@ The **COleDateTime** as a formatted string.
 Returns the date/time the of this **COleDateTime** object as a **DBTIMESTAMP** data structure.
 
 ```
-FUNCTION GetAsDBTIMESTAMP (BYREF sysTime AS DBTIMESTAMP) AS BOOLEAN
+FUNCTION GetAsDBTIMESTAMP (BYREF dbts AS DBTIMESTAMP) AS BOOLEAN
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *sysTime* | A reference to a **DBTIMESTAMP** structure to receive the converted date/time value from the **COleDateTime** object. |
+| *dbts* | A reference to a **DBTIMESTAMP** structure to receive the converted date/time value from the **COleDateTime** object. |
 
 #### Return value
 
 TRUE or FALSE.
+
+# <a name="GetAsSystemTime"></a>GetAsSystemTime
+
+Returns the date/time the of this **COleDateTime** object as a **SYSTEMTIME** data structure.
+
+```
+FUNCTION GetAsSystemTime (BYREF sysTime AS SYSTEMTIME) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *sysTime* | A reference to a **SYSTEMTIME** structure to receive the converted date/time value from the **COleDateTime** object. |
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="GetAsUdate"></a>GetAsUdate
+
+Returns the date/time the of this **COleDateTime** object as a **UDATE** structure.
+
+```
+FUNCTION GetAsUdate (BYREF ud AS UDATE) AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="GetCurrentTime"></a>GetCurrentTime
+
+Returns the current date/time value in local time.
+
+```
+FUNCTION GetCurrentTime () AS COleDateTime
+```
+
+#### Return value
+
+The current date/time as a **COleDateTime**.
+
+#### Example
+
+```
+DIM ct AS COleDateTime = COleDateTime().GetCurrentTime()
+```
+' --or--
+```
+DIM ct AS COleDateTime
+ct = ct.GetCurrentTime()
+```
+
+
