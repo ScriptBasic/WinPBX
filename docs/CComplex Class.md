@@ -1391,3 +1391,52 @@ SUB CSwap (BYREF z AS CComplex)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *z* | The complex number to swap. |
+
+# <a name="CTan"></a>CTan
+
+Returns the complex tangent of this complex number.
+
+```
+FUNCTION CTan () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CTan
+Output: 0.2717525853195117 +1.083923327338695 * i
+```
+
+# <a name="CTanH"></a>CTanH
+
+Returns the complex hyperbolic tangent of this complex number.
+
+```
+FUNCTION CTanH () AS CComplex
+```
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CTanH
+Output: 1.083923327338695 +0.2717525853195119 * i
+```
+
+# <a name="IsInfinity"></a>IsInfinity / IsInf
+
+Determines whether the argument is an infinity.
+
+```
+FUNCTION IsInfinity (BYVAL x AS DOUBLE) AS LONG
+FUNCTION IsInf (BYVAL x AS DOUBLE) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Remarks
+
+Returns +1 if x is positive infinity, -1 if x is negative infinity and 0 otherwise.
