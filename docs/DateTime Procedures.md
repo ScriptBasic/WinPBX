@@ -353,7 +353,7 @@ FUNCTION AfxGmtTime64 (BYVAL t64 AS LONGLONG) AS tm
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *t64* | A \_\_time64_t (LONGLONG) value.  The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
+| *t64* | A \_\_time64_t (LONGLONG) value. The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
 
 #### Return value
 
@@ -1008,7 +1008,6 @@ FUNCTION AfxSystemTimeToTime64 (BYREF st AS SYSTEMTIME) AS LONGLONG
 | ---------- | ----------- |
 | *st* | A SYSTEMTIME structure. |
 
-
 #### Remarks
 
 The converted time.
@@ -1092,3 +1091,106 @@ Picture string used to form the time.
 #### Return value
 
 The formatted time.
+
+# <a name="AfxSystemTimeToVariantTime"></a>AfxSystemTimeToVariantTime
+
+Converts a SYSTEMTIME to a DATE_ (double).
+
+```
+FUNCTION AfxSystemTimeToVariantTime (BYREF ST AS SYSTEMTIME) AS DATE_
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *st* | A SYSTEMTIME structure. |
+
+#### Return value
+
+The date and time in DATE_ format.
+
+# <a name="AfxSystemYear"></a>AfxSystemYear
+
+Returns the current system year. The valid values are 1601 through 30827.
+
+```
+FUNCTION AfxSystemYear () AS WORD
+```
+
+#### Remarks
+
+The system time is expressed in Coordinated Universal Time (UTC).
+
+# <a name="AfxTime64"></a>AfxTime64
+
+Returns the time as seconds elapsed since midnight, January 1, 1970.
+
+```
+FUNCTION AfxTime64 () AS LONGLONG
+```
+
+#### Return value
+
+The current system time as a \_\_time64_t (LONGLONG) value.
+
+#### Remarks
+
+Replacement for \_time64, not available in msvcrt.dll.
+
+
+# <a name="AfxTime64ToFileTime"></a>AfxTime64ToFileTime
+
+Converts a \_\_time64_t (LONGLONG) value to a FILETIME structure.
+
+```
+FUNCTION AfxTime64ToFileTime (BYVAL t64 AS LONGLONG) AS FILETIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *t64* | A \_\_time64_t (LONGLONG) value. The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
+
+#### Return value
+
+The converted time value as FILETIME structure.
+
+# <a name="AfxTime64ToSystemTime"></a>AfxTime64ToSystemTime
+
+Converts a \_\_time64_t (LONGLONG) value to a SYSTEMTIME structure.
+
+```
+FUNCTION AfxTime64ToSystemTime (BYVAL t64 AS LONGLONG) AS SYSTEMTIME
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *t64* | A \_\_time64_t (LONGLONG) value. The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
+
+#### Return value
+
+The converted time value as SYSTEMTIME structure.
+
+# <a name="AfxTimeZoneBias"></a>AfxTimeZoneBias
+
+Returns the current bias for local time translation. The bias is the difference between Coordinated Universal Time (UTC) and local time. All translations between UTC and local time are based on the following formula: UTC = local time + bias. Units = minutes.
+
+```
+FUNCTION AfxTimeZoneBias () AS DWORD
+```
+
+# <a name="AfxTimeZoneDaylightBias"></a>AfxTimeZoneDaylightBias
+
+Returns the bias value to be used during local time translations that occur during daylight saving time. This property is ignored if a value for the DaylightDay property is not supplied. The value of this property is added to the Bias property to form the bias used during daylight time. In most time zones, the value of this property is -60. Units = minutes.
+
+```
+FUNCTION AfxTimeZoneDaylightBias () AS LONG
+```
+
+# <a name="AfxTimeZoneDaylightDay"></a>AfxTimeZoneDaylightDay
+
+Returns the **DaylightDayOfWeek** of the **DaylightMonth** when the transition from standard time to daylight saving time occurs on this operating system.
+
+```
+FUNCTION AfxTimeZoneDaylightDay () AS DWORD
+```
+
+**Example**: If the transition day (**DaylightDayOfWeek**) occurs on a Sunday, then the value "1" indicates the first Sunday of the **DaylightMonth**, "2" indicates the second Sunday, and so on. The value "5" indicates the last **DaylightDayOfWeek** in the month.
