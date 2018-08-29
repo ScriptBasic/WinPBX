@@ -164,10 +164,10 @@ OPERATOR >= (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
 #### Remarks
 
 ```
-+ Adds a **CTimeSpan** object to a **CTime64** object.
-- Subtracts a **CTimeSpan** object from a **CTime64** object.
-- Subtracts a **CTime64** object from another **CTime64** object.
-+= Adds a **CTimeSpan** object to this **CTime64** object.
--= Subtracts a **CTimeSpan** object from this **CTime64** object.
++ Adds a CTimeSpan object to a CTime64 object.
+- Subtracts a CTimeSpan object from a CTime64 object.
+- Subtracts a CTime64 object from another CTime64 object.
++= Adds a CTimeSpan object to this CTime64 object.
+-= Subtracts a **CTimeSpan** object from this CTime64 object.
 ```
 
