@@ -179,3 +179,38 @@ OPERATOR LET (BYREF cSpan AS CFileTimeSpan)
 | ---------- | ----------- |
 | *nSpan* | A period of time in milliseconds. |
 | *cSpan* | A **CFileTimeSpan** object. |
+
+# <a name="Operators1"></a>Operators (CFileTime)
+
+Adds, subtracts or compares **CFileTime** objects.
+
+```
+OPERATOR + (BYREF dt AS CFileTime, BYREF dateSpan AS CFileTimeSpan) AS CFileTime
+OPERATOR - (BYREF dt AS CFileTime, BYREF dateSpan AS CFileTimeSpan) AS CFileTime
+OPERATOR - (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS CFileTimeSpan
+OPERATOR += (BYREF dateSpan AS CFileTimeSpan)
+OPERATOR -= (BYREF dateSpan AS CFileTimeSpan)
+OPERATOR = (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+OPERATOR <> (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+OPERATOR < (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+OPERATOR > (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+OPERATOR <= (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+OPERATOR >= (BYREF dt1 AS CFileTime, BYREF dt2 AS CFileTime) AS BOOLEAN
+```
+
+# <a name="Operators2"></a>Operators (CFileTimeSpan)
+
+Adds, subtracts or compares **CFileTimeSpan** objects.
+
+```
+OPERATOR + (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS CFileTimeSpan
+OPERATOR - (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS CFileTimeSpan
+OPERATOR += (BYREF dateSpan AS CFileTimeSpan)
+OPERATOR -= (BYREF dateSpan AS CFileTimeSpan)
+OPERATOR = (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+OPERATOR <> (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+OPERATOR < (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+OPERATOR > (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+OPERATOR <= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+OPERATOR >= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
+```
