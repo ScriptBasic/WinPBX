@@ -383,3 +383,59 @@ FUNCTION AfxGregorianToJulian (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL n
 #### Return value
 
 The converted date.
+
+# <a name="AfxIsFirstDayOfMonth"></a>AfxIsFirstDayOfMonth
+
+Returns TRUE if today is the first day of the month; False, otherwise.
+
+```
+FUNCTION AfxIsFirstDayOfMonth () AS BOOLEAN
+```
+
+# <a name="AfxIsLastDayOfMonth"></a>AfxIsLastDayOfMonth
+
+Returns TRUE if today is the last day of the month; False, otherwise.
+
+```
+FUNCTION AfxIsLastDayOfMonth () AS BOOLEAN
+```
+
+# <a name="AfxIsLeapYear"></a>AfxIsLeapYear
+
+Determines if a given year is a leap year or not.
+
+```
+FUNCTION AfxIsLeapYear (BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear* | A four digit year. |
+
+# <a name="AfxIsValidFILETIME"></a>AfxIsValidFILETIME
+
+Checks if a FILETIME is valid.
+
+```
+FUNCTION AfxIsValidFILETIME (BYREF ft AS FILETIME) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ft* | The FILETIME structure to check. |
+
+# <a name="AfxJulianDayOfWeek"></a>AfxJulianDayOfWeek
+
+Given a Julian date, returns the day of week.
+
+```
+FUNCTION AfxJulianDayOfWeek (BYVAL nJulian AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nJulian* | The Julian date. |
+
+#### Return value
+
+A number between 0-6, where 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
