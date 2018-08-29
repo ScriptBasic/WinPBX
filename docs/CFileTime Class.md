@@ -331,7 +331,7 @@ Returns the time as a FILETIME structure.
 FUNCTION GetAsFileTime () AS FILETIME
 ```
 
-# <a name="GetAsSystemTime"></a>GetAsFileTime (CFileTime)
+# <a name="GetAsSystemTime"></a>GetAsSystemTime (CFileTime)
 
 Returns the time as a SYSTEMTIME structure.
 
