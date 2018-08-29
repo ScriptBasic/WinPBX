@@ -76,7 +76,7 @@ CONSTRUCTOR CTime64 (BYVAL nYear AS LONG, BYVAL nMonth AS LONG, BYVAL nDay AS LO
 
 #### Examples
 
-Initializes a CTime64 object from an existing \_\_time64_t value.
+Initializes a **CTime64** object from an existing **\_\_time64_t** value.
 
 ```
 DIM ct1 AS CTime64 = CTime64().GetCurrentTime()
@@ -92,7 +92,7 @@ Initializes a **CTime64** object from individual date/time values.
 DIM ct AS CTime64 = CTime64(2017, 10, 9, 11, 32, 45)
 ```
 
-Initializes a CTime64 object from a SYSTEMTIME structure.
+Initializes a **CTime64** object from a **SYSTEMTIME** structure.
 
 ```
 ' // Year = 2017, Month = 10 (October), Day = 9, Hour = 11, Minutes = 32, Seconds = 45
