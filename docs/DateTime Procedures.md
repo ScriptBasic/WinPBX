@@ -153,3 +153,25 @@ FUNCTION AfxDateAddDays (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear A
 
 The new date in Julian format. To convert it to Gregorian, call functions such **AfxJulianToGregorian** or **AfxJulianToGregorianStr**.
 
+# <a name="AfxDateDiff"></a>AfxDateDiff
+
+Calculates the days of difference between two dates.
+
+```
+FUNCTION AfxDateDiff (BYVAL nDay1 AS LONG, BYVAL nMonth1 AS LONG, BYVAL nYear1 AS LONG, _
+   BYVAL nDay2 AS LONG, BYVAL nMonth2 AS LONG, BYVAL nYear2 AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay1* | A day number (1-31). |
+| *nMonth1* | A month number (1-12). |
+| *nYear1* | A four digit year. |
+| *nDay2* | A day number (1-31). |
+| *nMonth2* | A month number (1-12). |
+| *nYear2* | A four digit year. |
+
+#### Return value
+
+The days of difference between the two dates.
+
