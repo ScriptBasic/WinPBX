@@ -42,7 +42,7 @@ An amount of time, which is internally stored as the number of seconds in the ti
 | ---------- | ----------- |
 | [Constructors](#Constructors2) | Create new **CTimeSpan** objects initialized to the specified value. |
 | [CAST Operator](#CastOp2) | Returns the **CTimeSpan** value as a long integer. |
-| [LET Operator](#LetOp12 | Assigns a value to a **CTimeSpan** object. |
+| [LET Operator](#LetOp2) | Assigns a value to a **CTimeSpan** object. |
 | [Operators](#Operators2) | Adds, subtracts or compares **CTimeSpan** objects. |
 | [GetDays](#GetDays) | Returns a value that represents the number of days in this **CTimeSpan**. |
 | [GetHours](#GetHours) | Returns a value that represents the number of hours in the current day (–23 through 23). |
