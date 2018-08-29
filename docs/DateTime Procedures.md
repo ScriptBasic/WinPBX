@@ -1194,3 +1194,89 @@ FUNCTION AfxTimeZoneDaylightDay () AS DWORD
 ```
 
 **Example**: If the transition day (**DaylightDayOfWeek**) occurs on a Sunday, then the value "1" indicates the first Sunday of the **DaylightMonth**, "2" indicates the second Sunday, and so on. The value "5" indicates the last **DaylightDayOfWeek** in the month.
+
+# <a name="AfxTimeZoneDaylightDayOfWeek"></a>AfxTimeZoneDaylightDayOfWeek
+
+Day of the week when the transition from standard time to daylight saving time occurs on an operating system.
+
+```
+FUNCTION AfxTimeZoneDaylightDayOfWeek () AS DWORD
+```
+
+#### Return value
+
+The day of the week when the transition from standard time to daylight saving time occurs on an operating system. 0 = Sunday, 1 = Monday, and so on.
+
+# <a name="AfxTimeZoneDaylightHour"></a>AfxTimeZoneDaylightHour
+
+Hour of the day when the transition from standard time to daylight saving time occurs on an operating system.
+
+```
+FUNCTION AfxTimeZoneDaylightHour () AS DWORD
+```
+
+# <a name="AfxTimeZoneDaylightMonth"></a>AfxTimeZoneDaylightMonth
+
+Month when the transition from standard time to daylight saving time occurs on an operating system.
+
+```
+FUNCTION AfxTimeZoneDaylightMonth () AS DWORD
+```
+
+#### Return value
+
+The month when the transition from standard time to daylight saving time occurs on an operating system. 1 = January, 2 = February, and so on.
+
+# <a name="AfxTimeZoneDaylightName"></a>AfxTimeZoneDaylightName
+
+Returns a description for daylight saving time. For example, "EST" could indicate Eastern Standard Time. This string can be empty.
+
+```
+FUNCTION AfxTimeZoneDaylightName () AS CWSTR
+```
+
+# <a name="AfxTimeZoneIsDaylightSavingTime"></a>AfxTimeZoneIsDaylightSavingTime
+
+Indicates whether the the system is operating in the range of daylight saving time for the current time zone.
+
+```
+FUNCTION AfxTimeZoneIsDaylightSavingTime () AS BOOLEAN
+```
+
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="AfxTimeZoneStandardName"></a>AfxTimeZoneStandardName
+
+Returns a description for standard time. For example, "EST" could indicate Eastern Standard Time. This string can be empty.
+
+```
+FUNCTION AfxTimeZoneStandardName () AS CWSTR
+```
+
+# <a name="AfxVariantDateTimeToStr"></a>AfxVariantDateTimeToStr
+
+Converts a DATE_ type to a string.
+
+```
+FUNCTION AfxVariantDateTimeToStr (BYVAL vbDate AS DATE_, BYVAL lcid AS LCID = LOCALE_USER_DEFAULT, _
+   BYVAL dwFlags AS DWORD = 0) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *vbDate* | A variant representation of time. |
+| *lcid* | Optional. The language identifier used for the conversion. Default is LOCALE_USER_DEFAULT. |
+| *dwFlags* | Optional. A value made from one or more flags. The following table shows the flags that can be set for this parameter. |
+
+| Flag       | Description |
+| ---------- | ----------- |
+| LOCALE_NOUSEROVERRIDE | Uses the system default locale settings, rather than custom locale settings. |
+| VAR_CALENDAR_HJRI | If set then the Hijri calendar is used. Otherwise the calendar sent in Control Panel is used. |
+| VAR_DATEVALUEONLY | Omits the time portion of a **VT_DATE** and retrieves only the date.<br>Applies to conversions to or from dates.<br>Not used for **ChangeType** and **ChangeTypeEx**. |
+| VAR_TIMEVALUEONLY | Omits the date portion of a **VT_DATE** and returns only the time. Applies to conversions to or from dates. Not used for **ChangeType** and **ChangeTypeEx**. |
+
+#### Return value
+
+The formatted date and time.
