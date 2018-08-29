@@ -168,6 +168,8 @@ OPERATOR LET (BYREF z AS _complex)
 | ---------- | ----------- |
 | *z* | An instance of the **CComplex** class or a **\_complex** structure. |
 
+An instance of the **CComplex** class.
+
 ```
 DIM cpx AS CComplex = TYPE(3, 4)
 DIM cpx2 AS CComplex = cpx
@@ -176,6 +178,9 @@ DIM cpx2 AS CComplex = cpx
 DIM cpx AS CComplex
 cpx = CComplex(3, 4)
 ```
+
+A **\_complex** structure.
+
 ```
 DIM cpx AS CComplex = TYPE<_complex>(3, 4)
 ```
