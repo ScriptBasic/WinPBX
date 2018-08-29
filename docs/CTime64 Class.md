@@ -118,3 +118,27 @@ DIM ct AS CTime64
 ct.SetDateTime(2017, 10, 9, 11, 32, 45)
 DIM ct2 AS CTime64 = ct.GetAsSystemtime
 ```
+
+# CAST Operator (CTime64)
+
+Returns the underlying value from this **CTime64** object.
+
+```
+OPERATOR CAST () AS LONGLONG
+```
+
+# LET Operator (=) (CTime64)
+
+Assigns a value to a **CTime64** object.
+
+```
+OPERATOR LET (BYVAL timeSrc AS LONGLONG)
+OPERATOR LET (BYREF st AS SYSTEMTIME)
+OPERATOR LET (BYREF ft AS FILETIME)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *timeSrc* | A \_\_time64_t (LONGLONG) value. |
+| *st* | A SYSTEMTIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into the new **CTime64** object. |
+| *ft* | A FILETIME structure to be converted to a \_\_time64_t (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
