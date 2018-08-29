@@ -843,7 +843,7 @@ cpx = cpx.CConjugate
 
 # <a name="CCos"></a>CCos
 
-Returns the complex conjugate of this complex number.
+Returns the complex cosine of this complex number.
 
 ```
 FUNCTION CCos () AS CComplex
