@@ -35,3 +35,23 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 | [SetDateTime](#SetDateTime) | Sets the date and time of this **COleDateTime** object. |
 | [SetStatus](#SetStatus) | Sets the status (validity) of a given **COleDateTime** object. |
 | [SetTime](#SetTime) | Sets the time of this **COleDateTime** object. |
+
+# COleDateTimeSpan Class
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#Constructors2) | Create new **COleDateTimeSpan** objects initialized to the specified value. |
+| [CAST Operator](#CastOp2) | Returns the **COleDateTimeSpan** value as a long integer. |
+| [LET Operator](#LetOp2) | Assigns a value to a **COleDateTimeSpan** object. |
+| [Operators](#Operators2) | Adds, subtracts or compares **COleDateTimeSpan** objects. |
+| [GetDays](#GetDays) | Retrieves the day portion of this date/time-span value. |
+| [GetHours](#GetHours) | Retrieves the hour portion of this date/time-span value. |
+| [GetMinutes](#GetMinutes) | Retrieves the minutes portion of this date/time-span value. |
+| [GetSeconds](#GetSeconds) | Retrieves the seconds portion of this date/time-span value. |
+| [GetStatus](#GetStatus) | Gets the status (validity) of a given **COleDateTimeSpan** object. |
+| [GetTotalDays](#GetTotalDays) | Retrieves this date/time-span value expressed in days. |
+| [GetTotalHours](#GetTotalHours) | Retrieves this date/time-span value expressed in hours. |
+| [GetTotalMinutes](#GetTotalMinutes) | Retrieves this date/time-span value expressed in minutes. |
+| [GetTotalSeconds](#GetTotalSeconds) | Retrieves this date/time-span value expressed in seconds. |
+| [SetDateTimeSpan](#SetDateTimeSpan) | Sets the date and time of this **COleDateTimeSpan** object. |
+| [SetStatus](#SetStatus) | Sets the status (validity) of a given **COleDateTimeSpan** object. |
