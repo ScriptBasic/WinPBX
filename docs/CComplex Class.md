@@ -792,14 +792,6 @@ FUNCTION CATanHReal (BYVAL value AS DOUBLE) AS CComplex
 | ---------- | ----------- |
 | *value* | A double value representing the real part of a complex number. |
 
-#### Example
-
-```
-DIM cpx AS CComplex
-PRINT cpx.CArcSinReal(1)
-Output: 1.570796326794897 +0 * i
-```
-
 # <a name="CArg"></a>CArg / CArgument / CPhase
 
 Returns the argument of this complex number.
