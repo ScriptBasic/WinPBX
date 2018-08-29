@@ -17,10 +17,10 @@ CFileTime_Week           CFileTime_Day * 7
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructors](#Constructors) | Create new **CFileTime** objects initialized to the specified value. |
-| [CAST Operator](#CastOp) | Returns the **CFileTime** value as a long integer. |
-| [LET Operator](#LetOp) | Assigns a value to a **CFileTime** object. |
-| [Operators](#Operators) | Adds, subtracts or compares **CFileTime** objects. |
+| [Constructors](#Constructors1) | Create new **CFileTime** objects initialized to the specified value. |
+| [CAST Operator](#CastOp1) | Returns the **CFileTime** value as a long integer. |
+| [LET Operator](#LetOp1) | Assigns a value to a **CFileTime** object. |
+| [Operators](#Operators1) | Adds, subtracts or compares **CFileTime** objects. |
 | [Day](#Day) | Returns the number of 100-nanosecond intervals that make up one day. |
 | [Format](#Format) | Converts a **CFileTime** object to a string. |
 | [GetAsFileTime](#GetAsFileTime) | Returns the time as a **FILETIME** structure. |
@@ -44,10 +44,10 @@ The CFileTimeSpan object can be created using an existing CFileTimeSpan object, 
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructors](#Constructors) | Create new **CFileTimeSpan** objects initialized to the specified value. |
-| [CAST Operator](#CastOp) | Returns the **CFileTimeSpan** value as a long integer. |
-| [LET Operator](#LetOp) | Assigns a value to a **CFileTimeSpan** object. |
-| [Operators](#Operators) | Adds, subtracts or compares **CFileTimeSpan** objects. |
+| [Constructors](#Constructors2) | Create new **CFileTimeSpan** objects initialized to the specified value. |
+| [CAST Operator](#CastOp2) | Returns the **CFileTimeSpan** value as a long integer. |
+| [LET Operator](#LetO2p) | Assigns a value to a **CFileTimeSpan** object. |
+| [Operators](#Operators2) | Adds, subtracts or compares **CFileTimeSpan** objects. |
 | [Day](#Day) | Returns the number of 100-nanosecond intervals that make up one day. |
 | [GetTimeSpan](#GetTimeSpan) | Returns the value of the **CFileTimeSpan** object. |
 | [Hour](#Hour) | Returns the number of 100-nanosecond intervals that make up one hour. |
@@ -56,3 +56,34 @@ The CFileTimeSpan object can be created using an existing CFileTimeSpan object, 
 | [Second](#Second) | Returns the number of 100-nanosecond intervals that make up one second. |
 | [SetTimeSpan](#SetTimeSpan) | Sets the date and time of this **CFileTimeSpan** object. |
 | [Week](#Week) | Returns the number of 100-nanosecond intervals that make up one week. |
+
+# <a name="Constructors1"></a>Constructors(CFileTime)
+
+Create new **CFileTime** objects initialized to the specified value.
+
+```
+CONSTRUCTOR CFileTime
+CONSTRUCTOR CFileTime (BYVAL nSpan AS ULONGLONG)
+CONSTRUCTOR CFileTime (BYREF ft AS FILETIME)
+CONSTRUCTOR CFileTime (BYREF st AS SYSTEMTIME)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nSpan* | A date and time expressed as a 64-bit value. |
+| *ft* | A FILETIME structure. |
+| *st* | A SYSTEMTIME structure. |
+
+#### Examples
+
+```
+DIM cft AS CFileTime = CFileTime().GetCurrentTime()
+```
+```
+DIM cft AS CFileTime = AfxLocalFileTime
+print cft.GetTime
+```
+```
+DIM cft AS CFileTime = AfxLocalSystemTime
+print cft.GetTime
+```
