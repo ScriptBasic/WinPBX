@@ -56,9 +56,9 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 | [SetDateTimeSpan](#SetDateTimeSpan) | Sets the date and time of this **COleDateTimeSpan** object. |
 | [SetStatus](#SetStatus) | Sets the status (validity) of a given **COleDateTimeSpan** object. |
 
-# <a name="Constructors1"></a>Constructors (COleDateTimeSpan)
+# <a name="Constructors1"></a>Constructors (COleDateTime)
 
-All these constructors create new COleDateTime objects initialized to the specified value.
+All these constructors create new **COleDateTime** objects initialized to the specified value.
 
 ```
 CONSTRUCTOR COleDateTime
@@ -96,3 +96,10 @@ CONSTRUCTOR COleDateTime (BYREF wsz AS WSTRING, BYVAL dwFlags AS DWORD = 0, _
 
 The status of the new **COleDateTime** object is set to valid.
 
+# <a name="CastOp1"></a>CAST OPERATOR (COleDateTime)
+
+Returns the underlying value from this **COleDateTime** object.
+
+```
+OPERATOR CAST () AS DATE_
+```
