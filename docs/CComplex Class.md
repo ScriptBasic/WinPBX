@@ -981,7 +981,7 @@ FUNcTION CLog (BYVAL baseValue AS DOUBLE) AS CComplex
 | ---------- | ----------- |
 | *baseValue* | A double value. |
 
-#### Example
+#### Examples
 
 ```
 DIM cpx AS CComplex = CComplex(1, 1)
@@ -1046,7 +1046,7 @@ FUNCTION CMul (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
 | *z* | A complex number. |
 | *x, y* | Double values representing the real and imaginary parts. |
 
-#### Example
+#### Examples
 
 ```
 DIM cpx AS CComplex = CComplex(5, 6)
@@ -1071,6 +1071,8 @@ FUNCTION CMulImag (BYVAL x AS DOUBLE) AS CComplex
 | ---------- | ----------- |
 | *x* | A double value. |
 
+#### Example
+
 ```
 DIM cpx AS CComplex = CComplex(5, 6)
 cx = cpx.CMulImag(3)
@@ -1087,6 +1089,8 @@ FUNCTION CMulReal (BYVAL x AS DOUBLE) AS CComplex
 | Parameter  | Description |
 | ---------- | ----------- |
 | *x* | A double value. |
+
+#### Example
 
 ```
 DIM cpx AS CComplex = CComplex(5, 6)
@@ -1136,7 +1140,7 @@ FUNCTION CPow (BYVAL power AS DOUBLE) AS CComplex
 | ---------- | ----------- |
 | *power* | A complex or a double number. |
 
-#### Example
+#### Examples
 
 ```
 DIM cpx AS CComplex = CComplex(1, 1)
@@ -1199,6 +1203,8 @@ Returns the complex secant of this complex number.
 FUNCTION CSec () AS CComplex
 ```
 
+#### Example
+
 ```
 DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CSec
@@ -1212,6 +1218,8 @@ Returns the complex hyperbolic secant of this complex number.
 ```
 FUNCTION CSecH () AS CComplex
 ```
+
+#### Example
 
 ```
 DIM cpx AS CComplex = CComplex(1, 1)
@@ -1231,6 +1239,8 @@ PROPERTY CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE)
 | ---------- | ----------- |
 | *x, y* | Double values. |
 
+#### Example
+
 ```
 DIM cpx AS CComplex : cpx.CSet = 3, 4
 DIM cpx AS CComplex : cpx.CRect = 3, 4
@@ -1247,6 +1257,12 @@ If number is less than zero, then CSgn returns -1.
 PROPERTY CSin () AS CSin
 ```
 
+#### Example
+
+DIM cpx AS CComplex = CComplex(1, 1)
+PRINT cpx.CSin
+Output: 1.298457581415977 +0.6349639147847361 * i
+
 # <a name="CSinH"></a>CSinH
 
 Returns the complex hyperbolic sine of this complex number.
@@ -1255,9 +1271,123 @@ Returns the complex hyperbolic sine of this complex number.
 FUNCTION CSinH () AS CComplex
 ```
 
+#### Example
+
 ```
 DIM cpx AS CComplex = CComplex(1, 1)
 PRINT cpx.CSinH
 Output: 0.6349639147847361 +1.298457581415977 * i
+```
+
+# <a name="CSqr"></a>CSqr / CSqrt
+
+Returns the square root of the complex number z. The branch cut is the negative real axis. The result always lies in the right half of the complex plane.
 
 ```
+FUNCTION CSqr () AS CComplex
+FUNCTION CSqrt () AS CComplex
+```
+
+Returns the complex square root of the real number x, where x may be negative.
+
+```
+FUNCTION CSqr (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CSqrt (BYVAL value AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *value* | A double value representing a real number. |
+
+#### Examples
+
+```
+DIM cpx AS CComplex = CComplex(2, 3)
+PRINT cpx.CSqrt
+Output: 1.67414922803554 +0.895977476129838 * i
+```
+
+Compute the square root of -1:
+
+```
+DIM cpx AS CComplex = CComplex(-1)
+PRINT cpx.CSqr
+Output: 0 +1.0 * i
+```
+
+# <a name="CSub"></a>CSub
+
+Subtracts a complex number.
+
+```
+FUNCTION CSub (BYREF z AS CComplex) AS CComplex
+FUNCTION CSub (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | The complex number to subtract. |
+| *x, y* | Double values representing the real and imaginary parts. |
+
+#### Examples
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+DIM cpx2 AS CComplex = CComplex(2, 3)
+cpx = cpx.CSub(cpx2)
+' --or-- cpx = cpx.CSub(CComplex(2, 3))
+```
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CSub(2, 3)
+```
+
+# <a name="CSubImag"></a>CSubImag
+
+Subtracts an imaginary number.
+
+```
+FUNCTION CSubImag (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cx = cpx.CSubImag(3)
+```
+
+# <a name="CSubReal"></a>CSubReal
+
+Subtracts a real number.
+
+```
+FUNCTION CSubReal (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Example
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CSubReal(2)
+```
+
+# <a name="CSwap"></a>CSwap
+
+Exchanges the contents of two complex numbers.
+
+```
+SUB CSwap (BYREF z AS CComplex)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | The complex number to swap. |
