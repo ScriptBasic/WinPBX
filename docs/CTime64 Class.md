@@ -1,10 +1,10 @@
 # CTime64 Class
 
-Represents an absolute time and date. **CTime64** values are based on coordinated universal time (UTC), which is equivalent to Coordinated Universal time (Greenwich Mean Time, GMT).
+Represents an absolute time and date.
 
-A companion class, CTimeSpan, represents a time interval.
-
-The upper date limit is 12/31/3000. The lower limit is 1/1/1970 12:00:00 AM GMT.
+* **CTime64** values are based on coordinated universal time (UTC), which is equivalent to Coordinated Universal time (Greenwich Mean Time, GMT).
+* A companion class, **CTimeSpan**, represents a time interval.
+* The upper date limit is 12/31/3000. The lower limit is 1/1/1970 12:00:00 AM GMT.
 
 **Include file**: CTime64.inc
 
@@ -29,3 +29,11 @@ The upper date limit is 12/31/3000. The lower limit is 1/1/1970 12:00:00 AM GMT.
 | [GetTime](#GetTime) | Returns a \_\_time64_t (LONGLONG) value for the given **CTime64** object. |
 | [GetYear](#GetYear) | Returns the year represented by the **CTime64** object. |
 | [SetDateTime](#SetDateTime) | Sets the date and time of this **CTime64** object. |
+
+# CTimeSpan Class
+
+An amount of time, which is internally stored as the number of seconds in the time span.
+
+* The **CTimeSpan** methods convert seconds to various combinations of days, hours, minutes, and seconds.
+* The **CTimeSpan** object is stored in a \_\_time64_t structure, which is 8 bytes.
+* A companion class, **CTime64**, represents an absolute time.
