@@ -119,7 +119,7 @@ ct.SetDateTime(2017, 10, 9, 11, 32, 45)
 DIM ct2 AS CTime64 = ct.GetAsSystemtime
 ```
 
-# CAST Operator (CTime64)
+# <a name="CastOp1"></a>CAST Operator (CTime64)
 
 Returns the underlying value from this **CTime64** object.
 
@@ -127,7 +127,7 @@ Returns the underlying value from this **CTime64** object.
 OPERATOR CAST () AS LONGLONG
 ```
 
-# LET Operator (=) (CTime64)
+# <a name="LetOp1"></a>LET Operator (=) (CTime64)
 
 Assigns a value to a **CTime64** object.
 
