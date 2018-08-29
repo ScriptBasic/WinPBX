@@ -365,5 +365,5 @@ time is not in effect; negative value if status of daylight saving time is unkno
 
 #### Remarks
 
-Replacement for _gmtime64, not available in msvcrt.dll.
+Replacement for **\_gmtime64**, not available in msvcrt.dll.
 
