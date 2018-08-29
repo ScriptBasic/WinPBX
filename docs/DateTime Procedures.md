@@ -285,3 +285,52 @@ The following table defines the format types used to represent years.
 
 The formatted date.
 
+
+# <a name="AfxFileTimeToTime64"></a>AfxFileTimeToTime64
+
+Converts a FILETIME to a \_\_time64_t (LONGLONG) value.
+
+```
+FUNCTION AfxFileTimeToTime64 (BYREF ft AS FILETIME) AS LONGLONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ft* | A FILETIME structure. |
+
+#### Return value
+
+The converted time.
+
+# <a name="AfxFileTimeToTimeStr"></a>AfxFileTimeToTimeStr
+
+Converts a FILETIME type to a string containing the time based on the specified mask, e.g. "hh':'mm':'ss".
+
+```
+FUNCTION AfxFileTimeToTimeStr (BYREF ft AS FILETIME, BYREF wszMask AS WSTRING, _
+   BYVAL lcid AS LCID = LOCALE_USER_DEFAULT) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *ft* | A FILETIME structure. |
+
+A picture string that is used to form the time.
+
+| Picture    | Meaning |
+| ---------- | ----------- |
+| h | Hours with no leading zero for single-digit hours; 12-hour clock |
+| hh | Hours with leading zero for single-digit hours; 12-hour clock |
+| H | Hours with no leading zero for single-digit hours; 24-hour clock |
+| HH | Hours with leading zero for single-digit hours; 24-hour clock |
+| m | Minutes with no leading zero for single-digit minutes |
+| mm | Minutes with leading zero for single-digit minutes |
+| s | Seconds with no leading zero for single-digit seconds |
+| ss | Seconds with leading zero for single-digit seconds |
+| t | One character time marker string, such as A or P |
+| tt | Multi-character time marker string, such as AM or PM |
+
+#### Return value
+
+The formatted time.
+
