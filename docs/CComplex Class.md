@@ -395,6 +395,69 @@ PRINT cpx.CAbs2
 Output: 13
 ```
 
+# <a name="CAdd"></a>CAdd
+
+Adds a complex number.
+
+```
+FUNCTION CAdd (BYREF z AS CComplex) AS CComplex
+FUNCTION CAdd (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | The complex number to add. |
+| *x, y* | Double values representing the real and imaginary parts. |
+
+#### Examples
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+DIM cpx2 AS CComplex = CComplex(2, 3) : cpx = cpx.CAdd(cpx2)
+' --or-- cpx = cpx.CAdd(CComplex(2, 3))
+```
+```
+DIM cpx AS CComplex = CComplex(5, 6) : cpx = cpx.CAdd(2, 3)
+```
+
+# <a name="CAddImag"></a>CAddImag
+
+Adds an imaginary number.
+
+```
+FUNCTION CAddImag (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Examples
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CAddImag(10)
+```
+
+# <a name="CAddReal"></a>CAddReal
+
+Adds a real number.
+
+```
+FUNCTION CAddReal (BYVAL x AS DOUBLE) AS CComplex
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+#### Examples
+
+```
+DIM cpx AS CComplex = CComplex(5, 6)
+cpx = cpx.CAddReal(10)
+```
+
 # <a name="CArcCos"></a>CArcCos / CACos
 
 Returns the complex arccosine of this complex number.
