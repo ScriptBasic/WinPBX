@@ -1192,12 +1192,6 @@ FUNCTION CPolar (BYVAL r AS DOUBLE, BYVAL theta AS DOUBLE)
 | *r* | The modulus of complex number. |
 | *theta* | The angle with the positive direction of x-axis. |
 
-#### Example
-
-```
-DIM cpx AS CComplex = CComplex(3, 4)
-```
-
 # <a name="CPow"></a>CPow
 
 Returns this complex number raised to a complex power.<br>
