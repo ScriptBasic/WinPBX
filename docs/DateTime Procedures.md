@@ -334,3 +334,36 @@ A picture string that is used to form the time.
 
 The formatted time.
 
+# <a name="AfxGmtTime64"></a>AfxGmtTime64
+
+Converts a FILETIME to a \_\_time64_t (LONGLONG) value.
+
+```
+FUNCTION AfxGmtTime64 (BYVAL t64 AS LONGLONG) AS tm
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *t64* | A \_\_time64_t (LONGLONG) value.  The time is represented as seconds elapsed since midnight (00:00:00), January 1, 1970, coordinated universal time (UTC). |
+
+#### Return value
+
+Returns a tm structure. The fields of the returned structure hold the evaluated value of the time argument in UTC rather than in local time. 
+
+The fields of the structure type tm store the following values, each of which is an int:
+
+tm_sec : Seconds after minute (0 – 59).
+tm_min : Minutes after hour (0 – 59).
+tm_hour : Hours after midnight (0 – 23).
+tm_mday : Day of month (1 – 31).
+tm_mon : Month (0 – 11; January = 0).
+tm_year : Year (current year minus 1900).
+tm_wday : Day of week (0 – 6; Sunday = 0).
+tm_yday : Day of year (0 – 365; January 1 = 0).
+tm_isdst : Positive value if daylight saving time is in effect; 0 if daylight saving
+time is not in effect; negative value if status of daylight saving time is unknown.
+
+#### Remarks
+
+Replacement for _gmtime64, not available in msvcrt.dll.
+
