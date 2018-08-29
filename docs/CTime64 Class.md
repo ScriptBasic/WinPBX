@@ -393,7 +393,7 @@ PRINT ct.GetSecond
 
 # <a name="GetTime"></a>GetTime (CTime64)
 
-Returns a \_\_time64_t (LONGLONG) value for the given **CTime64** object.
+Returns a **\_\_time64_t** (LONGLONG) value for the given **CTime64** object.
 
 ```
 FUNCTION GetTime () AS LONGLONG
