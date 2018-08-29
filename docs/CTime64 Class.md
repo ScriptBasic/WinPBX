@@ -142,3 +142,32 @@ OPERATOR LET (BYREF ft AS FILETIME)
 | *timeSrc* | A \_\_time64_t (LONGLONG) value. |
 | *st* | A **SYSTEMTIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into the new **CTime64** object. |
 | *ft* | A **FILETIME** structure to be converted to a **\_\_time64_t** (LONGLONG) value and copied into  the new **CTime64** object. Note that **FILETIME** uses Universal Coordinated Time (UTC), so if you pass a local time in the structure, your results will be incorrect. |
+
+# <a name="Operators1"></a>Operators (CTime64)
+
+Adds, subtracts or compares **CTime64** objects.
+
+```
+OPERATOR + (BYREF dt AS CTime64, BYREF dateSpan AS CTimeSpan) AS CTime64
+OPERATOR - (BYREF dt AS CTime64, BYREF dateSpan AS CTimeSpan) AS CTime64
+OPERATOR - (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS CTimeSpan
+OPERATOR += (BYREF dateSpan AS CTimeSpan)
+OPERATOR -= (BYREF dateSpan AS CTimeSpan)
+OPERATOR = (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+OPERATOR <> (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+OPERATOR < (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+OPERATOR > (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+OPERATOR <= (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+OPERATOR >= (BYREF dt1 AS CTime64, BYREF dt2 AS CTime64) AS BOOLEAN
+```
+
+#### Remarks
+
+```
++ Adds a **CTimeSpan** object to a **CTime64** object.
+- Subtracts a **CTimeSpan** object from a **CTime64** object.
+- Subtracts a **CTime64** object from another **CTime64** object.
++= Adds a **CTimeSpan** object to this **CTime64** object.
+-= Subtracts a **CTimeSpan** object from this **CTime64** object.
+```
+
