@@ -115,3 +115,21 @@ PRINT AfxAstroDay(1, 3, 12000) - AfxAstroDay(28, 2, -12000)  ' Prints 8765822
 PRINT AfxAstroDay(28, 2, 1902) - AfxAstroDay(1, 3, 1898)  ' Prints 1459 days
 ```
 
+# <a name="AfxAstroDayOfWeek"></a>AfxAstroDayOfWeek
+
+Calculates the day of the week, Sunday through Monday, of a given date.
+
+```
+FUNCTION AfxAstroDayOfWeek (BYVAL nDay AS LONG, BYVAL nMonth AS LONG, BYVAL nYear AS LONG) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nDay* | A day number (1-31). |
+| *nMonth* | A month number (1-12). |
+| *nYear* | A four digit year. |
+
+#### Return value
+
+A number between 0-6, where 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday.
+
