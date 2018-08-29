@@ -217,7 +217,7 @@ OPERATOR <= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BO
 OPERATOR >= (BYREF cSpan1 AS CFileTimeSpan, BYREF cSpan2 AS CFileTimeSpan) AS BOOLEAN
 ```
 
-# <a name="Day"></a>Day
+# <a name="Day"></a>Day (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one day.
 
@@ -225,7 +225,7 @@ Returns the number of 100-nanosecond intervals that make up one day.
 FUNCTION Day () AS ULONGLONG
 ```
 
-# <a name="Hour"></a>Hour
+# <a name="Hour"></a>Hour (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one hour.
 
@@ -233,7 +233,7 @@ Returns the number of 100-nanosecond intervals that make up one hour.
 FUNCTION Hour () AS ULONGLONG
 ```
 
-# <a name="Millisecond"></a>Millisecond
+# <a name="Millisecond"></a>Millisecond (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one millisecond.
 
@@ -241,7 +241,7 @@ Returns the number of 100-nanosecond intervals that make up one millisecond.
 FUNCTION Millisecond () AS ULONGLONG
 ```
 
-# <a name="Minute"></a>Minute
+# <a name="Minute"></a>Minute (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one minute.
 
@@ -249,7 +249,7 @@ Returns the number of 100-nanosecond intervals that make up one minute.
 FUNCTION Minute () AS ULONGLONG
 ```
 
-# <a name="Second"></a>Second
+# <a name="Second"></a>Second (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one second.
 
@@ -257,7 +257,7 @@ Returns the number of 100-nanosecond intervals that make up one second.
 FUNCTION Second () AS ULONGLONG
 ```
 
-# <a name="Week"></a>Week
+# <a name="Week"></a>Week (CFileTime / CFileTimeSpan)
 
 Returns the number of 100-nanosecond intervals that make up one week.
 
@@ -321,4 +321,43 @@ print cft.Format("%A, %B %d, %Y %H:%M:%S")
 DIM cft AS CFileTime
 cft = AfxLocalFileTime
 print cft.Format("%A, %B %d, %Y %H:%M:%S")
+```
+
+# <a name="GetAsFileTime"></a>GetAsFileTime (CFileTime)
+
+Returns the time as a FILETIME structure.
+
+```
+FUNCTION GetAsFileTime () AS FILETIME
+```
+
+# <a name="GetAsSystemTime"></a>GetAsFileTime (CFileTime)
+
+Returns the time as a SYSTEMTIME structure.
+
+```
+FUNCTION GetAsSystemTime () AS SYSTEMTIME
+```
+
+# <a name="GetCurrentTime"></a>GetCurrentTime (CFileTime)
+
+Returns a **CFileTime** object that represents the current system date and time.
+
+```
+FUNCTION GetCurrentTime () AS CFileTime
+```
+
+# <a name="GetTime"></a>GetTime (CFileTime)
+
+Returns the value of the **CFileTime** object.
+
+```
+FUNCTION GetTime () AS LONGLONG
+```
+
+#### Example
+
+```
+DIM cft AS CFileTime = CFileTime().GetCurrentTime()
+print cft.GetTime
 ```
