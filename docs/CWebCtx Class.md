@@ -665,3 +665,19 @@ Returns S_OK (0) if successful, or an error value otherwise.
 #### Remarks
 
 The user can indicate the URL to use for the home or start page either from Internet Options in Microsoft Internet Explorer or from Internet Properties in Control Panel.
+
+# <a name="GoSearch"></a>GoSearch
+
+Navigates to the current search page.
+
+```
+FUNCTION GoSearch () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+The user can indicate the URL to use for the search page either from Internet Options in Microsoft Internet Explorer or from Internet Properties in Control Panel.
