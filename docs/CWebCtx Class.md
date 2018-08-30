@@ -851,7 +851,7 @@ FUNCTION QueryStatusWB (BYVAL cmdID AS OLECMDID) AS OLECMDF
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cmdID* | **OLECMDID** value of the command for which the caller needs status information.  |
+| *cmdID* | **OLECMDID** value of the command for which the caller needs status information. |
 
 #### Return value
 
@@ -884,3 +884,32 @@ Returns S_OK (0) if successful, or E_FAIL otherwise.
 #### Remarks
 
 The WebBrowser control and InternetExplorer application store Web pages from recently visited sites in cached memory on the user's hard disk. This saves time when revisiting a site by reloading the page from the local disk rather than downloading it again across the network from the remote HTTP server. You can force the WebBrowser control and WebBrowser application to redownload a page by using the **Refresh** or **Refresh2** methods of the **IWebBrowser2** interface to ensure that you are viewing the most current version of the page. Also, you can disable the cache from being used by specifying the **navNoReadFromCache** and **navNoWriteToCache** flags when calling the **Navigate2** method of the **IWebBrowser2** interface. 
+
+# <a name="Refresh2"></a>Refresh2
+
+Reloads the file that is currently displayed in the object. Unlike **Refresh**, this method contains a parameter that specifies the refresh level.
+
+```
+FUNCTION Refresh2 (BYVAL nLevel AS RefreshConstants) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nLevel* | One of the **RefreshConstants** enumeration values. |
+
+### RefreshConstants enumeration
+
+| Constant   | Description |
+| ---------- | ----------- |
+| REFRESH_NORMAL (0) | Perform a lightweight refresh that does not include the pragma:nocache header. The pragma:nocache header tells the server not to return a cached copy. This can cause problems with some servers. |
+| REFRESH_IFEXPIRED (1) | Only refresh if the page has expired. Do not include the pragma:nocache header. |
+| REFRESH_COMPLETELY (3) | Perform a full refresh, including the pragma:nocache header. Using this option is the same as calling the Refresh method. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or E_FAIL otherwise.
+
+#### Remarks
+
+The "pragma:nocache" header tells the server not to return a cached copy. This ensures that the information is as fresh as possible. Browsers typically send this header when the user selects refresh, but the header can cause problems for some servers.
+
