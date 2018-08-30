@@ -414,3 +414,20 @@ PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR
 END FUNCTION
 ' ========================================================================================
 ````
+
+# <a name="Advise"></a>Advise
+
+Establishes a connection between a connection point object and the client's sink.
+
+```
+FUNCTION Advise () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an error code.
+
+#### Remarks
+
+You don't have to call this method. The **CWebCtx** constructor calls it.
+
