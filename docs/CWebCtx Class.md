@@ -2524,9 +2524,32 @@ SUB TitleChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *pwszText* | WSTRING that specifies the new status bar text.  |
+| *pwszText* | WSTRING that specifies the new status bar text. |
 
 #### Remarks
 
 Because the title might change while an HTML page is downloading, the URL of the document is set as the title. After the title specified in the HTML page, if there is one, is parsed, the title is changed to reflect the actual title.
+
+# <a name="WindowClosing"></a>WindowClosing Event
+
+Fires when the window of the object is about to be closed by script.
+
+```
+METHOD WindowClosing (BYVAL pWebCtx AS CWebCtx PTR, BYVAL IsChildWindow AS VARIANT_BOOL, _
+   BYVAL pbCancel AS VARIANT_BOOL PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *IsChildWindow* | Boolean value that specifies whether the window was created from script. Can be one of the following values.<br>VARIANT_FALSE: Window was not created from script.<br>VARIANT_TRUE: Window was created from script. |
+| *pbCancel* | In, Out. Pointer to a cancel flag. Boolean value that specifies whether the window is prevented from closing. Can be one of the following values.<br>VARIANT_FALSE: Window is allowed to close.<br>VARIANT_TRUE: Window is prevented from closing. |
+
+#### Remarks
+
+This event is fired when a window is closed from script, using the **window.close** method.
+
+The default behavior of Microsoft Internet Explorer is to close windows that were created by script without asking the user. If an attempt is made to close the main InternetExplorer or WebBrowser control window through script, the user is prompted.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Internet Explorer 5.5 and later.
 
