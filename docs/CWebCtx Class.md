@@ -3733,3 +3733,26 @@ Returns S_OK (0) if the data object is replaced, or S_FALSE (1) if it's not repl
 This method enables the host to block certain clipboard formats or support additional clipboard formats.
 
 If the implementation of this method does not supply its own **IDataObject**, *ppDORet* should be set to NULL, even if the method fails or returns S_FALSE.
+
+# <a name="GetDropTarget"></a>GetDropTarget Event
+
+Called by MSHTML when it is used as a drop target. This method enables the host to supply an alternative **IDropTarget** interface.
+
+```
+FUNCTION GetDropTarget (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDropTarget AS IDropTarget PTR, _
+   BYVAL ppDropTarget AS IDropTarget PTR PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDropTarget* | Pointer to an **IDropTarget** interface for the current drop target object supplied by MSHTML. |
+| *ppDropTarget* | Out. Address of a pointer variable that receives an **IDropTarget** interface pointer for the alternative drop target object supplied by the host. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+If the host does not supply an alternative drop target, this method should return a failure code, such as E_NOTIMPL or E_FAIL.
