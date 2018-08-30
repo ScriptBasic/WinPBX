@@ -3995,3 +3995,21 @@ Returns S_OK (0) if successful, or an error value otherwise.
 #### Remarks
 
 If a host displayed menus and toolbars during the call to **ShowUI**, the host should remove them when this method is called. This method is called regardless of the return value from the **ShowUI** method.
+
+# <a name="OnDocWindowActivate"></a>OnDocWindowActivate Event
+
+Called by the MSHTML implementation of **IOleInPlaceActiveObject.OnDocWindowActivate**.
+
+```
+FUNCTION OnDocWindowActivate (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS WINBOOL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *fActivate* | Boolean value that indicates the state of the document window.<br>**TRUE**: The window is being activated.<br>**FALSE**: The window is being deactivated. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
