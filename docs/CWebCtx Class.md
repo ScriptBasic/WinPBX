@@ -2553,3 +2553,23 @@ The default behavior of Microsoft Internet Explorer is to close windows that wer
 
 This event is available only to an application that is hosting the WebBrowser control installed by Internet Explorer 5.5 and later.
 
+# <a name="WindowSetHeight"></a>WindowSetHeight Event
+
+Fires when the object changes its height.
+
+```
+SUB WindowSetHeight (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nHeight AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *nHeight* | LONG that specifies the new height of the WebBrowser control. |
+
+#### Remarks
+
+The **WindowSetHeight** event is fired when the height of a window is changed, using the Height property of the **IWebBrowser2** interface.
+
+This event is also fired when a new window is opened through scripting, using the window.open method. The value of the nHeight parameter indicates the height requested in the call to window.open.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
