@@ -4,6 +4,8 @@ GDI+ is the successor to GDI, the graphics device interface included with earlie
 
 A graphics device interface, such as GDI+, allows application programmers to display information on a screen or printer without having to be concerned about the details of a particular display device. The application programmer makes calls to the provided functions and those functions in turn make the appropriate calls to specific device drivers. GDI+ insulates the application from the graphics hardware, and it is this insulation that allows developers to create device-independent applications.
 
+**Include file**: CGdiPlus.inc.
+
 # CGpBase class
 
 Initializes the GDI+ library and keeps a reference count of it. The destructor shutdowns the library. All the other GDI+ classes inherit frrom CGpBase.
