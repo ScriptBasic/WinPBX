@@ -1812,7 +1812,7 @@ FUNCTION AfxWriteHtml (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
 
 S_OK if successful, or an error value otherwise.
 
-# <a name="BeforeNavigate2"></a>BeforeNavigate2
+# <a name="BeforeNavigate2"></a>BeforeNavigate2 Event
 
 Fires before navigation occurs in the given object (on either a window or frameset element).
 
@@ -1824,7 +1824,7 @@ SUB BeforeNavigate2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR,
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pWebCtx* | Pointer to the CWebCtx class. |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
 | *pDisp* | Pointer to the **IDispatch** interface for the **WebBrowser** object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
 | *vUrl* | Pointer to a VARIANT of type VT_BSTR that contains the URL to be navigated to |
 | *vFlags* | Pointer to a VARIANT of type VT_I4 that contains the following flag, or zero.<br>**beforeNavigateExternalFrameTarget**: Windows Internet Explorer 7 or later. This navigate was the result of an external window or tab targeting this browser. |
@@ -1832,12 +1832,6 @@ SUB BeforeNavigate2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR,
 | *vPostData* | Pointer to a VARIANT of type VT_BYREF|VT_VARIANT that contains the data to send to the server if the HTTP POST transaction is being used. |
 | *vHeaders* | Pointer to a VARIANT of type VT_BSTR that contains additional HTTP headers to send to the server (HTTPURLs only). The headers can specify things such as the action required of the server, the type of data being passed to the server, or a status code.  |
 | *pbCancel* | In, Out. Pointer to a variable of type VARIANT_BOOL that contains the cancel flag. An application can set this parameter to VARIANT_TRUE to cancel the navigation operation, or to VARIANT_FALSE to allow it to proceed.  |
-
-#### Event DISPID
-
-DISPID_BEFORENAVIGATE2
-
-The DISPID for this event is defined in exdispid.inc. Use this value to identify the event handler when implementing **IDispatch.Invoke**.
 
 ### Remarks
 
@@ -1878,3 +1872,25 @@ SUB WebBrowser_BeforeNavigate2Proc (BYVAL pAxHost AS CAxHost PTR, BYVAL pdisp AS
 END SUB
 ' ========================================================================================
 ```
+
+# <a name="ClientToHostWindow"></a>ClientToHostWindow Event
+
+Fires to request that the client window size be converted to the host window size.
+
+```
+SUB ClientToHostWindow (BYVAL pWebCtx AS CWebCtx PTR, BYVAL CX AS LONG PTR, BYVAL CY AS LONG PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *cx* | In, Out. LONG variable that receives the width of the client window and can be set by the host application. |
+| *cy* | In, Out. LONG that receives the height of the client window and can be set by the host application. |
+
+#### Remarks
+
+The **ClientToHostWindow** event gives the host application an opportunity to adjust the size of the WebBrowser control window, to account for any user interface items such as a toolbar, menu bar, or address bar.
+
+This event is fired when a new window is opened through scripting, using the open method.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
