@@ -459,3 +459,26 @@ A pointer to the **IWebBrowser2** interface of the hosted **WebBrowser** control
 
 Since it is a direct pointer, you don't have to release it calling the **Release** method.
 
+# <a name="Busy"></a>Busy
+
+Returns a boolean value indicating whether the object is engaged in a navigation or downloading operation.
+
+```
+PROPERTY Busy () AS BOOLEAN
+```
+
+#### Return value
+
+A pointer to the **IWebBrowser2** interface of the hosted **WebBrowser** control or NULL.
+
+#### Remarks
+
+It returns TRUE if the control is busy; FALSE otherwise.
+
+# <a name="CtrlID"></a>CtrlID
+
+Returns the identifier of the container's window.
+
+```
+FUNCTION CtrlID () AS LONG
+```
