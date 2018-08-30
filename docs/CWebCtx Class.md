@@ -541,3 +541,15 @@ FUNCTION Find () AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="GetActiveElementId"></a>GetActiveElementId
+
+Retrieves the ID of the active element (the object that has the focus when the parent document has focus).
+
+```
+FUNCTION GetActiveElementId () AS CWSTR
+```
+
+#### Return value
+
+The ID of the active element, if any. If the element has not an identifier, it returns an empty string.
