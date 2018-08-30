@@ -59,7 +59,7 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 
 # <a name="Constructors1"></a>Constructors (COleDateTime)
 
-All these constructors create new **COleDateTime** objects initialized to the specified value.
+Create new **COleDateTime** objects initialized to the specified value.
 
 ```
 CONSTRUCTOR COleDateTime
