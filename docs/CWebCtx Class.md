@@ -1568,3 +1568,112 @@ FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM
 END FUNCTION
 ' ========================================================================================
 ```
+
+# <a name="AfxGetBrowserPtr"></a>AfxGetBrowserPtr
+
+Returns a pointer to the hosted WebBrowser control given the handle of the form, or any control in the form, and the control identifier.
+
+```
+FUNCTION AfxGetBrowserPtr (BYVAL hwnd AS HWND, BYVAL cID AS WORD) AS Afx_IWebBrowser2 PTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hwnd* | Handle of the window of the form or any of its child controls. |
+| *cID* | Identifier of the control, e.g. IDC_WEBBROWSER. |
+
+#### Return value
+
+A pointer to the **IWeBbrowser2** interface or NULL.
+
+# <a name="AfxGetActiveElementId"></a>AfxGetActiveElementId
+
+Retrieves the ID of the active element (the object that has the focus when the parent document has focus).
+
+```
+FUNCTION AfxGetActiveElementId (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface |
+
+#### Return value
+
+The ID of the active element, if any. If the element has not an identifier, it returns an empty string.
+
+# <a name="AfxGetBodyInnerHtml"></a>AfxGetBodyInnerHtml
+
+Returns a string that represents the text and html elements between the start and end body tags.
+
+```
+FUNCTION AfxGetBodyInnerHtml (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface |
+
+#### Return value
+
+A string containing the html text.
+
+# <a name="AfxGetBodyInnerText"></a>AfxGetBodyInnerText
+
+Returns a string that represents the text between the start and end body tags without any associated HTML.
+
+```
+FUNCTION AfxGetBodyInnerText (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface |
+
+#### Return value
+
+A string containing the html text.
+
+# <a name="AfxGetElementInnerHtmlById"></a>AfxGetElementInnerHtmlById
+
+Retrieves the HTML between the start and end tags of the object.
+
+```
+FUNCTION AfxGetElementInnerHtmlById (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsId AS CWSTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+A string containing the HTML text.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="AfxGetElementValueById"></a>AfxGetElementValueById
+
+Retrieves the value attribute of the specified attribute.
+
+```
+FUNCTION AfxGetElementValueById (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsId AS CWSTR) AS VARIANT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+A variant containing the value as defined by the attribute.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
