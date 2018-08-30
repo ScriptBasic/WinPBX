@@ -121,3 +121,26 @@ A **PathGradientBrush** object stores the attributes of a color gradient that yo
 | [SetTransform](#SetTransform) | Sets the transformation matrix. |
 | [SetWrapMode](#SetWrapMode) | Sets the wrap mode. |
 | [TranslateTransform](#TranslateTransform) | Updates this brush's current transformation matrix with the product of itself and a translation matrix. |
+
+# CGpTextureBrush Class
+
+Defines a **Brush** object that contains an **Image** object that is used for the fill. The fill image can be transformed by using the local **Matrix** object contained in the **Brush** object.
+
+**Inherits from**: CGpBrush.
+**Imclude file**: CGpBrush.inc.
+
+### Constructors and Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#ConstructorTBrush) | Create a texture brush. |
+| [GetImage](#GetImage) | Gets a pointer to the **Image** object that is defined by this brush. |
+| [GetTransform](#GetTransform) | Gets the transformation matrix. |
+| [GetWrapMode](#GetWrapMode) | Gets the wrap mode curremtly set for this brush. |
+| [MultiplyTransform](#MultiplyTransform) | Updates this brush's transformation matrix with the product of itself and another matrix. |
+| [ResetTransform](#ResetTransform) | Resets the transformation matrix to the identity matrix. |
+| [RotateTransform](#RotateTransform) | Updates this brush's current transformation matrix with the product of itself and a rotation matrix. |
+| [ScaleTransform](#ScaleTransform) | Updates this brush's current transformation matrix with the product of itself and a scaling matrix. |
+| [SetTransform](#SetTransform) | Sets the transformation matrix. |
+| [SetWrapMode](#SetWrapMode) | Sets the wrap mode. |
+| [TranslateTransform](#TranslateTransform) | Updates this brush's current transformation matrix with the product of itself and a translation matrix. |
