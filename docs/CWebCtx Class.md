@@ -4063,7 +4063,7 @@ FUNCTION ShowContextMenu (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, _
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *dwID* | DWORD that specifies the identifier of the shortcut menu to be displayed. This identifier is a bitwise shift of the value 0x1 by the shortcut menu values (e.g., CONTEXT_MENU_DEFAULT) defined in Mshtmhst.inc.<br>**&h2**: value of (0x1 << CONTEXT_MENU_DEFAULT)<br>**&h4**: value of (0x1 << CONTEXT_MENU_CONTROL)<br>**h8**: value of (0x1 << CONTEXT_MENU_TABLE)<br>**&h10**: value of (0x1 << CONTEXT_MENU_TEXTSELECT)<br>**&h30**: value of (0x1 << CONTEXT_MENU_ANCHOR)<br>**&h20**: value of (0x1 << CONTEXT_MENU_UNKNOWN) |
+| *dwID* | DWORD that specifies the identifier of the shortcut menu to be displayed. This identifier is a bitwise shift of the value 0x1 by the shortcut menu values (e.g., CONTEXT_MENU_DEFAULT) defined in Mshtmhst.inc.<br>**&h2**: value of (&h1 << CONTEXT_MENU_DEFAULT)<br>**&h4**: value of (&h1 << CONTEXT_MENU_CONTROL)<br>**h8**: value of (&h1 << CONTEXT_MENU_TABLE)<br>**&h10**: value of (&h1 << CONTEXT_MENU_TEXTSELECT)<br>**&h30**: value of (&h1 << CONTEXT_MENU_ANCHOR)<br>**&h20**: value of (&h1 << CONTEXT_MENU_UNKNOWN) |
 | *ppt* | Pointer to a **POINT** structure containing the screen coordinates for the menu. |
 | *pcmdtReserved* | Pointer to the **IUnknown** of an **IOleCommandTarget** interface used to query command status and execute commands on this object. |
 | *pdispReserved* | Pointer to an **IDispatch** interface of the object at the screen coordinates specified in ppt. This allows a host to differentiate particular objects to provide more specific context. |
