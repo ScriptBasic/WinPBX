@@ -754,7 +754,7 @@ FUNCTION Navigate (BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR = NULL,
 | *pwszUrl* | A variable or expression that evaluates to the URL of the resource to display or the full path to the file location. |
 | *vUrl* | A variable or expression that evaluates to the URL of the resource to display, the full path to the file location, or a PIDL that represents a folder in the Shell namespace. |
 | *Flags* | Optional. A constant or value that specifies a combination of the values defined by the **BrowserNavConstants** enumeration. |
-| *TargetFrameName* | Optional. Case-sensitive string expression that evaluates to the name of the frame in which to display the resource. The possible values for this parameter are.<br>**\_blank**: Load the link into a new unnamed window.<br>**\_parent**: Load the link into the immediate parent of the document the link is in.<br>**\_self**: Load the link into the same window the link was clicked in.<br>**\_top**: Load the link into the full body of the current window.<br>**WindowName**: A named HTML frame. If no frame or window exists that matches the specified target name, a new window is opened for the specified link. |
+| *TargetFrameName* | Optional. Case-sensitive string expression that evaluates to the name of the frame in which to display the resource. The possible values for this parameter are:<br>**\_blank**: Load the link into a new unnamed window.<br>**\_parent**: Load the link into the immediate parent of the document the link is in.<br>**\_self**: Load the link into the same window the link was clicked in.<br>**\_top**: Load the link into the full body of the current window.<br>**WindowName**: A named HTML frame. If no frame or window exists that matches the specified target name, a new window is opened for the specified link. |
 | *PostData* | Optional. Data that is sent to the server as part of a HTTP POST transaction. A POST transaction typically is used to send data collected by an HTML form. If this parameter does not specify any POST data, this method issues an HTTP GET transaction. This parameter is ignored if URL is not an HTTP (or HTTPS) URL. |
 | *Headers* | Optional. A String that contains additional HTTP headers to send to the server. These headers are added to the default Internet Explorer headers. For example, headers can specify the action required of the server, the type of data being passed to the server, or a status code. This parameter is ignored if the URL is not an HTTP (or HTTPS)  URL. |
 
@@ -768,3 +768,68 @@ Returns one of the following values:
 | E_FAIL | The operation failed. |
 | E_INVALIDARG | One or more parameters are invalid. |
 | E_OUTOFMEMORY | Out of memory. |
+
+# <a name="PageProperties"></a>PageProperties
+
+Activates the properties dialog.
+
+```
+FUNCTION PageProperties () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="PageSetup"></a>PageSetup
+
+Activates the page setup dialog.
+
+```
+FUNCTION PageSetup () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="PrintPage"></a>PrintPage
+
+Activates the print dialog.
+
+```
+FUNCTION PrintPage () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="PrintPreview"></a>PrintPreview
+
+Activates the print preview dialog.
+
+```
+FUNCTION PrintPreview () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="QueryStatusWB"></a>QueryStatusWB
+
+Queries the OLE object for the status of commands using the **QueryStatus** method of the **IOleCommandTarget** interface.
+
+```
+FUNCTION QueryStatusWB (BYVAL cmdID AS OLECMDID) AS OLECMDF
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cmdID* | **OLECMDID** value of the command for which the caller needs status information.  |
+
+#### Return value
+
+The status of the command.
+
