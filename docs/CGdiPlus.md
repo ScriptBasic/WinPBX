@@ -52,3 +52,42 @@ For a detailed list of status codes see the **Status** enumeration.
 | [PropertyItem](#PropertyItem) | Holds one piece of image metadata. |
 | [PWMFRect16](#PWMFRect16) | Defines a rectangle that bounds a placeable metafile. |
 | [WmfPlaceableFileHeader](#WmfPlaceableFileHeader) | Defines the fields of a placeable metafile header. |
+
+# Enumerations
+
+| Name       | Description |
+| ---------- | ----------- |
+| [BrushType](#BrushType) | Indicates the type of brush. |
+| [Color](#Color) | Predefined ARGB colors. |
+| [ColorAdjustType](#ColorAdjustType) | Specifies which GDI+ objects use color-adjustment information. |
+| [ColorChannelFlags](#ColorChannelFlags) | Specifies individual channels in the CMYK (cyan, magenta, yellow, black) color space. |
+| [ColorMatrixFlags](#ColorMatrixFlags) | Specifies the types of images and colors that will be affected by the color and grayscale adjustment settings. |
+| [ColorMode](#ColorMode) | ColorModeARGB32 = 0, ColorModeARGB64 = 1. |
+| [CombineMode](#CombineMode) | Specifies how a new region is combined with an existing region. |
+| [CompositingMode](#CompositingMode) | Specifies how rendered colors are combined with background colors. |
+| [CompositingQuality](#CompositingQuality) | Specifies whether gamma correction is applied when colors are blended with background colors. |
+| [CoordinateSpace](#CoordinateSpace) | Specifies coordinate spaces. |
+| [CustomLineCapType](#CustomLineCapType) | CustomLineCapTypeDefault = 0, CustomLineCapTypeAdjustableArrow = 1. |
+| [DashCap](#DashCap) | Specifies the type of graphic shape to use on both ends of each dash in a dashed line. |
+| [DashStyle](#DashStyle) | Specifies the line style of a line drawn with a Microsoft Windows GDI+ pen. |
+| [DriverStringOptions](#DriverStringOptions) | Sècifies the spacing, orientation, and quality of the rendering for driver strings. |
+| [EmfPlusRecordType](#EmfPlusRecordType) | Identifies metafile record types used in Microsoft Windows Metafile Format (WMF), Enhanced Metafile (EMF), and EMF+ files. |
+| [EmfToWmfBitsFlags](#EmfToWmfBitsFlags) | Specifies options for the **GdipEmfToWmfBits** method, which converts an Enhanced Metafile (EMF) metafile to a Microsoft Windows Metafile Format (WMF) metafile. |
+| [EmfType](#EmfType) | Specifies the nature of the records that are placed in an Enhanced Metafile (EMF) file. |
+| [EncoderParameterValueType](#EncoderParameterValueType) | Specifies data types for image codec (encoder/decoder) parameters. |
+| [EncoderValue](#EncoderValue) | Specifies values that can be passed as arguments to image encoders. |
+| [FillMode](#FillMode) | Specifies how to fill areas that are formed when a path or curve intersects itself. |
+| [FlushIntention](#FlushIntention) | Specifies when to flush the queue of graphics operations. |
+| [FontStyle](#FontStyle) | Specifies the style of the typeface of a font. Styles can be combined. |
+| [GenericFontFamily](#GenericFontFamily) | GenericFontFamilySerif = 0, GenericFontFamilySansSerif = 1, GenericFontFamilyMonospace = 2. |
+| [HatchStyle](#HatchStyle) | Specifies the hatch pattern used by a brush of type **HatchBrush**. |
+| [HistogramFormat](#HistogramFormat) | Specifies the number and type of histograms that represent the color channels of a bitmap. |
+| [HotkeyPrefix](#HotkeyPrefix) | Specifies how to display hot keys. |
+| [ImageFlags](#ImageFlags) | Specifies the attributes of the pixel data contained in an image. |
+| [ImageLockMode](#ImageLockMode) | Specifies flags that are passed to the flags parameter of the **GdipBitmapLockBits** function. |
+| [ImageType](#ImageType) | Indicates whether an image is a bitmap or a metafile. |
+| [InterpolationMode](#InterpolationMode) | Specifies the algorithm that is used when images are scaled or rotated. |
+| [ItemDataPosition](#ItemDataPosition) | Specifies the location of custom metadata in an image file. |
+| [LinearGradientMode](#LinearGradientMode) | Specifies the direction in which the change of color occurs for a linear gradient brush. |
+| [LineCap](#LineCap) | Specifies the type of graphic shape to use on the end of a line drawn with a Microsoft Windows GDI+ pen. |
+| [LineJoin](#LineJoin) | Specifies how to join two lines that are drawn by the same pen and whose ends meet. |
