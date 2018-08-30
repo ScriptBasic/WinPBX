@@ -48,13 +48,13 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 | [GetHours](#GetHours) | Retrieves the hour portion of this date/time-span value. |
 | [GetMinutes](#GetMinutes) | Retrieves the minutes portion of this date/time-span value. |
 | [GetSeconds](#GetSeconds) | Retrieves the seconds portion of this date/time-span value. |
-| [GetStatus](#GetStatus) | Gets the status (validity) of a given **COleDateTimeSpan** object. |
+| [GetStatus](#GetStatusSpan) | Gets the status (validity) of a given **COleDateTimeSpan** object. |
 | [GetTotalDays](#GetTotalDays) | Retrieves this date/time-span value expressed in days. |
 | [GetTotalHours](#GetTotalHours) | Retrieves this date/time-span value expressed in hours. |
 | [GetTotalMinutes](#GetTotalMinutes) | Retrieves this date/time-span value expressed in minutes. |
 | [GetTotalSeconds](#GetTotalSeconds) | Retrieves this date/time-span value expressed in seconds. |
 | [SetDateTimeSpan](#SetDateTimeSpan) | Sets the date and time of this **COleDateTimeSpan** object. |
-| [SetStatus](#SetStatus) | Sets the status (validity) of a given **COleDateTimeSpan** object. |
+| [SetStatus](#SetStatusSpan) | Sets the status (validity) of a given **COleDateTimeSpan** object. |
 
 # <a name="Constructors1"></a>Constructors (COleDateTime)
 
@@ -355,9 +355,9 @@ Returns the second represented by this date/time value. Valid return values rang
 FUNCTION GetSecond () AS WORD
 ```
 
-# <a name="GetStatus"></a>GetStatus (COleDateTime / COleDateTimeSpan)
+# <a name="GetStatus"></a>GetStatus (COleDateTime)
 
-Gets the status (validity) of a given **COleDateTime** or **COleDateTimeSpan** object.
+Gets the status (validity) of a given **COleDateTime** object.
 
 ```
 FUNCTION GetStatus () AS BOOLEAN
@@ -517,7 +517,7 @@ Retrieves the seconds portion of this date/time-span value. The return values fr
 FUNCTION GetSeconds () AS LONGINT
 ```
 
-# <a name="GetStatus"></a>GetStatus (COleDateTimeSpan)
+# <a name="GetStatusSpan"></a>GetStatus (COleDateTimeSpan)
 
 Gets the status (validity) of a given **COleDateTimeSpan** object.
 
@@ -573,9 +573,9 @@ FUNCTION SetDateTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins
 
 The status of the new **COleDateTimeSpan** object is set to valid.
 
-# <a name="SetStatus"></a>SetStatus (COleDateTimeSpan / COleDateTimeSpan)
+# <a name="SetStatusSpan"></a>SetStatus (COleDateTimeSpan)
 
-Sets the status (validity) of a given **COleDateTimeSpan** or **COleDateTimeSpan** object.
+Sets the status (validity) of a given **COleDateTimeSpan** object.
 
 ```
 FUNCTION SetStatus (BYVAL nStatus AS BOOLEAN)
