@@ -2352,3 +2352,42 @@ The application that processes this notification can respond in one of three way
 #### Remarks
 
 Microsoft Internet Explorer 6 for Windows XP Service Pack 2 (SP2) or later. **NewWindow3** is raised instead of this event.
+
+# <a name="OnVisible"></a>OnVisible Event
+
+Fires when the **Visible** property of the object is changed.
+
+```
+METHOD OnVisible (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bVisible AS VARIANT_BOOL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *bVisible* | Pointer to the **CWebCtx** class.<br>Boolean value  that specifies whether the object is visible.<br>VARIANT_FALSE: Object is not visible.<br>VARIANT_TRUE: Object is visible. |
+
+# <a name="PrintTemplateInstantiation"></a>PrintTemplateInstantiation Event
+
+Fires when a print template has been instantiated.
+
+```
+SUB PrintTemplateInstantiation (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp As IDispatch PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDisp* | ter to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
+
+# <a name="PrintTemplateTeardown"></a>PrintTemplateTeardown Event
+
+Fires when a print template has been destroyed.
+
+```
+SUB PrintTemplateTeardown (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDisp* | ter to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
