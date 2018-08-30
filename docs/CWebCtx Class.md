@@ -1008,3 +1008,142 @@ S_OK (0) or an HRESULT code.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="SetEventProc"></a>SetEventProc
+
+Sets pointers to user implemented callback procedures to receive events of the hosted WebBrowser control.
+
+```
+FUNCTION SetEventProc (BYVAL pwszEventName AS WSTRING PTR, BYVAL pProc AS ANY PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszEventName* | The name of the event. The available names are:<br>StatusTextChange<br>DownloadComplete<br>CommandStateChange<br>DownloadBegin<br>ProgressChange<br>PropertyChange<br>TitleChange<br>PrintTemplateInstantiation<br>PrintTemplateTeardown<br>BeforeNavigate2<br>NewWindow2<br>NavigateComplete2<br>OnVisible<br>OnToolBar<br>OnMenuBar<br>OnStatusBar<br>OnFullScreen<br>DocumentComplete<br>OnTheaterMode<br>WindowSetResizable<br>WindowClosing<br>WindowSetLeft<br>WindowSetTop<br>WindowSetWidth<br>WindowSetHeight<br>ClientToHostWindow<br>SetSecureLockIcon<br>FileDownload<br>NavigateError<br>PrivacyImpactedStateChange<br>NewWindow3<br>SetPhishingFilterStatus<br>WindowStateChanged<br>HtmlDocumentEvents |
+| *pProc* | The address of the callback procedure. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+### Function callback prototypes
+
+```
+SUB BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+SUB ClientToHostWindowProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL CX AS LONG PTR, BYVAL CY AS LONG PTR)
+SUB CommandStateChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nCommand AS LONG, BYVAL fEnable AS VARIANT_BOOL)
+SUB DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+SUB DownloadBeginProc (BYVAL pWebCtx AS CWebCtx PTR)
+SUB DownloadCompleteProc (BYVAL pWebCtx AS CWebCtx PTR)
+SUB FileDownloadProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+SUB NavigateComplete2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+SUB NavigateErrorProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL vFrame AS VARIANT PTR, BYVAL StatusCode AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+SUB NewWindow3Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppdispVal AS IDispatch PTR PTR, _
+    BYVAL pbCancel AS VARIANT_BOOL PTR, BYVAL dwFlags AS ULONG, BYVAL pwszUrlContext AS WSTRING PTR, BYVAL pwszUrl AS WSTRING PTR)
+SUB OnVisibleProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bVisible AS VARIANT_BOOL)
+SUB PrintTemplateInstantiationProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR)
+SUB PrintTemplateTeardownProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR)
+SUB PrivacyImpactedStateChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bImpacted AS VARIANT_BOOL)
+SUB ProgressChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL Progress AS LONG, BYVAL ProgressMax AS LONG)
+SUB PropertyChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszProperty AS WSTRING PTR)
+SUB SetSecureLockIconProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL SecureLockIcon AS LONG)
+SUB StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+SUB TitleChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+SUB WindowClosingProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL IsChildWindow AS VARIANT_BOOL, BYVAL pbCancel AS VARIANT_BOOL PTR)
+SUB WindowSetHeightProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nHeight AS LONG)
+SUB WindowSetLeftProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nLenft AS LONG)
+SUB WindowSetResizableProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bResizable AS VARIANT_BOOL)
+SUB WindowSetTopProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nTop AS LONG)
+SUB WindowSetWidthProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nWidth AS LONG)
+SUB WindowStateChangedProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwFlags AS LONG, BYVAL dwValidFlagsMask AS LONG)
+FUNCTION HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj) AS BOOLEAN
+```
+
+#### Usage example
+
+```
+' // Add a WebBrowser control
+DIM pwb AS CWebCtx = CWebCtx(@pWindow, IDC_WEBBROWSER, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+' // Set web browser event callback procedures
+pwb.SetEventProc("StatusTextChange", @WebBrowser_StatusTextChangeProc)
+pwb.SetEventProc("DocumentComplete", @WebBrowser_DocumentCompleteProc)
+pwb.SetEventProc("BeforeNavigate2", @WebBrowser_BeforeNavigate2Proc)
+pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+' // Set DocHostUI event callback procedures
+pwb.SetUIEventProc("ShowContextMenu", @DocHostUI_ShowContextMenuProc)
+pwb.SetUIEventProc("GetHostInfo", @DocHostUI_GetHostInfo)
+pwb.SetUIEventProc("TranslateAccelerator", @DocHostUI_TranslateAccelerator)
+
+' ========================================================================================
+' Process the WebBrowser StatusTextChange event.
+' ========================================================================================
+SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+   IF pwszText THEN StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, pwszText)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser DocumentComplete event.
+' ========================================================================================
+SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+   ' // The vUrl parameter is a VT_BYREF OR VT_BSTR variant
+   ' // It can be a VT_BSTR variant or a VT_ARRAY OR VT_UI1 with a pidl
+   DIM varUrl AS VARIANT
+   VariantCopyInd(@varUrl, vUrl)
+   StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, "Document complete: " & AfxVarToStr(@varUrl))
+   VariantClear(@varUrl)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler ShowContextMenu event.
+' ========================================================================================
+FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+   ' // This event notifies that the user has clicked the right mouse button to show the
+   ' // context menu. We can anulate it returning %S_OK and show our context menu.
+   ' // Do not allow to show the context menu
+'   AfxMsg "Sorry! Context menu disabled"
+'   RETURN S_OK
+   ' // Host did not display its UI. MSHTML will display its UI.
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler GetHostInfo event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+   IF pInfo THEN
+      pInfo->cbSize = SIZEOF(DOCHOSTUIINFO)
+      pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER OR DOCHOSTUIFLAG_THEME OR DOCHOSTUIFLAG_DPI_AWARE
+      pInfo->dwDoubleClick = DOCHOSTUIDBLCLK_DEFAULT
+      pInfo->pchHostCss = NULL
+      pInfo->pchHostNS = NULL
+   END IF
+   RETURN S_OK
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler TranslateAccelerator event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+   IF lpMsg->message = WM_KEYDOWN THEN
+      pWebCtx->SetElementInnerHtmlById "output", "ID: " & pWebCtx->GetActiveElementId & " KeyDown - Key: " & WSTR(lpMsg->wParam)
+   END IF
+
+   ' // When you use accelerator keys such as TAB, you may need to override the
+   ' // default host behavior. The example shows how to do this.
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN
+       RETURN S_FALSE   ' S_OK to disable tab navigation
+    END IF
+   ' // Return S_FALSE if you don't process the message
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+```
+
