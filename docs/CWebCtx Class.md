@@ -4157,3 +4157,25 @@ Returns S_OK (0) if successful, or an error value otherwise.
 The host allocates the buffer *ppchURLOut* using **CoTaskMemAlloc**.
 
 If the implementation of this method does not supply a URL, ppchURLOut should be set to NULL, even if the method fails or returns S_FALSE.
+
+# <a name="UpdateUI"></a>UpdateUI Event
+
+Called by MSHTML to notify the host that the command state has changed.
+
+```
+FUNCTION UpdateUI (BYVAL pWebCtx AS CWebCtx PTR) AS LONG
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+The host should update the state of toolbar buttons in an implementation of this method.
+
+This method is called regardless of the return value from the **ShowUI** method.
