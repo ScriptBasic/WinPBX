@@ -565,3 +565,15 @@ FUNCTION GetBodyInnerHtml () AS CWSTR
 #### Return value
 
 A string containing the html text.
+
+# <a name="GetBodyInnerText"></a>GetBodyInnerText
+
+Returns a string that represents the text between the start and end body tags without any associated HTML.
+
+```
+FUNCTION GetBodyInnerText () AS CWSTR
+```
+
+#### Return value
+
+A string containing the text.
