@@ -91,3 +91,26 @@ For a detailed list of status codes see the **Status** enumeration.
 | [LinearGradientMode](#LinearGradientMode) | Specifies the direction in which the change of color occurs for a linear gradient brush. |
 | [LineCap](#LineCap) | Specifies the type of graphic shape to use on the end of a line drawn with a Microsoft Windows GDI+ pen. |
 | [LineJoin](#LineJoin) | Specifies how to join two lines that are drawn by the same pen and whose ends meet. |
+| [MatrixOrder](#MatrixOrder) | Specifies the order of multiplication when a new matrix is multiplied by an existing matrix. |
+| [MetafileFrameUnit](#MetafileFrameUnit) | Specifies the unit of measure for a metafile frame rectangle. |
+| [MetafileType](#MetafileType) | Specifies types of metafiles. |
+| [ObjectType](#ObjectType) | Indicates the object type value of an EMF+ record. |
+| [PaletteFlags](#PaletteFlags) | Indicates attributes of the color data in a palette. |
+| [PaletteType](#PaletteType) | Identify several standard color palette formats. |
+| [PathPointType](#PathPointType) | Indicates point types and flags for the data points in a path. |
+| [PenAlignment](#PenAlignment) | Specifies the alignment of a pen relative to the stroke that is being drawn. |
+| [PenType](#PenType) | Indicates the type of pattern, texture, or gradient that a pen draws. |
+| [PixelOffsetMode](#PixelOffsetMode) | Specifies the pixel offset mode. |
+| [QualityMode](#QualityMode) | Specifies the quality mode. |
+| [RotateFlipType](#RotateFlipType) | Specifies the direction of an image's rotation and the axis used to flip the image. |
+| [SmoothingMode](#SmoothingMode) | Specifies the type of smoothing (antialiasing) that is applied to lines and curves. |
+| [Status](#Status) | Indicates the result of a Microsoft Windows GDI+ function call. |
+| [StringAlignment](#StringAlignment) | Specifies how a string is aligned in reference to the bounding rectangle. |
+| [StringDigitSubstitute](#StringDigitSubstitute) | Specifies how to substitute digits in a string according to a user's locale or language. |
+| [StringFormatFlags](#StringFormatFlags) | Specifies text layout information (such as orientation and clipping) and display manipulations (such as ellipsis insertion, digit substitution, and representation of characters that are not supported by a font). |
+| [StringTrimming](#StringTrimming) | Specifies how to trim characters from a string so that the string fits into a layout rectangle. |
+| [TestControl](#TestControl) | TestControlForceBilinear = 0, TestControlNoICM = 1, TestControlGetBuildNumber = 2. |
+| [TextRenderingHint](#TextRenderingHint) | Specifies the process used to render text. |
+| [Unit](#Unit) | Specifies the unit of measure for a given data type. |
+| [WarpMode](#WarpMode) | Specifies warp modes that can be used to transform images. |
+| [WrapMode](#WrapMode) | Specifies how repeated copies of an image are used to tile an area. |
