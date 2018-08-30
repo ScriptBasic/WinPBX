@@ -426,7 +426,7 @@ FUNCTION SetTime (BYVAL nHour AS WORD, BYVAL nMin AS WORD, BYVAL nSec AS WORD)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nHour / nMin / nSec* |  Indicates the time values to be copied into the COleDateTime object. |
+| *nHour / nMin / nSec* |  Indicates the time values to be copied into the **COleDateTime** object. |
 
 # <a name="Constructors2"></a>Constructors (COleDateTimeSpan)
 
