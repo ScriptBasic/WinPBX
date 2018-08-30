@@ -3300,7 +3300,8 @@ In Internet Explorer 6 or later, the **NavigateError** event fires only after th
 Raised when a new window is to be created.
 
 ```
-SUB NewWindow2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDisp AS IDispatch PTR PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+SUB NewWindow2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDisp AS IDispatch PTR PTR, _
+   BYVAL pbCancel AS VARIANT_BOOL PTR)
 ```
 
 | Parameter  | Description |
