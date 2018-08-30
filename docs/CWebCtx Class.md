@@ -163,6 +163,707 @@ All these callback functions will receive a pointer to the **CWebCtx** class as 
 | [TranslateUrl](#TranslateUrl) | Called by MSHTML to give the host an opportunity to modify the URL to be loaded. |
 | [UpdateUI](#UpdateUI) | Called by MSHTML to notify the host that the command state has changed. |
 
+# CHTMLDocumentEvents2 Class
+
+The **CHTMLDocumentEvents2** class implements the IHTMLDocumentEvents2 interface, that enables an application that is hosting the WebBrowser control to intercept events fired by a document object,
+
+The **DocumentComplete** event of the **CWebBrowserEvents** class connects automatically with the **HTMLDocumentEvents2** interface of the loaded page if the user has set a pointer to a callback procedure using the SetEventProc method of the **CWebCtx** class.
+
+The callback procedure will receive three parameters, *pWebCtx*, *dispid* and *pEvetObj*.
+
+With *pWebCtx*, which is a pointer to the **CWebCtx** clas, we can get:
+
+* Access to all the methods of the CWebCtx class.
+* The handle of the container window calling pCWbCtx->hWindow.
+* A pointer to the hosted WebBrowser control calling pWebCtx->BrowserPtr.
+* A pointer to the CAxHost class calling pWebCtx->HostPtr.
+
+With *dispid* we can identify which event we are being notified:
+
+```
+' // DispIds of the events
+CONST DISPID_HTMLELEMENTEVENTS2_ONHELP             = -2147418102
+CONST DISPID_HTMLELEMENTEVENTS2_ONHELP             = -2147418102
+CONST DISPID_HTMLELEMENTEVENTS2_ONCLICK            = -600
+CONST DISPID_HTMLELEMENTEVENTS2_ONDBLCLICK         = -601
+CONST DISPID_HTMLELEMENTEVENTS2_ONKEYPRESS         = -603
+CONST DISPID_HTMLELEMENTEVENTS2_ONKEYDOWN          = -602
+CONST DISPID_HTMLELEMENTEVENTS2_ONKEYUP            = -604
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEOUT         = -2147418103
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEOVER        = -2147418104
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEMOVE        = -606
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEDOWN        = -605
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEUP          = -607
+CONST DISPID_HTMLELEMENTEVENTS2_ONSELECTSTART      = -2147418100
+CONST DISPID_HTMLELEMENTEVENTS2_ONFILTERCHANGE     = -2147418095
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAGSTART        = -2147418101
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFOREUPDATE     = -2147418108
+CONST DISPID_HTMLELEMENTEVENTS2_ONAFTERUPDATE      = -2147418107
+CONST DISPID_HTMLELEMENTEVENTS2_ONERRORUPDATE      = -2147418099
+CONST DISPID_HTMLELEMENTEVENTS2_ONROWEXIT          = -2147418106
+CONST DISPID_HTMLELEMENTEVENTS2_ONROWENTER         = -2147418105
+CONST DISPID_HTMLELEMENTEVENTS2_ONDATASETCHANGED   = -2147418098
+CONST DISPID_HTMLELEMENTEVENTS2_ONDATAAVAILABLE    = -2147418097
+CONST DISPID_HTMLELEMENTEVENTS2_ONDATASETCOMPLETE  = -2147418096
+CONST DISPID_HTMLELEMENTEVENTS2_ONLOSECAPTURE      = -2147418094
+CONST DISPID_HTMLELEMENTEVENTS2_ONPROPERTYCHANGE   = -2147418093
+CONST DISPID_HTMLELEMENTEVENTS2_ONSCROLL           = 1014
+CONST DISPID_HTMLELEMENTEVENTS2_ONFOCUS            = -2147418111
+CONST DISPID_HTMLELEMENTEVENTS2_ONBLUR             = -2147418112
+CONST DISPID_HTMLELEMENTEVENTS2_ONRESIZE           = 1016
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAG             = -2147418092
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAGEND          = -2147418091
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAGENTER        = -2147418090
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAGOVER         = -2147418089
+CONST DISPID_HTMLELEMENTEVENTS2_ONDRAGLEAVE        = -2147418088
+CONST DISPID_HTMLELEMENTEVENTS2_ONDROP             = -2147418087
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFORECUT        = -2147418083
+CONST DISPID_HTMLELEMENTEVENTS2_ONCUT              = -2147418086
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFORECOPY       = -2147418082
+CONST DISPID_HTMLELEMENTEVENTS2_ONCOPY             = -2147418085
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFOREPASTE      = -2147418081
+CONST DISPID_HTMLELEMENTEVENTS2_ONPASTE            = -2147418084
+CONST DISPID_HTMLELEMENTEVENTS2_ONCONTEXTMENU      = 1023
+CONST DISPID_HTMLELEMENTEVENTS2_ONROWSDELETE       = -2147418080
+CONST DISPID_HTMLELEMENTEVENTS2_ONROWSINSERTED     = -2147418079
+CONST DISPID_HTMLELEMENTEVENTS2_ONCELLCHANGE       = -2147418078
+CONST DISPID_HTMLELEMENTEVENTS2_ONREADYSTATECHANGE = -609
+CONST DISPID_HTMLELEMENTEVENTS2_ONLAYOUTCOMPLETE   = 1030
+CONST DISPID_HTMLELEMENTEVENTS2_ONPAGE             = 1031
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEENTER       = 1042
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSELEAVE       = 1043
+CONST DISPID_HTMLELEMENTEVENTS2_ONACTIVATE         = 1044
+CONST DISPID_HTMLELEMENTEVENTS2_ONDEACTIVATE       = 1045
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFOREDEACTIVATE = 1034
+CONST DISPID_HTMLELEMENTEVENTS2_ONBEFOREACTIVATE   = 1047
+CONST DISPID_HTMLELEMENTEVENTS2_ONFOCUSIN          = 1048
+CONST DISPID_HTMLELEMENTEVENTS2_ONFOCUSOUT         = 1049
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOVE             = 1035
+CONST DISPID_HTMLELEMENTEVENTS2_ONCONTROLSELECT    = 1036
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOVESTART        = 1038
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOVEEND          = 1039
+CONST DISPID_HTMLELEMENTEVENTS2_ONRESIZESTART      = 1040
+CONST DISPID_HTMLELEMENTEVENTS2_ONRESIZEEND        = 1041
+CONST DISPID_HTMLELEMENTEVENTS2_ONMOUSEWHEEL       = 1033
+```
+
+See: [HTMLDocumentEvents2 interface](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa769764(v=vs.85))
+
+*pEvtObj* is a pointer to the **IHTMLEventObj** interface. This interface provides access to the event processes, such as the element in which the event occurred, the state of the keyboard keys, the location of the mouse, and the state of the mouse buttons.
+
+See: [IHTMLEventObj interface](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa703876(v=vs.85))
+
+### Example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: WebBrowser - Events
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define UNICODE
+#INCLUDE ONCE "Afx/CVAR.inc"
+#INCLUDE ONCE "Afx/CAxHost/CWebCtx.inc"
+USING Afx
+
+CONST IDC_WEBBROWSER = 1001
+CONST IDC_SATUSBAR = 1002
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' // Forward declaration
+DECLARE FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+DECLARE SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+DECLARE SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+DECLARE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispId AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+DECLARE FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   ' // The recommended way is to use a manifest file
+   AfxSetProcessDPIAware
+
+   ' // Creates the main window
+   DIM pWindow AS CWindow
+   ' -or- DIM pWindow AS CWindow = "MyClassName" (use the name that you wish)
+   DIM hwndMain AS HWND = pWindow.Create(NULL, "Embedded WebBrowser control", @WndProc)
+   ' // Sizes it by setting the wanted width and height of its client area
+   pWindow.SetClientSize(750, 450)
+   ' // Centers the window
+   pWindow.Center
+
+   ' // Add a status bar
+   DIM hStatusbar AS HWND = pWindow.AddControl("Statusbar", , IDC_SATUSBAR)
+
+   ' // Add a WebBrowser control
+   DIM pwb AS CWebCtx = CWebCtx(@pWindow, IDC_WEBBROWSER, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   ' // Set web browser event callback procedures
+   pwb.SetEventProc("StatusTextChange", @WebBrowser_StatusTextChangeProc)
+   pwb.SetEventProc("DocumentComplete", @WebBrowser_DocumentCompleteProc)
+   pwb.SetEventProc("BeforeNavigate2", @WebBrowser_BeforeNavigate2Proc)
+   pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+   ' // Set DocHostUI event callback procedures
+   pwb.SetUIEventProc("ShowContextMenu", @DocHostUI_ShowContextMenuProc)
+   pwb.SetUIEventProc("GetHostInfo", @DocHostUI_GetHostInfo)
+   pwb.SetUIEventProc("TranslateAccelerator", @DocHostUI_TranslateAccelerator)
+
+   ' // Navigate to a URL
+   pwb.Navigate "http://com.it-berater.org/"
+   ' // Set the focus in the page (the page must be fully loaded)
+   pwb.SetFocus
+
+   ' // Display the window
+   ShowWindow(hWndMain, nCmdShow)
+   UpdateWindow(hWndMain)
+
+   ' // Dispatch Windows messages
+   DIM uMsg AS MSG
+   WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
+      IF AfxCAxHostForwardMessage(GetFocus, @uMsg) = FALSE THEN
+         IF IsDialogMessageW(hWndMain, @uMsg) = 0 THEN
+            TranslateMessage(@uMsg)
+            DispatchMessageW(@uMsg)
+         END IF
+      END IF
+   WEND
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_COMMAND
+         SELECT CASE GET_WM_COMMAND_ID(wParam, lParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application by sending an WM_CLOSE message
+               IF GET_WM_COMMAND_CMD(wParam, lParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_SIZE
+         ' // Optional resizing code
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Resize the status bar
+            DIM hStatusBar AS HWND = GetDlgItem(hwnd, IDC_SATUSBAR)
+            SendMessage hStatusBar, uMsg, wParam, lParam
+            ' // Calculate the size of the status bar
+            DIM StatusBarHeight AS DWORD, rc AS RECT
+            GetWindowRect hStatusBar, @rc
+            StatusBarHeight = rc.Bottom - rc.Top
+            ' // Retrieve a pointer to the CWindow class
+            DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+            ' // Move the position of the control
+            IF pWindow THEN pWindow->MoveWindow GetDlgItem(hwnd, IDC_WEBBROWSER), _
+               0, 0, pWindow->ClientWidth, pWindow->ClientHeight - StatusBarHeight / pWindow->ryRatio, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         ' // Ends the application by sending a WM_QUIT message
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Default processing of Windows messages
+   FUNCTION = DefWindowProcW(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser StatusTextChange event.
+' ========================================================================================
+SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+   IF pwszText THEN StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, pwszText)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser DocumentComplete event.
+' ========================================================================================
+SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+   ' // The vUrl parameter is a VT_BYREF OR VT_BSTR variant
+   ' // It can be a VT_BSTR variant or a VT_ARRAY OR VT_UI1 with a pidl
+   DIM varUrl AS VARIANT
+   VariantCopyInd(@varUrl, vUrl)
+   StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, "Document complete: " & AfxVarToStr(@varUrl))
+   VariantClear(@varUrl)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler ShowContextMenu event.
+' ========================================================================================
+FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+   ' // This event notifies that the user has clicked the right mouse button to show the
+   ' // context menu. We can anulate it returning %S_OK and show our context menu.
+   ' // Do not allow to show the context menu
+'   AfxMsg "Sorry! Context menu disabled"
+'   RETURN S_OK
+   ' // Host did not display its UI. MSHTML will display its UI.
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler GetHostInfo event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+   IF pInfo THEN
+      pInfo->cbSize = SIZEOF(DOCHOSTUIINFO)
+      pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER OR DOCHOSTUIFLAG_THEME OR DOCHOSTUIFLAG_DPI_AWARE
+      pInfo->dwDoubleClick = DOCHOSTUIDBLCLK_DEFAULT
+      pInfo->pchHostCss = NULL
+      pInfo->pchHostNS = NULL
+   END IF
+   RETURN S_OK
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler TranslateAccelerator event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+   IF lpMsg->message = WM_KEYDOWN THEN
+      pWebCtx->SetElementInnerHtmlById "output", "ID: " & pWebCtx->GetActiveElementId & " KeyDown - Key: " & WSTR(lpMsg->wParam)
+   END IF
+
+   ' // When you use accelerator keys such as TAB, you may need to override the
+   ' // default host behavior. The example shows how to do this.
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN
+       RETURN S_FALSE   ' S_OK to disable tab navigation
+    END IF
+   ' // Return S_FALSE if you don't process the message
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Fires before navigation occurs in the given object (on either a window or frameset element).
+' ========================================================================================
+SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+
+   OutputDebugStringW AfxVarToStr(vUrl)
+
+   ' // Sample code to redirect navigation to another url
+   IF AfxVarToStr(vUrl) = "http://com.it-berater.org/" THEN
+      ' // Stop loading the page
+      pWebCtx->BrowserPtr->Stop
+      ' // Cancel the navigation operation
+      *pbCancel = VARIANT_TRUE
+      ' // Navigate to another new url
+      DIM cvNewUrl AS CVAR = "http://www.planetsquires.com/protect/forum/index.php"
+      pWebCtx->BrowserPtr->Navigate2(cvNewUrl)
+   END IF
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' For cancelable document events return TRUE to indicate that Internet Explorer should
+' perform its own event processing or FALSE to cancel the event.
+' ========================================================================================
+PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, _
+   BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+
+'   SELECT CASE dispid
+'
+'      CASE DISPID_HTMLELEMENTEVENTS2_ONCLICK   ' // click event
+'         ' // Get a reference to the element that has fired the event
+'         DIM pElement AS IHTMLElement PTR
+'         IF pEvtObj THEN pEvtObj->lpvtbl->get_srcElement(pEvtObj, @pElement)
+'         IF pElement = NULL THEN EXIT FUNCTION
+'         DIM bstrHtml AS AFX_BSTR   ' // Outer html
+'         pElement->lpvtbl->get_outerHtml(pElement, @bstrHtml)
+''         DIM bstrId AS AFX_BSTR   ' // identifier
+''         pElement->lpvtbl->get_id(pElement, @bstrId)
+'         pElement->lpvtbl->Release(pElement)
+'         AfxMsg *bstrHtml
+'         SysFreeString bstrHtml
+'         RETURN TRUE
+'
+'   END SELECT
+
+   RETURN FALSE
+
+END FUNCTION
+' ========================================================================================
+```
+
+#### Example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: HTML GUI
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2017 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define UNICODE
+#define _CAXH_DEBUG_ 1
+'#define _CWBX_DEBUG_ 1
+#INCLUDE ONCE "Afx/CAxHost/CWebCtx.inc"
+USING Afx
+
+CONST IDC_WEBBROWSER = 1001
+CONST IDC_SATUSBAR = 1002
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' // Forward declaration
+DECLARE FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+DECLARE SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+DECLARE SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+DECLARE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispId AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+DECLARE FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+' ========================================================================================
+' Build the script
+' ========================================================================================
+FUNCTION BuildScript () AS STRING
+
+   DIM s AS STRING
+   s = "<!DOCTYPE html>"
+   s += "<head>"
+   s += "<meta http-equiv=""MSThemeCompatible"" content=""Yes"">"
+   s += "  <title>WebGui</title>"
+   s += ""
+   s += "<style type=""text/css"">"
+   s += "<!--"
+   s += ""
+   s += "#output"
+   s += "{"
+   s += "background: #FFFFCC;"
+   s += "border: thin solid black;"
+   s += "text-align: center;"
+   s += "width: 300px;"
+   s += "}"
+   s += "-->"
+   s += "</style>"
+   s += ""
+   s += "</head>"
+   s += "<body scroll='auto'>"
+   s += "<input type =""Button"" id=""Button_1"" name=""Button_1"" value=""Button 1""><br />"
+   s += "<input type =""Button"" id=""Button_2"" name=""Button_2"" value=""Button 2""><br />"
+   s += "<input type =""Button"" id=""Button_3"" name=""Button_3"" value=""Button 3""><br />"
+   s += "<input type =""Button"" id=""Button_4"" name=""Button_4"" value=""Button 4""><br />"
+   s += "<br />"
+   s += "<div id=""output"">"
+   s += "Click a button"
+   s += "</div>"
+   s += "<br />"
+   s += "<br />"
+   s += "<input type=""Text"" id=""Input_Text"" name=""Input_Text"" value="""" size=40><br />"
+   s += "<br />"
+   s += "<input type =""Button"" id=""Button_GetText"" name=""Button_GetTex"" value=""Get text""><br />"
+   s += "</body>"
+   s += "</html>"
+
+   RETURN s
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   ' // The recommended way is to use a manifest file
+   AfxSetProcessDPIAware
+
+   ' // Creates the main window
+   DIM pWindow AS CWindow
+   ' -or- DIM pWindow AS CWindow = "MyClassName" (use the name that you wish)
+   DIM hwndMain AS HWND = pWindow.Create(NULL, "Web GUI", @WndProc)
+   ' // Sizes it by setting the wanted width and height of its client area
+   pWindow.SetClientSize(450, 300)
+   ' // Centers the window
+   pWindow.Center
+
+   ' // Add a status bar
+   DIM hStatusbar AS HWND = pWindow.AddControl("Statusbar", , IDC_SATUSBAR)
+
+   ' // Add a WebBrowser control
+   DIM pwb AS CWebCtx = CWebCtx(@pWindow, IDC_WEBBROWSER, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   ' // Set web browser event callback procedures
+   pwb.SetEventProc("StatusTextChange", @WebBrowser_StatusTextChangeProc)
+   pwb.SetEventProc("DocumentComplete", @WebBrowser_DocumentCompleteProc)
+   pwb.SetEventProc("BeforeNavigate2", @WebBrowser_BeforeNavigate2Proc)
+   pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+   ' // Set DocHostUI event callback procedures
+   pwb.SetUIEventProc("ShowContextMenu", @DocHostUI_ShowContextMenuProc)
+   pwb.SetUIEventProc("GetHostInfo", @DocHostUI_GetHostInfo)
+   pwb.SetUIEventProc("TranslateAccelerator", @DocHostUI_TranslateAccelerator)
+
+   ' // Build the script
+   DIM s AS STRING = BuildScript
+   ' // Save the script as a temporary file
+   DIM wszPath AS WSTRING * MAX_PATH = AfxSaveTempFile(s, "html")
+   ' // Navigate to the path
+   pwb.Navigate(wszPath)
+   ' // Wait for page load with a timeout of 5 seconds
+   DIM lReadyState AS READYSTATE = pwb.WaitForPageLoad(5)
+   ' // Kill the temporary file
+   KILL wszPath
+   ' // Set focus
+   pwb.SetFocus
+
+   ' // Display the window
+   ShowWindow(hWndMain, nCmdShow)
+   UpdateWindow(hWndMain)
+
+   ' // Dispatch Windows messages
+   DIM uMsg AS MSG
+   WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
+      IF AfxCAxHostForwardMessage(GetFocus, @uMsg) = FALSE THEN
+         IF IsDialogMessageW(hWndMain, @uMsg) = 0 THEN
+            TranslateMessage(@uMsg)
+            DispatchMessageW(@uMsg)
+         END IF
+      END IF
+   WEND
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_COMMAND
+         SELECT CASE GET_WM_COMMAND_ID(wParam, lParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application by sending an WM_CLOSE message
+               IF GET_WM_COMMAND_CMD(wParam, lParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_SIZE
+         ' // Optional resizing code
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Resize the status bar
+            DIM hStatusBar AS HWND = GetDlgItem(hwnd, IDC_SATUSBAR)
+            SendMessage hStatusBar, uMsg, wParam, lParam
+            ' // Calculate the size of the status bar
+            DIM StatusBarHeight AS DWORD, rc AS RECT
+            GetWindowRect hStatusBar, @rc
+            StatusBarHeight = rc.Bottom - rc.Top
+            ' // Retrieve a pointer to the CWindow class
+            DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+            ' // Move the position of the control
+            IF pWindow THEN pWindow->MoveWindow GetDlgItem(hwnd, IDC_WEBBROWSER), _
+               0, 0, pWindow->ClientWidth, pWindow->ClientHeight - StatusBarHeight / pWindow->ryRatio, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         ' // Ends the application by sending a WM_QUIT message
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Default processing of Windows messages
+   FUNCTION = DefWindowProcW(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser StatusTextChange event.
+' ========================================================================================
+SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+   IF pwszText THEN StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, pwszText)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser DocumentComplete event.
+' ========================================================================================
+SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+   ' // The vUrl parameter is a VT_BYREF OR VT_BSTR variant
+   ' // It can be a VT_BSTR variant or a VT_ARRAY OR VT_UI1 with a pidl
+   DIM varUrl AS VARIANT
+   VariantCopyInd(@varUrl, vUrl)
+   StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, "Document complete: " & AfxVarToStr(@varUrl))
+   VariantClear(@varUrl)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler ShowContextMenu event.
+' ========================================================================================
+FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+   ' // This event notifies that the user has clicked the right mouse button to show the
+   ' // context menu. We can anulate it returning %S_OK and show our context menu.
+   ' // Do not allow to show the context menu
+'   AfxMsg "Sorry! Context menu disabled"
+'   RETURN S_OK
+   ' // Host did not display its UI. MSHTML will display its UI.
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler GetHostInfo event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+   IF pInfo THEN
+      pInfo->cbSize = SIZEOF(DOCHOSTUIINFO)
+      pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER OR DOCHOSTUIFLAG_THEME OR DOCHOSTUIFLAG_DPI_AWARE
+      pInfo->dwDoubleClick = DOCHOSTUIDBLCLK_DEFAULT
+      pInfo->pchHostCss = NULL
+      pInfo->pchHostNS = NULL
+   END IF
+   RETURN S_OK
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler TranslateAccelerator event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+   IF lpMsg->message = WM_KEYDOWN THEN
+      pWebCtx->SetElementInnerHtmlById "output", "ID: " & pWebCtx->GetActiveElementId & " KeyDown - Key: " & WSTR(lpMsg->wParam)
+   END IF
+
+   ' // When you use accelerator keys such as TAB, you may need to override the
+   ' // default host behavior. The example shows how to do this.
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN
+       RETURN S_FALSE   ' S_OK to disable tab navigation
+    END IF
+   ' // Return S_FALSE if you don't process the message
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Fires before navigation occurs in the given object (on either a window or frameset element).
+' ========================================================================================
+SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+
+   OutputDebugStringW AfxVarToStr(vUrl)
+
+'   ' // Sample code to redirect navigation to another url
+'   IF AfxVarToStr(vUrl) = "http://com.it-berater.org/" THEN
+'      ' // Stop loading the page
+'      pWebCtx->BrowserPtr->Stop
+'      ' // Cancel the navigation operation
+'      *pbCancel = VARIANT_TRUE
+'      ' // Navigate to another new url
+'      DIM cvNewUrl AS CVAR = "http://www.planetsquires.com/protect/forum/index.php"
+'      pWebCtx->BrowserPtr->Navigate2(cvNewUrl)
+'   END IF
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' For cancelable document events return TRUE to indicate that Internet Explorer should
+' perform its own event processing or FALSE to cancel the event.
+' ========================================================================================
+PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, _
+   BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+
+   SELECT CASE dispid
+
+      CASE DISPID_HTMLELEMENTEVENTS2_ONCLICK   ' // click event
+
+         IF pWebCtx->BrowserPtr = NULL THEN EXIT FUNCTION   ' // Wait for page load with a timeout of 5 seconds
+         ' // Get a reference to the element that has fired the event
+         DIM pElement AS IHTMLElement PTR
+         IF pEvtObj THEN pEvtObj->lpvtbl->get_srcElement(pEvtObj, @pElement)
+         IF pElement = NULL THEN EXIT FUNCTION
+'         DIM bstrHtml AS AFX_BSTR   ' // Outer html
+'         pElement->lpvtbl->get_outerHtml(pElement, @bstrHtml)
+'         DIM bstrId AS AFX_BSTR   ' // identifier
+'         pElement->lpvtbl->get_id(pElement, @bstrId)
+'         pElement->lpvtbl->Release(pElement)
+'         AfxMsg *bstrHtml
+'         SysFreeString bstrHtml
+'         RETURN TRUE
+
+         DIM bstrId AS AFX_BSTR   ' // identifier
+         pElement->lpvtbl->get_id(pElement, @bstrId)
+         DIM cwsId AS CWSTR = *bstrId
+         SysFreeString bstrId
+
+         SELECT CASE **cwsId
+            CASE "Button_1", "Button_2", "Button_3", "Button_4"
+               pWebCtx->SetElementInnerHtmlById("output", "You have clicked " & cwsId)
+            CASE "Button_GetText"
+               DIM vValue AS VARIANT = pWebCtx->GetElementValueById("Input_Text")
+               AfxMsg AfxVarToStr(@vValue, TRUE)
+         END SELECT
+
+   END SELECT
+
+   RETURN FALSE
+
+END FUNCTION
+' ========================================================================================
+```
+
 # <a name="CAXHOST_AMBIENTDISP"></a>CAXHOST_AMBIENTDISP Structure
 
 Contains information the ambient properties of the **CAxHost** control.
@@ -494,6 +1195,276 @@ PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR
 END FUNCTION
 ' ========================================================================================
 ````
+
+#### Example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: WebBrowser - Events
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2016 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define UNICODE
+#INCLUDE ONCE "Afx/CVAR.inc"
+#INCLUDE ONCE "Afx/CAxHost/CWebCtx.inc"
+USING Afx
+
+CONST IDC_WEBBROWSER = 1001
+CONST IDC_SATUSBAR = 1002
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' // Forward declaration
+DECLARE FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+DECLARE SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+DECLARE SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+DECLARE SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+DECLARE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispId AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+DECLARE FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+DECLARE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   ' // The recommended way is to use a manifest file
+   AfxSetProcessDPIAware
+
+   ' // Creates the main window
+   DIM pWindow AS CWindow
+   ' -or- DIM pWindow AS CWindow = "MyClassName" (use the name that you wish)
+   DIM hwndMain AS HWND = pWindow.Create(NULL, "Embedded WebBrowser control", @WndProc)
+   ' // Sizes it by setting the wanted width and height of its client area
+   pWindow.SetClientSize(750, 450)
+   ' // Centers the window
+   pWindow.Center
+
+   ' // Add a status bar
+   DIM hStatusbar AS HWND = pWindow.AddControl("Statusbar", , IDC_SATUSBAR)
+
+   ' // Add a WebBrowser control
+   DIM pwb AS CWebCtx = CWebCtx(@pWindow, IDC_WEBBROWSER, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+   ' // Set web browser event callback procedures
+   pwb.SetEventProc("StatusTextChange", @WebBrowser_StatusTextChangeProc)
+   pwb.SetEventProc("DocumentComplete", @WebBrowser_DocumentCompleteProc)
+   pwb.SetEventProc("BeforeNavigate2", @WebBrowser_BeforeNavigate2Proc)
+   pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+   ' // Set DocHostUI event callback procedures
+   pwb.SetUIEventProc("ShowContextMenu", @DocHostUI_ShowContextMenuProc)
+   pwb.SetUIEventProc("GetHostInfo", @DocHostUI_GetHostInfo)
+   pwb.SetUIEventProc("TranslateAccelerator", @DocHostUI_TranslateAccelerator)
+
+   ' // Navigate to a URL
+   pwb.Navigate "http://com.it-berater.org/"
+   ' // Set the focus in the page (the page must be fully loaded)
+   pwb.SetFocus
+
+   ' // Display the window
+   ShowWindow(hWndMain, nCmdShow)
+   UpdateWindow(hWndMain)
+
+   ' // Dispatch Windows messages
+   DIM uMsg AS MSG
+   WHILE (GetMessageW(@uMsg, NULL, 0, 0) <> FALSE)
+      IF AfxCAxHostForwardMessage(GetFocus, @uMsg) = FALSE THEN
+         IF IsDialogMessageW(hWndMain, @uMsg) = 0 THEN
+            TranslateMessage(@uMsg)
+            DispatchMessageW(@uMsg)
+         END IF
+      END IF
+   WEND
+   FUNCTION = uMsg.wParam
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_COMMAND
+         SELECT CASE GET_WM_COMMAND_ID(wParam, lParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application by sending an WM_CLOSE message
+               IF GET_WM_COMMAND_CMD(wParam, lParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_SIZE
+         ' // Optional resizing code
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Resize the status bar
+            DIM hStatusBar AS HWND = GetDlgItem(hwnd, IDC_SATUSBAR)
+            SendMessage hStatusBar, uMsg, wParam, lParam
+            ' // Calculate the size of the status bar
+            DIM StatusBarHeight AS DWORD, rc AS RECT
+            GetWindowRect hStatusBar, @rc
+            StatusBarHeight = rc.Bottom - rc.Top
+            ' // Retrieve a pointer to the CWindow class
+            DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+            ' // Move the position of the control
+            IF pWindow THEN pWindow->MoveWindow GetDlgItem(hwnd, IDC_WEBBROWSER), _
+               0, 0, pWindow->ClientWidth, pWindow->ClientHeight - StatusBarHeight / pWindow->ryRatio, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         ' // Ends the application by sending a WM_QUIT message
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Default processing of Windows messages
+   FUNCTION = DefWindowProcW(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser StatusTextChange event.
+' ========================================================================================
+SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+   IF pwszText THEN StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, pwszText)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser DocumentComplete event.
+' ========================================================================================
+SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+   ' // The vUrl parameter is a VT_BYREF OR VT_BSTR variant
+   ' // It can be a VT_BSTR variant or a VT_ARRAY OR VT_UI1 with a pidl
+   DIM varUrl AS VARIANT
+   VariantCopyInd(@varUrl, vUrl)
+   StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, "Document complete: " & AfxVarToStr(@varUrl))
+   VariantClear(@varUrl)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler ShowContextMenu event.
+' ========================================================================================
+FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+   ' // This event notifies that the user has clicked the right mouse button to show the
+   ' // context menu. We can anulate it returning %S_OK and show our context menu.
+   ' // Do not allow to show the context menu
+'   AfxMsg "Sorry! Context menu disabled"
+'   RETURN S_OK
+   ' // Host did not display its UI. MSHTML will display its UI.
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler GetHostInfo event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+   IF pInfo THEN
+      pInfo->cbSize = SIZEOF(DOCHOSTUIINFO)
+      pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER OR DOCHOSTUIFLAG_THEME OR DOCHOSTUIFLAG_DPI_AWARE
+      pInfo->dwDoubleClick = DOCHOSTUIDBLCLK_DEFAULT
+      pInfo->pchHostCss = NULL
+      pInfo->pchHostNS = NULL
+   END IF
+   RETURN S_OK
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler TranslateAccelerator event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+   IF lpMsg->message = WM_KEYDOWN THEN
+      pWebCtx->SetElementInnerHtmlById "output", "ID: " & pWebCtx->GetActiveElementId & " KeyDown - Key: " & WSTR(lpMsg->wParam)
+   END IF
+
+   ' // When you use accelerator keys such as TAB, you may need to override the
+   ' // default host behavior. The example shows how to do this.
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN
+       RETURN S_FALSE   ' S_OK to disable tab navigation
+    END IF
+   ' // Return S_FALSE if you don't process the message
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Fires before navigation occurs in the given object (on either a window or frameset element).
+' ========================================================================================
+SUB WebBrowser_BeforeNavigate2Proc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+
+   OutputDebugStringW AfxVarToStr(vUrl)
+
+   ' // Sample code to redirect navigation to another url
+   IF AfxVarToStr(vUrl) = "http://com.it-berater.org/" THEN
+      ' // Stop loading the page
+      pWebCtx->BrowserPtr->Stop
+      ' // Cancel the navigation operation
+      *pbCancel = VARIANT_TRUE
+      ' // Navigate to another new url
+      DIM cvNewUrl AS CVAR = "http://www.planetsquires.com/protect/forum/index.php"
+      pWebCtx->BrowserPtr->Navigate2(cvNewUrl)
+   END IF
+
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' For cancelable document events return TRUE to indicate that Internet Explorer should
+' perform its own event processing or FALSE to cancel the event.
+' ========================================================================================
+PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, _
+   BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+
+'   SELECT CASE dispid
+'
+'      CASE DISPID_HTMLELEMENTEVENTS2_ONCLICK   ' // click event
+'         ' // Get a reference to the element that has fired the event
+'         DIM pElement AS IHTMLElement PTR
+'         IF pEvtObj THEN pEvtObj->lpvtbl->get_srcElement(pEvtObj, @pElement)
+'         IF pElement = NULL THEN EXIT FUNCTION
+'         DIM bstrHtml AS AFX_BSTR   ' // Outer html
+'         pElement->lpvtbl->get_outerHtml(pElement, @bstrHtml)
+''         DIM bstrId AS AFX_BSTR   ' // identifier
+''         pElement->lpvtbl->get_id(pElement, @bstrId)
+'         pElement->lpvtbl->Release(pElement)
+'         AfxMsg *bstrHtml
+'         SysFreeString bstrHtml
+'         RETURN TRUE
+'
+'   END SELECT
+
+   RETURN FALSE
+
+END FUNCTION
+' ========================================================================================
+```
 
 # <a name="Advise"></a>Advise
 
