@@ -2500,3 +2500,15 @@ Multiple levels of encryption can coexist in a single window in situations where
 
 The encryption level on a page can be higher than the default level set in the browser if the site is using a special type of certificate (for example, a Server Gated Cryptography certificate).
 
+# <a name="StatusTextChange"></a>StatusTextChange Event
+
+Fires when the status bar text of the object has changed.
+
+```
+SUB StatusTextChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pwszText* | The container can use the information provided by this event to update the text of a status bar. |
