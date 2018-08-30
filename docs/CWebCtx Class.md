@@ -2594,3 +2594,24 @@ The **WindowSetLeft** event is fired when the left position of a window is chang
 This event is also fired when a new window is opened through scripting, using the window.open method. The value of the *nLeft* parameter indicates the left position requested in the call to window.open.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="WindowSetResizable"></a>WindowSetResizable Event
+
+Fires to indicate whether the host window should allow or disallow resizing of the object.
+
+```
+SUB WindowSetResizable (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bResizable AS VARIANT_BOOL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *bResizable* | Boolean value that specifies whether the WebBrowser control is resizable. Can be one of the following values.<br>VARIANT_FALSE: Control is not resizable.<br>VARIANT_TRUE: Control is resizable. |
+
+#### Remarks
+
+The **WindowSetResizable** event is fired when a new window is opened through scripting, using the window.open method. The value of the *bResizable* parameter indicates whether the resizable feature was requested in the call to window.open.
+
+The host window can use this event to decide whether to display resizing user interface items, such as a size box and maximize box.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
