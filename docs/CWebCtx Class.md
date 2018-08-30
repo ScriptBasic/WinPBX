@@ -1916,3 +1916,31 @@ SUB CommandStateChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nCommand AS LONG, BY
 | CSC_UPDATECOMMANDS | The enabled state of a toolbar button might have changed. |
 | CSC_NAVIGATEFORWARD | The enabled state of the Forward button has changed. |
 | CSC_NAVIGATEBACK | The enabled state of the Back button has changed. |
+
+# <a name="DocumentComplete"></a>DocumentComplete Event
+
+Fires when a document has been completely loaded and initialized.
+
+```
+SUB DocumentComplete (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR, BYVAL vURL AS VARIANT PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDisp* | Pointer to the **IDispatch** interface of the window or frame in which the document has loaded. This **IDispatch** interface can be queried for the **IWebBrowser2** interface. |
+| *vURL* | Pointer to a variant of type VT_BSTR that specifies the URL, Universal Naming Convention (UNC) file name, or pointer to an item identifier list (PIDL) of the loaded document. |
+
+#### Remarks
+
+The value of the *vURL* parameter might not match the URL that was originally given to the WebBrowser Control. One possible reason for this is that the URL might be converted to a qualified form. For example, if an application specified a URL of www.microsoft.com in a call to the Navigate2 method of the **IWebBrowser2** interface, then the URL passed into **DocumentComplete** is http://www.microsoft.com/. In addition, if the server has redirected the browser to a different URL, the redirected URL is passed into the URL parameter.
+
+The WebBrowser Control fires the **DocumentComplete** event when the document has completely loaded and the **READYSTATE** property has changed to **READYSTATE_COMPLETE**. Here are some important points regarding the firing of this event.
+
+* In pages with no frames, this event fires once after loading is complete.
+* In pages where multiple frames are loaded, this event fires for each frame where the **DownloadBegin** event has fired.
+* This event's *pDisp* parameter is the same as the **IDispatch** interface pointer of the frame in which this event fires.
+* In the loading process, the highest level frame (which is not necessarily the top-level frame) fires the final **DocumentComplete** event. At this time, the *pDisp* parameter will be the same as the **IDispatch** interface pointer of the highest level frame. 
+
+Currently, the **DocumentComplete** does not fire when the **Visible** property of the WebBrowser Control is set to false.
+
