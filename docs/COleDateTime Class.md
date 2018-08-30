@@ -225,7 +225,7 @@ FUNCTION Format (BYVAL dwFlags AS DWORD = 0, BYVAL lcid AS LCID = LANG_USER_DEFA
 
 The **COleDateTime** as a formatted string.
 
-# <a name="GetAsDBTIMESTAMP"></a>GetAsDBTIMESTAMP
+# <a name="GetAsDBTIMESTAMP"></a>GetAsDBTIMESTAMP (COleDateTime)
 
 Returns the date/time the of this **COleDateTime** object as a **DBTIMESTAMP** data structure.
 
@@ -241,7 +241,7 @@ FUNCTION GetAsDBTIMESTAMP (BYREF dbts AS DBTIMESTAMP) AS BOOLEAN
 
 TRUE or FALSE.
 
-# <a name="GetAsSystemTime"></a>GetAsSystemTime
+# <a name="GetAsSystemTime"></a>GetAsSystemTime (COleDateTime)
 
 Returns the date/time the of this **COleDateTime** object as a **SYSTEMTIME** data structure.
 
@@ -257,7 +257,7 @@ FUNCTION GetAsSystemTime (BYREF sysTime AS SYSTEMTIME) AS BOOLEAN
 
 TRUE or FALSE.
 
-# <a name="GetAsUdate"></a>GetAsUdate
+# <a name="GetAsUdate"></a>GetAsUdate (COleDateTime)
 
 Returns the date/time the of this **COleDateTime** object as a **UDATE** structure.
 
@@ -269,7 +269,7 @@ FUNCTION GetAsUdate (BYREF ud AS UDATE) AS BOOLEAN
 
 TRUE or FALSE.
 
-# <a name="GetCurrentTime"></a>GetCurrentTime
+# <a name="GetCurrentTime"></a>GetCurrentTime (COleDateTime)
 
 Returns the current date/time value in local time.
 
@@ -292,7 +292,7 @@ DIM ct AS COleDateTime
 ct = ct.GetCurrentTime()
 ```
 
-# <a name="GetDay"></a>GetDay
+# <a name="GetDay"></a>GetDay (COleDateTime)
 
 Returns the day represented by this date/time value. Valid return values range between 1 and 31.
 
@@ -300,7 +300,7 @@ Returns the day represented by this date/time value. Valid return values range b
 FUNCTION GetDay () AS WORD
 ```
 
-# <a name="GetDayOfWeek"></a>GetDayOfWeek
+# <a name="GetDayOfWeek"></a>GetDayOfWeek (COleDateTime)
 
 Returns the day of the week represented by this date/time value. Valid return values range between 1 and 7, where 1=Sunday, 2=Monday, and so on.
 
@@ -308,7 +308,7 @@ Returns the day of the week represented by this date/time value. Valid return va
 FUNCTION GetDayOfWeek () AS WORD
 ```
 
-# <a name="GetDayOfYear"></a>GetDayOfYear
+# <a name="GetDayOfYear"></a>GetDayOfYear (COleDateTime)
 
 Returns the day of the year represented by this date/time value. Valid return values range between 1 and 366, where January 1 = 1.
 
@@ -316,7 +316,7 @@ Returns the day of the year represented by this date/time value. Valid return va
 FUNCTION GetDayOfYear () AS WORD
 ```
 
-# <a name="GetHour"></a>GetHour
+# <a name="GetHour"></a>GetHour (COleDateTime)
 
 Returns the hour represented by this date/time value. Valid return values range between 0 and 23.
 
@@ -324,7 +324,7 @@ Returns the hour represented by this date/time value. Valid return values range 
 FUNCTION GetHour () AS WORD
 ```
 
-# <a name="GetLocalTime"></a>GetLocalTime
+# <a name="GetLocalTime"></a>GetLocalTime (COleDateTime)
 
 Returns the current date/time value in local time.
 
@@ -332,7 +332,7 @@ Returns the current date/time value in local time.
 FUNCTION GetLocalTime () AS COleDateTime
 ```
 
-# <a name="GetMinute"></a>GetMinute
+# <a name="GetMinute"></a>GetMinute (COleDateTime)
 
 Returns the minute represented by this date/time value. Valid return values range between 0 and 59.
 
@@ -340,7 +340,7 @@ Returns the minute represented by this date/time value. Valid return values rang
 FUNCTION GetMinute () AS WORD
 ```
 
-# <a name="GetMonth"></a>GetMonth
+# <a name="GetMonth"></a>GetMonth (COleDateTime)
 
 Returns the month represented by this date/time value. Valid return values range between 1 and 12.
 
@@ -348,7 +348,7 @@ Returns the month represented by this date/time value. Valid return values range
 FUNCTION GetMonth () AS WORD
 ```
 
-# <a name="GetSecond"></a>GetSecond
+# <a name="GetSecond"></a>GetSecond (COleDateTime)
 
 Returns the second represented by this date/time value. Valid return values range between 0 and 59.
 
@@ -356,7 +356,7 @@ Returns the second represented by this date/time value. Valid return values rang
 FUNCTION GetSecond () AS WORD
 ```
 
-# <a name="GetStatus"></a>GetStatus
+# <a name="GetStatus"></a>GetStatus (COleDateTime)
 
 Gets the status (validity) of a given COleDateTime object.
 
@@ -364,7 +364,7 @@ Gets the status (validity) of a given COleDateTime object.
 FUNCTION GetStatus () AS BOOLEAN
 ```
 
-# <a name="GetSystemTime"></a>GetSystemTime
+# <a name="GetSystemTime"></a>GetSystemTime (COleDateTime)
 
 Returns the current date/time value in Coordinated Universal Time (UTC).
 
@@ -372,7 +372,7 @@ Returns the current date/time value in Coordinated Universal Time (UTC).
 FUNCTION GetSystemTime () AS COleDateTime
 ```
 
-# <a name="GetYear"></a>GetYear
+# <a name="GetYear"></a>GetYear (COleDateTime)
 
 Returns the year represented by this date/time value. Valid return values range between 100 and 9999, which includes the century.
 
@@ -380,7 +380,7 @@ Returns the year represented by this date/time value. Valid return values range 
 FUNCTION GetYear () AS WORD
 ```
 
-# <a name="SetDate"></a>SetDate
+# <a name="SetDate"></a>SetDate (COleDateTime)
 
 Sets the date of this **COleDateTime** object.
 
@@ -392,7 +392,7 @@ FUNCTION SetDate (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS WORD)
 | ---------- | ----------- |
 | *nYear / nMonth / nDay* | Indicates the date values to be copied into the **COleDateTime** object. |
 
-# <a name="SetDateTime"></a>SetDateTime
+# <a name="SetDateTime"></a>SetDateTime (COleDateTime)
 
 Sets the date and time of this **COleDateTime** object.
 
@@ -405,7 +405,7 @@ FUNCTION SetDateTime (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS W
 | ---------- | ----------- |
 | *nYear / nMonth / nDay / nHour / nMin / nSec* | Indicates the date and time values to be copied into the **COleDateTime** object. |
 
-# <a name="SetStatus"></a>SetStatus
+# <a name="SetStatus"></a>SetStatus (COleDateTime)
 
 Sets the status (validity) of a given **COleDateTime** object.
 
@@ -417,7 +417,7 @@ FUNCTION SetStatus (BYVAL nStatus AS BOOLEAN)
 | ---------- | ----------- |
 | *nStatus* | TRUE or FALSE. |
 
-# <a name="SetTime"></a>SetTime
+# <a name="SetTime"></a>SetTime (COleDateTime)
 
 Sets the time of this **COleDateTime** object.
 
