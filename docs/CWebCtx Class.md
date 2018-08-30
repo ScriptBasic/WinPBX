@@ -613,3 +613,23 @@ A string containing the HTML text.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="GetElementValueById"></a>GetElementValueById
+
+Retrieves the value attribute of the specified attribute.
+
+```
+FUNCTION GetElementValueById (BYREF cwsId AS CWSTR) AS VARIANT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+A variant containing the value as defined by the attribute.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
