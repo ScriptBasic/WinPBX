@@ -2657,3 +2657,32 @@ The **WindowSetWidth** event is fired when the width of a window is changed, usi
 This event is also fired when a new window is opened through scripting, using the window.open method. The value of the **Width** parameter indicates the width requested in the call to **window.open**.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="WindowStateChanged"></a>WindowStateChanged Event
+
+Fires when the progress of a download operation is updated on the object.
+
+```
+SUB WindowStateChanged (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwFlags AS LONG, BYVAL dwValidFlagsMask AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *dwFlags* | The flags indicating the current window state.<br>**1**: The content window is visible to the user.<br>**2**: The content window is enabled. |
+| *dwValidFlagsMask* | The flags indicating which flags in the dwFlags parameter value have been initialized.<br>**1**: The OLECMDIDF_WINDOWSTATE_USERVISIBLE flag can be checked.<br>**2**: The OLECMDIDF_WINDOWSTATE_ENABLED flag can be checked. |
+
+#### Remarks
+
+**WindowStateChanged** is available only in Windows XP Service Pack 2 (SP2) or later.
+
+The **WindowStateChanged** event is raised when the state of a content window, such as the browser window or a tab, might have changed. The following actions raise this event.
+
+* The browser window is minimized or restored.
+* An active tab becomes inactive.
+* An inactive tab becomes active.
+* The browser window is enabled or disabled due to a modal dialog box.
+
+A content window is visible to the user when it is displayed to the user and can be interacted with. If tabbed browsing is enabled, the active tab (the one with focus) contains the content window. Background tabs are inactive. When tabbed browsing is disabled, the browser window displays the content window. When the browser window is minimized, the content window is not visible. This event can be used to minimize CPU usage and prolong battery life by reducing unnecessary updates to inactive windows.
+
+**Note**: This event can be raised even if the state of the parameter flag values have not changed.
