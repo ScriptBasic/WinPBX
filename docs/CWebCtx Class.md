@@ -1185,3 +1185,152 @@ END FUNCTION
 ' ========================================================================================
 ```
 
+# <a name="SetFocus"></a>SetFocus
+
+Sets the focus in the hosted document (usually an html page).
+
+```
+FUNCTION SetFocus () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) to indicate that the operation was successful or an error code (E_NOINTERFACE).
+
+# <a name="SetUIEventProc"></a>SetUIEventProc
+
+Sets pointers to user implemented callback procedures to receive events of the **IDocHostUIHandler2** interface.
+
+```
+FUNCTION SetUIEventProc (BYVAL pwszEventName AS WSTRING PTR, BYVAL pProc AS ANY PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszEventName* | The name of the event. |
+| *pProc* | The address of the callback procedure. |
+
+| Parameter  |
+| ---------- |
+| ShowContextMenu |
+| GetHostInfo |
+| ShowUI |
+| HideUI |
+| UpdateUI |
+| EnableModeless |
+| OnDocWindowActivate |
+| OnFrameWindowActivate |
+| ResizeBorder |
+| TranslateAccelerator |
+| GetOptionKeyPath |
+| GetDropTarget |
+| GetExternal |
+| TranslateUrl |
+| FilterDataObject |
+| GetOverrideKeyPath |
+
+### Function callback prototypes
+
+```
+FUNCTION EnableModelessProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fEnable AS WINBOOL) AS HRESULT
+FUNCTION FilterDataObjectProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDO AS IDataObject PTR, BYVAL ppDORet AS IDataObject PTR PTR) AS HRESULT
+FUNCTION GetDropTargetProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDropTarget AS IDropTarget PTR, BYVAL ppDropTarget AS IDropTarget PTR PTR) AS HRESULT
+FUNCTION GetExternalProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDispatch AS IDispatch PTR PTR) AS HRESULT
+FUNCTION GetHostInfoProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+FUNCTION GetOptionKeyPathProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pchKey AS LPOLESTR PTR, BYVAL dw AS DWORD) AS HRESULT
+FUNCTION GetOverrideKeyPathProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pchKey AS LPOLESTR PTR, BYVAL dw AS DWORD) AS HRESULT
+FUNCTION HideUIProc (BYVAL pWebCtx AS CWebCtx PTR) AS HRESULT
+FUNCTION OnDocWindowActivateProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS WINBOOL) AS HRESULT
+FUNCTION OnFrameWindowActivateProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS WINBOOL) AS HRESULT
+FUNCTION ResizeBorderProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL prcBorder AS LPCRECT, BYVAL pUIWindow AS IOleInPlaceUIWindow PTR, BYVAL frameWindow AS WINBOOL) AS HRESULT
+FUNCTION ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+FUNCTION ShowUIProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL pActiveObject AS IOleInPlaceActiveObject PTR, BYVAL pCommandTarget AS IOleCommandTarget PTR, BYVAL pFrame AS IOleInPlaceFrame PTR, BYVAL pDoc AS IOleInPlaceUIWindow PTR) AS HRESULT
+FUNCTION TranslateAcceleratorProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+FUNCTION TranslateUrlProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwTranslate AS DWORD, BYVAL pchURLIn AS LPWSTR, BYVAL ppchURLOut AS LPWSTR PTR) AS HRESULT
+FUNCTION UpdateUIProc (BYVAL pWebCtx AS CWebCtx PTR) AS HRESULT
+```
+
+#### Usage example
+
+```
+' // Add a WebBrowser control
+DIM pwb AS CWebCtx = CWebCtx(@pWindow, IDC_WEBBROWSER, 0, 0, pWindow.ClientWidth, pWindow.ClientHeight)
+' // Set web browser event callback procedures
+pwb.SetEventProc("StatusTextChange", @WebBrowser_StatusTextChangeProc)
+pwb.SetEventProc("DocumentComplete", @WebBrowser_DocumentCompleteProc)
+pwb.SetEventProc("BeforeNavigate2", @WebBrowser_BeforeNavigate2Proc)
+pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+' // Set DocHostUI event callback procedures
+pwb.SetUIEventProc("ShowContextMenu", @DocHostUI_ShowContextMenuProc)
+pwb.SetUIEventProc("GetHostInfo", @DocHostUI_GetHostInfo)
+pwb.SetUIEventProc("TranslateAccelerator", @DocHostUI_TranslateAccelerator)
+
+' ========================================================================================
+' Process the WebBrowser StatusTextChange event.
+' ========================================================================================
+SUB WebBrowser_StatusTextChangeProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+   IF pwszText THEN StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, pwszText)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the WebBrowser DocumentComplete event.
+' ========================================================================================
+SUB WebBrowser_DocumentCompleteProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pdisp AS IDispatch PTR, BYVAL vUrl AS VARIANT PTR)
+   ' // The vUrl parameter is a VT_BYREF OR VT_BSTR variant
+   ' // It can be a VT_BSTR variant or a VT_ARRAY OR VT_UI1 with a pidl
+   DIM varUrl AS VARIANT
+   VariantCopyInd(@varUrl, vUrl)
+   StatusBar_SetText(GetDlgItem(GetParent(pWebCtx->hWindow), IDC_SATUSBAR), 0, "Document complete: " & AfxVarToStr(@varUrl))
+   VariantClear(@varUrl)
+END SUB
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler ShowContextMenu event.
+' ========================================================================================
+FUNCTION DocHostUI_ShowContextMenuProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, BYVAL ppt AS POINT PTR, BYVAL pcmdtReserved AS IUnknown PTR, BYVAL pdispReserved AS IDispatch PTR) AS HRESULT
+   ' // This event notifies that the user has clicked the right mouse button to show the
+   ' // context menu. We can anulate it returning %S_OK and show our context menu.
+   ' // Do not allow to show the context menu
+'   AfxMsg "Sorry! Context menu disabled"
+'   RETURN S_OK
+   ' // Host did not display its UI. MSHTML will display its UI.
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler GetHostInfo event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+   IF pInfo THEN
+      pInfo->cbSize = SIZEOF(DOCHOSTUIINFO)
+      pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER OR DOCHOSTUIFLAG_THEME OR DOCHOSTUIFLAG_DPI_AWARE
+      pInfo->dwDoubleClick = DOCHOSTUIDBLCLK_DEFAULT
+      pInfo->pchHostCss = NULL
+      pInfo->pchHostNS = NULL
+   END IF
+   RETURN S_OK
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Process the IDocHostUIHandler TranslateAccelerator event.
+' ========================================================================================
+PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+
+   IF lpMsg->message = WM_KEYDOWN THEN
+      pWebCtx->SetElementInnerHtmlById "output", "ID: " & pWebCtx->GetActiveElementId & " KeyDown - Key: " & WSTR(lpMsg->wParam)
+   END IF
+
+   ' // When you use accelerator keys such as TAB, you may need to override the
+   ' // default host behavior. The example shows how to do this.
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN
+       RETURN S_FALSE   ' S_OK to disable tab navigation
+    END IF
+   ' // Return S_FALSE if you don't process the message
+   RETURN S_FALSE
+END FUNCTION
+' ========================================================================================
+```
