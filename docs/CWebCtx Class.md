@@ -758,6 +758,30 @@ FUNCTION Navigate (BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR = NULL,
 | *PostData* | Optional. Data that is sent to the server as part of a HTTP POST transaction. A POST transaction typically is used to send data collected by an HTML form. If this parameter does not specify any POST data, this method issues an HTTP GET transaction. This parameter is ignored if URL is not an HTTP (or HTTPS) URL. |
 | *Headers* | Optional. A String that contains additional HTTP headers to send to the server. These headers are added to the default Internet Explorer headers. For example, headers can specify the action required of the server, the type of data being passed to the server, or a status code. This parameter is ignored if the URL is not an HTTP (or HTTPS)  URL. |
 
+### BrowserNavConstants Enumeration
+
+Contains values used by the **Navigate2** method.
+
+| Flag       | Description |
+| ---------- | ----------- |
+| **navOpenInNewWindow** | Open the resource or file in a new window. |
+| **navNoHistory** | Do not add the resource or file to the history list. The new page replaces the current page in the list. |
+| **navNoReadFromCache** | Not implemented. |
+| **navNoWriteToCache** | Not implemented. |
+| **navAllowAutosearch** | If the navigation fails, the autosearch functionality attempts to navigate common root domains (.com, .edu, and so on). If this also fails, the URL is passed to a search engine. |
+| **navBrowserBar** | Causes the current Explorer Bar to navigate to the given item, if possible. |
+| **navHyperlink** | Microsoft Internet Explorer 6 for Windows XP Service Pack 2 (SP2) and later. If the navigation fails when a hyperlink is being followed, this constant specifies that the resource should then be bound to the moniker using the BINDF_HYPERLINK flag. |
+| **navEnforceRestricted** | Internet Explorer 6 for Windows XP SP2 and later. Force the URL into the restricted zone. |
+| **navNewWindowsManaged** | Internet Explorer 6 for Windows XP SP2 and later. Use the default Popup Manager to block pop-up windows. |
+| **navUntrustedForDownload** | Internet Explorer 6 for Windows XP SP2 and later. Block files that normally trigger a file download dialog box.|
+| **navTrustedForActiveX** | Internet Explorer 6 for Windows XP SP2 and later. Prompt for the installation of Microsoft ActiveX controls. |
+| **navOpenInNewTab** | Windows Internet Explorer 7. Open the resource or file in a new tab. Allow the destination window to come to the foreground, if necessary. |
+| **navOpenInBackgroundTab** | Internet Explorer 7. Open the resource or file in a new background tab; the currently active window and/or tab remains open on top. |
+| **navKeepWordWheelText** | Internet Explorer 7. Maintain state for dynamic navigation based on the filter string entered in the search band text box (wordwheel). Restore the wordwheel text when the navigation completes. |
+| **navVirtualTab** | Internet Explorer 8. Open the resource as a replacement for the current or target tab. The existing tab is closed while the new tab takes its place in the tab bar and replaces it in the tab group, if any. Browser history is copied forward to the new tab. On Windows Vista, this flag is implied if the navigation would cross integrity levels and **navOpenInNewTab**, **navOpenInBackgroundTab**, or **navOpenInNewWindow** is not specified. |
+| **navBlockRedirectsXDomain** | Internet Explorer 8. Block cross-domain redirect requests. The navigation triggers the RedirectXDomainBlocked event if blocked. |
+| **navOpenNewForegroundTab** | Internet Explorer 8 and later. Open the resource in a new tab that becomes the foreground tab. |
+
 #### Return value
 
 Returns one of the following values:
