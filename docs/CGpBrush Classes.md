@@ -14,6 +14,21 @@ A closed shape, such as a rectangle or an ellipse, consists of an outline and an
 | [Clone](#Clone) | Copies the contents of the existing **Brush** object into a new **Brush** object. |
 | [GetType](#GetType) | Gets the type of this brush. |
 
+# CGpSolidBrush Class
+
+The **SolidBrush** object defines a solid color Brush object. A **Brush** object is used to fill in shapes similar to the way a paint brush can paint the inside of a shape.
+
+**Inherits from**: CGpBrush.
+**Imclude file**: CGpBrush.inc.
+
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructor](#ConstructoSBrush) | Creates a **SolidBrush** object based on a color. |
+| [GetColor](#GetColor) | Gets the color of this brush. |
+| [SetColor](#SetColor) | Sets the color of this brush. |
+
 # CGpHatchBrush Class
 
 Creates a **HatchBrush** object based on a hatch style, a foreground color, and a background color.
