@@ -447,3 +447,41 @@ CONSTRUCTOR COleDateTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL n
 #### Remarks
 
 The status of the new **COleDateTimeSpan** object is set to valid.
+
+# <a name="CastOp2"></a>CAST Operator (COleDateTimeSpan)
+
+Returns the underlying **DATE** value from this **COleDateTimeSpan** object.
+
+```
+OPERATOR CAST () AS DOUBLE
+```
+
+# <a name="LetOp2"></a>LET Operator (=) (COleDateTimeSpan)
+
+Assigns a value to a **COleDateTimeSpan** object.
+
+```
+OPERATOR LET (BYVAL dblSpanSrc AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dblSpanSrc* | The number of days to be copied into the **COleDateTimeSpan** object. |
+
+# <a name="Operators2"></a>Operators (COleDateTimeSpan)
+
+Adds, subtracts or compares **COleDateTimeSpan** objects.
+
+```
+OPERATOR + (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS COleDateTimeSpan
+OPERATOR - (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS COleDateTimeSpan
+OPERATOR - (BYREF dateSpan AS COleDateTimeSpan) AS COleDateTimeSpan
+OPERATOR += (BYREF dateSpan AS COleDateTimeSpan)
+OPERATOR -= (BYREF dateSpan AS COleDateTimeSpan)
+OPERATOR = (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
+OPERATOR <> (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSPan2 AS COleDateTimeSpan) AS BOOLEAN
+OPERATOR < (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
+OPERATOR > (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
+OPERATOR <= (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
+OPERATOR >= (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
+```
