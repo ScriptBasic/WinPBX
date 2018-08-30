@@ -633,3 +633,19 @@ A variant containing the value as defined by the attribute.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="GoForward"></a>GoForward
+
+Navigates forward one item in the history list.
+
+```
+FUNCTION GoForward () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+DDuring a browsing session, the WebBrowser control and Microsoft Internet Explorer application maintain a history list of all Web sites visited during a session (unless you specify the NAVNOHISTORY flag when using the Navigate method). Use the **CommandStateChange** event to check the enabled state of forward navigation. If the event's CSC_NAVIGATEFORWARD command is disabled, the end of the history list has been reached and the **GoForward** method should not be used.
