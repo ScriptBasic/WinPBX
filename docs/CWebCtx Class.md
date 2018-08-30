@@ -2573,3 +2573,24 @@ The **WindowSetHeight** event is fired when the height of a window is changed, u
 This event is also fired when a new window is opened through scripting, using the window.open method. The value of the nHeight parameter indicates the height requested in the call to **window.open**.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="WindowSetLeft"></a>WindowSetLeft Event
+
+Fires when the object changes its left position.
+
+```
+SUB WindowSetLeft (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nLeft AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *nLeft* | LONG that specifies the new left position of the WebBrowser window. |
+
+#### Remarks
+
+The **WindowSetLeft** event is fired when the left position of a window is changed, using the **Left** property of the **IWebBrowser2** interface.
+
+This event is also fired when a new window is opened through scripting, using the window.open method. The value of the *nLeft* parameter indicates the left position requested in the call to window.open.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
