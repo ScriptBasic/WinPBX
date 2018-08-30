@@ -529,3 +529,15 @@ FUNCTION ExecWB (BYVAL cmdID AS OLECMDID, BYVAL cmdexecopt AS OLECMDEXECOPT, _
 #### Return value
 
 Returns S_OK (0) if successful, or an error value otherwise. 
+
+# <a name="Find"></a>Find
+
+Activates the find dialog.
+
+```
+FUNCTION Find () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
