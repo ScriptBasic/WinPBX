@@ -355,9 +355,9 @@ Returns the second represented by this date/time value. Valid return values rang
 FUNCTION GetSecond () AS WORD
 ```
 
-# <a name="GetStatus"></a>GetStatus (COleDateTime)
+# <a name="GetStatus"></a>GetStatus (COleDateTime / COleDateTimeSpan)
 
-Gets the status (validity) of a given **COleDateTime** object.
+Gets the status (validity) of a given **COleDateTime** or **COleDateTimeSpan** object.
 
 ```
 FUNCTION GetStatus () AS BOOLEAN
@@ -573,9 +573,9 @@ FUNCTION SetDateTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins
 
 The status of the new **COleDateTimeSpan** object is set to valid.
 
-# <a name="SetStatus"></a>SetStatus (COleDateTimeSpan)
+# <a name="SetStatus"></a>SetStatus (COleDateTimeSpan / COleDateTimeSpan)
 
-Sets the status (validity) of a given **COleDateTimeSpan** object.
+Sets the status (validity) of a given **COleDateTimeSpan** or **COleDateTimeSpan** object.
 
 ```
 FUNCTION SetStatus (BYVAL nStatus AS BOOLEAN)
