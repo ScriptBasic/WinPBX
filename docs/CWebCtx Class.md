@@ -4082,7 +4082,6 @@ Returns one of the following values:
 
 Called by MSHTML to enable the host to replace MSHTML menus and toolbars.
 
-
 ```
 FUNCTION ShowUI (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, _
    BYVAL pActiveObject AS IOleInPlaceActiveObject PTR, BYVAL pCommandTarget AS IOleCommandTarget PTR, _
@@ -4098,7 +4097,7 @@ FUNCTION ShowUI (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, _
 | *pFrame* | Pointer to an **IOleInPlaceFrame** interface for the object. Menus and toolbars must use this parameter. |
 | *pDoc* | Pointer to an **IOleInPlaceUIWindow** interface for the object. Toolbars must use this parameter. |
 
-# <a name="ShowContextMenu"></a>ShowContextMenu Event
+# <a name="TranslateAccelerator"></a>TranslateAccelerator Event
 
 Called by MSHTML when **IOleInPlaceActiveObject.TranslateAccelerator** or **IOleControlSite.TranslateAccelerator** is called.
 
@@ -4132,3 +4131,29 @@ BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
     IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN RETURN S_FALSE
 END FUNCTION
 ````
+
+# <a name="TranslateUrl"></a>TranslateUrl Event
+
+Called by MSHTML to give the host an opportunity to modify the URL to be loaded.
+
+```
+FUNCTION TranslateUrl (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwTranslate AS DWORD, _
+   BYVAL pchURLIn AS LPWSTR, BYVAL ppchURLOut AS LPWSTR PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *dwTranslate* | Reserved. Must be set to NULL. |
+| *pchURLIn* | Pointer to an OLECHAR that specifies the current URL for navigation. |
+| *ppchURLOut* | Put. Address of a pointer variable that receives an OLECHAR pointer containing the new URL. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+The host allocates the buffer *ppchURLOut* using **CoTaskMemAlloc**.
+
+If the implementation of this method does not supply a URL, ppchURLOut should be set to NULL, even if the method fails or returns S_FALSE.
