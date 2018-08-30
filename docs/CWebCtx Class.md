@@ -1976,8 +1976,262 @@ SUB DownloadComplete (BYVAL pWebCtx AS CWebCtx PTR)
 
 #### Remarks
 
-Remarks
-
 Unlike **NavigateComplete2**, which are fired only when a URL is successfully navigated to, this event is always fired after a navigation starts. Any animation or "busy" indication that the container needs to display should be connected to this event.
 
 Each **DownloadBegin** event will have a corresponding **DownloadComplete** event.
+
+# <a name="FileDownload"></a>FileDownload Event
+
+Fires to indicate that a file download is about to occur. If a file download dialog is to be displayed, this event is fired prior to the display of the dialog.
+
+```
+SUB FileDownload (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pbCancel* | In, Out. Boolean value that specifies whether to continue the download process and display the download dialog.<br>VARIANT_FALSE: Default. Continue with the download process and display download dialog.<br>VARIANT_TRUE: Cancel the download process. |
+
+#### Remarks
+
+This event allows alternative action to be taken during a file download.
+
+# <a name="HtmlDocumentEventsProc"></a>HtmlDocumentEventsProc Event
+
+Provides access to properties and methods exposed by an object.
+
+```
+FUNCTION HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispid AS LONG, _
+   BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *dispid* | The dispatch identifier member. |
+| *pEvtObj* | Pointer to the **IHTMLEventObj** interface. |
+
+#### Remarks
+
+For cancelable document events return TRUE to indicate that Internet Explorer should perform its own event processing or FALSE to cancel the event.
+
+#### Event DISPIDs
+
+DISPID_HTMLELEMENTEVENTS2_ONHELP (-2147418102)
+Fires when the user presses the F1 key while the client is the active window. 
+
+DISPID_HTMLELEMENTEVENTS2_ONCLICK (-600)
+Fires when the user clicks the left mouse button on the object.
+
+DISPID_HTMLELEMENTEVENTS2_ONDBLCLICK (-601)
+Fires when the user double-clicks the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONKEYPRESS (-603)
+Fires when the user presses an alphanumeric key.
+
+DISPID_HTMLELEMENTEVENTS2_ONKEYDOWN (-602)
+Fires when the user presses a key.
+
+DISPID_HTMLELEMENTEVENTS2_ONKEYUP (-604)
+Fires when the user releases a key.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEOUT (-2147418103)
+Fires when the user moves the mouse pointer outside the boundaries of the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEOVER (-2147418104)
+Fires when the user moves the mouse pointer into the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEMOVE (-606)
+Fires when the user moves the mouse over the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEDOWN (-605)
+Fires when the user clicks the object with either mouse button. 
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEUP (-607)
+Fires when the user releases a mouse button while the mouse is over the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONSELECTSTART (-2147418100)
+Fires when the object is being selected. 
+
+DISPID_HTMLELEMENTEVENTS2_ONFILTERCHANGE (-2147418095)
+Fires when a visual filter changes state or completes a transition. 
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAGSTART (-2147418101)
+Fires on the source object when the user starts to drag a text selection or selected object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFOREUPDATE (-2147418108)
+Fires on a databound object before updating the associated data in the data source object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONAFTERUPDATE (-2147418107)
+Fires on a databound object after successfully updating the associated data in the data source object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONERRORUPDATE (-2147418099)
+Fires on a databound object when an error occurs while updating the associated data in the data source object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONROWEXIT (-2147418106)
+Fires just before the data source control changes the current row in the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONROWENTER (-2147418105)
+Fires to indicate that the current row has changed in the data source and new data values are available on the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONDATASETCHANGED (-2147418098)
+Fires when the data set exposed by a data source object changes.
+
+DISPID_HTMLELEMENTEVENTS2_ONDATAAVAILABLE (-2147418097)
+Fires periodically as data arrives from data source objects that asynchronously transmit their data. 
+
+DISPID_HTMLELEMENTEVENTS2_ONDATASETCOMPLETE (-2147418096)
+Fires to indicate that all data is available from the data source object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONLOSECAPTURE (-2147418094)
+Fires when the object loses the mouse capture. 
+
+DISPID_HTMLELEMENTEVENTS2_ONPROPERTYCHANGE (-2147418093)
+Fires when a property changes on the object.
+
+DISPID_HTMLELEMENTEVENTS2_ONSCROLL (1014)
+Fires when the user repositions the scroll box in the scroll bar on the object. 
+
+DISPID_HTMLELEMENTEVENTS2_ONFOCUS (-2147418111)
+Fires when the object receives focus. 
+
+DISPID_HTMLELEMENTEVENTS2_ONBLUR (-2147418112)
+Fires when the object loses the input focus. 
+
+DISPID_HTMLELEMENTEVENTS2_ONRESIZE (1016)
+Fires when the size of the object is about to change. 
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAG (-2147418092)
+Fires on the source object continuously during a drag operation.
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAGEND (-2147418091)
+Fires on the source object when the user releases the mouse at the close of a drag operation.
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAGENTER (-2147418090)
+Fires on the target element when the user drags the object to a valid drop target.
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAGOVER (-2147418089)
+Fires on the target element continuously while the user drags the object over a valid drop target.
+
+DISPID_HTMLELEMENTEVENTS2_ONDRAGLEAVE (-2147418088)
+Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.
+
+DISPID_HTMLELEMENTEVENTS2_ONDROP (-2147418087)
+Fires on the target object when the mouse button is released during a drag-and-drop operation.
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFORECUT (-2147418083)
+Fires on the source object before the selection is deleted from the document.
+
+DISPID_HTMLELEMENTEVENTS2_ONCUT (-2147418086)
+Fires on the source element when the object or selection is removed from the document and added to the system clipboard.
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFORECOPY (-2147418082)
+Fires on the source object before the selection is copied to the system clipboard.
+
+DISPID_HTMLELEMENTEVENTS2_ONCOPY (-2147418085)
+Fires on the source element when the user copies the object or selection, adding it to the system clipboard.
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFOREPASTE (-2147418081)
+Fires on the target object before the selection is pasted from the system clipboard to the document.
+
+DISPID_HTMLELEMENTEVENTS2_ONPASTE (-2147418084)
+Fires on the target object when the user pastes data, transferring the data from the system clipboard to the document.
+
+DISPID_HTMLELEMENTEVENTS2_ONCONTEXTMENU (1023)
+Fires when the user clicks the right mouse button in the client area, opening the context menu. 
+
+DISPID_HTMLELEMENTEVENTS2_ONROWSDELETE (-2147418080)
+Fires when rows are about to be deleted from the recordset. 
+
+DISPID_HTMLELEMENTEVENTS2_ONROWSINSERTED (-2147418079)
+Fires just after new rows are inserted in the current recordset.
+
+DISPID_HTMLELEMENTEVENTS2_ONCELLCHANGE (-2147418078)
+Fires when data changes in the data provider.
+
+DISPID_HTMLELEMENTEVENTS2_ONREADYSTATECHANGE (-609)
+Sets or retrieves the event handler for asynchronous requests.
+
+DISPID_HTMLELEMENTEVENTS2_ONLAYOUTCOMPLETE (1030)
+Fires when the print or print preview layout process finishes filling the current LayoutRect object with content from the source document.
+
+DISPID_HTMLELEMENTEVENTS2_ONPAGE (1031)
+This event is not implemented.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEENTER (1042)
+Fires when the user moves the mouse pointer into the object.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSELEAVE (1043)
+Fires when the user moves the mouse pointer outside the boundaries of the object.
+
+DISPID_HTMLELEMENTEVENTS2_ONACTIVATE (1044)
+Fires when the object is set as the active element.
+
+DISPID_HTMLELEMENTEVENTS2_ONDEACTIVATE (1045)
+Fires when the activeElement is changed from the current object to another object in the parent document.
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFOREDEACTIVATE (1034)
+Fires immediately before the activeElement is changed from the current object to another object in the parent document.
+
+DISPID_HTMLELEMENTEVENTS2_ONBEFOREACTIVATE (1047)
+Fires immediately before the object is set as the IHTMLDocument2::activeElement.
+
+DISPID_HTMLELEMENTEVENTS2_ONFOCUSIN (1048)
+Fires for an element just prior to setting focus on that element.
+
+DISPID_HTMLELEMENTEVENTS2_ONFOCUSOUT (1049)
+Fires for the current element with focus immediately after moving focus to another element. 
+
+DISPID_HTMLELEMENTEVENTS2_ONMOVE (1035)
+Fires when the object moves.
+
+DISPID_HTMLELEMENTEVENTS2_ONCONTROLSELECT (1036)
+Fires when the user is about to make a control selection of the object.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOVESTART (1038)
+Fires when the object starts to move.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOVEEND (1039)
+Fires when the object stops moving.
+
+DISPID_HTMLELEMENTEVENTS2_ONRESIZESTART (1040)
+Fires when the user begins to change the dimensions of the object in a control selection.
+
+DISPID_HTMLELEMENTEVENTS2_ONRESIZEEND (1041)
+Fires when the user finishes changing the dimensions of the object in a control selection.
+
+DISPID_HTMLELEMENTEVENTS2_ONMOUSEWHEEL (1033)
+Fires when the wheel button is rotated. 
+
+#### Example
+
+```
+pwb.SetEventProc("HtmlDocumentEvents", @WebBrowser_HtmlDocumentEventsProc)
+```
+
+```
+PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pAxHost AS CAxHost PTR, BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj PTR) AS BOOLEAN
+
+   SELECT CASE dispid
+      
+      CASE DISPID_HTMLELEMENTEVENTS2_ONCLICK   ' // click event
+         ' // Get a reference to the element that has fired the event
+         DIM pElement AS IHTMLElement PTR
+         IF pEvtObj THEN pEvtObj->lpvtbl->get_srcElement(pEvtObj, @pElement)
+         IF pElement = NULL THEN EXIT FUNCTION
+         DIM bstrHtml AS AFX_BSTR   ' // Outer html
+         pElement->lpvtbl->get_outerHtml(pElement, @bstrHtml)
+'         DIM bstrId AS AFX_BSTR   ' // identifier
+'         pElement->lpvtbl->get_id(pElement, @bstrId)
+         pElement->lpvtbl->Release(pElement)
+         AfxMsg *bstrHtml
+         SysFreeString bstrHtml
+         RETURN TRUE
+     
+   END SELECT
+
+   RETURN FALSE
+
+END FUNCTION
+```
