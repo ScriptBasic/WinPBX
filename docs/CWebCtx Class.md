@@ -553,3 +553,15 @@ FUNCTION GetActiveElementId () AS CWSTR
 #### Return value
 
 The ID of the active element, if any. If the element has not an identifier, it returns an empty string.
+
+# <a name="GetBodyInnerHtml"></a>GetBodyInnerHtml
+
+Returns a string that represents the text and html elements between the start and end body tags.
+
+```
+FUNCTION GetBodyInnerHtml () AS CWSTR
+```
+
+#### Return value
+
+A string containing the html text.
