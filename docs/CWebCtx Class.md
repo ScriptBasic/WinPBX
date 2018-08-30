@@ -1677,3 +1677,71 @@ A variant containing the value as defined by the attribute.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="AfxSetElementFocusById"></a>AfxSetElementFocusById
+
+Sets the focus in the specified element.
+
+```
+FUNCTION AfxSetElementFocusById (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsId AS CWSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+S_OK if successful, or an error value otherwise.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="AfxSetElementInnerHtmlById"></a>AfxSetElementInnerHtmlById
+
+Sets the HTML between the start and end tags of the object.
+
+```
+FUNCTION AfxSetElementInnerHtmlById (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsId AS CWSTR, BYREF cwsHtml AS CWSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsId* | The identifier. |
+| *cwsHtml* | The html text to set. |
+
+#### Return value
+
+S_OK if successful, or an error value otherwise.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="AfxSetElementValueById"></a>AfxSetElementValueById
+
+Sets the value attribute of the specified identifier.
+
+```
+FUNCTION AfxSetElementValueById (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsId AS CWSTR, BYVAL vValue AS VARIANT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsId* | The identifier. |
+| *vValue* | Variant that specifies the string, number, or Boolean to assign to the attribute. |
+
+#### Return value
+
+S_OK if successful, or an error value otherwise.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
