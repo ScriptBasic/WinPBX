@@ -3691,3 +3691,20 @@ The **WindowStateChanged** event is raised when the state of a content window, s
 A content window is visible to the user when it is displayed to the user and can be interacted with. If tabbed browsing is enabled, the active tab (the one with focus) contains the content window. Background tabs are inactive. When tabbed browsing is disabled, the browser window displays the content window. When the browser window is minimized, the content window is not visible. This event can be used to minimize CPU usage and prolong battery life by reducing unnecessary updates to inactive windows.
 
 **Note**: This event can be raised even if the state of the parameter flag values have not changed.
+
+# <a name="EnableModeless"></a>EnableModeless Event
+
+Called by the MSHTML implementation of **IOleInPlaceActiveObject.EnableModeless**. Also called when MSHTML displays a modal UI.
+
+```
+FUNCTION EnableModeless (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fEnable AS LONG) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *fEnable* |Boolean value that indicates if the host's modeless dialog boxes are enabled or disabled.<br>**TRUE**: Modeless dialog boxes are enabled.<br>**FALSE**: Modeless dialog boxes are disabled. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise. 
