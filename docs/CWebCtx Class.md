@@ -2636,3 +2636,24 @@ The **WindowSetTop** event is fired when the top position of a window is changed
 This event is also fired when a new window is opened through scripting, using the window.open method. The value of the nTop parameter indicates the top position requested in the call to **window.open**.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="WindowSetWidth"></a>WindowSetWidth Event
+
+Fires when the object changes its width.
+
+```
+SUB WindowSetWidth (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nWidth AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *nWidth* | LONG that specifies the width of the WebBrowser control. |
+
+#### Remarks
+
+The **WindowSetWidth** event is fired when the width of a window is changed, using the **Width** property of the **IWebBrowser2** interface.
+
+This event is also fired when a new window is opened through scripting, using the window.open method. The value of the **Width** parameter indicates the width requested in the call to **window.open**.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
