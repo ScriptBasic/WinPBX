@@ -83,6 +83,53 @@ The **WebBrowser** events sink class is provided in the file **CWebBrowserEvents
 | [AfxSetElementValueById](#AfxSetElementValueById) | Sets the value attribute of the specified identifier. |
 | [AfxWriteHtml](#AfxWriteHtml) | Writes one or more HTML expressions to a document. |
 
+### CWebBrowserEvents Class
+
+The **CWebBrowserEvents** class implements an event sink interface to receive event notifications from the **WebBrowser** control.
+
+The constructor of the **CWebCtx** class creates automatically an instance of this class and establishes a connection with the hosted control calling the **Advise** method.
+
+To set pointers to the callback functions of the events in which you are interested use the SetEventProc of the **CWebCtx** class.
+
+All these callback functions will receive a pointer to the **CwebCtx** class as the first parameter. With this pointer, we can get:
+
+* Access to all the methods of the CWebCtx class.
+* The handle of the container window calling pCWbCtx->hWindow.
+* A pointer to the hosted WebBrowser control calling pWebCtx->BrowserPtr.
+* A pointer to the CAxHost class calling pWebCtx->HostPtr.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [BeforeNavigate2](#BeforeNavigate2) | Fires before navigation occurs in the given object (on either a window or frameset element). |
+| [ClientToHostWindow](#ClientToHostWindow) | Fires to request that the client window size be converted to the host window size. |
+| [CommandStateChange](#CommandStateChange) | Fires when the enabled state of a command changes. |
+| [DocumentComplete](#DocumentComplete) | Fires when a document has been completely loaded and initialized. |
+| [DownloadBegin](#DownloadBegin) | Fires when a navigation operation is beginning. |
+| [DownloadComplete](#DownloadComplete) | Fires when a navigation operation finishes, is halted, or fails. |
+| [FileDownload](#FileDownload) | Fires to indicate that a file download is about to occur. If a file download dialog is to be displayed, this event is fired prior to the display of the dialog. |
+| [HtmlDocumentEventsProc](#HtmlDocumentEventsProc) | Provides access to properties and methods exposed by an object. |
+| [NavigateComplete2](#NavigateComplete2) | Fires after a navigation to a link is completed on either a window or frameSet element. |
+| [NavigateError](#NavigateError) | Fires when an error occurs during navigation. |
+| [NewWindow2](#NewWindow2) | Raised when a new window is to be created. |
+| [NewWindow3](#NewWindow3) | Raised when a new window is to be created. Extends **NewWindow2** with additional information about the new window. |
+| [OnVisible](#OnVisible) | Fires when the **Visible** property of the object is changed. |
+| [PrintTemplateInstantiation](#PrintTemplateInstantiation) | Fires when a print template has been instantiated. |
+| [PrintTemplateTeardown](#PrintTemplateTeardown) | Fires when a print template has been destroyed. |
+| [PrivacyImpactedStateChange](#PrivacyImpactedStateChange) | Fired when an event occurs that impacts privacy or when a user navigates away from a URL that has impacted privacy. |
+| [ProgressChange](#ProgressChange) | Fires when the progress of a download operation is updated on the object. |
+| [PropertyChange](#PropertyChange) | Fires when the **PutProperty** method of the object changes the value of a property. |
+| [SetSecureLockIcon](#SetSecureLockIcon) | Fires when there is a change in encryption level. |
+| [StatusTextChange](#StatusTextChange) | Fires when the status bar text of the object has changed. |
+| [TitleChange](#TitleChange) | Fires when the title of a document in the object becomes available or changes. |
+| [WindowClosing](#WindowClosing) | Fires when the window of the object is about to be closed by script. |
+| [WindowSetHeight](#WindowSetHeight) | Fires when the object changes its height. |
+| [WindowSetLeft](#WindowSetLeft) | Fires when the object changes its left position. |
+| [WindowSetResizable](#WindowSetResizable) | Fires to indicate whether the host window should allow or disallow resizing of the object. |
+| [WindowSetTop](#WindowSetTop) | Fires when the object changes its top position. |
+| [WindowSetWidth](#WindowSetWidth) | Fires when the object changes its width. |
+| [WindowStateChanged](#WindowStateChanged) | Fires when the progress of a download operation is updated on the object. |
+
+
 # <a name="CAXHOST_AMBIENTDISP"></a>CAXHOST_AMBIENTDISP Structure
 
 Contains information the ambient properties of the **CAxHost** control.
