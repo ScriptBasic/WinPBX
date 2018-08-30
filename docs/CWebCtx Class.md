@@ -4013,3 +4013,20 @@ FUNCTION OnDocWindowActivate (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS W
 
 Returns S_OK (0) if successful, or an error value otherwise.
 
+# <a name="OnFrameWindowActivate"></a>OnFrameWindowActivate Event
+
+Called by the MSHTML implementation of **IOleInPlaceActiveObject.OnFrameWindowActivate**.
+
+```
+FUNCTION OnFrameWindowActivate (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS WINBOOL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *fActivate* | Boolean value that indicates the state of the container's top-level frame window.<br>**TRUE**: The frame window is being activated.<br>**FALSE**: The frame window is being deactivated. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
