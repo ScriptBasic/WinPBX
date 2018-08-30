@@ -2512,3 +2512,21 @@ SUB StatusTextChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PT
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
 | *pwszText* | The container can use the information provided by this event to update the text of a status bar. |
+
+# <a name="TitleChange"></a>TitleChange Event
+
+Fires when the title of a document in the object becomes available or changes.
+
+```
+SUB TitleChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszText AS WSTRING PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pwszText* | WSTRING that specifies the new status bar text.  |
+
+#### Remarks
+
+Because the title might change while an HTML page is downloading, the URL of the document is set as the title. After the title specified in the HTML page, if there is one, is parsed, the title is changed to reflect the actual title.
+
