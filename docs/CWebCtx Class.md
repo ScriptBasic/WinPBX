@@ -3916,3 +3916,62 @@ HRESULT CBrowserHost::GetOptionKeyPath(LPOLESTR *pchKey, DWORD dwReserved)
     return hr;
 }
 ```
+
+# <a name="GetOverrideKeyPath"></a>GetOverrideKeyPath Event
+
+Called by the WebBrowser Control to retrieve a registry subkey path that modifies Microsoft Internet Explorer user preferences.
+
+```
+FUNCTION GetOverrideKeyPath (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pchKey AS LPOLESTR PTR, _
+   BYVAL dw AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pchKey* | Out. Pointer to an LPOLESTR that receives the registry subkey string where the host stores its registry settings. |
+| *dw* | Reserved. Must be set to NULL. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+A WebBrowser Control instance calls **GetOverrideKeyPath** on the host at initialization so that the host can specify a registry location containing settings that modify the Internet Explorer registry settings for the current user. If the host returns S_FALSE for this method, or if the registry key path returned to the WebBrowser Control in pchKey is NULL or empty, the WebBrowser Control reverts to the registry settings for the current user.
+
+**GetOverrideKeyPath** provides an alternate mechanism to **GetOptionKeyPath** for a WebBrowser Control host to make changes in the registry settings for the WebBrowser Control. With **GetOverrideKeyPath**, your WebBrowser Control instance preserves registry settings for the current user. Any registry changes located at the registry path specified by this method override those located in HKEY_CURRENT_USER/Software/Microsoft/Internet Explorer. Compare this to **GetOptionKeyPath**, which causes a WebBrowser Control instance to default to its original settings before registry changes are applied from the registry path specified by the method.
+
+For example, assume the user has changed the Internet Explorer default text size to the largest font. Implementing **GetOverrideKeyPath** will preserve that change—unless the size has been specifically overridden in the registry settings located at the registry path specified by the implementation of **GetOverrideKeyPath**. Implementing **GetOptionKeyPath** would not preserve the user's text size change. Instead, the WebBrowser Control defaults back to its original medium-size font before applying registry settings from the registry path specified by the **GetOptionKeyPath** implementation.
+
+An implementation of **GetOverrideKeyPath** must allocate memory for pchKey using **CoTaskMemAlloc**. (The WebBrowser Control will be responsible for freeing this memory using **CoTaskMemFree**). Even if this method is unimplemented, this parameter should be set to NULL.
+
+The key specified by this method must be a subkey of the HKEY_CURRENT_USER key.
+
+#### C++ Example
+
+This example points the WebBrowser Control to a registry key located at HKEY_CURRENT_USER/Software/YourCompany/YourApp for user preference overrides. Of course, you need to set registry keys at this location in the registry for the WebBrowser Control to use them.
+
+```
+HRESULT CBrowserHost::GetOverrideKeyPath(LPOLESTR *pchKey, DWORD dwReserved)
+{
+    HRESULT hr;
+    WCHAR* szKey = L"Software\\MyCompany\\MyApp";
+	
+    //  cbLength is the length of szKey in bytes.
+    size_t cbLength;
+    hr = StringCbLengthW(szKey, 1280, &cbLength);
+    //  TODO: Add error handling code here.
+	
+    if (pchKey)
+    {
+        *pchKey = (LPOLESTR)CoTaskMemAlloc(cbLength + sizeof(WCHAR));
+        if (*pchKey)
+            hr = StringCbCopyW(*pchKey, cbLength + sizeof(WCHAR), szKey);
+    }
+    else
+        hr = E_INVALIDARG;
+
+    return hr;
+}
+```
