@@ -987,3 +987,24 @@ S_OK (0) or an HRESULT code.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="SetElementValueById"></a>SetElementValueById
+
+Sets the value attribute of the specified identifier.
+
+```
+FUNCTION SetElementValueById (BYREF cwsId AS CWSTR, BYVAL vValue AS VARIANT) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsId* | The identifier. |
+| *vValue* | Variant that specifies the string, number, or Boolean to assign to the attribute. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
