@@ -358,7 +358,7 @@ FUNCTION GetSecond () AS WORD
 
 # <a name="GetStatus"></a>GetStatus (COleDateTime)
 
-Gets the status (validity) of a given COleDateTime object.
+Gets the status (validity) of a given **COleDateTime** object.
 
 ```
 FUNCTION GetStatus () AS BOOLEAN
