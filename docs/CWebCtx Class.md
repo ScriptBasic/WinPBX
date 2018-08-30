@@ -3814,7 +3814,7 @@ END TYPE
 | Member     | Description |
 | ---------- | ----------- |
 | **cbSize** | DWORD containing the size of this structure, in bytes. |
-| **dwFlags** | One or more of the DOCHOSTUIFLAG values that specify the UI capabilities of the host.  |
+| **dwFlags** | One or more of the DOCHOSTUIFLAG values that specify the UI capabilities of the host. |
 | **dwDoubleClick** | One of the **DOCHOSTUIDBLCLK** values that specify the operation that should take place in response to a double-click. |
 | **pchHostCss** | Pointer to a set of Cascading Style Sheets (CSS) rules sent down by the host. These CSS rules affect the page containing them. |
 | **pchHostNS** | Pointer to a semicolon-delimited namespace list. This list allows the host to supply a namespace declaration for custom tags on the page. |
@@ -3858,3 +3858,61 @@ END TYPE
 
 The DOCHOSTUIFLAG_BROWSER flag, a supplementary defined constant (not technically a part of this enumeration), combines the values of DOCHOSTUIFLAG_DISABLE_HELP_MENU and DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE.
 
+# <a name="GetOptionKeyPath"></a>GetOptionKeyPath Event
+
+Called by the WebBrowser Control to retrieve a registry subkey path that overrides the default Microsoft Internet Explorer registry settings.
+
+```
+FUNCTION GetOptionKeyPath (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pchKey AS LPOLESTR PTR, _
+   BYVAL dw AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pchKey* | Out. Pointer to an LPOLESTR that receives the registry subkey string where the host stores its registry settings. |
+| *dw* | Reserved. Must be set to NULL. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+A WebBrowser Control instance calls **GetOptionKeyPath** on the host at initialization so that the host can specify a registry location containing settings that override the default Internet Explorer registry settings. If the host returns S_FALSE for this method, or if the registry key path returned to the WebBrowser Control in pchKey is NULL or empty, the WebBrowser Control reverts to the default Internet Explorer registry settings.
+
+**GetOptionKeyPath** and **GetOverrideKeyPath** provide two alternate mechanisms for a WebBrowser Control host to make changes in the registry settings for the WebBrowser Control. With **GetOptionKeyPath**, a WebBrowser Control instance defaults to its original settings before registry changes are applied from the registry path specified by the method. With **GetOptionKeyPath**, a WebBrowser Control instance preserves registry settings for the current user. Any registry changes located at the registry path specified by this method override those located in HKEY_CURRENT_USER/Software/Microsoft/Internet Explorer.
+
+For example, assume that the user has changed the Internet Explorer default text size to the largest font. Implementing **GetOverrideKeyPath** preserves that change—unless the size has been specifically overridden in the registry settings located at the registry path specified by the implementation of **GetOptionKeyPath**. Implementing **GetOptionKeyPath** would not preserve the user's text size change. Instead, the WebBrowser Control defaults back to its original medium-size font before applying registry settings from the registry path specified by the **GetOptionKeyPath** implementation.
+
+An implementation of **GetOptionKeyPath** must allocate memory for *pchKey* using **CoTaskMemAlloc**. (The WebBrowser Control is responsible for freeing this memory using **CoTaskMemFree**). Even if this method is unimplemented, the parameter should be set to NULL.
+
+The key specified by this method must be a subkey of the HKEY_CURRENT_USER key.
+
+#### C++ Example
+
+This example points the WebBrowser Control to a registry key located at HKEY_CURRENT_USER/Software/YourCompany/YourApp for Internet Explorer registry overrides. Of course, you need to set registry keys at this location in the registry for the WebBrowser Control to use them.
+
+```
+HRESULT CBrowserHost::GetOptionKeyPath(LPOLESTR *pchKey, DWORD dwReserved)
+{
+    HRESULT hr;
+    WCHAR* szKey = L"Software\\MyCompany\\MyApp";
+	
+    //  cbLength is the length of szKey in bytes.
+    size_t cbLength;
+    hr = StringCbLengthW(szKey, 1280, &cbLength);
+    //  TODO: Add error handling code here.
+    
+    if (pchKey)
+    {
+        *pchKey = (LPOLESTR)CoTaskMemAlloc(cbLength + sizeof(WCHAR));
+        if (*pchKey)
+            hr = StringCbCopyW(*pchKey, cbLength + sizeof(WCHAR), szKey);
+    }
+    else
+        hr = E_INVALIDARG;
+
+    return hr;
+}
+```
