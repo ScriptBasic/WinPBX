@@ -951,3 +951,39 @@ FUNCTION SaveAs () AS HRESULT
 
 S_OK (0) or an HRESULT code.
 
+# <a name="SetElementFocusById"></a>SetElementFocusById
+
+Sets the HTML between the start and end tags of the object.
+
+```
+FUNCTION SetElementFocusById (BYREF cwsId AS CWSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="SetElementInnerHtmlById"></a>SetElementInnerHtmlById
+
+Sets the HTML between the start and end tags of the object.
+
+```
+FUNCTION SetElementInnerHtmlById (BYREF cwsId AS CWSTR, BYREF cwsHtml AS CWSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsId* | The identifier. |
+| *cwsHtml* | The html text to set. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
