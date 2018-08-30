@@ -2444,5 +2444,21 @@ SUB ProgressChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL Progress AS LONG, BYVAL 
 
 The container can use the information provided by this event to display the number of bytes downloaded so far or to update a progress indicator.
 
-To calculate the percentage of progress to show in a progress indicator, multiply the value of Progress by 100 and divide by the value of nProgressMax (unless Progress is -1, in which case the container can indicate that the operation is finished or hide the progress indicator).
+To calculate the percentage of progress to show in a progress indicator, multiply the value of *Progress* by 100 and divide by the value of *nProgressMax* (unless Progress is -1, in which case the container can indicate that the operation is finished or hide the progress indicator).
 
+# <a name="PropertyChange"></a>PropertyChange Event
+
+Fires when the **PutProperty** method of the object changes the value of a property.
+
+```
+SUB PropertyChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszProperty AS WSTRING PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pwszProperty* | WSTRING that specifies the name of the property whose value has changed.  |
+
+#### Remarks
+
+The WebBrowser object ignores this event.
