@@ -857,3 +857,30 @@ FUNCTION QueryStatusWB (BYVAL cmdID AS OLECMDID) AS OLECMDF
 
 The status of the command.
 
+# <a name="ReadyState"></a>ReadyState
+
+Retrieves the ready state of the object.
+
+```
+PROPERTY ReadyState () AS tagREADYSTATE
+```
+
+#### Return value
+
+The ready state of the object.
+
+# <a name="Refresh"></a>Refresh
+
+Reloads the file that is currently displayed in the object.
+
+```
+FUNCTION Refresh () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or E_FAIL otherwise.
+
+#### Remarks
+
+The WebBrowser control and InternetExplorer application store Web pages from recently visited sites in cached memory on the user's hard disk. This saves time when revisiting a site by reloading the page from the local disk rather than downloading it again across the network from the remote HTTP server. You can force the WebBrowser control and WebBrowser application to redownload a page by using the **Refresh** or **Refresh2** methods of the **IWebBrowser2** interface to ensure that you are viewing the most current version of the page. Also, you can disable the cache from being used by specifying the **navNoReadFromCache** and **navNoWriteToCache** flags when calling the **Navigate2** method of the **IWebBrowser2** interface. 
