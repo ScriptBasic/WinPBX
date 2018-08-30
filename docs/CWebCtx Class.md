@@ -1019,8 +1019,47 @@ FUNCTION SetEventProc (BYVAL pwszEventName AS WSTRING PTR, BYVAL pProc AS ANY PT
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pwszEventName* | The name of the event. The available names are:<br>StatusTextChange<br>DownloadComplete<br>CommandStateChange<br>DownloadBegin<br>ProgressChange<br>PropertyChange<br>TitleChange<br>PrintTemplateInstantiation<br>PrintTemplateTeardown<br>BeforeNavigate2<br>NewWindow2<br>NavigateComplete2<br>OnVisible<br>OnToolBar<br>OnMenuBar<br>OnStatusBar<br>OnFullScreen<br>DocumentComplete<br>OnTheaterMode<br>WindowSetResizable<br>WindowClosing<br>WindowSetLeft<br>WindowSetTop<br>WindowSetWidth<br>WindowSetHeight<br>ClientToHostWindow<br>SetSecureLockIcon<br>FileDownload<br>NavigateError<br>PrivacyImpactedStateChange<br>NewWindow3<br>SetPhishingFilterStatus<br>WindowStateChanged<br>HtmlDocumentEvents |
+| *pwszEventName* | The name of the event. |
 | *pProc* | The address of the callback procedure. |
+
+### Event Names
+
+| Parameter  |
+| ---------- |
+| StatusTextChange |
+| DownloadComplete |
+| CommandStateChange |
+| DownloadBegin |
+| ProgressChange |
+| PropertyChange |
+| TitleChange |
+| PrintTemplateInstantiation |
+| PrintTemplateTeardown |
+| BeforeNavigate2 |
+| NewWindow2 |
+| NavigateComplete2 |
+| OnVisible |
+| OnToolBar |
+| OnMenuBar |
+| OnStatusBar |
+| OnFullScreen |
+| DocumentComplete |
+| OnTheaterMode |
+| WindowSetResizable |
+| WindowClosing |
+| WindowSetLeft |
+| WindowSetTop |
+| WindowSetWidth |
+| WindowSetHeight |
+| ClientToHostWindow |
+| SetSecureLockIcon |
+| FileDownload |
+| NavigateError |
+| PrivacyImpactedStateChange |
+| NewWindow3 |
+| SetPhishingFilterStatus |
+| WindowStateChanged |
+| HtmlDocumentEvents |
 
 #### Return value
 
@@ -1061,7 +1100,6 @@ SUB WindowSetWidthProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nWidth AS LONG)
 SUB WindowStateChangedProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwFlags AS LONG, BYVAL dwValidFlagsMask AS LONG)
 FUNCTION HtmlDocumentEventsProc (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dispid AS LONG, BYVAL pEvtObj AS IHTMLEventObj) AS BOOLEAN
 ```
-
 #### Usage example
 
 ```
