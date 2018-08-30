@@ -1944,3 +1944,40 @@ The WebBrowser Control fires the **DocumentComplete** event when the document ha
 
 Currently, the **DocumentComplete** does not fire when the **Visible** property of the WebBrowser Control is set to false.
 
+# <a name="DownloadBegin"></a>DownloadBegin Event
+
+Fires when a navigation operation is beginning.
+
+```
+SUB DownloadBegin (BYVAL pWebCtx AS CWebCtx PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+
+#### Remarks
+
+This event is fired shortly after the **BeforeNavigate2** event, unless the navigation is canceled. Any animation or "busy" indication that the container needs to display should be connected to this event.
+
+Each **DownloadBegin** event will have a corresponding **DownloadComplete** event.
+
+# <a name="DownloadComplete"></a>DownloadComplete Event
+
+Fires when a navigation operation finishes, is halted, or fails.
+
+```
+SUB DownloadComplete (BYVAL pWebCtx AS CWebCtx PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+
+#### Remarks
+
+Remarks
+
+Unlike **NavigateComplete2**, which are fired only when a URL is successfully navigated to, this event is always fired after a navigation starts. Any animation or "busy" indication that the container needs to display should be connected to this event.
+
+Each **DownloadBegin** event will have a corresponding **DownloadComplete** event.
