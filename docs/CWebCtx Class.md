@@ -4030,3 +4030,23 @@ FUNCTION OnFrameWindowActivate (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fActivate AS
 
 Returns S_OK (0) if successful, or an error value otherwise.
 
+# <a name="ResizeBorder"></a>ResizeBorder Event
+
+Called by the MSHTML implementation of **IOleInPlaceActiveObject.ResizeBorder**.
+
+```
+FUNCTION ResizeBorder (BYVAL pWebCtx AS CWebCtx PTR, BYVAL prcBorder AS LPCRECT, _
+   BYVAL pUIWindow AS IOleInPlaceUIWindow PTR, BYVAL fFrameWindow AS WINBOOL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *prcBorder* | Constant pointer to a **RECT** structure for the new outer rectangle of the border. |
+| *pUIWindow* | Pointer to an **IOleInPlaceUIWindow** interface for the frame or document window whose border is to be changed. |
+| *fFrameWindow* | Boolean value that is TRUE if the frame window is calling **ResizeBorder**, or FALSE otherwise.  |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
