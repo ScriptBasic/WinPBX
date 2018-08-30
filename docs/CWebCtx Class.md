@@ -431,3 +431,31 @@ S_OK (0) or an error code.
 
 You don't have to call this method. The **CWebCtx** constructor calls it.
 
+# <a name="AxHostPtr"></a>AxHostPtr
+
+Returns a pointer to the **CAxHost** class.
+
+```
+FUNCTION AxHostPtr () AS CAxHost PTR
+```
+
+#### Return value
+
+A pointer to the **CAxHost** class or NULL.
+
+# <a name="BrowserPtr"></a>BrowserPtr
+
+Returns a direct pointer to the **IWebBrowser2** interface of the hosted **WebBrowser** control.
+
+```
+FUNCTION BrowserPtr () AS Afx_IWebBrowser2 PTR
+```
+
+#### Return value
+
+A pointer to the **IWebBrowser2** interface of the hosted **WebBrowser** control or NULL.
+
+#### Remarks
+
+Since it is a direct pointer, you don't have to release it calling the **Release** method.
+
