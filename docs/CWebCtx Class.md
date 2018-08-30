@@ -1745,3 +1745,22 @@ S_OK if successful, or an error value otherwise.
 #### Remarks
 
 This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function sets values only for the last attribute created with this name, and ignores all other attributes with the same name.
+
+# <a name="AfxWriteHtml"></a>AfxWriteHtml
+
+Writes one or more HTML expressions to a document.
+
+```
+FUNCTION AfxWriteHtml (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
+   BYREF cwsHtml AS CWSTR, BYVAL cr AS BOOLEAN = FALSE) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebBrowser* | Pointer to the **IWebBrowser2** interface. |
+| *cwsHtml* | Text and HTML tags to write. |
+| *cr* | Write the HTML text followed by a carriage return. |
+
+#### Return value
+
+S_OK if successful, or an error value otherwise.
