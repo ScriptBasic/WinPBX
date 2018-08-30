@@ -64,7 +64,7 @@ Defines a brush that paints a color gradient in which the color changes evenly f
 | [SetWrapMode](#SetWrapMode) | Sets the wrap mode. |
 | [TranslateTransform](#TranslateTransform) | Updates this brush's current transformation matrix with the product of itself and a translation matrix. |
 
-# CGpLinearGradientBrush Class
+# CGpPathGradientBrush Class
 
 A **PathGradientBrush** object stores the attributes of a color gradient that you can use to fill the interior of a path with a gradually changing color. A path gradient brush has a boundary path, a boundary color, a center point, and a center color. When you paint an area with a path gradient brush, the color changes gradually from the boundary color to the center color as you move from the boundary path to the center point.
 
