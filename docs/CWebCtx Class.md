@@ -577,3 +577,19 @@ FUNCTION GetBodyInnerText () AS CWSTR
 #### Return value
 
 A string containing the text.
+
+# <a name="GoBack"></a>GoBack
+
+Navigates backward one item in the history list.
+
+```
+FUNCTION GoBack () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+During a browsing session, the WebBrowser control and Microsoft Internet Explorer maintain a history list of all Web sites visited during a session (unless you specify the NAVNOHISTORY flag when using the Navigate method). Use the **CommandStateChange** event to check the enabled state of backward navigation. If the event's CSC_NAVIGATEBACK command is disabled, the beginning of the history list has been reached and the **GoBack** method should not be used.
