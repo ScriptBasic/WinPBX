@@ -482,3 +482,30 @@ Returns the identifier of the container's window.
 ```
 FUNCTION CtrlID () AS LONG
 ```
+
+# <a name="Document"></a>Document
+
+Retrieves the automation object of the active document, if any.
+
+```
+PROPERTY Document () AS IHtmlDocument2 PTR
+```
+
+### Return value
+
+Returns one of the following values:
+
+| Error code | Description |
+| ---------- | ----------- |
+| S_OK | The operation was successful. |
+| E_FAIL | The operation failed. |
+| E_INVALIDARG | One or more parameters are invalid. |
+| E_NOINTERFACE | The interface is not supported. |
+
+#### Remarks
+
+When the active document is an HTML page, this property provides access to the contents of the HTML Document Object Model (DOM). Specifically, it returns an **IDispatch** interface pointer to the **HTMLDocument** component object class (coclass). The **HTMLDocument** coclass is functionally equivalent to the Dynamic HTML (DHTML) **document** object used in HTML script. It supports all the properties and methods necessary to access the entire contents of the active HTML document.
+
+FreeBASIC programs can retrieve the Component Object Model (COM) interfaces **IHTMLDocument**, **IHTMLDocument2**, and **IHTMLDocument3** by calling **QueryInterface** on the **IDispatch** received from this property.
+
+When other document types are active, such as a Microsoft Word document, this property returns the default **IDispatch** dispatch interface (dispinterface) pointer for the hosted document object. For Word documents, this would be functionally equivalent to the **Document** object in the Word object model.
