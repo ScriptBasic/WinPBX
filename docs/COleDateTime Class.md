@@ -485,3 +485,103 @@ OPERATOR > (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTime
 OPERATOR <= (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
 OPERATOR >= (BYREF dateSpan1 AS COleDateTimeSpan, BYREF dateSpan2 AS COleDateTimeSpan) AS BOOLEAN
 ```
+
+# <a name="GetDays"></a>GetDays (COleDateTimeSpan)
+
+Retrieves the day portion of this date/time-span value. The return values from this function range between approximately – 3,615,000 and 3,615,000.
+
+```
+FUNCTION GetDays () AS LONGINT
+```
+
+# <a name="GetHours"></a>GetHours (COleDateTimeSpan)
+
+Retrieves the hour portion of this date/time-span value. The return values from this function range between – 23 and 23.
+
+```
+FUNCTION GetHours () AS LONGINT
+```
+
+# <a name="GetMinutes"></a>GetMinutes (COleDateTimeSpan)
+
+Retrieves the minutes portion of this date/time-span value. The return values from this function range between – 59 and 59.
+
+```
+FUNCTION GetMinutes () AS LONGINT
+```
+
+# <a name="GetSeconds"></a>GetSeconds (COleDateTimeSpan)
+
+Retrieves the seconds portion of this date/time-span value. The return values from this function range between – 59 and 59.
+
+```
+FUNCTION GetSeconds () AS LONGINT
+```
+
+# <a name="GetStatus"></a>GetStatus (COleDateTimeSpan)
+
+Gets the status (validity) of a given **COleDateTimeSpan** object.
+
+```
+FUNCTION GetStatus () AS BOOLEAN
+```
+
+# <a name="GetTotalDays"></a>GetTotalDays (COleDateTimeSpan)
+
+Retrieves this date/time-span value expressed in days.
+
+```
+FUNCTION GetTotalDays () AS LONGINT
+```
+
+# <a name="GetTotalHours"></a>GetTotalHours (COleDateTimeSpan)
+
+Retrieves this date/time-span value expressed in hours.
+
+```
+FUNCTION GetTotalHours () AS LONGINT
+```
+
+# <a name="GetTotalMinutes"></a>GetTotalMinutes (COleDateTimeSpan)
+
+Retrieves this date/time-span value expressed in minutes.
+
+```
+FUNCTION GetTotalMinutes () AS LONGINT
+```
+
+# <a name="GetTotalSeconds"></a>GetTotalSeconds (COleDateTimeSpan)
+
+Retrieves this date/time-span value expressed in seconds.
+
+```
+FUNCTION GetTotalSeconds () AS LONGINT
+```
+
+# <a name="SetDateTimeSpan"></a>SetDateTimeSpan (COleDateTimeSpan)
+
+Sets the date and time of this **COleDateTimeSpan** object.
+
+```
+FUNCTION SetDateTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins AS LONG, BYVAL nSecs AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lDays / nHours / nMins / nSecs* | Indicates the day and time values to be copied into the **COleDateTimeSpan** object. |
+
+#### Remarks
+
+The status of the new **COleDateTimeSpan** object is set to valid.
+
+# <a name="SetStatus"></a>SetStatus (COleDateTimeSpan)
+
+Sets the status (validity) of a given **COleDateTimeSpan** object.
+
+```
+FUNCTION SetStatus (BYVAL nStatus AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStatus* | TRUE or FALSE. |
