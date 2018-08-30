@@ -292,4 +292,139 @@ DIM ct AS COleDateTime
 ct = ct.GetCurrentTime()
 ```
 
+# <a name="GetDay"></a>GetDay
 
+Returns the day represented by this date/time value. Valid return values range between 1 and 31.
+
+```
+FUNCTION GetDay () AS WORD
+```
+
+# <a name="GetDayOfWeek"></a>GetDayOfWeek
+
+Returns the day of the week represented by this date/time value. Valid return values range between 1 and 7, where 1=Sunday, 2=Monday, and so on.
+
+```
+FUNCTION GetDayOfWeek () AS WORD
+```
+
+# <a name="GetDayOfYear"></a>GetDayOfYear
+
+Returns the day of the year represented by this date/time value. Valid return values range between 1 and 366, where January 1 = 1.
+
+```
+FUNCTION GetDayOfYear () AS WORD
+```
+
+# <a name="GetHour"></a>GetHour
+
+Returns the hour represented by this date/time value. Valid return values range between 0 and 23.
+
+```
+FUNCTION GetHour () AS WORD
+```
+
+# <a name="GetLocalTime"></a>GetLocalTime
+
+Returns the current date/time value in local time.
+
+```
+FUNCTION GetLocalTime () AS COleDateTime
+```
+
+# <a name="GetMinute"></a>GetMinute
+
+Returns the minute represented by this date/time value. Valid return values range between 0 and 59.
+
+```
+FUNCTION GetMinute () AS WORD
+```
+
+# <a name="GetMonth"></a>GetMonth
+
+Returns the month represented by this date/time value. Valid return values range between 1 and 12.
+
+```
+FUNCTION GetMonth () AS WORD
+```
+
+# <a name="GetSecond"></a>GetSecond
+
+Returns the second represented by this date/time value. Valid return values range between 0 and 59.
+
+```
+FUNCTION GetSecond () AS WORD
+```
+
+# <a name="GetStatus"></a>GetStatus
+
+Gets the status (validity) of a given COleDateTime object.
+
+```
+FUNCTION GetStatus () AS BOOLEAN
+```
+
+# <a name="GetSystemTime"></a>GetSystemTime
+
+Returns the current date/time value in Coordinated Universal Time (UTC).
+
+```
+FUNCTION GetSystemTime () AS COleDateTime
+```
+
+# <a name="GetYear"></a>GetYear
+
+Returns the year represented by this date/time value. Valid return values range between 100 and 9999, which includes the century.
+
+```
+FUNCTION GetYear () AS WORD
+```
+
+# <a name="SetDate"></a>SetDate
+
+Sets the date of this **COleDateTime** object.
+
+```
+FUNCTION SetDate (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS WORD)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear / nMonth / nDay* | Indicates the date values to be copied into the **COleDateTime** object. |
+
+# <a name="SetDateTime"></a>SetDateTime
+
+Sets the date and time of this **COleDateTime** object.
+
+```
+FUNCTION SetDateTime (BYVAL nYear AS WORD, BYVAL nMonth AS WORD, BYVAL nDay AS WORD, _
+   BYVAL nHour AS WORD, BYVAL nMin AS WORD, BYVAL nSec AS WORD)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nYear / nMonth / nDay / nHour / nMin / nSec* | Indicates the date and time values to be copied into the **COleDateTime** object. |
+
+# <a name="SetStatus"></a>SetStatus
+
+Sets the status (validity) of a given **COleDateTime** object.
+
+```
+FUNCTION SetStatus (BYVAL nStatus AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nStatus* | TRUE or FALSE. |
+
+# <a name="SetTime"></a>SetTime
+
+Sets the time of this **COleDateTime** object.
+
+```
+FUNCTION SetTime (BYVAL nHour AS WORD, BYVAL nMin AS WORD, BYVAL nSec AS WORD)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nHour / nMin / nSec* |  Indicates the time values to be copied into the COleDateTime object. |
