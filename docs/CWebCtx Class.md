@@ -2259,3 +2259,34 @@ The *vURL* parameter can be a PIDL in the case of a shell namespace entity for w
 The document might still be downloading (and in the case of HTML, images might still be downloading), but at least part of the document has been received from the server, and the viewer for the document has been created.
 
 In Internet Explorer 6 or later, the **Navigate2++ event fires only after the first navigation made in code. It does not fire when a user clicks a link on a Web page. 
+
+# <a name="NavigateError"></a>NavigateError Event
+
+Fires when an error occurs during navigation.
+
+```
+SUB NavigateError (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR, _
+   BYVAL vURL AS VARIANT PTR, BYVAL vTargetFrameName AS VARIANT PTR, _
+   BYVAL vStatusCode AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDisp* | Pointer to an **IDispatch** interface for the WebBrowser object that represents the window or frame in which the navigation error occurred. This interface can be queried for the **IWebBrowser2** interface. |
+| *vURL* | Pointer to a VARIANT of type VT_BSTR that contains the URL for which navigation failed. |
+| *vTargetFrameName* | Pointer to a VARIANT of type VT_BSTR that contains the name of the frame in which the resource is to be displayed, or NULL if no named frame was targeted for the resource.  |
+| *vStatusCode* | Pointer to a VT_I4 containing an error status code, if available. For a list of the possible HRESULT and HTTP status codes, see [NavigateError Event Status Codes](https://msdn.microsoft.com/en-us/library/bb268233(v=vs.85).aspx). |
+| *pbCancel* | In, Out- Pointer to a VARIANT of type VARIANT_BOOL that specifies whether to cancel the navigation to an error page and/or any further autosearch.<br>VARIANT_FALSE: Default. Continue with navigation to an error page and/or autosearch.<br>VARIANT_TRUE: Cancel navigation to an error page and/or autosearch. |
+
+#### Remarks
+
+This event fires before Internet Explorer displays an error page due to an error in navigation. An application has a chance to stop the display of the error page by setting the bCancel parameter to VARIANT_TRUE. However, if the server contacted in the original navigation supplies its own substitute page navigation, setting *pbCancel* to VARIANT_TRUE will have no effect and the navigation to the server's alternate page will proceed. For example, assume that a navigation to http://www.www.wingtiptoys.com/BigSale.htm causes this event to fire because the page does not exist. However, the server is set to redirect you to http://www.www.wingtiptoys.com/home.htm instead. In this case, setting *pbCancel* to VARIANT_TRUE has no effect and navigation will proceed to http://www.www.wingtiptoys.com/home.htm.
+
+The *pDisp* parameter should be used to match this event with its corresponding **Navigate2** request. For example, multiple **NavigateError** events can fire for a single **Navigate2** request. Reasons for this include navigation to a URL with multiple frames or multiple attempts by an autosearch engine to resolve an invalid URL. In each of these cases, the URL passed into these events might not match the URL that was originally requested. However, each of these events will have the same *pDisp*.
+
+As with other events, you can trap the **NavigateError** event by implementing **IDispatch.Invoke** as your event sink, and connecting it to the WebBrowser control's **DIID_DWebBrowserEvents2** connection point. You can then extract information such as the status code from the method's *pDispParams* parameter.
+
+A URL passed into **Navigate2** might not match the URL passed into this event because the URL goes through a normalization process. For example, the URL string "www.wingtiptoys.co" could be passed into **Navigate2**, but because of the normalization process, the URL parameter is set to "http://www.wingtiptoys.co/".
+
+In Internet Explorer 6 or later, the **NavigateError** event fires only after the first navigation made in code. It does not fire when a user clicks a link on a Web page. 
