@@ -2457,8 +2457,46 @@ SUB PropertyChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pwszProperty AS WSTRING 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *pwszProperty* | WSTRING that specifies the name of the property whose value has changed.  |
+| *pwszProperty* | WSTRING that specifies the name of the property whose value has changed. |
 
 #### Remarks
 
 The WebBrowser object ignores this event.
+
+# <a name="SetSecureLockIcon"></a>SetSecureLockIcon Event
+
+Fires when there is a change in encryption level.
+
+```
+SUB SetSecureLockIcon (BYVAL pWebCtx AS CWebCtx PTR, BYVAL SecureLockIcon AS VARIANT)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *SecureLockIcon* | One of the **SecureLockIconConstants**. |
+
+### SecureLockIconConstants Enumeration
+
+| Constant   | Description |
+| ---------- | ----------- |
+| **secureLockIconUnsecure** | There is no security encryption present. |
+| **secureLockIconMixed** | There are multiple security encryption methods present. |
+| **secureLockIconSecureUnknownBits** | The security encryption level is not known. |
+| **secureLockIconSecure40Bit** | There is 40-bit security encryption present. |
+| **secureLockIconSecure56Bit** | There is 56-bit security encryption present. |
+| **secureLockIconSecureFortezza** | There is Fortezza security encryption present. |
+| **secureLockIconSecure128Bit** | There is 128-bit security encryption present. |
+
+#### Remarks
+
+This event fires when moving to and from a site that uses encryption. When moving between two sites that both use encryption, this event fires twice: once to denote a movement away from a site using encryption and once to denote a movement to a site using encryption.
+
+The browser's status bar displays a lock icon when encryption is present. Mousing over this icon invokes a ToolTip indicating the level of encryption.
+
+An application hosting the WebBrowser Control can use this event to display a user interface (UI) that shows the current encryption level.
+
+Multiple levels of encryption can coexist in a single window in situations where there are multiple frames. If there are multiple levels of encryption present on a page, the SecureLockIcon has the value of secureLockIconMixed.
+
+The encryption level on a page can be higher than the default level set in the browser if the site is using a special type of certificate (for example, a Server Gated Cryptography certificate).
+
