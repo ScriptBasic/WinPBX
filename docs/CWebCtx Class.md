@@ -17,6 +17,57 @@ The **WebBrowser** events sink class is provided in the file **CWebBrowserEvents
 | [CAXHOST_AMBIENTDISP structure](#CAXHOST_AMBIENTDISP) | Contains information the ambient properties of the **CAxHost** control. |
 | [Constructor](#Constructor) | Creates an instance of the OLE container using a ProgId. |
 
+### Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Advise](#Advise) | Establishes a connection between a connection point object and the client's sink. |
+| [AxHostPtr](#AxHostPtr) | Returns a pointer to the **CAxHost** class. |
+| [BrowserPtr](#BrowserPtr) | Returns a direct pointer to the **IWebBrowser2** interface of the hosted **WebBrowser** control. |
+| [Busy](#Busy) | Returns a boolean value indicating whether the object is engaged in a navigation or downloading operation. |
+| [CtrlID](#CtrlID) | Returns the identifier of the container's window. |
+| [Document](#Document) | Retrieves the automation object of the active document, if any. |
+| [ExecWB](#ExecWB) | Executes a command on an OLE object and returns the status of the command execution using the **IOleCommandTarget** interface. |
+| [Find](#Find) | Activates the find dialog. |
+| [GetActiveElementId](#GetActiveElementId) | Retrieves the ID of the active element (the object that has the focus when the parent document has focus). |
+| [GetBodyInnerHtml](#GetBodyInnerHtml) | Returns a string that represents the text and html elements between the start and end body tags. |
+| [GetBodyInnerText](#GetBodyInnerText) | Returns a string that represents the text between the start and end body tags without any associated HTML. |
+| [GoBack](#GoBack) | Navigates backward one item in the history list. |
+| [GetElementInnerHtmlById](#GetElementInnerHtmlById) | Retrieves the HTML between the start and end tags of the object. |
+| [GetElementValueById](#GetElementValueById) | Retrieves the value attribute of the specified attribute. |
+| [GoForward](#GoForward) | Navigates forward one item in the history list. |
+| [GoHome](#GoHome) | Navigates to the current home or start page. |
+| [GoSearch](#GoSearch) | Navigates to the current search page. |
+| [hWindow](#hWindow) | Returns the handle of the OLE Container hosting window. |
+| [InternetOptions](#InternetOptions) | Activates the Internet options dialog. |
+| [LocationName](#LocationName) | Retrieves the name of the resource that Microsoft Internet Explorer is currently displaying. |
+| [LocationURL](#LocationURL) | Retrieves the URL of the resource that Microsoft Internet Explorer is currently displaying. |
+| [Navigate](#Navigate) | Returns the handle of the OLE Container hosting window. |
+| [PageProperties](#PageProperties) | Activates the properties dialog. |
+| [PageSetup](#PageSetup) | Activates the page setup dialog. |
+| [PrintPage](#PrintPage) | Activates the print dialog. |
+| [PrintPreview](#PrintPreview) | Activates the print preview dialog. |
+| [QueryStatusWB](#QueryStatusWB) | Queries the OLE object for the status of commands using the **QueryStatus** method of the **IOleCommandTarget** interface.|
+| [ReadyState](#ReadyState) | Retrieves the ready state of the object. |
+| [Refresh](#Refresh) | Reloads the file that is currently displayed in the object. |
+| [Refresh2](#Refresh2) | Reloads the file that is currently displayed in the object. Unlike Refresh, this method contains a parameter that specifies the refresh level. |
+| [RegisterAsBrowser](#RegisterAsBrowser) | Sets or retrieves a value that indicates whether the object is registered as a top-level browser for target name resolution. |
+| [RegisterAsDropTarget](#RegisterAsDropTarget) | Sets or retrieves a value that indicates whether the object is registered as a drop target for navigation. |
+| [SaveAs](#SaveAs) | Activates the save file dialog. |
+| [SetElementFocusById](#SetElementFocusById) | Sets the HTML between the start and end tags of the object. |
+| [SetElementInnerHtmlById](#SetElementInnerHtmlById) | Sets the HTML between the start and end tags of the object. |
+| [SetElementValueById](#SetElementValueById) | Sets the value attribute of the specified identifier. |
+| [SetEventProc](#SetEventProc) | Sets pointers to user implemented callback procedures to receive events of the hosted WebBrowser control. |
+| [SetFocus](#SetFocus) | Sets the focus in the hosted document (usually an html page). |
+| [SetUIEventProc](#SetUIEventProc) | Sets pointers to user implemented callback procedures to receive events of the **IDocHostUIHandler2** interface. |
+| [SetUIHandler](#SetUIHandler) | Sets our implementation of the **IDocHostUIHandler** interface to customize the WebBrowser. |
+| [ShowSource](#ShowSource) | Displays the source code of the page in an instance of **NotePad**. |
+| [Silent](#Silent) | Sets or gets a value that indicates whether the object can display dialog boxes. |
+| [Stop](#Stop) | Cancels any pending navigation or download operation and stops any dynamic page elements, such as background sounds and animations. |
+| [Unadvise](#Unadvise) | Releases the events connection. |
+| [WaitForPageLoad](#WaitForPageLoad) | Waits until the page had been fully downloaded or te timeout has expired. |
+| [WriteHtml](#WriteHtml) | Writes one or more HTML expressions to a document. |
+
 # <a name="CAXHOST_AMBIENTDISP"></a>CAXHOST_AMBIENTDISP Structure
 
 Contains information the ambient properties of the **CAxHost** control.
