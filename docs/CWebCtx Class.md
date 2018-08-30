@@ -2290,3 +2290,67 @@ As with other events, you can trap the **NavigateError** event by implementing *
 A URL passed into **Navigate2** might not match the URL passed into this event because the URL goes through a normalization process. For example, the URL string "www.wingtiptoys.co" could be passed into **Navigate2**, but because of the normalization process, the URL parameter is set to "http://www.wingtiptoys.co/".
 
 In Internet Explorer 6 or later, the **NavigateError** event fires only after the first navigation made in code. It does not fire when a user clicks a link on a Web page. 
+
+# <a name="NewWindow2"></a>NewWindow2 Event
+
+Raised when a new window is to be created.
+
+```
+SUB NewWindow2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDisp AS IDispatch PTR PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *ppDisp* | In, Out. Address of an interface pointer that, optionally, receives the **IDispatch** interface pointer of a new WebBrowser or InternetExplorer object. |
+| *pbCancel* | In, Out. Boolean value to determine whether the current navigation should be canceled.<br>VARIANT_TRUE: Cancel the navigation.<br>VARIANT_FALSE: Do not cancel the navigation. |
+
+#### Remarks
+
+Microsoft Internet Explorer 6 for Windows XP Service Pack 2 (SP2) or later. **NewWindow3** is raised instead of this event.
+
+# <a name="NewWindow3"></a>NewWindow3 Event
+
+Raised when a new window is to be created. Extends **NewWindow2** with additional information about the new window.
+
+```
+SUB NewWindow3 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDisp AS IDispatch PTR PTR, _
+   BYVAL pbCancel AS VARIANT_BOOL PTR, BYVAL dwFlags AS DWORD, _
+   BYVAL pwszUrlContext AS WSTRING PTR, BYVAL pwszUrl AS WSTRING PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *ppDisp* | In, Out. Address of an interface pointer that, optionally, receives the **IDispatch** interface pointer of a new WebBrowser or InternetExplorer object. |
+| *pbCancel* | In, Out. Boolean value to determine whether the current navigation should be canceled.<br>VARIANT_TRUE: Cancel the navigation.<br>VARIANT_FALSE: Do not cancel the navigation. |
+| *dwFlags* | Flags from the **NWMF** enumeration that pertain to the new window. |
+| *pwszUrlContext* | URL of the page opening the new window. |
+| *pwszUrl* | URL being opened in the new window. |
+
+#### Remarks
+
+**NewWindow3** is raised before **NewWindow2**.
+
+In Microsoft Internet Explorer, the **NewWindow3** event is not raised when the user selects Window from the New command on the File menu. This event precedes the creation of a new window from within the WebBrowser. For example, NewWindow2 is raised in response to a navigation targeted to a new window, or from script using the **IHTMLWindow2.open** method.
+
+The **NewWindow3** event is raised when a window is about to be created, such as during the following actions.
+
+* The user clicks a link while pressing the SHIFT key.
+* The user right-clicks a link and selects Open In New Window.
+* The user selects New Window from the File menu.
+* There is a targeted navigation to a frame name that does not yet exist.
+
+Your browser application can also trigger this event by calling the **Navigate2** method with the **navOpenInNewWindow** flag. The WebBrowser control has an opportunity to handle the new window creation itself. If it does not, a top-level Internet Explorer window is created as a separate (nonhosted) process.
+
+The application that processes this notification can respond in one of three ways.
+
+Create a new, hidden, nonnavigated WebBrowser or InternetExplorer object that is returned in *ppDisp*. Upon return from this event, the object that raised this event will then configure and navigate (including a **BeforeNavigate2** event) the new object to the target location.
+
+Cancel the navigation by setting Cancel to VARIANT_TRUE.
+
+Do nothing and do not set *ppDisp* to any value. This will cause the object that raised the event to create a new InternetExplorer object to handle the navigation.
+
+#### Remarks
+
+Microsoft Internet Explorer 6 for Windows XP Service Pack 2 (SP2) or later. **NewWindow3** is raised instead of this event.
