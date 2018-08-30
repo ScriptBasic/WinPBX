@@ -4097,3 +4097,38 @@ FUNCTION ShowUI (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, _
 | *pCommandTarget* | Pointer to an **IOleCommandTarget** interface for the object. |
 | *pFrame* | Pointer to an **IOleInPlaceFrame** interface for the object. Menus and toolbars must use this parameter. |
 | *pDoc* | Pointer to an **IOleInPlaceUIWindow** interface for the object. Toolbars must use this parameter. |
+
+# <a name="ShowContextMenu"></a>ShowContextMenu Event
+
+Called by MSHTML when **IOleInPlaceActiveObject.TranslateAccelerator** or **IOleControlSite.TranslateAccelerator** is called.
+
+```
+FUNCTION TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, _
+   BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *lpMsg* | Pointer to a **MSG** structure that specifies the message to be translated. |
+| *pguidCmdGroup* | Pointer to a **GUID** for the command group identifier. |
+| *nCmdID* | DWORD that specifies a command identifier. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+When you use accelerator keys such as TAB, you may need to override the default host behavior. The example shows how to do this.
+
+#### Example
+
+This example shows how to override the default host behavior that occurs when a user tabs out of the first or last element.
+
+````
+FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, BYVAL lpMsg AS LPMSG, _
+BYVAL pguidCmdGroup AS const GUID PTR, BYVAL nCmdID AS DWORD) AS HRESULT
+    IF lpMsg->message = WM_KEYDOWN AND lpMsg->wParam = VK_TAB THEN RETURN S_FALSE
+END FUNCTION
+````
