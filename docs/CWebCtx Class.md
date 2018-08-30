@@ -681,3 +681,55 @@ Returns S_OK (0) if successful, or an error value otherwise.
 #### Remarks
 
 The user can indicate the URL to use for the search page either from Internet Options in Microsoft Internet Explorer or from Internet Properties in Control Panel.
+
+# <a name="hWindow"></a>hWindow
+
+Returns the handle of the OLE Container hosting window.
+
+```
+FUNCTION hWindow () AS HWND
+```
+
+# <a name="InternetOptions"></a>InternetOptions
+
+Activates the Internet options dialog.
+
+```
+FUNCTION InternetOptions () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+# <a name="LocationName"></a>LocationName
+
+Retrieves the name of the resource that Microsoft Internet Explorer is currently displaying.
+
+```
+PROPERTY LocationName () AS CWSTR
+```
+
+#### Return value
+
+The name of the resource that Microsoft Internet Explorer is currently displaying.
+
+#### Remarks
+
+If the resource is an HTML page on the World Wide Web, the name is the title of that page. If the resource is a folder or file on the network or local computer, the name is the full path of the folder or file in Universal Naming Convention (UNC) format.
+
+# <a name="LocationURL"></a>LocationURL
+
+Retrieves the URL of the resource that Microsoft Internet Explorer is currently displaying.
+
+```
+PROPERTY LocationURL () AS CWSTR
+```
+
+#### Return value
+
+The URL of the resource that Microsoft Internet Explorer is currently displaying.
+
+#### Remarks
+
+If the resource is a folder or file on the network or local computer, the name is the full path of the folder or file in the Universal Naming Convention (UNC) format.
