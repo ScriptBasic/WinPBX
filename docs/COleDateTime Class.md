@@ -31,7 +31,6 @@ It is one of the possible types for the VARIANT data type of OLE automation. A *
 | [GetStatus](#GetStatus) | Gets the status (validity) of a given **COleDateTime** object. |
 | [GetSystemTime](#GetSystemTime) | Returns the current date/time value in Coordinated Universal Time (UTC). |
 | [GetYear](#GetYear) | Gets the year represented by this date/time value. |
-| [GetYear](#GetYear) | Gets the year represented by this date/time value. |
 | [SetDate](#SetDate) | Sets the date of this **COleDateTime** object. |
 | [SetDateTime](#SetDateTime) | Sets the date and time of this **COleDateTime** object. |
 | [SetStatus](#SetStatus) | Sets the status (validity) of a given **COleDateTime** object. |
