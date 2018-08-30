@@ -24,7 +24,7 @@ If no methods invoked on this object have failed since the previous call to GetL
 
 For a detailed list of status codes see the **Status** enumeration.
 
-### Structures
+# Structures
 
 | Name       | Description |
 | ---------- | ----------- |
