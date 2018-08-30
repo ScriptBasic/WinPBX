@@ -3756,3 +3756,27 @@ Returns S_OK (0) if successful, or an error value otherwise.
 #### Remarks
 
 If the host does not supply an alternative drop target, this method should return a failure code, such as E_NOTIMPL or E_FAIL.
+
+# <a name="GetExternal"></a>GetExternal Event
+
+Called by MSHTML to obtain the host's **IDispatch** interface.
+
+```
+FUNCTION GetExternal (BYVAL pWebCtx AS CWebCtx PTR, BYVAL ppDispatch AS IDispatch PTR PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *ppDispatch* | Out. Address of a pointer to a variable that receives an **IDispatch** interface pointer for the host application. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+If the host exposes an automation interface, it can provide a reference to MSHTML through ppDispatch.
+
+If the method implementation does not supply an **IDispatch**, *ppDispatch* should be set to NULL, even if the method fails or returns S_FALSE.
+
