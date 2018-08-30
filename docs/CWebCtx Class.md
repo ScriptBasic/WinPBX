@@ -68,6 +68,21 @@ The **WebBrowser** events sink class is provided in the file **CWebBrowserEvents
 | [WaitForPageLoad](#WaitForPageLoad) | Waits until the page had been fully downloaded or te timeout has expired. |
 | [WriteHtml](#WriteHtml) | Writes one or more HTML expressions to a document. |
 
+### Helper Procedures
+
+| Name       | Description |
+| ---------- | ----------- |
+| [AfxGetBrowserPtr](#AfxGetBrowserPtr) | Returns a pointer to the hosted WebBrowser control given the handle of the form, or any control in the form, and the control identifier. |
+| [AfxGetActiveElementId](#AfxGetActiveElementId) | Retrieves the ID of the active element (the object that has the focus when the parent document has focus). |
+| [AfxGetBodyInnerHtml](#AfxGetBodyInnerHtml) | Returns a string that represents the text and html elements between the start and end body tags. |
+| [AfxGetBodyInnerText](#AfxGetBodyInnerText) | Returns a string that represents the text between the start and end body tags without any associated HTML. |
+| [AfxGetElementInnerHtmlById](#AfxGetElementInnerHtmlById) | Retrieves the HTML between the start and end tags of the object. |
+| [AfxGetElementValueById](#AfxGetElementValueById) | Retrieves the value attribute of the specified attribute. |
+| [AfxSetElementFocusById](#AfxSetElementFocusById) | Sets the focus in the specified element. |
+| [AfxSetElementInnerHtmlById](#AfxSetElementInnerHtmlById) | Sets the HTML between the start and end tags of the object. |
+| [AfxSetElementValueById](#AfxSetElementValueById) | Sets the value attribute of the specified identifier. |
+| [AfxWriteHtml](#AfxWriteHtml) | Writes one or more HTML expressions to a document. |
+
 # <a name="CAXHOST_AMBIENTDISP"></a>CAXHOST_AMBIENTDISP Structure
 
 Contains information the ambient properties of the **CAxHost** control.
