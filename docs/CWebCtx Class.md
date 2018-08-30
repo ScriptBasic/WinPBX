@@ -509,3 +509,23 @@ When the active document is an HTML page, this property provides access to the c
 FreeBASIC programs can retrieve the Component Object Model (COM) interfaces **IHTMLDocument**, **IHTMLDocument2**, and **IHTMLDocument3** by calling **QueryInterface** on the **IDispatch** received from this property.
 
 When other document types are active, such as a Microsoft Word document, this property returns the default **IDispatch** dispatch interface (dispinterface) pointer for the hosted document object. For Word documents, this would be functionally equivalent to the **Document** object in the Word object model.
+
+# <a name="ExecWB"></a>ExecWB
+
+Executes a command on an OLE object and returns the status of the command execution using the **IOleCommandTarget** interface.
+
+```
+FUNCTION ExecWB (BYVAL cmdID AS OLECMDID, BYVAL cmdexecopt AS OLECMDEXECOPT, _
+   BYVAL pvaIn AS VARIANT PTR = NULL, BYVAL pvaOut AS VARIANT PTR = NULL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cmdID* | **OLECMDID** value that specifies the command to execute. |
+| *cmdexecopt* | **OLECMDEXECOPT** value that specifies the command options. |
+| *pvaIn* | inter to a **VARIANT** that contains command input arguments. The type of this **VARIANT** depends on the type of the command identifier. This argument can be NULL.  |
+| *pvaOut* | In, Out. Pointer to a **VARIANT** that receives and specifies command output. The type of this **VARIANT** depends on the type of the command identifier. This argument can be NULL.  |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise. 
