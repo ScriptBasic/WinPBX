@@ -2347,7 +2347,7 @@ The application that processes this notification can respond in one of three way
 
 Create a new, hidden, nonnavigated WebBrowser or InternetExplorer object that is returned in *ppDisp*. Upon return from this event, the object that raised this event will then configure and navigate (including a **BeforeNavigate2** event) the new object to the target location.
 
-Cancel the navigation by setting Cancel to VARIANT_TRUE.
+Cancel the navigation by setting *pbCancel* to VARIANT_TRUE.
 
 Do nothing and do not set *ppDisp* to any value. This will cause the object that raised the event to create a new InternetExplorer object to handle the navigation.
 
