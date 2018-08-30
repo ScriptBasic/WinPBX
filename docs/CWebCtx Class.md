@@ -1811,3 +1811,70 @@ FUNCTION AfxWriteHtml (BYVAL pWebBrowser AS Afx_IWebBrowser2 PTR, _
 #### Return value
 
 S_OK if successful, or an error value otherwise.
+
+# <a name="BeforeNavigate2"></a>BeforeNavigate2
+
+Fires before navigation occurs in the given object (on either a window or frameset element).
+
+```
+SUB BeforeNavigate2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR, _
+   BYVAL vUrl AS VARIANT PTR, BYVAL vFlags AS VARIANT PTR, BYVAL vTargetFrameName AS VARIANT PTR, _
+   BYVAL vPostData AS VARIANT PTR, BYVAL vHeaders AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the CWebCtx class. |
+| *pDisp* | Pointer to the **IDispatch** interface for the **WebBrowser** object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
+| *vUrl* | Pointer to a VARIANT of type VT_BSTR that contains the URL to be navigated to |
+| *vFlags* | Pointer to a VARIANT of type VT_I4 that contains the following flag, or zero.<br>**beforeNavigateExternalFrameTarget**: Windows Internet Explorer 7 or later. This navigate was the result of an external window or tab targeting this browser. |
+| *vTargetFrameName* | Pointer to a VARIANT of type VT_BSTR that contains the name of the frame in which to display the resource, or NULL if no named frame is targeted for the resource. |
+| *vPostData* | Pointer to a VARIANT of type VT_BYREF|VT_VARIANT that contains the data to send to the server if the HTTP POST transaction is being used. |
+| *vHeaders* | Pointer to a VARIANT of type VT_BSTR that contains additional HTTP headers to send to the server (HTTPURLs only). The headers can specify things such as the action required of the server, the type of data being passed to the server, or a status code.  |
+| *pbCancel* | In, Out. Pointer to a variable of type VARIANT_BOOL that contains the cancel flag. An application can set this parameter to VARIANT_TRUE to cancel the navigation operation, or to VARIANT_FALSE to allow it to proceed.  |
+
+#### Event DISPID
+
+DISPID_BEFORENAVIGATE2
+
+The DISPID for this event is defined in exdispid.inc. Use this value to identify the event handler when implementing **IDispatch.Invoke**.
+
+### Remarks
+
+The post data specified by *vPostData* is passed as a SAFEARRAY structure. The variant should be of type VT_BYREF OR VT_VARIANT, which points to a SAFEARRAY. The SAFEARRAY should be of element type VT_UI1, dimension one, and have an element count equal to the number of bytes of post data.
+
+The *vUrl* parameter can be a pointer to an item identifier list (PIDL) in the case of a shell namespace entity for which there is no URL representation.
+
+The *pDisp* parameter specifies the WebBrowser object of the top-level frame corresponding to the navigation. Navigating to a different URL could happen as a result of external automation, internal automation from a script, or the user clicking a link or typing in the address bar. The processing of this navigation can be modified by setting the *pbCancel* parameter to VARIANT_TRUE and either ignoring or reissuing a modified navigation method to the WebBrowser object.
+
+When reissuing a navigation for the WebBrowser object, the **Stop** method must first be executed for *pDisp*. This prevents the display of a web page that declares a cancelled navigation from appearing while the new navigation is being processed.
+
+#### Example
+
+The following example demonstrates how to redirect navigation to another url.
+
+```
+SUB WebBrowser_BeforeNavigate2Proc (BYVAL pAxHost AS CAxHost PTR, BYVAL pdisp AS IDispatch PTR, _
+    BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR, BYVAL TargetFrameName AS VARIANT PTR, _
+    BYVAL PostData AS VARIANT PTR, BYVAL Headers AS VARIANT PTR, BYVAL pbCancel AS VARIANT_BOOL PTR)
+
+   ' // Sample code to redirect navigation to another url
+   IF AfxVarToStr(vUrl) = "http://com.it-berater.org/" THEN
+      ' // Get a reference to the Afx_IWebBrowser2 interface
+      DIM pwb AS Afx_IWebBrowser2 PTR = cast(Afx_IWebBrowser2 PTR, cast(ULONG_PTR, pdisp))
+      IF pwb THEN
+         ' // Stop loading the page
+         pwb->Stop
+         ' // Cancel the navigation operation
+         *pbCancel = VARIANT_TRUE
+         DIM vNewUrl AS VARIANT
+         vNewUrl.vt = VT_BSTR
+         vNewUrl.bstrVal = SysAllocString("http://www.planetsquires.com/protect/forum/index.php")
+         pwb->Navigate2(@vNewUrl)
+         VariantClear @vNewUrl
+      END IF
+   END IF
+
+END SUB
+' ========================================================================================
+```
