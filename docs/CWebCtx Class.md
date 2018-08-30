@@ -938,3 +938,16 @@ PROPERTY RegisterAsDropTarget (BYVAL bRegister AS BOOLEAN)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *bRegister* | True of False. |
+
+# <a name="SaveAs"></a>SaveAs
+
+Activates the save file dialog.
+
+```
+FUNCTION SaveAs () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
