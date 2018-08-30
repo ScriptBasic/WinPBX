@@ -2377,7 +2377,7 @@ SUB PrintTemplateInstantiation (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp As IDi
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *pDisp* | ter to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
+| *pDisp* | Pointer to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
 
 # <a name="PrintTemplateTeardown"></a>PrintTemplateTeardown Event
 
@@ -2390,4 +2390,59 @@ SUB PrintTemplateTeardown (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatc
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *pDisp* | ter to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
+| *pDisp* | Pointer to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface. |
+
+# <a name="PrivacyImpactedStateChange"></a>PrivacyImpactedStateChange Event
+
+Fired when an event occurs that impacts privacy or when a user navigates away from a URL that has impacted privacy.
+
+```
+SUB PrivacyImpactedStateChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bImpacted AS VARIANT_BOOL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *bImpacted* | Boolean value that specifies whether the current top-level URL has violated the browser's privacy settings.<br>VARIANT_TRUE: Privacy has been impacted.<br>VARIANT_FALSE: A user-initiated navigation from a URL with privacy violations has occurred. |
+
+#### Remarks
+
+The firing of this event corresponds to a change in the privacy state from impacted to unimpacted and vice-versa. A change in the privacy state coincides with the displaying or clearing of the privacy-impacted icon from the status bar. Although a URL's privacy policy might not agree with the browser's privacy settings, privacy is considered impacted only if violating cookie operations are attempted. This event only fires the first time a violating cookie action is attempted for a URL.
+
+This event also fires when there is a user-initiated navigation away from a URL that has privacy violations. If the new URL has no record of privacy violations, the icon no longer displays and the privacy state remains as unimpacted. However, when navigating from a URL with privacy violations to revisit a URL that has a history of privacy violations (for example, the page has been retrieved from the cache), this event fires twice: once to signal that it is navigating away from the first violating URL and a second time to signal that it is navigating to a URL which has impacted privacy.
+
+User-initiated navigations include:
+
+* Typing a URL in the address bar
+* Navigating using "Go To" option off of the "View" menu
+* Choosing a URL from the Favorites List
+* Clicking on a hyperlink that does not contain a script href
+* Performing a manual top-level refresh
+* Performing a top-level navigating using the Back and Forward buttons.
+
+Privacy is considered impacted when any of the following occur:
+
+* A cookie is suppressed when sending and HTTP request.
+* A cookie is blocked from being written.
+* A cached file is retrieved that has a history of privacy violations.
+
+# <a name="ProgressChange"></a>ProgressChange Event
+
+Fires when the progress of a download operation is updated on the object.
+
+```
+SUB ProgressChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL Progress AS LONG, BYVAL ProgressMax AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *Progress* | LONG that specifies the amount of total progress to show, or -1 when progress is complete. |
+| *ProgressMax* | LONG that specifies the maximum progress value. |
+
+#### Remarks
+
+The container can use the information provided by this event to display the number of bytes downloaded so far or to update a progress indicator.
+
+To calculate the percentage of progress to show in a progress indicator, multiply the value of Progress by 100 and divide by the value of nProgressMax (unless Progress is -1, in which case the container can indicate that the operation is finished or hide the progress indicator).
+
