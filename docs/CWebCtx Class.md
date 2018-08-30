@@ -593,3 +593,23 @@ Returns S_OK (0) if successful, or an error value otherwise.
 #### Remarks
 
 During a browsing session, the WebBrowser control and Microsoft Internet Explorer maintain a history list of all Web sites visited during a session (unless you specify the NAVNOHISTORY flag when using the Navigate method). Use the **CommandStateChange** event to check the enabled state of backward navigation. If the event's CSC_NAVIGATEBACK command is disabled, the beginning of the history list has been reached and the **GoBack** method should not be used.
+
+# <a name="GetElementInnerHtmlById"></a>GetElementInnerHtmlById
+
+Retrieves the HTML between the start and end tags of the object.
+
+```
+FUNCTION GetElementInnerHtmlById (BYREF cwsId AS CWSTR) AS CWSTR
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsId* | The identifier. |
+
+#### Return value
+
+A string containing the HTML text.
+
+#### Remarks
+
+This method performs a case insensitive property search. If two or more attributes have the same name (differing only in uppercase and lowercase letters) this function retrieves values only for the last attribute created with this name, and ignores all other attributes with the same name.
