@@ -1894,3 +1894,25 @@ The **ClientToHostWindow** event gives the host application an opportunity to ad
 This event is fired when a new window is opened through scripting, using the open method.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="CommandStateChange"></a>CommandStateChange Event
+
+Fires when the enabled state of a command changes.
+
+```
+SUB CommandStateChange (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nCommand AS LONG, BYVAL fEnable AS VARIANT_BOOL)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *nCommand* | A **CommandStateChangeConstants** enumeration value that specifies the command that changed. |
+| *fEnable* | Boolean value that specifies the enabled state.<br>VARIANT_FALSE: Command is disabled.<br>VARIANT_TRUE: Command is enabled. |
+
+### CommandStateChangeConstants Enumeration
+
+| Constant   | Description |
+| ---------- | ----------- |
+| CSC_UPDATECOMMANDS | The enabled state of a toolbar button might have changed. |
+| CSC_NAVIGATEFORWARD | The enabled state of the Forward button has changed. |
+| CSC_NAVIGATEBACK | The enabled state of the Back button has changed. |
