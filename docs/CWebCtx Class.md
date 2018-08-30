@@ -2235,3 +2235,27 @@ PRIVATE FUNCTION WebBrowser_HtmlDocumentEventsProc (BYVAL pAxHost AS CAxHost PTR
 
 END FUNCTION
 ```
+
+Each **DownloadBegin** event will have a corresponding **DownloadComplete** event.
+
+# <a name="NavigateComplete2"></a>NavigateComplete2 Event
+
+Fires after a navigation to a link is completed on either a window or frameSet element.
+
+```
+SUB NavigateComplete2 (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDisp AS IDispatch PTR, BYVAL vURL AS VARIANT PTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDisp* | Pointer to the **IDispatch** interface for the WebBrowser object that represents the window or frame. This interface can be queried for the **IWebBrowser2** interface.  |
+| *vURL* | Pointer to a variant that contains the URL, UNC file name, or PIDL that was navigated to. Note that this URL can be different from the URL that the browser was told to navigate to. One reason is that this URL is the canonicalized and qualified URL. For example, if an application specified a URL of "www.microsoft.com" in a call to the **Navigate2** method, the URL passed by Navigate2 would be "http://www.microsoft.com/". Also, if the server has redirected the browser to a different URL, the redirected URL will be reflected here. |
+
+#### Remarks
+
+The *vURL* parameter can be a PIDL in the case of a shell namespace entity for which there is no URL representation.
+
+The document might still be downloading (and in the case of HTML, images might still be downloading), but at least part of the document has been received from the server, and the viewer for the document has been created.
+
+In Internet Explorer 6 or later, the **Navigate2++ event fires only after the first navigation made in code. It does not fire when a user clicks a link on a Web page. 
