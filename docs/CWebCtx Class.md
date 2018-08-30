@@ -83,7 +83,7 @@ The **WebBrowser** events sink class is provided in the file **CWebBrowserEvents
 | [AfxSetElementValueById](#AfxSetElementValueById) | Sets the value attribute of the specified identifier. |
 | [AfxWriteHtml](#AfxWriteHtml) | Writes one or more HTML expressions to a document. |
 
-### CWebBrowserEvents Class
+# CWebBrowserEvents Class
 
 The **CWebBrowserEvents** class implements an event sink interface to receive event notifications from the **WebBrowser** control.
 
