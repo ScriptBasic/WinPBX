@@ -428,3 +428,22 @@ FUNCTION SetTime (BYVAL nHour AS WORD, BYVAL nMin AS WORD, BYVAL nSec AS WORD)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nHour / nMin / nSec* |  Indicates the time values to be copied into the COleDateTime object. |
+
+# <a name="Constructors2"></a>Constructors (COleDateTimeSpan)
+
+All these constructors create new **COleDateTimeSpan** objects initialized to the specified value.
+
+```
+CONSTRUCTOR COleDateTimeSpan
+CONSTRUCTOR COleDateTimeSpan (dblSpanSrc AS DOUBLE)
+CONSTRUCTOR COleDateTimeSpan (BYVAL lDays AS LONG, BYVAL nHours AS LONG, BYVAL nMins AS LONG, BYVAL nSecs AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dblSpanSrc* | The number of days to be copied into the new **COleDateTimeSpan** object. |
+| *lDays / nHours / nMins / nSecs* | Indicates the day and time values to be copied into the new **COleDateTimeSpan** object. |
+
+#### Remarks
+
+The status of the new **COleDateTimeSpan** object is set to valid.
