@@ -114,3 +114,14 @@ For a detailed list of status codes see the **Status** enumeration.
 | [Unit](#Unit) | Specifies the unit of measure for a given data type. |
 | [WarpMode](#WarpMode) | Specifies warp modes that can be used to transform images. |
 | [WrapMode](#WrapMode) | Specifies how repeated copies of an image are used to tile an area. |
+
+# Constants
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Image Encoder Constants](#Constants1) | GUIDs that specify the various parameter categories of the **EncodeParameter** objects. |
+| [Image File Format Constants](#Constants2) | GUIDs that specify the that identify the file formats of an image. |
+| [Image Frame Dimension Constants](#Constants3) | GUIDs that identify the page and time dimensions. |
+| [Image Pixel Format Constants](#Constants4) | Pixel formats used in bitmaps. |
+| [Image Property Tag Type Constants](#Constants5) | Specifies the data type of the values stored in the value data member of a **PropertyItem** structure. |
+| [Image Property Tag Constants](#Constants6) | Property items supported by Microsoft Windows GDI+. |
