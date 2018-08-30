@@ -3703,8 +3703,33 @@ FUNCTION EnableModeless (BYVAL pWebCtx AS CWebCtx PTR, BYVAL fEnable AS LONG) AS
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pWebCtx* | Pointer to the **CWebCtx** class. |
-| *fEnable* |Boolean value that indicates if the host's modeless dialog boxes are enabled or disabled.<br>**TRUE**: Modeless dialog boxes are enabled.<br>**FALSE**: Modeless dialog boxes are disabled. |
+| *fEnable* | Boolean value that indicates if the host's modeless dialog boxes are enabled or disabled.<br>**TRUE**: Modeless dialog boxes are enabled.<br>**FALSE**: Modeless dialog boxes are disabled. |
 
 #### Return value
 
 Returns S_OK (0) if successful, or an error value otherwise. 
+
+# <a name="FilterDataObject"></a>FilterDataObject Event
+
+Called by MSHTML to allow the host to replace the MSHTML data object.
+
+```
+FUNCTION FilterDataObject (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pDO AS IDataObject PTR, _
+   BYVAL ppDORet AS IDataObject PTR PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *pDO* | Pointer to an **IDataObject** interface supplied by MSHTML. |
+| *ppDORet* | Out. Address of a pointer variable that receives an **IDataObject** interface pointer supplied by the host. |
+
+#### Return value
+
+Returns S_OK (0) if the data object is replaced, or S_FALSE (1) if it's not replaced.
+
+#### Remarks
+
+This method enables the host to block certain clipboard formats or support additional clipboard formats.
+
+If the implementation of this method does not supply its own **IDataObject**, *ppDORet* should be set to NULL, even if the method fails or returns S_FALSE.
