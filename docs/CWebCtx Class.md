@@ -1334,3 +1334,96 @@ PRIVATE FUNCTION DocHostUI_TranslateAccelerator (BYVAL pWebCtx AS CWebCtx PTR, B
 END FUNCTION
 ' ========================================================================================
 ```
+
+# <a name="SetUIHandler"></a>SetUIHandler
+
+Sets our implementation of the **IDocHostUIHandler** interface to customize the WebBrowser.
+
+```
+FUNCTION SetUIHandler () AS HRESULT
+```
+
+#### Remarks
+
+You don't have to call this method. The **CWebCtx** constructor calls it.
+
+# <a name="ShowSource"></a>ShowSource
+
+Displays the source code of the page in an instance of NotePad.
+
+```
+FUNCTION ShowSource () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+# <a name="Silent"></a>Silent
+
+Sets or gets a value that indicates whether the object can display dialog boxes.
+
+```
+PROPERTY Silent (BYVAL bSilent AS VARIANT_BOOL)
+PROPERTY Silent () AS VARIANT_BOOL
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bSilent* | VARIANT_FALSE Dialog boxes and messages can be displayed.<br>VARIANT_TRUE  Dialog boxes are not displayed. |
+
+#### Return value
+
+VARIANT_TRUE or VARIANT_FALSE.
+
+# <a name="Stop"></a>Stop
+
+Cancels any pending navigation or download operation and stops any dynamic page elements, such as background sounds and animations.
+
+```
+FUNCTION Stop () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) to indicate that the operation was successful.
+
+# <a name="Unadvise"></a>Unadvise
+
+Releases the events connection.
+
+```
+FUNCTION Unadvise () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+You don't have to call this method. The **CWebCtx** destructor calls it.
+
+# <a name="WaitForPageLoad"></a>WaitForPageLoad
+
+Waits until the page had been fully downloaded or te timeout has expired.
+
+```
+FUNCTION FUNCTION WaitForPageLoad (BYVAL dbTimeout AS DOUBLE = 10) AS tagREADYSTATE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *dbTimeout* | Optional. Timeout in seconds. Default value: 10 seconds. |
+
+#### Return value
+
+| Value      | Description |
+| ---------- | ----------- |
+| READYSTATE_UNINITIALIZED = 0 | Default initialization state. |
+| READYSTATE_LOADING = 1 | Object is currently loading its properties. |
+| READYSTATE_LOADED = 2 | Object has been initialized. |
+| READYSTATE_INTERACTIVE = 3 | Object is interactive, but not all of its data is available. |
+| READYSTATE_COMPLETE = 4 | Object has received all of its data. |
+
+
