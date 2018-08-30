@@ -3780,3 +3780,81 @@ If the host exposes an automation interface, it can provide a reference to MSHTM
 
 If the method implementation does not supply an **IDispatch**, *ppDispatch* should be set to NULL, even if the method fails or returns S_FALSE.
 
+# <a name="GetHostInfo"></a>GetHostInfo Event
+
+Called by MSHTML to retrieve the user interface (UI) capabilities of the application that is hosting MSHTML.
+
+```
+FUNCTION GetHostInfo (BYVAL pWebCtx AS CWebCtx PTR, BYVAL pInfo AS DOCHOSTUIINFO PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *ppDispatch* | Out. Pointer to a **DOCHOSTUIINFO** structure that receives the host's UI capabilities.  |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+### DOCHOSTUIINFO structure
+
+```
+TYPE DOCHOSTUIINFO
+   cbSize AS ULONG
+   dwFlags AS DWORD
+   dwDoubleClick AS DWORD
+   pchHostCss AS OLECHAR PTR
+   pchHostNS AS OLECHAR PTR
+END TYPE
+```
+
+#### Members
+
+| Member     | Description |
+| ---------- | ----------- |
+| **cbSize** | DWORD containing the size of this structure, in bytes. |
+| **dwFlags** | One or more of the DOCHOSTUIFLAG values that specify the UI capabilities of the host.  |
+| **dwDoubleClick** | One of the **DOCHOSTUIDBLCLK** values that specify the operation that should take place in response to a double-click. |
+| **pchHostCss** | Pointer to a set of Cascading Style Sheets (CSS) rules sent down by the host. These CSS rules affect the page containing them. |
+| **pchHostNS** | Pointer to a semicolon-delimited namespace list. This list allows the host to supply a namespace declaration for custom tags on the page. |
+
+### DOCHOSTUIFLAG values
+
+| Flag       | Description |
+| ---------- | ----------- |
+| DOCHOSTUIFLAG_DIALOG | MSHTML does not enable selection of the text in the form. |
+| DOCHOSTUIFLAG_DISABLE_HELP_MENU | MSHTML does not add the Help menu item to the container's menu. |
+| DOCHOSTUIFLAG_NO3DBORDER | MSHTML does not use 3-D borders on any frames or framesets. To turn the border off on only the outer frameset use DOCHOSTUIFLAG_NO3DOUTERBORDER. |
+| DOCHOSTUIFLAG_SCROLL_NO | MSHTML does not have scroll bars. |
+| DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE | MSHTML does not execute any script until fully activated. This flag is used to postpone script execution until the host is active and, therefore, ready for script to be executed. |
+| DOCHOSTUIFLAG_OPENNEWWIN | MSHTML opens a site in a new window when a link is clicked rather than browse to the new site using the same browser window. |
+| DOCHOSTUIFLAG_DISABLE_OFFSCREEN | Not implemented. |
+| DOCHOSTUIFLAG_FLAT_SCROLLBAR | MSHTML uses flat scroll bars for any UI it displays. |
+| DOCHOSTUIFLAG_DIV_BLOCKDEFAULT | MSHTML inserts the div tag if a return is entered in edit mode. Without this flag, MSHTML will use the p tag. |
+| DOCHOSTUIFLAG_ACTIVATE_CLIENTHIT_ONLY | MSHTML only becomes UI active if the mouse is clicked in the client area of the window. It does not become UI active if the mouse is clicked on a non-client area, such as a scroll bar. |
+| DOCHOSTUIFLAG_OVERRIDEBEHAVIORFACTORY | MSHTML consults the host before retrieving a behavior from the URL specified on the page. If the host does not support the behavior, MSHTML does not proceed to query other hosts or instantiate the behavior itself, even for behaviors developed in script (HTML Components (HTCs)). |
+| DOCHOSTUIFLAG_CODEPAGELINKEDFONTS | Microsoft Internet Explorer 5 and later. Provides font selection compatibility for Microsoft Outlook Express. If the flag is enabled, the displayed characters are inspected to determine whether the current font supports the code page. If disabled, the current font is used, even if it does not contain a glyph for the character. This flag assumes that the user is using Internet Explorer 5 and Outlook Express 4.0. |
+| DOCHOSTUIFLAG_URL_ENCODING_DISABLE_UTF8 | Internet Explorer 5 and later. Controls how nonnative URLs are transmitted over the Internet. Nonnative refers to characters outside the multibyte encoding of the URL. If this flag is set, the URL is not submitted to the server in UTF-8 encoding. |
+| DOCHOSTUIFLAG_URL_ENCODING_ENABLE_UTF8 | Internet Explorer 5 and later. Controls how nonnative URLs are transmitted over the Internet. Nonnative refers to characters outside the multibyte encoding of the URL. If this flag is set, the URL is submitted to the server in UTF-8 encoding. |
+| DOCHOSTUIFLAG_ENABLE_FORMS_AUTOCOMPLETE | Internet Explorer 5 and later. Enables the AutoComplete feature for forms in the hosted browser. The Intelliforms feature is only turned on if the user has previously enabled it. If the user has turned the AutoComplete feature off for forms, it is off whether this flag is specified or not. |
+| DOCHOSTUIFLAG_ENABLE_INPLACE_NAVIGATION | Internet Explorer 5 and later. Enables the host to specify that navigation should happen in place. This means that applications hosting MSHTML directly can specify that navigation happen in the application's window. For instance, if this flag is set, you can click a link in HTML mail and navigate in the mail instead of opening a new Windows Internet Explorer window. |
+| DOCHOSTUIFLAG_IME_ENABLE_RECONVERSION | Internet Explorer 5 and later. During initialization, the host can set this flag to enable Input Method Editor (IME) reconversion, allowing computer users to employ IME reconversion while browsing Web pages. An input method editor is a program that allows users to enter complex characters and symbols, such as Japanese Kanji characters, using a standard keyboard. For more information, see the International Features reference in the Base Services section of the Windows Software Development Kit (SDK). |
+| DOCHOSTUIFLAG_THEME | Internet Explorer 6 and later. Specifies that the hosted browser should use themes for pages it displays. |
+| DOCHOSTUIFLAG_NOTHEME | Internet Explorer 6 and later. Specifies that the hosted browser should not use themes for pages it displays. |
+| DOCHOSTUIFLAG_NOPICS | Internet Explorer 6 and later. Disables PICS ratings for the hosted browser. |
+| DOCHOSTUIFLAG_NO3DOUTERBORDER | Internet Explorer 6 and later. Turns off any 3-D border on the outermost frame or frameset only. To turn borders off on all frame sets, use DOCHOSTUIFLAG_NO3DBORDER. |
+| DOCHOSTUIFLAG_DISABLE_EDIT_NS_FIXUP | Internet Explorer 6 and later. Disables the automatic correction of namespaces when editing HTML elements. |
+| DOCHOSTUIFLAG_LOCAL_MACHINE_ACCESS_CHECK | Internet Explorer 6 and later. Prevents Web sites in the Internet zone from accessing files in the Local Machine zone. |
+| DOCHOSTUIFLAG_DISABLE_UNTRUSTEDPROTOCOL | Internet Explorer 6 and later. Turns off untrusted protocols. Untrusted protocols include ms-its, ms-itss, its, and mk:@msitstore. |
+| DOCHOSTUIFLAG_HOST_NAVIGATES | Internet Explorer 7. Indicates that navigation is delegated to the host; otherwise, MSHTML will perform navigation. This flag is used primarily for non-HTML document types. |
+| DOCHOSTUIFLAG_ENABLE_REDIRECT_NOTIFICATION | Internet Explorer 7. Causes MSHTML to fire an additional DWebBrowserEvents2.BeforeNavigate2 event when redirect navigations occur. Applications hosting the WebBrowser Control can choose to cancel or continue the redirect by returning an appropriate value in the Cancel parameter of the event. |
+| DOCHOSTUIFLAG_USE_WINDOWLESS_SELECTCONTROL | Internet Explorer 7. Causes MSHTML to use the Document Object Model (DOM) to create native "windowless" select controls that can be visually layered under other elements. |
+| DOCHOSTUIFLAG_USE_WINDOWED_SELECTCONTROL | Internet Explorer 7. Causes MSHTML to create standard Microsoft Win32 "windowed" select and drop-down controls. |
+| DOCHOSTUIFLAG_ENABLE_ACTIVEX_INACTIVATE_MODE | Internet Explorer 6 for Windows XP Service Pack 2 (SP2) and later. Requires user activation for Microsoft ActiveX controls and Java Applets embedded within a web page. This flag enables interactive control blocking, which provisionally disallows direct interaction with ActiveX controls loaded by the APPLET, EMBED, or OBJECT elements. When a control is inactive, it does not respond to user input; however, it can perform operations that do not involve interaction. |
+| DOCHOSTUIFLAG_DPI_AWARE | Internet Explorer 8. Causes layout engine to calculate document pixels as 96 dots per inch (dpi). Normally, a document pixel is the same size as a screen pixel. This flag is equivalent to setting the FEATURE_96DPI_PIXEL feature control key on a per-host basis. |
+
+#### Remarks
+
+The DOCHOSTUIFLAG_BROWSER flag, a supplementary defined constant (not technically a part of this enumeration), combines the values of DOCHOSTUIFLAG_DISABLE_HELP_MENU and DOCHOSTUIFLAG_DISABLE_SCRIPT_INACTIVE.
+
