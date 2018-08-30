@@ -3975,3 +3975,23 @@ HRESULT CBrowserHost::GetOverrideKeyPath(LPOLESTR *pchKey, DWORD dwReserved)
     return hr;
 }
 ```
+
+# <a name="HideUI"></a>HideUI Event
+
+Called when MSHTML removes its menus and toolbars.
+
+```
+FUNCTION HideUI (BYVAL pWebCtx AS CWebCtx PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+If a host displayed menus and toolbars during the call to **ShowUI**, the host should remove them when this method is called. This method is called regardless of the return value from the **ShowUI** method.
