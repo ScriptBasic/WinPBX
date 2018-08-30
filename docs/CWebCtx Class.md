@@ -10,7 +10,14 @@ The **WebBrowser** events sink class is provided in the file **CWebBrowserEvents
 
 **Include file**: CWebCtx.inc.
 
-### CAXHOST_AMBIENTDISP Structure
+### Constructor
+
+| Name       | Description |
+| ---------- | ----------- |
+| [CAXHOST_AMBIENTDISP structure](#CAXHOST_AMBIENTDISP) | Contains information the ambient properties of the **CAxHost** control. |
+| [Constructor](#Constructor) | Creates an instance of the OLE container using a ProgId. |
+
+# <a name="CAXHOST_AMBIENTDISP"></a>CAXHOST_AMBIENTDISP Structure
 
 Contains information the ambient properties of the **CAxHost** control.
 
@@ -58,7 +65,7 @@ END TYPE
 * DLCTL_FORCEOFFLINE: The WebBrowser Control always operates in offline mode.
 * DLCTL_OFFLINEIFNOTCONNECTED and DLCTL_OFFLINE: These flags are the same. The WebBrowser Control will operate in offline mode if not connected to the Internet.
 
-# Constructor
+# <a name="Constructor"></a>Constructor
 
 Creates an instance of the **CWebCtx** class.
 
@@ -67,3 +74,15 @@ CONSTRUCTOR CWebCtx (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR, BYVAL 
    BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, BYVAL dwStyle AS DWORD = 0, _
    BYVAL dwExStyle AS DWORD = 0, BYVAL pAmbientFlags AS CAXHOST_AMBIENTDISP PTR = NULL)
 ```
+
+| Member     | Description |
+| ---------- | ----------- |
+| *pWindow* | Pointer to the instance of the **CWindow** class used to create the form. |
+| *cID* |The identifier of the control. It must be unique. |
+| *x* | The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *y* | The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *nWidth* | The width of the window. |
+| *nHeight* | The height of the window. |
+| *dwStyle* | The style of the window being created. |
+| *dwExStyle* | The extended style of the window being created. |
+| *pAmbientDisp* | Pointer to a **CAXHOST_AMBIENTDISP** structure. |
