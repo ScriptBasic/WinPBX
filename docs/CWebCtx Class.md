@@ -913,3 +913,15 @@ Returns S_OK (0) if successful, or E_FAIL otherwise.
 
 The "pragma:nocache" header tells the server not to return a cached copy. This ensures that the information is as fresh as possible. Browsers typically send this header when the user selects refresh, but the header can cause problems for some servers.
 
+# <a name="RegisterAsBrowser"></a>RegisterAsBrowser
+
+Sets or retrieves a value that indicates whether the object is registered as a top-level browser for target name resolution.
+
+```
+PROPERTY RegisterAsBrowser () AS BOOLEAN
+PROPERTY RegisterAsBrowser (BYVAL bRegister AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bRegister* | True of False. |
