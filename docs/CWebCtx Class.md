@@ -733,3 +733,38 @@ The URL of the resource that Microsoft Internet Explorer is currently displaying
 #### Remarks
 
 If the resource is a folder or file on the network or local computer, the name is the full path of the folder or file in the Universal Naming Convention (UNC) format.
+
+# <a name="Navigate"></a>Navigate
+
+Returns the handle of the OLE Container hosting window.
+
+```
+FUNCTION Navigate (BYVAL pwszUrl AS WSTRING PTR, BYVAL Flags AS VARIANT PTR = NULL, _
+   BYVAL TargetFrameName AS VARIANT PTR = NULL, BYVAL PostData AS VARIANT PTR = NULL, _
+   BYVAL Headers AS VARIANT PTR = NULL) AS HRESULT
+```
+```
+FUNCTION Navigate (BYVAL vUrl AS VARIANT PTR, BYVAL Flags AS VARIANT PTR = NULL, _
+   BYVAL TargetFrameName AS VARIANT PTR = NULL, BYVAL PostData AS VARIANT PTR = NULL, _
+   BYVAL Headers AS VARIANT PTR = NULL) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pwszUrl* | A variable or expression that evaluates to the URL of the resource to display or the full path to the file location. |
+| *vUrl* | A variable or expression that evaluates to the URL of the resource to display, the full path to the file location, or a PIDL that represents a folder in the Shell namespace. |
+| *Flags* | Optional. A constant or value that specifies a combination of the values defined by the **BrowserNavConstants** enumeration. |
+| *TargetFrameName* | Optional. Case-sensitive string expression that evaluates to the name of the frame in which to display the resource. The possible values for this parameter are.<br>**\_blank**: Load the link into a new unnamed window.<br>**\_parent**: Load the link into the immediate parent of the document the link is in.<br>**\_self**: Load the link into the same window the link was clicked in.<br>**\_top**: Load the link into the full body of the current window.<br>**WindowName**: A named HTML frame. If no frame or window exists that matches the specified target name, a new window is opened for the specified link. |
+| *PostData* | Optional. Data that is sent to the server as part of a HTTP POST transaction. A POST transaction typically is used to send data collected by an HTML form. If this parameter does not specify any POST data, this method issues an HTTP GET transaction. This parameter is ignored if URL is not an HTTP (or HTTPS) URL. |
+| *Headers* | Optional. A String that contains additional HTTP headers to send to the server. These headers are added to the default Internet Explorer headers. For example, headers can specify the action required of the server, the type of data being passed to the server, or a status code. This parameter is ignored if the URL is not an HTTP (or HTTPS)  URL. |
+
+#### Return value
+
+Returns one of the following values:
+
+| Error code | Description |
+| ---------- | ----------- |
+| S_OK | The operation was successful. |
+| E_FAIL | The operation failed. |
+| E_INVALIDARG | One or more parameters are invalid. |
+| E_OUTOFMEMORY | Out of memory. |
