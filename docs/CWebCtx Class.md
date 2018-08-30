@@ -2496,7 +2496,7 @@ The browser's status bar displays a lock icon when encryption is present. Mousin
 
 An application hosting the WebBrowser Control can use this event to display a user interface (UI) that shows the current encryption level.
 
-Multiple levels of encryption can coexist in a single window in situations where there are multiple frames. If there are multiple levels of encryption present on a page, the SecureLockIcon has the value of secureLockIconMixed.
+Multiple levels of encryption can coexist in a single window in situations where there are multiple frames. If there are multiple levels of encryption present on a page, the SecureLockIcon has the value of **secureLockIconMixed**.
 
 The encryption level on a page can be higher than the default level set in the browser if the site is using a special type of certificate (for example, a Server Gated Cryptography certificate).
 
@@ -2591,7 +2591,7 @@ SUB WindowSetLeft (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nLeft AS LONG)
 
 The **WindowSetLeft** event is fired when the left position of a window is changed, using the **Left** property of the **IWebBrowser2** interface.
 
-This event is also fired when a new window is opened through scripting, using the window.open method. The value of the *nLeft* parameter indicates the left position requested in the call to window.open.
+This event is also fired when a new window is opened through scripting, using the window.open method. The value of the *nLeft* parameter indicates the left position requested in the call to **window.open**.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
 
@@ -2610,8 +2610,29 @@ SUB WindowSetResizable (BYVAL pWebCtx AS CWebCtx PTR, BYVAL bResizable AS VARIAN
 
 #### Remarks
 
-The **WindowSetResizable** event is fired when a new window is opened through scripting, using the window.open method. The value of the *bResizable* parameter indicates whether the resizable feature was requested in the call to window.open.
+The **WindowSetResizable** event is fired when a new window is opened through scripting, using the window.open method. The value of the *bResizable* parameter indicates whether the resizable feature was requested in the call to **window.open**.
 
 The host window can use this event to decide whether to display resizing user interface items, such as a size box and maximize box.
+
+This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
+
+# <a name="WindowSetTop"></a>WindowSetTop Event
+
+Fires when the object changes its top position.
+
+```
+SUB WindowSetTop (BYVAL pWebCtx AS CWebCtx PTR, BYVAL nTop AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *nTop* | LONG that specifies the top position of the WebBrowser control. |
+
+#### Remarks
+
+The **WindowSetTop** event is fired when the top position of a window is changed, using the **Top** property of the **IWebBrowser2** interface.
+
+This event is also fired when a new window is opened through scripting, using the window.open method. The value of the nTop parameter indicates the top position requested in the call to **window.open**.
 
 This event is available only to an application that is hosting the WebBrowser control installed by Microsoft Internet Explorer 5.5 and later.
