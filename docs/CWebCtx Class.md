@@ -4078,3 +4078,22 @@ Returns one of the following values:
 | S_FALSE | Host did not display any UI. MSHTML will display its UI. |
 | DOCHOST_E_UNKNOWN | Menu identifier is unknown. MSHTML may attempt an alternative identifier from a previous version. |
 
+# <a name="ShowUI"></a>ShowUI Event
+
+Called by MSHTML to enable the host to replace MSHTML menus and toolbars.
+
+
+```
+FUNCTION ShowUI (BYVAL pWebCtx AS CWebCtx PTR, BYVAL dwID AS DWORD, _
+   BYVAL pActiveObject AS IOleInPlaceActiveObject PTR, BYVAL pCommandTarget AS IOleCommandTarget PTR, _
+   BYVAL pFrame AS IOleInPlaceFrame PTR, BYVAL pDoc AS IOleInPlaceUIWindow PTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWebCtx* | Pointer to the **CWebCtx** class. |
+| *dwID* | DWORD that receives a **DOCHOSTUITYPE** value indicating the type of user interface (UI). |
+| *pActiveObject* | Pointer to an **IOleInPlaceActiveObject** interface for the active object. |
+| *pCommandTarget* | Pointer to an **IOleCommandTarget** interface for the object. |
+| *pFrame* | Pointer to an **IOleInPlaceFrame** interface for the object. Menus and toolbars must use this parameter. |
+| *pDoc* | Pointer to an **IOleInPlaceUIWindow** interface for the object. Toolbars must use this parameter. |
