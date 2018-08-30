@@ -648,4 +648,20 @@ Returns S_OK (0) if successful, or an error value otherwise.
 
 #### Remarks
 
-DDuring a browsing session, the WebBrowser control and Microsoft Internet Explorer application maintain a history list of all Web sites visited during a session (unless you specify the NAVNOHISTORY flag when using the Navigate method). Use the **CommandStateChange** event to check the enabled state of forward navigation. If the event's CSC_NAVIGATEFORWARD command is disabled, the end of the history list has been reached and the **GoForward** method should not be used.
+During a browsing session, the WebBrowser control and Microsoft Internet Explorer application maintain a history list of all Web sites visited during a session (unless you specify the NAVNOHISTORY flag when using the Navigate method). Use the **CommandStateChange** event to check the enabled state of forward navigation. If the event's CSC_NAVIGATEFORWARD command is disabled, the end of the history list has been reached and the **GoForward** method should not be used.
+
+# <a name="GoHome"></a>GoHome
+
+Navigates to the current home or start page.
+
+```
+FUNCTION GoHome () AS HRESULT
+```
+
+#### Return value
+
+Returns S_OK (0) if successful, or an error value otherwise.
+
+#### Remarks
+
+The user can indicate the URL to use for the home or start page either from Internet Options in Microsoft Internet Explorer or from Internet Properties in Control Panel.
