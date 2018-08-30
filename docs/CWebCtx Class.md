@@ -925,3 +925,16 @@ PROPERTY RegisterAsBrowser (BYVAL bRegister AS BOOLEAN)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *bRegister* | True of False. |
+
+# <a name="RegisterAsDropTarget"></a>RegisterAsDropTarget
+
+Sets or retrieves a value that indicates whether the object is registered as a drop target for navigation.
+
+```
+PROPERTY RegisterAsDropTarget () AS BOOLEAN
+PROPERTY RegisterAsDropTarget (BYVAL bRegister AS BOOLEAN)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bRegister* | True of False. |
