@@ -2232,3 +2232,20 @@ WrapModeClamp        = 4
 | WrapModeTileFlipY | Specifies that tiles are flipped vertically as you move from one tile to the next in a column. |
 | WrapModeTileFlipXY | Specifies that tiles are flipped horizontally as you move along a row and flipped vertically as you move along a column. |
 | WrapModeClamp | Specifies that no tiling takes place. |
+
+# <a name="Constants1"></a>Image Encoder Cnstants
+
+The **GdipSaveImageToFile**, **GdipSaveImageToStream**, **GdipSaveAdd** and **GdipSaveAddImage** functions receive an **EncoderParameters** structure that contains an array of **EncoderParameter** objects. Each **EncoderParameter** object has a globally unique identifier (GUID) data member that specifies the parameter category. The following constants represent GUIDs that specify the various parameter categories. 
+
+```
+EncoderCompression      = "{E09D739D-CCD4-44EE-8EBA-3FBF8BE4FC58}"
+EncoderColorDepth       = "{66087055-AD66-4C7C-9A18-38A2310B8337}"
+EncoderScanMethod       = "{3A4E2661-3109-4E56-8536-42C156E7DCFA}"
+EncoderVersion          = "{24D18C76-814A-41A4-BF53-1C219CCCF797}"
+EncoderRenderMethod     = "{6D42C53A-229A-4825-8BB7-5C99E2B9A8B8}"
+EncoderQuality          = "{1D5BE4B5-FA4A-452D-9CDD-5DB35105E7EB}"
+EncoderTransformation   = "{8D0EB2D1-A58E-4EA8-AA14-108074B7B6F9}"
+EncoderLuminanceTable   = "{EDB33BCE-0266-4A77-B904-27216099E717}"
+EncoderChrominanceTable = "{F2E455DC-09B3-4316-8260-676ADA32481C}"
+EncoderSaveFlag         = "{292266FC-AC40-47BF-8CFC-A85B89A655DE}"
+```
