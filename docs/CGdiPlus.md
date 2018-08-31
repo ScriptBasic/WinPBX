@@ -127,3 +127,27 @@ For a detailed list of status codes see the **Status** enumeration.
 | [Image Pixel Format Constants](#Constants4) | Pixel formats used in bitmaps. |
 | [Image Property Tag Type Constants](#Constants5) | Specifies the data type of the values stored in the value data member of a **PropertyItem** structure. |
 | [Image Property Tag Constants](#Constants6) | Property items supported by Microsoft Windows GDI+. |
+
+# <a name="BitmapData"></a>BitmapData Structure
+
+A **BitmapData** structure stores attributes of a bitmap. Used by the **GdipBitmapLockBits** and **GdipBitmapUnlockBits** functions.
+
+```
+TYPE BitmapData
+   Width AS UINT
+   Height AS UINT
+   Stride AS INT_
+   PixelFormat AS PixelFormat
+   Scan0 AS ANY PTR
+   Reserved AS UINT_PTR
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Width** | Number of pixels in one scan line of the bitmap. |
+| **Height** | Number of scan lines in the bitmap. |
+| **Stride** | Offset, in bytes, between consecutive scan lines of the bitmap. If the stride is positive, the bitmap is top-down. If the stride is negative, the bitmap is bottom-up. |
+| **PixelFormat** | Integer that specifies the pixel format of the bitmap. |
+| **Scan0** | Pointer to the first (index 0) scan line of the bitmap. |
+| **Reserved** | Reserved for future use. |
