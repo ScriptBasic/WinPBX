@@ -104,7 +104,7 @@ A **PathGradientBrush** object stores the attributes of a color gradient that yo
 | [GetSurroundColorCount](#GetSurroundColorCount) | Gets the number of colors that have been specified for the boundary path of this brush. |
 | [GetSurroundColors](#GetSurroundColors) | Gets the surround colors currently specified for this brush. |
 | [GetTransform](#GetTransform) | Gets the transformation matrix. |
-| [GetWrapMode](#GetWrapMode) | Gets the wrap mode curremtly set for this brush. |
+| [GetWrapMode](#GetWrapMode) | Gets the wrap mode currently set for this brush. |
 | [MultiplyTransform](#MultiplyTransform) | Updates this brush's transformation matrix with the product of itself and another matrix. |
 | [ResetTransform](#ResetTransform) | Resets the transformation matrix to the identity matrix. |
 | [RotateTransform](#RotateTransform) | Updates this brush's current transformation matrix with the product of itself and a rotation matrix. |
@@ -136,7 +136,7 @@ Defines a **Brush** object that contains an **Image** object that is used for th
 | [Constructors](#ConstructorTBrush) | Create a texture brush. |
 | [GetImage](#GetImage) | Gets a pointer to the **Image** object that is defined by this brush. |
 | [GetTransform](#GetTransform) | Gets the transformation matrix. |
-| [GetWrapMode](#GetWrapMode) | Gets the wrap mode curremtly set for this brush. |
+| [GetWrapMode](#GetWrapMode) | Gets the wrap mode currently set for this brush. |
 | [MultiplyTransform](#MultiplyTransform) | Updates this brush's transformation matrix with the product of itself and another matrix. |
 | [ResetTransform](#ResetTransform) | Resets the transformation matrix to the identity matrix. |
 | [RotateTransform](#RotateTransform) | Updates this brush's current transformation matrix with the product of itself and a rotation matrix. |
