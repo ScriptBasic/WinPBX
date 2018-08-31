@@ -607,6 +607,7 @@ TYPE LOGFONTW
    lfPitchAndFamily AS UBYTE
    lfFaceName AS WSTRING * 32   ' LF_FACESIZE
 END TYPE
+```
 
 | Member     | Description |
 | ---------- | ----------- |
