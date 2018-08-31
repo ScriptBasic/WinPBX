@@ -1179,3 +1179,63 @@ EncoderParameterValueTypePointer = 9
 | EncoderParameterValueTypeUndefined | Specifies that the parameter is an array of bytes that can hold values of any type. |
 | EncoderParameterValueTypeRationalRange | Specifies that the parameter is an array of four, 32-bit unsigned integers. The first two integers represent one fraction, and the second two integers represent a second fraction. The two fractions represent a range of rational numbers. The first fraction is the smallest rational number in the range, and the second fraction is the largest rational number in the range. |
 | EncoderParameterValueTypePointer | Specifies that the parameter is a pointer to a block of custom metadata.|
+
+# <a name="EncoderValue"></a>EncoderValue Enumeration
+
+The **EncoderValue** enumeration specifies values that can be passed as arguments to image encoders.
+
+```
+EncoderValueColorTypeCMYK             = 0
+EncoderValueColorTypeYCCK             = 1
+EncoderValueCompressionLZW            = 2
+EncoderValueCompressionCCITT3         = 3
+EncoderValueCompressionCCITT4         = 4
+EncoderValueCompressionRle            = 5
+EncoderValueCompressionNone           = 6
+EncoderValueScanMethodInterlaced      = 7
+EncoderValueScanMethodNonInterlaced   = 8
+EncoderValueVersionGif87              = 9
+EncoderValueVersionGif89              = 10
+EncoderValueRenderProgressive         = 11
+EncoderValueRenderNonProgressive      = 12
+EncoderValueTransformRotate90         = 13
+EncoderValueTransformRotate180        = 14
+EncoderValueTransformRotate270        = 15
+EncoderValueTransformFlipHorizontal   = 16
+EncoderValueTransformFlipVertical     = 17
+EncoderValueMultiFrame                = 18
+EncoderValueLastFrame                 = 19
+EncoderValueFlush                     = 20
+EncoderValueFrameDimensionTime        = 21
+EncoderValueFrameDimensionResolution  = 22
+EncoderValueFrameDimensionPage        = 23
+EncoderValueColorTypeGray             = 24
+EncoderValueColorTypeRGB              = 25
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| EncoderValueColorTypeCMYK | Not used in GDI+ version 1.0. |
+| EncoderValueColorTypeYCCK | Not used in GDI+ version 1.0. |
+| EncoderValueCompressionLZW | For a TIFF image, specifies the LZW compression method. |
+| EncoderValueCompressionCCITT3 | For a TIFF image, specifies the CCITT3 compression method. |
+| EncoderValueCompressionCCITT4 | For a TIFF image, specifies the CCITT4 compression method. |
+| EncoderValueCompressionRle | For a TIFF image, specifies the RLE compression method. |
+| EncoderValueCompressionNone | For a TIFF image, specifies no compression. |
+| EncoderValueScanMethodInterlaced | Not used in GDI+ version 1.0. |
+| EncoderValueScanMethodNonInterlaced | Not used in GDI+ version 1.0. |
+| EncoderValueVersionGif87 | Not used in GDI+ version 1.0. |
+| EncoderValueVersionGif89 | Not used in GDI+ version 1.0. |
+| EncoderValueRenderProgressive | Not used in GDI+ version 1.0. |
+| EncoderValueRenderNonProgressive | Not used in GDI+ version 1.0. |
+| EncoderValueTransformRotate90 | For a JPEG image, specifies lossless 90-degree clockwise rotation. |
+| EncoderValueTransformRotate180 | For a JPEG image, specifies lossless 180-degree rotation. |
+| EncoderValueTransformRotate270 | For a JPEG image, specifies lossless 270-degree clockwise rotation. |
+| EncoderValueTransformFlipHorizontal | For a JPEG image, specifies a lossless horizontal flip. |
+| EncoderValueTransformFlipVertical | For a JPEG image, specifies a lossless vertical flip. |
+| EncoderValueMultiFrame | Specifies multiple-frame encoding. |
+| EncoderValueLastFrame | Specifies the last frame of a multiple-frame image. |
+| EncoderValueFlush | Specifies that the encoder object is to be closed. |
+| EncoderValueFrameDimensionTime | Not used in GDI+ version 1.0. |
+| EncoderValueFrameDimensionResolution | Not used in GDI+ version 1.0. |
+| EncoderValueFrameDimensionPage | For a TIFF image, specifies the page frame dimension |
