@@ -455,3 +455,23 @@ END TYPE
 | **y** | Specifies the y-coordinate of the upper-left corner of a rectangle. |
 | **width** | Specifies the width of a rectangle. |
 | **height** | Specifies the heigth of a rectangle. |
+
+# <a name="GpRectF"></a>GpRectF Structure
+
+Defines the upper-left corner, width, and height of a rectangle.
+
+```
+TYPE GpRect
+   x AS REAL
+   y AS REAL
+   width AS REAL
+   height AS REAL
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **x** | Specifies the x-coordinate of the upper-left corner of a rectangle. |
+| **y** | Specifies the y-coordinate of the upper-left corner of a rectangle. |
+| **width** | Specifies the width of a rectangle. |
+| **height** | Specifies the heigth of a rectangle. |
