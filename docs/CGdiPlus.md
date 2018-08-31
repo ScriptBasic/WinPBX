@@ -2114,3 +2114,29 @@ When **StringFormatFlagsDirectionVertical** is set and **StringFormatFlagsDirect
 When **StringFormatFlagsDirectionRightToLeft** is set and **StringFormatFlagsDirectionVertical** is not set, the individual lines of text are horizontal and the reading order is from right to left. This setting does not change the order in which characters are displayed, it simply specifies the order in which characters can be read. 
 
 The **StringFormatFlagsDirectionVertical** and **StringFormatFlagsDirectionRightToLeft** flags can affect string alignment.
+
+The StringTrimming enumeration specifies how to trim characters from a string so that the string fits into a layout rectangle. The layout rectangle is used to position and size the display string.
+
+# <a name="StringTrimming"></a>StringTrimming Enumeration
+
+```
+StringTrimmingNone = 0
+StringTrimmingCharacter = 1
+StringTrimmingWord = 2
+StringTrimmingEllipsisCharacter = 3
+StringTrimmingEllipsisWord = 4
+StringTrimmingEllipsisPath = 5
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| StringTrimmingNone | Specifies that no trimming is done. |
+| StringTrimmingCharacter | Specifies that the string is broken at the boundary of the last character that is inside the layout rectangle. This is the default. |
+| StringTrimmingWord | Specifies that the string is broken at the boundary of the last word that is inside the layout rectangle. |
+| StringTrimmingEllipsisCharacter | Specifies that the string is broken at the boundary of the last character that is inside the layout rectangle and an ellipsis (...) is inserted after the character. |
+| StringTrimmingEllipsisWord | Specifies that the string is broken at the boundary of the last word that is inside the layout rectangle and an ellipsis (...) is inserted after the word. |
+| StringTrimmingEllipsisPath | Specifies that the center is removed from the string and replaced by an ellipsis. The algorithm keeps as much of the last portion of the string as possible. |
+
+#### Remarks
+
+Trimming affects only the last visible or partly visible (due to clipping) line of text.
