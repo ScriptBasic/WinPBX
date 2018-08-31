@@ -25,7 +25,7 @@ The **SolidBrush** object defines a solid color Brush object. A **Brush** object
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor](#ConstructoSBrush) | Creates a **SolidBrush** object based on a color. |
+| [Constructor](#ConstructorSBrush) | Creates a **SolidBrush** object based on a color. |
 | [GetColor](#GetColor) | Gets the color of this brush. |
 | [SetColor](#SetColor) | Sets the color of this brush. |
 
