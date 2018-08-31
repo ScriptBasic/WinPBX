@@ -491,3 +491,19 @@ END TYPE
 | ---------- | ----------- |
 | **Width** | Vertical measurement. |
 | **Height** | Horizontal measurement. |
+
+# <a name="GpSizeF"></a>GpSizeF Structure
+
+Encapsulates a Width and Height dimension in a 2-D coordinate system.
+
+```
+TYPE GpSizeF
+   Width AS REAL
+   Height AS REAL
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Width** | Vertical measurement. |
+| **Height** | Horizontal measurement. |
