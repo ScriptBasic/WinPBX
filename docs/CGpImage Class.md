@@ -7,7 +7,7 @@ The **CGpImage** class provides methods for loading and saving raster images (bi
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor](#ConstructorsImage) | Create an **Image** object based on a file or stream. |
+| [Constructors](#ConstructorsImage) | Create an **Image** object based on a file or stream. |
 | [Clone](#Clone) | Copies the contents of the existing **Image** object into a new Image object. |
 | [FindFirstItem](#FindFirstItem) | Retrieves the description and the data size of the first metadata item in this Image object. |
 | [FindNextItem](#FindNextItem) | Retrieves the description and the data size of the next metadata item in this Image object. |
@@ -53,7 +53,7 @@ Extends the **CGpImage** class. The **Bitmap** object expands on the capabilitie
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor](#ConstructorsBitmap) | Create a Bitmap object based on an icon or resource file. |
+| [Constructors](#ConstructorsBitmap) | Create a Bitmap object based on an icon or resource file. |
 | [Clone](#Clone) | Creates a new Bitmap object by copying a portion of this bitmap. |
 | [ConvertFormat](#ConvertFormat) | Converts a bitmap to a specified pixel format. |
 | [GetHBITMAP](#GetHBITMAP) | Creates a Windows Graphics Device Interface (GDI) bitmap from this Bitmap object. |
@@ -66,3 +66,20 @@ Extends the **CGpImage** class. The **Bitmap** object expands on the capabilitie
 | [SetPixel](#SetPixel) | Sets the color of a specified pixel in this bitmap. |
 | [SetResolution](#SetResolution) | Sets the resolution of this Bitmap object. |
 | [UnlockBits](#UnlockBits) | Unlocks a portion of this bitmap that was previously locked by a call to LockBits. |
+
+# CGpMetafile Class
+
+Extends the **CGpImage** class. The **Metafile** object defines a graphic metafile. A metafile contains records that describe a sequence of graphics API calls. Metafiles can be recorded (constructed) and played back (displayed).
+
+**Inherits from**: CGpImage.
+**Imclude file**: CGpImage.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#ConstructorsMetafile) | Creates a Windows GDI+ Metafile. |
+| [EmfToWmfBits](#EmfToWmfBits) | Converts an enhanced-format metafile to a Windows Metafile Format (WMF) metafile and stores the converted records in a specified buffer. |
+| [GetDownLevelRasterizationLimit](#GetDownLevelRasterizationLimit) | Gets the rasterization limit currently set for this metafile. |
+| [GetHENHMETAFILE](#GetHENHMETAFILE) | Gets a Windows handle to an Enhanced Metafile (EMF) file. |
+| [GetMetafileHeader](#GetMetafileHeader) | Gets the metafile header of this metafile. |
+| [PlayRecord](#PlayRecord) | Plays a metafile record. |
+| [SetDownLevelRasterizationLimit](#SetDownLevelRasterizationLimit) | Sets the resolution for certain brush bitmaps that are stored in this metafile. |
