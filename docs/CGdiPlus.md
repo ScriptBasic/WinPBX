@@ -1607,3 +1607,34 @@ LinearGradientModeBackwardDiagonal   = 3
 | LinearGradientModeVertical | Specifies the color to change in a vertical direction from the top of the display to the bottom of the display. |
 | LinearGradientModeForwardDiagonal | Specifies the color to change in a forward diagonal direction from the upper-left corner to the lower-right corner of the display. |
 | LinearGradientModeBackwardDiagonal | Specifies the color to change in a backward diagonal direction from the upper-right corner to the lower-left corner of the display. |
+
+# <a name="LineCap"></a>LineCap Enumeration
+
+The **LineCap** enumeration specifies the type of graphic shape to use on the end of a line drawn with a Microsoft Windows GDI+ pen. The cap can be a square, circle, triangle, arrowhead, custom, or masked (hidden). End caps can also "anchor" the line by centering the cap at the end of the line. 
+
+```
+LineCapFlat = 0
+LineCapSquare = 1
+LineCapRound = 2
+LineCapTriangle = 3
+LineCapNoAnchor = &H10
+LineCapSquareAnchor = &H11
+LineCapRoundAnchor = &H12
+LineCapDiamondAnchor = &H13
+LineCapArrowAnchor = &H14
+LineCapCustom = &HFF
+LineCapAnchorMask = &HF0
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| LineCapFlat | Specifies that the line ends at the last point. The end is squared off. |
+| LineCapSquare | Specifies a square cap. The center of the square is the last point in the line. The height and width of the square are the line width. |
+| LineCapRound | Specifies a circular cap. The center of the circle is the last point in the line. The diameter of the circle is the line width. |
+| LineCapTriangle | Specifies a triangular cap. The base of the triangle is the last point in the line. The base of the triangle is the line width. |
+| LineCapNoAnchor | Specifies that the line ends are not anchored. |
+| LineCapSquareAnchor | Specifies that the line ends are anchored with a square. The center of the square is the last point in the line. The height and width of the square are the line width. |
+| LineCapRoundAnchor | Specifies that the line ends are anchored with a circle. The center of the circle is at the last point in the line. The circle is wider than the line. |
+| LineCapDiamondAnchor | Specifies that the line ends are anchored with a diamond (a square turned at 45 degrees). The center of the diamond is at the last point in the line. The diamond is wider than the line. |
+| LineCapArrowAnchor | Specifies that the line ends are anchored with arrowheads. The arrowhead point is located at the last point in the line. The arrowhead is wider than the line. |
+| LineCapCustom | Specifies that the line ends are made from a **CustomLineCap**. |
