@@ -1761,3 +1761,18 @@ ObjectTypeMin = ObjectTypeBrush
 
 To determine whether the object type value of an EMF+ record is valid, call **ObjectTypeIsValid**.
 
+# <a name="PaletteFlags"></a>PaletteFlags Enumeration
+
+The **PaletteFlags** enumeration indicates attributes of the color data in a palette.
+
+```
+PaletteFlagsHasAlpha    = &H0001
+PaletteFlagsGrayScale   = &H0002
+PaletteFlagsHalftone    = &H0004
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PaletteFlagsHasAlpha | Indicates that one or more of the palette entries contains alpha (transparency) information. |
+| PaletteFlagsGrayScale | Indicates that the palette contains only grayscale entries. |
+| PaletteFlagsHalftone | Indicates that the palette is the Microsoft Windows halftone palette. |
