@@ -1986,3 +1986,58 @@ SmoothingModeAntiAlias = 4
 #### Remarks
 
 Smoothing performed by an 8 X 4 box filter gives better results for nearly vertical lines than it does for nearly horizontal lines. Smoothing performed by an 8 X 8 box filter gives equally good results for nearly vertical and nearly horizontal lines. The 8x8 algorithm produces higher quality smoothing but is slower than the 8 X 4 algorithm.
+
+# <a name="Status"></a>Status Enumeration
+
+The **Status** enumeration indicates the result of a Microsoft Windows GDI+ function call.
+
+```
+Ok = 0
+GenericError = 1
+InvalidParameter = 2
+OutOfMemory = 3
+ObjectBusy = 4
+InsufficientBuffer = 5
+NotImplemented = 6
+Win32Error = 7
+WrongState = 8
+Aborted = 9
+FileNotFound = 10
+ValueOverflow = 11
+AccessDenied = 12
+UnknownImageFormat = 13
+FontFamilyNotFound = 14
+FontStyleNotFound = 15
+NotTrueTypeFont = 16
+UnsupportedGdiplusVersion = 17
+GdiplusNotInitialized = 18
+PropertyNotFound = 19
+PropertyNotSupported = 20
+ProfileNotFound = 21
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| Ok | Indicates that the function call was successful. |
+| GenericError | Indicates that there was an error on the function call, which is identified as something other than those defined by the other elements of this enumeration. |
+| InvalidParameter | Indicates that one of the arguments passed to the function was not valid. |
+| OutOfMemory | Indicates that the operating system is out of memory and could not allocate memory to process the function call. |
+| ObjectBusy | Indicates that one of the arguments specified in the application programming interface (API) call is already in use in another thread. | 
+| InsufficientBuffer | Indicates that a buffer specified as an argument in the API call is not large enough to hold the data to be received. | 
+| NotImplemented | Indicates that the function is not implemented. |
+| Win32Error | Indicates that the function generated a Microsoft Win32 error. |
+| WrongState | Indicates that the object is in an invalid state to satisfy the API call. |
+| Aborted | Indicates that the function was aborted. |
+| FileNotFound | Indicates that the specified image file or metafile cannot be found. |
+| ValueOverflow | Indicates that the function performed an arithmetic operation that produced a numeric overflow. |
+| AccessDenied | Indicates that a write operation is not allowed on the specified file. |
+| UnknownImageFormat | Indicates that the specified image file format is not known. |
+| FontFamilyNotFound | Indicates that the specified font family cannot be found. Either the font family name is incorrect or the font family is not installed. |
+| FontStyleNotFound | Indicates that the specified style is not available for the specified font family. |
+| NotTrueTypeFont | Indicates that the font retrieved from an HDC or LOGFONT is not a TrueType font and cannot be used with GDI+. |
+| UnsupportedGdiplusVersion | Indicates that the version of GDI+ that is installed on the system is incompatible with the version with which the application was compiled. |
+| GdiplusNotInitialized | Indicates that the GDI+API is not in an initialized state. To function, all GDI+ objects require that GDI+ be in an initialized state. Initialize GDI+ by calling GdiplusStartup. |
+| PropertyNotFound | Indicates that the specified property does not exist in the image. |
+| PropertyNotSupported | Indicates that the specified property is not supported by the format of the image and, therefore, cannot be set. |
+| ProfileNotFound | Indicates that the color profile required to save an image in CMYK format was not found. |
+
