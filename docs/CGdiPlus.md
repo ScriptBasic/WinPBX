@@ -1035,3 +1035,19 @@ CompositingQualityAssumeLinear   = 4
 When you specify that gamma correction should not be applied, the image data to be rendered (blended with the background) is assumed to be in a linear color space with a gamma value of 1.0. As a result, no gamma adjustment is applied to the image data before or after blending the image with the background.
 
 When you specify that gamma correction should be applied, the image data to be rendered (blended with the background) is assumed to be in the sRGB color space with a gamma value of 2.2. To ensure accurate blending, the input image data is transformed into a linear (gamma = 1.0) space before the colors are blended and transformed back into sRGB (gamma = 2.2) space afterward. This mode results in a more accurate blend at the expense of additional processing time. 
+
+# <a name="CoordinateSpace"></a>CoordinateSpace Enumeration
+
+The **CoordinateSpace** enumeration specifies coordinate spaces. This enumeration is used by the **GdipTransformPoints** and **GdipTransformPointsI** functions, which converts points from one coordinate space to another.
+
+```
+CoordinateSpaceWorld  = 0
+CoordinateSpacePage   = 1
+CoordinateSpaceDevice = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| CoordinateSpaceWorld | Specifies the world coordinate space. |
+| CoordinateSpacePage | Specifies the page coordinate space. |
+| CoordinateSpaceDevice | Specifies the device coordinate space. |
