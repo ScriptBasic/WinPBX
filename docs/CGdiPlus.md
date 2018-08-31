@@ -680,3 +680,23 @@ END TYPE
 | **length** | Size, in bytes, of the value array. |
 | **wtype** | Integer that identifies the data type of the values in the value array. Constants that identify various data types (**PropertyTagTypeByte**, **PropertyTagTypeASCII**, and the like) are defined in Gdiplusimaging.inc. |
 | **value** | Pointer to an array of values. Each value in the array has the data type specified by the type data member. |
+
+# <a name="PWMFRect16"></a>PWMFRect16 Structure
+
+The **PWMFRect16** structure defines a rectangle that bounds a placeable metafile. The rectangle defines the size and position of the metafile.
+
+```
+TYPE PWMFRect16
+   Left AS INT16
+   Top AS INT16
+   Right AS INT16
+   Bottom AS INT16
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Left** | Left coordinate of the rectangle that bounds the metafile. |
+| **Top** | Top coordinate of the rectangle that bounds the metafile. |
+| **Right** | Right coordinate of the rectangle that bounds the metafile. |
+| **Bottom** | Bottom coordinate of the rectangle that bounds the metafile. |
