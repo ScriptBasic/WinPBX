@@ -2249,3 +2249,76 @@ EncoderLuminanceTable   = "{EDB33BCE-0266-4A77-B904-27216099E717}"
 EncoderChrominanceTable = "{F2E455DC-09B3-4316-8260-676ADA32481C}"
 EncoderSaveFlag         = "{292266FC-AC40-47BF-8CFC-A85B89A655DE}"
 ```
+
+# <a name="Constants2"></a>Image File Format Constants
+
+The **GdipGetImageRawFormat** function returns a globally unique identifier (GUID) that indicates the file format of an image. The following constants represent the GUIDs that identify those file formats. 
+
+```
+ImageFormatUndefined = "{B96B3CA9-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatMemoryBMP = "{B96B3CAA-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatBMP       = "{B96B3CAB-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatEMF       = "{B96B3CAC-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatWMF       = "{B96B3CAD-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatJPEG      = "{B96B3CAE-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatPNG       = "{B96B3CAF-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatGIF       = "{B96B3CB0-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatTIFF      = "{B96B3CB1-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatEXIF      = "{B96B3CB2-0728-11D3-9D7B-0000F81EF32E}"
+ImageFormatIcon      = "{B96B3CB5-0728-11D3-9D7B-0000F81EF32E}"
+```
+
+# <a name="Constants3"></a>Image Frame Dimension Constants 
+
+The Graphics Interchange Format (GIF) and Tagged Image File Format (TIFF) image file formats enable you to store multiple frames in a single image file. Multiple frames in a GIF file are used for animation, so the frames are said to be in the time dimension. Multiple frames in a TIFF file are typically used as separate pages, so the frames are said to be in the page dimension. 
+
+The following constants represent globally unique identifiers (GUIDs) that identify the page and time dimensions. 
+
+```
+FrameDimensionTime       = "{6AEDBD6D-3FB5-418A-83A6-7F45229DC872}"
+FrameDimensionResolution = "{84236F7B-3BD3-428F-8DAB-4EA1439CA315}"
+FrameDimensionPage       = "{7462DC86-6180-4C7E-8E3F-EE7333A7A483}"
+```
+
+# <a name="Constants4"></a>Image Pixel Format Constants
+
+The following constants specify various pixel formats used in bitmaps. 
+
+```
+PixelFormat1bppIndexed    = 196865
+PixelFormat4bppIndexed    = 197634
+PixelFormat8bppIndexed    = 198659
+PixelFormat16bppGrayScale = 1052676
+PixelFormat16bppRGB555    = 135173
+PixelFormat16bppRGB565    = 135174
+PixelFormat16bppARGB1555  = 397319
+PixelFormat24bppRGB       = 137224
+PixelFormat32bppRGB       = 139273
+PixelFormat32bppARGB      = 2498570
+PixelFormat32bppPARGB     = 925707
+PixelFormat48bppRGB       = 1060876
+PixelFormat64bppARGB      = 3424269
+PixelFormat64bppPARGB     = 29622286
+PixelFormatMax            = 15
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PixelFormat1bppIndexed | Specifies that the format is 1 bit per pixel, indexed. |
+| PixelFormat4bppIndexed | Specifies that the format is 4 bits per pixel, indexed. |
+| PixelFormat8bppIndexed | Specifies that the format is 8 bits per pixel, indexed. |
+| PixelFormat16bppARGB1555  | Specifies that the format is 16 bits per pixel; 1 bit is used for the alpha component, and 5 bits each are used for the red, green, and blue components. |
+| PixelFormat16bppGrayScale | Specifies that the format is 16 bits per pixel, grayscale. 
+| PixelFormat16bppRGB555 | Specifies that the format is 16 bits per pixel; 5 bits each are used for the red, green, and blue components. The remaining bit is not used. |
+| PixelFormat16bppRGB565 | Specifies that the format is 16 bits per pixel; 5 bits are used for the red component, 6 bits are used for the green component, and 5 bits are used for the blue component. |
+| PixelFormat24bppRGB | Specifies that the format is 24 bits per pixel; 8 bits each are used for the red, green, and blue components. |
+| PixelFormat32bppARGB | Specifies that the format is 32 bits per pixel; 8 bits each are used for the alpha, red, green, and blue components. |
+| PixelFormat32bppPARGB | Specifies that the format is 32 bits per pixel; 8 bits each are used for the alpha, red, green, and blue components. The red, green, and blue components are premultiplied according to the alpha component. |
+| PixelFormat32bppRGB | Specifies that the format is 32 bits per pixel; 8 bits each are used for the red, green, and blue components. The remaining 8 bits are not used. |
+| PixelFormat48bppRGB | Specifies that the format is 48 bits per pixel; 16 bits each are used for the red, green, and blue components. |
+| PixelFormat64bppARGB | Specifies that the format is 64 bits per pixel; 16 bits each are used for the alpha, red, green, and blue components. |
+| PixelFormat64bppPARGB | Specifies that the format is 64 bits per pixel; 16 bits each are used for the alpha, red, green, and blue components. The red, green, and blue components are premultiplied according to the alpha component. |
+
+#### Remarks
+
+**PixelFormat48bppRGB**, **PixelFormat64bppARGB**, and **PixelFormat64bppPARGB** use 16 bits per color component (channel). Microsoft Windows GDI+ version 1.0 can read 16-bits-per-channel images, but such images are converted to an 8-bits-per-channel format for processing, displaying, and saving.
