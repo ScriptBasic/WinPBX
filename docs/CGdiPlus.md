@@ -1528,7 +1528,7 @@ ImageLockModeUserInputBuf = &H0004
 
 # <a name="ImageType"></a>ImageType Enumeration
 
-The **ImageType** enumeration indicates whether an image is a bitmap or a metafile. The GdipGetImageType function returns an element of this enumeration.
+The **ImageType** enumeration indicates whether an image is a bitmap or a metafile. The **GdipGetImageType** function returns an element of this enumeration.
 
 ```
 ImageTypeUnknown   = 0
@@ -1569,3 +1569,41 @@ InterpolationModeHighQualityBicubic = 7
 | InterpolationModeNearestNeighbor | Specifies nearest-neighbor interpolation. |
 | InterpolationModeHighQualityBilinear | Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking. |
 | InterpolationModeHighQualityBicubic | Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
+
+# <a name="ItemDataPosition"></a>ItemDataPosition Enumeration
+
+The **ItemDataPosition** enumeration is used to specify the location of custom metadata in an image file. 
+
+```
+ItemDataPositionAfterHeader = 0
+ItemDataPositionAfterPalette = 1
+ItemDataPositionAfterBits = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ItemDataPositionAfterHeader | Specifies that custom metadata is stored after the file header. Valid for JPEG, PNG, and GIF. |
+| ItemDataPositionAfterPalette | Specifies that custom metadata is stored after the palette. Valid for PNG. |
+| ItemDataPositionAfterBits | Specifies that custom metadata is stored after the pixel data. Valid for GIF and PNG. |
+
+#### Remarks
+
+GDI+ supports custom metadata for JPEG, PNG, and GIF image files.
+
+# <a name="LinearGradientMode"></a>LinearGradientMode Enumeration
+
+The **LinearGradientMode** enumeration specifies the direction in which the change of color occurs for a linear gradient brush.
+
+```
+LinearGradientModeHorizontal         = 0
+LinearGradientModeVertical           = 1
+LinearGradientModeForwardDiagonal    = 2
+LinearGradientModeBackwardDiagonal   = 3
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| LinearGradientModeHorizontal | Specifies the color to change in a horizontal direction from the left of the display to the right of the display. |
+| LinearGradientModeVertical | Specifies the color to change in a vertical direction from the top of the display to the bottom of the display. |
+| LinearGradientModeForwardDiagonal | Specifies the color to change in a forward diagonal direction from the upper-left corner to the lower-right corner of the display. |
+| LinearGradientModeBackwardDiagonal | Specifies the color to change in a backward diagonal direction from the upper-right corner to the lower-left corner of the display. |
