@@ -734,13 +734,11 @@ Although placeable metafiles are quite common, they are not directly supported b
 The **BrushType** enumeration indicates the type of brush. There are five types of brushes.
 
 ```
-enum
-   BrushTypeSolidColor = 0
-   BrushTypeHatchFill = 1
-   BrushTypeTextureFill = 2
-   BrushTypePathGradient = 3
-   BrushTypeLinearGradient = 4
-end enum
+BrushTypeSolidColor = 0
+BrushTypeHatchFill = 1
+BrushTypeTextureFill = 2
+BrushTypePathGradient = 3
+BrushTypeLinearGradient = 4
 ```
 
 | Member     | Description |
