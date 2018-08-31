@@ -949,3 +949,19 @@ ColorChannelFlagsLast = 4
 | ColorChannelFlagsM | Specifies the magenta color channel. |
 | ColorChannelFlagsY | Specifies the yellow color channel. |
 | ColorChannelFlagsK | Specifies the black color channel. |
+
+# <a name="ColorMatrixFlags"></a>ColorMatrixFlags Enumeration
+
+The **ColorMatrixFlags** enumeration specifies the types of images and colors that will be affected by the color and grayscale adjustment settings. It is used by the GdipSetImageAttributesColorMatrix function.
+
+```
+ColorMatrixFlagsDefault = 0
+ColorMatrixFlagsSkipGrays = 1
+ColorMatrixFlagsAltGray = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ColorMatrixFlagsDefault | Specifies that all color values (including grays) are adjusted by the same color-adjustment matrix. |
+| ColorMatrixFlagsSkipGrays | Specifies that colors are adjusted but gray shades are not adjusted. A gray shade is any color that has the same value for its red, green, and blue components. |
+| ColorMatrixFlagsAltGray | Specifies that colors are adjusted by one matrix and gray shades are adjusted by another matrix. |
