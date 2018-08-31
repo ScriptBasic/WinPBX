@@ -510,7 +510,7 @@ END TYPE
 
 # <a name="ImageCodecInfo"></a>ImageCodecInfo Structure
 
-An **ImageCodecInfo** structure stores information about an image codec (encoder/decoder). GDI+ provides several built-in image codecs. You can obtain information about those codecs by calling the GetImageEncoders function and the **GetImageDecoders** function. Each of those functions returns an array of **ImageCodecInfo** structures, one for each available encoder or decoder.
+An **ImageCodecInfo** structure stores information about an image codec (encoder/decoder). GDI+ provides several built-in image codecs. You can obtain information about those codecs by calling the **GetImageEncoders** function and the **GetImageDecoders** function. Each of those functions returns an array of **ImageCodecInfo** structures, one for each available encoder or decoder.
 
 ```
 TYPE ImageCodecInfo
@@ -546,3 +546,42 @@ END TYPE
 | **SigPattern** | Pointer to an array of bytes that contains the pattern for each signature. |
 | **SigMask** | Pointer to an array of bytes that contains the mask for each signature. |
 
+# <a name="LOGFONTA"></a>LOGFONTA Structure
+
+Defines the attributes of a font.
+
+```
+TYPE LOGFONTA
+   lfHeight AS LONG
+   lfWidth AS LONG
+   lfEscapement AS LONG
+   lfOrientation AS LONG
+   lfWeight AS LONG
+   lfItalic AS UBYTE
+   lfUnderline AS UBYTE
+   lfStrikeOut AS UBYTE
+   lfCharSet AS UBYTE
+   lfOutPrecision AS UBYTE
+   lfClipPrecision AS UBYTE
+   lfQuality AS UBYTE
+   lfPitchAndFamily AS UBYTE
+   lfFaceName AS ZSTRING * 32   ' LF_FACESIZE
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **lfHeight** | Value of type LONG that specifies the height, in logical units, of the font's character cell or character. |
+| **lfWidth** | Value of type LONG that specifies the width, in logical units, of characters in the font.  |
+| **lfEscapement** | Value of type LONG that contains the angle, in tenths of degrees, between the escapement vector and the x-axis of the device. The escapement vector is parallel to the base line of a row of text. |
+| **lfOrientation** | Value of type LONG that specifies the angle, in tenths of degrees, between each character's base line and the x-axis of the device. |
+| **lfWeight** | Value of type LONG that specifies the weight of the font in the range from 0 through 1000. |
+| **lfItalic** | Value of type BYTE that specifies an italic font if set to TRUE. |
+| **lfUnderline** | Value of type BYTE that specifies an underlined font if set to TRUE. |
+| **lfStrikeOut** | Value of type BYTE that specifies a strikeout font if set to TRUE. |
+| **lfCharSet** | Value of type BYTE that specifies the character set. |
+| **lfOutPrecision** | Value of type BYTE that specifies the output precision. The output precision defines how closely the output must match the requested font's height, width, character orientation, escapement, pitch, and font type. |
+| **lfClipPrecision** | Value of type BYTE that specifies the clipping precision. The clipping precision defines how to clip characters that are partially outside the clipping region. |
+| **lfQuality** | Value of type BYTE that specifies the output quality. The output quality defines how carefully the Microsoft Windows Graphics Device Interface (GDI) must attempt to match the logical-font attributes to those of an actual physical font. |
+| **lfPitchAndFamily** | Value of type BYTE that specifies the pitch and family of the font. |
+| **lfFaceName** | Array of characters that contains a null-terminated string that specifies the typeface name of the font. The length of the string must not exceed 32 characters, including the NULL terminator. |
