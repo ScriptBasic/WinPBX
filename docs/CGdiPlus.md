@@ -718,7 +718,7 @@ END TYPE
 
 | Member     | Description |
 | ---------- | ----------- |
-| **Key** | Identification value that indicates the presence of a placeable metafile header. This value is always &H9AC6CDD7. |
+| **Key** | Identification value that indicates the presence of a placeable metafile header. This value is always &h9AC6CDD7. |
 | **Hmf** | Handle to the metafile in memory. When written to disk, this field is not used and will always contains the value 0. |
 | **BoundingBox** | Destination rectangle, measured in twips, for displaying the metafile. |
 | **Inch** | Number of twips per inch used to represent the image.<br>Normally, there are 1440 twips per inch; however, this number can be changed to scale the image.<br>* A value of 720 specifies that the image is twice its normal size.<br>* A value of 360 specifies that the image is four times its normal size.<br>* A value of 2880 specifies that the image is half its normal size. |
