@@ -1134,4 +1134,4 @@ EmfToWmfBitsFlagsNoXORClip        = &H00000004
 | EmfToWmfBitsFlagsDefault | Specifies the default conversion. |
 | EmfToWmfBitsFlagsEmbedEmf | Specifies that the source EMF metafile is embedded as a comment in the resulting WMF metafile.|
 | EmfToWmfBitsFlagsIncludePlaceable | Specifies that the resulting WMF metafile is in the placeable metafile format; that is, it has the additional 22-byte header required by a placeable metafile. |
-| EmfToWmfBitsFlagsNoXORClip | Specifies that the clipping region is stored in the metafile in the traditional way. If you do not set this flag, the GdipEmfToWmfBits function applies an optimization that stores the clipping region as a path and simulates clipping by using the XOR operator. |
+| EmfToWmfBitsFlagsNoXORClip | Specifies that the clipping region is stored in the metafile in the traditional way. If you do not set this flag, the **GdipEmfToWmfBits** function applies an optimization that stores the clipping region as a path and simulates clipping by using the XOR operator. |
