@@ -1051,3 +1051,51 @@ CoordinateSpaceDevice = 2
 | CoordinateSpaceWorld | Specifies the world coordinate space. |
 | CoordinateSpacePage | Specifies the page coordinate space. |
 | CoordinateSpaceDevice | Specifies the device coordinate space. |
+
+# <a name="CustomLineCapType"></a>CustomLineCapType Enumeration
+
+```
+CustomLineCapTypeDefault = 0
+CustomLineCapTypeAdjustableArrow = 1
+```
+# <a name="DashCap"></a>DashCap Enumeration
+
+The **DashCap** enumeration specifies the type of graphic shape to use on both ends of each dash in a dashed line.
+
+```
+DashCapFlat = 0
+DashCapRound = 2
+DashCapTriangle = 3
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| DashCapFlat | Specifies a square cap that squares off both ends of each dash. |
+| DashCapRound | Specifies a circular cap that rounds off both ends of each dash. |
+| DashCapTriangle | Specifies a triangular cap that points both ends of each dash. |
+
+#### Remarks
+
+If you set the alignment of a Pen to **PenAlignmentInset**, you cannot use that pen to draw triangular dash caps.
+
+# <a name="DashStyle"></a>DashStyle Enumeration
+
+The **DashStyle** enumeration specifies the line style of a line drawn with a Microsoft Windows GDI+ pen. The line can be drawn by using one of several predefined styles or a custom style.
+
+```
+DashStyleSolid      = 0
+DashStyleDash       = 1
+DashStyleDot        = 2
+DashStyleDashDot    = 3
+DashStyleDashDotDot = 4
+DashStyleCustom     = 5
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| DashStyleSolid | Specifies a solid line. |
+| DashStyleDash | Specifies a dashed line. |
+| DashStyleDot | Specifies a dotted line. |
+| DashStyleDashDot | Specifies an alternating dash-dot line. |
+| DashStyleDashDotDot | Specifies an alternating dash-dot-dot line. |
+| DashStyleCustom | Specifies a user-defined, custom dashed line. |
