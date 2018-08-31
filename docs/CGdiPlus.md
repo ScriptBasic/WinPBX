@@ -419,3 +419,19 @@ END TYPE
 | ---------- | ----------- |
 | **x** | Specifies the x-coordinate of a point. |
 | **y** | Specifies the y-coordinate of a point. |
+
+# <a name="GpPointF"></a>GpPointF Structure
+
+Defines the x- and y-coordinates of a point.
+
+```
+TYPE GpPoint
+   x AS FLOAT
+   y AS FLOAT
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **x** | Specifies the x-coordinate of a point. |
+| **y** | Specifies the y-coordinate of a point. |
