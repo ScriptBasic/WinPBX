@@ -93,3 +93,51 @@ The **CGpGraphics** class provides methods for drawing lines, curves, figures, i
 | [TransformPoints](#TransformPoints) | Converts an array of points from one coordinate space to another. |
 | [TranslateClip](#TranslateClip) | Translates the clipping region of this Graphics object. |
 | [TranslateTransform](#TranslateTransform) | Updates this Graphics object's world transformation matrix with the product of itself and a translation matrix. |
+
+# CGpGraphicsPath Class
+
+The **CGpGraphicsPath** allows the creation of **GraphicPath** objects. A **GraphicsPath** object stores a sequence of lines, curves, and shapes. You can draw the entire sequence by calling the **DrawPath** method of a **Graphics** object. You can partition the sequence of lines, curves, and shapes into figures, and with the help of a **GraphicsPathIterator** object, you can draw selected figures. You can also place markers in the sequence, so that you can draw selected portions of the path.
+
+**Inherits from**: CGpBase.
+**Imclude file**: CGpPath.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#ConstructorsGraphicsPath) | Creates a Graphics object. |
+| [AddArc](#AddArc) | Adds an elliptical arc to the current figure of this path. |
+| [AddBezier](#AddBezier) | Adds a Bézier spline to the current figure of this path. |
+| [AddBeziers](#AddBeziers) | Adds a sequence of connected Bézier splines to the current figure of this path. |
+| [AddClosedCurve](#AddClosedCurve) | Adds a closed cardinal spline to this path. |
+| [AddCurve](#AddCurve) | Adds a cardinal spline to this path. |
+| [AddEllipse](#AddEllipse) | Adds an ellipse to this path. |
+| [AddLine](#AddLine) | Adds a line to the current figure of this path. |
+| [AddLines](#AddLines) | Adds a sequence of connected lines to the current figure of this path. |
+| [AddPath](#AddPath) | Adds a path to this path. |
+| [AddPie](#AddPie) | Adds a pie to this path. An arc is a portion of an ellipse, and a pie is a portion of the area enclosed by an ellipse. |
+| [AddPolygon](#AddPolygon) | Adds a polygon to this path. |
+| [AddRectangle](#AddRectangle) | Adds a rectangle to this path. |
+| [AddRectangles](#AddRectangles) | Adds a sequence of rectangles to this path. |
+| [AddString](#AddString) | Adds the outline of a string to this path. |
+| [ClearMarkers](#ClearMarkers) | Clears the markers from this path. |
+| [Clone](#Clone) | Copies the contents of the existing GraphicsPath object into a new GraphicsPath object. |
+| [CloseAllFigures](#CloseAllFigures) | Clears the markers from this path. |
+| [CloseFigure](#CloseFigure) | Clears the current figure of this path. |
+| [Flatten](#Flatten) | Applies a transformation to this path and converts each curve in the path to a sequence of connected lines. |
+| [GetBounds](#GetBounds) | Gets a bounding rectangle for this path. |
+| [GetFillMode](#GetFillMode) | Gets the fill mode of this path. |
+| [GetLastPoint](#GetLastPoint) | Gets the ending point of the last figure in this path. |
+| [GetPathData](#GetPathData) | Gets an array of points and an array of point types from this path. |
+| [GetPathPoints](#GetPathPoints) | Gets this path's array of points. |
+| [GetPathTypes](#GetPathTypes) | Gets this path's array of point types. |
+| [GetPointCount](#GetPointCount) | Gets the number of points in this path's array of data points. |
+| [IsOutlineVisible](#IsOutlineVisible) | Determines whether a specified point touches the outline of this path when the path is drawn by a specified Graphics object and a specified pen. |
+| [IsVisible](#IsVisible) | Determines whether a specified point lies in the area that is filled when this path is filled by a specified Graphics object. |
+| [Outline](#Outline) | Transforms and flattens this path, and then converts this path's data points so that they represent only the outline of the path. |
+| [Reset](#Reset) | Empties the path and sets the fill mode to FillModeAlternate. |
+| [Reverse](#Reverse) | Reverses the order of the points that define this path's lines and curves. |
+| [SetFillMode](#SetFillMode) | Sets the fill mode of this path. |
+| [SetMarker](#SetMarker) | Designates the last point in this path as a marker point. |
+| [StartFigure](#StartFigure) | Starts a new figure without closing the current figure. |
+| [Transform](#Transform) | Multiplies each of this path's data points by a specified matrix. |
+| [Warp](#Warp) | Applies a warp transformation to this path. |
+| [Widen](#Widen) | Replaces this path with curves that enclose the area that is filled when this path is drawn by a specified pen. |
