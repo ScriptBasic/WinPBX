@@ -475,3 +475,19 @@ END TYPE
 | **y** | Specifies the y-coordinate of the upper-left corner of a rectangle. |
 | **width** | Specifies the width of a rectangle. |
 | **height** | Specifies the heigth of a rectangle. |
+
+# <a name="GpSize"></a>GpSize Structure
+
+Encapsulates a Width and Height dimension in a 2-D coordinate system.
+
+```
+TYPE GpSize
+   Width AS INT_
+   Height AS INT_
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Width** | Vertical measurement. |
+| **Height** | Horizontal measurement. |
