@@ -324,3 +324,29 @@ END TYPE
 | **nPalEntries** | Number of entries in the metafile palette. |
 | **szlDevice** | Resolution, in pixels, of the reference device. |
 | **szlMillimeters** | Resolution, in millimeters, of the reference device. |
+
+# <a name="GdiplusStartupInput"></a>GdiplusStartupInput Structure
+
+The **GdiplusStartupInput** structure holds a block of arguments that are required by the **GdiplusStartup** function.
+
+```
+TYPE GdiplusStartupInput
+   GdiplusVersion AS UINT32
+   DebugEventCallback AS DebugEventProc
+   SuppressBackgroundThread AS BOOL
+   SuppressExternalCodecs AS BOOL
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **GdiplusVersion** | Specifies the version of Microsoft Windows GDI+. Must be 1. |
+| **DebugEventCallback** | Pointer to a callback function that GDI+ can call, on debug builds, for assertions and warnings. The default value is NULL. |
+| **SuppressBackgroundThread** | Boolean value that specifies whether to suppress the GDI+ background thread. If you set this member to TRUE, GdiplusStartup returns (in its output parameter) a pointer to a hook function and a pointer to an unhook function. You must call those functions appropriately to replace the background thread. If you do not want to be responsible for calling the hook and unhook functions, set this member to FALSE. The default value is FALSE. |
+| **SuppressExternalCodecs** | Boolean value that specifies whether you want GDI+ to suppress external image codecs. GDI+ version 1.0 does not support external image codecs, so this parameter is ignored. |
+
+#### Remarks
+
+The **GdiplusStartupInput** structure provides a constructor that sets the **GdiplusVersion** member to 1 and allows you to specify values for the other three members. All of the constructor parameters are optional, so you can declare a variable of type GdiplusStartupInput without passing any arguments to the constructor, and all of the members will be initialized with appropriate default values.
+
+If you set the **SuppressBackgroundThread** member of the **GdiplusStartupinput** parameter to TRUE, you must call the hook and unhook functions returned in the output parameter. Call those functions before and after the application's main message loop; that is, a message loop that is active for the lifetime of GDI+. Call the hook function before the loop starts, and call the unhook function after the loop ends.
