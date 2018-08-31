@@ -1099,3 +1099,21 @@ DashStyleCustom     = 5
 | DashStyleDashDot | Specifies an alternating dash-dot line. |
 | DashStyleDashDotDot | Specifies an alternating dash-dot-dot line. |
 | DashStyleCustom | Specifies a user-defined, custom dashed line. |
+
+# <a name="DriverStringOptions"></a>DriverStringOptions Enumeration
+
+The **DriverStringOptions** enumeration specifies the spacing, orientation, and quality of the rendering for driver strings.
+
+```
+DriverStringOptionsCmapLookup      = 1
+DriverStringOptionsVertical        = 2
+DriverStringOptionsRealizedAdvance = 4
+DriverStringOptionsLimitSubpixel   = 8
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| DriverStringOptionsCmapLookup | Specifies that the positions of the glyphs are taken from a character map lookup table. If this flag is not set, the positions are taken from an array of coordinates. |
+| DriverStringOptionsVertical | Specifies that the string is displayed vertically. |
+| DriverStringOptionsRealizedAdvance | Specifies that the glyph positions are calculated from the position of the first glyph. If this flag is not set, the glyph positions are obtained from an array of coordinates. |
+| DriverStringOptionsLimitSubpixel | Specifies that less memory should be used for cache of antialiased glyphs. This also produces lower quality. If this flag is set, more memory is used, but the quality is higher. |
