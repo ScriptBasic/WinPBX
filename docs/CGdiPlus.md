@@ -741,7 +741,7 @@ BrushTypePathGradient = 3
 BrushTypeLinearGradient = 4
 ```
 
-| Member     | Description |
+| Constant   | Description |
 | ---------- | ----------- |
 | **BrushTypeSolidColor** | Indicates a brush of type SolidBrush. A solid brush paints a single, constant color that can be opaque or transparent. |
 | **BrushTypeHatchFill** | Indicates a brush of type **HatchBrush**. A hatch brush paints a background and paints, over that background, a pattern of lines, dots, dashes, squares, crosshatch, or some variation of these. The hatch brush consists of two colors: one for the background and one for the pattern over the background. The color of the background is called the background color, and the color of the pattern is called the foreground color.  |
@@ -906,3 +906,27 @@ RedMask = &h00FF0000
 GreenMask = &h0000FF00
 BlueMask = &hh000000FF
 ```
+
+# <a name="ColorAdjustType"></a>ColorAdjustType Enumeration
+
+The **ColorAdjustType** enumeration specifies which GDI+ objects use color-adjustment information. You can adjust the colors in a rendered image using the **ImageAttributes functions**. There are five adjustment categories: default, bitmap, brush, pen, and text.
+
+```
+ColorAdjustTypeDefault = 0
+ColorAdjustTypeBitmap  = 1
+ColorAdjustTypeBrush   = 2
+ColorAdjustTypePen     = 3
+ColorAdjustTypeText    = 4
+ColorAdjustTypeCount   = 5
+ColorAdjustTypeAny     = 6
+```
+
+| Constant   | Description |
+| ---------- | ----------- |
+| ColorAdjustTypeDefault | Specifies that color or grayscale adjustment applies to all categories that do not have adjustment settings of their own. |
+| ColorAdjustTypeBitmap | Specifies that color or grayscale adjustment applies to bitmapped images. |
+| ColorAdjustTypeBrush | Specifies that color or grayscale adjustment applies to brush operations in metafiles. |
+| ColorAdjustTypePen | Specifies that color or grayscale adjustment applies to pen operations in metafiles. |
+| ColorAdjustTypeText | Specifies that color or grayscale adjustment applies to text drawn in metafiles. |
+| ColorAdjustTypeCount | Used internally to record the number of color adjustment types. |
+| ColorAdjustTypeAny | Reserved. |
