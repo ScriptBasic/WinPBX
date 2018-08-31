@@ -624,3 +624,38 @@ END TYPE
 | **lfQuality** | Value of type BYTE that specifies the output quality. The output quality defines how carefully the Microsoft Windows Graphics Device Interface (GDI) must attempt to match the logical-font attributes to those of an actual physical font. |
 | **lfPitchAndFamily** | Value of type BYTE that specifies the pitch and family of the font. |
 | **lfFaceName** | Array of wide characters that contains a null-terminated string that specifies the typeface name of the font. The length of the string must not exceed 32 characters, including the NULL terminator. |
+
+# <a name="MetafileHeader"></a>MetafileHeader Structure
+
+A **MetafileHeader** structure stores properties of an associated metafile.
+
+```
+UNION MetafileHeader_UNION
+   WmfHeader AS METAHEADER
+   EmfHeader AS ENHMETAHEADER3
+END UNION
+
+TYPE MetafileHeader
+   Type_ AS MetafileType     ' // The type of the associated metafile
+   Size AS UINT              ' // Size of the metafile (in bytes)
+   Version AS UINT           ' // EMF+, EMF, or WMF version
+   EmfPlusFlags AS UINT
+   DpiX AS REAL
+   DpiY AS REAL
+   X AS INT_                 ' // Bounds in device units
+   Y AS INT_
+   Width AS INT_
+   Height AS INT_
+   union
+      WmfHeader as METAHEADER
+      EmfHeader as ENHMETAHEADER3
+   end union
+   EmfPlusHeaderSize AS INT_ ' // size of the EMF+ header in file
+   LogicalDpiX AS INT_       ' // Logical Dpi of reference Hdc
+   LogicalDpiY AS INT_       ' // usually valid only for EMF+
+END TYPE
+```
+
+#### Remarks
+
+Metafiles provide a device-independent and application-independent way to share pictures. They contain records that describe a sequence of graphics application programming interfaces (APIs) to invoke in a particular order with their associated graphics data. Metafiles can be recorded by an application and later played back by that application or by another one to reproduce a particular picture. They can also be used to send content to a print spooler. Enhanced metafiles support the ability to provide both Microsoft Windows GDI+ and Windows Graphics Device Interface (GDI) descriptions of the same picture so that both GDI+ and down-level GDI applications can render it.
