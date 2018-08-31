@@ -185,8 +185,8 @@ END TYPE
 
 | Member     | Description |
 | ---------- | ----------- |
-| **oldColor** | The original color.  |
-| **newColor** | The new color.  |
+| **oldColor** | The original color. |
+| **newColor** | The new color. |
 
 #### Remarks
 
@@ -206,3 +206,21 @@ UNION GDIP_COLORMAP
    END TYPE
 END UNION
 ```
+
+# <a name="ColorMatrix"></a>ColorMatrix Structure
+
+The **ColorMap** structure contains two COLORREF values. Several of the **ImageAttributes** functions adjust image colors by using a color remap table, which is an array of **ColorMap** structures.
+
+```
+TYPE ColorMatrix
+   m(0 to 5-1, 0 to 5-1) AS REAL
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **m** | 55 array of real numbers. |
+
+#### Remarks
+
+A 55 color matrix is a homogeneous matrix for a 4-space transformation. The element in the fifth row and fifth column of a 55 homogeneous matrix must be 1, and all of the other elements in the fifth column must be 0. Color matrices are used to transform color vectors. The first four components of a color vector hold the red, green, blue, and alpha components (in that order) of a color. The fifth component of a color vector is always 1.
