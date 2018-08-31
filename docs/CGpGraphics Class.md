@@ -141,3 +141,23 @@ The **CGpGraphicsPath** allows the creation of **GraphicPath** objects. A **Grap
 | [Transform](#Transform) | Multiplies each of this path's data points by a specified matrix. |
 | [Warp](#Warp) | Applies a warp transformation to this path. |
 | [Widen](#Widen) | Replaces this path with curves that enclose the area that is filled when this path is drawn by a specified pen. |
+
+# CGpGraphicsPathIterator Class
+
+The **CGpGraphicsPathIterator** class provides methods for isolating selected subsets of the path stored in a **GraphicsPath** object. A path consists of one or more figures. You can use a **GraphicsPathIterator** to isolate one or more of those figures. A path can also have markers that divide the path into sections. You can use a **GraphicsPathIterator** object to isolate one or more of those sections.
+
+**Inherits from**: CGpBase.
+**Imclude file**: CGpPath.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#ConstructorsGraphicsPathIterator) | Creates a new GraphicsPathIterator object and associates it with a GraphicsPath object. |
+| [CopyData](#CopyData) | Copies a subset of the path's data points to a PointF array and copies a subset of the path's point types to a BYTE array. |
+| [Enumerate](#Enumerate) | Copies the path's data points to a PointF array and copies the path's point types to a BYTE array. |
+| [GetCount](#GetCount) | Returns the number of data points in the path. |
+| [GetSubpathCount](#GetSubpathCount) | Returns the number of subpaths (also called figures) in the path. |
+| [HasCurve](#HasCurve) | Determines whether the path has any curves. |
+| [NextMarker](#NextMarker) | Gets the starting index and the ending index of the next marker-delimited section in this iterator's associated path. |
+| [NextPathType](#NextPathType) | Gets the starting index and the ending index of the next group of data points that all have the same type. |
+| [NextSubpath](#NextSubpath) | Gets the starting index and the ending index of the next subpath (figure) in this iterator's associated path. |
+| [Rewind](#Rewind) | Rewinds this iterator to the beginning of its associated path. |
