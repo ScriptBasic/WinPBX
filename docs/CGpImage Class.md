@@ -7,7 +7,7 @@ The **CGpImage** class provides methods for loading and saving raster images (bi
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Constructor](#ConstructorImage) | Create an **Image** object based on a file or stream. |
+| [Constructor](#ConstructorsImage) | Create an **Image** object based on a file or stream. |
 | [Clone](#Clone) | Copies the contents of the existing **Image** object into a new Image object. |
 | [FindFirstItem](#FindFirstItem) | Retrieves the description and the data size of the first metadata item in this Image object. |
 | [FindNextItem](#FindNextItem) | Retrieves the description and the data size of the next metadata item in this Image object. |
@@ -43,3 +43,26 @@ The **CGpImage** class provides methods for loading and saving raster images (bi
 | [SelectActiveFrame](#SelectActiveFrame) | Selects the frame in this Image object specified by a dimension and an index. |
 | [SetPalette](#SetPalette) | Sets the color palette of this Image object. |
 | [SetPropertyItem](#SetPropertyItem) | Sets a property item (piece of metadata) for this Image object. |
+
+# GCpBitmap Class
+
+Extends the **CGpImage** class. The **Bitmap** object expands on the capabilities of the **Image** object by providing additional methods for creating and manipulating raster images.
+
+**Inherits from**: CGpImage.
+**Imclude file**: CGpImage.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructor](#ConstructorsBitmap) | Create a Bitmap object based on an icon or resource file. |
+| [Clone](#Clone) | Creates a new Bitmap object by copying a portion of this bitmap. |
+| [ConvertFormat](#ConvertFormat) | Converts a bitmap to a specified pixel format. |
+| [GetHBITMAP](#GetHBITMAP) | Creates a Windows Graphics Device Interface (GDI) bitmap from this Bitmap object. |
+| [GetHICON](#GetHICON) | Creates an icon from this Bitmap object. |
+| [GetHistogram](#GetHistogram) | Returns one or more histograms for specified color channels of this Bitmap object. |
+| [GetHistogramSize](#GetHistogramSize) | Returns the number of elements (in an array of DWORDs) that you must allocate before you call the GetHistogram method of a Bitmap object. |
+| [GetPixel](#GetPixel) | Gets the color of a specified pixel in this bitmap. |
+| [InitializePalette](#InitializePalette) | Initializes a standard, optimal, or custom color palette. |
+| [LockBits](#LockBits) | Locks a rectangular portion of this bitmap and provides a temporary buffer that you can use to read or write pixel data in a specified format. |
+| [SetPixel](#SetPixel) | Sets the color of a specified pixel in this bitmap. |
+| [SetResolution](#SetResolution) | Sets the resolution of this Bitmap object. |
+| [UnlockBits](#UnlockBits) | Unlocks a portion of this bitmap that was previously locked by a call to LockBits. |
