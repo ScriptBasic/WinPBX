@@ -1806,3 +1806,29 @@ PaletteTypeFixedHalftone256 = 9
 | PaletteTypeFixedHalftone216 | A palette based on six intensities each for the red, green, and blue channels. Also contains the 16 colors of the system palette. Eight of the 16 system palette colors are among the 216 six-intensity combinations of red, green, and blue, so the total number of colors in the palette is 224. If the palette also includes the transparent color, the total number of colors is 225. This palette is sometimes called the Windows halftone palette or the Web palette. |
 | PaletteTypeFixedHalftone252 | A palette based on 6 intensities of red, 7 intensities of green, and 6 intensities of blue. The system palette is not included. The total number of colors is 252. If the palette also includes the transparent color, the total number of colors is 253. |
 | PaletteTypeFixedHalftone256 | A palette based on 8 intensities of red, 8 intensities of green, and 4 intensities of blue. The system palette is not included. The total number of colors is 256. If the transparent color is included in this palette, it must replace one of the RGB combinations. |
+
+# <a name="PathPointType"></a>PathPointType Enumeration
+
+The **PathPointType** enumeration indicates point types and flags for the data points in a path. Bits 0 through 2 indicate the type of a point, and bits 3 through 7 hold a set of flags that specify attributes of a point.
+
+```
+PathPointTypeStart           = 0
+PathPointTypeLine            = 1
+PathPointTypeBezier          = 3
+PathPointTypePathTypeMask    = &H07
+PathPointTypeDashMode        = &H10
+PathPointTypePathMarker      = &H20
+PathPointTypeCloseSubpath    = &H80
+PathPointTypeBezier3         = 3
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PathPointTypeStart | Indicates that the point is the start of a figure. |
+| PathPointTypeLine | Indicates that the point is one of the two endpoints of a line. |
+| PathPointTypeBezier | Indicates that the point is an endpoint or control point of a cubic Bezier spline. |
+| PathPointTypePathTypeMask | Masks all bits except for the three low-order bits, which indicate the point type. |
+| PathPointTypePathDashMode | Not used. |
+| PathPointTypePathMarker | Specifies that the point is a marker. |
+| PathPointTypeCloseSubpath | Specifies that the point is the last point in a closed subpath (figure). |
+| PathPointTypeBezier3 | Indicates that the point is an endpoint or control point of a cubic Bezier spline. |
