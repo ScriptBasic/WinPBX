@@ -373,7 +373,7 @@ END TYPE
 
 # <a name="GpPathData"></a>GpPathData Structure
 
-The **GpPathData** structure is used by the GdipGetPathData function. It has an array of points and an array of types. Each element in the array of types is a byte that specifies the point type and a set of flags for the corresponding element in the array of points. You can use a **GpathData** structure to get or set the data points (and their types) of a path.
+The **GpPathData** structure is used by the **GdipGetPathData** function. It has an array of points and an array of types. Each element in the array of types is a byte that specifies the point type and a set of flags for the corresponding element in the array of points. You can use a **GpathData** structure to get or set the data points (and their types) of a path.
 
 ```
 TYPE GpPathData
@@ -404,3 +404,18 @@ TYPE GDIP_PATHDATA
 END TYPE
 ```
 
+# <a name="GpPoint"></a>GpPoint Structure
+
+Defines the x- and y-coordinates of a point.
+
+```
+TYPE GpPoint
+   x AS INT_
+   y AS INT_
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **x** | Specifies the x-coordinate of a point. |
+| **y** | Specifies the y-coordinate of a point. |
