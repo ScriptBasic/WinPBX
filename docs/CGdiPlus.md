@@ -370,3 +370,37 @@ END TYPE
 | ---------- | ----------- |
 | **NotificationHook** | Receives a pointer to a hook function. |
 | **NotificationUnhook** | Receives a pointer to an unhook function. |
+
+# <a name="GpPathData"></a>GpPathData Structure
+
+The **GpPathData** structure is used by the GdipGetPathData function. It has an array of points and an array of types. Each element in the array of types is a byte that specifies the point type and a set of flags for the corresponding element in the array of points. You can use a **GpathData** structure to get or set the data points (and their types) of a path.
+
+```
+TYPE GpPathData
+   Count AS INT_
+   Points AS GpPointF PTR
+   Types AS BYTE PTR
+END TYPE
+```
+-also-
+```
+type GpPathData as any
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **NotificationHook** | Receives a pointer to a hook function. |
+| **NotificationUnhook** | Receives a pointer to an unhook function. |
+
+#### Remarks
+
+Because of another mess in the FreeBASIC Gdi+ headers, this structure can't be used with 32 and 64-bit at the same time. Therefore, I have declared a replacement in AfxGdiPlus.inc.
+
+```
+TYPE GDIP_PATHDATA
+   Count AS LONG
+   Points AS GpPointF PTR
+   Types AS UBYTE PTR
+END TYPE
+```
+
