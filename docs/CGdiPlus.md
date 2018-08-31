@@ -2198,3 +2198,37 @@ UnitMillimeter = 6
 | UnitInch | Specifies that a unit is 1 inch. |
 | UnitDocument | Specifies that a unit is 1/300 inch. |
 | UnitMillimeter | Specifies that a unit is 1 millimeter. |
+
+# <a name="WarpMode"></a>WarpMode Enumeration
+
+The **WarpMode** enumeration specifies warp modes that can be used to transform images.
+
+```
+WarpModePerspective = 0
+WarpModeBilinear    = 1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| WarpModePerspective | Specifies the perspective warp mode. |
+| WarpModeBilinear | Specifies the bilinear warp mode. |
+
+# <a name="WrapMode"></a>WrapMode Enumeration
+
+The **WrapMode** enumeration specifies how repeated copies of an image are used to tile an area.
+
+```
+WrapModeTile         = 0
+WrapModeTileFlipX    = 1
+WrapModeTileFlipY    = 2
+WrapModeTileFlipXY   = 3
+WrapModeClamp        = 4
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| WrapModeTile | Specifies tiling without flipping. |
+| WrapModeTileFlipX | Species that tiles are flipped horizontally as you move from one tile to the next in a row. |
+| WrapModeTileFlipY | Specifies that tiles are flipped vertically as you move from one tile to the next in a column. |
+| WrapModeTileFlipXY | Specifies that tiles are flipped horizontally as you move along a row and flipped vertically as you move along a column. |
+| WrapModeClamp | Specifies that no tiling takes place. |
