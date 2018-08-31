@@ -2580,3 +2580,9 @@ The following table lists the Microsoft Windows GDI+ image property tags in nume
 | PropertyTagExifSceneType | &hA301 |
 | PropertyTagExifCfaPattern | &hA302 |
 
+**See also**:
+
+[Property Tags in Alphabetical Order](https://docs.microsoft.com/en-us/windows/desktop/gdiplus/-gdiplus-constant-property-tags-in-alphabetical-order)
+[Property Item Descriptions](https://docs.microsoft.com/en-us/windows/desktop/gdiplus/-gdiplus-constant-property-item-descriptions)
+[Image File Format Specification](https://docs.microsoft.com/en-us/windows/desktop/gdiplus/-gdiplus-constant-image-file-format-specifications)
+
