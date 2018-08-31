@@ -435,3 +435,23 @@ END TYPE
 | ---------- | ----------- |
 | **x** | Specifies the x-coordinate of a point. |
 | **y** | Specifies the y-coordinate of a point. |
+
+# <a name="GpRect"></a>GpRect Structure
+
+Defines the upper-left corner, width, and height of a rectangle.
+
+```
+TYPE GpRect
+   x AS INT_
+   y AS INT_
+   width AS INT_
+   height AS INT_
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **x** | Specifies the x-coordinate of the upper-left corner of a rectangle. |
+| **y** | Specifies the y-coordinate of the upper-left corner of a rectangle. |
+| **width** | Specifies the width of a rectangle. |
+| **height** | Specifies the heigth of a rectangle. |
