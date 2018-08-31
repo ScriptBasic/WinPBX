@@ -1289,3 +1289,135 @@ FontStyleStrikeout = 8
 | FontStyleBoldItalic | Specifies the typeface as both bold and italic. |
 | FontStyleUnderline | Specifies underline, which displays a line underneath the baseline of the characters. |
 | FontStyleStrikeout | Specifies strikeout, which displays a horizontal line drawn through the middle of the characters. |
+
+# <a name="GenericFontFamily"></a>GenericFontFamily Enumeration
+
+```
+GenericFontFamilySerif = 0
+GenericFontFamilySansSerif = 1
+GenericFontFamilyMonospace = 2
+```
+
+# <a name="HatchStyle"></a>HatchStyle Enumeration
+
+The **HatchStyle** enumeration specifies the hatch pattern used by a brush of type **HatchBrush**. The hatch pattern consists of a solid background color and lines drawn over the background. 
+
+```
+HatchStyleHorizontal                   = 0
+HatchStyleVertical                     = 1
+HatchStyleForwardDiagonal              = 2
+HatchStyleBackwardDiagonal             = 3
+HatchStyleCross                        = 4
+HatchStyleDiagonalCross                = 5
+HatchStyle05Percent                    = 6
+HatchStyle10Percent                    = 7
+HatchStyle20Percent                    = 8
+HatchStyle25Percent                    = 9
+HatchStyle30Percent                    = 10
+HatchStyle40Percent                    = 11
+HatchStyle50Percent                    = 12
+HatchStyle60Percent                    = 13
+HatchStyle70Percent                    = 14
+HatchStyle75Percent                    = 15
+HatchStyle80Percent                    = 16
+HatchStyle90Percent                    = 17
+HatchStyleLightDownwardDiagonal        = 18
+HatchStyleLightUpwardDiagonal          = 19
+HatchStyleDarkDownwardDiagonal         = 20
+HatchStyleDarkUpwardDiagonal           = 21
+HatchStyleWideDownwardDiagonal         = 22
+HatchStyleWideUpwardDiagonal           = 23
+HatchStyleLightVertical                = 24
+HatchStyleLightHorizontal              = 25
+HatchStyleNarrowVertical               = 26
+HatchStyleNarrowHorizontal             = 27
+HatchStyleDarkVertical                 = 28
+HatchStyleDarkHorizontal               = 29
+HatchStyleDashedDownwardDiagonal       = 30
+HatchStyleDashedUpwardDiagonal         = 31
+HatchStyleDashedHorizontal             = 32
+HatchStyleDashedVertical               = 33
+HatchStyleSmallConfetti                = 34
+HatchStyleLargeConfetti                = 35
+HatchStyleZigZag                       = 36
+HatchStyleWave                         = 37
+HatchStyleDiagonalBrick                = 38
+HatchStyleHorizontalBrick              = 39
+HatchStyleWeave                        = 40
+HatchStylePlaid                        = 41
+HatchStyleDivot                        = 42
+HatchStyleDottedGrid                   = 43
+HatchStyleDottedDiamond                = 44
+HatchStyleShingle                      = 45
+HatchStyleTrellis                      = 46
+HatchStyleSphere                       = 47
+HatchStyleSmallGrid                    = 48
+HatchStyleSmallCheckerBoard            = 49
+HatchStyleLargeCheckerBoard            = 50
+HatchStyleOutlinedDiamond              = 51
+HatchStyleSolidDiamond                 = 52
+HatchStyleTotal     = 53
+HatchStyleLargeGrid = HatchStyleCross
+HatchStyleMin       = HatchStyleHorizontal
+HatchStyleMax       = HatchStyleTotal - 1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| HatchStyleHorizontal | Specifies horizontal lines. |
+| HatchStyleVertical | Specifies vertical lines. |
+| HatchStyleForwardDiagonal | Specifies diagonal lines that slant to the right from top points to bottom points. The lines are antialiased. |
+| HatchStyleBackwardDiagonal | Specifies diagonal lines that slant to the left from top points to bottom points. The lines are antialiased. |
+| HatchStyleCross | Specifies horizontal and vertical lines that cross at 90-degree angles. |
+| HatchStyleDiagonalCross | Specifies forward diagonal and backward diagonal lines that cross at 90-degree angles. The lines are antialiased. |
+| HatchStyle05Percent | Specifies a 5-percent hatch. The ratio of foreground color to background color is 5:100. |
+| HatchStyle10Percent | Specifies a 10-percent hatch. The ratio of foreground color to background color is 10:100. |
+| HatchStyle20Percent | Specifies a 20-percent hatch. The ratio of foreground color to background color is 20:100. |
+| HatchStyle25Percent | Specifies a 25-percent hatch. The ratio of foreground color to background color is 25:100. |
+| HatchStyle30Percent | Specifies a 30-percent hatch. The ratio of foreground color to background color is 30:100. |
+| HatchStyle40Percent | Specifies a 40-percent hatch. The ratio of foreground color to background color is 40:100. |
+| HatchStyle50Percent | Specifies a 50-percent hatch. The ratio of foreground color to background color is 50:100. |
+| HatchStyle60Percent | Specifies a 60-percent hatch. The ratio of foreground color to background color is 60:100. |
+| HatchStyle70Percent | Specifies a 70-percent hatch. The ratio of foreground color to background color is 70:100. |
+| HatchStyle75Percent | Specifies a 75-percent hatch. The ratio of foreground color to background color is 75:100. |
+| HatchStyle80Percent | Specifies an 80-percent hatch. The ratio of foreground color to background color is 80:100. |
+| HatchStyle90Percent | Specifies a 90-percent hatch. The ratio of foreground color to background color is 90:100. |
+| HatchStyleLightDownwardDiagonal | Specifies diagonal lines that slant to the right from top points to bottom points and are spaced 50 percent closer together than **HatchStyleForwardDiagonal** but are not antialiased. | 
+| HatchStyleLightUpwardDiagonal | Specifies diagonal lines that slant to the left from top points to bottom points and are spaced 50 percent closer together than **HatchStyleBackwardDiagonal** but are not antialiased. |
+| HatchStyleDarkDownwardDiagonal | Specifies diagonal lines that slant to the right from top points to bottom points, are spaced 50 percent closer together than **HatchStyleForwardDiagonal**, and are twice the width of **HatchStyleForwardDiagonal** but are not antialiased. |
+| HatchStyleDarkUpwardDiagonal | Specifies diagonal lines that slant to the left from top points to bottom points, are spaced 50 percent closer together than **HatchStyleBackwardDiagonal**, and are twice the width of **HatchStyleBackwardDiagonal** but are not antialiased. |
+| HatchStyleWideDownwardDiagonal | Specifies diagonal lines that slant to the right from top points to bottom points, have the same spacing as **HatchStyleForwardDiagonal**, and are triple the width of HatchStyleForwardDiagonal but are not antialiased. |
+| HatchStyleWideUpwardDiagonal | Specifies diagonal lines that slant to the left from top points to bottom points, have the same spacing as **HatchStyleBackwardDiagonal**, and are triple the width of **HatchStyleBackwardDiagonal** but are not antialiased. |
+| HatchStyleLightVertical | Specifies vertical lines that are spaced 50 percent closer together than **HatchStyleVertical**. |
+| HatchStyleLightHorizontal | Specifies horizontal lines that are spaced 50 percent closer together than **HatchStyleHorizontal**. |
+| HatchStyleNarrowVertical Specifies vertical lines that are spaced 75 percent closer together than **HatchStyleVertical** (or 25 percent closer together than **HatchStyleLightVertical**). |
+| HatchStyleNarrowHorizontal | Specifies horizontal lines that are spaced 75 percent closer together than **HatchStyleHorizontal** ( or 25 percent closer together than **HatchStyleLightHorizontal**). | 
+| HatchStyleDarkVertical | Specifies vertical lines that are spaced 50 percent closer together than **HatchStyleVerical** and are twice the width of **HatchStyleVertical**. |
+| HatchStyleDarkHorizontal | Specifies horizontal lines that are spaced 50 percent closer together than **HatchStyleHorizontal** and are twice the width of **HatchStyleHorizontal**. |
+| HatchStyleDashedDownwardDiagonal | Specifies horizontal lines that are composed of forward diagonals. |
+| HatchStyleDashedUpwardDiagonal | Specifies horizontal lines that are composed of backward diagonals. |
+| HatchStyleDashedHorizontal | Specifies horizontal dashed lines. |
+| HatchStyleDashedVertical | Specifies vertical dashed lines. |
+| HatchStyleSmallConfetti | Specifies a hatch that has the appearance of confetti. |
+| HatchStyleLargeConfetti | Specifies a hatch that has the appearance of confetti composed of larger pieces than **HatchStyleSmallConfetti**. |
+| HatchStyleZigZag | Specifies horizontal lines of zigzags. |
+| HatchStyleWave | Specifies horizontal lines of tildes. |
+| HatchStyleDiagonalBrick | Specifies a hatch that has the appearance of a wall of bricks laid in a backward diagonal direction. |
+| HatchStyleHorizontalBrick | Specifies a hatch that has the appearance of a wall of bricks laid horizontally. |
+| HatchStyleWeave | Specifies a hatch that has the appearance of a woven material. |
+| HatchStylePlaid | Specifies a hatch that has the appearance of a plaid material. |
+| HatchStyleDivot | Specifies a hatch that has the appearance of divots. |
+| HatchStyleDottedGrid | Specifies horizontal and vertical dotted lines that cross at 90-degree angles. |
+| HatchStyleDottedDiamond | Specifies forward diagonal and backward diagonal dotted lines that cross at 90-degree angles. |
+| HatchStyleShingle | Specifies a hatch that has the appearance of shingles laid in a forward diagonal direction. |
+| HatchStyleTrellis | Specifies a hatch that has the appearance of a trellis. |
+| HatchStyleSphere | Specifies a hatch that has the appearance of a checkerboard of spheres. |
+| HatchStyleSmallGrid | Specifies horizontal and vertical lines that cross at 90-degree angles and are spaced 50 percent closer together than **HatchStyleCross**. |
+| HatchStyleSmallCheckerBoard | Specifies a hatch that has the appearance of a checkerboard. |
+| HatchStyleLargeCheckerBoard | Specifies a hatch that has the appearance of a checkerboard with squares that are twice the size of **HatchStyleSmallCheckerBoard**. |
+| HatchStyleOutlinedDiamond | Specifies forward diagonal and backward diagonal lines that cross at 90-degree angles but are not antialiased. |
+| HatchStyleSolidDiamond | Specifies a hatch that has the appearance of a checkerboard placed diagonally. |
+| HatchStyleTotal | Specifies no hatch thereby allowing the brush to be transparent. |
+| HatchStyleLargeGrid | Specifies **HatchStyleCross**. |
+| HatchStyleMin | Specifies **HatchStyleHorizonal**. |
+| HatchStyleMax | Specifies **HatchStyleSolidDiamond**. |
