@@ -265,7 +265,7 @@ END TYPE
 
 # <a name="EncoderParameters"></a>EncoderParameters Structure
 
-An **EncoderParameters** structure is an array of EncoderParameter structures along with a data member that specifies the number of **EncoderParameter** structures in the array.
+An **EncoderParameters** structure is an array of **EncoderParameter** structures along with a data member that specifies the number of **EncoderParameter** structures in the array.
 
 ```
 TYPE EncoderParameters
@@ -276,10 +276,51 @@ END TYPE
 
 | Member     | Description |
 | ---------- | ----------- |
-| **Count** | Number of EncoderParameter structures in the array. |
-| **Parameter ()** | Array of EncoderParameter structures. |
+| **Count** | Number of **EncoderParameter** structures in the array. |
+| **Parameter ()** | Array of **EncoderParameter** structures. |
 
 #### Remarks
 
 When you create an **EncoderParameters** structure, you must allocate enough memory to hold all of the **EncoderParameter** structures that will eventually be placed in the array.
 
+# <a name="ENHMETAHEADER3"></a>ENHMETAHEADER3 Structure
+
+The **ENHMETAHEADER3** structure contains enhanced-metafile data including the dimensions of the metafile image, the number of records in the metafile, and the resolution of the device on which the metafile was created.
+
+```
+TYPE ENHMETAHEADER3
+   itype AS DWORD
+   nSize AS DWORD
+   rclBounds AS RECTL
+   rclFrame AS RECTL
+   dSignature AS DWORD
+   nVersion AS DWORD
+   nBytes AS DWORD
+   nRecords AS DWORD
+   nHandles AS WORD
+   sReserved AS WORD
+   nDescription AS DWORD
+   offDescription AS DWORD
+   nPalEntries AS DWORD
+   szlDevice AS SIZEL
+   szlMillimeters AS SIZEL
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **iType** | Record type. Value is always EMR_HEADER. |
+| **nSize** | Structure size, in bytes. This may be greater than the value returned by SIZEOF (ENHMETAHEADER3). |
+| **rclBounds** | Bounding rectangle, in device units, for the image stored in the metafile. |
+| **rclFrame** | Rectangle, in 0.01 millimeter units, that surrounds the image stored in the metafile. |
+| **dSignature** | Must be ENHMETA_SIGNATURE. |
+| **nVersion** | Version number of the metafile format. The current version is &H10000. |
+| **nBytes** | Size, in bytes, of the metafile. |
+| **nRecords** | Number of records in the metafile. |
+| **nHandles** | Number of handles in the metafile handle table. Handle index zero is reserved. |
+| **sReserved** | Reserved. Must be zero. |
+| **nDescription** | Number of characters in the string that contains the description of the metafile's contents. This member is 0 if the metafile does not have a description string. |
+| **offDescription** | Offset from the beginning of the ENHMETAHEADER3 structure to the string that contains the description of the metafile's contents. This member is 0 if the metafile does not have a description string. |
+| **nPalEntries** | Number of entries in the metafile palette. |
+| **szlDevice** | Resolution, in pixels, of the reference device. |
+| **szlMillimeters** | Resolution, in millimeters, of the reference device. |
