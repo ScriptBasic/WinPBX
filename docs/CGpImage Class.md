@@ -3,7 +3,7 @@
 The **CGpImage** class provides methods for loading and saving raster images (bitmaps) and vector images (metafiles). An Image object encapsulates a bitmap or a metafile and stores attributes that you can retrieve by calling various Get methods. You can construct **Image** objects from a variety of file types including BMP, ICON, GIF, JPEG, Exif, PNG, TIFF, WMF, and EMF.
 
 **Inherits from**: CGpBase.
-**Include file**: CGpImage.inc.
+**Include file**: CGpBitmap.inc.
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -49,7 +49,7 @@ The **CGpImage** class provides methods for loading and saving raster images (bi
 Extends the **CGpImage** class. The **Bitmap** object expands on the capabilities of the **Image** object by providing additional methods for creating and manipulating raster images.
 
 **Inherits from**: CGpImage.
-**Include file**: CGpImage.inc.
+**Include file**: CGpBitmap.inc.
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -72,7 +72,7 @@ Extends the **CGpImage** class. The **Bitmap** object expands on the capabilitie
 Extends the **CGpImage** class. The **Metafile** object defines a graphic metafile. A metafile contains records that describe a sequence of graphics API calls. Metafiles can be recorded (constructed) and played back (displayed).
 
 **Inherits from**: CGpImage.
-**Include file**: CGpImage.inc.
+**Include file**: CGpBitmap.inc.
 
 | Name       | Description |
 | ---------- | ----------- |
@@ -83,3 +83,14 @@ Extends the **CGpImage** class. The **Metafile** object defines a graphic metafi
 | [GetMetafileHeader](#GetMetafileHeader) | Gets the metafile header of this metafile. |
 | [PlayRecord](#PlayRecord) | Plays a metafile record. |
 | [SetDownLevelRasterizationLimit](#SetDownLevelRasterizationLimit) | Sets the resolution for certain brush bitmaps that are stored in this metafile. |
+
+# CGpCachedBitmap Class
+
+Creates a **CachedBitmap** object based on a **Bitmap** object and a **Graphics** object. The cached bitmap takes the pixel data from the **Bitmap** object and stores it in a format that is optimized for the display device associated with the **Graphics** object.
+
+**Inherits from**: CGpBase.
+**Include file**: CGpBitmap.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructors](#ConstructorCachedBitmap) | Creates a CachedBitmap object based on a Bitmap object and a Graphics object. |
