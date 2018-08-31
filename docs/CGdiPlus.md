@@ -2322,3 +2322,32 @@ PixelFormatMax            = 15
 #### Remarks
 
 **PixelFormat48bppRGB**, **PixelFormat64bppARGB**, and **PixelFormat64bppPARGB** use 16 bits per color component (channel). Microsoft Windows GDI+ version 1.0 can read 16-bits-per-channel images, but such images are converted to an 8-bits-per-channel format for processing, displaying, and saving.
+
+# <a name="Constants5"></a>Image Property Tag Type Constants
+
+You can store and retrieve image metadata with the help of a **PropertyItem** structure. The type data member of a **PropertyItem**  structure specifies the data type of the values stored in the value data member of that same PropertyItem structure.
+
+The following constants can be assigned to the type data member of a **PropertyItem** structure.
+
+```
+PropertyTagTypeByte       = 1
+PropertyTagTypeASCII      = 2
+PropertyTagTypeShort      = 3
+PropertyTagTypeLong       = 4
+PropertyTagTypeRational   = 5
+PropertyTagTypeUndefined  = 7
+PropertyTagTypeSLONG      = 9
+PropertyTagTypeSRational  = 10
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PixelFormat4bppIndexed  | Specifies that the format is 4 bits per pixel, indexed. |
+| PropertyTagTypeASCII | Specifies that the value data member is a null-terminated ASCII string. If you set the type data member of a **PropertyItem** object to **PropertyTagTypeASCII**, you should set the length data member to the length of the string including the NULL terminator. For example, the string HELLO would have a length of 6. |
+| PropertyTagTypeByte | Specifies that the value data member is an array of bytes. |
+| PropertyTagTypeLong | Specifies that the value data member is an array of unsigned long (32-bit) integers. |
+| PropertyTagTypeRational | Specifies that the value data member is an array of pairs of unsigned long integers. Each pair represents a fraction; the first integer is the numerator and the second integer is the denominator. |
+| PropertyTagTypeShort | Specifies that the value data member is an array of unsigned short (16-bit) integers. |
+| PropertyTagTypeSLONG | Specifies that the value data member is an array of signed long (32-bit) integers. |
+| PropertyTagTypeSRational | Specifies that the value data member is an array of pairs of signed long integers. Each pair represents a fraction; the first integer is the numerator and the second integer is the denominator. |
+| PropertyTagTypeUndefined | Specifies that the value data member is an array of bytes that can hold values of any data type. |
