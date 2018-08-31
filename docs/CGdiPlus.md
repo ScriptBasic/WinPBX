@@ -1722,3 +1722,42 @@ MetafileTypeEmfPlusDual       = 5
 | MetafileTypeEmf | Specifies an Enhanced Metafile (EMF) file. Such a file contains only GDI records. |
 | MetafileTypeEmfPlusOnly | Specifies an EMF+ file. Such a file contains only GDI+ records and must be displayed by using GDI+. Displaying the records using GDI may cause unpredictable results. |
 | MetafileTypeEmfPlusDual | Specifies an EMF+ Dual file. Such a file contains GDI+ records along with alternative GDI records and can be displayed by using either GDI or GDI+. Displaying the records using GDI may cause some quality degradation. |
+
+# <a name="ObjectType"></a>ObjectType Enumeration
+
+The **ObjectType** enumeration indicates the object type value of an EMF+ record.
+
+```
+ObjectTypeInvalid          = 0
+ObjectTypeBrush            = 1
+ObjectTypePen              = 2
+ObjectTypePath             = 3
+ObjectTypeRegion           = 4
+ObjectTypeImage            = 5
+ObjectTypeFont             = 6
+ObjectTypeStringFormat     = 7
+ObjectTypeImageAttributes  = 8
+ObjectTypeCustomLineCap    = 9
+ObjectTypeMax = ObjectTypeCustomLineCap
+ObjectTypeMin = ObjectTypeBrush
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ObjectTypeInvalid | Object type is invalid. |
+| ObjectTypeBrush | Object type is a brush. |
+| ObjectTypePen | Object type is a pen. |
+| ObjectTypePath | Object type is a path. |
+| ObjectTypeRegion | Object type is a region. |
+| ObjectTypeFont | Object type is a font. |
+| ObjectTypeStringFormat | Object type is a string format. |
+| ObjectTypeImageAttributes | Object type is an image attribute. |
+| ObjectTypeCustomLineCap | Object type is a custom line cap. |
+| ObjectTypeGraphics | Object type is graphics. |
+| ObjectTypeMax | Maximum enumeration value. Currently, it is **ObjectTypeGraphics**. | 
+| ObjectTypeMin | Minimum enumeration value. Currently, it is **ObjectTypeBrush**. |
+
+#### Remarks
+
+To determine whether the object type value of an EMF+ record is valid, call **ObjectTypeIsValid**.
+
