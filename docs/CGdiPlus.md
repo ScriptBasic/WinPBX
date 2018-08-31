@@ -2175,3 +2175,26 @@ TextRenderingHintClearTypeGridFit         = 5
 
 The quality associated with each process varies according to the circumstances. **TextRenderingHintClearTypeGridFit** provides the best quality for most LCD monitors and relatively small font sizes. **TextRenderingHintAntiAlias** provides the best quality for rotated text. Generally, a process that produces higher quality text is slower than a process that produces lower quality text.
 
+# <a name="Unit"></a>Unit Enumeration
+
+The **Unit** enumeration specifies the unit of measure for a given data type.
+
+```
+UnitWorld      = 0
+UnitDisplay    = 1
+UnitPixel      = 2
+UnitPoint      = 3
+UnitInch       = 4
+UnitDocument   = 5
+UnitMillimeter = 6
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| UnitWorld | Specifies world coordinates, a nonphysical unit. |
+| UnitDisplay | Specifies display units. For example, if the display device is a monitor, then the unit is 1 pixel. |
+| UnitPixel | Specifies that a unit is 1 pixel. |
+| UnitPoint | Specifies that a unit is 1 point or 1/72 inch. |
+| UnitInch | Specifies that a unit is 1 inch. |
+| UnitDocument | Specifies that a unit is 1/300 inch. |
+| UnitMillimeter | Specifies that a unit is 1 millimeter. |
