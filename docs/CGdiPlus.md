@@ -900,6 +900,7 @@ RedShift = 16
 GreenShift = 8
 BlueShift = 0
 ```
+```
 AlphaMask = &hFF000000
 RedMask = &h00FF0000
 GreenMask = &h0000FF00
