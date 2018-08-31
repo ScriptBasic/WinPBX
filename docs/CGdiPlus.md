@@ -1253,3 +1253,39 @@ FillModeWinding   = 1
 | ---------- | ----------- |
 | FillModeAlternate | Specifies that areas are filled according to the even-odd parity rule. According to this rule, you can determine whether a test point is inside or outside a closed curve as follows: Draw a line from the test point to a point that is distant from the curve. If that line crosses the curve an odd number of times, the test point is inside the curve; otherwise, the test point is outside the curve. |
 | FillModeWinding | Specifies that areas are filled according to the nonzero winding rule. According to this rule, you can determine whether a test point is inside or outside a closed curve as follows: Draw a line from a test point to a point that is distant from the curve. Count the number of times the curve crosses the test line from left to right, and count the number of times the curve crosses the test line from right to left. If those two numbers are the same, the test point is outside the curve; otherwise, the test point is inside the curve. |
+
+# <a name="FlushIntention"></a>FlushIntention Enumeration
+
+The **FlushIntention** enumeration specifies when to flush the queue of graphics operations.
+
+```
+FlushIntentionFlush = 0
+FlushIntentionSync = 1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| FlushIntentionFlush | When passed to the GdipFlush function, specifies that pending rendering operations are executed as soon as possible. The GdipFlush  function is not synchronized with the completion of the rendering operations and might return before the rendering operations are completed. |
+| FlushIntentionSync | When passed to the GdipFlush function, specifies that pending rendering operations are executed as soon as possible. The **GdipFlush** function is synchronized with the completion of the rendering operations; that is, it will not return until after the rendering operations are completed. |
+
+# <a name="FontStyle"></a>FontStyle Enumeration
+
+The **FontStyle** enumeration specifies the style of the typeface of a font. Styles can be combined.
+
+```
+FontStyleRegular = 0
+FontStyleBold = 1
+FontStyleItalic = 2
+FontStyleBoldItalic = 3
+FontStyleUnderline = 4
+FontStyleStrikeout = 8
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| FontStyleRegular | Specifies normal weight or thickness of the typeface. |
+| FontStyleBold | Specifies bold typeface. Bold is a heavier weight or thickness. |
+| FontStyleItalic | Specifies italic typeface, which produces a noticeable slant to the vertical stems of the characters. |
+| FontStyleBoldItalic | Specifies the typeface as both bold and italic. |
+| FontStyleUnderline | Specifies underline, which displays a line underneath the baseline of the characters. |
+| FontStyleStrikeout | Specifies strikeout, which displays a horizontal line drawn through the middle of the characters. |
