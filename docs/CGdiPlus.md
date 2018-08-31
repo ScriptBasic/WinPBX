@@ -1700,3 +1700,25 @@ MetafileFrameUnitGdi        = 7
 | MetafileFrameUnitDocument | Specifies that a unit is 1/300 inch. |
 | MetafileFrameUnitMillimeter | Specifies that a unit is 1 millimeter. |
 | MetafileFrameUnitGdi | Specifies that a unit is 0.01 millimeter. This element is provided for compatibility with Microsoft Windows Graphics Device Interface (GDI). |
+
+# <a name="MetafileType"></a>MetafileType Enumeration
+
+The **MetafileType** enumeration specifies types of metafiles.
+
+```
+MetafileTypeInvalid           = 0
+MetafileTypeWmf               = 1
+MetafileTypeWmfPlaceable      = 2
+MetafileTypeEmf               = 3
+MetafileTypeEmfPlusOnly       = 4
+MetafileTypeEmfPlusDual       = 5
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| MetafileTypeInvalid | Specifies a metafile format that is not recognized in Microsoft Windows GDI+. |
+| MetafileTypeWmf | Specifies a Windows Metafile Format (WMF) file. Such a file contains only Windows Graphics Device Interface (GDI) records. |
+| MetafileTypeWmfPlaceable | Specifies a WMF file that has a placeable metafile header in front of it. |
+| MetafileTypeEmf | Specifies an Enhanced Metafile (EMF) file. Such a file contains only GDI records. |
+| MetafileTypeEmfPlusOnly | Specifies an EMF+ file. Such a file contains only GDI+ records and must be displayed by using GDI+. Displaying the records using GDI may cause unpredictable results. |
+| MetafileTypeEmfPlusDual | Specifies an EMF+ Dual file. Such a file contains GDI+ records along with alternative GDI records and can be displayed by using either GDI or GDI+. Displaying the records using GDI may cause some quality degradation. |
