@@ -1150,4 +1150,32 @@ EmfTypeEmfPlusDual = MetafileTypeEmfPlusDual
 | ---------- | ----------- |
 | EmfTypeEmfOnly | Specifies that all of the records in the metafile are EMF records, which can be displayed by GDI or GDI+. |
 | EmfTypeEmfPlusOnly | Specifies that all of the records in the metafile are EMF+ records, which can be displayed by GDI+ but not by GDI. |
-| EmfTypeEmfPlusDual | Specifies that all EMF+ records in the metafile are associated with an alternate EMF record. Metafiles of type EmfTypeEmfPlusDual can be displayed by GDI or by GDI+. |
+| EmfTypeEmfPlusDual | Specifies that all EMF+ records in the metafile are associated with an alternate EMF record. Metafiles of type **EmfTypeEmfPlusDual** can be displayed by GDI or by GDI+. |
+
+# <a name="EncoderParameterValueType"></a>EncoderParameterValueType Enumeration
+
+The **EncoderParameterValueType** enumeration specifies data types for image codec (encoder/decoder) parameters. An element of this enumeration is assigned to the Type data member of an EncoderParameter structure. 
+
+```
+EncoderParameterValueTypeByte = 1
+EncoderParameterValueTypeASCII = 2
+EncoderParameterValueTypeShort = 3
+EncoderParameterValueTypeLong = 4
+EncoderParameterValueTypeRational = 5
+EncoderParameterValueTypeLongRange = 6
+EncoderParameterValueTypeUndefined = 7
+EncoderParameterValueTypeRationalRange = 8
+EncoderParameterValueTypePointer = 9
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| EncoderParameterValueTypeByte | Specifies that the parameter is an 8-bit unsigned integer. |
+| EncoderParameterValueTypeASCII | Specifies that the parameter is a null-terminated character string. |
+| EncoderParameterValueTypeShort | Specifies that the parameter is a 16-bit unsigned integer. |
+| EncoderParameterValueTypeLong | Specifies that the parameter is a 32-bit unsigned integer. |
+| EncoderParameterValueTypeRational | Specifies that the parameter is an array of two, 32-bit unsigned integers. The pair of integers represents a fraction. The first integer in the pair is the numerator, and the second integer in the pair is the denominator. |
+| EncoderParameterValueTypeLongRange | Specifies that the parameter is an array of two, 32-bit unsigned integers. The pair of integers represents a range of numbers. The first integer is the smallest number in the range, and the second integer is the largest number in the range. |
+| EncoderParameterValueTypeUndefined | Specifies that the parameter is an array of bytes that can hold values of any type. |
+| EncoderParameterValueTypeRationalRange | Specifies that the parameter is an array of four, 32-bit unsigned integers. The first two integers represent one fraction, and the second two integers represent a second fraction. The two fractions represent a range of rational numbers. The first fraction is the smallest rational number in the range, and the second fraction is the largest rational number in the range. |
+| EncoderParameterValueTypePointer | Specifies that the parameter is a pointer to a block of custom metadata.|
