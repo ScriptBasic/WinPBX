@@ -50,3 +50,25 @@ Extends **CGpFontCollection**. The **PrivateFontCollection** object is a collect
 | ---------- | ----------- |
 | [AddFontFile](#AddFontFile) | Adds a font file to this private font collection. |
 | [AddMemoryFont](#AddMemoryFont) | Adds a font that is contained in system memory to a Windows GDI+ font collection. |
+
+# CGpFontFamily Class
+
+The **CGpFontFamily** class encapsulates a set of fonts that make up a font family. A font family is a group of fonts that have the same typeface but different styles.
+
+**Inherits from**: CGpBase.
+**Imclude file**: CGpFont.inc.
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Constructor](#ConstructorFontFamily) | Creates a FontFamily object based on a specified font collection. |
+| [Clone](#Clone) | Copies the contents of the existing FontFamily object into a new FontFamily object. |
+| [GenericMonospace](#GenericMonospace) | Gets a FontFamily object that a specifies a generic monospace typeface. |
+| [GenericSansSerif](#GenericSansSerif) | Gets a FontFamily object that a specifies a generic sans serif typeface. |
+| [GenericSerif](#GenericSerif) | Gets a FontFamily object that a specifies a generic serif typeface. |
+| [GetCellAscent](#GetCellAscent) | Gets the cell ascent, in design units, of this font family for the specified style or style combination. |
+| [GetCellDescent](#GetCellDescent) | Gets the cell descent, in design units, of this font family for the specified style or style combination. |
+| [GetEmHeight](#GetEmHeight) | Gets the size (commonly called em size or em height), in design units, of this font family. |
+| [GetFamilyName](#GetFamilyName) | Gets the name of this font family. |
+| [GetLineSpacing](#GetLineSpacing) | Gets the line spacing, in design units, of this font family for the specified style or style combination. |
+| [IsAvailable](#IsAvailable) | Determines whether this Font object was created successfully. |
+| [IsStyleAvailable](#IsStyleAvailable) | Determines whether the specified style is available for this font family. |
