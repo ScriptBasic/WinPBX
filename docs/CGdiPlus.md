@@ -172,3 +172,37 @@ END TYPE
 
 A character range is a range of character positions within a string of text. The area of the display that is occupied by a group of characters that are specified by the character range is the bounding region. A character range is set by **GdipSetStringFormatMeasurableCharacterRanges**. The number of ranges that are currently set can be determined by calling **GdipGetStringFormatMeasurableCharacterRangeCount**. This number is also the number of regions expected to be obtained by the **GdipMeasureCharacterRanges** function.
 
+# <a name="ColorMap"></a>ColorMap Structure
+
+The **ColorMap** structure contains two COLORREF values. Several of the **ImageAttributes** functions adjust image colors by using a color remap table, which is an array of **ColorMap** structures.
+
+```
+TYPE ColorMap
+   oldColor AS Color
+   newColor AS Color
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **oldColor** | The original color.  |
+| **newColor** | The new color.  |
+
+#### Remarks
+
+Because the FreeBasic 32-bit headers don't define the GDI+ **ColorMap** structure ad use the GDI **ColorMap** one, that has different member names, there is a conflict. To solve it, I have defined an union that can be used to replace **ColorMap** in both 32 and 64-bit.
+
+```
+UNION GDIP_COLORMAP
+   ' // For compatibility with GDI+
+   TYPE
+      oldColor AS COLORREF
+      newColor AS COLORREF
+   END TYPE
+   ' // For compatibility with GDI
+   TYPE
+      from AS COLORREF
+      to AS COLORREF
+   END TYPE
+END UNION
+```
