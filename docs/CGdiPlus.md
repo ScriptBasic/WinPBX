@@ -741,7 +741,7 @@ BrushTypePathGradient = 3
 BrushTypeLinearGradient = 4
 ```
 
-| Constant   | Description |
+| Constant   | Meaning     |
 | ---------- | ----------- |
 | **BrushTypeSolidColor** | Indicates a brush of type SolidBrush. A solid brush paints a single, constant color that can be opaque or transparent. |
 | **BrushTypeHatchFill** | Indicates a brush of type **HatchBrush**. A hatch brush paints a background and paints, over that background, a pattern of lines, dots, dashes, squares, crosshatch, or some variation of these. The hatch brush consists of two colors: one for the background and one for the pattern over the background. The color of the background is called the background color, and the color of the pattern is called the foreground color.  |
@@ -921,7 +921,7 @@ ColorAdjustTypeCount   = 5
 ColorAdjustTypeAny     = 6
 ```
 
-| Constant   | Description |
+| Constant   | Meaning     |
 | ---------- | ----------- |
 | ColorAdjustTypeDefault | Specifies that color or grayscale adjustment applies to all categories that do not have adjustment settings of their own. |
 | ColorAdjustTypeBitmap | Specifies that color or grayscale adjustment applies to bitmapped images. |
@@ -930,3 +930,22 @@ ColorAdjustTypeAny     = 6
 | ColorAdjustTypeText | Specifies that color or grayscale adjustment applies to text drawn in metafiles. |
 | ColorAdjustTypeCount | Used internally to record the number of color adjustment types. |
 | ColorAdjustTypeAny | Reserved. |
+
+# <a name="ColorChannelFlags"></a>ColorChannelFlags Enumeration
+
+The **ColorChannelFlags** enumeration specifies individual channels in the CMYK (cyan, magenta, yellow, black) color space. This enumeration is used by the GdipSetImageAttributesOutputChannel function.
+
+```
+ColorChannelFlagsC    = 0
+ColorChannelFlagsM    = 1
+ColorChannelFlagsY    = 2
+ColorChannelFlagsK    = 3
+ColorChannelFlagsLast = 4
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ColorChannelFlagsC | Specifies the cyan color channel. |
+| ColorChannelFlagsM | Specifies the magenta color channel. |
+| ColorChannelFlagsY | Specifies the yellow color channel. |
+| ColorChannelFlagsK | Specifies the black color channel. |
