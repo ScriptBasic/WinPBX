@@ -1898,3 +1898,63 @@ PixelOffsetModeHalf = 4
 #### Remarks
 
 Consider the pixel in the upper-left corner of an image with address (0, 0). With **PixelOffsetModeNone**, the pixel covers the area between 0.5 and 0.5 in both the x and y directions; that is, the pixel center is at (0, 0). With **PixelOffsetModeHalf**, the pixel covers the area between 0 and 1 in both the x and y directions; that is, the pixel center is at (0.5, 0.5).
+
+# <a name="QualityMode"></a>QualityMode Enumeration
+
+The **QualityMode** enumeration specifies the quality mode.
+
+```
+QualityModeInvalid = -1
+QualityModeDefault = 0
+QualityModeLow     = 1
+QualityModeHigh    = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| QualityModeInvalid | Invalid mode. |
+| QualityModeDefault | Default quality mode. |
+| QualityModeLow | Low quality mode. Best performance. |
+| QualityModeHigh | High quality mode. Best rendering quality. |
+
+# <a name="RotateFlipType"></a>RotateFlipType Enumeration
+
+The **RotateFlipType** enumeration specifies the direction of an image's rotation and the axis used to flip the image.
+
+```
+RotateNoneFlipNone = 0
+Rotate90FlipNone   = 1
+Rotate180FlipNone  = 2
+Rotate270FlipNone  = 3
+RotateNoneFlipX    = 4
+Rotate90FlipX      = 5
+Rotate180FlipX     = 6
+Rotate270FlipX     = 7
+RotateNoneFlipY    = Rotate180FlipX
+Rotate90FlipY      = Rotate270FlipX
+Rotate180FlipY     = RotateNoneFlipX
+Rotate270FlipY     = Rotate90FlipX
+RotateNoneFlipXY   = Rotate180FlipNone
+Rotate90FlipXY     = Rotate270FlipNone
+Rotate180FlipXY    = RotateNoneFlipNone
+Rotate270FlipXY    = Rotate90FlipNone
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| RotateNoneFlipNone | Specifies no rotation and no flipping. |
+| Rotate90FlipNone | Specifies a 90-degree rotation without flipping. |
+| Rotate180FlipNone | Specifies a 180-degree rotation without flipping. |
+| Rotate270FlipNone | Specifies a 270-degree rotation without flipping. |
+| RotateNoneFlipX | Specifies no rotation and a horizontal flip. |
+| Rotate90FlipX | Specifies a 90-degree rotation followed by a horizontal flip. |
+| Rotate180FlipX | Specifies a 180-degree rotation followed by a horizontal flip. |
+| Rotate270FlipX | Specifies a 270-degree rotation followed by a horizontal flip. |
+| RotateNoneFlipY | Specifies no rotation and a vertical flip. |
+| Rotate90FlipY | Specifies a 90-degree rotation followed by a vertical flip. |
+| Rotate180FlipY | Specifies a 180-degree rotation followed by a vertical flip. |
+| Rotate270FlipY | Specifies a 270-degree rotation followed by a vertical flip. |
+| RotateNoneFlipXY | Specifies no rotation, a horizontal flip, and then a vertical flip. |
+| Rotate90FlipXY | Specifies a 90-degree rotation followed by a horizontal flip and then a vertical flip. |
+| Rotate180FlipXY | Specifies a 180-degree rotation followed by a horizontal flip and then a vertical flip. |
+| Rotate270FlipXY | Specifies a 270-degree rotation followed by a horizontal flip and then a vertical flip. |
