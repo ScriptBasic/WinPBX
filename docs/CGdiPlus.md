@@ -1872,3 +1872,29 @@ PenTypeUnknown = -1
 | PenTypePathGradient | Indicates that the pen draws with a color gradient. |
 | PenTypeLinearGradient | Indicates that the pen draws with a color gradient. |
 | PenTypeUnknown | Indicates that the pen type is unknown. |
+
+# <a name="PixelOffsetMode"></a>PixelOffsetMode Enumeration
+
+The **PixelOffsetMode** enumeration specifies the pixel offset mode. This enumeration is used by the **GdipGetPixelOffsetMode** and **GdipSetPixelOffsetMode** methods of the Graphics class.
+
+```
+PixelOffsetModeInvalid = QualityModeInvalid
+PixelOffsetModeDefault = QualityModeDefault
+PixelOffsetModeHighSpeed = QualityModeLow
+PixelOffsetModeHighQuality = QualityModeHigh
+PixelOffsetModeNone = 3
+PixelOffsetModeHalf = 4 
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PixelOffsetModeInvalid | Used internally. |
+| PixelOffsetModeDefault | Equivalent to **PixelOffsetModeNone**. |
+| PixelOffsetModeHighSpeed | Equivalent to **PixelOffsetModeNone**. |
+| PixelOffsetModeHighQuality | Equivalent to **PixelOffsetModeHalf**. |
+| PixelOffsetModeNone | Indicates that pixel centers have integer coordinates. |
+| PixelOffsetModeHalf | Indicates that pixel centers have coordinates that are half way between integer values. |
+
+#### Remarks
+
+Consider the pixel in the upper-left corner of an image with address (0, 0). With **PixelOffsetModeNone**, the pixel covers the area between 0.5 and 0.5 in both the x and y directions; that is, the pixel center is at (0, 0). With **PixelOffsetModeHalf**, the pixel covers the area between 0 and 1 in both the x and y directions; that is, the pixel center is at (0.5, 0.5).
