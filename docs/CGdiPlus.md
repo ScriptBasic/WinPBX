@@ -151,3 +151,24 @@ END TYPE
 | **PixelFormat** | Integer that specifies the pixel format of the bitmap. |
 | **Scan0** | Pointer to the first (index 0) scan line of the bitmap. |
 | **Reserved** | Reserved for future use. |
+
+# <a name="CharacterRange"></a>CharacterRange Structure
+
+A **CharacterRange** structure specifies a range of character positions within a string.
+
+```
+TYPE CharacterRange
+   First AS INT_
+   Length AS INT_
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **First** | Specifies the first position of this range. |
+| **Length** | Specifies the number of positions in this range. |
+
+#### Remarks
+
+A character range is a range of character positions within a string of text. The area of the display that is occupied by a group of characters that are specified by the character range is the bounding region. A character range is set by **GdipSetStringFormatMeasurableCharacterRanges**. The number of ranges that are currently set can be determined by calling **GdipGetStringFormatMeasurableCharacterRangeCount**. This number is also the number of regions expected to be obtained by the **GdipMeasureCharacterRanges** function.
+
