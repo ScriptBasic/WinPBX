@@ -243,4 +243,22 @@ END TYPE
 | **Count** | Number of elements in the Entries array. |
 | **Entries** | Array of ARGB colors.  |
 
-#### Remarks
+# <a name="EncoderParameter"></a>EncoderParameter Structure
+
+An **EncoderParameter** structure holds a parameter that can be passed to an image encoder. An **EncoderParameter** structure can also be used to receive a list of possible values supported by a particular parameter of a particular image encoder.
+
+```
+TYPE EncoderParameter
+   Guid AS GUID
+   NumberOfValues AS ULONG
+   Type AS ULONG
+   Value AS ANY PTR
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Guid** | Identifies the parameter category. GUIDs that represent various parameter categories (EncoderCompression, EncoderColorDepth, and the like) are defined in Gdiplusimaging.inc. |
+| **NumberOfValues** | Number of values in the array pointed to by the Value data member. |
+| **Type** | Identifies the data type of the parameter. The EncoderParameterValueType enumeration in Gdiplusenums.inc defines several possible value types. |
+| **Value** | Pointer to an array of values. Each value has the type specified by the Type data member. |
