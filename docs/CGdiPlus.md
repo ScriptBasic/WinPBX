@@ -1639,8 +1639,6 @@ LineCapAnchorMask = &HF0
 | LineCapArrowAnchor | Specifies that the line ends are anchored with arrowheads. The arrowhead point is located at the last point in the line. The arrowhead is wider than the line. |
 | LineCapCustom | Specifies that the line ends are made from a **CustomLineCap**. |
 
-# <a name="LinearGradientMode"></a>LinearGradientMode Enumeration
-
 # <a name="LineJoin"></a>LineJoin Enumeration
 
 The **LineJoin** enumeration specifies how to join two lines that are drawn by the same pen and whose ends meet. At the intersection of the two line ends, a line join makes the join look more continuous. 
@@ -1667,4 +1665,16 @@ When using **LineJoinMiter** and the actual ratio exceeds the miter limit, the c
 
 When using **LineJoinMiterClipped** and the miter limit is exceeded, the join is drawn as if its type were LineJoinBevel; that is, when the line walls on the inside of the join meet, then a joining line is drawn between the line walls on the outside of the join.
 
+# <a name="MatrixOrder"></a>MatrixOrder Enumeration
 
+The **MatrixOrder** enumeration specifies the order of multiplication when a new matrix is multiplied by an existing matrix. 
+
+```
+MatrixOrderPrepend = 0
+MatrixOrderAppend = 1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| MatrixOrderPrepend | Specifies that the new matrix is on the left and the existing matrix is on the right. |
+| MatrixOrderAppend | Specifies that the existing matrix is on the left and the new matrix is on the right. |
