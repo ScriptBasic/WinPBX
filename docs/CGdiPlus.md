@@ -224,3 +224,23 @@ END TYPE
 #### Remarks
 
 A 55 color matrix is a homogeneous matrix for a 4-space transformation. The element in the fifth row and fifth column of a 55 homogeneous matrix must be 1, and all of the other elements in the fifth column must be 0. Color matrices are used to transform color vectors. The first four components of a color vector hold the red, green, blue, and alpha components (in that order) of a color. The fifth component of a color vector is always 1.
+
+# <a name="ColorPalette"></a>ColorPalette Structure
+
+The **ColorPalette** structure defines an array of colors that make up a color palette. The colors are 32-bit ARGB colors.
+
+```
+TYPE ColorPalette
+   Flags AS UINT
+   Count AS UINT
+   Entries(0) AS ARGB
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Flags** | Combination of flags from the **PaletteFlags** enumeration. |
+| **Count** | Number of elements in the Entries array. |
+| **Entries** | Array of ARGB colors.  |
+
+#### Remarks
