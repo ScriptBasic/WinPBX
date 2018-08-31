@@ -1135,3 +1135,19 @@ EmfToWmfBitsFlagsNoXORClip        = &H00000004
 | EmfToWmfBitsFlagsEmbedEmf | Specifies that the source EMF metafile is embedded as a comment in the resulting WMF metafile.|
 | EmfToWmfBitsFlagsIncludePlaceable | Specifies that the resulting WMF metafile is in the placeable metafile format; that is, it has the additional 22-byte header required by a placeable metafile. |
 | EmfToWmfBitsFlagsNoXORClip | Specifies that the clipping region is stored in the metafile in the traditional way. If you do not set this flag, the **GdipEmfToWmfBits** function applies an optimization that stores the clipping region as a path and simulates clipping by using the XOR operator. |
+
+# <a name="EmfType"></a>EmfType Enumeration
+
+The **EmfType** enumeration specifies the nature of the records that are placed in an Enhanced Metafile (EMF) file.
+
+```
+EmfTypeEmfOnly = MetafileTypeEmf
+EmfTypeEmfPlusOnly = MetafileTypeEmfPlusOnly
+EmfTypeEmfPlusDual = MetafileTypeEmfPlusDual
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| EmfTypeEmfOnly | Specifies that all of the records in the metafile are EMF records, which can be displayed by GDI or GDI+. |
+| EmfTypeEmfPlusOnly | Specifies that all of the records in the metafile are EMF+ records, which can be displayed by GDI+ but not by GDI. |
+| EmfTypeEmfPlusDual | Specifies that all EMF+ records in the metafile are associated with an alternate EMF record. Metafiles of type EmfTypeEmfPlusDual can be displayed by GDI or by GDI+. |
