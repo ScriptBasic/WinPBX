@@ -1509,3 +1509,19 @@ ImageFlagsCaching             = &H00020000
 | ImageFlagsHasRealPixelSize | Specifies that the pixel size is stored in the image. |
 | ImageFlagsReadOnly | Specifies that the pixel data is read-only. |
 | ImageFlagsCaching | Specifies that the pixel data can be cached for faster access. |
+
+# <a name="ImageLockMode"></a>ImageLockMode Enumeration
+
+The **ImageLockMode** enumeration specifies flags that are passed to the flags parameter of the GdipBitmapLockBits function. The GdipBitmapLockBits function locks a portion of an image so that you can read or write the pixel data.
+
+```
+ImageLockModeRead         = &H0001
+ImageLockModeWrite        = &H0002
+ImageLockModeUserInputBuf = &H0004
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ImageLockModeRead | Specifies that a portion of the image is locked for reading. |
+| ImageLockModeWrite | Specifies that a portion of the image is locked for writing. |
+| ImageLockModeUserInputBuf | Specifies that the buffer used for reading or writing pixel data is allocated by the user. If this flag is set, then the lockedBitmapData parameter of the **GdipBitmapLockBits** function serves as an input parameter (and possibly as an output parameter). If this flag is cleared, then the lockedBitmapData parameter serves only as an output parameter. |
