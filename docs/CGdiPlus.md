@@ -1958,3 +1958,31 @@ Rotate270FlipXY    = Rotate90FlipNone
 | Rotate90FlipXY | Specifies a 90-degree rotation followed by a horizontal flip and then a vertical flip. |
 | Rotate180FlipXY | Specifies a 180-degree rotation followed by a horizontal flip and then a vertical flip. |
 | Rotate270FlipXY | Specifies a 270-degree rotation followed by a horizontal flip and then a vertical flip. |
+
+# <a name="SmoothingMode"></a>SmoothingMode Enumeration
+
+The **SmoothingMode** enumeration specifies the type of smoothing (antialiasing) that is applied to lines and curves. This enumeration is used by the **GdipGetSmoothingMode** and **GdipSetSmoothingMode** functions.
+
+```
+SmoothingModeInvalid = QualityModeInvalid
+SmoothingModeDefault = QualityModeDefault
+SmoothingModeHighSpeed = QualityModeLow
+SmoothingModeHighQuality = QualityModeHigh
+SmoothingModeNone = 3
+SmoothingModeAntiAlias = 4
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| SmoothingModeInvalid | Reserved. |
+| SmoothingModeDefault | Specifies that smoothing is not applied. |
+| SmoothingModeHighSpeed | Specifies that smoothing is not applied. |
+| SmoothingModeHighQuality | Specifies that smoothing is applied using an 8 X 4 box filter. |
+| SmoothingModeNone | Specifies that smoothing is not applied. |
+| SmoothingModeAntiAlias8x4 | Specifies that smoothing is applied using an 8 X 4 box filter. |
+| SmoothingModeAntiAlias | Specifies that smoothing is applied using an 8 X 4 box filter. |
+| SmoothingModeAntiAlias8x8 | Specifies that smoothing is applied using an 8 X 8 box filter. |
+
+#### Remarks
+
+Smoothing performed by an 8 X 4 box filter gives better results for nearly vertical lines than it does for nearly horizontal lines. Smoothing performed by an 8 X 8 box filter gives equally good results for nearly vertical and nearly horizontal lines. The 8x8 algorithm produces higher quality smoothing but is slower than the 8 X 4 algorithm.
