@@ -2041,3 +2041,18 @@ ProfileNotFound = 21
 | PropertyNotSupported | Indicates that the specified property is not supported by the format of the image and, therefore, cannot be set. |
 | ProfileNotFound | Indicates that the color profile required to save an image in CMYK format was not found. |
 
+# <a name="StringAlignment"></a>StringAlignment Enumeration
+
+The **StringAlignment** enumeration specifies how a string is aligned in reference to the bounding rectangle. A bounding rectangle is used to define the area in which the text displays.
+
+```
+StringAlignmentNear = 0
+StringAlignmentCenter = 1
+StringAlignmentFar = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| StringAlignmentNear | Specifies that alignment is towards the origin of the bounding rectangle. May be used for alignment of characters along the line or for alignment of lines within the rectangle. For a right to left bounding rectangle (**StringFormatFlagsDirectionRightToLeft**), the origin is at the upper right. |
+| StringAlignmentCenter | Specifies that alignment is centered between origin and extent (width) of the formatting rectangle. |
+| StringAlignmentFar | Specifies that alignment is to the far extent (right side) of the formatting rectangle. |
