@@ -1390,7 +1390,7 @@ HatchStyleMax       = HatchStyleTotal - 1
 | HatchStyleWideUpwardDiagonal | Specifies diagonal lines that slant to the left from top points to bottom points, have the same spacing as **HatchStyleBackwardDiagonal**, and are triple the width of **HatchStyleBackwardDiagonal** but are not antialiased. |
 | HatchStyleLightVertical | Specifies vertical lines that are spaced 50 percent closer together than **HatchStyleVertical**. |
 | HatchStyleLightHorizontal | Specifies horizontal lines that are spaced 50 percent closer together than **HatchStyleHorizontal**. |
-| HatchStyleNarrowVertical Specifies vertical lines that are spaced 75 percent closer together than **HatchStyleVertical** (or 25 percent closer together than **HatchStyleLightVertical**). |
+| HatchStyleNarrowVertical | Specifies vertical lines that are spaced 75 percent closer together than **HatchStyleVertical** (or 25 percent closer together than **HatchStyleLightVertical**). |
 | HatchStyleNarrowHorizontal | Specifies horizontal lines that are spaced 75 percent closer together than **HatchStyleHorizontal** ( or 25 percent closer together than **HatchStyleLightHorizontal**). | 
 | HatchStyleDarkVertical | Specifies vertical lines that are spaced 50 percent closer together than **HatchStyleVerical** and are twice the width of **HatchStyleVertical**. |
 | HatchStyleDarkHorizontal | Specifies horizontal lines that are spaced 50 percent closer together than **HatchStyleHorizontal** and are twice the width of **HatchStyleHorizontal**. |
