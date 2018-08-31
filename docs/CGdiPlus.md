@@ -1832,3 +1832,43 @@ PathPointTypeBezier3         = 3
 | PathPointTypePathMarker | Specifies that the point is a marker. |
 | PathPointTypeCloseSubpath | Specifies that the point is the last point in a closed subpath (figure). |
 | PathPointTypeBezier3 | Indicates that the point is an endpoint or control point of a cubic Bezier spline. |
+
+# <a name="PenAlignment"></a>PenAlignment Enumeration
+
+The **PenAlignment** enumeration specifies the alignment of a pen relative to the stroke that is being drawn.
+
+```
+PenAlignmentCenter = 0
+PenAlignmentInset = 1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PenAlignmentCenter | Specifies that the pen is aligned on the center of the line that is drawn. |
+| PenAlignmentInset | Specifies, when drawing a polygon, that the pen is aligned on the inside of the edge of the polygon. |
+
+#### Remarks
+
+If you set the alignment of a Pen object to **PenAlignmentInset**, you cannot use that pen to draw compound lines or triangular dash caps.
+
+# <a name="PenType"></a>PenType Enumeration
+
+The **PenType** enumeration indicates the type of pattern, texture, or gradient that a pen draws. 
+
+```
+PenTypeSolidColor = BrushTypeSolidColor
+PenTypeHatchFill = BrushTypeHatchFill
+PenTypeTextureFill = BrushTypeTextureFill
+PenTypePathGradient = BrushTypePathGradient
+PenTypeLinearGradient = BrushTypeLinearGradient
+PenTypeUnknown = -1
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| PenTypeSolidColor | Indicates that the pen draws with a solid color. |
+| PenTypeHatchFill | Indicates that the pen draws with a hatch pattern |
+| PenTypeTextureFill | Indicates that the pen draws with a texture. |
+| PenTypePathGradient | Indicates that the pen draws with a color gradient. |
+| PenTypeLinearGradient | Indicates that the pen draws with a color gradient. |
+| PenTypeUnknown | Indicates that the pen type is unknown. |
