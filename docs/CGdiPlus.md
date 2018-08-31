@@ -660,3 +660,23 @@ END TYPE
 #### Remarks
 
 Metafiles provide a device-independent and application-independent way to share pictures. They contain records that describe a sequence of graphics application programming interfaces (APIs) to invoke in a particular order with their associated graphics data. Metafiles can be recorded by an application and later played back by that application or by another one to reproduce a particular picture. They can also be used to send content to a print spooler. Enhanced metafiles support the ability to provide both Microsoft Windows GDI+ and Windows Graphics Device Interface (GDI) descriptions of the same picture so that both GDI+ and down-level GDI applications can render it.
+
+# <a name="PropertyItem"></a>PropertyItem Structure
+
+A **PropertyItem** structure holds one piece of image metadata.
+
+```
+TYPE PropertyItem
+   id AS PROPID
+   length AS ULONG
+   wtype AS WORD
+   value AS ANY PTR
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **id** | Integer that identifies the kind of metadata stored in this PropertyItem object. Constants that identify various kinds of metadata (**PropertyTagEquipMake**, P**ropertyTagEquipModel**, and the like) are defined in Gdiplusimaging.inc. The **PROPID** data type is defined in Wtypes.inc. |
+| **length** | Size, in bytes, of the value array. |
+| **wtype** | Integer that identifies the data type of the values in the value array. Constants that identify various data types (**PropertyTagTypeByte**, **PropertyTagTypeASCII**, and the like) are defined in Gdiplusimaging.inc. |
+| **value** | Pointer to an array of values. Each value in the array has the data type specified by the type data member. |
