@@ -1467,3 +1467,45 @@ HotkeyPrefixHide = 2
 #### Remarks
 
 Hot keys are keys that are programmed to provide keyboard shortcuts to functionality and are activated by pressing the ALT key. The keys are application dependent and are identified by an underscored letter, typically in a menu. An example would be the File menu with the letter F underscored. This makes the F key a hot key to launch the File menu.
+
+# <a name="ImageFlags"></a>ImageFlags Enumeration
+
+The **ImageFlags** enumeration specifies the attributes of the pixel data contained in an image. The GdipGetImageFlags function returns an element of this enumeration.
+
+```
+ImageFlagsNone                = 0
+'// Low-word: shared with SINKFLAG_x
+ImageFlagsScalable            = &H00000001
+ImageFlagsHasAlpha            = &H00000002
+ImageFlagsHasTranslucent      = &H00000004
+ImageFlagsPartiallyScalable   = &H00000008
+'// Low-word: color space definition
+ImageFlagsColorSpaceRGB       = &H00000010
+ImageFlagsColorSpaceCMYK      = &H00000020
+ImageFlagsColorSpaceGRAY      = &H00000040
+ImageFlagsColorSpaceYCBCR     = &H00000080
+ImageFlagsColorSpaceYCCK      = &H00000100
+'// Low-word: image size info
+ImageFlagsHasRealDPI          = &H00001000
+ImageFlagsHasRealPixelSize    = &H00002000
+'// High-word
+ImageFlagsReadOnly            = &H00010000
+ImageFlagsCaching             = &H00020000
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ImageFlagsNone | Specifies no format information. |
+| ImageFlagsScalable | Specifies that the image can be scaled. |
+| ImageFlagsHasAlpha | Specifies that the pixel data contains alpha values. |
+| ImageFlagsHasTranslucent | Specifies that the pixel data has alpha values other than 0 (transparent) and 255 (opaque). |
+| ImageFlagsPartiallyScalable | Specifies that the pixel data is partially scalable with some limitations. |
+| ImageFlagsColorSpaceRGB | Specifies that the image is stored using an RGB color space. |
+| ImageFlagsColorSpaceCMYK | Specifies that the image is stored using a CMYK color space. |
+| ImageFlagsColorSpaceGRAY | Specifies that the image is a grayscale image. |
+| ImageFlagsColorSpaceYCBCR | Specifies that the image is stored using a YCBCR color space. |
+| ImageFlagsColorSpaceYCCK | Specifies that the image is stored using a YCCK color space. |
+| ImageFlagsHasRealDPI | Specifies that dots per inch information is stored in the image. |
+| ImageFlagsHasRealPixelSize | Specifies that the pixel size is stored in the image. |
+| ImageFlagsReadOnly | Specifies that the pixel data is read-only. |
+| ImageFlagsCaching | Specifies that the pixel data can be cached for faster access. |
