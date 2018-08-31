@@ -258,7 +258,28 @@ END TYPE
 
 | Member     | Description |
 | ---------- | ----------- |
-| **Guid** | Identifies the parameter category. GUIDs that represent various parameter categories (EncoderCompression, EncoderColorDepth, and the like) are defined in Gdiplusimaging.inc. |
-| **NumberOfValues** | Number of values in the array pointed to by the Value data member. |
-| **Type** | Identifies the data type of the parameter. The EncoderParameterValueType enumeration in Gdiplusenums.inc defines several possible value types. |
-| **Value** | Pointer to an array of values. Each value has the type specified by the Type data member. |
+| **Guid** | Identifies the parameter category. GUIDs that represent various parameter categories (**EncoderCompression**, **EncoderColorDepth**, and the like) are defined in Gdiplusimaging.inc. |
+| **NumberOfValues** | Number of values in the array pointed to by the **Value** data member. |
+| **Type** | Identifies the data type of the parameter. The **EncoderParameterValueType** enumeration in Gdiplusenums.inc defines several possible value types. |
+| **Value** | Pointer to an array of values. Each value has the type specified by the **Type** data member. |
+
+# <a name="EncoderParameters"></a>EncoderParameters Structure
+
+An **EncoderParameters** structure is an array of EncoderParameter structures along with a data member that specifies the number of **EncoderParameter** structures in the array.
+
+```
+TYPE EncoderParameters
+   Count AS UINT
+   Parameter(0) AS EncoderParameter
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Count** | Number of EncoderParameter structures in the array. |
+| **Parameter ()** | Array of EncoderParameter structures. |
+
+#### Remarks
+
+When you create an **EncoderParameters** structure, you must allocate enough memory to hold all of the **EncoderParameter** structures that will eventually be placed in the array.
+
