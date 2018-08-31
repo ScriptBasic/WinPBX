@@ -1,4 +1,4 @@
-# GCpImage Class
+# CGpImage Class
 
 The **CGpImage** class provides methods for loading and saving raster images (bitmaps) and vector images (metafiles). An Image object encapsulates a bitmap or a metafile and stores attributes that you can retrieve by calling various Get methods. You can construct **Image** objects from a variety of file types including BMP, ICON, GIF, JPEG, Exif, PNG, TIFF, WMF, and EMF.
 
@@ -44,7 +44,7 @@ The **CGpImage** class provides methods for loading and saving raster images (bi
 | [SetPalette](#SetPalette) | Sets the color palette of this Image object. |
 | [SetPropertyItem](#SetPropertyItem) | Sets a property item (piece of metadata) for this Image object. |
 
-# GCpBitmap Class
+# CGpBitmap Class
 
 Extends the **CGpImage** class. The **Bitmap** object expands on the capabilities of the **Image** object by providing additional methods for creating and manipulating raster images.
 
