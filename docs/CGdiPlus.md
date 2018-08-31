@@ -507,3 +507,42 @@ END TYPE
 | ---------- | ----------- |
 | **Width** | Vertical measurement. |
 | **Height** | Horizontal measurement. |
+
+# <a name="ImageCodecInfo"></a>ImageCodecInfo Structure
+
+An **ImageCodecInfo** structure stores information about an image codec (encoder/decoder). GDI+ provides several built-in image codecs. You can obtain information about those codecs by calling the GetImageEncoders function and the **GetImageDecoders** function. Each of those functions returns an array of **ImageCodecInfo** structures, one for each available encoder or decoder.
+
+```
+TYPE ImageCodecInfo
+   Clsid AS CLSID
+   FormatID AS GUID
+   CodecName AS WCHAR PTR
+   DllName AS WCHAR PTR
+   FormatDescription AS WCHAR PTR
+   FilenameExtension AS WCHAR PTR
+   MimeType AS WCHAR PTR
+   Flags AS DWORD
+   Version AS DWORD
+   SigCount AS DWORD
+   SigSize AS DWORD
+   SigPattern AS UBYTE PTR
+   SigMask AS UBYTE PTR
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Clsid** | Codec identifier. |
+| **FormatID** | File format identifier. GUIDs that identify various file formats (**ImageFormatBMP**, **ImageFormatEMF**, and the like) are defined in Gdiplusimaging.inc. |
+| **CodecName** | Pointer to a null-terminated wide string that contains the codec name. |
+| **DllName** | Pointer to a null-terminated wide string that contains the path name of the DLL in which the codec resides. If the codec is not in a DLL, this pointer is NULL. |
+| **FormatDescription** | Pointer to a null-terminated wide string that contains the name of the file format used by the codec. |
+| **FilenameExtension** | Pointer to a null-terminated wide string that contains all file-name extensions associated with the codec. The extensions are separated by semicolons. |
+| **MimeType** | Pointer to a null-terminated wide string that contains the mime type of the codec. |
+| **Flags** | Combination of flags from the **ImageCodecFlags** enumeration. |
+| **Version** | Integer that indicates the version of the codec. |
+| **SigCount** | Integer that indicates the number of signatures used by the file format associated with the codec. |
+| **SigSize** | Integer that indicates the number of bytes in each signature. |
+| **SigPattern** | Pointer to an array of bytes that contains the pattern for each signature. |
+| **SigMask** | Pointer to an array of bytes that contains the mask for each signature. |
+
