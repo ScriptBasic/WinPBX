@@ -1512,7 +1512,7 @@ ImageFlagsCaching             = &H00020000
 
 # <a name="ImageLockMode"></a>ImageLockMode Enumeration
 
-The **ImageLockMode** enumeration specifies flags that are passed to the flags parameter of the GdipBitmapLockBits function. The GdipBitmapLockBits function locks a portion of an image so that you can read or write the pixel data.
+The **ImageLockMode** enumeration specifies flags that are passed to the flags parameter of the **GdipBitmapLockBits** function. The **GdipBitmapLockBits** function locks a portion of an image so that you can read or write the pixel data.
 
 ```
 ImageLockModeRead         = &H0001
@@ -1525,3 +1525,47 @@ ImageLockModeUserInputBuf = &H0004
 | ImageLockModeRead | Specifies that a portion of the image is locked for reading. |
 | ImageLockModeWrite | Specifies that a portion of the image is locked for writing. |
 | ImageLockModeUserInputBuf | Specifies that the buffer used for reading or writing pixel data is allocated by the user. If this flag is set, then the lockedBitmapData parameter of the **GdipBitmapLockBits** function serves as an input parameter (and possibly as an output parameter). If this flag is cleared, then the lockedBitmapData parameter serves only as an output parameter. |
+
+# <a name="ImageType"></a>ImageType Enumeration
+
+The **ImageType** enumeration indicates whether an image is a bitmap or a metafile. The GdipGetImageType function returns an element of this enumeration.
+
+```
+ImageTypeUnknown   = 0
+ImageTypeBitmap    = 1
+ImageTypeMetafile  = 2
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| ImageTypeUnknown | Indicates that the image type is not known. |
+| ImageTypeBitmap | Indicates a bitmap image. |
+| ImageTypeMetafile | Indicates a metafile image. | 
+
+# <a name="InterpolationMode"></a>InterpolationMode Enumeration
+
+The InterpolationMode enumeration specifies the algorithm that is used when images are scaled or rotated. This enumeration is used by the **GdipGetInterpolationMode** and **GdipSetInterpolationMode** functions of the Graphics functions.
+
+```
+InterpolationModeInvalid = QualityModeInvalid
+InterpolationModeDefault = QualityModeDefault
+InterpolationModeLowQuality = QualityModeLow
+InterpolationModeHighQuality = QualityModeHigh
+InterpolationModeBilinear = 3
+InterpolationModeBicubic = 4
+InterpolationModeNearestNeighbor = 5
+InterpolationModeHighQualityBilinear = 6
+InterpolationModeHighQualityBicubic = 7
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| InterpolationModeInvalid | Used internally.|
+| InterpolationModeDefault | Specifies the default interpolation mode. |
+| InterpolationModeLowQuality | Specifies a low-quality mode. |
+| InterpolationModeHighQuality | Specifies a high-quality mode. |
+| InterpolationModeBilinear | Specifies bilinear interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 50 percent of its original size. |
+| InterpolationModeBicubic | Specifies bicubic interpolation. No prefiltering is done. This mode is not suitable for shrinking an image below 25 percent of its original size. |
+| InterpolationModeNearestNeighbor | Specifies nearest-neighbor interpolation. |
+| InterpolationModeHighQualityBilinear | Specifies high-quality, bilinear interpolation. Prefiltering is performed to ensure high-quality shrinking. |
+| InterpolationModeHighQualityBicubic | Specifies high-quality, bicubic interpolation. Prefiltering is performed to ensure high-quality shrinking. This mode produces the highest quality transformed images. |
