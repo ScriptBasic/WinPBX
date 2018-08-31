@@ -965,3 +965,33 @@ ColorMatrixFlagsAltGray = 2
 | ColorMatrixFlagsDefault | Specifies that all color values (including grays) are adjusted by the same color-adjustment matrix. |
 | ColorMatrixFlagsSkipGrays | Specifies that colors are adjusted but gray shades are not adjusted. A gray shade is any color that has the same value for its red, green, and blue components. |
 | ColorMatrixFlagsAltGray | Specifies that colors are adjusted by one matrix and gray shades are adjusted by another matrix. |
+
+# <a name="ColorMode"></a>ColorMode Enumeration
+
+```
+ColorModeARGB32 = 0
+ColorModeARGB64 = 1
+```
+
+# <a name="CombineMode"></a>CombineMode Enumeration
+
+The **CombineMode** enumeration specifies how a new region is combined with an existing region.
+
+```
+CombineModeReplace      = 0
+CombineModeIntersect    = 1
+CombineModeUnion        = 2
+CombineModeXor          = 3
+CombineModeExclude      = 4
+CombineModeComplement   = 5
+```
+
+| Constant   | Meaning     |
+| ---------- | ----------- |
+| CombineModeReplace | Specifies that the existing region is replaced by the new region. |
+| CombineModeIntersect | Specifies that the existing region is replaced by the intersection of itself and the new region. |
+| CombineModeUnion | Specifies that the existing region is replaced by the union of itself and the new region. |
+| CombineModeXor | Specifies that the existing region is replaced by the result of performing an XOR on the two regions. A point is in the XOR of two regions if it is in one region or the other but not in both regions. |
+| CombineModeExclude | Specifies that the existing region is replaced by the portion of itself that is outside of the new region. |
+| CombineModeComplement | Specifies that the existing region is replaced by the portion of the new region that is outside of the existing region. |
+
