@@ -700,3 +700,31 @@ END TYPE
 | **Top** | Top coordinate of the rectangle that bounds the metafile. |
 | **Right** | Right coordinate of the rectangle that bounds the metafile. |
 | **Bottom** | Bottom coordinate of the rectangle that bounds the metafile. |
+
+# <a name="WmfPlaceableFileHeader"></a>WmfPlaceableFileHeader Structure
+
+The **WmfPlaceableFileHeader** structure defines the fields of a placeable metafile header. Placeable metafiles were created as a way of specifying how a metafile is mapped and scaled on a display device.
+
+```
+TYPE WmfPlaceableFileHeader
+   Key AS UINT32
+   Hmf AS INT16
+   BoundingBox AS PWMFRect16
+   Inch AS INT16
+   Reserved AS UINT32
+   Checksum AS INT16
+END TYPE
+```
+
+| Member     | Description |
+| ---------- | ----------- |
+| **Key** | Identification value that indicates the presence of a placeable metafile header. This value is always &H9AC6CDD7. |
+| **Hmf** | Handle to the metafile in memory. When written to disk, this field is not used and will always contains the value 0. |
+| **BoundingBox** | Destination rectangle, measured in twips, for displaying the metafile. |
+| **Inch** | Number of twips per inch used to represent the image.<br>Normally, there are 1440 twips per inch; however, this number can be changed to scale the image.<br>* A value of 720 specifies that the image is twice its normal size.<br>* A value of 360 specifies that the image is four times its normal size.<br>* A value of 2880 specifies that the image is half its normal size. |
+| **Reserved** | Not used and is always set to 0. |
+| **Checksum** | Checksum for the previous 10 WORDs in the header. This value can be used to determine whether the metafile has become corrupted. |
+
+#### Remarks
+
+Although placeable metafiles are quite common, they are not directly supported by the Microsoft Windows application programming interface (API). To display a placeable metafile using the Windows API, you must first strip the placeable metafile header from the file. This is typically performed by copying the metafile to a temporary file starting at file offset 22 (0x16). This is because each placeable metafile begins with a 22-byte header that is followed by a standard metafile. 
