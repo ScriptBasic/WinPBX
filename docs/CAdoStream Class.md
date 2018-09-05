@@ -350,7 +350,7 @@ SLEEP
 
 # <a name="Position"></a>Position
 
-Indicates the current position within a Stream object.
+Indicates the current position within a **Stream** object.
 
 ```
 PROPERTY Position () AS LONG
@@ -375,3 +375,50 @@ Negative values cannot be used to change the current position in a Stream. Only 
 
 For read-only **Stream** objects, ADO will not return an error if Position is set to a value greater than the **Size** of the **Stream**. This does not change the size of the **Stream**, or alter the Stream contents in any way. However, doing this should be avoided because it results in a meaningless **Position** value.
 
+# <a name="Read"></a>Read
+
+Reads a specified number of bytes from a binary **Stream** object.
+
+```
+FUNCTION Read (BYVAL NumBytes AS LONG = adReadAll) AS CVAR
+FUNCTION Read (BYVAL NumBytes AS LONG = adReadAll, BYREF cvValue AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *NumBytes* | Optional. A Long value that specifies the number of bytes to read from the file or the **StreamReadEnum** value **adReadAll**, which is the default. |
+| *cvValue* | Reference to a **CVAR** variable that will receive the bytes read. |
+
+#### Return value
+
+CVAR. The bytes read.
+
+#### Remarks
+
+If *NumBytes* is more than the number of bytes left in the Stream, only the bytes remaining are returned. The data read is not padded to match the length specified by *NumBytes*. If there are no bytes left to read, a variant with a null value is returned. Read cannot be used to read backwards.
+
+**Note**: *NumBytes* always measures bytes. For text **Stream** objects (**Type_** is **adTypeText**), use **ReadText**.
+
+# <a name="ReadText"></a>ReadText
+
+Reads a specified number of characters, an entire line, or the entire stream from a **Stream** object and returns the resulting string.
+
+```
+FUNCTION ReadText (BYVAL NumChars AS LONG = adReadAll) AS CBSTR
+FUNCTION ReadText (BYVAL NumChars AS LONG = adReadAll, BYREF cbsText AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *NumChars* | Optional. A Long value that specifies the number of characters to read from the file, or a **StreamReadEnum* value. The default value is **adReadAll**. |
+| *cbsText* | Reference to a **CBSTR** variable that will receive the charecters read. |
+
+#### Return value
+
+CBSTR. The characters read.
+
+#### Remarks
+
+If *NumChars* is more than the number of characters left in the stream, only the characters remaining are returned. The string read is not padded to match the length specified by *NumChars*. If there are no characters left to read, a variant whose value is null is returned. **ReadText** cannot be used to read backwards.
+
+**Note**: The **ReadText** method is used with text streams (**Type_** is **adTypeText**). For binary streams (**Type_** is **adTypeBinary**), use **Read**.
