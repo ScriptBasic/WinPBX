@@ -510,8 +510,8 @@ FUNCTION WriteText (BYREF cbsData AS CBSTR, BYVAL Options AS StreamWriteEnum = a
 
 | Constant   | Value | Description |
 | ---------- | ----- | ----------- |
-| **adWriteChar** | 0 | Default. Writes the specified text string (specified by the Data parameter) to the Stream object. |
-| **adWriteLine** | 1 | Writes a text string and a line separator character to a Stream object. If the LineSeparator property is not defined, then this returns a run-time error. |
+| **adWriteChar** | 0 | Default. Writes the specified text string to the **Stream** object. |
+| **adWriteLine** | 1 | Writes a text string and a line separator character to a **Stream** object. If the **LineSeparator** property is not defined, then this returns a run-time error. |
 
 #### Return value
 
