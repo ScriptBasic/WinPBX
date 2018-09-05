@@ -111,3 +111,28 @@ S_OK (0) or an HRESULT code.
 Use the **Cancel** method to terminate execution of an asynchronous method call (that is, a method invoked with the **adAsyncConnect**, **adAsyncExecute**, or **adAsyncFetch** option).
 
 For a **Stream** object, the last asynchronous call to the **Open** method is terminated.
+
+# <a name="Charset"></a>Charset
+
+Cancels execution of a pending, asynchronous method call.
+
+```
+PROPERTY Charset () AS CBSTR
+PROPERTY Charset (BYREF cbsCharset AS CBSTR)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsCharset* | CBSTR. A value that specifies the character set into which the contents of the **Stream** will be translated. The default value is "Unicode". Allowed values are typical strings passed over the interface as Internet character set strings (for example, "iso-8859-1", "Windows-1252", etc.). For a list of the character set strings that is known by a system, see the subkeys of HKEY_CLASSES_ROOT\MIME\Database\Charset in the Windows Registry. |
+
+#### Return value
+
+CBSTR. The character set.
+
+#### Remarks
+
+In a text **Stream** object, text data is stored in the character set specified by the **Charset** property. The default is Unicode. The **Charset** property is used for converting data going into the **Stream** or coming out of the **Stream**. For example, if the **Stream** contains ISO-8859-1 data and that data is copied to a **BSTR**, the **Stream** object will convert the data to Unicode. The reverse is also true.
+
+For an open **Stream**, the current **Position** must be at the beginning of the **Stream** (0) to be able to set **Charset**.
+
+**Charset** is used only with text **Stream** objects (**Type_** is **adTypeText**). This property is ignored if **Type_** is **adTypeBinary**.
