@@ -422,3 +422,28 @@ CBSTR. The characters read.
 If *NumChars* is more than the number of characters left in the stream, only the characters remaining are returned. The string read is not padded to match the length specified by *NumChars*. If there are no characters left to read, a variant whose value is null is returned. **ReadText** cannot be used to read backwards.
 
 **Note**: The **ReadText** method is used with text streams (**Type_** is **adTypeText**). For binary streams (**Type_** is **adTypeBinary**), use **Read**.
+
+# <a name="SaveToFile"></a>SaveToFile
+
+Saves the binary contents of a **Stream** to a file.
+
+```
+FUNCTION SaveToFile (BYREF cbsFileName AS CBSTR, BYVAL Options AS LONG = adSaveCreateNotExist) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | Am string value that contains the fully-qualified name of the file to which the contents of the **Stream** will be saved. You can save to any valid local location, or any location you have access to via a UNC value. |
+| *Options* | Optional. A **SaveOptionsEnum** value that specifies whether a new file should be created by **SaveToFile**, if it does not already exist. Default value is **adSaveCreateNotExists**. With these options you can specify that an error occurs if the specified file does not exist. You can also specify that **SaveToFile** overwrites the current contents of an existing file. **Note**: If you overwrite an existing file (when **adSaveCreateOverwrite** is set), **SaveToFile** truncates any bytes from the original existing file that follow the new **EOS**. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+**SaveToFile** may be used to copy the contents of a **Stream** object to a local file. There is no change in the contents or properties of the **Stream object**. The **Stream** object must be open before calling **SaveToFile**.
+
+This method does not change the association of the **Stream** object to its underlying source. The **Stream** object will still be associated with the original URL or **Record** that was its source when opened.
+
+After a **SaveToFile** operation, the current position (**Position**) in the stream is set to the beginning of the stream (0).
