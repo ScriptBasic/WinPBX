@@ -462,8 +462,73 @@ S_OK (0) or an HRESULT code.
 
 #### Remarks
 
-**SetEOS** updates the value of the **EOS** property, by making the current Position the end of the stream. Any bytes or characters following the current position are truncated.
+**SetEOS** updates the value of the **EOS** property, by making the current **Position** the end of the stream. Any bytes or characters following the current position are truncated.
 
 Since **Write**, **WriteText**, and **CopyTo** do not truncate any extra values in existing **Stream** objects, you can truncate these bytes or characters by setting the new end-of-stream position with **SetEOS**.
 
 **Caution**: If you set **EOS** to a position before the actual end of the stream, you will lose all data after the new **EOS** position.
+
+# <a name="Size"></a>Size
+
+Indicates the size of the stream in number of bytes.
+
+```
+PROPERTY Size () AS LONG
+```
+
+#### Return value
+
+LONG. The size of the stream in number of bytes.
+
+# <a name="SkipLine"></a>SkipLine
+
+Skips one entire line when reading a text stream.
+
+```
+FUNCTION SkipLine () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+All characters up to, and including the next line separator, are skipped. By default, the **LineSeparator** is **adCRLF**. If you attempt to skip past **EOS**, the current position will simply remain at **EOS**.
+
+The **SkipLine** method is used with text streams (**Type_** is **adTypeText**).
+
+# <a name="State"></a>State
+
+Indicates for whether the state of the **Stream** object is open or closed.
+
+```
+PROPERTY State () AS ObjectStateEnum
+```
+
+#### Return value
+
+LONG. The current **Stream** state.
+
+# <a name="Type_"></a>Type_
+
+Indicates the type of data contained in the **Stream** (binary or text).
+
+```
+PROPERTY Type_ () AS StreamTypeEnum
+PROPERTY Type_ (BYVAL nType AS StreamTypeEnum)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nType* | LONG. A **StreamTypeEnum** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty Stream, the **Type_** will be changed to **adTypeBinary**. |
+
+#### Return value
+
+LONG. A **StreamTypeEnum** value.
+
+#### Remarks
+
+The **Type_** property is read/write only when the current position is at the beginning of the **Stream** (**Position** is 0), and read-only at any other position.
+
+The **Type_** property determines which methods should be used for reading and writing the **Stream**. For text Streams, use **ReadText** and **WriteText**. For binary streams, use **Read** and **Write**.
