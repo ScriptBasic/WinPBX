@@ -20,7 +20,7 @@ With the methods and properties of a **Stream** object, you can do the following
 
 **Include file**: CAdoStream.inc (include CADODB.inc)
 
-# Constructors
+# Constructor
 
 Creates an instance of the ADO **Stream** interface.
 
