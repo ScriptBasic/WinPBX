@@ -54,6 +54,8 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 
 #### Methods and Properties
 
+| Name       | Description |
+| ---------- | ----------- |
 | [Attach](#Attach) | Attaches an ADO **Stream** to the class. |
 
 # <a name="Attach"></a>Attach
