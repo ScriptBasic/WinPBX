@@ -74,7 +74,6 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 | [SetEOS](#SetEOS) | Sets the position that is the end of the stream. |
 | [Size](#Size) | Indicates the size of the stream in number of bytes. |
 | [SkipLine](#SkipLine) | Skips one entire line when reading a text stream. |
-| [SkipLine](#SkipLine) | Skips one entire line when reading a text stream. |
 | [State](#State) | Indicates for whether the state of the **Stream** object is open or closed. |
 | [Type_](#Type_) | Indicates the type of data contained in the **Stream** (binary or text). |
 | [Write](#Write) | Writes binary data to a **Stream** object. |
