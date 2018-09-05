@@ -531,3 +531,19 @@ LONG. A **StreamTypeEnum** value.
 The **Type_** property is read/write only when the current position is at the beginning of the **Stream** (**Position** is 0), and read-only at any other position.
 
 The **Type_** property determines which methods should be used for reading and writing the **Stream**. For text Streams, use **ReadText** and **WriteText**. For binary streams, use **Read** and **Write**.
+
+# <a name="Write"></a>Write
+
+Writes binary data to a **Stream** object.
+
+```
+FUNCTION Write (BYREF cvBuffer AS CVAR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvBuffer* | A **CVAR** that contains an array of bytes to be written. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
