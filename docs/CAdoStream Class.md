@@ -49,5 +49,18 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *pStream* | A pointer to an existing ADO **Stream** interface. |
+| *pStream* | A pointer to an ADO **Stream** interface. |
+| *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
+
+#### Methods and Properties
+
+| [Attach](#Attach) | Attaches an ADO **Stream** to the class. |
+
+# <a name="Attach"></a>Attach
+
+Attaches a reference to an ADO **Stream** object to the class, allowing to call the methods and properties of its interface.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pStream* | A pointer to an ADO **Stream** interface. |
 | *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
