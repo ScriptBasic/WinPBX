@@ -147,6 +147,12 @@ PROPERTY LineSeparator (BYVAL LS AS LineSeparatorEnum)
 | ---------- | ----------- |
 | *LS* | A **LineSeparatorEnum** value that indicates the line separator character used in the **Stream**. The default value is *adCRLF*. |
 
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adCR** | 13 | Indicates carriage return. |
+| **adCRLF** | -1 | Default. Indicates carriage return line feed. |
+| **adLF** | 10 | Indicates line feed. |
+
 #### Return value
 
 LONG. A **LineSeparatorEnum** value.
@@ -193,6 +199,12 @@ PROPERTY SET Mode (BYVAL nMode AS ConnectModeEnum)
 | Parameter  | Description |
 | ---------- | ----------- |
 | *nMode* | LONG. A **ConnectModeEnum** value. The default value for a Stream associated with an underlying source (opened with a URL as the source, or as the default **Stream** of a **Record**) is **adModeRead**. The default value for a **Stream** not associated with an underlying source (instantiated in memory) is **adModeUnknown**. |
+
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adModeRead** | 1 | Indicates read-only permissions. |
+| **adModeReadWrite** | 3 | Indicates read/write permissions. |
+| **adModeWrite** | 2 | Indicates write-only permissions. |
 
 #### Return value
 
@@ -295,6 +307,11 @@ FUNCTION Read (BYVAL NumBytes AS LONG = adReadAll, BYREF cvValue AS CVAR) AS HRE
 | *NumBytes* | Optional. A Long value that specifies the number of bytes to read from the file or the **StreamReadEnum** value **adReadAll**, which is the default. |
 | *cvValue* | Reference to a **CVAR** variable that will receive the bytes read. |
 
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adReadAll** | -1 | Default. Reads all bytes from the stream, from the current position onwards to the EOS marker. This is the only valid StreamReadEnum value with binary streams (**Type_** is **adTypeBinary**). |
+| **adReadLine** | -2 | Reads the next line from the stream (designated by the **LineSeparator** property). |
+
 #### Return value
 
 CVAR. The bytes read.
@@ -319,6 +336,11 @@ FUNCTION ReadText (BYVAL NumChars AS LONG = adReadAll, BYREF cbsText AS CBSTR) A
 | *NumChars* | Optional. A Long value that specifies the number of characters to read from the file, or a **StreamReadEnum* value. The default value is **adReadAll**. |
 | *cbsText* | Reference to a **CBSTR** variable that will receive the charecters read. |
 
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adReadAll** | -1 | Default. Reads all bytes from the stream, from the current position onwards to the EOS marker. This is the only valid StreamReadEnum value with binary streams (**Type_** is **adTypeBinary**). |
+| **adReadLine** | -2 | Reads the next line from the stream (designated by the **LineSeparator** property). |
+
 #### Return value
 
 CBSTR. The characters read.
@@ -341,6 +363,11 @@ FUNCTION SaveToFile (BYREF cbsFileName AS CBSTR, BYVAL Options AS LONG = adSaveC
 | ---------- | ----------- |
 | *cbsFileName* | Am string value that contains the fully-qualified name of the file to which the contents of the **Stream** will be saved. You can save to any valid local location, or any location you have access to via a UNC value. |
 | *Options* | Optional. A **SaveOptionsEnum** value that specifies whether a new file should be created by **SaveToFile**, if it does not already exist. Default value is **adSaveCreateNotExists**. With these options you can specify that an error occurs if the specified file does not exist. You can also specify that **SaveToFile** overwrites the current contents of an existing file. **Note**: If you overwrite an existing file (when **adSaveCreateOverwrite** is set), **SaveToFile** truncates any bytes from the original existing file that follow the new **EOS**. |
+
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adSaveCreateNotExist** | 1 | Default. Creates a new file if the file specified by the *cbsFileName* parameter does not already exist. |
+| **adSaveCreateOverWrite** | -2 | Overwrites the file with the data from the currently open Stream object, if the file specified by the *cbsFileName* parameter already exists. |
 
 #### Return value
 
@@ -412,6 +439,14 @@ Indicates for whether the state of the **Stream** object is open or closed.
 PROPERTY State () AS ObjectStateEnum
 ```
 
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adStateClosed** | 0 | Indicates that the object is closed. |
+| **adStateOpen** | &H1 | Indicates that the object is open. |
+| **adStateConnecting** | &H2 | Indicates that the object is connecting. |
+| **adStateExecuting** | &H4 | Indicates that the object is executing a command. |
+| **adStateFetching** | &H8 | Indicates that the rows of the object are being retrieved. |
+
 #### Return value
 
 LONG. The current **Stream** state.
@@ -427,7 +462,13 @@ PROPERTY Type_ (BYVAL nType AS StreamTypeEnum)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nType* | LONG. A **StreamTypeEnum** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty stream, the **Type_** will be changed to **adTypeBinary**. |
+| *nType* | LONG. A **StreamTypeEn
+
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adTypeBinary** | 1 | Indicates binary data. |
+| **adTypeText** | 2 | Default. Indicates text data, which is in the character set specified by Charset.
+um** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty stream, the **Type_** will be changed to **adTypeBinary**. |
 
 #### Return value
 
@@ -467,6 +508,11 @@ FUNCTION WriteText (BYREF cbsData AS CBSTR, BYVAL Options AS StreamWriteEnum = a
 | ---------- | ----------- |
 | *cbsData* | An string value that contains the text in characters to be written. |
 | *Options* | Optional. A **StreamWriteEnum** value that specifies whether a line separator character must be written at the end of the specified string. |
+
+| Constant   | Value | Description |
+| ---------- | ----- | ----------- |
+| **adWriteChar** | 0 | Default. Writes the specified text string (specified by the Data parameter) to the Stream object. |
+| **adWriteLine** | 1 | Writes a text string and a line separator character to a Stream object. If the LineSeparator property is not defined, then this returns a run-time error. |
 
 #### Return value
 
