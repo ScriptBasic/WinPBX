@@ -347,3 +347,31 @@ PRINT
 PRINT "Press any key..."
 SLEEP
 ```
+
+# <a name="Position"></a>Position
+
+Indicates the current position within a Stream object.
+
+```
+PROPERTY Position () AS LONG
+PROPERTY Position (BYVAL nPos AS LONG)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nPos* | LONG. A value that specifies the offset, in number of bytes, of the current position from the beginning of the stream. A value of 0 represents the first byte in the stream. |
+
+#### Return value
+
+LONG. The offset, in number of bytes, of the current position from the beginning of the stream.
+
+#### Remarks
+
+The current position can be moved to a point after the end of the stream. If you specify the current position beyond the end of the stream, the **Size** of the **Stream** object will be increased accordingly. Any new bytes added in this way will be null.
+
+**Notes**: **Position** always measures bytes. For text streams using multibyte character sets, multiply the position by the character size to determine the character number. For example, for a two-byte character set, the first character is at position 0, the second character at position 2, the third character at position 4, and so on.
+
+Negative values cannot be used to change the current position in a Stream. Only positive numbers can be used for **Position**.
+
+For read-only **Stream** objects, ADO will not return an error if Position is set to a value greater than the **Size** of the **Stream**. This does not change the size of the **Stream**, or alter the Stream contents in any way. However, doing this should be avoided because it results in a meaningless **Position** value.
+
