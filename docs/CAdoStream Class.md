@@ -216,7 +216,7 @@ PROPERTY LineSeparator (BYVAL LS AS LineSeparatorEnum)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *LS* | A LineSeparatorEnum value that indicates the line separator character used in the **Stream**. The default value is *adCRLF*. |
+| *LS* | A **LineSeparatorEnum** value that indicates the line separator character used in the **Stream**. The default value is *adCRLF*. |
 
 #### Return value
 
@@ -251,3 +251,99 @@ The **Stream** object must be already open before calling LoadFromFile. This met
 After a call to **LoadFromFile**, the current position is set to the beginning of the **Stream** (Position is 0).
 
 Because 2 bytes may be added to the beginning of the stream for encoding, the size of the stream may not exactly match the size of the file from which it was loaded.
+
+# <a name="Mode"></a>Mode
+
+Indicates the available permissions for modifying data in a **Stream** object.
+
+```
+PROPERTY GET Mode () AS ConnectModeEnum
+PROPERTY SET Mode (BYVAL nMode AS ConnectModeEnum)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *nMode* | LONG. A **ConnectModeEnum** value. The default value for a Stream associated with an underlying source (opened with a URL as the source, or as the default **Stream** of a **Record**) is **adModeRead**. The default value for a **Stream** not associated with an underlying source (instantiated in memory) is **adModeUnknown**. |
+
+#### Return value
+
+LONG. A **ConnectionModeEnum** value.
+
+#### Remarks
+
+Use the **Mode** property to set or return the access permissions in use by the provider on the current connection. You can set the Mode property only when the **Connection** object is closed.
+
+For a **Stream** object, if the access mode is not specified, it is inherited from the source used to open the **Stream** object. For example, if a **Stream** is opened from a **Record** object, by default it is opened in the same mode as the **Record**.
+
+This property is read/write while the object is closed and read-only while the object is open.
+
+#### Remote Data Service Usage
+
+When used on a client-side Connection object, the **Mode** property can only be set to **adModeUnknown**.
+
+# <a name="Open"></a>Open
+
+Indicates the available permissions for modifying data in a **Stream** object.
+
+```
+FUNCTION Open (BYREF cvSource AS CVAR = TYPE<VARIANT>(VT_ERROR,0,0,0,DISP_E_PARAMNOTFOUND), _
+   BYVAL nMode AS ConnectModeEnum = adModeUnknown, _
+   BYVAL Options AS StreamOpenOptionsEnum = adOpenStreamUnspecified, _
+   BYREF cbsUserName AS CBSTR = "", BYREF cbsPassword AS CBSTR = "") AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cvSource* | Optional. A **Variant** value that specifies the source of data for the **Stream**. *cvSource* may contain an absolute URL string that points to an existing node in a well-known tree structure, like an e-mail or file system. A URL should be specified using the URL keyword ("URL=scheme://server/folder"). Alternately, *cvSource* may contain a reference to an already open **Record** object, which opens the default stream associated with the Record. If *cvSource* is not specified, a **Stream** is instantiated and opened, associated with no underlying source by default. |
+| *nMode* | Optional. A **ConnectModeEnum** value that specifies the access mode for the resultant **Stream** (for example, read/write or read-only). Default value is **adModeUnknown**. See the **Mode** property for more information about access modes. If **Mode** is not specified, it is inherited by the source object. For example, if the source **Record** is opened in read-only mode, the **Stream** will also be opened in read-only mode by default. |
+| *Options* | Optional. A **StreamOpenOptionsEnum** value. Default value is **adOpenStreamUnspecified**. |
+| *cbsUserName* | Optional. A **BSTR** value that contains the user identification that, if needed, accesses the **Stream** object. |
+| *cbsPassword* | Optional. A **BSTR** value that contains the password that, if needed, accesses the **Stream** object. |
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+When a **Record** object is passed in as the source parameter, the *UserID* and *Password* parameters are not used because access to the **Record** object is already available. Similarly, the **Mode** of the **Record** object is transferred to the **Stream** object. When **cvSource** is not specified, the **Stream** opened contains no data and has a **Size** of zero (0). To avoid losing any data that is written to this **Stream** when the **Stream** is closed, save the **Stream** with the **CopyTo** or **SaveToFile** methods, or save it to another memory location.
+
+An **Open** **Options** value of **adOpenStreamFromRecord** identifies the contents of the **Source** parameter to be an already open **Record** object. The default behavior is to treat **Source** as a URL that points directly to a node in a tree structure, such as a file. The default stream associated with that node is opened.
+
+While the **Stream** is not open, it is possible to read all the read-only properties of the **Stream**. If a **Stream** is opened asynchronously, all subsequent operations (other than checking the State and other read-only properties) are blocked until the **Open** operation is completed.
+
+In addition to the options discussed above, by not specifying **Source**, you can simply instantiate a **Stream** object in memory without associating it with an underlying source. You can dynamically add data to the stream simply by writing binary or text data to the **Stream** with **Write** or **WriteText**, or by loading data from a file with **LoadFromFile**.
+
+#### Example
+
+```
+#define UNICODE
+#include "Afx/CADODB/CADODB.inc"
+using Afx
+
+' // Open a stream in memory
+DIM pStream AS CAdoStream
+pStream.Type_ = adTypeText
+pStream.LineSeparator = adCRLF
+pStream.Open
+
+' // Write some text to it
+pStream.WriteText "This is a test string", adWriteLine
+pStream.WriteText "This is another test string", adWriteLine
+
+' // Set the position at the beginning of the file
+pStream.Position = 0
+' // Read the lines
+DIM cbsText AS CBSTR = pStream.ReadText(adReadLine)
+print cbsText
+cbsText = pStream.ReadText(adReadLine)
+print cbsText
+
+' // Save the contents to a file
+pStream.SaveToFile "TestStream.txt", adSaveCreateOverWrite
+pStream.Close
+
+PRINT
+PRINT "Press any key..."
+SLEEP
+```
