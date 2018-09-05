@@ -136,3 +136,15 @@ In a text **Stream** object, text data is stored in the character set specified 
 For an open **Stream**, the current **Position** must be at the beginning of the **Stream** (0) to be able to set **Charset**.
 
 **Charset** is used only with text **Stream** objects (**Type_** is **adTypeText**). This property is ignored if **Type_** is **adTypeBinary**.
+
+# <a name="Close"></a>Close
+
+Closes a **Stream** object and any dependent objects.
+
+```
+FUNCTION Close () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
