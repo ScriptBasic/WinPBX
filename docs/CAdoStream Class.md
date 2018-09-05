@@ -547,3 +547,26 @@ FUNCTION Write (BYREF cvBuffer AS CVAR) AS HRESULT
 #### Return value
 
 S_OK (0) or an HRESULT code.
+
+# <a name="WriteText"></a>WriteText
+
+Writes a string to a **Stream** object.
+
+```
+FUNCTION WriteText (BYREF cbsData AS CBSTR, BYVAL Options AS StreamWriteEnum = adWriteChar) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsData* | An string value that contains the text in characters to be written. |
+| *Options* | Optional. A **StreamWriteEnum** value that specifies whether a line separator character must be written at the end of the specified string. |
+
+#### Return value
+
+Specified strings are written to the **Stream** object without any intervening spaces or characters between each string.
+
+The current **Position** is set to the character following the written data. The **WriteText** method does not truncate the rest of the data in a stream. If you want to truncate these characters, call **SetEOS**.
+
+If you write past the current **EOS** position, the **Size** of the **Stream** will be increased to contain any new characters, and **EOS** will move to the new last byte in the **Stream**.
+
+**Note**: The **WriteText** method is used with text streams (**Type_** is **adTypeText**). For binary streams (**Type_** is **adTypeBinary**), use **Write**.
