@@ -1,37 +1,24 @@
 # CAdoStream Class
 
-Represents a stream of binary data or text.
-
-**Include file**: CAdoStream.inc (include CADODB.inc)
-
-#### Remarks
-
-In tree-structured hierarchies such as a file system or an e-mail system, a **Record** may have a default binary stream of bits associated with it that contains the contents of the file or the e-mail. A **Stream** object can be used to manipulate fields or records containing these streams of data. A **Stream** object can be obtained in these ways:
-
-From a URL pointing to an object (typically a file) containing binary or text data. This object can be a simple document, a **Record** object representing a structured document, or a folder.
-By opening the default **Stream** object associated with a **Record** object. You can obtain the default stream associated with a **Record** object when the **Record** is opened, to eliminate a round-trip just to open the stream.
-By instantiating a **Stream** object. These **Stream** objects can be used to store data for the purposes of your application. Unlike a **Stream** associated with a URL, or the default **Stream** of a **Record**, an instantiated **Stream** has no association with an underlying source by default.
+An alternative to work with memory streams is to use the ADO stream object. To avoid confussons, the documentation for **CAdoStream** has been adapted to remove references to its use with URLs and ADO Record objects.
 
 With the methods and properties of a **Stream** object, you can do the following:
 
-* Open a **Stream** object from a **Record** or URL with the **Open** method.
-* Close a **Stream** with the **Close** method.
 * Input bytes or text to a **Stream** with the **Write** and **WriteText** methods.
 * Read bytes from the **Stream** with the **Read** and **ReadText** methods.
-* Write any **Stream** data still in the ADO buffer to the underlying object with the **Flush** method.
 * Copy the contents of a **Stream** to another **Stream** with the **CopyTo** method.
 * Control how lines are read from the source file with the **SkipLine** method and the **LineSeparator** property.
 * Determine the end of stream position with the **EOS** property and **SetEOS** method.
 * Save and restore data in files with the **SaveToFile** and **LoadFromFile** methods.
 * Specify the character set used for storing the **Stream** with the **Charset** property.
-* Halt an asynchronous **Stream** operation with the **Cancel** method.
 * Determine the number of bytes in a **Stream** with the **Size** property.
 * Control the current position within a **Stream** with the **Position** property.
 * Determine the type of data in a **Stream** with the **Type_** property.
 * Determine the current state of the **Stream** (closed, open, or executing) with the **State** property.
 * Specify the access mode for the **Stream** with the **Mode** property.
+* Close a **Stream** with the **Close** method.
 
-**Note**: URLs using the http scheme will automatically invoke the Microsoft OLE DB Provider for Internet Publishing. For more information, see [Absolute and Relative URLs](https://msdn.microsoft.com/en-us/library/office/jj249501.aspx).
+**Include file**: CAdoStream.inc (include CADODB.inc)
 
 # Constructors
 
@@ -41,32 +28,24 @@ Creates an instance of the ADO **Stream** interface.
 CONSTRUCTOR CAdoStream
 ```
 
-Attaches an existing instance of the ADO **Stream** interface to the class.
+#### Usage example
 
 ```
-CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+DIM pStm AS CAdoStream
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pStream* | A pointer to an ADO **Stream** interface. |
-| *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
 
 #### Methods and Properties
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Attach](#Attach) | Attaches an ADO **Stream** to the class. |
-| [Cancel](#Cancel) | Cancels execution of a pending, asynchronous method call. |
 | [Charset](#Charset) | Indicates the character set into which the contents of a text **Stream** should be translated for storage in the **Stream** object's internal buffer. |
 | [Close](#Close) | Closes a **Stream** object and any dependent objects. |
 | [CopyTo](#CopyTo) | Copies the specified number of characters or bytes (depending on **Type_**) in the **Stream** to another **Stream** object. |
 | [EOS](#EOS) | Indicates whether the current position is at the end of the stream. |
-| [Flush](#Flush) | Forces the contents of the **Stream** remaining in the ADO buffer to the underlying object with which the **Stream** is associated. |
 | [LineSeparator](#LineSeparator) | Indicates the binary character to be used as the line separator in text **Stream** objects. |
 | [LoadFromFile](#LoadFromFile) | Loads the contents of an existing file into a **Stream**. |
 | [Mode](#Mode) | Indicates the available permissions for modifying data in a **Stream** object. |
-| [Open](#Open) | Opens a connection to a data source. |
+| [Open](#Open) | Opens the stream. |
 | [Position](#Position) | Indicates the current position within a **Stream** object. |
 | [Read](#Read) | Reads a specified number of bytes from a binary Stream object. |
 | [ReadText](#ReadText) | Reads a specified number of characters, an entire line, or the entire stream from a **Stream** object and returns the resulting string. |
@@ -79,40 +58,9 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 | [Write](#Write) | Writes binary data to a **Stream** object. |
 | [WriteText](#WriteText) | Writes a string to a **Stream** object. |
 
-# <a name="Attach"></a>Attach
-
-Attaches a reference to an ADO **Stream** object to the class, allowing to call the methods and properties of its interface.
-
-```
-SUB Attach (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *pStream* | A pointer to an ADO **Stream** interface. |
-| *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
-
-# <a name="Cancel"></a>Cancel
-
-Cancels execution of a pending, asynchronous method call.
-
-```
-FUNCTION Cancel () AS HRESULT
-```
-
-#### Return value
-
-S_OK (0) or an HRESULT code.
-
-#### Remarks
-
-Use the **Cancel** method to terminate execution of an asynchronous method call (that is, a method invoked with the **adAsyncConnect**, **adAsyncExecute**, or **adAsyncFetch** option).
-
-For a **Stream** object, the last asynchronous call to the **Open** method is terminated.
-
 # <a name="Charset"></a>Charset
 
-Cancels execution of a pending, asynchronous method call.
+Indicates the character set into which the contents of a text **Stream** should be translated for storage in the **Stream** object's internal buffer.
 
 ```
 PROPERTY Charset () AS CBSTR
@@ -158,7 +106,7 @@ FUNCTION CopyTo (BYVAL pDestStream AS ADOStream PTR, BYVAL CharNumber AS LONG = 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pDestStream* | An object variable value that contains a reference to an open **Stream** object. The current **Stream** is copied to the destination **Stream** specified by *pDestStream*. The destination Stream must already be open. If not, a run-time error occurs. **Note**: The *pDestStream* parameter may not be a proxy of **Stream** object because this requires access to a private interface on the **Stream** object that cannot be remoted to the client. |
-| *CharNumber* | Optional. An Integer value that specifies the number of bytes or characters to be copied from the current position in the source **Stream** to the destination **Stream**. The default value is *adReadAll* (-1), which specifies that all characters or bytes are copied from the current position to **EOS**. |
+| *CharNumber* | Optional. An integer value that specifies the number of bytes or characters to be copied from the current position in the source **Stream** to the destination **Stream**. The default value is *adReadAll* (-1), which specifies that all characters or bytes are copied from the current position to **EOS**. |
 
 #### Return value
 
@@ -185,24 +133,6 @@ FUNCTION EOS () AS BOOLEAN
 A Boolean value that indicates whether the current position is at the end of the stream. **EOS** returns True if there are no more bytes in the stream; it returns False if there are more bytes following the current position.
 
 To set the end of stream position, use the **SetEOS** method. To determine the current position, use the **Position** property.
-
-# <a name="Flush"></a>Flush
-
-Forces the contents of the **Stream** remaining in the ADO buffer to the underlying object with which the **Stream** is associated.
-
-```
-FUNCTION Flush () AS HRESULT
-```
-
-#### Return value
-
-S_OK (0) or an HRESULT code.
-
-#### Remarks
-
-This method may be used to send the contents of the stream buffer to the underlying object (for example, the node or file represented by the URL that is the source of the **Stream** object). This method should be called when you want to ensure that all changes made to the contents of a **Stream** have been written. However, with ADO it is not usually necessary to call **Flush**, as ADO continuously flushes its buffer as much as possible in the background. Changes to the content of a **Stream** are made automatically, not cached until **Flush** is called.
-
-Closing a **Stream** with the **Close** method flushes the contents of a **Stream** automatically; there is no need to explicitly call **Flush** immediately before **Close**.
 
 # <a name="LineSeparator"></a>LineSeparator
 
@@ -270,34 +200,15 @@ LONG. A **ConnectionModeEnum** value.
 
 #### Remarks
 
-Use the **Mode** property to set or return the access permissions in use by the provider on the current connection. You can set the Mode property only when the **Connection** object is closed.
-
-For a **Stream** object, if the access mode is not specified, it is inherited from the source used to open the **Stream** object. For example, if a **Stream** is opened from a **Record** object, by default it is opened in the same mode as the **Record**.
-
 This property is read/write while the object is closed and read-only while the object is open.
-
-#### Remote Data Service Usage
-
-When used on a client-side Connection object, the **Mode** property can only be set to **adModeUnknown**.
 
 # <a name="Open"></a>Open
 
-Indicates the available permissions for modifying data in a **Stream** object.
+Opens the stream.
 
 ```
-FUNCTION Open (BYREF cvSource AS CVAR = TYPE<VARIANT>(VT_ERROR,0,0,0,DISP_E_PARAMNOTFOUND), _
-   BYVAL nMode AS ConnectModeEnum = adModeUnknown, _
-   BYVAL Options AS StreamOpenOptionsEnum = adOpenStreamUnspecified, _
-   BYREF cbsUserName AS CBSTR = "", BYREF cbsPassword AS CBSTR = "") AS HRESULT
+FUNCTION Open () AS HRESULT
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *cvSource* | Optional. A **Variant** value that specifies the source of data for the **Stream**. *cvSource* may contain an absolute URL string that points to an existing node in a well-known tree structure, like an e-mail or file system. A URL should be specified using the URL keyword ("URL=scheme://server/folder"). Alternately, *cvSource* may contain a reference to an already open **Record** object, which opens the default stream associated with the Record. If *cvSource* is not specified, a **Stream** is instantiated and opened, associated with no underlying source by default. |
-| *nMode* | Optional. A **ConnectModeEnum** value that specifies the access mode for the resultant **Stream** (for example, read/write or read-only). Default value is **adModeUnknown**. See the **Mode** property for more information about access modes. If **Mode** is not specified, it is inherited by the source object. For example, if the source **Record** is opened in read-only mode, the **Stream** will also be opened in read-only mode by default. |
-| *Options* | Optional. A **StreamOpenOptionsEnum** value. Default value is **adOpenStreamUnspecified**. |
-| *cbsUserName* | Optional. A **BSTR** value that contains the user identification that, if needed, accesses the **Stream** object. |
-| *cbsPassword* | Optional. A **BSTR** value that contains the password that, if needed, accesses the **Stream** object. |
 
 #### Return value
 
@@ -305,13 +216,9 @@ S_OK (0) or an HRESULT code.
 
 #### Remarks
 
-When a **Record** object is passed in as the source parameter, the *UserID* and *Password* parameters are not used because access to the **Record** object is already available. Similarly, the **Mode** of the **Record** object is transferred to the **Stream** object. When **cvSource** is not specified, the **Stream** opened contains no data and has a **Size** of zero (0). To avoid losing any data that is written to this **Stream** when the **Stream** is closed, save the **Stream** with the **CopyTo** or **SaveToFile** methods, or save it to another memory location.
+Instantiates a **Stream** object in memory without associating it with an underlying source. You can dynamically add data to the stream simply by writing binary or text data to the **Stream** with **Write** or **WriteText**, or by loading data from a file with **LoadFromFile**.
 
-An **Open** **Options** value of **adOpenStreamFromRecord** identifies the contents of the **Source** parameter to be an already open **Record** object. The default behavior is to treat **Source** as a URL that points directly to a node in a tree structure, such as a file. The default stream associated with that node is opened.
-
-While the **Stream** is not open, it is possible to read all the read-only properties of the **Stream**. If a **Stream** is opened asynchronously, all subsequent operations (other than checking the State and other read-only properties) are blocked until the **Open** operation is completed.
-
-In addition to the options discussed above, by not specifying **Source**, you can simply instantiate a **Stream** object in memory without associating it with an underlying source. You can dynamically add data to the stream simply by writing binary or text data to the **Stream** with **Write** or **WriteText**, or by loading data from a file with **LoadFromFile**.
+While the **Stream** is not open, it is possible to read all the read-only properties of the **Stream**.
 
 #### Example
 
@@ -370,9 +277,9 @@ The current position can be moved to a point after the end of the stream. If you
 
 **Notes**: **Position** always measures bytes. For text streams using multibyte character sets, multiply the position by the character size to determine the character number. For example, for a two-byte character set, the first character is at position 0, the second character at position 2, the third character at position 4, and so on.
 
-Negative values cannot be used to change the current position in a Stream. Only positive numbers can be used for **Position**.
+Negative values cannot be used to change the current position in a **Stream**. Only positive numbers can be used for **Position**.
 
-For read-only **Stream** objects, ADO will not return an error if Position is set to a value greater than the **Size** of the **Stream**. This does not change the size of the **Stream**, or alter the Stream contents in any way. However, doing this should be avoided because it results in a meaningless **Position** value.
+For read-only **Stream** objects, ADO will not return an error if **Position** is set to a value greater than the **Size** of the **Stream**. This does not change the size of the **Stream**, or alter the Stream contents in any way. However, doing this should be avoided because it results in a meaningless **Position** value.
 
 # <a name="Read"></a>Read
 
@@ -394,7 +301,7 @@ CVAR. The bytes read.
 
 #### Remarks
 
-If *NumBytes* is more than the number of bytes left in the Stream, only the bytes remaining are returned. The data read is not padded to match the length specified by *NumBytes*. If there are no bytes left to read, a variant with a null value is returned. Read cannot be used to read backwards.
+If *NumBytes* is more than the number of bytes left in the **Stream**, only the bytes remaining are returned. The data read is not padded to match the length specified by *NumBytes*. If there are no bytes left to read, a variant with a null value is returned. Read cannot be used to read backwards.
 
 **Note**: *NumBytes* always measures bytes. For text **Stream** objects (**Type_** is **adTypeText**), use **ReadText**.
 
@@ -520,7 +427,7 @@ PROPERTY Type_ (BYVAL nType AS StreamTypeEnum)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *nType* | LONG. A **StreamTypeEnum** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty Stream, the **Type_** will be changed to **adTypeBinary**. |
+| *nType* | LONG. A **StreamTypeEnum** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty stream, the **Type_** will be changed to **adTypeBinary**. |
 
 #### Return value
 
@@ -530,7 +437,7 @@ LONG. A **StreamTypeEnum** value.
 
 The **Type_** property is read/write only when the current position is at the beginning of the **Stream** (**Position** is 0), and read-only at any other position.
 
-The **Type_** property determines which methods should be used for reading and writing the **Stream**. For text Streams, use **ReadText** and **WriteText**. For binary streams, use **Read** and **Write**.
+The **Type_** property determines which methods should be used for reading and writing the **Stream**. For text streams, use **ReadText** and **WriteText**. For binary streams, use **Read** and **Write**.
 
 # <a name="Write"></a>Write
 
