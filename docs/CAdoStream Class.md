@@ -2,6 +2,8 @@
 
 Represents a stream of binary data or text.
 
+**Include file**: CAdoStream.inc (include CADODB.inc)
+
 #### Remarks
 
 In tree-structured hierarchies such as a file system or an e-mail system, a **Record** may have a default binary stream of bits associated with it that contains the contents of the file or the e-mail. A **Stream** object can be used to manipulate fields or records containing these streams of data. A **Stream** object can be obtained in these ways:
@@ -30,3 +32,22 @@ With the methods and properties of a **Stream** object, you can do the following
 * Specify the access mode for the **Stream** with the **Mode** property.
 
 **Note**: URLs using the http scheme will automatically invoke the Microsoft OLE DB Provider for Internet Publishing. For more information, see [Absolute and Relative URLs](https://msdn.microsoft.com/en-us/library/office/jj249501.aspx).
+
+# Constructors
+
+Creates an instance of the ADO **Stream** interface.
+
+```
+CONSTRUCTOR CAdoStream
+```
+
+Attaches an existing instance of the ADO **Stream** interface to the class.
+
+```
+CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pStream* | A pointer to an existing ADO **Stream** interface. |
+| *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
