@@ -467,8 +467,7 @@ PROPERTY Type_ (BYVAL nType AS StreamTypeEnum)
 | Constant   | Value | Description |
 | ---------- | ----- | ----------- |
 | **adTypeBinary** | 1 | Indicates binary data. |
-| **adTypeText** | 2 | Default. Indicates text data, which is in the character set specified by Charset.
-um** value that specifies the type of data contained in the **Stream** object. The default value is **adTypeText**. However, if binary data is initially written to a new, empty stream, the **Type_** will be changed to **adTypeBinary**. |
+| **adTypeText** | 2 | Default. Indicates text data, which is in the character set specified by **Charset**. |
 
 #### Return value
 
