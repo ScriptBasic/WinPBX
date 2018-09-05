@@ -57,12 +57,57 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 | Name       | Description |
 | ---------- | ----------- |
 | [Attach](#Attach) | Attaches an ADO **Stream** to the class. |
+| [Cancel](#Cancel) | Cancels execution of a pending, asynchronous method call. |
+| [Charset](#Charset) | Indicates the character set into which the contents of a text **Stream** should be translated for storage in the **Stream** object's internal buffer. |
+| [Close](#Close) | Closes a **Stream** object and any dependent objects. |
+| [CopyTo](#CopyTo) | Copies the specified number of characters or bytes (depending on **Type_**) in the **Stream** to another **Stream** object. |
+| [EOS](#EOS) | Indicates whether the current position is at the end of the stream. |
+| [Flush](#Flush) | Forces the contents of the **Stream** remaining in the ADO buffer to the underlying object with which the **Stream** is associated. |
+| [EOS](#EOS) | Indicates whether the current position is at the end of the stream. |
+| [LineSeparator](#LineSeparator) | Indicates the binary character to be used as the line separator in text **Stream** objects. |
+| [LoadFromFile](#LoadFromFile) | Loads the contents of an existing file into a **Stream**. |
+| [Mode](#Mode) | Indicates the available permissions for modifying data in a **Stream** object. |
+| [Open](#Open) | Opens a connection to a data source. |
+| [Position](#Position) | Indicates the current position within a **Stream** object. |
+| [Read](#Read) | Reads a specified number of bytes from a binary Stream object. |
+| [ReadText](#ReadText) | Reads a specified number of characters, an entire line, or the entire stream from a **Stream** object and returns the resulting string. |
+| [SaveToFile](#SaveToFile) | Saves the binary contents of a **Stream** to a file. |
+| [SetEOS](#SetEOS) | Sets the position that is the end of the stream. |
+| [Size](#Size) | Indicates the size of the stream in number of bytes. |
+| [SkipLine](#SkipLine) | Skips one entire line when reading a text stream. |
+| [SkipLine](#SkipLine) | Skips one entire line when reading a text stream. |
+| [State](#State) | Indicates for whether the state of the **Stream** object is open or closed. |
+| [Type_](#Type_) | Indicates the type of data contained in the **Stream** (binary or text). |
+| [Write](#Write) | Writes binary data to a **Stream** object. |
+| [WriteText](#WriteText) | Writes a string to a **Stream** object. |
 
 # <a name="Attach"></a>Attach
 
 Attaches a reference to an ADO **Stream** object to the class, allowing to call the methods and properties of its interface.
 
+```
+SUB Attach (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOOLEAN = FALSE)
+```
+
 | Parameter  | Description |
 | ---------- | ----------- |
 | *pStream* | A pointer to an ADO **Stream** interface. |
 | *fAddRef* | TRUE = increase the reference count; FALSE = don't increase the reference count. |
+
+# <a name="Cancel"></a>Cancel
+
+Cancels execution of a pending, asynchronous method call.
+
+```
+FUNCTION Cancel () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+Use the **Cancel** method to terminate execution of an asynchronous method call (that is, a method invoked with the **adAsyncConnect**, **adAsyncExecute**, or **adAsyncFetch** option).
+
+For a **Stream** object, the last asynchronous call to the **Open** method is terminated.
