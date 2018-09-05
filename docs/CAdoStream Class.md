@@ -173,3 +173,35 @@ This method copies the specified number of characters or bytes, starting from th
 If there are existing characters or bytes in the destination stream, all contents beyond the point where the copy ends remain, and are not truncated. Position becomes the byte immediately following the last byte copied. If you want to truncate these bytes, call **SetEOS**.
 
 **CopyTo** should be used to copy data to a destination **Stream** of the same type as the source **Stream** (their **Type_** property settings are both **adTypeText** or both **adTypeBinary**). For text **Stream** objects, you can change the **Charset** property setting of the destination **Stream** to translate from one character set to another. Also, text **Stream** objects can be successfully copied into binary **Stream objects**, but binary **Stream** objects cannot be copied into text **Stream** objects.
+
+# <a name="EOS"></a>EOS
+
+Indicates whether the current position is at the end of the stream.
+
+```
+FUNCTION EOS () AS BOOLEAN
+```
+
+#### Return value
+
+A Boolean value that indicates whether the current position is at the end of the stream. **EOS** returns True if there are no more bytes in the stream; it returns False if there are more bytes following the current position.
+
+To set the end of stream position, use the **SetEOS** method. To determine the current position, use the **Position** property.
+
+# <a name="Flush"></a>Flush
+
+Forces the contents of the **Stream** remaining in the ADO buffer to the underlying object with which the **Stream** is associated.
+
+```
+FUNCTION Flush () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+This method may be used to send the contents of the stream buffer to the underlying object (for example, the node or file represented by the URL that is the source of the **Stream** object). This method should be called when you want to ensure that all changes made to the contents of a **Stream** have been written. However, with ADO it is not usually necessary to call **Flush**, as ADO continuously flushes its buffer as much as possible in the background. Changes to the content of a **Stream** are made automatically, not cached until **Flush** is called.
+
+Closing a **Stream** with the **Close** method flushes the contents of a **Stream** automatically; there is no need to explicitly call **Flush** immediately before **Close**.
