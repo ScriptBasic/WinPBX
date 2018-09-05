@@ -447,3 +447,23 @@ S_OK (0) or an HRESULT code.
 This method does not change the association of the **Stream** object to its underlying source. The **Stream** object will still be associated with the original URL or **Record** that was its source when opened.
 
 After a **SaveToFile** operation, the current position (**Position**) in the stream is set to the beginning of the stream (0).
+
+# <a name="SetEOS"></a>SetEOS
+
+Sets the position that is the end of the stream.
+
+```
+FUNCTION SetEOS () AS HRESULT
+```
+
+#### Return value
+
+S_OK (0) or an HRESULT code.
+
+#### Remarks
+
+**SetEOS** updates the value of the **EOS** property, by making the current Position the end of the stream. Any bytes or characters following the current position are truncated.
+
+Since **Write**, **WriteText**, and **CopyTo** do not truncate any extra values in existing **Stream** objects, you can truncate these bytes or characters by setting the new end-of-stream position with **SetEOS**.
+
+**Caution**: If you set **EOS** to a position before the actual end of the stream, you will lose all data after the new **EOS** position.
