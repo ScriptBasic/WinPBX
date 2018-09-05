@@ -63,7 +63,6 @@ CONSTRUCTOR CAdoStream (BYVAL pStream AS Afx_ADOStream PTR, BYVAL fAddRef AS BOO
 | [CopyTo](#CopyTo) | Copies the specified number of characters or bytes (depending on **Type_**) in the **Stream** to another **Stream** object. |
 | [EOS](#EOS) | Indicates whether the current position is at the end of the stream. |
 | [Flush](#Flush) | Forces the contents of the **Stream** remaining in the ADO buffer to the underlying object with which the **Stream** is associated. |
-| [EOS](#EOS) | Indicates whether the current position is at the end of the stream. |
 | [LineSeparator](#LineSeparator) | Indicates the binary character to be used as the line separator in text **Stream** objects. |
 | [LoadFromFile](#LoadFromFile) | Loads the contents of an existing file into a **Stream**. |
 | [Mode](#Mode) | Indicates the available permissions for modifying data in a **Stream** object. |
@@ -205,3 +204,50 @@ S_OK (0) or an HRESULT code.
 This method may be used to send the contents of the stream buffer to the underlying object (for example, the node or file represented by the URL that is the source of the **Stream** object). This method should be called when you want to ensure that all changes made to the contents of a **Stream** have been written. However, with ADO it is not usually necessary to call **Flush**, as ADO continuously flushes its buffer as much as possible in the background. Changes to the content of a **Stream** are made automatically, not cached until **Flush** is called.
 
 Closing a **Stream** with the **Close** method flushes the contents of a **Stream** automatically; there is no need to explicitly call **Flush** immediately before **Close**.
+
+# <a name="LineSeparator"></a>LineSeparator
+
+Indicates the binary character to be used as the line separator in text **Stream** objects.
+
+```
+PROPERTY LineSeparator () AS LineSeparatorEnum
+PROPERTY LineSeparator (BYVAL LS AS LineSeparatorEnum)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *LS* | A LineSeparatorEnum value that indicates the line separator character used in the **Stream**. The default value is *adCRLF*. |
+
+#### Return value
+
+LONG. A **LineSeparatorEnum** value.
+
+#### Remarks
+
+**LineSeparator** is used to interpret lines when reading the content of a text **Stream**. Lines can be skipped with the **SkipLine** method.
+
+**LineSeparator** is used only with text **Stream** objects (**Type_** is **adTypeText**). This property is ignored if **Type_** is **adTypeBinary**.
+
+# <a name="LoadFromFile"></a>LoadFromFile
+
+Loads the contents of an existing file into a **Stream**.
+
+```
+FUNCTION LoadFromFile (BYREF cbsFileName AS CBSTR) AS HRESULT
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cbsFileName* | An string value that contains the name of a file to be loaded into the **Stream**. *cbsFileName* can contain any valid path and name in UNC format. If the specified file does not exist, a run-time error occurs. |
+
+#### Remarks
+
+This method may be used to load the contents of a local file into a **Stream** object. This may be used to upload the contents of a local file to a server.
+
+The **Stream** object must be already open before calling LoadFromFile. This method does not change the binding of the **Stream** object; it will still be bound to the object specified by the URL or **Record** with which the Stream was originally opened.
+
+**LoadFromFile** overwrites the current contents of the **Stream** object with data read from the file. Any existing bytes in the **Stream** are overwritten by the contents of the file. Any previously existing and remaining bytes following the **EOS** created by **LoadFromFile**, are truncated.
+
+After a call to **LoadFromFile**, the current position is set to the beginning of the **Stream** (Position is 0).
+
+Because 2 bytes may be added to the beginning of the stream for encoding, the size of the stream may not exactly match the size of the file from which it was loaded.
