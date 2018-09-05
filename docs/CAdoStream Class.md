@@ -69,7 +69,7 @@ PROPERTY Charset (BYREF cbsCharset AS CBSTR)
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *cbsCharset* | CBSTR. A value that specifies the character set into which the contents of the **Stream** will be translated. The default value is "Unicode". Allowed values are typical strings passed over the interface as Internet character set strings (for example, "iso-8859-1", "Windows-1252", etc.). For a list of the character set strings that is known by a system, see the subkeys of HKEY_CLASSES_ROOT\MIME\Database\Charset in the Windows Registry. |
+| *cbsCharset* | CBSTR. A value that specifies the character set into which the contents of the **Stream** will be translated. The default value is "Unicode". Other allowed charsets are "ascii" and "utf-8". |
 
 #### Return value
 
