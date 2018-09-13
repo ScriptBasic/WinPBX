@@ -283,7 +283,7 @@ FUNCTION GetWindowText () AS CWSTR
 ### Return Value  
  The text from the masked edit control.
 
-# <a name="hWindow"></a>hWindow
+## <a name="hWindow"></a>hWindow
 
 Gets the control window handle.
 
