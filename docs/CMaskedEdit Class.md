@@ -3,13 +3,17 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
 
 **Include file**: CMaskedEdit.inc
   
-### Constructors  
-  
+### Constructors
+
+|Name|Description|  
+|----------|-----------------|  
+|[Constrctors](#constructors)|Creates an instance of the class|  
   
 ### Public Methods  
   
 |Name|Description|  
 |----------|-----------------|  
+|[DisableMask](#create)|Creates an instance of the control|  
 |[DisableMask](#disablemask)|Disables validating user input.|  
 |[EnableGetMaskedCharsOnly](#enablegetmaskedcharsonly)|Specifies whether the `GetWindowText` method retrieves only masked characters.|  
 |[EnableMask](#enablemask)|Initializes the masked edit control.|  
@@ -17,7 +21,36 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
 |[GetWindowText](#getwindowtext)|Retrieves validated text from the masked edit control.|  
 |[SetValidChars](#setvalidchars)|Specifies a string of valid characters that the user can enter.|  
 |[SetWindowText](#setwindowtext)|Displays a prompt in the masked edit control.|  
-  
+
+##  <a name="construtors"></a>Constructors
+
+```
+CONSTRUCTOR CMaskedEdit
+CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
+   BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, _
+   BYVAL dwStyle AS DWORD = -1, BYVAL dwExStyle AS DWORD = -1)
+```
+
+### Parameters  
+ [in] *pWindow*  
+ Pointer to the parent `CWindow`class.
+ [in] *cID*  
+ The control identifier, an integer value used to notify its parent about events. The application determines the control identifier; it must be unique for all controls with the same parent window.
+ [in] *x*  
+ The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
+ [in] *y*  
+ The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
+ [in] *nWidth*  
+ The width of the control.
+ [in] *nHeight*  
+ The height of the control.
+ [in] *dwStyle*  
+ The window styles of the control being created.<br>
+ Default styles: WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL.
+ [in] *dwExStyle*  
+ The extended window styles of the control being created.<br>
+ Default extended style: WS_EX_CLIENTEDGE
+
 ## Remarks  
  Perform the following steps to use the `CMaskedEdit` control in your application:  
   
@@ -34,8 +67,14 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
  If you do not call one or more methods to initialize the mask, valid characters, and default text, the masked edit control behaves just as the standard edit control behaves.  
   
 ## Example  
- The following example demonstrates how to set up a mask (for example a phone number) by using the `EnableMask` method to create the mask for the masked edit control, the `SetValidChars` method to specify a string of valid characters that the user can enter, and `SetWindowText` method to display a prompt in the masked edit control.
-  
+ The following example demonstrates how to set up a mask (for example a phone number) by using the `EnableMask` method to create the mask for the masked edit control, and `SetWindowText` method to display a prompt in the masked edit control.
+
+```
+DIM pMakedEdit AS CMaskedEdit = CMaskedEdit(@pWindow, IDC_MASKED, 10, 30, 280, 23)
+pMakedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
+pMakedEdit.SetWindowText("(123) 123-1212")
+```
+
 ##  <a name="disablemask"></a>DisableMask  
  Disables validating user input.  
   
