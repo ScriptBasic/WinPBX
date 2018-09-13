@@ -32,32 +32,16 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
    BYVAL dwStyle AS DWORD = -1, BYVAL dwExStyle AS DWORD = -1)
 ```
 
-### Parameters  
- [in] *pWindow*<br>
- Pointer to the parent `CWindow`class.
- 
- [in] *cID*<br>
- The control identifier, an integer value used to notify its parent about events. The application determines the control identifier; it must be unique for all controls with the same parent window.
- 
- [in] *x*<br>
- The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
- 
- [in] *y*<br>
- The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
- 
- [in] *nWidth*<br>
- The width of the control.
- 
- [in] *nHeight*<br>
- The height of the control.
- 
- [in] *dwStyle*<br>
- The window styles of the control being created.<br>
- Default styles: WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL.
- 
- [in] *dwExStyle*<br>
- The extended window styles of the control being created.<br>
- Default extended style: WS_EX_CLIENTEDGE
+| Parameter  | Description |
+| ---------- | ----------- |
+| *pWindow* | Pointer to the parent `CWindow`class. |
+| *cID* | The control identifier, an integer value used to notify its parent about events. The application determines the control identifier; it must be unique for all controls with the same parent window. |
+| *X* | The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *y* |  The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area. |
+| *nWidth* | The width of the control. |
+| *nHeight* | The height of the control. |
+| *dwStyle* | The window styles of the control being created.<br>Default styles: WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL. |
+| *dwExStyle* | The extended window styles of the control being created.<br> Default extended style: WS_EX_CLIENTEDGE |
 
 ### Remarks  
  Perform the following steps to use the `CMaskedEdit` control in your application:  
@@ -214,7 +198,7 @@ FUNCTION CMaskedEdit.Create (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR
 
 ### Parameters  
 
-Same parameters that the `Contructor`.
+Same parameters that the `Constructor`.
 
 ```
 DIM pMakedEdit AS CMaskedEdit
@@ -240,9 +224,9 @@ SUB DisableMask
 SUB EnableGetMaskedCharsOnly (BYVAL bEnable AS BOOLEAN = TRUE)
 ```  
   
-### Parameters  
- [in] *bEnable*  
- TRUE to specify that the [GetWindowText](#getwindowtext) method retrieve only masked characters; FALSE to specify that the method retrieve the whole text. The default value is TRUE.  
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bEnable* | TRUE to specify that the [GetWindowText](#getwindowtext) method retrieve only masked characters; FALSE to specify that the method retrieve the whole text. The default value is TRUE.   |
   
 ### Remarks  
  Use this method to enable retrieving masked characters. Then create a masked edit control that corresponds to the telephone number, such as (425) 555-0187. If you call the `GetWindowText` method, it returns "4255550187". If you disable retrieving masked characters, the `GetWindowText` method returns the text that is displayed in the edit control, for example "(425) 555-0187".  
@@ -255,18 +239,12 @@ SUB EnableMask (BYVAL lpszMask AS WSTRING PTR, BYVAL lpszInputTemplate AS WSTRIN
    BYREF chMaskInputTemplate AS CWSTR = "_", BYVAL lpszValid AS WSTRING PTR = NULL)
 ```  
   
-### Parameters  
- [in] *lpszMask*  
- A mask string that specifies the type of character that can appear at each position in the user input. The length of the *lpszInputTemplate* and *lpszMask* parameter strings must be the same. See the Remarks section for more detail about mask characters.  
-  
- [in] *lpszInputTemplate*  
- A mask template string that specifies the literal characters that can appear at each position in the user input. Use the underscore character ('_') as a character placeholder. The length of the *lpszInputTemplate* and *lpszMask* parameter strings must be the same.  
-  
- [in] *chMaskInputTemplate*  
- A default character that the framework substitutes for each invalid character in the user input. The default value of this parameter is underscore ('_').  
-  
- [in] *lpszValid*  
- A string that contains a set of valid characters. NULL indicates that all characters are valid. The default value of this parameter is NULL.  
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpszMask* | A mask string that specifies the type of character that can appear at each position in the user input. The length of the *lpszInputTemplate* and *lpszMask* parameter strings must be the same. See the Remarks section for more detail about mask characters. |
+| *lpszInputTemplate* | A mask template string that specifies the literal characters that can appear at each position in the user input. Use the underscore character ('\_') as a character placeholder. The length of the *lpszInputTemplate* and *lpszMask* parameter strings must be the same.  |
+| *chMaskInputTemplate* | A default character that the framework substitutes for each invalid character in the user input. The default value of this parameter is underscore ('\_'). |
+| *lpszValid* | A string that contains a set of valid characters. NULL indicates that all characters are valid. The default value of this parameter is NULL.  |
   
 ### Remarks  
  Use this method to create the mask for the masked edit control.
@@ -291,9 +269,9 @@ SUB EnableMask (BYVAL lpszMask AS WSTRING PTR, BYVAL lpszInputTemplate AS WSTRIN
 SUB EnableSetMaskedCharsOnly (BYVAL bEnable AS BOOLEAN = TRUE)
 ```  
   
-### Parameters  
- [in] *bEnable*  
- TRUE to validate the user input against only masked characters; FALSE to validate against the whole mask. The default value is TRUE.  
+| Parameter  | Description |
+| ---------- | ----------- |
+| *bEnable* | TRUE to validate the user input against only masked characters; FALSE to validate against the whole mask. The default value is TRUE. |
   
 ##  <a name="getwindowtext"></a>GetWindowText  
  Retrieves validated text from the masked edit control.  
@@ -324,9 +302,9 @@ The window handle.
 SUB SetValidChars (BYVAL lpszValid AS WSTRING PTR)
 ```  
   
-### Parameters  
- [in] *lpszValid*  
- A string that contains the set of valid input characters. NULL means that all characters are valid. The default value of this parameter is NULL.  
+| Parameter  | Description |
+| ---------- | ----------- |
+| *lpszValid* | A string that contains the set of valid input characters. NULL means that all characters are valid. The default value of this parameter is NULL. |
   
 ### Remarks  
  Use this method to define a list of valid characters. If an input character is not in this list, masked edit control will not accept it.  
@@ -348,6 +326,6 @@ m_wndMaskEdit.SetWindowText("0x01AF")
 FUNCTION SetWindowText (BYREF cwsText AS CWSTR) AS BOOLEAN
 ```  
   
-### Parameter
- [in] *cwsText*  
- Points to a string that will be used as a prompt.  
+| Parameter  | Description |
+| ---------- | ----------- |
+| *cwsText* | Points to a string that will be used as a prompt. |
