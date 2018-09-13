@@ -7,7 +7,7 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
 
 |Name|Description|  
 |----------|-----------------|  
-|[Constrctors](#constructors)|Creates an instance of the class|  
+|[Constructors](#constructors)|Creates an instance of the class|  
   
 ### Public Methods  
   
