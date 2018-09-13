@@ -19,6 +19,7 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
 |[EnableMask](#enablemask)|Initializes the masked edit control.|  
 |[EnableSetMaskedCharsOnly](#enablesetmaskedcharsonly)|Specifies whether the text is validated against only masked characters, or against the whole mask.|  
 |[GetWindowText](#getwindowtext)|Retrieves validated text from the masked edit control.|  
+|[hWindow](#hWindow)|Gets the control window handle. |
 |[SetValidChars](#setvalidchars)|Specifies a string of valid characters that the user can enter.|  
 |[SetWindowText](#setwindowtext)|Displays a prompt in the masked edit control.|  
 
@@ -80,6 +81,127 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
 DIM pMakedEdit AS CMaskedEdit = CMaskedEdit(@pWindow, IDC_MASKED, 10, 30, 280, 23)
 pMakedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
 pMakedEdit.SetWindowText("(123) 123-1212")
+```
+
+## Full example
+
+```
+' ########################################################################################
+' Microsoft Windows
+' Contents: CWindow masked edit control example
+' Compiler: FreeBasic 32 & 64 bit
+' Copyright (c) 2018 José Roca. Freeware. Use at your own risk.
+' THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+' EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+' MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+' ########################################################################################
+
+#define UNICODE
+#INCLUDE ONCE "Afx/CWindow.inc"
+#INCLUDE ONCE "Afx/CMaskedEdit.inc"
+USING Afx
+
+DECLARE FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                          BYVAL hPrevInstance AS HINSTANCE, _
+                          BYVAL szCmdLine AS ZSTRING PTR, _
+                          BYVAL nCmdShow AS LONG) AS LONG
+
+   END WinMain(GetModuleHandleW(NULL), NULL, COMMAND(), SW_NORMAL)
+
+' // Forward declaration
+DECLARE FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+CONST IDC_MASKED = 1001
+
+' ========================================================================================
+' Main
+' ========================================================================================
+FUNCTION WinMain (BYVAL hInstance AS HINSTANCE, _
+                  BYVAL hPrevInstance AS HINSTANCE, _
+                  BYVAL szCmdLine AS ZSTRING PTR, _
+                  BYVAL nCmdShow AS LONG) AS LONG
+
+   ' // Set process DPI aware
+   ' // The recommended way is to use a manifest file
+   AfxSetProcessDPIAware
+
+   ' // Creates the main window
+   DIM pWindow AS CWindow
+   ' -or- DIM pWindow AS CWindow = "MyClassName" (use the name that you wish)
+   pWindow.Create(NULL, "Masked edit control", @WndProc)
+   ' // Sizes it by setting the wanted width and height of its client area
+   pWindow.SetClientSize(300, 150)
+   ' // Centers the window
+   pWindow.Center
+
+   ' // Adds a button
+   pWindow.AddControl("Button", , IDCANCEL, "&Close", 350, 250, 75, 23)
+
+   ' // Add a masked edit control
+   DIM pMaskedEdit AS CMaskedEdit = CMaskedEdit(@pWindow, IDC_MASKED, 10, 30, 280, 23)
+   SetFocus pMaskedEdit.hWindow
+   pMaskedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
+   pMaskedEdit.SetWindowText("(123) 123-1212")
+
+   ' // Displays the window and dispatches the Windows messages
+   FUNCTION = pWindow.DoEvents(nCmdShow)
+
+END FUNCTION
+' ========================================================================================
+
+' ========================================================================================
+' Main window procedure
+' ========================================================================================
+FUNCTION WndProc (BYVAL hwnd AS HWND, BYVAL uMsg AS UINT, BYVAL wParam AS WPARAM, BYVAL lParam AS LPARAM) AS LRESULT
+
+   SELECT CASE uMsg
+
+      CASE WM_CREATE
+         ' // If you want to create controls in WM_CREATE instead of in WinMain, you can
+         ' // retrieve a pointer of the class with AfxCWindowPtr(lParam). Use hwnd as the
+         ' // handle of the window instead of pWindow->hWindow or omitting this parameter
+         ' // because CWindow doesn't know the value of this handle until the WM_CREATE
+         ' // message has been processed.
+         ' DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
+         ' IF pWindow THEN pWindow->AddControl("Button", hwnd, IDCANCEL, "&Close", 350, 250, 75, 23)
+         ' // An alternative is to pass the value of the main window handle to CWindow with
+         ' DIM pWindow AS CWindow PTR = AfxCWindowPtr(lParam)
+         ' pWindow->hWindow = hwnd
+         ' IF pWindow THEN pWindow->AddControl("Button", , IDCANCEL, "&Close", 350, 250, 75, 23)
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE GET_WM_COMMAND_ID(wParam, lParam)
+            CASE IDCANCEL
+               ' // If ESC key pressed, close the application by sending an WM_CLOSE message
+               IF GET_WM_COMMAND_CMD(wParam, lParam) = BN_CLICKED THEN
+                  SendMessageW hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_SIZE
+         ' // Optional resizing code
+         IF wParam <> SIZE_MINIMIZED THEN
+            ' // Retrieve a pointer to the CWindow class
+            DIM pWindow AS CWindow PTR = AfxCWindowPtr(hwnd)
+            ' // Move the position of the button
+            IF pWindow THEN pWindow->MoveWindow GetDlgItem(hwnd, IDCANCEL), _
+               pWindow->ClientWidth - 120, pWindow->ClientHeight - 50, 75, 23, CTRUE
+         END IF
+
+    	CASE WM_DESTROY
+         ' // Ends the application by sending a WM_QUIT message
+         PostQuitMessage(0)
+         EXIT FUNCTION
+
+   END SELECT
+
+   ' // Default processing of Windows messages
+   FUNCTION = DefWindowProcW(hwnd, uMsg, wParam, lParam)
+
+END FUNCTION
+' ========================================================================================
 ```
 
 ##  <a name="create"></a>Create
@@ -182,7 +304,19 @@ FUNCTION GetWindowText () AS CWSTR
   
 ### Return Value  
  The text from the masked edit control.
-  
+
+# <a name="hWindow"></a>hWindow
+
+Gets the control window handle.
+
+```
+PROPERTY hWindow () AS HWND
+```
+
+#### Return value
+
+The window handle.
+
 ##  <a name="setvalidchars"></a>SetValidChars  
  Specifies a string of valid characters that the user can enter.  
   
