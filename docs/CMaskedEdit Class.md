@@ -13,7 +13,7 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
   
 |Name|Description|  
 |----------|-----------------|  
-|[DisableMask](#create)|Creates an instance of the control|  
+|[Create](#create)|Creates an instance of the control|  
 |[DisableMask](#disablemask)|Disables validating user input.|  
 |[EnableGetMaskedCharsOnly](#enablegetmaskedcharsonly)|Specifies whether the `GetWindowText` method retrieves only masked characters.|  
 |[EnableMask](#enablemask)|Initializes the masked edit control.|  
@@ -78,6 +78,25 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
 
 ```
 DIM pMakedEdit AS CMaskedEdit = CMaskedEdit(@pWindow, IDC_MASKED, 10, 30, 280, 23)
+pMakedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
+pMakedEdit.SetWindowText("(123) 123-1212")
+```
+
+##  <a name="create"></a>Create
+
+```
+FUNCTION CMaskedEdit.Create (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
+   BYVAL x AS LONG = 0, BYVAL y AS LONG = 0, BYVAL nWidth AS LONG = 0, BYVAL nHeight AS LONG = 0, _
+   BYVAL dwStyle AS DWORD = -1, BYVAL dwExStyle AS DWORD = -1) AS HWND
+```
+
+### Parameters  
+
+Same parameters that the `Contructor`.
+
+```
+DIM pMakedEdit AS CMaskedEdit
+pMaskEdit.Create(CMaskedEdit(@pWindow, IDC_MASKED, 10, 30, 280, 23)
 pMakedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
 pMakedEdit.SetWindowText("(123) 123-1212")
 ```
