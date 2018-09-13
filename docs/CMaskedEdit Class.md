@@ -32,22 +32,29 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
 ```
 
 ### Parameters  
- [in] *pWindow*  
+ [in] *pWindow*<br>
  Pointer to the parent `CWindow`class.
- [in] *cID*  
+ 
+ [in] *cID*<br>
  The control identifier, an integer value used to notify its parent about events. The application determines the control identifier; it must be unique for all controls with the same parent window.
- [in] *x*  
+ 
+ [in] *x*<br>
  The x-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
- [in] *y*  
+ 
+ [in] *y*<br>
  The initial y-coordinate of the upper-left corner of the window relative to the upper-left corner of the parent window's client area.
- [in] *nWidth*  
+ 
+ [in] *nWidth*<br>
  The width of the control.
- [in] *nHeight*  
+ 
+ [in] *nHeight*<br>
  The height of the control.
- [in] *dwStyle*  
+ 
+ [in] *dwStyle*<br>
  The window styles of the control being created.<br>
  Default styles: WS_VISIBLE OR WS_TABSTOP OR ES_LEFT OR ES_AUTOHSCROLL.
- [in] *dwExStyle*  
+ 
+ [in] *dwExStyle*<br>
  The extended window styles of the control being created.<br>
  Default extended style: WS_EX_CLIENTEDGE
 
