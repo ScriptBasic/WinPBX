@@ -22,7 +22,7 @@ The `CMaskedEdit` class supports a masked edit control, which validates user inp
 |[SetValidChars](#setvalidchars)|Specifies a string of valid characters that the user can enter.|  
 |[SetWindowText](#setwindowtext)|Displays a prompt in the masked edit control.|  
 
-##  <a name="construtors"></a>Constructors
+##  <a name="constructors"></a>Constructors
 
 ```
 CONSTRUCTOR CMaskedEdit
