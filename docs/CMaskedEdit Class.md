@@ -59,7 +59,7 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
  The extended window styles of the control being created.<br>
  Default extended style: WS_EX_CLIENTEDGE
 
-## Remarks  
+### Remarks  
  Perform the following steps to use the `CMaskedEdit` control in your application:  
   
  1. Embed a `CMaskedEdit` object into your window class.  
@@ -74,7 +74,7 @@ CONSTRUCTOR CMaskedEdit (BYVAL pWindow AS CWindow PTR, BYVAL cID AS LONG_PTR,  _
   
  If you do not call one or more methods to initialize the mask, valid characters, and default text, the masked edit control behaves just as the standard edit control behaves.  
   
-## Example  
+### Example  
  The following example demonstrates how to set up a mask (for example a phone number) by using the `EnableMask` method to create the mask for the masked edit control, and `SetWindowText` method to display a prompt in the masked edit control.
 
 ```
@@ -83,7 +83,7 @@ pMakedEdit.EnableMask(" ddd  ddd dddd", "(___) ___-____", "_")
 pMakedEdit.SetWindowText("(123) 123-1212")
 ```
 
-## Full example
+### Full example
 
 ```
 ' ########################################################################################
