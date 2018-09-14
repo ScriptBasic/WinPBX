@@ -185,7 +185,7 @@ int96 = -int96
 Returns the absolute value of a decimal data type.
 
 ```
-FUNCTION DecAbs () AS CInt96
+FUNCTION Abs_ () AS CInt96
 ```
 
 # <a name="IsSigned"></a>IsSigned
