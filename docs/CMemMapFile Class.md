@@ -169,6 +169,39 @@ FUNCTION CMemMapFile.MapSharedMemory (BYVAL pwszMappingName AS WSTRING PTR, BYVA
 
 TRUE or FALSE.
 
+#### Example
+
+The following example maps 256 bytes of memory, using "MyTest" as the name of the mapping object and "MyMutex" as the name of the synchronization object, acceses it with the `AccessData`method (casting the returned pointer to a WSTRING PTR to allow to work with unicode) and changes the content of the fifth character using the *pData* pointer with an index of 4 (indexed pointers are zero based).
+
+```
+#define BUF_SIZE 256
+DIM pMemMap AS CMemMapFile
+IF pMemMap.MapMemory("MyTest", "MyMutex", BUF_SIZE) THEN
+   DIM pData AS WSTRING PTR = pMemMap.AccessData
+   IF pData THEN
+      pData[4] = "x"
+      print pData[4]
+      pMemMap.UnaccessData
+   END IF
+'   pMemMap.Unmap   ' Don't unmap the file if we intend to share the memory
+END IF
+```
+
+In another process, we can create an instance of `CMemMapFile` using the same parameters and access the shared memory.
+
+```
+DIM pSharedMemMap AS CMemMapFile
+IF pSharedMemMap.MapSharedMemory("MyTest", "MyMutex", BUF_SIZE, TRUE) THEN
+   ' // Access the data
+   DIM pData AS WSTRING PTR = pSharedMemMap.AccessData
+   IF pData THEN
+      print pData[4]
+      pSharedMemMap.UnaccessData
+   END IF
+   pSharedMemMap.Unmap
+END IF
+```
+
 # <a name="Unmap"></a>Unmap
 
 Unmaps the file or memory and closes handles.
@@ -215,7 +248,7 @@ When modifying a file through a mapped view, the last modification timestamp may
 
 # <a name="GetFileHandle"></a>GetFileHandle
 
-Returns the handle of the underlying disk file.
+Returns the handle of the underlying disk file (it does not appli to objects created with the `MapMemory` or `MapSharedMemory` methods)..
 
 ```
 FUNCTION GetFileHandle () AS HANDLE
@@ -231,7 +264,7 @@ FUNCTION GetFileMappingHandle () AS HANDLE
 
 # <a name="GetFileSize"></a>GetFileSize
 
-Returns the size of the underlying disk file.
+Returns the size of the underlying disk file (it does not appli to objects created with the `MapMemory` or `MapSharedMemory` methods).
 
 ```
 GetFileSize () AS LONGINT
