@@ -1,5 +1,7 @@
 # CMemMapFile Class
 
+`CMemMap File` is a wrapper class that encapsulates the Windows memory-mapped procedures.
+
 A memory-mapped file contains the contents of a file in virtual memory. This mapping between a file and memory space enables an application, including multiple processes, to modify the file by reading and writing directly to the memory.
 
 There are two types of memory-mapped files:
@@ -23,3 +25,18 @@ Multiple views may also be necessary if the file is greater than the size of the
 There are two types of views: stream access view and random access view. Use stream access views for sequential access to a file; this is recommended for non-persisted files and IPC. Random access views are preferred for working with persisted files.
 
 Memory-mapped files are accessed through the operating system’s memory manager, so the file is automatically partitioned into a number of pages and accessed as needed. You do not have to handle the memory management yourself.
+
+## Methods
+
+| Name       | Description |
+| ---------- | ----------- |
+| [MapFile](#MapFile) | Maps the specified file. |
+| [MapMemory](#MapMemory) | Maps the specified amount of memory. |
+| [MapSharedMemory](#MapSharedMemory) | Maps shared memory. |
+| [Unmap](#Unmap) | Unmaps the file or memory and closes handles. |
+| [AccessData](#AccessData) | Returns a pointer to access the data in the memory mapped file. |
+| [UnaccessData](#UnaccessData) | Releases the synchronization object. |
+| [Flush](#Flush) | Flushes the data to the disk. |
+| [GetFileHandle](#GetFileHandle) | Returns the handle of the underlying disk file. |
+| [GetFileMappingHandle](#GetFileMappingHandle) | Returns the file mapping handle. |
+| [GetFileSize](#GetFileSize) | Returns the size of the underlying disk file. |
