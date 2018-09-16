@@ -144,7 +144,7 @@ IF pMemMap.MapMemory("MyTest", "MyMutex", BUF_SIZE) THEN
       print cws
       pMemMap.UnaccessData
    END IF
-   pMemMap.Unmap   ' Don't unmap the file if we intend to share the memory
+   pMemMap.Unmap
 END IF
 ```
 
