@@ -67,6 +67,42 @@ FUNCTION CMemMapFile.MapFile (BYVAL pwszFileName AS WSTRING PTR, BYVAL bReadOnly
 
 TRUE or FALSE.
 
+#### Example
+
+The following code maps the contents of the ansi file "textA.txt", retrieves access to the data and converts it to lower case.
+
+```
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CMemMapFile.inc"
+
+DIM pMemMap AS CMemMapFile
+IF pMemMap.MapFile(AfxGetExePath & "/testA.txt") THEN
+   DIM pData AS ANY PTR = pMemMap.AccessData(1000)
+   IF pData THEN
+      CharLowerBuffA(pData, pMemMap.GetFileSize)
+      pMemMap.UnaccessData
+   END IF
+   pMemMap.Unmap
+END IF
+```
+
+Unicode:
+
+```
+#INCLUDE ONCE "windows.bi"
+#INCLUDE ONCE "Afx/CMemMapFile.inc"
+
+DIM pMemMap AS CMemMapFile
+IF pMemMap.MapFile(AfxGetExePath & "/testW.txt") THEN
+   DIM pData AS ANY PTR = pMemMap.AccessData(1000)
+   IF pData THEN
+      CharLowerBuffW(pData, pMemMap.GetFileSize)
+      pMemMap.UnaccessData
+   END IF
+   pMemMap.Unmap
+END IF
+```
+
 # <a name="MapMemory"></a>MapMemory
 
 Maps the specified amount of memory.
