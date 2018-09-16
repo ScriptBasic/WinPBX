@@ -116,3 +116,11 @@ FUNCTION CMemMapFile.MapSharedMemory (BYVAL pwszMappingName AS WSTRING PTR, BYVA
 #### Return value
 
 TRUE or FALSE.
+
+# <a name="Unmap"></a>Unmap
+
+Unmaps the file or memory and closes handles.
+
+```
+SUB Unmap
+```
