@@ -128,20 +128,16 @@ TRUE or FALSE.
 
 #### Example
 
-The following example maps 256 bytes of memory, using "MyTest" as the name of the mapping object and "MyMutex" as the name of the synchronization object, acceses it with the `AccessData`method (casting the returned pointer to a WSTRING PTR to allow to work with unicode), copies the contents of an unicode string to it and changes the content of the fifth character using the pData pointer with an index of 4 (indexed pointers are zero based). Then it copies the memory from the mapped memory to the string and displays the result.
+The following example maps 256 bytes of memory, using "MyTest" as the name of the mapping object and "MyMutex" as the name of the synchronization object, acceses it with the `AccessData`method (casting the returned pointer to a WSTRING PTR to allow to work with unicode) and changes the content of the fifth character using the *pData* pointer with an index of 4 (indexed pointers are zero based).
 
 ```
 #define BUF_SIZE 256
 DIM pMemMap AS CMemMapFile
-DIM cws AS CWSTR = "1234567890"
 IF pMemMap.MapMemory("MyTest", "MyMutex", BUF_SIZE) THEN
    DIM pData AS WSTRING PTR = pMemMap.AccessData
    IF pData THEN
-      memcpy pData, *cws, 10
       pData[4] = "x"
       print pData[4]
-      memcpy *cws, pData, 10
-      print cws
       pMemMap.UnaccessData
    END IF
    pMemMap.Unmap
