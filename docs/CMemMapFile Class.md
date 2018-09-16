@@ -75,8 +75,8 @@ Maps the specified amount of memory.
 
 ```
 FUNCTION CMemMapFile.MapMemory (BYVAL pwszMappingName AS WSTRING PTR, BYVAL pwszMutexName AS WSTRING PTR, _
-   BYVAL nBytesToMap AS SIZE_T, BYVAL bReadOnly AS BOOLEAN = FALSE, _
-   BYVAL dwStartOffset AS CONST LONGINT = 0, BYVAL lpSecurityAttributes AS LPSECURITY_ATTRIBUTES = NULL) AS BOOLEAN
+   BYVAL nBytesToMap AS SIZE_T, BYVAL bReadOnly AS BOOLEAN = FALSE, BYVAL dwStartOffset AS CONST LONGINT = 0, _
+   BYVAL lpSecurityAttributes AS LPSECURITY_ATTRIBUTES = NULL) AS BOOLEAN
 ```
 
 | Name       | Description |
