@@ -65,7 +65,7 @@ FUNCTION CMemMapFile.MapFile (BYVAL pwszFileName AS WSTRING PTR, BYVAL bReadOnly
 | *nBytesToMap* | The number of bytes of a file mapping to map to the view. All bytes must be within the maximum size specified by **CreateFileMapping**. If this parameter is 0 (zero), the mapping extends from the specified offset to the end of the file mapping. |
 | *lpSecurityAttributes* | A pointer to a **SECURITY_ATTRIBUTES** structure that determines whether a returned handle can be inherited by child processes. The *lpSecurityDescriptor* member of the **SECURITY_ATTRIBUTES** structure specifies a security descriptor for a new file mapping object. If *lpAttributes* is NULL, the handle cannot be inherited and the file mapping object gets a default security descriptor. |
 
-### Return value
+#### Return value
 
 TRUE or FALSE.
 
@@ -88,6 +88,31 @@ FUNCTION CMemMapFile.MapMemory (BYVAL pwszMappingName AS WSTRING PTR, BYVAL pwsz
 | *dwStartOffset* | The high-order DWORD is the file offset where the view begins. The low-order DWORD is the file offset where the view is to begin. The combination of the high and low offsets must specify an offset within the file mapping. They must also match the memory allocation granularity of the system. That is, the offset must be a multiple of the allocation granularity. To obtain the memory allocation granularity of the system, use the **GetSystemInfo** function, which fills in the members of a SYSTEM_INFO structure. |
 | *lpSecurityAttributes* | A pointer to a **SECURITY_ATTRIBUTES** structure that determines whether a returned handle can be inherited by child processes. The *lpSecurityDescriptor* member of the **SECURITY_ATTRIBUTES** structure specifies a security descriptor for a new file mapping object. If *lpAttributes* is NULL, the handle cannot be inherited and the file mapping object gets a default security descriptor. |
 
-### Return value
+#### Return value
+
+TRUE or FALSE.
+
+# <a name="MapSharedMemory"></a>MapSharedMemory
+
+Maps shared memory.
+
+```
+FUNCTION CMemMapFile.MapSharedMemory (BYVAL pwszMappingName AS WSTRING PTR, BYVAL pwszMutexName AS WSTRING PTR, _
+   BYVAL nBytesToMap AS SIZE_T, BYVAL bReadOnly AS BOOLEAN = FALSE, _
+   BYVAL bInheritHandle AS BOOLEAN = FALSE, BYVAL dwStartOffset AS CONST LONGINT = 0, _
+   BYVAL lpSecurityAttributes AS LPSECURITY_ATTRIBUTES = NULL) AS BOOLEAN
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *pwszMappingName* | The name of the file mapping object. If this parameter is NULL, the file mapping object is created without a name. |
+| *pwszMutexName* | The name of the mutex object. The name is limited to MAX_PATH characters. Name comparison is case sensitive. If pwszMutexName is NULL, the mutex object is created without a name. |
+| *nBytesToMap* | The high-order DWORD is the maximum size of the file mapping object. The low-order DWORD of the maximum size of the file mapping object. If this parameter is 0 (zero), the maximum size of the file mapping object is equal to the current size of the file that hFile identifies. An attempt to map a file with a length of 0 (zero) fails with an error code of ERROR_FILE_INVALID. Applications should test for files with a length of 0 (zero) and reject those files. |
+| *bReadOnly* | Set it to TRUE if you don't intend to modify the file. |
+| *bInheritHandle* | If this parameter is TRUE, a process created by the **CreateProcess** function can inherit the handle; otherwise, the handle cannot be inherited. |
+| *dwStartOffset* | The high-order DWORD is the file offset where the view begins. The low-order DWORD is the file offset where the view is to begin. The combination of the high and low offsets must specify an offset within the file mapping. They must also match the memory allocation granularity of the system. That is, the offset must be a multiple of the allocation granularity. To obtain the memory allocation granularity of the system, use the **GetSystemInfo** function, which fills in the members of a SYSTEM_INFO structure. |
+| *lpSecurityAttributes* | A pointer to a **SECURITY_ATTRIBUTES** structure that determines whether a returned handle can be inherited by child processes. The *lpSecurityDescriptor* member of the **SECURITY_ATTRIBUTES** structure specifies a security descriptor for a new file mapping object. If *lpAttributes* is NULL, the handle cannot be inherited and the file mapping object gets a default security descriptor. |
+
+#### Return value
 
 TRUE or FALSE.
