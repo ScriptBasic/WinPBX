@@ -41,7 +41,7 @@ Memory-mapped files are accessed through the operating system’s memory manager
 | [GetFileMappingHandle](#GetFileMappingHandle) | Returns the file mapping handle. |
 | [GetFileSize](#GetFileSize) | Returns the size of the underlying disk file. |
 
-## MapFile
+# <a name="MapFile"></a>MapFile
 
 Maps the specified file.
 
