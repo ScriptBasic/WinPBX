@@ -24,6 +24,8 @@ Multiple views may also be necessary if the file is greater than the size of the
 
 Memory-mapped files are accessed through the operating system’s memory manager, so the file is automatically partitioned into a number of pages and accessed as needed. You do not have to handle the memory management yourself.
 
+**Wikipedia article**: [Memory-mapped file](https://en.wikipedia.org/wiki/Memory-mapped_file)
+
 ## Methods
 
 | Name       | Description |
