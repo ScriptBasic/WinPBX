@@ -124,3 +124,63 @@ Unmaps the file or memory and closes handles.
 ```
 SUB Unmap
 ```
+
+# <a name="AccessData"></a>AccessData
+
+Returns a pointer to access the data in the memory mapped file.
+
+```
+FUNCTION AccessData (BYVAL dwTimeout AS DWORD = INFINITE) AS ANY PTR
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *dwTimeout* | The time in milliseconds to wait if the mapping is already opened by another thread or process. |
+
+This method uses a mutex to synchronise access to the memory. If you use the default value (INFINITE), your thread will be suspended indefinitely if another thread is using the file.
+
+A successful call to `AccessData` should be matched with a call to `UnaccessData` when you have fnished accessing the data.
+
+# <a name="UnaccessData"></a>UnaccessData
+
+```
+FUNCTION UnaccessData () AS BOOLEAN
+```
+
+After a successful call to `AccessData` you should call this method when you have fnished accessing the data. After calling this method you can call `AccessData` again to get the pointer to the data.
+
+# <a name="Flush"></a>Flush
+
+Flushes the data to the disk.
+
+```
+FUNCTION UnaccessData () AS BOOLEAN
+```
+
+#### Remaks
+
+When modifying a file through a mapped view, the last modification timestamp may not be updated automatically. If required, the caller should use SetFileTime to set the timestamp.
+
+# <a name="GetFileHandle"></a>GetFileHandle
+
+Returns the handle of the underlying disk file.
+
+```
+FUNCTION GetFileHandle () AS HANDLE
+```
+
+# <a name="GetFileMappingHandle"></a>GetFileMappingHandle
+
+Returns the file mapping handle.
+
+```
+FUNCTION GetFileMappingHandle () AS HANDLE
+```
+
+# <a name="GetFileSize"></a>GetFileSize
+
+Returns the size of the underlying disk file.
+
+```
+GetFileSize () AS LONGINT
+```
