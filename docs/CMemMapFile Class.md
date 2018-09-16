@@ -14,7 +14,7 @@ There are two types of memory-mapped files:
 
   Non-persisted files are memory-mapped files that are not associated with a file on a disk. When the last process has finished working with the file, the data is lost and the file is reclaimed by garbage collection. These files are suitable for creating shared memory for inter-process communications (IPC).
 
-## Processes, Views, and Managing Memory
+### Processes, Views, and Managing Memory
 
 Memory-mapped files can be shared across multiple processes. Processes can map to the same memory-mapped file by using a common name that is assigned by the process that created the file.
 
