@@ -1,6 +1,6 @@
 # CMemMapFile Class
 
-`CMemMap File` is a wrapper class that encapsulates the Windows memory-mapped procedures.
+`CMemMapFile` is a wrapper class that encapsulates the Windows memory-mapped procedures.
 
 A memory-mapped file contains the contents of a file in virtual memory. This mapping between a file and memory space enables an application, including multiple processes, to modify the file by reading and writing directly to the memory.
 
