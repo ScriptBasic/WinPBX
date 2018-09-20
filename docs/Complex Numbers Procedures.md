@@ -72,11 +72,9 @@ END TYPE
 | [CCotH](#CCotH) | Returns the complex hyperbolic cotangent of this complex number. |
 | [CCsc](#CCsc) | Returns the complex cosecant of this complex number. |
 | [CCscH](#CCscH) | Returns the complex hyperbolic cosecant of this complex number. |
-| [CDiv](#CDiv) | Divides by a complex number. |
 | [CDivImag](#CDivImag) | Divides by an imaginary number. |
 | [CDivReal](#CDivReal) | Divides by a real number. |
 | [CExp](#CExp) | Returns the complex exponential of this complex number. |
-| [CImag](#CImag) | Gets/sets the imaginary part of a complex number. |
 | [CInverse](#CReciprocal) | Returns the inverse, or reciprocal, of a complex number. |
 | [CLog](#CLog) | Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis. |
 | [CLog10](#CLog10) | Returns the complex base-10 logarithm of this complex number. |
@@ -568,15 +566,16 @@ Output: 0.6662394324925152 +1.061275061905036 * i
 Returns the complex hyperbolic arcsine of this complex number. The branch cuts are on the imaginary axis, below -i and above i.
 
 ```
-FUNCTION CArcSinH () AS CComplex
-FUNCTION CASinH () AS CComplex
+FUNCTION CArcSinH (BYREF value AS _complex) AS _complex
+FUNCTION CASinH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CArcSinH
+DIM z AS _complex = (1, 1)
+z = CArcSinH(z)
+PRINT CStr(z)
 Output: 1.061275061905036 +0.6662394324925153 * i
 ```
 
@@ -588,8 +587,8 @@ For a less than -1 the result has a real part of -pi/2 and a positive imaginary 
 For a greater than 1 the result has a real part of pi/2 and a negative imaginary part.
 
 ```
-FUNCTION CArcSinReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CASinReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcSinReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CASinReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -599,8 +598,8 @@ FUNCTION CASinReal (BYVAL value AS DOUBLE) AS CComplex
 #### Example
 
 ```
-DIM cpx AS CComplex
-PRINT cpx.CArcSinReal(1)
+DIM z AS _complex = CArcSinReal(1)
+PRINT CStr(z)
 Output: 1.570796326794897 +0 * i
 ```
 
@@ -609,15 +608,16 @@ Output: 1.570796326794897 +0 * i
 Returns the complex arctangent of this complex number. The branch cuts are on the imaginary axis, below -i and above i.
 
 ```
-FUNCTION CArcTan () AS CComplex
-FUNCTION CATan () AS CComplex
+FUNCTION CArcTan (BYREF value AS _complex) AS _complex
+FUNCTION CATan (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex
-PRINT cpx.CArcTan(1, 1)
+DIM z AS _complex = (1, 1)
+z = CArcTan(z)
+PRINT CStr(z)
 Output: 1.017221967897851 +0.4023594781085251 * i
 ```
 
@@ -626,15 +626,16 @@ Output: 1.017221967897851 +0.4023594781085251 * i
 Returns the complex hyperbolic arctangent of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1.
 
 ```
-FUNCTION CArcTanH () AS CComplex
-FUNCTION CATanH () AS CComplex
+FUNCTION CArcTanH (BYREF value AS _complex) AS _complex
+FUNCTION CATanH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CArcTanH
+DIM z AS _complex = (1, 1)
+z = CArcTanH(z)
+PRINT CStr(z)
 Output: 0.4023594781085251 +1.017221967897851 * i
 ```
 
@@ -643,8 +644,8 @@ Output: 0.4023594781085251 +1.017221967897851 * i
 Returns the complex hyperbolic arctangent of a real number.
 
 ```
-FUNCTION CArcTanHReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CATanHReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcTanhReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CATanhReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -656,31 +657,35 @@ FUNCTION CATanHReal (BYVAL value AS DOUBLE) AS CComplex
 Returns the argument of this complex number.
 
 ```
-FUNCTION CArg () AS DOUBLE
-FUNCTION CArgument () AS DOUBLE
-FUNCTION CPhase () AS DOUBLE
+FUNCTION CArg (BYREF z AS _complex) AS DOUBLE
+FUNCTION CArgument (BYREF z AS _complex) AS DOUBLE
+FUNCTION CPhase (BYREF z AS _complex) AS DOUBLE
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 0)
-PRINT cpx.CArg
-Output: 0.0
+DIM z AS _complex = (1, 0)
+DIM d AS DOUBLE = CArg(z)
+PRINT d
+Output: 0
 ```
 ```
-DIM cpx AS CComplex = CComplex(0, 1)
-PRINT cpx.CArg
+DIM z AS _complex = (0, 1)
+DIM d AS DOUBLE = CArg(z)
+PRINT d
 Output: 1.570796326794897
 ```
 ```
-DIM cpx AS CComplex = CComplex(0, -1)
-PRINT cpx.CArg
+DIM z AS _complex = (0, -1)
+DIM d AS DOUBLE = CArg(z)
+PRINT d
 Output: -1.570796326794897
 ```
 ```
-DIM cpx AS CComplex = CComplex(-1, 0)
-PRINT cpx.CArg
+DIM z AS _complex = (-1, 0)
+DIM d AS DOUBLE = CArg(z)
+PRINT d
 Output: 3.141592653589793
 ```
 
@@ -689,15 +694,17 @@ Output: 3.141592653589793
 Returns the complex conjugate of this complex number.
 
 ```
-FUNCTION CConjugate () AS CComplex
-FUNCTION CConj () AS CComplex
+FUNCTION CConjugate (BYREF z AS _complex) AS _complex
+FUNCTION CConj (BYREF z AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CConjugate
+DIM z AS _complex = (2, 3)
+z = CConj(z)
+PRINT CStr(z)
+Output: 2 - 3 * i
 ```
 
 # <a name="CCos"></a>CCos
@@ -705,14 +712,15 @@ cpx = cpx.CConjugate
 Returns the complex cosine of this complex number.
 
 ```
-FUNCTION CCos () AS CComplex
+FUNCTION CCos (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCos
+DIM z AS _complex = (1, 1)
+z = CCos(z)
+PRINT CStr(z)
 Output: 0.8337300251311491 -0.9888977057628651 * i
 ```
 
@@ -721,14 +729,15 @@ Output: 0.8337300251311491 -0.9888977057628651 * i
 Returns the complex hyperbolic cosine of this complex number.
 
 ```
-FUNCTION CCosH () AS CComplex
+FUNCTION CCosH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCosH
+DIM z AS _complex = (1, 1)
+z = CCosH(z)
+PRINT CStr(z)
 Output: 0.8337300251311491 +0.9888977057628651 * i
 ```
 
@@ -737,14 +746,15 @@ Output: 0.8337300251311491 +0.9888977057628651 * i
 Returns the complex cotangent of this complex number.
 
 ```
-FUNCTION CCot () AS CComplex
+FUNCTION CCot (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCot
+DIM z AS _complex = (1, 1)
+z = CCot(z)
+PRINT CStr(z)
 Output: 0.2176215618544027 -0.8680141428959249 * i
 ```
 
@@ -753,14 +763,15 @@ Output: 0.2176215618544027 -0.8680141428959249 * i
 Returns the complex hyperbolic cotangent of this complex number.
 
 ```
-FUNCTION CCotH () AS CComplex
+FUNCTION CCotH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCotH
+DIM z AS _complex = (1, 1)
+z = CCotH(z)
+PRINT CStr(z)
 Output: 0.8680141428959249 -0.2176215618544029 * i
 ```
 
@@ -769,14 +780,15 @@ Output: 0.8680141428959249 -0.2176215618544029 * i
 Returns the complex cosecant of this complex number.
 
 ```
-FUNCTION CCsc () AS CComplex
+FUNCTION CCsc (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCsc
+DIM z AS _complex = (1, 1)
+z = CCsc(z)
+PRINT CStr(z)
 Output: 0.6215180171704285 -0.3039310016284265 * i
 ```
 
@@ -785,43 +797,16 @@ Output: 0.6215180171704285 -0.3039310016284265 * i
 Returns the complex hyperbolic cosecant of this complex number.
 
 ```
-FUNCTION CCscH () AS CComplex
+FUNCTION CCscH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CCscH
+DIM z AS _complex = (1, 1)
+z = CCscH(z)
+PRINT CStr(z)
 Output: 0.3039310016284265 -0.6215180171704285 * i
-```
-
-# <a name="CDiv"></a>CDiv
-
-Divides by a complex number.<br>
-Divides by a real and an imaginary number.
-
-```
-FUNCTION CDiv (BYREF z AS CComplex) AS CComplex
-FUNCTION CDiv (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *z* | A complex number. |
-| *x, y* | Double values representing the real and imaginary parts. |
-
-#### Example
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-DIM cpx2 AS CComplex = CComplex(2, 3)
-cpx = cpx.CDiv(cpx2)
-' --or-- cpx = cpx.CDiv(CComplex(2, 3))
-```
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CDiv(2, 3)
 ```
 
 # <a name="CDivImag"></a>CDivImag
@@ -829,74 +814,40 @@ cpx = cpx.CDiv(2, 3)
 Divides by an imaginary number.
 
 ```
-FUNCTION CDivImag (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CDivImag (BYREF z AS _complex, BYVAL y AS DOUBLE) AS _complex
 ```
-
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *x* | A double value. |
-
-#### Example
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CDivImag(10)
-```
+| *y* | A double value. |
 
 # <a name="CDivReal"></a>CDivReal
 
 Divides by a real number.
 
 ```
-FUNCTION CDivReal (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CDivReal (BYREF z AS _complex, BYVAL x AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
 | *x* | A double value. |
-
-#### Example
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CDivReal(10)
-```
 
 # <a name="CExp"></a>CExp
 
 Returns the complex exponential of this complex number.
 
 ```
-FUNCTION CExp () AS CComplex
+FUNCTION CExp (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CExp
+DIM z AS _complex = (1, 1)
+z = CExp(z)
+PRINT CStr(z)
 Output: 1.468693939915885 +2.287355287178842 * i
-```
-
-# <a name="CImag"></a>CImag
-
-Gets/sets the imaginary part of a complex number.
-
-```
-PROPERTY CImag () AS DOUBLE
-PROPERTY CImag (BYVAL x AS DOUBLE)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *x* | A double value. |
-
-#### Example
-
-```
-DIM cpx AS CComplex : cpx.CImag = 4
-DIM d AS DOUBLE = cpx.CImag
 ```
 
 # <a name="CLog"></a>CLog
@@ -904,8 +855,8 @@ DIM d AS DOUBLE = cpx.CImag
 Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis.
 
 ```
-FUNCTION CLog () AS CComplex
-FUNcTION CLog (BYVAL baseValue AS DOUBLE) AS CComplex
+FUNCTION CLog OVERLOAD (BYREF value AS _complex) AS _complex
+FUNCTION CLog OVERLOAD (BYREF value AS _complex, BYVAL baseValue AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -915,18 +866,21 @@ FUNcTION CLog (BYVAL baseValue AS DOUBLE) AS CComplex
 #### Examples
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CLog
+DIM z AS _complex = (1, 1)
+z = CLog(z)
+PRINT CStr(z)
 Output: 0.3465735902799727 +0.7853981633974483 * i
 ```
 ```
-DIM cpx AS CComplex = CComplex(0, 0)
-PRINT cpx.CLog
+DIM z AS _complex = (0, 0)
+z = CLog(z)
+PRINT CStr(z)
 Output: -1.#INF
 ```
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CLog(10)
+DIM z AS _complex = (1, 1)
+z = CLog(z, 10)
+PRINT CStr(z)
 Output: 0.1505149978319906 +0.3410940884604603 * i
 ```
 
@@ -935,14 +889,15 @@ Output: 0.1505149978319906 +0.3410940884604603 * i
 Returns the complex base-10 logarithm of this complex number.
 
 ```
-FUNCTION CLog10 () AS CComplex
+FUNCTION CLog10 (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CLog10
+DIM z AS _complex = (1, 1)
+z = CLog10(z)
+PRINT CStr(z)
 Output: 0.1505149978319906 +0.3410940884604603 * i
 ```
 
