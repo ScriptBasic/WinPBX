@@ -15,8 +15,8 @@ END TYPE
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Comparison operators](#Operator3) | Compares currency numbers. |
-| [Math operators](#Operator4) | Add, subtract, multiply or divide currency numbers. |
+| [Comparison operators](#Operator3) | Compares complex numbers. |
+| [Math operators](#Operator4) | Add, subtract, multiply or divide complex numbers. |
 
 ### Methods and Properties
 
