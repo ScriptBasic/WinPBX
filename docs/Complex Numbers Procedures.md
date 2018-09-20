@@ -1261,6 +1261,56 @@ PRINT CStr(z)
 Output: 1.083923327338695 +0.2717525853195119 * i
 ```
 
+# <a name="acosh"></a>acosh
+
+Calculates the inverse hyperbolic cosine.
+
+```
+FUNCTION acosh (BYVAL x AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+# <a name="asinh"></a>asinh
+
+Calculates the inverse hyperbolic sine.
+
+```
+FUNCTION asinh (BYVAL x AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+
+# <a name="atanh"></a>atanh
+
+Returns the inverse hyperbolic tangent of a number.
+
+```
+FUNCTION atanh (BYVAL x AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x* | A double value. |
+
+
+# <a name="hypot3"></a>hypot3
+
+Computes the value of sqr(x^2 + y^2 + z^2).
+
+```
+FUNCTION hypot3 (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE, BYVAL z AS DOUBLE) AS DOUBLE
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *x, y, z* | Double values. |
+
 # <a name="IsInfinity"></a>IsInfinity / IsInf
 
 Determines whether the argument is an infinity.
