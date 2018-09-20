@@ -96,7 +96,7 @@ END TYPE
 | [CSec](#CSec) | Returns the complex secant of this complex number. |
 | [CSecH](#CSecH) | Returns the complex hyperbolic secant of this complex number. |
 | [CSet](#CSet) | Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number. |
-| [CSetImaginary](#CSetImaginary) | Sets the imaginary part of a complex number. |
+| [CSetImag](#CSetImag) | Sets the imaginary part of a complex number. |
 | [CSetReal](#CSetReal) | Sets the real part of a complex number. |
 | [CSgn](#CSgn) | Returns the sign of this complex number. |
 | [CSin](#CSin) | Returns the complex sine of this complex number. |
