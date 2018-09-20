@@ -1065,12 +1065,13 @@ PRINT CStr(z)
 Output: 0.4983370305551869 -0.591083841721045 * i
 ```
 
-# <a name="CSet"></a>CSet
+# <a name="CSet"></a>CSet / CRect
 
 Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number.
 
 ```
 FUNCTION CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS _complex
+FUNCTION CRet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
