@@ -75,6 +75,8 @@ END TYPE
 | [CDivImag](#CDivImag) | Divides by an imaginary number. |
 | [CDivReal](#CDivReal) | Divides by a real number. |
 | [CExp](#CExp) | Returns the complex exponential of this complex number. |
+| [CGetImag](#CGetImag) | Returns the imaginary part of a complex number. |
+| [CGetReal](#CGetReal) | Returns the real part of a complex number. |
 | [CInverse](#CReciprocal) | Returns the inverse, or reciprocal, of a complex number. |
 | [CLog](#CLog) | Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis. |
 | [CLog10](#CLog10) | Returns the complex base-10 logarithm of this complex number. |
@@ -94,6 +96,8 @@ END TYPE
 | [CSec](#CSec) | Returns the complex secant of this complex number. |
 | [CSecH](#CSecH) | Returns the complex hyperbolic secant of this complex number. |
 | [CSet](#CSet) | Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number. |
+| [CSetImaginary](#CSetImaginary) | Sets the imaginary part of a complex number. |
+| [CSetReal](#CSetReal) | Sets the real part of a complex number. |
 | [CSgn](#CSgn) | Returns the sign of this complex number. |
 | [CSin](#CSin) | Returns the complex sine of this complex number. |
 | [CSinH](#CSinH) | Returns the complex hyperbolic sine of this complex number. |
@@ -848,6 +852,22 @@ PRINT CStr(z)
 Output: 1.468693939915885 +2.287355287178842 * i
 ```
 
+# <a name="CGetImag"></a>CGetImag
+
+Returns the imaginary part of a complex number.
+
+```
+FUNCTION CGetImag (BYREF z AS _complex) AS DOUBLE
+```
+
+# <a name="CGetReal"></a>CGetReal
+
+Returns the real part of a complex number.
+
+```
+FUNCTION CGetReal (BYREF z AS _complex) AS DOUBLE
+```
+
 # <a name="CLog"></a>CLog
 
 Returns the complex natural logarithm (base e) of this complex number. The branch cut is the negative real axis.
@@ -1083,6 +1103,32 @@ FUNCTION CRet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS _complex
 ```
 DIM z AS _complex = CSet(3, 4)
 ```
+
+# <a name="CSetImag"></a>CSetImag
+
+Sets the imaginary part of a complex number.
+
+```
+SUB CSetImag (BYREF z AS _complex, BYVAL y AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | The complex number. |
+| *y* | A double value. |
+
+# <a name="CSetReal"></a>CSetReal
+
+Sets the real part of a complex number.
+
+```
+SUB CSetReal (BYREF z AS _complex, BYVAL y AS DOUBLE)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *z* | The complex number. |
+| *y* | A double value. |
 
 # <a name="CSgn"></a>CSgn
 
