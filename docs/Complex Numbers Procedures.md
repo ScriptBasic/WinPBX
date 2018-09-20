@@ -152,7 +152,7 @@ OPERATOR * (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
 OPERATOR / (BYREF leftside AS _complex, BYREF rightside AS _complex) AS _complex
 OPERATOR / (BYVAL a AS DOUBLE, BYREF z AS _complex) AS _complex
 OPERATOR / (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
-OPERATOR - (BYREF z AS _complex, BYVAL a AS DOUBLE) AS CComplex
+OPERATOR - (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
 OPERATOR ^ (BYREF value AS _complex, BYREF power AS _complex) AS _complex
 OPERATOR ^ (BYREF value AS _complex, BYVAL power AS DOUBLE) AS _complex
 ```
@@ -221,8 +221,8 @@ DIM c2 AS _complex = c1 / 11
 print CStr(c2)
 ```
 ```
-DIM cpx1 AS CComplex = CComplex(5, 6)
-DIM cpx2 AS CComplex
+DIM cpx1 AS _complex = (5, 6)
+DIM cpx2 AS _complex
 cpx2 = 11 / cpx1
 ```
 ```
