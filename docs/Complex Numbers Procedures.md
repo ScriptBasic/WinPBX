@@ -80,7 +80,6 @@ END TYPE
 | [CLog10](#CLog10) | Returns the complex base-10 logarithm of this complex number. |
 | [CLogAbs](#CLogAbs) | Returns the natural logarithm of the magnitude of a complex number. |
 | [CMagnitude](#CAbs) | Returns the magnitude of this complex number. |
-| [CMul](#CMul) | Multiplies by a complex number. |
 | [CMulImag](#CMulImag) | Multiplies by an imaginary number. |
 | [CMulReal](#CMulReal) | Multiplies by a real number. |
 | [CNeg](#CNegate) | Negates the complex number. |
@@ -90,7 +89,6 @@ END TYPE
 | [CPhase](#CArg) | Returns the argument of this complex number. |
 | [CPolar](#CPolar) | Sets the complex number from the polar representation. |
 | [CPow](#CPow) | Returns this complex number raised to a complex power or to a real number. |
-| [CReal](#CReal) | Gets/sets the real part of a complex number. |
 | [CRect](#CSet) | Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number. |
 | [CReciprocal](#CReciprocal) | Returns the inverse, or reciprocal, of a complex number. |
 | [CSec](#CSec) | Returns the complex secant of this complex number. |
@@ -101,7 +99,7 @@ END TYPE
 | [CSinH](#CSinH) | Returns the complex hyperbolic sine of this complex number. |
 | [CSqr](#CSqr) | Returns the square root of the complex number z. The branch cut is the negative real axis. The result always lies in the right half of the complex plane. |
 | [CSqrt](#CSqr) | Returns the square root of the complex number z. The branch cut is the negative real axis. The result always lies in the right half of the complex plane. |
-| [CSub](#CSub) | Subtracts a complex number. |
+| [CSqrReal](#CSqrReal) | Returns the complex square root of the real number x, where x may be negative. |
 | [CSubImag](#CSubImag) | Subtracts an imaginary number. |
 | [CSubReal](#CSubReal) | Subtracts a real number. |
 | [CSwap](#CSwap) | Exchanges the contents of two complex numbers. |
@@ -906,43 +904,16 @@ Output: 0.1505149978319906 +0.3410940884604603 * i
 Returns the natural logarithm of the magnitude of the complex number z, log|z|. It allows an accurate evaluation of \log|z| when |z| is close to one. The direct evaluation of log(CAbs(z)) would lead to a loss of precision in this case.
 
 ```
-FUNCTION CLogAbs () AS DOUBLE
+FUNCTION CLogAbs (BYREF value AS _complex) AS DOUBLE
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1.1, 0.1)
-PRINT cpx.CLogAbs
+DIM z AS _complex = (1.1, 0.1)
+DIM d AS DOUBLE = CLogAbs(z)
+print d
 Output: 0.09942542937258279
-```
-
-# <a name="CMul"></a>CMul
-
-Multiplies by a complex number.<br>
-Multiplies by a real and an imaginary number.
-
-```
-FUNCTION CMul (BYREF z AS CComplex) AS CComplex
-FUNCTION CMul (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *z* | A complex number. |
-| *x, y* | Double values representing the real and imaginary parts. |
-
-#### Examples
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-DIM cpx2 AS CComplex = CComplex(2, 3)
-cpx = cpx.CMul(cpx2)
-' --or-- cpx = cpx.CMul(CComplex(2, 3))
-```
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CMul(2, 3)
 ```
 
 # <a name="CMulImag"></a>CMulImag
@@ -950,18 +921,19 @@ cpx = cpx.CMul(2, 3)
 Multiplies by an imaginary number.
 
 ```
-FUNCTION CMulImag (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CMulImag (BYREF z AS _complex, BYVAL y AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *x* | A double value. |
+| *y* | A double value. |
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cx = cpx.CMulImag(3)
+DIM z AS _complex = (5, 6)
+z = CMulImag(z, 3)
+PRINT CStr(z)
 ```
 
 # <a name="CMulReal"></a>CMulReal
@@ -969,7 +941,7 @@ cx = cpx.CMulImag(3)
 Multiplies by a real number.
 
 ```
-FUNCTION CMulReal (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CMulReal (BYREF z AS _complex, BYVAL x AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -979,8 +951,9 @@ FUNCTION CMulReal (BYVAL x AS DOUBLE) AS CComplex
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CMulReal(2)
+DIM z AS _complex = (5, 6)
+z = CMulReal(z, 3)
+PRINT CStr(z)
 ```
 
 # <a name="CNegate"></a>CNegate / CNeg / CNegative
@@ -998,7 +971,7 @@ FUNCTION CNegative (BYREF z AS _complex) AS _complex
 Sets the complex number from the polar representation.
 
 ```
-FUNCTION CPolar (BYVAL r AS DOUBLE, BYVAL theta AS DOUBLE)
+FUNCTION CPolar (BYVAL r AS DOUBLE, BYVAL theta AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -1006,14 +979,20 @@ FUNCTION CPolar (BYVAL r AS DOUBLE, BYVAL theta AS DOUBLE)
 | *r* | The modulus of complex number. |
 | *theta* | The angle with the positive direction of x-axis. |
 
+#### Example
+
+```
+DIM z AS _complex = CPolar(3, 4)
+```
+
 # <a name="CPow"></a>CPow
 
 Returns this complex number raised to a complex power.<br>
 Returns this complex number raised to a real number.
 
 ```
-FUNCTION CPow (BYREF power AS CComplex) AS CComplex
-FUNCTION CPow (BYVAL power AS DOUBLE) AS CComplex
+FUNCTION CPow OVERLOAD (BYREF value AS _complex, BYREF power AS _complex) AS _complex
+FUNCTION CPow OVERLOAD (BYREF value AS _complex, BYVAL power AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -1023,35 +1002,15 @@ FUNCTION CPow (BYVAL power AS DOUBLE) AS CComplex
 #### Examples
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-DIM b AS CComplex = CComplex(2, 2)
-PRINT cpx.CPow(b)
+DIM z AS _complex = (1, 1)
+DIM b AS _complex = (2, 2)
+print CStr(CPow(z, b))
 Output: -0.2656539988492412 +0.3198181138561362 * i
 ```
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CPow(2)
+DIM z AS _complex = (1, 1)
+PRINT CStr(CPow(z, 2))
 Output: 1.224606353822378e-016 +2 * i
-```
-
-# <a name="CReal"></a>CReal
-
-Gets/sets the real part of a complex number.
-
-```
-PROPERTY CReal () AS DOUBLE
-PROPERTY CReal (BYVAL x AS DOUBLE)
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *x* | A double value. |
-
-#### Example
-
-```
-DIM cpx AS CComplex : cpx.CReal = 3
-DIM d AS DOUBLE = cpx.CReal
 ```
 
 # <a name="CReciprocal"></a>CReciprocal / CInverse
@@ -1059,19 +1018,16 @@ DIM d AS DOUBLE = cpx.CReal
 Returns the inverse, or reciprocal, of a complex number.
 
 ```
-FUNCTION CReciprocal () AS CComplex
-FUNCTION CInverse () AS CComplex
+FUNCTION CReciprocal (BYREF value AS _complex) AS _complex
+FUNCTION CInverse (BYREF value AS _complex) AS _complex
 ```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *x* | A double value. |
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-Print cpx.CReciprocal
+DIM z AS _complex = (1, 1)
+z = CReciprocal(z)
+PRINT CStr(z)
 Output: 0.5 -0.5 * i
 ```
 
@@ -1080,14 +1036,15 @@ Output: 0.5 -0.5 * i
 Returns the complex secant of this complex number.
 
 ```
-FUNCTION CSec () AS CComplex
+FUNCTION CSec (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CSec
+DIM z AS _complex = (1, 1)
+z = CSec(z)
+PRINT CStr(z)
 Output: 0.4983370305551869 +0.591083841721045 * i
 ```
 
@@ -1096,14 +1053,15 @@ Output: 0.4983370305551869 +0.591083841721045 * i
 Returns the complex hyperbolic secant of this complex number.
 
 ```
-FUNCTION CSecH () AS CComplex
+FUNCTION CSecH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CSecH
+DIM z AS _complex = (1, 1)
+z = CSecH(z)
+PRINT CStr(z)
 Output: 0.4983370305551869 -0.591083841721045 * i
 ```
 
@@ -1112,7 +1070,7 @@ Output: 0.4983370305551869 -0.591083841721045 * i
 Uses the cartesian components (x,y) to set the real and imaginary parts of the complex number.
 
 ```
-PROPERTY CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE)
+FUNCTION CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -1122,8 +1080,7 @@ PROPERTY CSet (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE)
 #### Example
 
 ```
-DIM cpx AS CComplex : cpx.CSet = 3, 4
-DIM cpx AS CComplex : cpx.CRect = 3, 4
+DIM z AS _complex = CSet(3, 4)
 ```
 
 # <a name="CSgn"></a>CSgn
@@ -1134,7 +1091,7 @@ If number is equal to zero, then CSgn returns 0.<br>
 If number is less than zero, then CSgn returns -1.
 
 ```
-PROPERTY CSgn () AS LONG
+FUNCTION CSgn (BYREF z AS _complex) AS LONG
 ```
 
 # <a name="CSin"></a>CSin
@@ -1142,14 +1099,15 @@ PROPERTY CSgn () AS LONG
 Returns the complex sine of this complex number.
 
 ```
-PROPERTY CSin () AS CSin
+FUNCTION CSin (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CSin
+DIM z AS _complex = (1, 1)
+z = CSin(z)
+PRINT CStr(z)
 Output: 1.298457581415977 +0.6349639147847361 * i
 ```
 
@@ -1158,14 +1116,15 @@ Output: 1.298457581415977 +0.6349639147847361 * i
 Returns the complex hyperbolic sine of this complex number.
 
 ```
-FUNCTION CSinH () AS CComplex
+FUNCTION CSinH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CSinH
+DIM z AS _complex = (1, 1)
+z = CSinH(z)
+PRINT CStr(z)
 Output: 0.6349639147847361 +1.298457581415977 * i
 ```
 
@@ -1174,63 +1133,44 @@ Output: 0.6349639147847361 +1.298457581415977 * i
 Returns the square root of the complex number z. The branch cut is the negative real axis. The result always lies in the right half of the complex plane.
 
 ```
-FUNCTION CSqr () AS CComplex
-FUNCTION CSqrt () AS CComplex
-```
-
-Returns the complex square root of the real number x, where x may be negative.
-
-```
-FUNCTION CSqr (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CSqrt (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CSqr (BYREF value AS _complex) AS _complex
+FUNCTION CSqrt (BYREF value AS _complex) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *value* | A double value representing a real number. |
+| *value* | A complex number. |
 
 #### Examples
 
 ```
-DIM cpx AS CComplex = CComplex(2, 3)
-PRINT cpx.CSqrt
+DIM z AS _complex = (2, 3)
+z = CSqr(z)
+PRINT CStr(z)
 Output: 1.67414922803554 +0.895977476129838 * i
 ```
 
 Compute the square root of -1:
 
 ```
-DIM cpx AS CComplex = CComplex(-1)
-PRINT cpx.CSqr
+DIM z AS _complex = (-1)
+z = CSqr(z)
+PRINT CStr(z)
 Output: 0 +1.0 * i
 ```
 
-# <a name="CSub"></a>CSub
+# <a name="CSqrReal"></a>CSqrReal
 
-Subtracts a complex number.
+Returns the complex square root of the real number x, where x may be negative.
 
 ```
-FUNCTION CSub (BYREF z AS CComplex) AS CComplex
-FUNCTION CSub (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
+FUNCTION CSqrReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *z* | The complex number to subtract. |
-| *x, y* | Double values representing the real and imaginary parts. |
+| *value* | A double value representing a real number. |
 
-#### Examples
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-DIM cpx2 AS CComplex = CComplex(2, 3)
-cpx = cpx.CSub(cpx2)
-' --or-- cpx = cpx.CSub(CComplex(2, 3))
-```
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CSub(2, 3)
-```
 
 # <a name="CSubImag"></a>CSubImag
 
