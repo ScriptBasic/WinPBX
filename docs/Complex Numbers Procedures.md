@@ -1177,18 +1177,20 @@ FUNCTION CSqrReal (BYVAL value AS DOUBLE) AS _complex
 Subtracts an imaginary number.
 
 ```
-FUNCTION CSubImag (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CSubImag (BYREF z AS _complex, BYVAL y AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *x* | A double value. |
+| *y* | A double value. |
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cx = cpx.CSubImag(3)
+DIM z AS _complex = (5, 6)
+z = CSubImag(z, 3)
+PRINT CStr(z)
+Output:  5 +3 * i
 ```
 
 # <a name="CSubReal"></a>CSubReal
@@ -1196,7 +1198,7 @@ cx = cpx.CSubImag(3)
 Subtracts a real number.
 
 ```
-FUNCTION CSubReal (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CSubReal (BYREF z AS _complex, BYVAL x AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -1206,8 +1208,10 @@ FUNCTION CSubReal (BYVAL x AS DOUBLE) AS CComplex
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CSubReal(2)
+DIM z AS _complex = (5, 6)
+z = CSubReal(z, 2)
+PRINT CStr(z)
+Output: 3 +6 * i
 ```
 
 # <a name="CSwap"></a>CSwap
@@ -1215,26 +1219,27 @@ cpx = cpx.CSubReal(2)
 Exchanges the contents of two complex numbers.
 
 ```
-SUB CSwap (BYREF z AS CComplex)
+SUB CSwap (BYREF z1 AS _complex, BYREF z2 AS _complex)
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *z* | The complex number to swap. |
+| *z1 / z2* | The complex numbers to swap. |
 
 # <a name="CTan"></a>CTan
 
 Returns the complex tangent of this complex number.
 
 ```
-FUNCTION CTan () AS CComplex
+FUNCTION CTan (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CTan
+DIM z AS _complex = (1, 1)
+z = CTan(z)
+PRINT CStr(z)
 Output: 0.2717525853195117 +1.083923327338695 * i
 ```
 
@@ -1243,66 +1248,16 @@ Output: 0.2717525853195117 +1.083923327338695 * i
 Returns the complex hyperbolic tangent of this complex number.
 
 ```
-FUNCTION CTanH () AS CComplex
+FUNCTION CTanH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CTanH
+DIM z AS _complex = (1, 1)
+z = CTanH(z)
+PRINT CStr(z)
 Output: 1.083923327338695 +0.2717525853195119 * i
-```
-
-# <a name="ArcCosH"></a>ArcCosH
-
-Calculates the inverse hyperbolic cosine.
-
-```
-FUNCTION ArcCosH (BYVAL x AS DOUBLE) AS DOUBLE
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *x* | A double value. |
-
-#### Example
-
-```
-DIM AS double pi = 3.1415926535
-DIM AS double x, y
-DIM cpx AS CComplex
-x = cosh(pi / 4)
-y = cpx.ArcCosH(x)
-print "cosh = ", pi/4, x
-print "ArcCosH = ", x, y
-
-Output:
-cosh =  0.785398163375      1.324609089232506
-acosh = 1.324609089232506   0.7853981633749999
-```
-
-# <a name="ArcTanH"></a>ArcTanH
-
-Returns the inverse hyperbolic tangent of a number.
-
-```
-FUNCTION ArcTanH (BYVAL x AS DOUBLE) AS DOUBLE
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *x* | A double value. |
-
-#### Example
-
-```
-DIM cpx AS CComplex
-print cpx.ArcTanh(0.76159416)
-Output: 1.00000000962972
-
-print cpx.ArcTanH(-0.1)
-Output: -0.1003353477310756
 ```
 
 # <a name="IsInfinity"></a>IsInfinity / IsInf
