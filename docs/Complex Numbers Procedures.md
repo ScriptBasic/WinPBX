@@ -33,7 +33,6 @@ END TYPE
 | [CACsc](#CArcCsc) | Returns the complex arccosecant of this complex number. |
 | [CACscH](#CArcCscH) | Returns the complex hyperbolic arccosecant of this complex number. |
 | [CACscReal](#CArcCscReal) | Returns the complex arccosecant of a real number. |
-| [CAdd](#CAdd) | Adds a complex number. |
 | [CAddImag](#CAddImag) | Adds an imaginary number. |
 | [CAddReal](#CAddReal) | Adds a real number. |
 | [CArcCos](#CArcCos) | Returns the complex arccosine of this complex number. |
@@ -164,62 +163,62 @@ OPERATOR ^ (BYREF value AS _complex, BYVAL power AS DOUBLE) AS _complex
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = c1 + c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = c1 + 11
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = 11 + c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = c1 - c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = c1 - 11
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = 11 - c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = c1 * c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = c1 * 11
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = 11 * c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 = c1 / c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = c1 / 11
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM cpx1 AS CComplex = CComplex(5, 6)
@@ -229,30 +228,30 @@ cpx2 = 11 / cpx1
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = 11 * c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c2 -= c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c1 *= c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = (5, 6)
 c1 /= c2
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 ```
 DIM c1 AS _complex = (3, 4)
 DIM c2 AS _complex = -c1
-print Afx.CStr(c2)
+print CStr(c2)
 ```
 
 # <a name="CAbs"></a>CAbs / CMagnitude
@@ -260,15 +259,15 @@ print Afx.CStr(c2)
 Returns the magnitude of this complex number.
 
 ```
-FUNCTION CAbs () AS DOUBLE
-FUNCTION CMagnitude () AS DOUBLE
+FUNCTION CAbs (BYREF z AS _complex) AS DOUBLE
+FUNCTION CMagnitude (BYREF z AS _complex) AS DOUBLE
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(2, 3)
-PRINT cpx.CAbs
+DIM c AS _complex = (2, 3)
+PRINT CAbs(c)
 Output: 3.60555127546399
 ```
 
@@ -284,54 +283,34 @@ FUNCTION CNorm () AS DOUBLE
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(2, 3)
-PRINT cpx.CAbs2
+DIM z AS _complex = (2, 3)
+DIM d AS DOUBLE = CAbs2(z)
+PRINT d
+Output: 13
+--or--
+DIM z AS _complex = (2, 3)
+DIM d AS DOUBLE = CNorm(z)
+PRINT d
 Output: 13
 ```
-
-# <a name="CAdd"></a>CAdd
-
-Adds a complex number.
-
-```
-FUNCTION CAdd (BYREF z AS CComplex) AS CComplex
-FUNCTION CAdd (BYVAL x AS DOUBLE, BYVAL y AS DOUBLE) AS CComplex
-```
-
-| Parameter  | Description |
-| ---------- | ----------- |
-| *z* | The complex number to add. |
-| *x, y* | Double values representing the real and imaginary parts. |
-
-#### Examples
-
-```
-DIM cpx AS CComplex = CComplex(5, 6)
-DIM cpx2 AS CComplex = CComplex(2, 3)
-cpx = cpx.CAdd(cpx2)
-' --or-- cpx = cpx.CAdd(CComplex(2, 3))
-```
-```
-DIM cpx AS CComplex = CComplex(5, 6) : cpx = cpx.CAdd(2, 3)
-```
-
 # <a name="CAddImag"></a>CAddImag
 
 Adds an imaginary number.
 
 ```
-FUNCTION CAddImag (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CAddImag (BYREF z AS _complex, BYVAL y AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *x* | A double value. |
+| *y* | A double value. |
 
-#### Examples
+#### Example
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CAddImag(10)
+DIM c AS _complex = (5, 6)
+c = CAddImag(c, 10)
+print CStr(c)
 ```
 
 # <a name="CAddReal"></a>CAddReal
@@ -339,7 +318,7 @@ cpx = cpx.CAddImag(10)
 Adds a real number.
 
 ```
-FUNCTION CAddReal (BYVAL x AS DOUBLE) AS CComplex
+FUNCTION CAddReal (BYREF z AS _complex, BYVAL x AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -349,8 +328,9 @@ FUNCTION CAddReal (BYVAL x AS DOUBLE) AS CComplex
 #### Examples
 
 ```
-DIM cpx AS CComplex = CComplex(5, 6)
-cpx = cpx.CAddReal(10)
+DIM c AS _complex = (5, 6)
+c = CAddReal(c, 10)
+print CStr(c)
 ```
 
 # <a name="CArcCos"></a>CArcCos / CACos
@@ -358,15 +338,15 @@ cpx = cpx.CAddReal(10)
 Returns the complex arccosine of this complex number.
 
 ```
-FUNCTION CArcCos () AS CComplex
-FUNCTION CACos () AS CComplex
+FUNCTION CArcCos (BYREF value AS _complex) AS _complex
+FUNCTION CACos (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-print cpx.CArcCos(z)
+DIM c AS _complex = (1, 1)
+print CStr(CArcCos(c))
 Output: 0.9045568943023814 -1.061275061905036 * i
 ```
 
@@ -375,15 +355,15 @@ Output: 0.9045568943023814 -1.061275061905036 * i
 Returns the complex hyperbolic arccosine of this complex number. The branch cut is on the real axis, less than 1.
 
 ```
-FUNCTION CArcCosH () AS CComplex
-FUNCTION CACosH () AS CComplex
+FUNCTION CArcCosH (BYREF value AS _complex) AS _complex
+FUNCTION CACosH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-print cpx.CArcCosH
+DIM c AS _complex = (1, 1)
+print CStr(CArcCosH(c))
 Output: 1.061275061905036 +0.9045568943023813 * i
 ```
 
@@ -392,8 +372,8 @@ Output: 1.061275061905036 +0.9045568943023813 * i
 Returns the complex hyperbolic arccosine of a real number.
 
 ```
-FUNCTION CArcCosHReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CACosHReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcCosHReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CACosHReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -408,8 +388,8 @@ For a less than -1 the result has a real part of pi and a negative imaginary par
 For a greater than 1 the result is purely imaginary and positive.
 
 ```
-FUNCTION CArcCosReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CACosReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcCosReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CACosReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -419,10 +399,9 @@ FUNCTION CACosReal (BYVAL value AS DOUBLE) AS CComplex
 #### Example
 
 ```
-DIM cpx AS CComplex
-print cpx.CArcCosReal(1) ' = 0 0 * i
-print cpx.CArcCosReal(-1) ' = 3.141592653589793 0 * i
-print cpx.CArcCosReal(2) ' = 0 +1.316957896924817 * i
+print CStr(CArcCosReal(1)) ' = 0 0 * i
+print CStr(CArcCosReal(-1)) ' = 3.141592653589793 0 * i
+print CStr(CArcCosReal(2)) ' = 0 +1.316957896924817 * i
 ```
 
 # <a name="CArcCot"></a>CArcCot / CACot
@@ -430,15 +409,16 @@ print cpx.CArcCosReal(2) ' = 0 +1.316957896924817 * i
 Returns the complex arccotangent of this complex number.
 
 ```
-FUNCTION CArcCot () AS CComplex
-FUNCTION CACot () AS CComplex
+FUNCTION CArcCot (BYREF value AS _complex) AS _complex
+FUNCTION CACot (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-print cpx.CArcCot
+DIM z AS _complex = (1, 1)
+z = CArcCot(z)
+PRINT CStr(z)
 Output: 0.5535743588970452 -0.4023594781085251 * i
 ```
 
@@ -447,15 +427,15 @@ Output: 0.5535743588970452 -0.4023594781085251 * i
 Returns the complex hyperbolic arccotangent of this complex number. Alias: CACotH.
 
 ```
-FUNCTION CArcCotH () AS CComplex
-FUNCTION CACotH () AS CComplex
+FUNCTION CArcCotH (BYREF value AS _complex) AS _complex
+FUNCTION CACotH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CArcCotH
+DIM c AS _complex = (1, 1)
+print CStr(CArcCotH(c))
 Output: 0.4023594781085251 -0.5535743588970452 * i
 ```
 
@@ -464,15 +444,15 @@ Output: 0.4023594781085251 -0.5535743588970452 * i
 Returns the complex arccosecant of this complex number.
 
 ```
-FUNCTION CArcCsc () AS CComplex
-FUNCTION CACsc () AS CComplex
+FUNCTION CArcCsc (BYREF value AS _complex) AS _complex
+FUNCTION CACsc (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-print cpx.CArcCsc
+DIM c AS _complex = (1, 1)
+print CStr(CArcCsc(c))
 Output: 0.4522784471511907 -0.5306375309525178 * i
 ```
 
@@ -481,15 +461,15 @@ Output: 0.4522784471511907 -0.5306375309525178 * i
 Returns the complex hyperbolic arccosecant of this complex number.
 
 ```
-FUNCTION CArcCscH () AS CComplex
-FUNCTION CACscH () AS CComplex
+FUNCTION CArcCscH (BYREF value AS _complex) AS _complex
+FUNCTION CACscH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CArcCscH
+DIM c AS _complex = (1, 1)
+print CStr(CArcCscH(c))
 Output: 0.5306375309525179 -0.4522784471511906 * i
 ```
 
@@ -498,15 +478,14 @@ Output: 0.5306375309525179 -0.4522784471511906 * i
 Returns the complex arccosecant of a real number. 
 
 ```
-FUNCTION CArcCscReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CACscReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcCscReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CACscReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-print cpx.CArcCscReal(1)
+print CStr(CArcCscReal(1))
 Output: 1.570796326794897 0 * i
 ```
 
@@ -515,15 +494,16 @@ Output: 1.570796326794897 0 * i
 Returns the complex arcsecant of this complex number.
 
 ```
-FUNCTION CArcSec () AS CComplex
-FUNCTION CASec () AS CComplex
+FUNCTION CArcSec (BYREF value AS _complex) AS _complex
+FUNCTION CASec (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex
-print cpx.CArcSec(1.1)
+DIM z AS _complex = (1, 1)
+z = CArcSec(z)
+PRINT CStr(z)
 Output: 1.118517879643706 +0.5306375309525176 * i
 ```
 
@@ -532,15 +512,16 @@ Output: 1.118517879643706 +0.5306375309525176 * i
 Returns the complex hyperbolic arcsecant of this complex number.
 
 ```
-FUNCTION CArcSecH () AS CComplex
-FUNCTION CASecH () AS CComplex
+FUNCTION CArcSecH (BYREF value AS _complex) AS _complex
+FUNCTION CASecH (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex = CComplex(1, 1)
-PRINT cpx.CArcSecH
+DIM z AS _complex = (1, 1)
+z = CArcSecH(z)
+PRINT CStr(z)
 Output: 0.5306375309525178 -1.118517879643706 * i
 ```
 
@@ -549,8 +530,8 @@ Output: 0.5306375309525178 -1.118517879643706 * i
 Returns the complex arcsecant of a real number.
 
 ```
-FUNCTION CArcSecReal (BYVAL value AS DOUBLE) AS CComplex
-FUNCTION CASecReal (BYVAL value AS DOUBLE) AS CComplex
+FUNCTION CArcSecReal (BYVAL value AS DOUBLE) AS _complex
+FUNCTION CASecReal (BYVAL value AS DOUBLE) AS _complex
 ```
 
 | Parameter  | Description |
@@ -560,8 +541,7 @@ FUNCTION CASecReal (BYVAL value AS DOUBLE) AS CComplex
 #### Example
 
 ```
-DIM cpx AS CComplex
-print cpx.CArcSecReal(1.1)
+print CStr(CArcSecReal(1.1))
 Output: 0.4296996661514246 0 * i
 ```
 
@@ -570,15 +550,16 @@ Output: 0.4296996661514246 0 * i
 Returns the complex arcsine of this complex number. The branch cuts are on the real axis, less than -1 and greater than 1.
 
 ```
-FUNCTION CArcSin () AS CComplex
-FUNCTION CASin () AS CComplex
+FUNCTION CArcSin (BYREF value AS _complex) AS _complex
+FUNCTION CASin (BYREF value AS _complex) AS _complex
 ```
 
 #### Example
 
 ```
-DIM cpx AS CComplex
-PRINT cpx.CArcSin(1, 1)
+DIM z AS _complex = (1, 1)
+z = CArcSin(z)
+PRINT CStr(z)
 Output: 0.6662394324925152 +1.061275061905036 * i
 ```
 
