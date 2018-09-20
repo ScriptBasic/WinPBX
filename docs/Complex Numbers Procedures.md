@@ -141,25 +141,21 @@ IF c1 = c2 THEN PRINT "equal" ELSE PRINT "different"
 # <a name="Operator4"></a>Math operators
 
 ```
-OPERATOR + (BYREF z1 AS CComplex, BYREF z2 AS CComplex) AS CComplex
-OPERATOR + (BYVAL a AS DOUBLE, BYREF z AS CComplex) AS CComplex
-OPERATOR + (BYREF z AS CComplex, BYVAL a AS DOUBLE) AS CComplex
-OPERATOR - (BYREF z1 AS CComplex, BYREF z2 AS CComplex) AS CComplex
-OPERATOR - (BYVAL a AS DOUBLE, BYREF z AS CComplex) AS CComplex
-OPERATOR - (BYREF z AS CComplex, BYVAL a AS DOUBLE) AS CComplex
-OPERATOR * (BYREF z1 AS CComplex, BYREF z2 AS CComplex) AS CComplex
-OPERATOR * (BYVAL a AS DOUBLE, BYREF z AS CComplex) AS CComplex
-OPERATOR * (BYREF z AS CComplex, BYVAL a AS DOUBLE) AS CComplex
-OPERATOR / (BYREF leftside AS CComplex, BYREF rightside AS CComplex) AS CComplex
-OPERATOR / (BYVAL a AS DOUBLE, BYREF z AS CComplex) AS CComplex
-OPERATOR / (BYREF z AS CComplex, BYVAL a AS DOUBLE) AS CComplex
-OPERATOR += (BYREF z AS CComplex)
-OPERATOR -= (BYREF z AS CComplex)
-OPERATOR *= (BYREF z AS CComplex)
-OPERATOR /= (BYREF z AS CComplex)
-OPERATOR - (BYREF z AS CComplex, BYVAL a AS DOUBLE) AS CComplex
-OPERATOR ^ (BYREF value AS CComplex, BYREF power AS CComplex) AS CComplex
-OPERATOR ^ (BYREF value AS CComplex, BYVAL power AS DOUBLE) AS CComplex
+OPERATOR + (BYREF z1 AS _complex, BYREF z2 AS _complex) AS _complex
+OPERATOR + (BYVAL a AS DOUBLE, BYREF z AS _complex) AS _complex
+OPERATOR + (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
+OPERATOR - (BYREF z1 AS _complex, BYREF z2 AS _complex) AS _complex
+OPERATOR - (BYVAL a AS DOUBLE, BYREF z AS _complex) AS _complex
+OPERATOR - (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
+OPERATOR * (BYREF z1 AS _complex, BYREF z2 AS _complex) AS _complex
+OPERATOR * (BYVAL a AS DOUBLE, BYREF z AS _complex) AS _complex
+OPERATOR * (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
+OPERATOR / (BYREF leftside AS _complex, BYREF rightside AS _complex) AS _complex
+OPERATOR / (BYVAL a AS DOUBLE, BYREF z AS _complex) AS _complex
+OPERATOR / (BYREF z AS _complex, BYVAL a AS DOUBLE) AS _complex
+OPERATOR - (BYREF z AS _complex, BYVAL a AS DOUBLE) AS CComplex
+OPERATOR ^ (BYREF value AS _complex, BYREF power AS _complex) AS _complex
+OPERATOR ^ (BYREF value AS _complex, BYVAL power AS DOUBLE) AS _complex
 ```
 
 #### Examples
