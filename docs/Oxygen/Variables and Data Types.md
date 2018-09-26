@@ -24,10 +24,10 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Single](#single) | ----------- |
-| [Double](#double) | ----------- |
-| [Extended](#extended) | ----------- |
-| [Float](#float) | ----------- |
+| [Single](#single) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
+| [Double](#double) | 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308. |
+| [Extended](#extended) | 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932 |
+| [Float](#float) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
 
 ### String Types
 
