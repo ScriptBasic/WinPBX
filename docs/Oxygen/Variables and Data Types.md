@@ -637,12 +637,54 @@ DIM AS CHAR c = "W"
 # <a name="wide"></a>Wide
 
 Variable-length 16-bit string (a Wide string is an array of unicode characters).
+
+```
+DIM ws AS WIDE = "Test string"
+```
+
+```
+WIDE ws = "Test string"
+```
+
+```
+DIM AS WIDE ws = "Test string"
+```
+
 Also used in conjunction with other types to double the bit width.
+
+```
+WIDE CHAR wc
+WIDE FLOAT wf   ' a double precision float
+```
 
 # <a name="zstring"></a>ZString
 
 Fixed-length 8-bit null terminated string.
 
+```
+DIM zs AS ZSTRING * 260 = "Test string"
+```
+
+```
+ZSTRING * 260 zs = "Test string"
+```
+
+```
+DIM AS ZSTRING zs = "Test string"
+```
+
 # <a name="zstring2"></a>ZString2
 
 Fixed-length 16-bit double null terminated string.
+
+```
+DIM zs AS ZSTRING2 * 260 = "Test string"
+```
+
+```
+ZSTRING2 * 260 zs = "Test string"
+```
+
+```
+DIM AS ZSTRING2 zs = "Test string"
+```
