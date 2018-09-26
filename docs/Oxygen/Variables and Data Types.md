@@ -444,13 +444,41 @@ DIM AS FLOAT n
 n = 123.45
 ```
 
-# <a name="asciiz"></a>AsciiZ
+# <a name="asciiz"></a>Asciiz
 
 Fixed-length 8-bit null terminated string.
 
-# <a name="asciiz2"></a>AsciiZ2
+```
+DIM s AS ASCIIZ * 260
+s = "Test string"
+```
+
+```
+ASCIIZ s * 260
+s = "Test string"
+```
+```
+DIM AS ASCIIZ s * 260
+s = "Test string"
+```
+
+# <a name="asciiz2"></a>Asciiz2
 
 Fixed-length 16-bit double null terminated string.
+
+```
+DIM s AS ASCIIZ2 * 260
+s = "Test string 2"
+```
+
+```
+ASCIIZ2 s * 260
+s = "Test string 2"
+```
+```
+DIM AS ASCIIZ2 s * 260
+s = "Test string 2"
+```
 
 # <a name="bstr"></a>Bstr
 
