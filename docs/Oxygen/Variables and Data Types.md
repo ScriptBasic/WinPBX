@@ -4,49 +4,49 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [BYTE](#byte) | ----------- |
-| [SBYTE](#sbyte) | ----------- |
-| [UBYTE](#ubyte) | ----------- |
-| [BOOL](#bool) | ----------- |
-| [BOOLEAN](#boolean) | ----------- |
-| [SHORT](#short) | ----------- |
-| [LONG](#long) | ----------- |
-| [INT](#int) | ----------- |
-| [INTEGER](#integer) | ----------- |
-| [QUAD](#quad) | ----------- |
-| [WORD](#word) | ----------- |
-| [DWORD](#dword) | ----------- |
-| [ULONG](#ulong) | ----------- |
-| [UINT](#uint) | ----------- |
-| [QWORD](#qword) | ----------- |
-| [SYS](#sys) | ----------- |
+| [Byte](#byte) | 8-bit unsigned whole-number data type. Can hold a value in the range of 0 to 255. |
+| [SByte](#sbyte) | 8-bit signed whole-number data type. Can hold a value in the range of 0 to 255. |
+| [UByte](#ubyte) | 8-bit unsigned whole-number data type. Can hold a value in the range of -128 to 127. |
+| [Bool](#bool) | Boolean data type. Can hold the values True or False. |
+| [Boolean](#boolean) | ----------- |
+| [Short](#short) | ----------- |
+| [Long](#long) | ----------- |
+| [Int](#int) | ----------- |
+| [Integer](#integer) | ----------- |
+| [Quad](#quad) | ----------- |
+| [Word](#word) | ----------- |
+| [DWord](#dword) | ----------- |
+| [ULong](#ulong) | ----------- |
+| [UInt](#uint) | ----------- |
+| [QWord](#qword) | ----------- |
+| [Sys](#sys) | ----------- |
 
 ### Floating-point Types
 
 | Name       | Description |
 | ---------- | ----------- |
-| [SINGLE](#single) | ----------- |
-| [DOUBLE](#double) | ----------- |
-| [EXTENDED](#extended) | ----------- |
-| [FLOAT](#float) | ----------- |
+| [Single](#single) | ----------- |
+| [Double](#double) | ----------- |
+| [Extended](#extended) | ----------- |
+| [Float](#float) | ----------- |
 
 ### String Types
 
 | Name       | Description |
 | ---------- | ----------- |
-| [STRING](#string) | ----------- |
-| [STRING2](#string2) | ----------- |
-| [WSTRING](#wstring) | ----------- |
-| [BSTR](#bstr) | ----------- |
-| [BSTRING](#bstring) | ----------- |
-| [BSTRING2](#bstring2) | ----------- |
-| [GSTR_](#gstr_) | ----------- |
-| [CSTR_](#cstr_) | ----------- |
-| [CHAR](#char) | ----------- |
-| [WCHAR](#wchar) | ----------- |
-| [ASCIIZ](#asciiz) | ----------- |
-| [ASCIIZ2](#asciiz2) | ----------- |
-| [ZSTRING](#zstring) | ----------- |
-| [ZSTRING2](#zstring2) | ----------- |
-| [WIDE](#wide) | ----------- |
+| [String](#string) | ----------- |
+| [String2](#string2) | ----------- |
+| [WSstring](#wstring) | ----------- |
+| [Bstr](#bstr) | ----------- |
+| [BString](#bstring) | ----------- |
+| [BString2](#bstring2) | ----------- |
+| [GStr_](#gstr_) | ----------- |
+| [CStr_](#cstr_) | ----------- |
+| [Char](#char) | ----------- |
+| [WChar](#wchar) | ----------- |
+| [AsciiZ](#asciiz) | ----------- |
+| [AsciiZ2](#asciiz2) | ----------- |
+| [ZSstring](#zstring) | ----------- |
+| [ZSstring2](#zstring2) | ----------- |
+| [Wide](#wide) | ----------- |
 
