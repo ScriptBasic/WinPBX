@@ -61,4 +61,64 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [QWord](#qword) | Specify a 64 bit operand in assembly code.  |
+| [QWord](#qword) | Specify a 64-bit operand in assembly code.  |
+
+# <a name="byte"></a>Byte
+
+8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
+
+# <a name="sbyte"></a>SByte
+
+8-bit (1 byte) signed integerr tanging in value from -128 to 127.
+
+# <a name="ubyte"></a>UByte
+
+8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
+
+# <a name="bool"></a>Bool
+
+Boolean data type. Can hold the values True or False.
+
+# <a name="boolean"></a>Boolean
+
+Boolean data type. Can hold the values True or False.
+
+# <a name="short"></a>Short
+
+16-bit (2 bytes signed integer ranging in value from -32,768 to 32,767.
+
+# <a name="long"></a>Long
+
+32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
+
+# <a name="int"></a>Int
+
+32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
+
+# <a name="integer"></a>Integer
+
+32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
+
+# <a name="quad"></a>Quad
+
+64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
+
+# <a name="word"></a>Word
+
+16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535.
+
+# <a name="dword"></a>DWord
+
+32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+
+# <a name="ulong"></a>ULong
+
+32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+
+# <a name="uint"></a>UInt
+
+32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+
+# <a name="sys"></a>Sys
+
+32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms.
