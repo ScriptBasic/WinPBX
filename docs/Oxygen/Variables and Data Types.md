@@ -262,17 +262,86 @@ n = 1234567890
 
 16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535.
 
+```
+DIM n AS WORD
+n = 12345
+```
+
+```
+WORD n
+n = 12345
+```
+
+```
+DIM AS WORD n
+n = 12345
+```
+
+If you assign a negative number to a WORD variable, the value is converted to an unsigned WORD, e.g.
+
+```
+DIM n AS WORD
+n = -1
+PRINT n
+' Output: 65535
+```
+
 # <a name="dword"></a>DWord
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+
+```
+DIM n AS DWORD
+n = 1234567890
+```
+
+```
+DWORD n
+n = 1234567890
+```
+
+```
+DIM AS DWORD n
+n = 1234567890
+```
 
 # <a name="ulong"></a>ULong
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
 
+```
+DIM n AS ULONG
+n = 1234567890
+```
+
+```
+ULONG n
+n = 1234567890
+```
+
+```
+DIM AS ULONG n
+n = 1234567890
+```
+
 # <a name="uint"></a>UInt
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+
+```
+DIM n AS UINT
+n = 1234567890
+```
+
+```
+UINT n
+n = 1234567890
+```
+
+```
+DIM AS UINT n
+n = 1234567890
+```
 
 # <a name="quad"></a>Quad
 
