@@ -197,7 +197,28 @@ n = 12345
 # <a name="long"></a>Long
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
+
+```
+DIM n AS LONG
+n = 1234567890
+```
+
+```
+LONG n
+n = 1234567890
+```
+
+```
+DIM AS LONG n
+n = 1234567890
+```
+
 Also used in conjunction with other types to double the bit width.
+
+```
+LONG SHORT n
+n = 1234567890
+```
 
 # <a name="int"></a>Int
 
