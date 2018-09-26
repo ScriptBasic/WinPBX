@@ -128,15 +128,45 @@ A byte as an addressable unit of data storage large enough to hold any member of
 
 # <a name="bool"></a>Bool
 
-Boolean data type. Can hold the values True or False.
+Boolean data type. Can hold the values True (<> 0) or False (0).
 
-Notionally a Boolean type, but in reality it is a 32bit signed integer, as in C
+```
+DIM b AS BOOL
+b = TRUE
+```
+
+```
+b AS BOOL
+b = TRUE
+```
+
+```
+DIM AS BOOL b
+b = TRUE
+```
+
+Notionally a Boolean type, but in reality it is a LONG (32bit signed integer).
 
 # <a name="boolean"></a>Boolean
 
-Boolean data type. Can hold the values True or False.
+Boolean data type. Can hold the values True (<> 0) or False (0).
 
-Notionally a Boolean type, but in reality it is an UBYTE (8 bit signed integer)
+```
+DIM b AS BOOLEAN
+b = TRUE
+```
+
+```
+b AS BOOLEAN
+b = TRUE
+```
+
+```
+DIM AS BOOLEAN b
+b = TRUE
+```
+
+Notionally a Boolean type, but in reality it is an UBYTE (8 bit unsigned integer).
 
 # <a name="short"></a>Short
 
