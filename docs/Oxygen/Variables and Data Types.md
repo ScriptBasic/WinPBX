@@ -464,6 +464,11 @@ DIM AS ASCIIZ s * 260
 s = "Test string"
 ```
 
+Indirection level 0<br>
+Character width 1<br>
+Length determined by null terminator byte<br>
+Garbage collection not required
+
 # <a name="asciiz2"></a>Asciiz2
 
 Fixed-length 16-bit double null terminated string.
@@ -481,6 +486,11 @@ s = "Test string 2"
 DIM AS ASCIIZ2 s * 260
 s = "Test string 2"
 ```
+
+Indirection level 0<br>
+Character width 1<br>
+Length determined by 2 null terminator bytes<br>
+Garbage collection not required
 
 # <a name="bstr"></a>Bstr
 
@@ -505,7 +515,13 @@ frees b
 ```
 
 You must free the string with **FreeS** when no longer reuired.
- 
+
+Indirection level 1<br>
+Character width 1<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection required
+
 # <a name="bstring"></a>BString
 
 Variable-length 8-bit string (a BString is an array of ansi characters).
@@ -529,6 +545,12 @@ frees b
 ```
 
 You must free the string with **FreeS** when no longer reuired.
+
+Indirection level 1<br>
+Character width 1<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection required
 
 # <a name="bstring2"></a>BString2
 
@@ -554,6 +576,12 @@ frees b
 
 You must free the string with **FreeS** when no longer reuired.
 
+Indirection level 1<br>
+Character width 2<br>
+Length (in bytes) given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection required
+
 # <a name="char"></a>Char
 
 8-bit (1 byte) ansi character type.
@@ -569,6 +597,11 @@ CHAR c = "A"
 ```
 DIM AS CHAR c = "A"
 ```
+
+Indirection level 0<br>
+Character width 1<br>
+Length determined by null terminator byte<br>
+Garbage collection not required
 
 # <a name="string"></a>String
 
@@ -586,6 +619,13 @@ STRING s = "Test string"
 DIM AS STRING s = "Test string"
 ```
 
+Indirection level 2  (1 when passed byval as a parameter)<br>
+Character width = 1<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection automatic
+
+
 # <a name="string2"></a>String2
 
 Variable-length 16-bit string (a String2 is an array of unicode characters).
@@ -601,6 +641,12 @@ STRING2 s = "Test string"
 ```
 DIM AS STRING2 s = "Test string"
 ```
+
+Indirection level 2 (1 when passed byval as a parameter)<br>
+Character width 2<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection automatic
 
 # <a name="wstring"></a>WString
 
@@ -618,6 +664,12 @@ WSTRING ws = "Test string"
 DIM AS WSTRING ws = "Test string"
 ```
 
+Indirection level 2 (1 when passed byval as a parameter)<br>
+Character width 2<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection automatic
+
 # <a name="wchar"></a>WChar
 
 16-bit (2 byte) unicode character type.
@@ -633,6 +685,11 @@ CHAR c = "W"
 ```
 DIM AS CHAR c = "W"
 ```
+
+Indirection level 0<br>
+Character width 2<br>
+Length determined by 2 null terminator bytes<br>
+Garbage collection not required
 
 # <a name="wide"></a>Wide
 
@@ -673,6 +730,11 @@ ZSTRING * 260 zs = "Test string"
 DIM AS ZSTRING zs = "Test string"
 ```
 
+Indirection level 0<br>
+Character width 1<br>
+Length determined by null terminator byte<br>
+Garbage collection not required
+
 # <a name="zstring2"></a>ZString2
 
 Fixed-length 16-bit double null terminated string.
@@ -688,6 +750,11 @@ ZSTRING2 * 260 zs = "Test string"
 ```
 DIM AS ZSTRING2 zs = "Test string"
 ```
+
+Indirection level 0<br>
+Character width 2<br>
+Length determined by 2 null terminator bytes<br>
+Garbage collection not required
 
 # <a name="qword"></a>QWord
 
