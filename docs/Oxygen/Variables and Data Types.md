@@ -67,13 +67,34 @@
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
 
+```
+DIM byteVar AS BYTE
+byteVar = 100
+```
+
+A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
+
 # <a name="sbyte"></a>SByte
 
 8-bit (1 byte) signed integerr tanging in value from -128 to 127.
 
+```
+DIM sbyteVar AS SBYTE
+ubyteVar = -100
+```
+
+A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
+
 # <a name="ubyte"></a>UByte
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
+
+```
+DIM ubyteVar AS UBYTE
+ubyteVar = 100
+```
+
+A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
 
 # <a name="bool"></a>Bool
 
