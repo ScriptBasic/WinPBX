@@ -136,7 +136,7 @@ b = TRUE
 ```
 
 ```
-b AS BOOL
+BOOL b
 b = TRUE
 ```
 
@@ -157,7 +157,7 @@ b = TRUE
 ```
 
 ```
-b AS BOOLEAN
+BOOLEAN b
 b = TRUE
 ```
 
@@ -171,6 +171,22 @@ Notionally a Boolean type, but in reality it is an UBYTE (8 bit unsigned integer
 # <a name="short"></a>Short
 
 16-bit (2 bytes signed integer ranging in value from -32,768 to 32,767.
+
+```
+DIM n AS SHORT
+n = 12345
+```
+
+```
+SHORT n
+n = 12345
+```
+
+```
+DIM AS SHORT n
+n = 12345
+```
+
 Also used in conjunction with other types to halve the bit width.
 
 # <a name="long"></a>Long
