@@ -49,7 +49,7 @@
 | [ZString](#zstring) | Fixed-length 8-bit null terminated string. |
 | [ZString2](#zstring2) | Fixed-length 16-bit double null terminated string. |
 
-### Bit Width Specifiers
+### Modifiers
 
 | Name       | Description |
 | ---------- | ----------- |
