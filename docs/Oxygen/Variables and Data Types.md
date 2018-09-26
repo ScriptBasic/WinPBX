@@ -189,6 +189,11 @@ n = 12345
 
 Also used in conjunction with other types to halve the bit width.
 
+```
+SHORT LONG n
+n = 12345
+```
+
 # <a name="long"></a>Long
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
