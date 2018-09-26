@@ -688,3 +688,12 @@ ZSTRING2 * 260 zs = "Test string"
 ```
 DIM AS ZSTRING2 zs = "Test string"
 ```
+
+# <a name="qword"></a>QWord
+
+Specify a 64 bit operand in assembly code.
+
+```
+fld qword d
+```
+
