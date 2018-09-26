@@ -362,9 +362,13 @@ n = 9223372036854775
 
 # <a name="sys"></a>Sys
 
-32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms.
+32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. To be used mainly to work with handles and opaque pointers, that are 32-bit in 32-bit systems and 64-bit in 64-bit systems. This type is always wide enough to hold a pointer.
 
-This type is always wide enough to hold a pointer.
+The following example retrieves the handle of a Windows control identified by ID that is child of the Window identifield by the hwnd handle.
+
+```
+DIM hCtl AS SYS = GetDlgItem(hwnd, ID)
+```
 
 # <a name="single"></a>Single
 
@@ -482,33 +486,153 @@ s = "Test string 2"
 
 Variable-length 8-bit string (a BStr is an array of ansi characters).
 
+```
+DIM b AS BSTR = "Test string"
+print b
+frees b
+```
+
+```
+BSTR b = "Test string"
+print b
+frees b
+```
+
+```
+DIM AS BSTR b = "Test string"
+print b
+frees b
+```
+
+You must free the string with **FreeS** when no longer reuired.
+ 
 # <a name="bstring"></a>BString
 
 Variable-length 8-bit string (a BString is an array of ansi characters).
+
+```
+DIM b AS BSTRING = "Test string"
+print b
+frees b
+```
+
+```
+BSTRING b = "Test string"
+print b
+frees b
+```
+
+```
+DIM AS BSTRING b = "Test string"
+print b
+frees b
+```
+
+You must free the string with **FreeS** when no longer reuired.
 
 # <a name="bstring2"></a>BString2
 
 Variable-length 8-bit string (a BString is an array of unicode characters).
 
+```
+DIM b AS BSTRING2 = "Test string"
+print b
+frees b
+```
+
+```
+BSTRING2 b = "Test string"
+print b
+frees b
+```
+
+```
+DIM AS BSTRING2 b = "Test string"
+print b
+frees b
+```
+
+You must free the string with **FreeS** when no longer reuired.
+
 # <a name="char"></a>Char
 
-8-bit (1 byte) ansi charater type.
+8-bit (1 byte) ansi character type.
+
+```
+DIM c AS CHAR = "A"
+```
+
+```
+CHAR c = "A"
+```
+
+```
+DIM AS CHAR c = "A"
+```
 
 # <a name="string"></a>String
 
 Variable-length 8-bit string (a String is an array of characters).
 
+```
+DIM s AS STRING = "Test string"
+```
+
+```
+STRING s = "Test string"
+```
+
+```
+DIM AS STRING s = "Test string"
+```
+
 # <a name="string2"></a>String2
 
 Variable-length 16-bit string (a String2 is an array of unicode characters).
+
+```
+DIM s AS STRING2 = "Test string"
+```
+
+```
+STRING2 s = "Test string"
+```
+
+```
+DIM AS STRING2 s = "Test string"
+```
 
 # <a name="wstring"></a>WString
 
 Variable-length 16-bit string (a WString is an array of unicode characters).
 
+```
+DIM ws AS WSTRING = "Test string"
+```
+
+```
+WSTRING ws = "Test string"
+```
+
+```
+DIM AS WSTRING ws = "Test string"
+```
+
 # <a name="wchar"></a>WChar
 
-16-bit (2 byte) unicode charater type.
+16-bit (2 byte) unicode character type.
+
+```
+DIM c AS WCHAR = "W"
+```
+
+```
+CHAR c = "W"
+```
+
+```
+DIM AS CHAR c = "W"
+```
 
 # <a name="wide"></a>Wide
 
