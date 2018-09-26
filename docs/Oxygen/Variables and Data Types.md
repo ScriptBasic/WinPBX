@@ -366,21 +366,83 @@ n = 9223372036854775
 
 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms.
 
+This type is always wide enough to hold a pointer.
+
 # <a name="single"></a>Single
 
 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
+
+```
+DIM n AS SINGLE
+n = 123.45
+```
+
+```
+SINGLE n
+n = 123.45
+```
+
+```
+DIM AS SINGLE n
+n = 123.45
+```
 
 # <a name="double"></a>Double
 
 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308.
 
+```
+DIM n AS DOUBLE
+n = 12356.789
+```
+
+```
+DOUBLE n
+n = 12356.789
+```
+
+```
+DIM AS DOUBLE n
+n = 12356.789
+```
+
 # <a name="extended"></a>Extended
 
 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932.
 
+```
+DIM n AS EXTENDED
+n = 12356789.12
+```
+
+```
+EXTENDED n
+n = 12356789.12
+```
+
+```
+DIM AS EXTENDED n
+n = 12356789.12
+```
+
 # <a name="float"></a>Float
 
 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
+
+```
+DIM n AS FLOAT
+n = 123.45
+```
+
+```
+FLOAT n
+n = 123.45
+```
+
+```
+DIM AS FLOAT n
+n = 123.45
+```
 
 # <a name="asciiz"></a>AsciiZ
 
