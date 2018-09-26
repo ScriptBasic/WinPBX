@@ -45,12 +45,16 @@
 | [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
 | [WSstring](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
 | [WChar](#wchar) | 16-bit (2 byte) unicode charater type. | |
+| [Wide](#wide) | Variable-length 16-bit string (a Wide string is an array of unicode characters). |
 | [ZSstring](#zstring) | Fixed-length 8-bit null terminated string. |
 | [ZSstring2](#zstring2) | Fixed-length 16-bit double null terminated string. |
 
+### Bit Width Specifiers
 
-| [Long](#Long) | ----------- |
-| [Short](#Short) | ----------- |
-| [Wide](#Wide) | ----------- |
+| [Long](#Long) | Used in conjunction with other types to double the bit width. |
+| [Short](#Short) | Used in conjunction with other types to halve the bit width. |
+| [Wide](#Wide) | Used in conjunction with other types to double the bit width. |
 
-| [QWord](#qword) | Specify a 64 bit operand in assembly code  |
+### Assembler
+
+| [QWord](#qword) | Specify a 64 bit operand in assembly code.  |
