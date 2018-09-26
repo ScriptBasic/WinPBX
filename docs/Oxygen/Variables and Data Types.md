@@ -33,20 +33,20 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [String](#string) | ----------- |
-| [String2](#string2) | ----------- |
-| [WSstring](#wstring) | ----------- |
-| [Bstr](#bstr) | ----------- |
-| [BString](#bstring) | ----------- |
-| [BString2](#bstring2) | ----------- |
-| [GStr_](#gstr_) | ----------- |
-| [CStr_](#cstr_) | ----------- |
-| [Char](#char) | ----------- |
-| [WChar](#wchar) | ----------- |
-| [AsciiZ](#asciiz) | ----------- |
-| [AsciiZ2](#asciiz2) | ----------- |
-| [ZSstring](#zstring) | ----------- |
-| [ZSstring2](#zstring2) | ----------- |
+| [AsciiZ](#asciiz) | Fixed-length 8-bit null terminated string. |
+| [AsciiZ2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
+| [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
+| [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
+| [BString2](#bstring2) | Variable-length 8-bit string (a BString is an array of unicode characters). |
+| [CStr_](#cstr_) | Reserved. |
+| [Char](#char) | 8-bit (1 byte) ansi charater type. |
+| [GStr_](#gstr_) | Reserved. |
+| [String](#string) | Variable-length 8-bit string (a String is an array of characters). |
+| [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
+| [WSstring](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
+| [WChar](#wchar) | 16-bit (2 byte) unicode charater type. | |
+| [ZSstring](#zstring) | Fixed-length 8-bit null terminated string. |
+| [ZSstring2](#zstring2) | Fixed-length 16-bit double null terminated string. |
 
 
 | [Long](#Long) | ----------- |
