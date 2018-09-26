@@ -33,8 +33,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [AsciiZ](#asciiz) | Fixed-length 8-bit null terminated string. |
-| [AsciiZ2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
+| [Asciiz](#asciiz) | Fixed-length 8-bit null terminated string. |
+| [Asciiz2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
 | [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
 | [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
 | [BString2](#bstring2) | Variable-length 8-bit string (a BString is an array of unicode characters). |
