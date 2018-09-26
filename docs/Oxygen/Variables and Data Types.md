@@ -72,6 +72,16 @@ DIM byteVar AS BYTE
 byteVar = 100
 ```
 
+```
+BYTE byteVar
+byteVar = 100
+```
+
+```
+DIM AS BYTE byteVar
+byteVar = 100
+```
+
 A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
 
 # <a name="sbyte"></a>SByte
@@ -80,7 +90,17 @@ A byte as an addressable unit of data storage large enough to hold any member of
 
 ```
 DIM sbyteVar AS SBYTE
-ubyteVar = -100
+sbyteVar = -100
+```
+
+```
+SBYTE sbyteVar
+sbyteVar = 100
+```
+
+```
+DIM AS SBYTE sbyteVar
+sbyteVar = 100
 ```
 
 A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
@@ -91,6 +111,16 @@ A byte as an addressable unit of data storage large enough to hold any member of
 
 ```
 DIM ubyteVar AS UBYTE
+ubyteVar = 100
+```
+
+```
+UBYTE ubyteVar
+ubyteVar = 100
+```
+
+```
+DIM AS UBYTE ubyteVar
 ubyteVar = 100
 ```
 
