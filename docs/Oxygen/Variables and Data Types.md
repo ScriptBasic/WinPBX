@@ -38,9 +38,7 @@
 | [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
 | [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
 | [BString2](#bstring2) | Variable-length 8-bit string (a BString is an array of unicode characters). |
-| [CStr_](#cstr_) | Reserved. |
 | [Char](#char) | 8-bit (1 byte) ansi charater type. |
-| [GStr_](#gstr_) | Reserved. |
 | [String](#string) | Variable-length 8-bit string (a String is an array of characters). |
 | [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
 | [WString](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
@@ -492,17 +490,9 @@ Variable-length 8-bit string (a BString is an array of ansi characters).
 
 Variable-length 8-bit string (a BString is an array of unicode characters).
 
-# <a name="cstr_"></a>CStr_
-
-Reserved.
-
 # <a name="char"></a>Char
 
 8-bit (1 byte) ansi charater type.
-
-# <a name="gstr_"></a>GStr_
-
-Reserved.
 
 # <a name="string"></a>String
 
