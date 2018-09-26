@@ -51,10 +51,14 @@
 
 ### Bit Width Specifiers
 
+| Name       | Description |
+| ---------- | ----------- |
 | [Long](#Long) | Used in conjunction with other types to double the bit width. |
 | [Short](#Short) | Used in conjunction with other types to halve the bit width. |
 | [Wide](#Wide) | Used in conjunction with other types to double the bit width. |
 
 ### Assembler
 
+| Name       | Description |
+| ---------- | ----------- |
 | [QWord](#qword) | Specify a 64 bit operand in assembly code.  |
