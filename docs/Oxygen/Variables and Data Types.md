@@ -347,6 +347,21 @@ n = 1234567890
 
 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
 
+```
+DIM n AS QUAD
+n = 9223372036854775
+```
+
+```
+QUAD n
+n = 9223372036854775
+```
+
+```
+DIM AS QUAD n
+n = 9223372036854775
+```
+
 # <a name="sys"></a>Sys
 
 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms.
