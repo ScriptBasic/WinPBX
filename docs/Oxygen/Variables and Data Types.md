@@ -130,9 +130,13 @@ A byte as an addressable unit of data storage large enough to hold any member of
 
 Boolean data type. Can hold the values True or False.
 
+Notionally a Boolean type, but in reality it is a 32bit signed integer, as in C
+
 # <a name="boolean"></a>Boolean
 
 Boolean data type. Can hold the values True or False.
+
+Notionally a Boolean type, but in reality it is an UBYTE (8 bit signed integer)
 
 # <a name="short"></a>Short
 
