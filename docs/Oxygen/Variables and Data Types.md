@@ -224,9 +224,39 @@ n = 1234567890
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
 
+```
+DIM n AS INT
+n = 1234567890
+```
+
+```
+INT n
+n = 1234567890
+```
+
+```
+DIM AS INT n
+n = 1234567890
+```
+
 # <a name="integer"></a>Integer
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
+
+```
+DIM n AS INTEGER
+n = 1234567890
+```
+
+```
+INTEGER n
+n = 1234567890
+```
+
+```
+DIM AS INTEGER n
+n = 1234567890
+```
 
 # <a name="word"></a>Word
 
