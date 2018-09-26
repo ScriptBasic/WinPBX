@@ -63,15 +63,15 @@
 | ---------- | ----------- |
 | [QWord](#qword) | Specify a 64-bit operand in assembly code.  |
 
-# <a name="byte"></a>Byte
+### <a name="byte"></a>Byte
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
 
-# <a name="sbyte"></a>SByte
+### <a name="sbyte"></a>SByte
 
 8-bit (1 byte) signed integerr tanging in value from -128 to 127.
 
-# <a name="ubyte"></a>UByte
+### <a name="ubyte"></a>UByte
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
 
