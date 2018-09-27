@@ -38,11 +38,11 @@
 | [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
 | [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
 | [BString2](#bstring2) | Variable-length 16-bit string (a BString is an array of unicode characters). |
-| [Char](#char) | Variable-length 8-bit string (a Char is an array of ansi characters). |
+| [Char](#char) | 8-bit string (a Char is an array of ansi characters). |
 | [String](#string) | Variable-length 8-bit string (a String is an array of characters). |
 | [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
 | [WString](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
-| [WChar](#wchar) | Variable-length 16-bit string (a WChar is an array of unicode characters). |
+| [WChar](#wchar) | 16-bit string (a WChar is an array of unicode characters). |
 | [Wide](#wide) | Variable-length 16-bit string (a Wide string is an array of unicode characters). |
 | [ZString](#zstring) | Fixed-length 8-bit null terminated string. |
 | [ZString2](#zstring2) | Fixed-length 16-bit double null terminated string. |
@@ -584,18 +584,21 @@ Garbage collection required
 
 # <a name="char"></a>Char
 
-Variable-length 8-bit (1 byte) string.
+8-bit (1 byte) string.
 
 ```
 DIM c AS CHAR = "Test string"
+DIM c AS CHAR[260] = "Test string"
 ```
 
 ```
 CHAR c = "Test string"
+CHAR c[260] = "Test string"
 ```
 
 ```
 DIM AS CHAR c = "Test string"
+DIM AS CHAR c[260] = "Test string"
 ```
 
 Similar to C `char`, but is not conflated with byte which is a numeric type.
@@ -682,18 +685,21 @@ Garbage collection automatic
 
 # <a name="wchar"></a>WChar
 
-Variable-length 16-bit (2 bytes) string.
+16-bit (2 bytes) string.
 
 ```
 DIM c AS WCHAR = "Test string"
+DIM c AS WCHAR[260] = Test string"
 ```
 
 ```
 WCHAR c = "Test string"
+WCHAR c[260] = Test string"
 ```
 
 ```
 DIM AS WCHAR c = "Test string"
+DIM AS WCHAR c[260] = Test string"
 ```
 
 If we use an offset, it will print the string from that offset until the end of the string, e.g.
