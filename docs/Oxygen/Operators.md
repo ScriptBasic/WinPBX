@@ -13,6 +13,7 @@
 | ---------- | ----------- |
 | [\+](#addition) | Sums two numeric expressions. |
 | [-](#substraction) | Substracts two numeric expressions. |
+| [-](#negate) | Changes the sign of a numeric expression. |
 | [\*](#multiplication) | Multiplies two numeric expressions. |
 | [/](#division) | Divides two numeric expressions. |
 | [\\](#integerdivision) | Divides two integer expressions. |
@@ -128,6 +129,15 @@ Substracts two expressions.
 ```
 DIM x AS LONG
 x = 5 - 2
+```
+
+# <a name="negate"></a>Negate Operator (-)
+
+Returns the negative of the expression.
+
+```
+DIM x AS LONG = 123
+x = -x
 ```
 
 # <a name="multiplication"></a>Multiplication Operator (*)
