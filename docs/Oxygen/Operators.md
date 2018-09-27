@@ -428,7 +428,7 @@ DIM x2 AS LONG = 1
 PRINT x1 >>> x2
 ```
 
-# <a name="bitwiseand"></a>Bitwise AND Operator (And)
+# <a name="bitwiseand2"></a>Bitwise AND Operator (And)
 
 Performs a bitwise AND operation.
 
@@ -438,7 +438,7 @@ DIM x2 AS LONG = 1
 PRINT x1 And x2
 ```
 
-# <a name="bitwiseor"></a>Bitwise OR Operator (Or)
+# <a name="bitwiseor2"></a>Bitwise OR Operator (Or)
 
 Performs a bitwise OR operation.
 
@@ -448,7 +448,7 @@ DIM x2 AS LONG = 1
 PRINT x1 Or x2
 ```
 
-# <a name="bitwisexor"></a>Bitwise XOR Operator (Xor)
+# <a name="bitwisexor2"></a>Bitwise XOR Operator (Xor)
 
 Performs a bitwise XOR operation.
 
