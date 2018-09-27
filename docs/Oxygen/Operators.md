@@ -26,23 +26,26 @@
 | [-=](#substractandassign) | Subtracts and assigns a value to a variable. |
 | [\*=](#multiplyandassign) | Multiplies and assigns a value to a variable. |
 | [/=](#divideandassign) | Divides and assigns a value to a variable. |
-| [&=](#bitwiseandandassign) | Appends and assigns a string onto another string. |
+| [&=](#bitwiseandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
 | [\|=](#bitwiseorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
-| [&&=](#booleanandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
-| [\|\|=](#booleanorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
-| [^^=](#bitwisexorandassign) | Performs a bitwise-xor (exclusive disjunction) and assigns the result to a variable. |
+| [&&=](#booleanandandassign) | Performs a logical AND operation and assigns the result to a variable. |
+| [\|\|=](#booleanorandassign) | Performs a logical OR operation and assigns the result to a variable. |
+| [^^=](#booleanxorandassign) | Performs a logical XOR operation and assigns the result to a variable. |
+| [And=](#bitwiseandandassign2) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
+| [Or=](#bitwiseorandassign2) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
+| [Xor=](#bitwisexorandassign2) | Performs a bitwise-xor (exclusive disjunction) and assigns the result to a variable. |
 
 ### Relational and Comparison Operators
 
 | Name       | Description |
 | ---------- | ----------- |
-| [==](#equalto) |  |
-| [!=](#notequalto) |  |
-| [<>](#notequalto2) |  |
-| [<](#lessthan) |  |
-| [>](#greaterthan) |  |
-| [<=](#lessthanorqeualto) |  |
-| [>=](#greaterthanorqeualto) |  |
+| [==](#equalto) | Compares two expressions for equality. |
+| [!=](#notequalto) | Compares two expressions for inequality. |
+| [<>](#notequalto2) | Compares two expressions for inequality. |
+| [<](#lessthan) | Compares an expression less than another expression. |
+| [>](#greaterthan) | Compares an expression greater than another expression. |
+| [<=](#lessthanorqeualto) | Compares an expression less than or equal to another expression. |
+| [>=](#greaterthanorqeualto) | Compares an expression greater than or equal to another expression. |
 
 ### Logical Operators
 
