@@ -250,7 +250,7 @@ DIM x AS LONG = 11
 x And= 1
 ```
 
-# <a name="bitwiseorandassign2"></a>Bitwise OR and Assign Operator (\!=)
+# <a name="bitwiseorandassign2"></a>Bitwise OR and Assign Operator (Or=)
 
 Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
 
@@ -259,11 +259,81 @@ DIM x AS LONG = 1
 x Or= 1
 ```
 
-# <a name="bitwisexorandassign2"></a>Bitwise XOR and Assign Operator (\!=)
+# <a name="bitwisexorandassign2"></a>Bitwise XOR and Assign Operator (Xor=)
 
 Performs a bitwise-xor (inclusive disjunction) and assigns the result to a variable.
 
 ```
 DIM x AS LONG = 1
 x Xor= 1
+```
+
+# <a name="equalto"></a>Operator ==
+
+Compares two expressions for equality.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+IF x1 == x2 THEN PRINT "Equal"
+```
+
+# <a name="notequalto"></a>Operator |=
+
+Compares two expressions for inequality.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x1 |= x2 THEN PRINT "Not equal"
+```
+
+# <a name="notequalto2"></a>Operator <>
+
+Compares two expressions for inequality.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x1 <> x2 THEN PRINT "Not equal"
+```
+
+# <a name="lessthan"></a>Operator <
+
+Compares an expression less than another expression.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x1 < x2 THEN PRINT "Less"
+```
+
+# <a name="lessthan"></a>Operator >
+
+Compares an expression greater than another expression.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x2 > x1 THEN PRINT "Greater"
+```
+
+# <a name="lessthanorqeualto"></a>Operator <=
+
+Compares an expression less than or equal to another expression.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x1 < x2 THEN PRINT "Less or equal"
+```
+
+# <a name="greaterthanorqeualto"></a>Operator >=
+
+Compares an expression greater than or equal to another expression.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+IF x2 < x1 THEN PRINT "Greater or equal"
 ```
