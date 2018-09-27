@@ -213,3 +213,57 @@ Performs a bitwise-or (inclusive disjunction) and assigns the result to a variab
 DIM x AS LONG = 1
 x != 1
 ```
+
+# <a name="booleanandandassign"></a>Logical AND and Assign Operator (&&=)
+
+Performs a logical AND operation and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x &&= 1
+```
+
+# <a name="booleanorandassign"></a>Logical OR and Assign Operator (\|\|=)
+
+Performs a logical OR operation and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x ||= 1
+```
+
+# <a name="booleanxorandassign"></a>Logical XOR and Assign Operator (^^=)
+
+Performs a logical XOR operation and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x ^^= 1
+```
+
+# <a name="bitwiseandandassign2"></a>Bitwise AND and Assign Operator (And=)
+
+Performs a bitwise-and (conjunction) and assigns the result to a variable.
+
+```
+DIM x AS LONG = 11
+x And= 1
+```
+
+# <a name="bitwiseorandassign2"></a>Bitwise OR and Assign Operator (\!=)
+
+Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x Or= 1
+```
+
+# <a name="bitwisexorandassign2"></a>Bitwise XOR and Assign Operator (\!=)
+
+Performs a bitwise-xor (inclusive disjunction) and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x Xor= 1
+```
