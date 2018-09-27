@@ -5,7 +5,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [\=](#assignment) | Assigns a value to a variable. |
-| [:=](#assignment) | Assigns a value to a variable. |
+| [:=](#assignment2) | Assigns a value to a variable. |
 
 ### Arithmetic Operators
 
@@ -71,5 +71,14 @@ Assigns a value to a variable.
 ```
 DIM x AS LONG
 x = 5
+```
+
+# <a name="assignment2"></a>Assigment Operator (:=)
+
+Assigns a value to a variable.
+
+```
+DIM x AS LONG
+x := 5
 ```
 
