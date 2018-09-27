@@ -26,6 +26,7 @@
 | [-=](#substractandassign) | Subtracts and assigns a value to a variable. |
 | [\*=](#multiplyandassign) | Multiplies and assigns a value to a variable. |
 | [/=](#divideandassign) | Divides and assigns a value to a variable. |
+| [\=](#integerdivideandassign) | Integer divides and assigns a value to a variable. |
 | [&=](#bitwiseandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
 | [\|=](#bitwiseorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
 | [&&=](#booleanandandassign) | Performs a logical AND operation and assigns the result to a variable. |
@@ -132,11 +133,74 @@ DIM x AS LONG
 x = 13 \ 2
 ```
 
-# <a name="exponentiate"></a>Integer Divison Operator (^)
+# <a name="exponentiate"></a>Exponentiate Operator (^)
 
 Raises a numeric expression to a given power.
 
 ```
 DIM x AS LONG
 x = 11 ^ 2
+```
+
+# <a name="addandassign"></a>Add and Assign Operator (+=)
+
+Adds and assigns a value to a variable.
+
+```
+DIM x AS LONG = 5
+x += 3
+```
+
+# <a name="substractandassign"></a>Substract and Assign Operator (-=)
+
+Substracts and assigns a value to a variable.
+
+```
+DIM x AS LONG = 5
+x -= 3
+```
+
+# <a name="multiplyandassign"></a>Multiply and Assign Operator (*=)
+
+Multiplies and assigns a value to a variable.
+
+```
+DIM x AS LONG = 5
+x *= 2
+```
+
+# <a name="divideandassign"></a>Divide and Assign Operator (/=)
+
+Divides and assigns a value to a variable.
+
+```
+DIM x AS LONG = 10
+x /= 2
+```
+
+# <a name="divideandassign"></a>Divide and Assign Operator (/=)
+
+Divides and assigns a value to a variable.
+
+```
+DIM x AS LONG = 10
+x /= 2
+```
+
+# <a name="integerdivideandassign"></a>Integer Divide and Assign Operator (\=)
+
+Integer divides and assigns a value to a variable.
+
+```
+DIM x AS LONG = 13
+x \= 2
+```
+
+# <a name="bitwiseandandassign"></a>Bitwise AND and Assign Operator (&=)
+
+Performs a bitwise-and (conjunction) and assigns the result to a variable.
+
+```
+DIM x AS LONG = 11
+x &= 1
 ```
