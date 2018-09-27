@@ -595,17 +595,14 @@ Garbage collection required
 8-bit (1 byte) string. Similar to C `char`, but is not conflated with byte which is a numeric type.
 
 ```
-DIM c AS CHAR = "Test string"
 DIM c AS CHAR[260] = "Test string"
 ```
 
 ```
-CHAR c = "Test string"
 CHAR c[260] = "Test string"
 ```
 
 ```
-DIM AS CHAR c = "Test string"
 DIM AS CHAR c[260] = "Test string"
 ```
 
@@ -701,13 +698,15 @@ Garbage collection automatic
 16-bit (2 bytes) string.
 
 ```
-DIM c AS WCHAR = "Test string"
 DIM c AS WCHAR[260] = Test string"
 ```
 
 ```
-WCHAR c = "Test string"
 WCHAR c[260] = Test string"
+```
+
+```
+DIM AS WCHAR c[260] = Test string"
 ```
 
 ```
@@ -715,11 +714,6 @@ USES corewin
 DIM cmdline AS WCHAR PTR
 @cmdline = GetCommandLineW
 PRINT cmdline
-```
-
-```
-DIM AS WCHAR c = "Test string"
-DIM AS WCHAR c[260] = Test string"
 ```
 
 If we use an offset, it will print the string from that offset until the end of the string, e.g.
