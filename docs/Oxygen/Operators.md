@@ -314,20 +314,42 @@ x = 11 ^ 2
 
 Increments its operand by 1. The increment operator can appear before or after its operand: `++variable` and `variable++`.
 
+The first form is a prefix increment operation. The result of the operation is the value of the operand after it has been incremented.
+
+The second form is a postfix increment operation. The result of the operation is the value of the operand before it has been incremented.
+
 ```
 DIM x AS LONG = 5
-++x
-x++
+DIM r AS LONG = ++x
+print r
+' Output 6
+```
+
+```
+DIM x AS LONG = 5
+DIM r AS LONG = x++
+print r
+' Output 5
 ```
 
 # <a name="decrement"></a>Decrement Operator (--)
 
-Decrements its operand by 1. The increment operator can appear before or after its operand: `--variable` and `variable--`.
+Decrements its operand by 1. The decrement operator can appear before or after its operand: `--variable` and `variable--`.
+
+The first form is a prefix decrement operation. The result of the operation is the value of the operand "after" it has been decremented. The second form is a postfix decrement operation. The result of the operation is the value of the operand "before" it has been decremented.
 
 ```
 DIM x AS LONG = 5
---x
-x--
+DIM r AS LONG = --x
+print r
+' Output 4
+```
+
+```
+DIM x AS LONG = 5
+DIM r AS LONG = x--
+print r
+' Output 5
 ```
 
 # <a name="addandassign"></a>Add and Assign Operator (+=)
