@@ -308,7 +308,7 @@ DIM x2 AS LONG = 2
 IF x1 < x2 THEN PRINT "Less"
 ```
 
-# <a name="lessthan"></a>Operator >
+# <a name="greaterthan"></a>Operator >
 
 Compares an expression greater than another expression.
 
