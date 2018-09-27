@@ -51,18 +51,21 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [&&](#booleanand) | Returns the bitwise-and (conjunction) of two numeric values. |
-| [\|\|](#booleanor) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
+| [&&](#booleanand) | Returns the logical AND operation of two numeric values. |
+| [\|\|](#booleanor) | Returns the logical OR of two numeric values. |
 
 ### Bitwise Operators
 
 | Name       | Description |
 | ---------- | ----------- |
 | [&](#bitwiseand) | Bitwise AND. |
-| [\|](#bitwiseinclusiveor) | Bitwise OR. |
+| [\|](#bitwiseor) | Bitwise OR. |
 | [^^](#bitwisexor) | Bitwise XOR. |
 | [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
+| [And](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
+| [Or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
+| [Xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
 
 # <a name="assignment"></a>Assigment Operator (=)
 
