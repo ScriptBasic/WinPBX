@@ -49,9 +49,9 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [&](#bitwiseand) |  |
-| [|](#bitwiseinclusiveor) |  |
+| [\|](#bitwiseinclusiveor) |  |
 | [<<](#shiftleft) |  |
-| [>>(#shiftright) |  |
+| [>>](#shiftright) |  |
 
 # <a name="assignment"></a>Assigment Operator (=)
 
