@@ -320,7 +320,7 @@ DIM x AS LONG = 5
 x++
 ```
 
-# <a name="decrement"></a>Increment Operator (--)
+# <a name="decrement"></a>Decrement Operator (--)
 
 Decrements its operand by 1. The increment operator can appear before or after its operand: `--variable` and `variable--`.
 
