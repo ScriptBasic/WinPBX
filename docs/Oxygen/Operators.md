@@ -77,6 +77,133 @@
 | ---------- | ----------- |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 
+### Oerloading Operators
+
+Customised operations can be associated with UDTs and classes.
+
+This is done using an extension of the macro system. This scheme supports both Basic and Assembler in-line code, without additional overheads.
+
+Operator macros have the same name as the type with `_op` tacked on to the end. Each operator is defined in an internal macro, named with a dot followed by  the operator in double quotes.
+
+`."load"` and `."save"` are invoked at the start and end of expressions respectively, and also when opening and closing brackets, including automatic operator-precedence inserted brackets.
+
+**Example 1.** xyz vectors:
+
+```
+'PARTIAL DEMO
+
+type vector3f
+  float x,y,z
+end type
+
+macro vector3f_op(a)
+  macro ."load"(a)
+    vector3f acc
+    acc.x = a.x
+    acc.y = a.y
+    acc.z = a.z
+  end macro
+  macro ."save"(a)
+    a.x = acc.x
+    a.y = acc.y
+    a.z = acc.z
+  end macro
+  macro ."neg"(a)
+    vector3f acc
+    acc.x = -a.x
+    acc.y = -a.y
+    acc.z = -a.z
+  end macro
+  macro ."+"(a)
+    acc.x += a.x
+    acc.y += a.y
+    acc.z += a.z
+  end macro
+  macro ."-"(a)
+    acc.x -= a.x
+    acc.y -= a.y
+    acc.z -= a.z
+  end macro
+  macro ."*"(a)
+    acc.x *= a.x
+    acc.y *= a.y
+    acc.z *= a.z
+  end macro
+  macro ."/"(a)
+    acc.x /= a.x
+    acc.y /= a.y
+    acc.z /= a.z
+  end macro
+  '
+  macro ."str" string (out,a) 'CORE FUNCTIONS
+    out=str(a.x)+","+str(a.y)+","+str(a.z)
+  end macro
+  '
+end macro
+
+'TESTS
+'#recordof "r.txt" vector3f_op
+dim vector3f A = {1,2,3}
+dim vector3f B = {10,20,30}
+dim vector3f C = {10,100,1000}
+
+print str(A)
+print str(A+B)
+print str(C*(A+B))
+```
+**Example 2.** Assembly Code:
+
+```
+'PARTIAL DEMO / 32bit ASSEMBLER CODING
+
+type int32i
+  int i
+end type
+
+macro int32i_op(a)
+  macro ."load"(a)
+    push eax
+    mov eax,a.i
+  end macro
+  macro ."save"(a)
+    mov a.i,eax
+    pop eax
+  end macro
+  macro ."neg"(a)
+    push eax
+    mov eax,a.i
+    neg eax
+  end macro
+  macro ."+"(a)
+    add eax,a.i
+  end macro
+  macro ."-"(a)
+    add eax,a.i
+  end macro
+  macro ."*"(a)
+    imul a.i
+  end macro
+  macro ."/"(a)
+    idiv a.i
+  end macro
+  '
+  macro ."str" string (out,a)
+    out=str(a.i)
+  end macro
+  '
+end macro
+
+'TESTS
+'#recordof int32i_op
+dim int32i A={1}
+dim int32i B={10}
+dim int32i C={100}
+
+print str(A)
+print str(A+B)
+print str(C*(A+B))
+```
+
 # <a name="assignment"></a>Assigment Operator (=)
 
 Assigns a value to a variable.
