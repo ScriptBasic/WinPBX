@@ -12,7 +12,7 @@
 | ---------- | ----------- |
 | [\+](#addition) |  |
 | [-](#substraction) |  |
-| [\\*](#multiplication) |  |
+| [\*](#multiplication) |  |
 | [/](#division) |  |
 | [\](#integerdivision) |  |
 
