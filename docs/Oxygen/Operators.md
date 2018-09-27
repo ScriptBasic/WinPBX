@@ -16,7 +16,7 @@
 | [\*](#multiplication) | Multiplies two numeric expressions. |
 | [/](#division) | Divides two numeric expressions. |
 | [\\](#integerdivision) | Divides two integer expressions. |
-| [^](#exponentiate) | Raises a numeric expression to some power. |
+| [^](#exponentiate) | Raises a numeric expression to a given power. |
 
 ### Compound Assignment
 
@@ -125,4 +125,13 @@ Divides two integer expressions.
 ```
 DIM x AS LONG
 x = 13 \ 2
+```
+
+# <a name="exponentiate"></a>Integer Divison Operator (^)
+
+Raises a numeric expression to a given power.
+
+```
+DIM x AS LONG
+x = 11 ^ 2
 ```
