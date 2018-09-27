@@ -63,6 +63,8 @@
 | [^^](#bitwisexor) | Bitwise XOR. |
 | [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
+| [<<<](#rotateleft) | Shifts all bits one place to the left. |
+| [>>>](#rotateright) | Shifts all bits one place to the right. |
 | [And](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
 | [Or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
 | [Xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
