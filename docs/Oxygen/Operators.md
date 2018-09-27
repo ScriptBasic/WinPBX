@@ -70,6 +70,12 @@
 | [Or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
 | [Xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
 
+### Explicit Type Conversion Operator
+
+| Name       | Description |
+| ---------- | ----------- |
+| [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
+
 # <a name="assignment"></a>Assigment Operator (=)
 
 Assigns a value to a variable.
@@ -479,4 +485,12 @@ Performs a bitwise XOR operation.
 DIM x1 AS LONG = 1
 DIM x2 AS LONG = 1
 PRINT x1 Xor x2
+```
+
+# <a name="explicitcast"></a>Explicit Type Conversion Operator: ()
+
+Allows explicit type conversion using syntax similar to the function-call syntax.
+
+```
+int i = int(d)
 ```
