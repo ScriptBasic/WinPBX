@@ -84,6 +84,12 @@
 | ---------- | ----------- |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 
+### Pointer Index
+
+| Name       | Description |
+| ---------- | ----------- |
+| [[]](#pointerindex) | Returns a reference to memory offset from an address. |
+
 ### Overloading Operators
 
 Customised operations can be associated with UDTs and classes.
@@ -700,3 +706,19 @@ Allows explicit type conversion using syntax similar to the function-call syntax
 ```
 int i = int(d)
 ```
+
+# <a name="pointerindex"></a>Pointer Index Operator: []
+
+You can use square brackets to index off a pointer. No bounds checking is performed.
+
+```
+DIM s AS STRING = "ABCDEFGHIJ"
+DIM b AS BYTE AT STRPTR(s)
+PRINT STR(b[3]) " :  " CHR(b[3])
+b[3] = 84   ' "T"
+' --or--
+' b[3] = ASC("T")
+PRINT s
+```
+
+
