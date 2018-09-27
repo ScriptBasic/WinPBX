@@ -464,6 +464,14 @@ DIM AS ASCIIZ s * 260
 s = "Test string"
 ```
 
+```
+DIM s AS asciiz *260
+s = "Test string"
+DIM p AS asciiz ptr
+@p = STRPTR(s)
+print p
+```
+
 Indirection level 0<br>
 Character width 1<br>
 Length determined by null terminator byte<br>
