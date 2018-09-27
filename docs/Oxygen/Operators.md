@@ -42,7 +42,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [&&](#booleanand) |  |
-| [||](#booleanor) |  |
+| [\|\|](#booleanor) |  |
 
 # <a name="assignment"></a>Assigment Operator (=)
 
