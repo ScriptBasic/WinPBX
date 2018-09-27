@@ -85,14 +85,14 @@ DIM x AS LONG
 x = 5
 ```
 
-The **=** operator is also used to compare two expressions for equality, but if the #assign directive is on, **==** must always be used to test equality instead of **=**. When this directive is active, **=** emulates the C convention of **=** always being an assignment operator in conditional statements, e.g.
+The `=` operator is also used to compare two expressions for equality, but if the #assign directive is on, `==`must always be used to test equality instead of `=`. When this directive is active, **=** emulates the C convention of `=` always being an assignment operator in conditional statements, e.g.
 
 ```
 #assign on
 if hresult = QueryInterface(gu,ob) then ...
 ```
 
-the hresult variable receives the result code of the call to queryInterface.
+the hresult variable receives the result code of the call to QueryInterface.
 
 # <a name="assignment2"></a>Assigment Operator (:=)
 
@@ -302,7 +302,7 @@ DIM x2 AS LONG = 1
 IF x1 == x2 THEN PRINT "Equal"
 ```
 
-If the #assign directive is on, **==** must always be used to test equality instead of **=**.
+If the #assign directive is on, `==` must always be used to test equality instead of `=`.
 
 # <a name="notequalto"></a>Operator |=
 
