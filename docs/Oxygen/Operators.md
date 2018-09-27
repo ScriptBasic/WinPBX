@@ -24,6 +24,11 @@
 | [-=](#substractandassign) |  |
 | [\*=](#multiplyandassign) |  |
 | [/=](#divideandassign) |  |
+| [&=](#bitwiseandandassign) |  |
+| [|=](#bitwiseorandassign) |  |
+| [&&=](#booleanandandassign) |  |
+| [\|\|=](#booleanorandassign) |  |
+| [^^=](#bitwisexorandassign) |  |
 
 ### Relational and Comparison Operators
 
@@ -43,6 +48,7 @@
 | ---------- | ----------- |
 | [&&](#booleanand) |  |
 | [\|\|](#booleanor) |  |
+| [^^](#bitwisexor) |  |
 
 ### Bitwise Operators
 
