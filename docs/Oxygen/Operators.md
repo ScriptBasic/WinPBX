@@ -77,7 +77,7 @@
 | ---------- | ----------- |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 
-### Oerloading Operators
+### Overloading Operators
 
 Customised operations can be associated with UDTs and classes.
 
