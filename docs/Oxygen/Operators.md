@@ -22,15 +22,15 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [+=](#addandassign) |  |
-| [-=](#substractandassign) |  |
-| [\*=](#multiplyandassign) |  |
-| [/=](#divideandassign) |  |
-| [&=](#bitwiseandandassign) |  |
-| [|=](#bitwiseorandassign) |  |
-| [&&=](#booleanandandassign) |  |
-| [\|\|=](#booleanorandassign) |  |
-| [^^=](#bitwisexorandassign) |  |
+| [+=](#addandassign) | Adds and assigns a value to a variable. |
+| [-=](#substractandassign) | Subtracts and assigns a value to a variable. |
+| [\*=](#multiplyandassign) | Multiplies and assigns a value to a variable. |
+| [/=](#divideandassign) | Divides and assigns a value to a variable. |
+| [&=](#bitwiseandandassign) | Appends and assigns a string onto another string. |
+| [|=](#bitwiseorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
+| [&&=](#booleanandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
+| [\|\|=](#booleanorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
+| [^^=](#bitwisexorandassign) | Performs a bitwise-xor (exclusive disjunction) and assigns the result to a variable. |
 
 ### Relational and Comparison Operators
 
