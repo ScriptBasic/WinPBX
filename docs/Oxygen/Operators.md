@@ -82,3 +82,47 @@ DIM x AS LONG
 x := 5
 ```
 
+# <a name="addition"></a>Addition Operator (+)
+
+Sums two expressions.
+
+```
+DIM x AS LONG
+x = 3 + 4
+```
+
+# <a name="substraction"></a>Substraction Operator (-)
+
+Substracts two expressions.
+
+```
+DIM x AS LONG
+x = 5 - 2
+```
+
+# <a name="multiplication"></a>Multiplication Operator (*)
+
+Multiplies two expressions.
+
+```
+DIM x AS LONG
+x = 5 * 2
+```
+
+# <a name="division"></a>Divison Operator (/)
+
+Divides two expressions.
+
+```
+DIM x AS LONG
+x = 10 / 2
+```
+
+# <a name="integerdivision"></a>Integer Divison Operator (\)
+
+Divides two integer expressions.
+
+```
+DIM x AS LONG
+x = 13 \ 2
+```
