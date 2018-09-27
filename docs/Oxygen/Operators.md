@@ -53,7 +53,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [&&](#booleanand) | Returns the logical AND operation of two numeric values. |
-| [\|\|](#booleanor) | Returns the logical OR of two numeric values. |
+| [\|\|](#booleanor) | Returns the logical OR operation of two numeric values. |
 
 ### Bitwise Operators
 
@@ -336,4 +336,24 @@ Compares an expression greater than or equal to another expression.
 DIM x1 AS LONG = 1
 DIM x2 AS LONG = 2
 IF x2 < x1 THEN PRINT "Greater or equal"
+```
+
+# <a name="booleanand"></a>Operator &&
+
+Returns the logical AND operation of two numeric values.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+PRINT x1 && x2
+```
+
+# <a name="booleanor"></a>Operator \|\|
+
+Returns the logical OR operation of two numeric values.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 2
+PRINT x1 || x2
 ```
