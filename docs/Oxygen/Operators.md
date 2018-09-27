@@ -48,7 +48,6 @@
 | ---------- | ----------- |
 | [&&](#booleanand) |  |
 | [\|\|](#booleanor) |  |
-| [^^](#bitwisexor) |  |
 
 ### Bitwise Operators
 
@@ -56,6 +55,7 @@
 | ---------- | ----------- |
 | [&](#bitwiseand) |  |
 | [\|](#bitwiseinclusiveor) |  |
+| [^^](#bitwisexor) |  |
 | [<<](#shiftleft) |  |
 | [>>](#shiftright) |  |
 
