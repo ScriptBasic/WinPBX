@@ -223,6 +223,8 @@ DIM x AS LONG = 1
 x &&= 1
 ```
 
+The second operand is evaluated only if the first operand evaluates to true (nonzero). This evaluation eliminates needless evaluation of the second operand when the logical AND expression is false.
+
 # <a name="booleanorandassign"></a>Logical OR and Assign Operator (\|\|=)
 
 Performs a logical OR operation and assigns the result to a variable.
@@ -232,6 +234,13 @@ DIM x AS LONG = 1
 x ||= 1
 ```
 
+The logical OR operator (||) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical OR has left-to-right associativity.
+
+The operands to the logical OR operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
+
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical OR expression.
+
+The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical OR expression is true.
 # <a name="booleanxorandassign"></a>Logical XOR and Assign Operator (^^=)
 
 Performs a logical XOR operation and assigns the result to a variable.
@@ -348,6 +357,12 @@ DIM x2 AS LONG = 2
 PRINT x1 && x2
 ```
 
+The logical AND operator (&&) returns the boolean value true if both operands are true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical AND has left-to-right associativity.
+
+The operands to the logical AND operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
+
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical AND expression.
+
 # <a name="booleanor"></a>Operator \|\|
 
 Returns the logical OR operation of two numeric values.
@@ -357,6 +372,14 @@ DIM x1 AS LONG = 1
 DIM x2 AS LONG = 2
 PRINT x1 || x2
 ```
+
+The logical OR operator (\|\|) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical OR has left-to-right associativity.
+
+The operands to the logical OR operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
+
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical OR expression.
+
+The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical OR expression is true.
 
 # <a name="bitwiseand"></a>Bitwise AND Operator (&)
 
