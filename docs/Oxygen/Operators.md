@@ -4,27 +4,25 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [=](#assignment) | Assigns a value to a variable. |
+| [\=](#assignment) | Assigns a value to a variable. |
 
 ### Arithmetic Operators
 
 | Name       | Description |
 | ---------- | ----------- |
-| [+](#addition) |  |
+| [\+](#addition) |  |
 | [-](#substraction) |  |
-| [*](#multiplication) |  |
+| [\\*](#multiplication) |  |
 | [/](#division) |  |
 | [\](#integerdivision) |  |
 
 ### Compound Assignment
 
-Compound assignment (+=, -=, *=, /=, %=, >>=, <<=, &=, ^=, |=)
-
 | Name       | Description |
 | ---------- | ----------- |
 | [+=](#addandassign) |  |
 | [-=](#substractandassign) |  |
-| [*=](#multiplyandassign) |  |
+| [\*=](#multiplyandassign) |  |
 | [/=](#divideandassign) |  |
 
 ### Relational and Comparison Operators
@@ -33,11 +31,17 @@ Compound assignment (+=, -=, *=, /=, %=, >>=, <<=, &=, ^=, |=)
 | ---------- | ----------- |
 | [==](#equalto) |  |
 | [!=](#notequalto) |  |
+| [<>](#notequalto2) |  |
 | [<](#lessthan) |  |
 | [>](#greaterthan) |  |
 | [<=](#lessthanorqeualto) |  |
 | [>=](#greaterthanorqeualto) |  |
 
+### Logical Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [==](#equalto) |  |
 
 # <a name="assignment"></a>Assigment Operator (=)
 
