@@ -103,6 +103,15 @@ DIM x AS LONG
 x := 5
 ```
 
+`:=` is an assignment operator which can be used inside a conditional expression, distinct from `=` as an equality operator.
+
+```
+while bRet := GetMessage @wm, 0, 0, 0
+   if bRet == -1 then
+   '  show an error message
+   ...
+```
+
 # <a name="addition"></a>Addition Operator (+)
 
 Sums two expressions.
