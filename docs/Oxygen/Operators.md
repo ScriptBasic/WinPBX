@@ -16,6 +16,7 @@
 | [\*](#multiplication) |  |
 | [/](#division) |  |
 | [\\](#integerdivision) |  |
+| [^](#exponentiate) |  |
 
 ### Compound Assignment
 
