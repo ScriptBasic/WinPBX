@@ -357,3 +357,103 @@ DIM x1 AS LONG = 1
 DIM x2 AS LONG = 2
 PRINT x1 || x2
 ```
+
+# <a name="bitwiseand"></a>Bitwise AND Operator (&)
+
+Performs a bitwise AND operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 & x2
+```
+
+# <a name="bitwiseor"></a>Bitwise OR Operator (\|)
+
+Performs a bitwise OR operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 | x2
+```
+
+# <a name="bitwisexor"></a>Bitwise XOR Operator (^^)
+
+Performs a bitwise XOR operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 ^^ x2
+```
+
+# <a name="shiftleft"></a>Shift Left Operator (<<)
+
+Shifts the bits of a numeric expression to the left.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 << x2
+```
+
+# <a name="shiftright"></a>Shift Right Operator (>>)
+
+Shifts the bits of a numeric expression to the right.
+
+```
+DIM x1 AS LONG = 2
+DIM x2 AS LONG = 1
+PRINT x1 >> x2
+```
+
+# <a name="rotateleft"></a>Rotate Left Operator (<<<)
+
+Shifts all bits one place to the left.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 <<< x2
+```
+
+# <a name="rotateright"></a>Rotate Right Operator (>>>)
+
+Shifts all bits one place to the left.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 >>> x2
+```
+
+# <a name="bitwiseand"></a>Bitwise AND Operator (And)
+
+Performs a bitwise AND operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 And x2
+```
+
+# <a name="bitwiseor"></a>Bitwise OR Operator (Or)
+
+Performs a bitwise OR operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 Or x2
+```
+
+# <a name="bitwisexor"></a>Bitwise XOR Operator (Xor)
+
+Performs a bitwise XOR operation.
+
+```
+DIM x1 AS LONG = 1
+DIM x2 AS LONG = 1
+PRINT x1 Xor x2
+```
