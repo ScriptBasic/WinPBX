@@ -598,7 +598,15 @@ CHAR c = "Test string"
 DIM AS CHAR c = "Test string"
 ```
 
-Similar to C `char`, but is not conflated with byte which is a numeric type
+Similar to C `char`, but is not conflated with byte which is a numeric type.
+
+If we use an offset, it will print the string from that offset until the end of the string, e.g.
+
+```
+CHAR c = "Test string"
+print c[2]
+' Output "est string"
+```
 
 Indirection level 0<br>
 Character width 1<br>
@@ -681,11 +689,19 @@ DIM c AS WCHAR = "Test string"
 ```
 
 ```
-CHAR c = "Test string"
+WCHAR c = "Test string"
 ```
 
 ```
-DIM AS CHAR c = "Test string"
+DIM AS WCHAR c = "Test string"
+```
+
+If we use an offset, it will print the string from that offset until the end of the string, e.g.
+
+```
+WCHAR c = "Test string"
+print c[2]
+' Output "est string"
 ```
 
 Indirection level 0<br>
