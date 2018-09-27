@@ -1,10 +1,11 @@
 # Oxygen Basic Operators
 
-### Assignment Operator
+### Assignment Operators
 
 | Name       | Description |
 | ---------- | ----------- |
 | [\=](#assignment) | Assigns a value to a variable. |
+| [:=](#assignment) | Assigns a value to a variable. |
 
 ### Arithmetic Operators
 
