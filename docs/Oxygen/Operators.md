@@ -41,7 +41,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [==](#equalto) |  |
+| [&&](#booleanand) |  |
+| [||](#booleanor) |  |
 
 # <a name="assignment"></a>Assigment Operator (=)
 
