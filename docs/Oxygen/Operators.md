@@ -11,13 +11,20 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [\+](#addition) | Sums two numeric expressions. |
+| [+](#addition) | Sums two numeric expressions. |
 | [-](#substraction) | Substracts two numeric expressions. |
 | [-](#negate) | Changes the sign of a numeric expression. |
 | [\*](#multiplication) | Multiplies two numeric expressions. |
 | [/](#division) | Divides two numeric expressions. |
 | [\\](#integerdivision) | Divides two integer expressions. |
 | [^](#exponentiate) | Raises a numeric expression to a given power. |
+
+### Increment and Decrement Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [++](#increment) | Increments its operand by 1. |
+| [--](#decrement) | Decrements its operand by 1. |
 
 ### Compound Assignment
 
@@ -301,6 +308,26 @@ Raises a numeric expression to a given power.
 ```
 DIM x AS LONG
 x = 11 ^ 2
+```
+
+# <a name="increment"></a>Increment Operator (++)
+
+Increments its operand by 1. The increment operator can appear before or after its operand: `++variable` and `variable++`.
+
+```
+DIM x AS LONG = 5
+++x
+x++
+```
+
+# <a name="decrement"></a>Increment Operator (--)
+
+Decrements its operand by 1. The increment operator can appear before or after its operand: `--variable` and `variable--`.
+
+```
+DIM x AS LONG = 5
+--x
+x--
 ```
 
 # <a name="addandassign"></a>Add and Assign Operator (+=)
