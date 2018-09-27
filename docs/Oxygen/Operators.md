@@ -14,7 +14,7 @@
 | [-](#substraction) |  |
 | [\*](#multiplication) |  |
 | [/](#division) |  |
-| [\](#integerdivision) |  |
+| [\\](#integerdivision) |  |
 
 ### Compound Assignment
 
