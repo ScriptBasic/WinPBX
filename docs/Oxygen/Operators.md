@@ -44,6 +44,15 @@
 | [&&](#booleanand) |  |
 | [\|\|](#booleanor) |  |
 
+### Bitwise Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [&](#bitwiseand) |  |
+| [|](#bitwiseinclusiveor) |  |
+| [<<](#shiftleft) |  |
+| [>>(#shiftright) |  |
+
 # <a name="assignment"></a>Assigment Operator (=)
 
 Assigns a value to a variable.
