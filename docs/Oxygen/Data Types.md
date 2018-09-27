@@ -706,6 +706,13 @@ WCHAR c[260] = Test string"
 ```
 
 ```
+USES corewin
+DIM cmdline AS WCHAR PTR
+@cmdline = GetCommandLineW
+PRINT cmdline
+```
+
+```
 DIM AS WCHAR c = "Test string"
 DIM AS WCHAR c[260] = Test string"
 ```
