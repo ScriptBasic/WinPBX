@@ -592,7 +592,7 @@ Garbage collection required
 
 # <a name="char"></a>Char
 
-8-bit (1 byte) string.
+8-bit (1 byte) string. Similar to C `char`, but is not conflated with byte which is a numeric type.
 
 ```
 DIM c AS CHAR = "Test string"
@@ -609,7 +609,12 @@ DIM AS CHAR c = "Test string"
 DIM AS CHAR c[260] = "Test string"
 ```
 
-Similar to C `char`, but is not conflated with byte which is a numeric type.
+```
+DIM s AS asciiz * 260 = "Test string"
+char *p = STRPTR(s)
+print p
+```
+
 
 If we use an offset, it will print the string from that offset until the end of the string, e.g.
 
