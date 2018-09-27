@@ -11,12 +11,12 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [\+](#addition) |  |
-| [-](#substraction) |  |
-| [\*](#multiplication) |  |
-| [/](#division) |  |
-| [\\](#integerdivision) |  |
-| [^](#exponentiate) |  |
+| [\+](#addition) | Sums two numeric expressions. |
+| [-](#substraction) | Substracts two numeric expressions. |
+| [\*](#multiplication) | Multiplies two numeric expressions. |
+| [/](#division) | Divides two numeric expressions. |
+| [\\](#integerdivision) | Divides two integer expressions. |
+| [^](#exponentiate) | Raises a numeric expression to some power. |
 
 ### Compound Assignment
 
