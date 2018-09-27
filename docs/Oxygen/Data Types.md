@@ -37,12 +37,12 @@
 | [Asciiz2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
 | [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
 | [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
-| [BString2](#bstring2) | Variable-length 8-bit string (a BString is an array of unicode characters). |
-| [Char](#char) | 8-bit (1 byte) ansi charater type. |
+| [BString2](#bstring2) | Variable-length 16-bit string (a BString is an array of unicode characters). |
+| [Char](#char) | Variable-length 8-bit string (a Char is an array of ansi characters). |
 | [String](#string) | Variable-length 8-bit string (a String is an array of characters). |
 | [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
 | [WString](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
-| [WChar](#wchar) | 16-bit (2 byte) unicode charater type. |
+| [WChar](#wchar) | Variable-length 16-bit string (a WChar is an array of unicode characters). |
 | [Wide](#wide) | Variable-length 16-bit string (a Wide string is an array of unicode characters). |
 | [ZString](#zstring) | Fixed-length 8-bit null terminated string. |
 | [ZString2](#zstring2) | Fixed-length 16-bit double null terminated string. |
@@ -554,7 +554,7 @@ Garbage collection required
 
 # <a name="bstring2"></a>BString2
 
-Variable-length 8-bit string (a BString is an array of unicode characters).
+Variable-length 16-bit string (a BString is an array of unicode characters).
 
 ```
 DIM b AS BSTRING2 = "Test string"
@@ -584,19 +584,21 @@ Garbage collection required
 
 # <a name="char"></a>Char
 
-8-bit (1 byte) ansi character type.
+Variable-length 8-bit (1 byte) string.
 
 ```
-DIM c AS CHAR = "A"
-```
-
-```
-CHAR c = "A"
+DIM c AS CHAR = "Test string"
 ```
 
 ```
-DIM AS CHAR c = "A"
+CHAR c = "Test string"
 ```
+
+```
+DIM AS CHAR c = "Test string"
+```
+
+Similar to C `char`, but is not conflated with byte which is a numeric type
 
 Indirection level 0<br>
 Character width 1<br>
@@ -672,18 +674,18 @@ Garbage collection automatic
 
 # <a name="wchar"></a>WChar
 
-16-bit (2 byte) unicode character type.
+Variable-length 16-bit (2 bytes) string.
 
 ```
-DIM c AS WCHAR = "W"
-```
-
-```
-CHAR c = "W"
+DIM c AS WCHAR = "Test string"
 ```
 
 ```
-DIM AS CHAR c = "W"
+CHAR c = "Test string"
+```
+
+```
+DIM AS CHAR c = "Test string"
 ```
 
 Indirection level 0<br>
