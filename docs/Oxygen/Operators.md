@@ -204,3 +204,12 @@ Performs a bitwise-and (conjunction) and assigns the result to a variable.
 DIM x AS LONG = 11
 x &= 1
 ```
+
+# <a name="bitwiseorandassign"></a>Bitwise OR and Assign Operator (\!=)
+
+Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
+
+```
+DIM x AS LONG = 1
+x != 1
+```
