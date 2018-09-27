@@ -5,7 +5,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [Byte](#byte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
-| [SByte](#sbyte) | 8-bit (1 byte) signed integerr tanging in value from -128 to 127. |
+| [SByte](#sbyte) | 8-bit (1 byte) signed integerr ranging in value from -128 to 127. |
 | [UByte](#ubyte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
 | [Bool](#bool) | Boolean data type. Can hold the values True or False. |
 | [Boolean](#boolean) | Boolean data type. Can hold the values True or False. |
