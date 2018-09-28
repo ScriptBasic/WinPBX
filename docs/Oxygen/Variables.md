@@ -39,11 +39,15 @@
 | [Local](#local) | Declares local variables inside a poceudre. |
 | [Static](#static) | Declares static variables inside a procedure. |
 
-### Scopes
+### Blocks and Scopes
 
 | Name       | Description |
 | ---------- | ----------- |
 | [Block](#block) | Creates a block of code. |
+| [Rem](#rem | Comments till end of line. |
+| [//](#rem2| Comments till end of line. |
+| [\/\*](#rem3) | Comments till end of block. |
+| [\*/](#rem4) | Terminates comment block. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
 | [Skip](#skip) | Prevents code within the block from being executed. |
 
@@ -641,6 +645,30 @@ mov ecx,5
  repeat 'jump back to '('
 )
 print eax
+```
+
+# <a name="rem"></a>Rem
+
+Comments till end of line.
+
+```
+REM this is a comment
+```
+
+# <a name="rem2"></a>Rem (//)
+
+Comments till end of line.
+
+```
+// this is a comment
+```
+
+# <a name="rem3"></a>Rem (\/\* \*/)
+
+Comments a block
+
+```
+/* this is a comment */
 ```
 
 # <a name="scope"></a>Scope
