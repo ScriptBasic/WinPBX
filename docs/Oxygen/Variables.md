@@ -298,15 +298,15 @@ END ENUM
 New definitions override older ones:
 
 ```
-Enum MyEnum
+ENUM MyEnum
    option1 = 1
    option2
    option3
-End Enum
+END ENUM
 
-Enum MyEum2
+ENUM MyEum2
    option1 = 10
-End Enum
+END ENUM
 ```
 
 In the above code, *option1* becomes 10. To trap duplicate definitions use `#unique on`. `#unique` may be switched on and off for any section of code.
