@@ -39,7 +39,7 @@
 | [Local](#local) | Declares local variables inside a poceudre. |
 | [Static](#static) | Declares static variables inside a procedure. |
 
-### Scope
+### Scopes
 
 | Name       | Description |
 | ---------- | ----------- |
