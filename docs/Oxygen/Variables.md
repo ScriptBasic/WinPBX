@@ -226,7 +226,7 @@ $s = "Hello World"
 $ s = "Hello World"
 ```
 
-# <a name="equate2"></a>String equate ($)
+# <a name="equate2"></a>String equate (%)
 
 Defines a numeric equate, which can be used as a constant.
 
@@ -234,4 +234,55 @@ Defines a numeric equate, which can be used as a constant.
 %n = 12345
 % n = 12345
 %n = 12345.56
+```
+
+# <a name="emum"></a>Enum
+
+Declares an enumerated type.
+
+```
+ENUM MyEnum
+   option1   ' becomes 0
+   option2   ' becomes 1
+   option3   ' becomes 2
+END ENUM
+```
+
+```
+ENUM MyEnum
+   option1 = 100   ' becomes 100
+   option2         ' becomes 101
+   option3         ' becomes 102
+END ENUM
+```
+
+```
+ENUM MyEnum
+   option1, option2, option3
+END ENUM
+```
+
+C syntax is supported for this construct.
+
+```
+ENUM MyEnum
+{
+   option1
+   option2
+   option3
+}
+```
+
+```
+ENUM MyEnum {option1, option2, option3}
+```
+
+Also `enum bit` (`bit`must be lowercase) assigns values 1,2,4,8,16.. instead of 0,1,2,3,4..
+
+```
+ENUM bit MyEnum
+   option1
+   option2
+   option3
+END ENUM
 ```
