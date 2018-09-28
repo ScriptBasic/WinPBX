@@ -47,7 +47,7 @@
 | [Rem](#rem | Comments till end of line. |
 | [//](#rem2| Comments till end of line. |
 | [\/\*](#rem3) | Comments till end of block. |
-| [\*/](#rem4) | Terminates comment block. |
+| [\*/](#rem3) | Terminates comment block. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
 | [Skip](#skip) | Prevents code within the block from being executed. |
 
