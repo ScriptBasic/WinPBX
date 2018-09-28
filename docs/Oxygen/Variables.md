@@ -475,3 +475,14 @@ LOCAL AS LONG n = 123
 LOCAL STRING s = "Test string"
 LOCAL AS STRING s = "Test string"
 ```
+
+# <a name="static"></a>Static
+
+Declares static variables inside a poceudre. `Static` variables are only accessible within a single proceudre or method. They are initialized when your program starts, but retain their value regardless of how many times the procedure is entered and exited. They are destroyed only when the program ends.
+
+```
+STATIC LONG n = 123
+STATIC AS LONG n = 123
+STATIC STRING s = "Test string"
+STATIC AS STRING s = "Test string"
+```
