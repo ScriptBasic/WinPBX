@@ -342,6 +342,7 @@ Const [AS DataType] symbolname1 = value1 [, symbolname2 = value2, ...]
 ```
 CONST x = 10
 CONST x = 10, y = 11, z = 12
+CONST AS LONG x = 123, y = 234, z = 456
 CONST s AS STRING = "Hello"
 CONST AS STRING s = "Hello"
 ```
