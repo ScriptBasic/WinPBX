@@ -34,7 +34,7 @@
 | [-=](#substractandassign) | Subtracts and assigns a value to a variable. |
 | [\*=](#multiplyandassign) | Multiplies and assigns a value to a variable. |
 | [/=](#divideandassign) | Divides and assigns a value to a variable. |
-| [\=](#integerdivideandassign) | Integer divides and assigns a value to a variable. |
+| [\\=](#integerdivideandassign) | Integer divides and assigns a value to a variable. |
 | [&=](#bitwiseandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
 | [\|=](#bitwiseorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
 | [&&=](#booleanandandassign) | Performs a logical AND operation and assigns the result to a variable. |
