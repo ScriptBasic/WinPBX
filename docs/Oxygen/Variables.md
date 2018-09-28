@@ -43,8 +43,8 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Block](#block) | Starts a block. |
-| [Scope](#scope) | Creates a block where variables and functions may be locally defined.  |
+| [Block](#block) | Creates a block where variables and functions may be locally defined. |
+| [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
 
 # <a name="dim"></a>Dim
 
@@ -487,6 +487,83 @@ STATIC STRING s = "Test string"
 STATIC AS STRING s = "Test string"
 ```
 
+# <a name="block"></a>Block
+
+Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a block structure, this local working variable can be used from its (re)definition until the end of the block. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Block` before the variable is redefined will use the variable as defined outside the block.
+
+```
+SYS i = 4
+BLOCK
+   SYS i = 8
+   PRINT "inner block i = " i
+END BLOCK
+PRINT i
+```
+
+```
+(
+  DIM INT i = 2
+  PRINT i
+)
+```
+
+```
+BLOCK {
+  DIM INT i = 2
+  PRINT i
+}
+```
+
+Non executable blocks
+
+```
+SKIP {
+  DIM INT i = 2
+  PRINT i
+}
+```
+
+```
+/*
+  DIM INT i = 2
+  PRINT i
+*/
+```
+
+Assembly code blocks
+
+```
+mov eax,0
+mov ecx,5
+block
+ inc eax
+ dec ecx
+ jg repeat 'jump back to 'block'
+end block
+```
+
+```
+mov eax,0
+mov ecx,5
+(
+ inc eax
+ dec ecx
+ jg repeat 'jump back to '('
+)
+```
+
+```
+mov eax,0
+mov ecx,5
+(
+ dec ecx
+ jl exit 'jump forward to ')'
+ inc eax
+ repeat 'jump back to '('
+)
+print eax
+```
+
 # <a name="scope"></a>Scope
 
 Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a scope structure, this local working variable can be used from its (re)definition until the end of the scope. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Scope` block before the variable is redefined will use the variable as defined outside the scope.
@@ -497,5 +574,14 @@ SCOPE
    SYS i = 8
    PRINT "inner scope i = " i
 END SCOPE
+PRINT i
+```
+
+```
+SYS i = 4
+SCOPE {
+   SYS i = 8
+   PRINT "inner block i = " i
+}
 PRINT i
 ```
