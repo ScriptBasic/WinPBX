@@ -43,7 +43,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Block](#block) | Starts a block of code. |
+| [Block](#block) | Creates a block of code. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
 
 # <a name="dim"></a>Dim
@@ -489,7 +489,7 @@ STATIC AS STRING s = "Test string"
 
 # <a name="block"></a>Block
 
-Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a block structure, this local working variable can be used from its (re)definition until the end of the block. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Block` before the variable is redefined will use the variable as defined outside the block.
+Creates a block of code. When a variable is (re)defined with `Dim` within a block structure, this local working variable can be used from its (re)definition until the end of the block. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Block` before the variable is redefined will use the variable as defined outside the block.
 
 ```
 SYS i = 4
