@@ -199,3 +199,20 @@ Var string s,t,u(64),v
 `Var` is normally only used internally. it accepts `*` for indirect variables and `AT`for variable mapping. Arrays are also supported.
 
 
+# <a name="const"></a>Const
+
+Non-modifiable variable declaration.
+
+####Syntax
+
+```
+Const symbolname1 [AS DataType] = value1 [, symbolname2 [AS DataType] = value2, ...]
+Const [AS DataType] symbolname1 = value1 [, symbolname2 = value2, ...]
+```
+
+```
+CONST x = 10
+CONST x = 10, y = 11, z = 12
+CONST s AS STRING = "Hello"
+CONST AS STRING s = "Hello"
+```
