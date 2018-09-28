@@ -5,11 +5,16 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [Dim](#dim) | Declares variables, arrays, objects and user defined types. |
-| [As](#as) | Part of a declaration which specifies a data type: |
+| [ReDim](#redim) | Creates or resizes a dynamic array, preserving contents within range.  |
+| [As](#as) | Part of a declaration which specifies a data type. |
 | [Let](#let) | Similar to **Dim**, but the type is inferred from the assigned value. |
-| [Var](#var) | Declares a variable whose type is implied from the initializer expression. |
+| [Var](#var) | Defines a set of variables. |
 | [Const](#const) | Constant. Non-modifiable variable declaration. |
+| [$](#equate1) | Defines an equate (which can be used as constant). |
+| [%](#equate2) | Defines an equate (which can be used as constant). |
 | [Enum](#enum) | Declares an enumerated type. |
+| [Type](#type) | Define a compound variable type. |
+| [Union](#union) | Define a union. |
 
 ### Modifiers
 
@@ -23,23 +28,5 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Scope](#scope) |  |
-| [Block](#block) |  |
-
-### Arrays
-
-| Name       | Description |
-| ---------- | ----------- |
-| [Dim](#dim2) |  |
-| [ReDim](#redim) |  |
-| [Erase](#erase) |  |
-| [LBound](#lbound) |  |
-| [UBound](#ubound) |  |
-| [Preserve](#preserve) |  |
-
-### User Defined Types
-
-| Name       | Description |
-| ---------- | ----------- |
-| [Type](#type) |  |
-| [Union](#union) |  |
+| [Block](#block) | Starts a block. |
+| [Scope](#scope) | Creates a block where variables and functions may be locally defined.  |
