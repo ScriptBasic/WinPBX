@@ -368,5 +368,59 @@ t.c.a = 64
   
 PRINT t.txt & ": " & HEX(t.c.rgba)
 ```
+#### Syntax variations
 
+```
+type color32
+   byte r
+   byte g
+   byte b
+   byte a
+   =
+   long rgba  'UNION    
+end type
+```
+
+```
+type color32
+   byte r,g,b,a
+   =
+   long rgba  'UNION    
+end type 
+```
+
+```
+type color32 byte r, g, b, a = long rgba
+```
+
+```
+type colortext string txt, color32 c
+```
+
+```
+struct color32 { 
+   byte r,g,b,a
+   =
+   long rgba
+}
+```
+
+```
+typedef struct _color32 { 
+   byte r,g,b,a
+   =
+   long rgba
+} color32, *pcolor32
+```
+
+```
+typedef struct _color32 {
+   union { 
+      struct {
+        byte r,g,b,a
+      }
+      long rgba
+  }  
+} color32, *pcolor32
+```
 
