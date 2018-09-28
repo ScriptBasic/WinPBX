@@ -363,6 +363,25 @@ Defines a numeric equate, which can be used as a constant.
 %n = 12345
 % n = 12345
 %n = 12345.56
+%= e  b * c ' precalcuate e value ' 6
+% f 8
+%% f 7  ' default value 7 (unless previously defined)
+%sp " "
+%cm ","
+```
+
+$ % prefixes and suffixes are ignored
+  
+```
+print "" a cm b cm c cm d cm e cm f   '1, 2, 3, four, 6, 8
+'print %a cm %b cm %c cm %d cm %e cm f
+```
+
+Arguments are represented by %1 .. %9
+  
+```
+% display "value of %1: " %1
+print display d
 ```
 
 # <a name="emum"></a>Enum
