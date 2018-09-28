@@ -45,6 +45,7 @@
 | ---------- | ----------- |
 | [Block](#block) | Creates a block of code. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
+| [Skip](#skip) | Prevents code within the block from being executed. |
 
 # <a name="dim"></a>Dim
 
@@ -584,4 +585,15 @@ SCOPE {
    PRINT "inner block i = " i
 }
 PRINT i
+```
+
+# <a name="skip"></a>Skip
+
+Prevents code within the block from being executed.
+
+```
+SKIP {
+  DIM INT i = 2
+  PRINT i
+}
 ```
