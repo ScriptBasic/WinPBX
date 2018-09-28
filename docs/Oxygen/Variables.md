@@ -172,10 +172,18 @@ PRINT a   ' 16
 
 # <a name="let"></a>Let
 
-Similar to `Dim`but the type is inferred from the assigned value.
+Similar to `Dim` but the type is inferred from the assigned value.
 
 ```
 LET s = "This is a string"
 PRINT TypeOf(s)  ' Result: "string"
 ```
 
+# <a name="as"></a>As
+
+Part of a declaration which specifies a data type. `As` is used to declare the type of variables, fields or arguments.
+
+```
+DIM x AS LONG
+DIM AS LONG x
+```
