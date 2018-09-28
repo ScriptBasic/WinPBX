@@ -44,13 +44,13 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Len](#len) | Returns the length of a string in charaters  |
+| [Len](#len) | Returns the length of a string in charaters. |
 | [OffsetOf](#offsetof) | Returns the offset of variable from index register. |
 | [RecordOf](#recordof) | Returns the record of a compound (UDT) variable. |
 | [SizeOf](#sizeof) | Returns the length of variable element (in bytes). |
 | [SpanOf](#spanof) | Returns the span of array variable dimension.  |
 | [TypeCodeOf](#typecodeof) | Returns the type code number of variables and literals. |
-| [TypeOf](#typeof) | Returns name of the variable type. |
+| [TypeOf](#typeof) | Returns the name of the variable type. |
 
 ### Blocks and Scopes
 
@@ -748,4 +748,77 @@ SKIP {
   DIM INT i = 2
   PRINT i
 }
+```
+
+# <a name="len"></a>Len
+
+Returns the length of a string in charaters.
+
+```
+DIM v AS LONG = LEN("Hello")
+' Output: 5
+```
+
+# <a name="offsetof"></a>OffsetOf
+
+Returns the offset of variable from index register.
+
+```
+DIM nbytes AS LONG = OffsetOf(variable)
+```
+
+# <a name="recordof"></a>RecordOf
+
+Returns the record of a compound (UDT) variable.
+
+```
+TYPE vt long v, double d
+DIM AS vt v
+r = RecordOf(v)
+RESULT: r = "
+v 0 4 1 A0 , long
+d 4 4 1 A0 , double
+"
+```
+
+# <a name="sizeof"></a>SizeOf
+
+Returns the length of variable element (in bytes).
+
+```
+DIM nbytes AS LONG = SizeOf(variable )
+```
+
+# <a name="spanof"></a>SpanOf
+
+Returns the span of array variable dimension.
+
+```
+DIM AS LONG v(10)
+DIM n AS LONG = SpanOf(v)
+```
+
+# <a name="typecodeof"></a>TypeCodeOf
+
+Returns the type code number of variables and literals. Used to obtain data for diagnostics or reflective programming.
+
+```
+DIM n AS LONG
+PRINT TypeCodeOf(n)
+' Output 4
+```
+
+```
+PRINT TypeCodeOf("Hello")
+' Output: 193
+```
+
+# <a name="typeof"></a>TypeOf
+
+Returns the name of the variable type.
+
+```
+DIM v AS LONG
+DIM s AS STRING = TypeOf(v)
+' s = "long"
 ```
