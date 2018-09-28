@@ -35,9 +35,9 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) | Declare global (shared) variables. |
-| [Local](#local) | Declare local variables inside a poceudre. |
-| [Static](#static) | Declare static variables inside a procedure. |
+| [Global](#global) | Declares global (shared) variables. |
+| [Local](#local) | Declares local variables inside a poceudre. |
+| [Static](#static) | Declares static variables inside a procedure. |
 
 ### Scope
 
@@ -453,4 +453,14 @@ union MyUnion
   short w
   long  i
 }
+```
+
+# <a name="global"></a>Global
+
+Declares global (shared) variables.
+
+```
+GLOBAL n AS LONG = 123
+GLOBAL AS LONG n = 123
+DIM GLOBAL AS LONG n = 123
 ```
