@@ -43,7 +43,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Block](#block) | Creates a block where variables and functions may be locally defined. |
+| [Block](#block) | Starts a block of code. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
 
 # <a name="dim"></a>Dim
