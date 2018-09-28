@@ -4,7 +4,7 @@
 * `Constants` are numbers or strings which cannot be changed after they are defined.
 * `Equates` are constants prefixed by the symbols `$` (string equates) or `%` (numeric equates).
 * `Enums` are groups of logically related numeric equates.
-* `User defined types`(UDTs) are custom data types containing one or more data fields.
+* `User defined types` (UDTs) are custom data types containing one or more data fields.
 * `Unions` are similar to a user defined types, except that the elements of a union occupy the same space in memory.
 
 ### Variables
