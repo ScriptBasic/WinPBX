@@ -35,7 +35,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) | Declare global (shared) variables between procedures. |
+| [Global](#global) | Declare global (shared) variables. |
 | [Local](#local) | Declare local variables inside a poceudre. |
 | [Static](#static) | Declare static variables inside a procedure. |
 
