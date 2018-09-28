@@ -45,3 +45,127 @@
 | ---------- | ----------- |
 | [Block](#block) | Starts a block. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined.  |
+
+# <a name="dim"></a>Dim
+
+Declares variables, arrays, objects and user defined types.
+
+#### Syntax
+
+Post define type
+
+```
+DIM x AS LONG
+DIM i, j, k AS LONG
+```
+
+Pre define type
+
+```
+DIM AS LONG x
+DIM AS LONG i, j, k
+```
+
+Mixed types
+
+```
+DIM AS LONG i, j, k, AS STRING s, t
+```
+
+Multiline
+
+```
+DIM AS LONG i, j, k,
+    AS STRING s,t
+```
+
+```
+DIM AS LONG,
+   i,
+   j,
+   k
+```
+
+Initial values
+
+```
+DIM AS LONG,
+   i = 1,
+   j = 2,
+   k = 42
+```
+
+Spread lines and comments
+
+```
+DIM AS LONG,
+   i = 1,  ' these can be spread over many lines
+   ' ---------
+   j = 2,  ' with intervening comments
+   ' ---------
+   k = 42  '
+```
+
+Multiple assignments
+
+```
+DIM AS LONG a(10) => (2, 4, 6, 8, 10, 12, 42, 99)
+```
+
+Syntax variations
+
+```
+DIM LONG a(10) => (2, 4, 6, 8, 10, 12, 42, 99)
+DIM LONG a[10] => (2, 4, 6, 8, 10, 12, 42, 99)
+DIM a[10] => (2, 4, 6, 8, 10, 12, 42, 99)
+LONG a[10] => (2, 4, 6, 8, 10, 12, 42, 99)
+LONG a[] => (2, 4, 6, 8, 10, 12, 42, 99)
+LONG a => (2, 4, 6, 8, 10, 12, 42, 99)
+LONG a {2, 4, 6, 8, 10, 12, 42, 99}
+```
+
+Pointered variable
+
+```
+DIM a AS STRING = "ABCDEFGHI"
+DIM AS STRING a =  "ABCDEFGHI"
+DIM VYTE b AT STRPTR(a)
+DIM BYTE BYREF b : @b = STRPTR(a)
+BYTE b AT STRPTR(a)
+BYTE *b = STRPTR(a)
+' PRINT b[7]   ' 71 G
+```
+
+Using dynamic memory
+
+```
+DIM FLoAT f AT GetMemory 1024 * 4
+f => (1.5, 2.5, 3.5)
+' PRINT f[2]
+FreeMemory @f   ' release allocated memory
+```
+
+Global, static, local
+
+```
+GLOBAL int g = 1
+FUNCTION f (p AS INT) AS INT
+   STATIC INT s = 0
+   LOCAL INT l = 100
+   s += 10
+   RETURN p + l + s + g
+END FUNCTION
+PRINT f(1000)   ' 1111
+PRINT f(1000)   ' 1121
+```
+
+Limiting scope
+
+```
+DIM LONG a = 16
+SCOPE
+   DIM LONG a = 1
+   PRINT a   ' 1
+END SCOPE
+PRINT a   ' 16
+```
