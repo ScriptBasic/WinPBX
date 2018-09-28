@@ -457,10 +457,21 @@ union MyUnion
 
 # <a name="global"></a>Global
 
-Declares global (shared) variables.
+Declares global (shared) variables. `Global` variables are accessible from anywhere in your program. They are initialized when your program starts and are destroyed when the program ends.
 
 ```
 GLOBAL n AS LONG = 123
 GLOBAL AS LONG n = 123
 DIM GLOBAL AS LONG n = 123
+```
+
+# <a name="local"></a>Local
+
+Declares local variables inside a poceudre. `Local` variables are only accessible within a single procedure or method. They are automatically created and initialized each time you enter the procedure. They are automatically destroyed when you exit the procedure. This is the default variable scope unless you declare otherwise.
+
+```
+LOCAL LONG n = 123
+LOCAL AS LONG n = 123
+LOCAL STRING s = "Test string"
+LOCAL AS STRING s = "Test string"
 ```
