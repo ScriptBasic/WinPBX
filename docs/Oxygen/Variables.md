@@ -203,7 +203,7 @@ Var string s,t,u(64),v
 
 Non-modifiable variable declaration.
 
-####Syntax
+#### Syntax
 
 ```
 Const symbolname1 [AS DataType] = value1 [, symbolname2 [AS DataType] = value2, ...]
