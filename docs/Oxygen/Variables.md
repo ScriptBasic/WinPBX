@@ -783,10 +783,24 @@ d 4 4 1 A0 , double
 
 # <a name="sizeof"></a>SizeOf
 
-Returns the length of variable element (in bytes).
+Returns the length of variable element (in bytes). When used with variable-length strings, it will return the size of the string descriptor.
 
 ```
-DIM nbytes AS LONG = SizeOf(variable )
+DIM n AS LONE
+DIM nBytes AS LONG = SizeOf(n)
+' Result: 4
+```
+
+```
+DIM d AS DOUBLE
+DIM nBytes AS LONG = SizeOf(d)
+' Result: 8
+```
+
+```
+DIM s AS STRING
+DIM nBytes AS LONG = SizeOf(s)
+' Result: 4
 ```
 
 # <a name="spanof"></a>SpanOf
