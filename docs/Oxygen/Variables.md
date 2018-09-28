@@ -130,7 +130,7 @@ Pointered variable
 ```
 DIM a AS STRING = "ABCDEFGHI"
 DIM AS STRING a =  "ABCDEFGHI"
-DIM VYTE b AT STRPTR(a)
+DIM BYTE b AT STRPTR(a)
 DIM BYTE BYREF b : @b = STRPTR(a)
 BYTE b AT STRPTR(a)
 BYTE *b = STRPTR(a)
@@ -140,7 +140,7 @@ PRINT b[7]   ' 71 G
 Using dynamic memory
 
 ```
-DIM FLoAT f AT GetMemory 1024 * 4
+DIM FLOAT f AT GetMemory 1024 * 4
 f => (1.5, 2.5, 3.5)
 PRINT f[2]
 FreeMemory @f   ' release allocated memory
@@ -169,6 +169,81 @@ SCOPE
    PRINT a   ' 1
 END SCOPE
 PRINT a   ' 16
+```
+
+Static arrays
+
+```
+DIM AS LONG a(10 )= {2,4,6,8,10,12}
+a(10) = a(1) + a(4)
+print a(10)
+```
+
+Dynamic arrays
+
+```
+DIM AS LONG a AT GetMemory(10 * SIZEOF(long))
+a = {2,4,6,8,10,12}
+...
+FreeMemoty @a
+```
+
+```
+DIM AS LONG a(10) = {2,4,6,8,10,12}
+```
+
+Overlays
+
+```
+DIM AS STRING s = "ABCDEFGHIJ"
+DIM AS BYTE b AT STRPTR(s)
+PRINT STR(b[3]) ":  " CHR(b[3])
+```
+
+Multidimensional arrays
+
+```
+MACRO a(x,y) av(y * 1024 + x)
+DIM INT av[1024 * 1024]
+a(100,200) = 42
+PRINT a(100,200)   ' 42
+```
+
+Index base
+
+```
+DIM INT a[100] = {10,20,30,40}
+IndexBase 1    ' default: first element is indexed as 1
+PRINT a[2]   ' 20
+IndexBase 0
+PRINT a[2]   ' 30
+```
+
+Pseudo arrays
+
+```
+DIM av[100]
+
+FUNCTION a(int i,v)   ' setter
+   i *= 2
+   av[i]=v
+END FUNCTION
+  
+FUNCTION a(int i) AS INT   ' getter
+   i *= 2
+   RETURN av[i]
+END FUNCTION
+
+a(7) = 42   ' this is interpreted as a(7,42)
+PRINT a(7)
+```
+
+# <a name="redim"></a>ReDim
+
+Creates or resizes a dynamic array, preserving contents within range. Used to extend or reduce an array size at runtime.
+
+```
+REDIM string s(20)
 ```
 
 # <a name="as"></a>As
