@@ -246,6 +246,9 @@ Creates or resizes a dynamic array, preserving contents within range. Used to ex
 REDIM string s(20)
 ```
 
+To flush an array's contents, redim it with 0 elements first. But avoid doing this with arrays of strings; the orphaned strings are not garbage-collected until the end of the program, and will accumulate on each iteration where the redim reduces the number of elements.
+
+
 # <a name="as"></a>As
 
 Part of a declaration which specifies a data type. `As` is used to declare the type of variables, fields or arguments.
