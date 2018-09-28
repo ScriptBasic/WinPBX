@@ -226,7 +226,7 @@ $s = "Hello World"
 $ s = "Hello World"
 ```
 
-# <a name="equate1"></a>String equate ($)
+# <a name="equate2"></a>String equate ($)
 
 Defines a numeric equate, which can be used as a constant.
 
