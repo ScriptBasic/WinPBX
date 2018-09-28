@@ -133,7 +133,7 @@ DIM VYTE b AT STRPTR(a)
 DIM BYTE BYREF b : @b = STRPTR(a)
 BYTE b AT STRPTR(a)
 BYTE *b = STRPTR(a)
-' PRINT b[7]   ' 71 G
+PRINT b[7]   ' 71 G
 ```
 
 Using dynamic memory
@@ -141,7 +141,7 @@ Using dynamic memory
 ```
 DIM FLoAT f AT GetMemory 1024 * 4
 f => (1.5, 2.5, 3.5)
-' PRINT f[2]
+PRINT f[2]
 FreeMemory @f   ' release allocated memory
 ```
 
