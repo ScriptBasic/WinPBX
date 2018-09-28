@@ -1,4 +1,12 @@
-# Variables and User Define Types
+# Variables and User Defined Types
+
+Variables represent numeric or string values. The value of a variable can change during program execution. 
+
+Constants are numbers or strings which cannot be changed after they are defined.
+
+Equates are constants prefixed by the symbols `$` (string equates) or `%` (numeric equates).
+
+Enums are groups of logically related numeric equates.
 
 ### Variables
 
