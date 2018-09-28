@@ -294,3 +294,46 @@ ENUM bit MyEnum
    option3
 END ENUM
 ```
+
+# <a name="type"></a>Type
+
+Defines a compound variable type.
+
+```
+TYPE rgbacolor
+  red   AS BYTE
+  green AS BYTE
+  blue  AS BYTE
+  alpha AS BYTE
+END TYPE
+```
+
+Derived type
+
+```
+TYPE color32
+   r as byte
+   g as byte
+   b as byte
+   a as byte
+   =
+   rgba as long  'UNION
+END TYPE
+
+TYPE colortext
+   txt as string
+   c as color32
+END TYPE
+
+dim t as colortext
+  
+t.txt = "Color code"
+t.c.r = 8
+t.c.b = 16
+t.c.g = 32
+t.c.a = 64
+  
+print t.txt & ": " & HEX(t.c.rgba)
+```
+
+
