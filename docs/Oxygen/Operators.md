@@ -6,6 +6,7 @@
 | ---------- | ----------- |
 | [\=](#assignment) | Assigns a value to a variable. |
 | [:=](#assignment2) | Assigns a value to a variable. |
+| [=>](#assignment3) | Assigns a value to a variable. |
 
 ### Arithmetic Operators
 
@@ -251,6 +252,15 @@ while bRet := GetMessage @wm, 0, 0, 0
    if bRet == -1 then
    '  show an error message
    ...
+```
+
+# <a name="assignment2"></a>Assigment Operator (=>)
+
+Assigns a value to a variable. Can be used instead of `=` to avoid ambiguity in certain cases.
+
+```
+DIM x AS LONG => 10
+DIM LONG a[8] => (2, 4, 6, 8, 10, 12, 42, 99)
 ```
 
 # <a name="addition"></a>Addition Operator (+)
