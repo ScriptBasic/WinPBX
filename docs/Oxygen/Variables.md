@@ -40,6 +40,18 @@
 | [Local](#local) | Declares local variables inside a poceudre. |
 | [Static](#static) | Declares static variables inside a procedure. |
 
+### Attributes
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Len](#len) | Returns the length of a string in charaters  |
+| [OffsetOf](#offsetof) | Returns the offset of variable from index register. |
+| [RecordOf](#recordof) | Returns the record of a compound (UDT) variable. |
+| [SizeOf](#sizeof) | Returns the length of variable element (in bytes). |
+| [SpanOf](#spanof) | Returns the span of array variable dimension.  |
+| [TypeCodeOf](#typecodeof) | Returns the type code number of variables and literals. |
+| [TypeOf](#typeof) | Returns name of the variable type. |
+
 ### Blocks and Scopes
 
 | Name       | Description |
