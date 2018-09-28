@@ -356,6 +356,12 @@ $s = "Hello World"
 $ s = "Hello World"
 ```
 
+For embedded quotemarks use ` as the outer quotemark (ascii 96).
+
+```
+$s = `Hello "World"`
+```
+
 # <a name="equate2"></a>String equate (%)
 
 Defines a numeric equate, which can be used as a constant.
