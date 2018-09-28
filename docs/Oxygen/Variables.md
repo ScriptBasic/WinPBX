@@ -238,7 +238,7 @@ Defines a numeric equate, which can be used as a constant.
 
 # <a name="emum"></a>Enum
 
-Declares an enumerated type.
+Declares an enumerated type (a set of equates twhich are logically related).
 
 ```
 ENUM MyEnum
@@ -253,6 +253,14 @@ ENUM MyEnum
    option1 = 100   ' becomes 100
    option2         ' becomes 101
    option3         ' becomes 102
+END ENUM
+```
+
+```
+ENUM MyEnum
+   option1 = 100   ' becomes 100
+   option2 = 222   ' becomes 222
+   option3         ' becomes 223
 END ENUM
 ```
 
