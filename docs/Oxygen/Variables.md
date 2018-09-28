@@ -312,20 +312,20 @@ Derived type
 
 ```
 TYPE color32
-   r as byte
-   g as byte
-   b as byte
-   a as byte
+   r AS BYTE
+   g AS BYTE
+   b AS BYTE
+   a AS BYTE
    =
-   rgba as long  'UNION
+   rgba AS LONG   ' Union
 END TYPE
 
 TYPE colortext
-   txt as string
-   c as color32
+   txt AS STRING
+   c AS color32
 END TYPE
 
-dim t as colortext
+DIM t AS colortext
   
 t.txt = "Color code"
 t.c.r = 8
@@ -333,7 +333,7 @@ t.c.b = 16
 t.c.g = 32
 t.c.a = 64
   
-print t.txt & ": " & HEX(t.c.rgba)
+PRINT t.txt & ": " & HEX(t.c.rgba)
 ```
 
 
