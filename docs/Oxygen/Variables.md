@@ -311,6 +311,8 @@ END ENUM
 
 In the above code, *option1* becomes 10. To trap duplicate definitions use `#unique on`. `#unique` may be switched on and off for any section of code.
 
+Overriding definitions always allowed within a new scope:
+
 ```
 #unique on
 ENUM x
