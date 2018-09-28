@@ -424,3 +424,33 @@ typedef struct _color32 {
 } color32, *pcolor32
 ```
 
+# <a name="union"></a>Union
+
+Allows different variables to occupy the same space.
+
+```
+UNION MyUnion
+   b AS BYTE
+   w AS SHORT
+   i AS LONG
+END UNION
+
+DIM v AS MyUnion
+v.b = 42
+PRINT v.b
+print v.w
+print v.i
+
+Result: v.b = 42 : v.w = 42 : v.i = 42
+```
+
+#### Syntax variation:
+
+```
+union MyUnion
+{
+  byte  b
+  short w
+  long  i
+}
+```
