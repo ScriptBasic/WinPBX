@@ -25,8 +25,8 @@
 | [Let](#let) | Similar to **Dim**, but the type is inferred from the assigned value. |
 | [Var](#var) | Defines a set of variables. |
 | [Const](#const) | Constant. Non-modifiable variable declaration. |
-| [$](#equate1) | Defines an equate (which can be used as constant). |
-| [%](#equate2) | Defines an equate (which can be used as constant). |
+| [$](#equate1) | Defines a string equate (which can be used as constant). |
+| [%](#equate2) | Defines a numeric equate (which can be used as constant). |
 | [Enum](#enum) | Declares an enumerated type. |
 | [Type](#type) | Define a compound variable type. |
 | [Union](#union) | Define a union. |
@@ -215,4 +215,23 @@ CONST x = 10
 CONST x = 10, y = 11, z = 12
 CONST s AS STRING = "Hello"
 CONST AS STRING s = "Hello"
+```
+
+# <a name="equate1"></a>String equate ($)
+
+Defines a string equate, which can be used as a constant.
+
+```
+$s = "Hello World"
+$ s = "Hello World"
+```
+
+# <a name="equate1"></a>String equate ($)
+
+Defines a numeric equate, which can be used as a constant.
+
+```
+%n = 12345
+% n = 12345
+%n = 12345.56
 ```
