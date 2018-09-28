@@ -77,8 +77,10 @@
 | [<<<](#rotateleft) | Shifts all bits one place to the left. |
 | [>>>](#rotateright) | Shifts all bits one place to the right. |
 | [And](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
+| [Not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 | [Or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
 | [Xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
+| [Not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
 ### Explicit Type Conversion Operator
 
@@ -478,6 +480,7 @@ The operands to the logical OR operator need not be of the same type, but they m
 The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical OR expression.
 
 The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical OR expression is true.
+
 # <a name="booleanxorandassign"></a>Logical XOR and Assign Operator (^^=)
 
 Performs a logical XOR operation and assigns the result to a variable.
@@ -628,6 +631,23 @@ Performs a bitwise AND operation.
 DIM x1 AS LONG = 1
 DIM x2 AS LONG = 1
 PRINT x1 & x2
+```
+
+# <a name="bitwisenot"></a>Bitwise NOT Operator
+
+Returns the bitwise-not (complement) of a numeric value. For a boolean type, NOT FALSE returns TRUE (-1) and NOT TRUE returns FALSE (0).
+
+```
+DIM n AS BYTE
+n = 15 '00001111
+PRINT NOT n
+'Result = -16 =     11110000
+```
+
+When used on conditional expressions it inverts the conditional logic.
+
+```
+IF MOT a > 42 THEN ...    'IF a <= 42 THEN ...
 ```
 
 # <a name="bitwiseor"></a>Bitwise OR Operator (\|)
