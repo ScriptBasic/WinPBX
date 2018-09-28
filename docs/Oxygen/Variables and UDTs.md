@@ -4,20 +4,25 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Dim](#dim) |  |
-| [As](#as) |  |
-| [Let](#let) |  |
-| [Var](#var) |  |
-| [Const](#const) |  |
-| [Enum](#enum) |  |
+| [Dim](#dim) | Declares variables, arrays, objects and user defined types. |
+| [As](#as) | Part of a declaration which specifies a data type: |
+| [Let](#let) | Similar to **Dim**, but the type is inferred from the assigned value. |
+| [Var](#var) | Declares a variable whose type is implied from the initializer expression. |
+| [Const](#const) | Constant. Non-modifiable variable declaration. |
+| [Enum](#enum) | Declares an enumerated type. |
+
+### Modifiers
+
+| Name       | Description |
+| ---------- | ----------- |
+| [Global](#global) | Variable declaration modifier specifying visibility throughout a module |
+| [Local](#local) | Declare local variables inside a Sub, Function or Method gaving local storage. |
+| [Static](#static) | Defines variables and arrays having static storage |
 
 ### Scope
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) |  |
-| [Local](#local) |  |
-| [Static](#static) |  |
 | [Scope](#scope) |  |
 | [Block](#block) |  |
 
