@@ -20,9 +20,9 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) | Variable declaration modifier specifying visibility throughout a module |
-| [Local](#local) | Declare local variables inside a Sub, Function or Method gaving local storage. |
-| [Static](#static) | Defines variables and arrays having static storage |
+| [Global](#global) | Declare global (shared) variables between Subs, Functions and Methods. |
+| [Local](#local) | Declare local variables inside a Sub, Function or Method. |
+| [Static](#static) | Declare static variables inside a Sub, Function or Method. |
 
 ### Scope
 
@@ -30,3 +30,11 @@
 | ---------- | ----------- |
 | [Block](#block) | Starts a block. |
 | [Scope](#scope) | Creates a block where variables and functions may be locally defined.  |
+
+#### Variable Scope
+
+Global variables are accessible from anywhere in your program. They are initialized when your program starts and are destroyed when the program ends.
+
+Local variables are only accessible within a single SUB, FUNCTION or METHOD. They are automatically created and initialized each time you enter the procedure. They are automatically destroyed when you exit the procedure. This is the default variable scope unless you declare otherwise.
+
+Static variables are only accessible within a single SUB, FUNCTION or METHOD. They are initialized when your program starts, but retain their value regardless of how many times the procedure is entered and exited. They are destroyed only when the program ends.
