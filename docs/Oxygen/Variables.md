@@ -295,6 +295,37 @@ ENUM bit MyEnum
 END ENUM
 ```
 
+New definitions override older ones:
+
+```
+Enum MyEnum
+   option1 = 1
+   option2
+   option3
+End Enum
+
+Enum MyEum2
+   option1 = 10
+End Enum
+```
+
+In the above code, *option1* becomes 10. To trap duplicate definitions use `#unique on`. `#unique` may be switched on and off for any section of code.
+
+```
+#unique on
+ENUM x
+   a = 1, b, c
+END ENUM
+
+SCOPE
+  ENUM y
+     a = 10, b, c
+  END ENUM
+  PRINT b   'output: 11
+END SCOPE
+PRINT b   ' output: 2
+```
+
 # <a name="type"></a>Type
 
 Defines a compound variable type.
