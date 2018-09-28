@@ -35,9 +35,9 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) | Declare global (shared) variables between Subs, Functions and Methods. |
-| [Local](#local) | Declare local variables inside a Sub, Function or Method. |
-| [Static](#static) | Declare static variables inside a Sub, Function or Method. |
+| [Global](#global) | Declare global (shared) variables between procedures. |
+| [Local](#local) | Declare local variables inside a poceudre. |
+| [Static](#static) | Declare static variables inside a procedure. |
 
 ### Scope
 
@@ -169,3 +169,13 @@ SCOPE
 END SCOPE
 PRINT a   ' 16
 ```
+
+# <a name="let"></a>Let
+
+Similar to `Dim`but the type is inferred from the assigned value.
+
+```
+LET s = "This is a string"
+PRINT TypeOf(s)  ' Result: "string"
+```
+
