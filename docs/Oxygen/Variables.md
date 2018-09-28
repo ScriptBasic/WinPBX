@@ -486,3 +486,16 @@ STATIC AS LONG n = 123
 STATIC STRING s = "Test string"
 STATIC AS STRING s = "Test string"
 ```
+
+# <a name="scope"></a>Scope
+
+Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a scope structure, this local working variable can be used from its (re)definition until the end of the scope. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Scope` block before the variable is redefined will use the variable as defined outside the scope.
+
+```
+SYS i = 4
+SCOPE
+   SYS i = 8
+   PRINT "inner scope i = " i
+END SCOPE
+PRINT i
+```
