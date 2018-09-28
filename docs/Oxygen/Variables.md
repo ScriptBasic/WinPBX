@@ -1,4 +1,4 @@
-# Variables and User Defined Types
+# Variables, Arrays and User Defined Types
 
 * `Variables` represent numeric or string values. The value of a variable can change during program execution. 
 * `Constants` are numbers or strings which cannot be changed after they are defined.
@@ -6,6 +6,7 @@
 * `Enums` are groups of logically related numeric equates.
 * `User defined types` (UDTs) are custom data types containing one or more data fields.
 * `Unions` are similar to a user defined types, except that the elements of a union occupy the same space in memory.
+* `Arrays` are groups of data sharing the same variable name. The individual values that make up an array are called elements.
 
 ### Variables
 
