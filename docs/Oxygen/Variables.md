@@ -22,6 +22,7 @@
 | [Dim](#dim) | Declares variables, arrays, objects and user defined types. |
 | [ReDim](#redim) | Creates or resizes a dynamic array, preserving contents within range.  |
 | [As](#as) | Part of a declaration which specifies a data type. |
+| [ByRef](#byref) | Declares a reference (by name) to a variable. |
 | [Let](#let) | Similar to **Dim**, but the type is inferred from the assigned value. |
 | [Var](#var) | Defines a set of variables. |
 | [Const](#const) | Constant. Non-modifiable variable declaration. |
@@ -260,6 +261,39 @@ Part of a declaration which specifies a data type. `As` is used to declare the t
 ```
 DIM x AS LONG
 DIM AS LONG x
+```
+
+# <a name="byref"></a>ByRef
+
+Declares a reference (by name) to a variable. A reference is a way to access data located in memory like using a pointer that is implicitly dereferenced.
+
+```
+DIM a AS STRING = "ABCDEFGHI"
+DIM BYTE BYREF b
+@b = STRPTR(a)
+PRINT b[7]   ' 71 G
+```
+
+```
+' Alternate way:
+DIM a AS STRING = "ABCDEFGHI"
+BYTE *b = STRPTR(a)
+PRINT b[7]   ' 71 G
+```
+
+```
+' Alternate way:
+DIM a AS STRING = "ABCDEFGHI"
+BYTE b AT STRPTR(a)
+PRINT b[7]   ' 71 G
+```
+
+```
+DIM AS WORD BYREF a = GetMemory(1024)
+' equivalent in C notation:
+WORD * v = GetMemory(1024)
+' equivalent using 'at':
+WORD v AT GetMemory(1024)
 ```
 
 # <a name="let"></a>Let
