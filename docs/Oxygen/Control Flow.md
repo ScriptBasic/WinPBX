@@ -26,7 +26,7 @@ Statements that execute one of a number of code branches.
 | [ElseIf](#elseif) | Makes an alternative test if the previous condition was not met. |
 | [Else](#else) | Starts the alternative block where none of the prior conditions are met. |
 | [EndIf](#endif) | Ends the conditional block. |
-| [Select](#select) | Starts a Case block. |
+| [Select](#select) | Starts a **Case** block. |
 | [Case](#case) | Specifies a case to match followed by actions to perform.  |
 | [Case Else](#caseelse) | Matches any case not already matched. |
 | [Break](#break) | Exit a switch block or do/while block. |
