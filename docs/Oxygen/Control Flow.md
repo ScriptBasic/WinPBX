@@ -117,3 +117,12 @@ SUB DisplayMessage (s AS STRING)
    PRINT s
 END SUB
 ```
+
+```
+FUNCTION Sum (BYVAL x AS LONG, BYVAL z AS LONG) AS LONG
+   RETURN x + z
+END FUNCTION
+
+print Sum(5, 3)
+' Output: 8
+```
