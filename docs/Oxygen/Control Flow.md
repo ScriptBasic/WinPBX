@@ -59,8 +59,8 @@ Statements that execute code repeatedly.
 | [Repeat](#repeat) | Starts a block for conditional repetition. |
 | [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
 | [Redo](#redo) | Starts a block for conditional repetition. |
-| [Break](#break) | Exits a switch block, a **Do** block or a **While** block immediately. |
-| [Break When](#breakwhen) | Exits a switch block, a **Do** block or a **While** block when a condition is met. |
+| [Break](#break) | Exits a **Switch** block, a **Do** block or a **While** block immediately. |
+| [Break When](#breakwhen) | Exits a **Switch** block, a **Do** block or a **While** block when a condition is met. |
 
 # <a name="goto"></a>Goto
 
@@ -382,47 +382,6 @@ switch a {
 }
 ```
 
-# <a name="beak"></a>Break
-
-Exits a `Switch`, `Do` or `While` blocks.
-
-```
-DIM a AS LONG, s AS STRING
-a = 3
-switch a {
-  case 1
-    s = "A = 1"
-    break
-  case 2
-    s = "A = 2"
-    break
-  case 3
-    s = "A = 3"
-    break
-  case else
-    s = "A > 3"
-    break
-}
-```
-
-```
-DIM a, b AS LONG
-a = 4
-DO
-   b += 1
-   IF b >= a THEN BREAK
-LOOP
-```
-
-```
-DIM a, b AS LONG
-a = 4
-WHILE b <= a
-   b += 1
-   IF b = a THEN BREAK
-END WHILE
-```
-
 # <a name="while"></a>While
 
 Starts a block for conditional repetition.
@@ -665,4 +624,119 @@ WHILE b < a
    b += 1
    IF b < a THEN CONTINUE WHILE
 WEND
+```
+# <a name="repeat"></a>Repeat
+
+Starts a block for conditional repetition.
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   IF b < a THEN REPEAT DO
+   IF b >= a THEN EXIT DO
+LOOP
+```
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   REPEAT UNTIL b >= a
+   IF b >= a THEN EXIT DO
+LOOP
+```
+
+# <a name="until"></a>Until
+
+Continue executing a `Repeat` loop until a condition is met.
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   REPEAT UNTIL b >= a
+   IF b >= a THEN EXIT DO
+LOOP
+```
+
+# <a name="redo"></a>Redo
+
+Starts a block for conditional repetition.
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   REDO UNTIL b >= a
+   IF b >= a THEN EXIT DO
+LOOP
+```
+
+
+# <a name="break"></a>Break
+
+Exits a `Switch`, `Do` or `While` blocks.
+
+```
+DIM a AS LONG, s AS STRING
+a = 3
+switch a {
+  case 1
+    s = "A = 1"
+    break
+  case 2
+    s = "A = 2"
+    break
+  case 3
+    s = "A = 3"
+    break
+  case else
+    s = "A > 3"
+    break
+}
+```
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   IF b >= a THEN BREAK
+LOOP
+```
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+   IF b = a THEN BREAK
+END WHILE
+```
+
+# <a name="breakwhen"></a>Break
+
+Exits a `Switch`, `Do` or `While` block when a condition is met.
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+   BREAK WHEN b = a
+END WHILE
+```
+
+```
+DIM a, b AS LONG
+a = 4
+DO
+   b += 1
+   BREAK WHEN b = a
+LOOP
 ```
