@@ -168,6 +168,24 @@ INT a = 1, b = 2
 IF a < b THEN a = b
 ```
 
+Syntax variations:
+
+```
+IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {
+   s = "A > B"
+} ELSEIF a = b {
+   s = "A = B"
+} ELSE {
+   s = "A < B"
+}
+```
+
 # <a name="elseif"></a>ElseIf
 
 Makes an alternative test if the previous condition was not met.
@@ -184,6 +202,24 @@ ELSE
 END IF
 ```
 
+Syntax variations:
+
+```
+IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {
+   s = "A > B"
+} ELSEIF a = b {
+   s = "A = B"
+} ELSE {
+   s = "A < B"
+}
+```
+
 # <a name="else"></a>Else
 
 Starts the alternative block where none of the prior conditions are met.
@@ -198,4 +234,22 @@ ELSEIF a = b THEN
 ELSE
    s = "A < B"
 END IF
+```
+
+Syntax variations:
+
+```
+IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+```
+```
+IF a > b {
+   s = "A > B"
+} ELSEIF a = b {
+   s = "A = B"
+} ELSE {
+   s = "A < B"
+}
 ```
