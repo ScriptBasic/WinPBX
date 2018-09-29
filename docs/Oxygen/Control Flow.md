@@ -458,24 +458,6 @@ FOR i = 3 TO 0 STEP -0.5
 NEXT
 ```
 
-# <a name="step"></a>Step
-
-Specifies the increment of an iteration.
-
-```
-DIM AS LONG i, n
-FOR i = 1 TO 10 STEP 2
-   n += 1
-NEXT
-```
-
-```
-DIM AS SINGLE i
-FOR i = 3 TO 0 STEP -0.5
-   PRINT i
-NEXT
-```
-
 ```
 DIM AS LONG i, b
 DIM s AS STRING = "QWERTY"
@@ -521,6 +503,24 @@ FOR (i = 1, i <= LEN(s), i++) {
    a = ASC(s,i)
    b += a
 }
+```
+
+# <a name="step"></a>Step
+
+Specifies the increment of an iteration.
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10 STEP 2
+   n += 1
+NEXT
+```
+
+```
+DIM AS SINGLE i
+FOR i = 3 TO 0 STEP -0.5
+   PRINT i
+NEXT
 ```
 
 # <a name="next"></a>Next
