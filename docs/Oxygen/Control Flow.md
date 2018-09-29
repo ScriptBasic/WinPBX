@@ -149,3 +149,12 @@ FUNCTION Div (BYVAL x AS LONG, BYVAL z AS LONG) AS LONG
    FUNCTION = x + z
 END FUNCTION
 ```
+
+# <a name="if"></a>If
+
+Starts a conditional block with a test.
+
+```
+INT a = 1, b = 2
+IF a < b THEN a = b
+```
