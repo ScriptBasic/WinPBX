@@ -80,7 +80,7 @@ IF x = 1 THEN Goto LExit
 
 # <a name="gosub"></a>Gosub
 
-Calls a labelled subroutine. Execution jumps to a subroutine marked by a line label. Always use `Ret` to exit a `Gosub`, execution will continue on next statement after `Gosub`. The line label where `Gosub` jumps must be in the same main/function/sub block as `Gosub`. All the variables in the subroutine are shared with the block, no arguments can be used. For this reason `Gosub` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use `Sub` or `Function` instead.
+Calls a labelled subroutine. Execution jumps to a subroutine marked by a line label. Always use `Ret` to exit a `Gosub`, execution will continue on next statement after `Gosub`. The line label where `Gosub` jumps must be in the same main/function/sub block as `Gosub`. All the variables in the subroutine are shared with the block and no arguments can be used. `Gosub` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use `Sub` or `Function` instead.
 
 ```
 SUB Foo
