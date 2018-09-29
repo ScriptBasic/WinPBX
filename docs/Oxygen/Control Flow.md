@@ -111,3 +111,9 @@ Return [expression]
 
 Exits from a procedure. A `Sub` cannot specify a return return value. In a `Sub`, it is roughly equivalent to `Exit Sub`. In a `Function`, `Return` must specify a return value. `Return`*expression* is roughly equivalent to `Function = expression : Exit Function`.
 
+```
+SUB DisplayMessage (s AS STRING)
+   IF s = "" THEN RETURN
+   PRINT s
+END SUB
+```
