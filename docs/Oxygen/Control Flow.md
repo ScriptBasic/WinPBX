@@ -46,6 +46,7 @@ Statements that execute code repeatedly.
 | [Exit Do](#exitdo) | Exits a **Do** loop immediately. | |
 | [Continue Do](#continuedo) | Goes back to the beginning of a **Do** block. |
 | [For](#for) | Starts an iteration block. |
+| [To](#to) | Specifies the liit of an iteration. |
 | [Step](#step) | Specifies the incremente of an iteration. |
 | [Next](#next) | Ends an iteration block. |
 | [Exit For](#exitfor) | Exits a **For** loop immediately. |
@@ -514,6 +515,17 @@ FOR (i = 1, i <= LEN(s), i++) {
    a = ASC(s,i)
    b += a
 }
+```
+
+# <a name="to"></a>To
+
+Specifies the limit of an iteration.
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10 STEP 2
+   n += 1
+NEXT
 ```
 
 # <a name="step"></a>Step
