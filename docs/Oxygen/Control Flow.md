@@ -1,4 +1,4 @@
-# COntrol Flow
+# Control Flow
 
 Statements that direct the flow of program execution.
 
