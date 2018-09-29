@@ -54,12 +54,12 @@ Statements that execute code repeatedly.
 | [Wend](#wend) | Ends a **While** block. |
 | [End While](#endwhile) | Ends a **While** block. |
 | [EndWhile](#endwhile) | Ends a **While** block. |
-| [Exit While](#exitwhile) | Exit a **While** block immediately. |
+| [Exit While](#exitwhile) | Exits a **While** block immediately. |
 | [Continue While](#continuewhile) | Goes back to the beginning of a **While** block. |
 | [Repeat](#repeat) | Starts a block for conditional repetition. |
 | [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
 | [Redo](#redo) | Starts a block for conditional repetition. |
-| [Break](#break) | Exit a switch block, a **Do** block or a **While** block immediately. |
+| [Break](#break) | Exits a switch block, a **Do** block or a **While** block immediately. |
 | [Break When](#breakwhen) | Exits a switch block, a **Do** block or a **While** block when a condition is met. |
 
 # <a name="goto"></a>Goto
