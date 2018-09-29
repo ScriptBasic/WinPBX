@@ -167,3 +167,35 @@ Starts the conditional block where the prior test is met.
 INT a = 1, b = 2
 IF a < b THEN a = b
 ```
+
+# <a name="elseif"></a>ElseIf
+
+Makes an alternative test if the previous condition was not met.
+
+```
+STRING s
+INT a = 1, b = 2
+IF a > b THEN
+   s = "A > B"
+ELSEIF a = b THEN
+   s = "A = B"
+ELSE
+   s = "A < B"
+END IF
+```
+
+# <a name="else"></a>Else
+
+Starts the alternative block where none of the prior conditions are met.
+
+```
+STRING s
+INT a = 1, b = 2
+IF a > b THEN
+   s = "A > B"
+ELSEIF a = b THEN
+   s = "A = B"
+ELSE
+   s = "A < B"
+END IF
+```
