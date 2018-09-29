@@ -32,7 +32,7 @@ Statements that execute one of a number of code branches.
 | [End Select](#endselect) | Ends the select block. |
 | [EndSel](#endselect) | Ends the select block. |
 | [Switch](#switch) | Starts a C style case block. |
-| [Break](#break) | Exits a **Switch** block or **Do**, **While** blocks. |
+| [Break](#break) | Exits a **Switch**. **Do** or **While** blocks. |
 
 ### Looping Statements
 
@@ -386,7 +386,7 @@ switch a {
 
 # <a name="beak"></a>Break
 
-Exits a **Switch** block or **Do**, **While** blocks.
+Exits a **Switch**, **Do** or **While** blocks.
 
 ```
 DIM a AS LONG, s AS STRING
