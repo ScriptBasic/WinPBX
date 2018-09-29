@@ -101,3 +101,13 @@ END SUB
 
 Terminates the execution of a subroutine and returns the control to the statement following the calling `Gosub` statement. A `GoSub` should always have a matching `Ret` statement.
 
+# <a name="return"></a>Return
+
+Syntax
+
+```
+Return [expression]
+```
+
+Exits from a procedure. A `Sub` cannot specify a return return value. In a `Sub`, it is roughly equivalent to `Exit Sub`. In a `Function`, `Return` must specify a return value. `Return`*expression* is roughly equivalent to `Function = *expression* : Exit Function`.
+
