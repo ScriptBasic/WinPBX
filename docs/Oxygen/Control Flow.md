@@ -74,5 +74,5 @@ IF x = 1 THEN Goto LExit
 ...
 ...
 
-: Lexit
+: LExit
 ```
