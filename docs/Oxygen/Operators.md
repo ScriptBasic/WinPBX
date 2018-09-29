@@ -230,6 +230,24 @@ DIM x AS LONG
 x = 5
 ```
 
+Multiple assignments
+
+```
+SYS a, b, c
+a = b = c = 3.5
+print a "  " b "  " c
+```
+```
+DOUBLE a, b, c
+a = b = c = 3.5
+print a "  " b "  " c
+```
+```
+STRING a, b, c
+a = b = c = "okay"
+print a " " b " " c
+```
+
 The `=` operator is also used to compare two expressions for equality, but if the #assign directive is on, `==`must always be used to test equality instead of `=`. When this directive is active, **=** emulates the C convention of `=` always being an assignment operator in conditional statements, e.g.
 
 ```
