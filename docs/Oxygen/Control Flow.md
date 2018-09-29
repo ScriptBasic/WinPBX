@@ -64,7 +64,7 @@ Statements that execute code repeatedly.
 
 # <a name="goto"></a>Goto
 
-Jumps unconditionally to a specified label in the code. The label must be local to the **Sub**, **Function** or **Method** where the `Goto` statement is located. `Goto` differs froom `Gosub` in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump. `Goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
+Jumps unconditionally to a specified label or line number in the code. The label must be local to the **Sub**, **Function** or **Method** where the `Goto` statement is located. `Goto` differs froom `Gosub` in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump. `Goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
 
 ```
 IF x = 1 THEN Goto LExit
@@ -73,6 +73,17 @@ IF x = 1 THEN Goto LExit
 ...
 
 : LExit
+```
+
+```
+10  REM Legacy
+20  DIM a AS SINGLE, b AS SINGLE, c AS SINGLE, i AS LONG
+30  a = 1.0 : b = 1.0 : i = 0
+40  c = a + b
+60: i = i + 1
+70: IF i < 20 THEN a = b : b = c : GOTO 40
+80:   
+90: PRINT "APPROX FIBONACCI NUMBER: " STR$(c / b)
 ```
 
 # <a name="gosub"></a>Gosub
