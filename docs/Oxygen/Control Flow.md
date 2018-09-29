@@ -26,7 +26,7 @@ Statements that execute one of a number of code branches.
 | [ElseIf](#elseif) | Makes an alternative test if the previous condition was not met. |
 | [Else](#else) | Starts the alternative block where none of the prior conditions are met. |
 | [EndIf](#endif) | Ends the conditional block. |
-| [Select](#select) | Starts a **Case** block. |
+| [Select](#select) | Starts a case block. |
 | [Case](#case) | Specifies a case to match followed by actions to perform.  |
 | [Case Else](#caseelse) | Matches any case not already matched. |
 | [Break](#break) | Exit a switch block or do/while block. |
@@ -268,4 +268,89 @@ ELSEIF a = b THEN
 ELSE
    s = "A < B"
 END IF
+```
+
+# <a name="endif"></a>EndIf
+
+Starts a case block.
+
+Compact form:
+
+```
+DIM a AS LONG, s AS STRING
+a = 3
+SELECT a   ' SELECT CASE a
+  CASE 1 : s = "A = 1"
+  CASE 2 : s = "A = 2"
+  CASE 3 : s = "A = 3"
+  CASE ELSE : s = "A > 3"
+END SELECT   'ENDSEL
+```
+
+General form:
+
+```
+SELECT a
+  CASE 1
+    s = "A = 1"
+  CASE 2
+    s = "A = 2"
+  CASE 3
+    s = "A = 3"
+  CASE ELSE
+    s = "A > 3"
+END SELECT
+```
+
+Syntax variations:
+
+```
+SELECT a {
+  CASE 1
+    s = "A = 1"
+  CASE 2
+    s = "A = 2"
+  CASE 3
+    s = "A = 3"
+  CASE ELSE
+    s = "A > 3"
+}
+```
+
+```
+switch a {
+  case 1
+    s = "A = 1"
+    break
+  case 2
+    s = "A = 2"
+    break
+  case 3
+    s = "A = 3"
+    break
+  case else
+    s = "A > 3"
+    break
+}
+```
+
+Extensions:
+
+```
+SELECT a
+  CASE 1
+    s = "A = 1"
+  CASE 2
+    s = "A = 2"
+  CASE 3
+    s = "A = 3"
+  CASE 4,5,6
+    '
+  CASE 7 to 9
+    '
+  CASE 10 to <20
+    '
+  CASE ELSE
+    s = "A > 3"
+END SELECT
 ```
