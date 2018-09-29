@@ -777,7 +777,7 @@ WHILE b <= a
 END WHILE
 ```
 
-# <a name="breakwhen"></a>Break
+# <a name="breakwhen"></a>Break When
 
 Exits a `Switch`, `Do` or `While` block when a condition is met.
 
