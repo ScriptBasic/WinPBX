@@ -10,7 +10,8 @@ Statements that transfer control to another part of a program.
 | ---------- | ----------- |
 | [Goto](#goto) | Jumps unconditionally to a specified label in the code. |
 | [Gosub](#gosub) | Calls a labelled subroutine. |
-| [Return](#return) | Returns from a procedure or **Gosub** |
+| [Ret](#ret) | Returns from a **Gosub**. |
+| [Return](#return) | Returns from a procedure. |
 | [Exit Sub](#exitsub) | Exits a procedure. |
 | [Exit Function](#exitfunction) | Exits a function. |
 
@@ -75,4 +76,25 @@ IF x = 1 THEN Goto LExit
 ...
 
 : LExit
+```
+
+# <a name="gosub"></a>Gosub
+
+Calls a labelled subroutine. Execution jumps to a subroutine marked by a line label. Always use `Ret` to exit a `Gosub`, execution will continue on next statement after `Gosub`. The line label where `Gosub` jumps must be in the same main/function/sub block as `Gosub`. All the variables in the subroutine are shared with the block, no arguments can be used. For this reason `Gosub` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use `Sub` or `Function` instead.
+
+```
+SUB Foo
+
+  INT a = 42
+  INT b
+
+  GOSUB g
+  PRINT b
+  RETURN
+
+g:
+  b = a / 2
+  RET
+
+END SUB
 ```
