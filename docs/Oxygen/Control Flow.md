@@ -8,11 +8,11 @@ Statements that transfer control to another part of a program.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Goto](#Goto) | Jump to a specified label in the code. |
-| [Gosub](#Gosub) | Call a labelled subroutine. |
-| [Return](#Return) | Return from a procedure or **Gosub** |
-| [Exit Sub](#exitsub) | Exit a procedure. |
-| [Exit Function](#exitfunction) | Exit a function. |
+| [Goto](#Goto) | Jumps unconditionally to a specified label in the code. |
+| [Gosub](#Gosub) | Calls a labelled subroutine. |
+| [Return](#Return) | Returns from a procedure or **Gosub** |
+| [Exit Sub](#exitsub) | Exits a procedure. |
+| [Exit Function](#exitfunction) | Exits a function. |
 
 ### Branching Statements
 
@@ -61,3 +61,18 @@ Statements that execute code repeatedly.
 | [Exit While](#exitwhile) | Exit a **While** block immediately. |
 | [Exit For](#exitfor) | Exit a **For** loop immediately. |
 | [Exit Do](#exitdo) | Exit a **Do** loop immediately. | |
+
+# <a name="goto"></a>Goto
+
+Jumps unconditionally to a specified label in the code. The label must e local to the Sub, Function or Method where the `Goto` statement is located. `Goto` differs froom Gosub in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump.
+
+For better source code readability, overuse of `Goto` should be avoided in favor of more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
+
+```
+IF x = 1 THEN Goto LExit
+...
+...
+...
+
+: Lexit
+```
