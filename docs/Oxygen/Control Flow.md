@@ -253,3 +253,19 @@ IF a > b {
    s = "A < B"
 }
 ```
+
+# <a name="endif"></a>EndIf
+
+Ends the conditional block.
+
+```
+STRING s
+INT a = 1, b = 2
+IF a > b THEN
+   s = "A > B"
+ELSEIF a = b THEN
+   s = "A = B"
+ELSE
+   s = "A < B"
+END IF
+```
