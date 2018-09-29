@@ -467,7 +467,7 @@ Starts an iteration block.
 #### Syntax
 
 ```
-For iterator [ As datatype ] = startvalue To endvalue [ Step stepvalue ]
+For iterator = startvalue To endvalue [ Step stepvalue ]
    [ statement block ]
 Next
 ```
@@ -475,7 +475,6 @@ Next
 | Parameter  | Description |
 | ---------- | ----------- |
 | *iterator* | A variable identifier that is used to iterate from an initial value to an end value. |
-| *datatype* | If specified, the variable iterator will automatically be declared with the type datatype. |
 | *startvalue* | An expression that denotes the starting value of the iterator. |
 | *endvalue* | An expression used to compare with the value of the iterator. |
 | *stepvalue* | An expression that is added to the iterator after every iteration. |
