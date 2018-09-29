@@ -65,9 +65,7 @@ Statements that execute code repeatedly.
 
 # <a name="goto"></a>Goto
 
-Jumps unconditionally to a specified label in the code. The label must be local to the Sub, Function or Method where the `Goto` statement is located. `Goto` differs froom Gosub in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump.
-
-For better source code readability, overuse of `Goto` should be avoided in favor of more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
+Jumps unconditionally to a specified label in the code. The label must be local to the **Sub**, **Function** or **Method** where the `Goto` statement is located. `Goto` differs froom `Gosub` in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump. `Goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
 
 ```
 IF x = 1 THEN Goto LExit
