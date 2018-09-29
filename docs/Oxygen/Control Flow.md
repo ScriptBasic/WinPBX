@@ -126,3 +126,26 @@ END FUNCTION
 print Sum(5, 3)
 ' Output: 8
 ```
+
+# <a name="exitsub"></a>Exit Sub
+
+Exits a procedure.
+
+```
+SUB DisplayMessage (s AS STRING)
+   IF s = "" THEN EXIT SUB
+   PRINT s
+END SUB
+```
+
+# <a name="exitfunction"></a>Exit Function
+
+Exits a function.
+
+```
+FUNCTION Div (BYVAL x AS LONG, BYVAL z AS LONG) AS LONG
+   IF z = 0 THEN EXIT FUNCTION
+   EXIT FUNCTION
+   FUNCTION = x + z
+END FUNCTION
+```
