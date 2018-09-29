@@ -29,9 +29,10 @@ Statements that execute one of a number of code branches.
 | [Select](#select) | Starts a case block. |
 | [Case](#case) | Specifies a case to match followed by actions to perform.  |
 | [Case Else](#caseelse) | Matches any case not already matched. |
-| [Break](#break) | Exit a switch block or do/while block. |
 | [End Select](#endselect) | Ends the select block. |
 | [EndSel](#endselect) | Ends the select block. |
+| [Switch](#switch) | Starts a C style case block. |
+| [Break](#break) | Exits a **Switch** block or **Do**/**While** block. |
 
 ### Looping Statements
 
@@ -317,23 +318,6 @@ SELECT a {
 }
 ```
 
-```
-switch a {
-  case 1
-    s = "A = 1"
-    break
-  case 2
-    s = "A = 2"
-    break
-  case 3
-    s = "A = 3"
-    break
-  case else
-    s = "A > 3"
-    break
-}
-```
-
 Extensions:
 
 ```
@@ -353,4 +337,72 @@ SELECT a
   CASE ELSE
     s = "A > 3"
 END SELECT
+```
+
+```
+SELECT ASC("qwerty", 1)
+  CASE "a" TO "p"
+    print "a to p"
+  CASE "q" TO "z"
+    print "q to z"
+  CASE ELSE
+    print "not lower case"
+END SELECT
+```
+
+```
+SELECT ASC("qwerty", 1)
+  CASE 'a' TO 'p'   ' single quote marks
+    print "a to p"
+  CASE "q" TO "z"
+    print "q to z"
+  CASE ELSE
+    print "not lower case"
+END SELECT
+```
+
+# <a name="switch"></a>Switch
+
+Starts a C style case block.
+
+```
+DIM a AS LONG, s AS STRING
+a = 3
+switch a {
+  case 1
+    s = "A = 1"
+    break
+  case 2
+    s = "A = 2"
+    break
+  case 3
+    s = "A = 3"
+    break
+  case else
+    s = "A > 3"
+    break
+}
+```
+
+# <a name="beak"></a>Break
+
+Exits a **Switch** block or **Do**/**While** blocks.
+
+```
+DIM a AS LONG, s AS STRING
+a = 3
+switch a {
+  case 1
+    s = "A = 1"
+    break
+  case 2
+    s = "A = 2"
+    break
+  case 3
+    s = "A = 3"
+    break
+  case else
+    s = "A > 3"
+    break
+}
 ```
