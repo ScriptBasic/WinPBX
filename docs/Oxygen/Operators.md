@@ -248,6 +248,19 @@ a = b = c = "okay"
 print a " " b " " c
 ```
 
+```
+' On an array of compoud types
+TYPE LabelledPoint SINGLE x, y, z, STRING s
+DIM AS LabelledPoint v[100]
+v[2]<=
+0,1,2,"point A",
+0,3,4,"point B",
+1,1,2,"point C",
+1,3,4,"point D"
+%tab=chr 9
+print v[3].x tab v[3].y tab v[3].z  tab v[3].s
+```
+
 The `=` operator is also used to compare two expressions for equality, but if the #assign directive is on, `==`must always be used to test equality instead of `=`. When this directive is active, **=** emulates the C convention of `=` always being an assignment operator in conditional statements, e.g.
 
 ```
