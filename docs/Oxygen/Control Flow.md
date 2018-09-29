@@ -96,3 +96,8 @@ g:
 
 END SUB
 ```
+
+# <a name="ret"></a>Ret
+
+Terminates the xecution of a subroutine and returns the control to the statement following the calling `Gosub` statement. A `GoSub` should always have a matching `Ret` statement.
+
