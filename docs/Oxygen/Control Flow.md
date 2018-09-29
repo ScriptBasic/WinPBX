@@ -158,3 +158,12 @@ Starts a conditional block with a test.
 INT a = 1, b = 2
 IF a < b THEN a = b
 ```
+
+# <a name="then"></a>Then
+
+Starts the conditional block where the prior test is met.
+
+```
+INT a = 1, b = 2
+IF a < b THEN a = b
+```
