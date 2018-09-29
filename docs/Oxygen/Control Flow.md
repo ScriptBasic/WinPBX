@@ -386,7 +386,7 @@ switch a {
 
 # <a name="beak"></a>Break
 
-Exits a **Switch**, **Do** or **While** blocks.
+Exits a `Switch`, `Do` or `While` blocks.
 
 ```
 DIM a AS LONG, s AS STRING
@@ -423,4 +423,40 @@ WHILE b <= a
    b += 1
    IF b = a THEN BREAK
 END WHILE
+```
+
+# <a name="while"></a>While
+
+Starts a block for conditional repetition.
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+WEND
+```
+
+# <a name="wend"></a>Wend
+
+Ends a `While` block.
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+WEND
+```
+
+# <a name="endwhile"></a>End While
+
+Ends a `While` block.
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+END WHILE   ' or ENDWHILE
 ```
