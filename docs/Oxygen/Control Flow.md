@@ -462,7 +462,7 @@ END WHILE   ' or ENDWHILE
 
 # <a name="for"></a>For
 
-Starts an iteratio block.
+Starts an iteration block.
 
 #### Syntax
 
