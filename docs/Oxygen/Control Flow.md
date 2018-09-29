@@ -53,15 +53,15 @@ Statements that execute code repeatedly.
 | [End Do](#enddo) | Ends a **Do** repeating block. |
 | [EndDo](#enddo) | Ends a **Do** repeating block. |
 | [Loop](#loop) | Ends a **Do** repeating block. |
-| [Exit Do](#exitdo) | Exit a **Do** loop immediately. | |
-| [Continue](#continue) | Go back to the beginning of a **Do**, **While** or **For** block. |
-| [Continue Do](#continuedo) | Go back to the beginning of a **Do** block. |
-| [Continue For](#continuefor) | Go back to the beginning of a **For** block. |
+| [Exit Do](#exitdo) | Exits a **Do** loop immediately. | |
+| [Continue](#continue) | Goes back to the beginning of a **Do**, **While** or **For** block. |
+| [Continue Do](#continuedo) | Goes back to the beginning of a **Do** block. |
+| [Continue For](#continuefor) | Goes back to the beginning of a **For** block. |
 | [Repeat](#repeat) | Starts a block for conditional repetition. |
 | [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
 | [Redo](#redo) | Starts a block for conditional repetition. |
 | [Break](#break) | Exit a switch block, a **Do** block or a **While** block immediately. |
-| [Break When](#breakwhen) | Exit a switch block, a **Do** block or a **While** block when a condition is met. |
+| [Break When](#breakwhen) | Exits a switch block, a **Do** block or a **While** block when a condition is met. |
 
 # <a name="goto"></a>Goto
 
@@ -531,7 +531,7 @@ NEXT
 
 # <a name="exitfor"></a>Exit For
 
-Exits a **For** loop immediately.
+Exits a `For` loop immediately.
 
 ```
 DIM AS LONG i, n
@@ -539,4 +539,90 @@ FOR i = 1 TO 10
    n += 1
    IF n = 5 THEN EXIT FOR
 NEXT
+```
+
+# <a name="do"></a>Do
+
+Starts a block for repetition (looping).
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b > a THEN EXIT DO
+END DO   'or ENDDO
+```
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b > a THEN EXIT DO
+LOOP
+```
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+LOOP WHILE b < a
+```
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+LOOP UNTIL b >= a
+```
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b >= a THEN BREAK
+LOOP
+```
+
+# <a name="enddo"></a>EndDo
+
+Ends a `Do` repeating block.
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b > a THEN EXIT DO
+END DO   'or ENDDO
+```
+
+# <a name="loop"></a>Loop
+
+Ends a `Do` repeating block.
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b > a THEN EXIT DO
+LOOP
+```
+
+# <a name="exitdo"></a>Exit Do
+
+Exits a `Do` loop immediately.
+
+```
+DIM a, b
+a = 4
+DO
+   b += 1
+   IF b > a THEN EXIT DO
+LOOP
 ```
