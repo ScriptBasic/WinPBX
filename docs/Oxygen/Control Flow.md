@@ -8,9 +8,9 @@ Statements that transfer control to another part of a program.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Goto](#Goto) | Jumps unconditionally to a specified label in the code. |
-| [Gosub](#Gosub) | Calls a labelled subroutine. |
-| [Return](#Return) | Returns from a procedure or **Gosub** |
+| [Goto](#goto) | Jumps unconditionally to a specified label in the code. |
+| [Gosub](#gosub) | Calls a labelled subroutine. |
+| [Return](#return) | Returns from a procedure or **Gosub** |
 | [Exit Sub](#exitsub) | Exits a procedure. |
 | [Exit Function](#exitfunction) | Exits a function. |
 
