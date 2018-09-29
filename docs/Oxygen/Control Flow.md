@@ -476,6 +476,53 @@ FOR i = 3 TO 0 STEP -0.5
 NEXT
 ```
 
+```
+DIM AS LONG i, b
+DIM s AS STRING = "QWERTY"
+FOR i = 1 TO LEN(s)
+   b += ASC(s,i)
+NEXT
+```
+
+Syntax variations:
+
+```
+FOR i = 1 TO LEN(s) STEP 1 {
+   a = ASC(s,i)
+   b += a
+}
+```
+
+```
+FOR i = 1, LEN(s), 1 {
+   a = ASC(s,i)
+   b += a
+}
+```
+
+```
+FOR (i = 1, i <= LEN(s), i++) {
+   a = ASCI(s,i)
+   b += a
+}
+```
+
+```
+#semicolon separator
+FOR (i = 1; i <= LEN(s); i++) {
+   a = ASC(s,i)
+   b += a
+}
+#semicolon comment
+```
+
+```
+FOR (i = 1, i <= LEN(s), i++) {
+   a = ASC(s,i)
+   b += a
+}
+```
+
 # <a name="next"></a>Next
 
 Ends an iteration block.
