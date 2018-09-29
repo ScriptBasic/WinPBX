@@ -39,23 +39,23 @@ Statements that execute code repeatedly.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [While](#while) | Starts a block for conditional repetition. |
-| [Wend](#wend) | Ends a **While** block. |
-| [End While](#endwhile) | Ends a **While** block. |
-| [EndWhile](#endwhile) | Ends a **While** block. |
-| [Exit While](#exitwhile) | Exit a **While** block immediately. |
-| [For](#for) | Starts an iteration block. |
-| [Step](#step) | Specifies the incremente of an iteration. |
-| [Next](#next) | Ends an iteration block. |
-| [Exit For](#exitfor) | Exits a **For** loop immediately. |
 | [Do](#do) | Starts a block for repetition (looping). |
 | [End Do](#enddo) | Ends a **Do** repeating block. |
 | [EndDo](#enddo) | Ends a **Do** repeating block. |
 | [Loop](#loop) | Ends a **Do** repeating block. |
 | [Exit Do](#exitdo) | Exits a **Do** loop immediately. | |
-| [Continue](#continue) | Goes back to the beginning of a **Do**, **While** or **For** block. |
 | [Continue Do](#continuedo) | Goes back to the beginning of a **Do** block. |
+| [For](#for) | Starts an iteration block. |
+| [Step](#step) | Specifies the incremente of an iteration. |
+| [Next](#next) | Ends an iteration block. |
+| [Exit For](#exitfor) | Exits a **For** loop immediately. |
 | [Continue For](#continuefor) | Goes back to the beginning of a **For** block. |
+| [While](#while) | Starts a block for conditional repetition. |
+| [Wend](#wend) | Ends a **While** block. |
+| [End While](#endwhile) | Ends a **While** block. |
+| [EndWhile](#endwhile) | Ends a **While** block. |
+| [Exit While](#exitwhile) | Exit a **While** block immediately. |
+| [Continue While](#continuewhile) | Goes back to the beginning of a **While** block. |
 | [Repeat](#repeat) | Starts a block for conditional repetition. |
 | [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
 | [Redo](#redo) | Starts a block for conditional repetition. |
@@ -545,7 +545,7 @@ NEXT
 Starts a block for repetition (looping).
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -554,7 +554,7 @@ END DO   'or ENDDO
 ```
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -563,7 +563,7 @@ LOOP
 ```
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -571,7 +571,7 @@ LOOP WHILE b < a
 ```
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -579,7 +579,7 @@ LOOP UNTIL b >= a
 ```
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -592,7 +592,7 @@ LOOP
 Ends a `Do` repeating block.
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -605,7 +605,7 @@ END DO   'or ENDDO
 Ends a `Do` repeating block.
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
@@ -618,10 +618,51 @@ LOOP
 Exits a `Do` loop immediately.
 
 ```
-DIM a, b
+DIM AS LONG a, b
 a = 4
 DO
    b += 1
    IF b > a THEN EXIT DO
 LOOP
+```
+
+# <a name="continuedo"></a>Continue Do
+
+Goes back to the beginning of a `Do` block.
+
+```
+DIM AS LONG a, b
+a = 4
+DO
+   b += 1
+   IF b < a THEN CONTINUE DO
+   IF b >= a THEN EXIT DO
+LOOP
+```
+
+# <a name="continuefor"></a>Continue For
+
+Goes back to the beginning of a `For` block.
+
+```
+DIM a, b, i AS LONG
+a = 4
+FOR i = 1 TO 10
+   b += 1
+   IF b < a THEN CONTINUE FOR
+   IF b >= a THEN EXIT FOR
+NEXT
+```
+
+# <a name="continuewhile"></a>Continue While
+
+Goes back to the beginning of a `While` block.
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b < a
+   b += 1
+   IF b < a THEN CONTINUE WHILE
+WEND
 ```
