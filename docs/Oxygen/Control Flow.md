@@ -44,25 +44,24 @@ Statements that execute code repeatedly.
 | [Wend](#wend) | Ends a **While** block. |
 | [End While](#endwhile) | Ends a **While** block. |
 | [EndWhile](#endwhile) | Ends a **While** block. |
+| [Exit While](#exitwhile) | Exit a **While** block immediately. |
 | [For](#for) | Starts an iteration block. |
 | [Step](#step) | Specifies the incremente of an iteration. |
 | [Next](#next) | Ends an iteration block. |
+| [Exit For](#exitfor) | Exits a **For** loop immediately. |
 | [Do](#do) | Starts a block for repetition (looping). |
 | [End Do](#enddo) | Ends a **Do** repeating block. |
 | [EndDo](#enddo) | Ends a **Do** repeating block. |
 | [Loop](#loop) | Ends a **Do** repeating block. |
+| [Exit Do](#exitdo) | Exit a **Do** loop immediately. | |
 | [Continue](#continue) | Go back to the beginning of a **Do**, **While** or **For** block. |
 | [Continue Do](#continuedo) | Go back to the beginning of a **Do** block. |
 | [Continue For](#continuefor) | Go back to the beginning of a **For** block. |
-| [Continue While](#continuewhile) | Go back to the beginning of a **While** block. | |
 | [Repeat](#repeat) | Starts a block for conditional repetition. |
-| [Redo](#redo) | Starts a block for conditional repetition. |
 | [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
+| [Redo](#redo) | Starts a block for conditional repetition. |
 | [Break](#break) | Exit a switch block, a **Do** block or a **While** block immediately. |
 | [Break When](#breakwhen) | Exit a switch block, a **Do** block or a **While** block when a condition is met. |
-| [Exit While](#exitwhile) | Exit a **While** block immediately. |
-| [Exit For](#exitfor) | Exit a **For** loop immediately. |
-| [Exit Do](#exitdo) | Exit a **Do** loop immediately. | |
 
 # <a name="goto"></a>Goto
 
@@ -459,4 +458,86 @@ a = 4
 WHILE b <= a
    b += 1
 END WHILE   ' or ENDWHILE
+```
+
+# <a name="for"></a>For
+
+Starts an iteratio block.
+
+#### Syntax
+
+```
+For iterator [ As datatype ] = startvalue To endvalue [ Step stepvalue ]
+   [ statement block ]
+Next
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *iterator* | A variable identifier that is used to iterate from an initial value to an end value. |
+| *datatype* | If specified, the variable iterator will automatically be declared with the type datatype. |
+| *startvalue* | An expression that denotes the starting value of the iterator. |
+| *endvalue* | An expression used to compare with the value of the iterator. |
+| *stepvalue* | An expression that is added to the iterator after every iteration. |
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10
+   n += 1
+NEXT
+```
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10 STEP 2
+   n += 1
+NEXT
+```
+
+```
+DIM AS SINGLE i
+FOR i = 3 TO 0 STEP -0.5
+   PRINT i
+NEXT
+```
+
+# <a name="step"></a>Step
+
+Specifies the increment of an iteration.
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10 STEP 2
+   n += 1
+NEXT
+```
+
+```
+DIM AS SINGLE i
+FOR i = 3 TO 0 STEP -0.5
+   PRINT i
+NEXT
+```
+
+# <a name="next"></a>Next
+
+Ends an iteration block.
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10
+   n += 1
+NEXT
+```
+
+# <a name="exitfor"></a>Exit For
+
+Exits a **For** loop immediately.
+
+```
+DIM AS LONG i, n
+FOR i = 1 TO 10
+   n += 1
+   IF n = 5 THEN EXIT FOR
+NEXT
 ```
