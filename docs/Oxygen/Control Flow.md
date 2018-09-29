@@ -740,3 +740,12 @@ DO
    BREAK WHEN b = a
 LOOP
 ```
+
+```
+DIM a, b AS LONG
+a = 4
+WHILE b <= a
+   b += 1
+   BREAK WHEN b = a
+WEND
+```
