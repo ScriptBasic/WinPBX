@@ -972,7 +972,7 @@ print hex(?f)   ' display the hexadecimal form of float f
 
 # <a name="convert"></a>convert
 
-Explicitly convert the type of an expression.
+Explicitly convert the type of an expression. Can be used to pass values, in the required type, to an unprototyped function.
 
 ```
 float f = 2.5
