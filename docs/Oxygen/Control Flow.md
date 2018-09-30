@@ -110,7 +110,7 @@ end sub
 
 # <a name="ret"></a>ret
 
-Terminates the execution of a subroutine and returns the control to the statement following the calling `gosub` statement. A `goSub` should always have a matching `ret` statement.
+Terminates the execution of a subroutine and returns the control to the statement following the calling `gosub` statement. A `gosub` should always have a matching `ret` statement.
 
 # <a name="return"></a>return
 
