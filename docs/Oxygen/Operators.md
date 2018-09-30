@@ -939,6 +939,16 @@ dim x2 as long = 1
 print x1 xor x2
 ```
 
+# <a name="cast"></a>cast
+
+Changes or specifies the type of a variable temporarily, in an expression.
+
+```
+float f = 100
+print hex( cast(int) f)   ' display the hexadecimal form of float f
+print hex( (int) f )      ' the same without using the 'cast' word
+```
+
 # <a name="explicitcast"></a>Explicit type conversion operator: ()
 
 Allows explicit type conversion using syntax similar to the function-call syntax.
@@ -957,14 +967,4 @@ Casts variables as integers.
 ```
 float f = 100
 print hex(?f)   ' display the hexadecimal form of float f
-```
-
-# <a name="cast"></a>cast
-
-Changes or specifies the type of a variable temporarily, in an expression.
-
-```
-float f = 100
-print hex( cast(int) f)   ' display the hexadecimal form of float f
-print hex( (int) f )      ' the same without using the 'cast' word
 ```
