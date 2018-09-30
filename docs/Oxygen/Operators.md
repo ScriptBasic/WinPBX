@@ -96,11 +96,14 @@
 | ---------- | ----------- |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 
-### Pointer Index
+### Pointer Operators
 
 | Name       | Description |
 | ---------- | ----------- |
+| [@](#addressof) | Returns the address of a variable, string literal or procedure. |
+| [\*](#valueof) | Dereferenes a pointer. |
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
+| [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
 
 ### Overloading Operators
 
@@ -227,6 +230,88 @@ dim int32i C={100}
 print str(A)
 print str(A+B)
 print str(C*(A+B))
+```
+
+# <a name="addressof"></a>AddressOf Operator (@)
+
+Returns the address of a variable, string literal or procedure.
+
+```
+DIM v AS LONG = 12345
+print @v
+```
+```
+print @"Test string"
+```
+```
+sub Foo
+end sub
+print @Foo
+```
+
+Can also be used to read and write data of variables and arrays of variables, by reference. Unlike C, pointer resolution is handled implictly. So the @ operator is required for manipulating pointers. It is similar to the & operator in C. 
+
+```
+int a = 42
+print @a 'address of a
+int *b 'indirect (pointer) variable
+@b = @a   'coupled by address
+print b   ' 42
+```
+
+# <a name="valueof"></a>ValueOf Operator (*)
+
+Dereferenes a pointer. Unlike C, pointer resolution is normally handled implictly. 
+
+```
+dim s as asciiz * 260 = "Test string"
+dim p as asciiz ptr
+@p = strfptr(s)
+print p
+' Output "Test string"
+```
+```
+dim s as asciiz * 260 = "Test string"
+char *p = strptr(s)
+print s
+```
+```
+dim s as asciiz2 * 260 = "Test string"
+wchar *p = strptr(s)
+print s
+```
+```
+dim s as wstring = "Test string"
+wchar *p = strptr(s)
+print s
+```
+```
+dim s as wide = "Test string"
+wchar *p = strptr(s)
+print s
+```
+
+# <a name="pointerindex"></a>Pointer index operator: []
+
+You can use square brackets to index off a pointer. No bounds checking is performed.
+
+```
+dim s as string = "ABCDEFGHIJ"
+dim b as byte at strptr(s)
+print str(b[3]) " :  " chr(b[3])
+b[3] = 84   ' "T"
+' --or--
+' b[3] = asc("T")
+print s
+```
+
+# <a name="addr"></a>addr
+
+Assembler only. Loads the address of a variable to a register.
+
+```
+sys a
+addr ecx,a
 ```
 
 # <a name="assignment"></a>Assigment operator (=)
@@ -861,20 +946,6 @@ dim d as double = 12345.67
 int i = int(d)
 print i
 ' Output: 12345
-```
-
-# <a name="pointerindex"></a>Pointer index operator: []
-
-You can use square brackets to index off a pointer. No bounds checking is performed.
-
-```
-dim s as string = "ABCDEFGHIJ"
-dim b as byte at strptr(s)
-print str(b[3]) " :  " chr(b[3])
-b[3] = 84   ' "T"
-' --or--
-' b[3] = asc("T")
-print s
 ```
 
 
