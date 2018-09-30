@@ -4,471 +4,471 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Byte](#byte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
-| [SByte](#sbyte) | 8-bit (1 byte) signed integerr ranging in value from -128 to 127. |
-| [UByte](#ubyte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
-| [Bool](#bool) | Boolean data type. Can hold the values True or False. |
-| [Boolean](#boolean) | Boolean data type. Can hold the values True or False. |
-| [Short](#short) | 16-bit (2 bytes signed integer ranging in value from -32,768 to 32,767. |
-| [Long](#long) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
-| [Int](#int) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
-| [Integer](#integer) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
-| [Word](#word) | 16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535. |
-| [DWord](#dword) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
-| [ULong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
-| [UInt](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
-| [Quad](#quad) | 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. |
-| [Sys](#sys) | 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. |
+| [byte](#byte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
+| [sbyte](#sbyte) | 8-bit (1 byte) signed integer ranging in value from -128 to 127. |
+| [ubyte](#ubyte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
+| [bool](#bool) | Boolean data type. Can hold the values True or False. |
+| [boolean](#boolean) | Boolean data type. Can hold the values True or False. |
+| [short](#short) | 16-bit (2 bytes signed integer ranging in value from -32,768 to 32,767. |
+| [long](#long) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
+| [int](#int) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
+| [integer](#integer) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
+| [word](#word) | 16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535. |
+| [dword](#dword) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
+| [ulong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
+| [uint](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
+| [quad](#quad) | 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. |
+| [sys](#sys) | 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. |
 
 ### Floating-point Types
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Single](#single) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
-| [Double](#double) | 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308. |
-| [Extended](#extended) | 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932. |
-| [Float](#float) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
+| [single](#single) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
+| [double](#double) | 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308. |
+| [extended](#extended) | 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932. |
+| [float](#float) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
 
 ### String Types
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Asciiz](#asciiz) | Fixed-length 8-bit null terminated string. |
-| [Asciiz2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
-| [Bstr](#bstr) | Variable-length 8-bit string (a BStr is an array of ansi characters). |
-| [BString](#bstring) | Variable-length 8-bit string (a BString is an array of ansi characters). |
-| [BString2](#bstring2) | Variable-length 16-bit string (a BString is an array of unicode characters). |
-| [Char](#char) | 8-bit string (a Char is an array of ansi characters). |
-| [String](#string) | Variable-length 8-bit string (a String is an array of characters). |
-| [String2](#string2) | Variable-length 16-bit string (a String2 is an array of unicode characters). |
-| [WString](#wstring) | Variable-length 16-bit string (a WString is an array of unicode characters). |
-| [WChar](#wchar) | 16-bit string (a WChar is an array of unicode characters). |
-| [Wide](#wide) | Variable-length 16-bit string (a Wide string is an array of unicode characters). |
-| [ZString](#zstring) | Fixed-length 8-bit null terminated string. |
-| [ZString2](#zstring2) | Fixed-length 16-bit double null terminated string. |
+| [asciiz](#asciiz) | Fixed-length 8-bit null terminated string. |
+| [asciiz2](#asciiz2) | Fixed-length 16-bit double null terminated string. |
+| [bstr](#bstr) | Variable-length 8-bit string (a bStr is an array of ansi characters). |
+| [bstring](#bstring) | Variable-length 8-bit string (a bstring is an array of ansi characters). |
+| [bstring2](#bstring2) | Variable-length 16-bit string (a bstring is an array of unicode characters). |
+| [char](#char) | 8-bit string (a char is an array of ansi characters). |
+| [string](#string) | Variable-length 8-bit string (a string is an array of characters). |
+| [string2](#string2) | Variable-length 16-bit string (a string2 is an array of unicode characters). |
+| [wstring](#wstring) | Variable-length 16-bit string (a wstring is an array of unicode characters). |
+| [wchar](#wchar) | 16-bit string (a wchar is an array of unicode characters). |
+| [wide](#wide) | Variable-length 16-bit string (a wide string is an array of unicode characters). |
+| [zstring](#zstring) | Fixed-length 8-bit null terminated string. |
+| [zstring2](#zstring2) | Fixed-length 16-bit double null terminated string. |
 
 ### Modifiers
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Long](#long) | Used in conjunction with other types to double the bit width. |
-| [Short](#short) | Used in conjunction with other types to halve the bit width. |
-| [Wide](#wide) | Used in conjunction with other types to double the bit width. |
+| [long](#long) | Used in conjunction with other types to double the bit width. |
+| [short](#short) | Used in conjunction with other types to halve the bit width. |
+| [wide](#wide) | Used in conjunction with other types to double the bit width. |
 
 ### Assembler
 
 | Name       | Description |
 | ---------- | ----------- |
-| [QWord](#qword) | Specify a 64-bit operand in assembly code.  |
+| [qword](#qword) | Specify a 64-bit operand in assembly code.  |
 
-# <a name="byte"></a>Byte
+# <a name="byte"></a>byte
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
 
 ```
-DIM byteVar AS BYTE
+dim byteVar as byte
 byteVar = 100
 ```
 
 ```
-BYTE byteVar
+byte byteVar
 byteVar = 100
 ```
 
 ```
-DIM AS BYTE byteVar
+dim as byte byteVar
 byteVar = 100
 ```
 
 A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
 
-# <a name="sbyte"></a>SByte
+# <a name="sbyte"></a>sbyte
 
 8-bit (1 byte) signed integerr tanging in value from -128 to 127.
 
 ```
-DIM sbyteVar AS SBYTE
+dim sbyteVar as sbyte
 sbyteVar = -100
 ```
 
 ```
-SBYTE sbyteVar
+sbyte sbyteVar
 sbyteVar = 100
 ```
 
 ```
-DIM AS SBYTE sbyteVar
+dim as sbyte sbyteVar
 sbyteVar = 100
 ```
 
 A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
 
-# <a name="ubyte"></a>UByte
+# <a name="ubyte"></a>ubyte
 
 8-bit (1 byte) unsigned integer ranging in value from 0 to 255.
 
 ```
-DIM ubyteVar AS UBYTE
+dim ubyteVar as ubyte
 ubyteVar = 100
 ```
 
 ```
-UBYTE ubyteVar
+ubyte ubyteVar
 ubyteVar = 100
 ```
 
 ```
-DIM AS UBYTE ubyteVar
+dim as ubyte ubyteVar
 ubyteVar = 100
 ```
 
 A byte as an addressable unit of data storage large enough to hold any member of the basic character set of the execution environment. It must hold at least 256 different values, and is represented by eight bits.
 
-# <a name="bool"></a>Bool
+# <a name="bool"></a>bool
 
-Boolean data type. Can hold the values True (<> 0) or False (0).
-
-```
-DIM b AS BOOL
-b = TRUE
-```
+Boolean data type. Can hold the values true (<> 0) or false (0).
 
 ```
-BOOL b
-b = TRUE
+dim b as bool
+b = true
 ```
 
 ```
-DIM AS BOOL b
-b = TRUE
-```
-
-Notionally a Boolean type, but in reality it is a LONG (32bit signed integer).
-
-# <a name="boolean"></a>Boolean
-
-Boolean data type. Can hold the values True (<> 0) or False (0).
-
-```
-DIM b AS BOOLEAN
-b = TRUE
+bool b
+b = true
 ```
 
 ```
-BOOLEAN b
-b = TRUE
+dim as bool b
+b = true
+```
+
+Notionally a boolean type, but in reality it is a long (32bit signed integer).
+
+# <a name="boolean"></a>boolean
+
+Boolean data type. Can hold the values true (<> 0) or false (0).
+
+```
+dim b as boolean
+b = true
 ```
 
 ```
-DIM AS BOOLEAN b
-b = TRUE
+boolean b
+b = true
 ```
 
-Notionally a Boolean type, but in reality it is an UBYTE (8 bit unsigned integer).
+```
+dim as boolean b
+b = true
+```
 
-# <a name="short"></a>Short
+Notionally a boolean type, but in reality it is an ubyte (8 bit unsigned integer).
+
+# <a name="short"></a>short
 
 16-bit (2 bytes signed integer ranging in value from -32,768 to 32,767.
 
 ```
-DIM n AS SHORT
+dim n as short
 n = 12345
 ```
 
 ```
-SHORT n
+short n
 n = 12345
 ```
 
 ```
-DIM AS SHORT n
+dim as short n
 n = 12345
 ```
 
 Also used in conjunction with other types to halve the bit width.
 
 ```
-SHORT LONG n
+short long n
 n = 12345
 ```
 
-# <a name="long"></a>Long
+# <a name="long"></a>long
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
 
 ```
-DIM n AS LONG
+dim n as long
 n = 1234567890
 ```
 
 ```
-LONG n
+long n
 n = 1234567890
 ```
 
 ```
-DIM AS LONG n
+dim as long n
 n = 1234567890
 ```
 
 Also used in conjunction with other types to double the bit width.
 
 ```
-LONG SHORT n
+long short n
 n = 1234567890
 ```
 
-# <a name="int"></a>Int
+# <a name="int"></a>int
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
 
 ```
-DIM n AS INT
+dim n AS int
 n = 1234567890
 ```
 
 ```
-INT n
+int n
 n = 1234567890
 ```
 
 ```
-DIM AS INT n
+dim as int n
 n = 1234567890
 ```
 
-# <a name="integer"></a>Integer
+# <a name="integer"></a>integer
 
 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647.
 
 ```
-DIM n AS INTEGER
+dim n as integer
 n = 1234567890
 ```
 
 ```
-INTEGER n
+integer n
 n = 1234567890
 ```
 
 ```
-DIM AS INTEGER n
+dim as integer n
 n = 1234567890
 ```
 
-# <a name="word"></a>Word
+# <a name="word"></a>word
 
 16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535.
 
 ```
-DIM n AS WORD
+dim n AS word
 n = 12345
 ```
 
 ```
-WORD n
+word n
 n = 12345
 ```
 
 ```
-DIM AS WORD n
+dim as word n
 n = 12345
 ```
 
-If you assign a negative number to a WORD variable, the value is converted to an unsigned WORD, e.g.
+If you assign a negative number to a word variable, the value is converted to an unsigned word, e.g.
 
 ```
-DIM n AS WORD
+dim n AS word
 n = -1
-PRINT n
+print n
 ' Output: 65535
 ```
 
-# <a name="dword"></a>DWord
+# <a name="dword"></a>dword
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
 
 ```
-DIM n AS DWORD
+dim n AS dword
 n = 1234567890
 ```
 
 ```
-DWORD n
+dword n
 n = 1234567890
 ```
 
 ```
-DIM AS DWORD n
+dim as dword n
 n = 1234567890
 ```
 
-# <a name="ulong"></a>ULong
+# <a name="ulong"></a>ulong
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
 
 ```
-DIM n AS ULONG
+dim n AS ulong
 n = 1234567890
 ```
 
 ```
-ULONG n
+ulong n
 n = 1234567890
 ```
 
 ```
-DIM AS ULONG n
+dim as ulong n
 n = 1234567890
 ```
 
-# <a name="uint"></a>UInt
+# <a name="uint"></a>uint
 
 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
 
 ```
-DIM n AS UINT
+dim n as uint
 n = 1234567890
 ```
 
 ```
-UINT n
+uint n
 n = 1234567890
 ```
 
 ```
-DIM AS UINT n
+dim as uint n
 n = 1234567890
 ```
 
-# <a name="quad"></a>Quad
+# <a name="quad"></a>quad
 
 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
 
 ```
-DIM n AS QUAD
+dim n as quad
 n = 9223372036854775
 ```
 
 ```
-QUAD n
+quad n
 n = 9223372036854775
 ```
 
 ```
-DIM AS QUAD n
+dim as quad n
 n = 9223372036854775
 ```
 
-# <a name="sys"></a>Sys
+# <a name="sys"></a>sys
 
 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. To be used mainly to work with handles and opaque pointers, that are 32-bit in 32-bit systems and 64-bit in 64-bit systems. This type is always wide enough to hold a pointer.
 
 The following example retrieves the handle of a Windows control identified by ID that is child of the Window identifield by the hwnd handle.
 
 ```
-DIM hCtl AS SYS = GetDlgItem(hwnd, ID)
+dim hCtl as sys = GetDlgItem(hwnd, ID)
 ```
 
-# <a name="single"></a>Single
+# <a name="single"></a>single
 
 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
 
 ```
-DIM n AS SINGLE
+dim n as single
 n = 123.45
 ```
 
 ```
-SINGLE n
+single n
 n = 123.45
 ```
 
 ```
-DIM AS SINGLE n
+dim as single n
 n = 123.45
 ```
 
-# <a name="double"></a>Double
+# <a name="double"></a>double
 
 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308.
 
 ```
-DIM n AS DOUBLE
+dim n as double
 n = 12356.789
 ```
 
 ```
-DOUBLE n
+double n
 n = 12356.789
 ```
 
 ```
-DIM AS DOUBLE n
+dim as double n
 n = 12356.789
 ```
 
-# <a name="extended"></a>Extended
+# <a name="extended"></a>extended
 
 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932.
 
 ```
-DIM n AS EXTENDED
+dim n as extended
 n = 12356789.12
 ```
 
 ```
-EXTENDED n
+extended n
 n = 12356789.12
 ```
 
 ```
-DIM AS EXTENDED n
+dim as extended n
 n = 12356789.12
 ```
 
-# <a name="float"></a>Float
+# <a name="float"></a>float
 
 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
 
 ```
-DIM n AS FLOAT
+dim n as float
 n = 123.45
 ```
 
 ```
-FLOAT n
+float n
 n = 123.45
 ```
 
 ```
-DIM AS FLOAT n
+dim as float n
 n = 123.45
 ```
 
-# <a name="asciiz"></a>Asciiz
+# <a name="asciiz"></a>asciiz
 
 Fixed-length 8-bit null terminated string.
 
 ```
-DIM s AS ASCIIZ * 260
+dim s as asciiz * 260
 s = "Test string"
 ```
 
 ```
-ASCIIZ s * 260
+asciiz s * 260
 s = "Test string"
 ```
 ```
-DIM AS ASCIIZ s * 260
+dim as asciiz s * 260
 s = "Test string"
 ```
 
 ```
-DIM s AS asciiz *260
+dim s AS asciiz *260
 s = "Test string"
-DIM p AS asciiz ptr
-@p = STRPTR(s)
+dim p as asciiz ptr
+@p = strptr(s)
 print p
 ```
 
@@ -477,21 +477,21 @@ Character width 1<br>
 Length determined by null terminator byte<br>
 Garbage collection not required
 
-# <a name="asciiz2"></a>Asciiz2
+# <a name="asciiz2"></a>asciiz2
 
 Fixed-length 16-bit double null terminated string.
 
 ```
-DIM s AS ASCIIZ2 * 260
+dim s AS asciiz2 * 260
 s = "Test string 2"
 ```
 
 ```
-ASCIIZ2 s * 260
+asciiz2 s * 260
 s = "Test string 2"
 ```
 ```
-DIM AS ASCIIZ2 s * 260
+dim as asciiz2 s * 260
 s = "Test string 2"
 ```
 
@@ -500,29 +500,29 @@ Character width 1<br>
 Length determined by 2 null terminator bytes<br>
 Garbage collection not required
 
-# <a name="bstr"></a>Bstr
+# <a name="bstr"></a>bstr
 
-Variable-length 8-bit string (a BStr is an array of ansi characters).
+Variable-length 8-bit string (a bstr is an array of ansi characters).
 
 ```
-DIM b AS BSTR = "Test string"
+dim b as bstr = "Test string"
 print b
 frees b
 ```
 
 ```
-BSTR b = "Test string"
+bstr b = "Test string"
 print b
 frees b
 ```
 
 ```
-DIM AS BSTR b = "Test string"
+dim as bstr b = "Test string"
 print b
 frees b
 ```
 
-You must free the string with **FreeS** when no longer reuired.
+You must free the string with `frees` when no longer reuired.
 
 Indirection level 1<br>
 Character width 1<br>
@@ -530,29 +530,29 @@ Length given by 4 byte integer immediately before byte content<br>
 Also terminated by 2 null bytes<br>
 Garbage collection required
 
-# <a name="bstring"></a>BString
+# <a name="bstring"></a>bstring
 
-Variable-length 8-bit string (a BString is an array of ansi characters).
+Variable-length 8-bit string (a bstring is an array of ansi characters).
 
 ```
-DIM b AS BSTRING = "Test string"
+dim b as bstring = "Test string"
 print b
 frees b
 ```
 
 ```
-BSTRING b = "Test string"
+bstring b = "Test string"
 print b
 frees b
 ```
 
 ```
-DIM AS BSTRING b = "Test string"
+dim as bstring b = "Test string"
 print b
 frees b
 ```
 
-You must free the string with **FreeS** when no longer reuired.
+You must free the string with `frees` when no longer reuired.
 
 Indirection level 1<br>
 Character width 1<br>
@@ -560,29 +560,29 @@ Length given by 4 byte integer immediately before byte content<br>
 Also terminated by 2 null bytes<br>
 Garbage collection required
 
-# <a name="bstring2"></a>BString2
+# <a name="bstring2"></a>bstring2
 
-Variable-length 16-bit string (a BString is an array of unicode characters).
+Variable-length 16-bit string (a bstring is an array of unicode characters).
 
 ```
-DIM b AS BSTRING2 = "Test string"
+dim b as bstring2 = "Test string"
 print b
 frees b
 ```
 
 ```
-BSTRING2 b = "Test string"
+bstring2 b = "Test string"
 print b
 frees b
 ```
 
 ```
-DIM AS BSTRING2 b = "Test string"
+dim as bstring2 b = "Test string"
 print b
 frees b
 ```
 
-You must free the string with **FreeS** when no longer reuired.
+You must free the string with `frees` when no longer reuired.
 
 Indirection level 1<br>
 Character width 2<br>
@@ -590,25 +590,25 @@ Length (in bytes) given by 4 byte integer immediately before byte content<br>
 Also terminated by 2 null bytes<br>
 Garbage collection required
 
-# <a name="char"></a>Char
+# <a name="char"></a>char
 
 8-bit (1 byte) string. Similar to C `char`, but is not conflated with byte which is a numeric type.
 
 ```
-DIM c AS CHAR[260] = "Test string"
+dim c AS char[260] = "Test string"
 ```
 
 ```
-CHAR c[260] = "Test string"
+char c[260] = "Test string"
 ```
 
 ```
-DIM AS CHAR c[260] = "Test string"
+dim as char c[260] = "Test string"
 ```
 
 ```
-DIM s AS asciiz * 260 = "Test string"
-char *p = STRPTR(s)
+dim s as asciiz * 260 = "Test string"
+char *p = strptr(s)
 print p
 ```
 
@@ -616,7 +616,7 @@ print p
 If we use an offset, it will print the string from that offset until the end of the string, e.g.
 
 ```
-CHAR c = "Test string"
+char c = "Test string"
 print c[2]
 ' Output "est string"
 ```
@@ -626,20 +626,20 @@ Character width 1<br>
 Length determined by null terminator byte<br>
 Garbage collection not required
 
-# <a name="string"></a>String
+# <a name="string"></a>string
 
-Variable-length 8-bit string (a String is an array of characters).
-
-```
-DIM s AS STRING = "Test string"
-```
+Variable-length 8-bit string (a string is an array of characters).
 
 ```
-STRING s = "Test string"
+dim s as string = "Test string"
 ```
 
 ```
-DIM AS STRING s = "Test string"
+string s = "Test string"
+```
+
+```
+dim as string s = "Test string"
 ```
 
 Indirection level 2  (1 when passed byval as a parameter)<br>
@@ -649,42 +649,20 @@ Also terminated by 2 null bytes<br>
 Garbage collection automatic
 
 
-# <a name="string2"></a>String2
+# <a name="string2"></a>string2
 
-Variable-length 16-bit string (a String2 is an array of unicode characters).
-
-```
-DIM s AS STRING2 = "Test string"
-```
+Variable-length 16-bit string (a string2 is an array of unicode characters).
 
 ```
-STRING2 s = "Test string"
+dim s as string2 = "Test string"
 ```
 
 ```
-DIM AS STRING2 s = "Test string"
-```
-
-Indirection level 2 (1 when passed byval as a parameter)<br>
-Character width 2<br>
-Length given by 4 byte integer immediately before byte content<br>
-Also terminated by 2 null bytes<br>
-Garbage collection automatic
-
-# <a name="wstring"></a>WString
-
-Variable-length 16-bit string (a WString is an array of unicode characters).
-
-```
-DIM ws AS WSTRING = "Test string"
+string2 s = "Test string"
 ```
 
 ```
-WSTRING ws = "Test string"
-```
-
-```
-DIM AS WSTRING ws = "Test string"
+dim as string2 s = "Test string"
 ```
 
 Indirection level 2 (1 when passed byval as a parameter)<br>
@@ -693,33 +671,55 @@ Length given by 4 byte integer immediately before byte content<br>
 Also terminated by 2 null bytes<br>
 Garbage collection automatic
 
-# <a name="wchar"></a>WChar
+# <a name="wstring"></a>wstring
+
+Variable-length 16-bit string (a wstring is an array of unicode characters).
+
+```
+dim ws as wstring = "Test string"
+```
+
+```
+wstring ws = "Test string"
+```
+
+```
+dim as wstring ws = "Test string"
+```
+
+Indirection level 2 (1 when passed byval as a parameter)<br>
+Character width 2<br>
+Length given by 4 byte integer immediately before byte content<br>
+Also terminated by 2 null bytes<br>
+Garbage collection automatic
+
+# <a name="wchar"></a>wchar
 
 16-bit (2 bytes) string.
 
 ```
-DIM c AS WCHAR[260] = Test string"
+dim c as wchar[260] = Test string"
 ```
 
 ```
-WCHAR c[260] = Test string"
+wchar c[260] = Test string"
 ```
 
 ```
-DIM AS WCHAR c[260] = Test string"
+dim as wchar c[260] = Test string"
 ```
 
 ```
-USES corewin
-DIM cmdline AS WCHAR PTR
+uses corewin
+dim cmdline AS wchar ptr
 @cmdline = GetCommandLineW
-PRINT cmdline
+print cmdline
 ```
 
 If we use an offset, it will print the string from that offset until the end of the string, e.g.
 
 ```
-WCHAR c = "Test string"
+wchar c = "Test string"
 print c[2]
 ' Output "est string"
 ```
@@ -729,43 +729,43 @@ Character width 2<br>
 Length determined by 2 null terminator bytes<br>
 Garbage collection not required
 
-# <a name="wide"></a>Wide
+# <a name="wide"></a>wide
 
-Variable-length 16-bit string (a Wide string is an array of unicode characters).
-
-```
-DIM ws AS WIDE = "Test string"
-```
+Variable-length 16-bit string (a wide string is an array of unicode characters).
 
 ```
-WIDE ws = "Test string"
+dim ws as wide = "Test string"
 ```
 
 ```
-DIM AS WIDE ws = "Test string"
+wide ws = "Test string"
+```
+
+```
+dim as wide ws = "Test string"
 ```
 
 Also used in conjunction with other types to double the bit width.
 
 ```
-WIDE CHAR wc
-WIDE FLOAT wf   ' a double precision float
+wide char wc
+wide float wf   ' a double precision float
 ```
 
-# <a name="zstring"></a>ZString
+# <a name="zstring"></a>zstring
 
 Fixed-length 8-bit null terminated string.
 
 ```
-DIM zs AS ZSTRING * 260 = "Test string"
+dim zs as zstring * 260 = "Test string"
 ```
 
 ```
-ZSTRING * 260 zs = "Test string"
+zstring * 260 zs = "Test string"
 ```
 
 ```
-DIM AS ZSTRING zs = "Test string"
+dim as zstring zs = "Test string"
 ```
 
 Indirection level 0<br>
@@ -773,20 +773,20 @@ Character width 1<br>
 Length determined by null terminator byte<br>
 Garbage collection not required
 
-# <a name="zstring2"></a>ZString2
+# <a name="zstring2"></a>zstring2
 
 Fixed-length 16-bit double null terminated string.
 
 ```
-DIM zs AS ZSTRING2 * 260 = "Test string"
+dim zs AS zstring2 * 260 = "Test string"
 ```
 
 ```
-ZSTRING2 * 260 zs = "Test string"
+zstring2 * 260 zs = "Test string"
 ```
 
 ```
-DIM AS ZSTRING2 zs = "Test string"
+dim as zstring2 zs = "Test string"
 ```
 
 Indirection level 0<br>
@@ -794,7 +794,7 @@ Character width 2<br>
 Length determined by 2 null terminator bytes<br>
 Garbage collection not required
 
-# <a name="qword"></a>QWord
+# <a name="qword"></a>qword
 
 Specify a 64 bit operand in assembly code.
 
