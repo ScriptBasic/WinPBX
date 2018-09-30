@@ -670,7 +670,7 @@ loop
 
 # <a name="continuefor"></a>continue for
 
-Goes back to the beginning of a `For` block.
+Goes back to the beginning of a `for` block.
 
 ```
 dim a, b, i as long
