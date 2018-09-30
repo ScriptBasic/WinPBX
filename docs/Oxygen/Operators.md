@@ -489,7 +489,7 @@ x != 1
 Performs a logical AND operation and assigns the result to a variable.
 
 ```
-DIM x as long = 1
+dim x as long = 1
 x &&= 1
 ```
 
