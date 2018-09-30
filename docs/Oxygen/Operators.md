@@ -90,12 +90,6 @@
 | [xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
 | [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
-### Explicit Type Conversion Operator
-
-| Name       | Description |
-| ---------- | ----------- |
-| [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
-
 ### Pointer Operators
 
 | Name       | Description |
@@ -104,6 +98,12 @@
 | [\*](#valueof) | Dereferenes a pointer. |
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
 | [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
+
+### Explicit Type Conversion Operator
+
+| Name       | Description |
+| ---------- | ----------- |
+| [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 
 ### Overloading Operators
 
