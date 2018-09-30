@@ -106,6 +106,7 @@
 | [cast](#cast) | Changes or specifies the type of a variable temporarily, in an expression. |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
 | [?](#castint) | Casts variables as integers. |
+| [convert](#convert) | Explicitly convert the type of an expression. |
 
 ### Overloading Operators
 
@@ -967,4 +968,13 @@ Casts variables as integers.
 ```
 float f = 100
 print hex(?f)   ' display the hexadecimal form of float f
+```
+
+# <a name="convert"></a>convert
+
+Explicitly convert the type of an expression.
+
+```
+float f = 2.5
+sleep ( convert int ( f * 1000 ) )
 ```
