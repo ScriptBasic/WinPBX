@@ -506,7 +506,7 @@ x ||= 1
 
 The logical Or operator (||) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical Or has left-to-right associativity.
 
-The operands to the logical OR operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
+The operands to the logical Or operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
 
 The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical Or expression.
 
