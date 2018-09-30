@@ -9,6 +9,14 @@
 | [=>](#assignment3) | Assigns a value to a variable or values to an array. |
 | [<=](#assignment4) | Assigns a value to a variable or values to an array. |
 
+### String Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [+](#concat) | Concatenates two strings, converting non-strings to strings as needed. |
+| [&](#concat2) | Concatenates two strings, converting non-strings to strings as needed. |
+| [stptr](#strptr) | Returns the address of a string's character data. |
+
 ### Arithmetic Operators
 
 | Name       | Description |
@@ -307,6 +315,55 @@ dim x as long <= 10
 long a[8] <= (2,4,6,8,10,12,42,99)
 ```
 
+# <a name="concat"></a>String concatenation operator (+)
+
+Concatenates two strings, converting non-strings to strings as needed.
+
+```
+dim s1 as string = "ABCDEFG"
+dim s2 as string = "HIJKLM"
+s1 = s1 + s2
+```
+
+```
+dim s1 as string = "ABCDEFG"
+s1 = s1 + "HIJKLM"
+```
+
+```
+dim s1 as string = "ABCDEFG"
+s1 = s1 + 123456
+```
+
+# <a name="concat2"></a>String concatenation operator (&)
+
+Concatenates two strings, converting non-strings to strings as needed.
+
+```
+dim s1 as string = "ABCDEFG"
+dim s2 as string = "HIJKLM"
+s1 = s1 & s2
+```
+
+```
+dim s1 as string = "ABCDEFG"
+s1 = s1 & "HIJKLM"
+```
+
+```
+dim s1 as string = "ABCDEFG"
+s1 = s1 & 123456
+```
+
+# <a name="strptr"></a>strptr
+
+Returns the address of a string's character data.
+
+```
+string s = "Hello"
+sys a = strptr(s)
+```
+
 # <a name="addition"></a>Addition operator (+)
 
 Sums two expressions.
@@ -421,6 +478,18 @@ dim x as long = 5
 x += 3
 ```
 
+```
+dim s as string = "ABCDEFG"
+s += "HIJK"
+```
+
+If the target is a string and the value added is a number, it first converts the number to a string.
+
+```
+dim s as string = "ABCDEFG"
+s += 123456
+```
+
 # <a name="substractandassign"></a>Substract and assign operator (-=)
 
 Substracts and assigns a value to a variable.
@@ -473,6 +542,18 @@ Performs a bitwise-and (conjunction) and assigns the result to a variable.
 ```
 dim x as long = 11
 x &= 1
+```
+
+If the variable is a string, it adds and assigns the value to the string (if the value added is a number, it first converts the number to a string).
+
+```
+dim s as string = "ABCDEFG"
+s += "HIJK"
+```
+
+```
+dim s as string = "ABCDEFG"
+s += 123456
 ```
 
 # <a name="bitwiseorandassign"></a>Bitwise Or and assign operator (\!=)
