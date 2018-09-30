@@ -19,52 +19,52 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Dim](#dim) | Declares variables, arrays, objects and user defined types. |
-| [ReDim](#redim) | Creates or resizes a dynamic array, preserving contents within range.  |
-| [As](#as) | Part of a declaration which specifies a data type. |
-| [ByRef](#byref) | Declares a reference (by name) to a variable. |
-| [Let](#let) | Similar to **Dim**, but the type is inferred from the assigned value. |
-| [Var](#var) | Defines a set of variables. |
-| [Const](#const) | Constant. Non-modifiable variable declaration. |
+| [dim](#dim) | Declares variables, arrays, objects and user defined types. |
+| [redim](#redim) | Creates or resizes a dynamic array, preserving contents within range.  |
+| [as](#as) | Part of a declaration which specifies a data type. |
+| [byref](#byref) | Declares a reference (by name) to a variable. |
+| [let](#let) | Similar to **dim**, but the type is inferred from the assigned value. |
+| [var](#var) | Defines a set of variables. |
+| [const](#const) | Constant. Non-modifiable variable declaration. |
 | [$](#equate1) | Defines a string equate (which can be used as constant). |
 | [%](#equate2) | Defines a numeric equate (which can be used as constant). |
-| [Enum](#enum) | Declares an enumerated type. |
-| [Type](#type) | Define a compound variable type. |
-| [Union](#union) | Define a union. |
+| [enum](#enum) | Declares an enumerated type. |
+| [type](#type) | Define a compound variable type. |
+| [union](#union) | Define a union. |
 
 ### Modifiers
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Global](#global) | Declares global (shared) variables. |
-| [Local](#local) | Declares local variables inside a poceudre. |
-| [Static](#static) | Declares static variables inside a procedure. |
+| [global](#global) | Declares global (shared) variables. |
+| [local](#local) | Declares local variables inside a poceudre. |
+| [static](#static) | Declares static variables inside a procedure. |
 
 ### Attributes
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Len](#len) | Returns the length of a string in charaters. |
-| [OffsetOf](#offsetof) | Returns the offset of variable from index register. |
-| [RecordOf](#recordof) | Returns the record of a compound (UDT) variable. |
-| [SizeOf](#sizeof) | Returns the length of variable element (in bytes). |
-| [SpanOf](#spanof) | Returns the span of array variable dimension.  |
-| [TypeCodeOf](#typecodeof) | Returns the type code number of variables and literals. |
-| [TypeOf](#typeof) | Returns the name of the variable type. |
+| [len](#len) | Returns the length of a string in charaters. |
+| [offsetof](#offsetof) | Returns the offset of variable from index register. |
+| [recordof](#recordof) | Returns the record of a compound (UDT) variable. |
+| [sizeof](#sizeof) | Returns the length of variable element (in bytes). |
+| [spanof](#spanof) | Returns the span of array variable dimension.  |
+| [typecodeof](#typecodeof) | Returns the type code number of variables and literals. |
+| [typeof](#typeof) | Returns the name of the variable type. |
 
 ### Blocks and Scopes
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Block](#block) | Creates a block of code. |
-| [Rem](#rem) | Comments till end of line. |
+| [block](#block) | Creates a block of code. |
+| [rem](#rem) | Comments till end of line. |
 | [//](#rem2)| Comments till end of line. |
 | [\/\*](#rem3) | Comments till end of block. |
 | [\*/](#rem3) | Terminates comment block. |
-| [Scope](#scope) | Creates a block where variables and functions may be locally defined. |
-| [Skip](#skip) | Prevents code within the block from being executed. |
+| [scope](#scope) | Creates a block where variables and functions may be locally defined. |
+| [skip](#skip) | Prevents code within the block from being executed. |
 
-# <a name="dim"></a>Dim
+# <a name="dim"></a>dim
 
 Declares variables, arrays, objects and user defined types.
 
@@ -73,32 +73,32 @@ Declares variables, arrays, objects and user defined types.
 Post define type
 
 ```
-DIM x AS LONG
-DIM i, j, k AS LONG
+dim x as long
+dim i, j, k as long
 ```
 
 Pre define type
 
 ```
-DIM AS LONG x
-DIM AS LONG i, j, k
+dim as long x
+dim as long i, j, k
 ```
 
 Mixed types
 
 ```
-DIM AS LONG i, j, k, AS STRING s, t
+dim as log i, j, k, as string s, t
 ```
 
 Multiline
 
 ```
-DIM AS LONG i, j, k,
-    AS STRING s,t
+dim as long i, j, k,
+   as string s,t
 ```
 
 ```
-DIM AS LONG,
+dim as long,
    i,
    j,
    k
@@ -107,7 +107,7 @@ DIM AS LONG,
 Initial values
 
 ```
-DIM AS LONG,
+dim as long,
    i = 1,
    j = 2,
    k = 42
@@ -116,7 +116,7 @@ DIM AS LONG,
 Spread lines and comments
 
 ```
-DIM AS LONG,
+dim as long,
    i = 1,  ' these can be spread over many lines
    ' ---------
    j = 2,  ' with intervening comments
@@ -127,71 +127,71 @@ DIM AS LONG,
 Multiple assignments
 
 ```
-DIM AS LONG a(10) => (2, 4, 6, 8, 10, 12, 42, 99)
+dim as long a(10) => (2, 4, 6, 8, 10, 12, 42, 99)
 ```
 
 Syntax variations
 
 ```
-DIM LONG a(10) => (2,4,6,8,10,12,42,99)  
-DIM LONG a[10] => (2,4,6,8,10,12,42,99)  
-LONG a[10] => (2,4,6,8,10,12,42,99)  
-LONG a[10] <= (2,4,6,8,10,12,42,99)  
-LONG a[10] = {2,4,6,8,10,12,42,99}
-LONG a[] = {2,4,6,8,10,12,42,99}
-LONG a = {2,4,6,8,10,12,42,99}
+dim long a(10) => (2,4,6,8,10,12,42,99)  
+dim long a[10] => (2,4,6,8,10,12,42,99)  
+long a[10] => (2,4,6,8,10,12,42,99)  
+long a[10] <= (2,4,6,8,10,12,42,99)  
+long a[10] = {2,4,6,8,10,12,42,99}
+long a[] = {2,4,6,8,10,12,42,99}
+long a = {2,4,6,8,10,12,42,99}
 ```
 
 Pointered variable
 
 ```
-DIM a AS STRING = "ABCDEFGHI"
-DIM AS STRING a =  "ABCDEFGHI"
-DIM BYTE b AT STRPTR(a)
-DIM BYTE BYREF b : @b = STRPTR(a)
-BYTE b AT STRPTR(a)
-BYTE *b = STRPTR(a)
-PRINT b[7]   ' 71 G
+dim a as string = "ABCDEFGHI"
+dim as string a =  "ABCDEFGHI"
+dim byte b at strptr(a)
+dim byte byref b : @b = strptr(a)
+byte b at strptr(a)
+byteE *b = strptr(a)
+print b[7]   ' 71 G
 ```
 
 Using dynamic memory
 
 ```
-DIM FLOAT f AT GetMemory 1024 * 4
+dim float f at getmemory 1024 * 4
 f => (1.5, 2.5, 3.5)
-PRINT f[2]
-FreeMemory @f   ' release allocated memory
+print f[2]
+freememory @f   ' release allocated memory
 ```
 
 Global, static, local
 
 ```
-GLOBAL int g = 1
-FUNCTION f (p AS INT) AS INT
-   STATIC INT s = 0
-   LOCAL INT l = 100
+global int g = 1
+function f (p AS int) AS int
+   static int s = 0
+   local int l = 100
    s += 10
-   RETURN p + l + s + g
-END FUNCTION
-PRINT f(1000)   ' 1111
-PRINT f(1000)   ' 1121
+   return p + l + s + g
+end function
+print f(1000)   ' 1111
+print f(1000)   ' 1121
 ```
 
 Limiting scope
 
 ```
-DIM LONG a = 16
-SCOPE
-   DIM LONG a = 1
-   PRINT a   ' 1
-END SCOPE
-PRINT a   ' 16
+dim long a = 16
+scope
+   dim long a = 1
+   print a   ' 1
+end scope
+print a   ' 16
 ```
 
 Static arrays
 
 ```
-DIM AS LONG a(10 )= {2,4,6,8,10,12}
+dim as long a(10 )= {2,4,6,8,10,12}
 a(10) = a(1) + a(4)
 print a(10)
 ```
@@ -199,152 +199,152 @@ print a(10)
 Dynamic arrays
 
 ```
-DIM AS LONG a AT GetMemory(10 * SIZEOF(long))
+dim as long a at getmemory(10 * sizeof(long))
 a = {2,4,6,8,10,12}
 ...
-FreeMemoty @a
+freememory @a
 ```
 
 ```
-DIM AS LONG a(10) = {2,4,6,8,10,12}
+dim as long a(10) = {2,4,6,8,10,12}
 ```
 
 Overlays
 
 ```
-DIM AS STRING s = "ABCDEFGHIJ"
-DIM AS BYTE b AT STRPTR(s)
-PRINT STR(b[3]) ":  " CHR(b[3])
+dim as string s = "ABCDEFGHIJ"
+dim as byte b at strptr(s)
+print str(b[3]) ":  " chr(b[3])
 ```
 
 Multidimensional arrays
 
 ```
-MACRO a(x,y) av(y * 1024 + x)
-DIM INT av[1024 * 1024]
+macro a(x,y) av(y * 1024 + x)
+dim int av[1024 * 1024]
 a(100,200) = 42
-PRINT a(100,200)   ' 42
+print a(100,200)   ' 42
 ```
 
 Index base
 
 ```
-DIM INT a[100] = {10,20,30,40}
-IndexBase 1    ' default: first element is indexed as 1
-PRINT a[2]   ' 20
-IndexBase 0
-PRINT a[2]   ' 30
+dim int a[100] = {10,20,30,40}
+indexbase 1    ' default: first element is indexed as 1
+print a[2]   ' 20
+indexbase 0
+print a[2]   ' 30
 ```
 
 Pseudo arrays
 
 ```
-DIM av[100]
+dim av[100]
 
-FUNCTION a(int i,v)   ' setter
+function a(int i,v)   ' setter
    i *= 2
    av[i]=v
-END FUNCTION
+end function
   
-FUNCTION a(int i) AS INT   ' getter
+function a(int i) as int   ' getter
    i *= 2
-   RETURN av[i]
-END FUNCTION
+   return av[i]
+end function
 
 a(7) = 42   ' this is interpreted as a(7,42)
-PRINT a(7)
+print a(7)
 ```
 
-# <a name="redim"></a>ReDim
+# <a name="redim"></a>redim
 
 Creates or resizes a dynamic array, preserving contents within range. Used to extend or reduce an array size at runtime.
 
 ```
-REDIM string s(20)
+redim string s(20)
 ```
 
 To flush an array's contents, redim it with 0 elements first. But avoid doing this with arrays of strings; the orphaned strings are not garbage-collected until the end of the program, and will accumulate on each iteration where the redim reduces the number of elements.
 
 
-# <a name="as"></a>As
+# <a name="as"></a>as
 
-Part of a declaration which specifies a data type. `As` is used to declare the type of variables, fields or arguments.
+Part of a declaration which specifies a data type. `as` is used to declare the type of variables, fields or arguments.
 
 ```
-DIM x AS LONG
-DIM AS LONG x
+dim x as long
+dim as long x
 ```
 
-# <a name="byref"></a>ByRef
+# <a name="byref"></a>byref
 
 Declares a reference (by name) to a variable. A reference is a way to access data located in memory like using a pointer that is implicitly dereferenced.
 
 ```
-DIM a AS STRING = "ABCDEFGHI"
-DIM BYTE BYREF b
-@b = STRPTR(a)
-PRINT b[7]   ' 71 G
+dim a as string = "ABCDEFGHI"
+dim byte byref b
+@b = strptr(a)
+print b[7]   ' 71 G
 ```
 
 ```
 ' Alternate way:
-DIM a AS STRING = "ABCDEFGHI"
-BYTE *b = STRPTR(a)
-PRINT b[7]   ' 71 G
+dim a as string = "ABCDEFGHI"
+byte *b = strptr(a)
+print b[7]   ' 71 G
 ```
 
 ```
 ' Alternate way:
-DIM a AS STRING = "ABCDEFGHI"
-BYTE b AT STRPTR(a)
-PRINT b[7]   ' 71 G
+dim a as string = "ABCDEFGHI"
+byte b at strptr(a)
+print b[7]   ' 71 G
 ```
 
 ```
-DIM AS WORD BYREF a = GetMemory(1024)
+dim as word byref BYREF a = getmemory(1024)
 ' equivalent in C notation:
-WORD * v = GetMemory(1024)
+word * v = getmemory(1024)
 ' equivalent using 'at':
-WORD v AT GetMemory(1024)
+word v at getmemory(1024)
 ```
 
-# <a name="let"></a>Let
+# <a name="let"></a>let
 
-Similar to `Dim` but the type is inferred from the assigned value.
+Similar to `dim` but the type is inferred from the assigned value.
 
 ```
-LET s = "This is a string"
-PRINT TypeOf(s)  ' Result: "string"
+let s = "This is a string"
+print typeof(s)  ' Result: "string"
 ```
 
-# <a name="var"></a>Var
+# <a name="var"></a>var
 
 Defines a set of variables.
 
 ```
-Var string s,t,u(64),v  
+var string s, t, u(64), v  
 ```
 
-`Var` is normally only used internally. it accepts `*` for indirect variables and `AT`for variable mapping. Arrays are also supported.
+`var` is normally only used internally. it accepts `*` for indirect variables and `at`for variable mapping. Arrays are also supported.
 
 
-# <a name="const"></a>Const
+# <a name="const"></a>const
 
 Non-modifiable variable declaration.
 
 #### Syntax
 
 ```
-Const symbolname1 [AS DataType] = value1 [, symbolname2 [AS DataType] = value2, ...]
-Const [AS DataType] symbolname1 = value1 [, symbolname2 = value2, ...]
+const symbolname1 [as datatype] = value1 [, symbolname2 [as datatype] = value2, ...]
+const [as datatype] symbolname1 = value1 [, symbolname2 = value2, ...]
 ```
 
 ```
-CONST x = 10
-CONST x = 10, y = 11, z = 12
-CONST AS LONG x = 123, y = 234, z = 456
-CONST s AS STRING = "Hello"
-CONST AS STRING s = "Hello"
+const x = 10
+const x = 10, y = 11, z = 12
+const as long x = 123, y = 234, z = 456
+const s as string = "Hello"
+const as string s = "Hello"
 ```
 
 # <a name="equate1"></a>String equate ($)
@@ -391,44 +391,44 @@ Arguments are represented by %1 .. %9
 print display d
 ```
 
-# <a name="emum"></a>Enum
+# <a name="emum"></a>enum
 
 Declares an enumerated type (a set of equates twhich are logically related).
 
 ```
-ENUM MyEnum
+enum myenum
    option1   ' becomes 0
    option2   ' becomes 1
    option3   ' becomes 2
-END ENUM
+end enum
 ```
 
 ```
-ENUM MyEnum
+enum myenum
    option1 = 100   ' becomes 100
    option2         ' becomes 101
    option3         ' becomes 102
-END ENUM
+end enum
 ```
 
 ```
-ENUM MyEnum
+enum myenum
    option1 = 100   ' becomes 100
    option2 = 222   ' becomes 222
    option3         ' becomes 223
-END ENUM
+end enum
 ```
 
 ```
-ENUM MyEnum
+enum myenum
    option1, option2, option3
-END ENUM
+end enum
 ```
 
 C syntax is supported for this construct.
 
 ```
-ENUM MyEnum
+enum myenum
 {
    option1
    option2
@@ -437,83 +437,83 @@ ENUM MyEnum
 ```
 
 ```
-ENUM MyEnum {option1, option2, option3}
+enum myenum {option1, option2, option3}
 ```
 
-Also `enum bit` (`bit`must be lowercase) assigns values 1,2,4,8,16.. instead of 0,1,2,3,4..
+Also `enum bit` assigns values 1,2,4,8,16.. instead of 0,1,2,3,4..
 
 ```
-ENUM bit MyEnum
+enum bit myenum
    option1
    option2
    option3
-END ENUM
+end enum
 ```
 
 New definitions override older ones:
 
 ```
-ENUM MyEnum
+enum myenum
    option1 = 1
    option2
    option3
-END ENUM
+end enum
 
-ENUM MyEum2
+enum myenum2
    option1 = 10
-END ENUM
+end enum
 ```
 
 In the above code, *option1* becomes 10. To trap duplicate definitions use `#unique on`. `#unique` may be switched on and off for any section of code.
 
-Overriding definitions always allowed within a new scope:
+Overriding definitions is always allowed within a new scope:
 
 ```
 #unique on
-ENUM x
+enum x
    a = 1, b, c
-END ENUM
+end enum
 
-SCOPE
-  ENUM y
+scope
+  enum y
      a = 10, b, c
-  END ENUM
-  PRINT b   'output: 11
-END SCOPE
-PRINT b   ' output: 2
+  end enum
+  print b   'output: 11
+end scope
+print b   ' output: 2
 ```
 
-# <a name="type"></a>Type
+# <a name="type"></a>type
 
 Defines a compound variable type.
 
 ```
-TYPE rgbacolor
-  red   AS BYTE
-  green AS BYTE
-  blue  AS BYTE
-  alpha AS BYTE
-END TYPE
+type rgbacolor
+  red   as byte
+  green as byte
+  blue  as byte
+  alpha as byte
+end type
 ```
 
 Derived type
 
 ```
-TYPE color32
-   r AS BYTE
-   g AS BYTE
-   b AS BYTE
-   a AS BYTE
+type color32
+   r as byte
+   g as byte
+   b as byte
+   a as byte
    =
-   rgba AS LONG   ' Union
-END TYPE
+   rgba AS long   ' Union
+end type
 
-TYPE colortext
-   txt AS STRING
-   c AS color32
-END TYPE
+type colortext
+   txt as string
+   c as color32
+end type
 
-DIM t AS colortext
+dim t as colortext
   
 t.txt = "Color code"
 t.c.r = 8
@@ -521,7 +521,7 @@ t.c.b = 16
 t.c.g = 32
 t.c.a = 64
   
-PRINT t.txt & ": " & HEX(t.c.rgba)
+print t.txt & ": " & hex(t.c.rgba)
 ```
 #### Syntax variations
 
@@ -532,15 +532,15 @@ type color32
    byte b
    byte a
    =
-   long rgba  'UNION    
+   long rgba  ' Union    
 end type
 ```
 
 ```
 type color32
-   byte r,g,b,a
+   byte r, g, b, a
    =
-   long rgba  'UNION    
+   long rgba  ' Union    
 end type 
 ```
 
@@ -579,20 +579,20 @@ typedef struct _color32 {
 } color32, *pcolor32
 ```
 
-# <a name="union"></a>Union
+# <a name="union"></a>union
 
 Allows different variables to occupy the same space.
 
 ```
-UNION MyUnion
-   b AS BYTE
-   w AS SHORT
-   i AS LONG
-END UNION
+union myunion
+   b as byte
+   w as short
+   i as long
+end union
 
-DIM v AS MyUnion
+dim v AS MyUnion
 v.b = 42
-PRINT v.b
+print v.b
 print v.w
 print v.i
 
@@ -610,78 +610,78 @@ union MyUnion
 }
 ```
 
-# <a name="global"></a>Global
+# <a name="global"></a>global
 
-Declares global (shared) variables. `Global` variables are accessible from anywhere in your program. They are initialized when your program starts and are destroyed when the program ends.
-
-```
-GLOBAL n AS LONG = 123
-GLOBAL AS LONG n = 123
-DIM GLOBAL AS LONG n = 123
-```
-
-# <a name="local"></a>Local
-
-Declares local variables inside a poceudre. `Local` variables are only accessible within a single procedure or method. They are automatically created and initialized each time you enter the procedure. They are automatically destroyed when you exit the procedure. This is the default variable scope unless you declare otherwise.
+Declares global (shared) variables. `global` variables are accessible from anywhere in your program. They are initialized when your program starts and are destroyed when the program ends.
 
 ```
-LOCAL LONG n = 123
-LOCAL AS LONG n = 123
-LOCAL STRING s = "Test string"
-LOCAL AS STRING s = "Test string"
+global n as long = 123
+global as long n = 123
+dim global as long n = 123
 ```
 
-# <a name="static"></a>Static
+# <a name="local"></a>local
 
-Declares static variables inside a poceudre. `Static` variables are only accessible within a single proceudre or method. They are initialized when your program starts, but retain their value regardless of how many times the procedure is entered and exited. They are destroyed only when the program ends.
-
-```
-STATIC LONG n = 123
-STATIC AS LONG n = 123
-STATIC STRING s = "Test string"
-STATIC AS STRING s = "Test string"
-```
-
-# <a name="block"></a>Block
-
-Creates a block of code. When a variable is (re)defined with `Dim` within a block structure, this local working variable can be used from its (re)definition until the end of the block. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Block` before the variable is redefined will use the variable as defined outside the block.
+Declares local variables inside a poceudre. `local` variables are only accessible within a single procedure or method. They are automatically created and initialized each time you enter the procedure. They are automatically destroyed when you exit the procedure. This is the default variable scope unless you declare otherwise.
 
 ```
-SYS i = 4
-BLOCK
-   SYS i = 8
-   PRINT "inner block i = " i
-END BLOCK
-PRINT i
+local long n = 123
+local as long n = 123
+local string s = "Test string"
+local as string s = "Test string"
+```
+
+# <a name="static"></a>static
+
+Declares static variables inside a poceudre. `static` variables are only accessible within a single proceudre or method. They are initialized when your program starts, but retain their value regardless of how many times the procedure is entered and exited. They are destroyed only when the program ends.
+
+```
+static long n = 123
+static as long n = 123
+static string s = "Test string"
+static as string s = "Test string"
+```
+
+# <a name="block"></a>block
+
+Creates a block of code. When a variable is (re)defined with `dim` within a block structure, this local working variable can be used from its (re)definition until the end of the block. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Block` before the variable is redefined will use the variable as defined outside the block.
+
+```
+sys i = 4
+block
+   sys i = 8
+   print "inner block i = " i
+end block
+print i
 ```
 
 ```
 (
-  DIM INT i = 2
-  PRINT i
+  dim int i = 2
+  print i
 )
 ```
 
 ```
-BLOCK {
-  DIM INT i = 2
-  PRINT i
+block {
+  dim int i = 2
+  print i
 }
 ```
 
 Non executable blocks
 
 ```
-SKIP {
-  DIM INT i = 2
-  PRINT i
+skip {
+  dim int i = 2
+  print i
 }
 ```
 
 ```
 /*
-  DIM INT i = 2
-  PRINT i
+  dim int i = 2
+  print i
 */
 ```
 
@@ -719,15 +719,15 @@ mov ecx,5
 print eax
 ```
 
-# <a name="rem"></a>Rem
+# <a name="rem"></a>rem
 
 Comments till end of line.
 
 ```
-REM this is a comment
+rem this is a comment
 ```
 
-# <a name="rem2"></a>Rem (//)
+# <a name="rem2"></a>rem (//)
 
 Comments till end of line.
 
@@ -735,7 +735,7 @@ Comments till end of line.
 // this is a comment
 ```
 
-# <a name="rem3"></a>Rem (\/\* \*/)
+# <a name="rem3"></a>rem (\/\* \*/)
 
 Comments a block
 
@@ -743,122 +743,123 @@ Comments a block
 /* this is a comment */
 ```
 
-# <a name="scope"></a>Scope
+# <a name="scope"></a>scope
 
-Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a scope structure, this local working variable can be used from its (re)definition until the end of the scope. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `Scope` block before the variable is redefined will use the variable as defined outside the scope.
-
-```
-SYS i = 4
-SCOPE
-   SYS i = 8
-   PRINT "inner scope i = " i
-END SCOPE
-PRINT i
-```
+Creates a block where variables and functions may be locally defined. When a variable is (re)defined with `Dim` within a scope structure, this local working variable can be used from its (re)definition until the end of the scope. During this time, any variables outside the scope that have the same name will be ignored, and will not be accessible by that name. Any statements in the `scope` block before the variable is redefined will use the variable as defined outside the scope.
 
 ```
-SYS i = 4
-SCOPE {
-   SYS i = 8
-   PRINT "inner block i = " i
+sys i = 4
+scope
+   sys i = 8
+   print "inner scope i = " i
+end scope
+print i
+```
+
+```
+sys i = 4
+scope {
+   sys i = 8
+   print "inner block i = " i
 }
-PRINT i
+print i
 ```
 
-# <a name="skip"></a>Skip
+# <a name="skip"></a>skip
 
 Prevents code within the block from being executed.
 
 ```
-SKIP {
-  DIM INT i = 2
-  PRINT i
+skin {
+  dim int i = 2
+  print i
 }
 ```
 
-# <a name="len"></a>Len
+# <a name="len"></a>len
 
 Returns the length of a string in charaters.
 
 ```
-DIM v AS LONG = LEN("Hello")
+dim v as long = len("Hello")
 ' Output: 5
 ```
 
-# <a name="offsetof"></a>OffsetOf
+# <a name="offsetof"></a>offsetof
 
 Returns the offset of variable from index register.
 
 ```
-DIM nbytes AS LONG = OffsetOf(variable)
+dim nbytes as long = offsetof(variable)
 ```
 
-# <a name="recordof"></a>RecordOf
+# <a name="recordof"></a>recordof
 
 Returns the record of a compound (UDT) variable.
 
 ```
-TYPE vt long v, double d
-DIM AS vt v
-r = RecordOf(v)
-RESULT: r = "
+type vt long v, double d
+dim AS vt v
+r = recordof(v)
+' Result:
+r = "
 v 0 4 1 A0 , long
 d 4 4 1 A0 , double
 "
 ```
 
-# <a name="sizeof"></a>SizeOf
+# <a name="sizeof"></a>sizeof
 
 Returns the length of variable element (in bytes). When used with variable-length strings, it will return the size of the string descriptor.
 
 ```
-DIM n AS LONE
-DIM nBytes AS LONG = SizeOf(n)
+dim n as long
+dim nBytes as long = sizeof(n)
 ' Result: 4
 ```
 
 ```
-DIM d AS DOUBLE
-DIM nBytes AS LONG = SizeOf(d)
+dim d as double
+dim nBytes as long = sizeof(d)
 ' Result: 8
 ```
 
 ```
-DIM s AS STRING
-DIM nBytes AS LONG = SizeOf(s)
+dim s as string
+dim nBytes as long = sizeof(s)
 ' Result: 4
 ```
 
-# <a name="spanof"></a>SpanOf
+# <a name="spanof"></a>spanof
 
 Returns the span of array variable dimension.
 
 ```
-DIM AS LONG v(10)
-DIM n AS LONG = SpanOf(v)
+dim as long v(10)
+dim n as long = spanof(v)
 ```
 
-# <a name="typecodeof"></a>TypeCodeOf
+# <a name="typecodeof"></a>typecodeof
 
 Returns the type code number of variables and literals. Used to obtain data for diagnostics or reflective programming.
 
 ```
-DIM n AS LONG
-PRINT TypeCodeOf(n)
+dim n as long
+print typecodeof(n)
 ' Output 4
 ```
 
 ```
-PRINT TypeCodeOf("Hello")
+print typecodeof("Hello")
 ' Output: 193
 ```
 
-# <a name="typeof"></a>TypeOf
+# <a name="typeof"></a>typeof
 
 Returns the name of the variable type.
 
 ```
-DIM v AS LONG
-DIM s AS STRING = TypeOf(v)
+dim v as long
+dim s as string = typeof(v)
 ' s = "long"
 ```
