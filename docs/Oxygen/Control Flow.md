@@ -63,7 +63,7 @@ Statements that execute code repeatedly.
 | [break](#break) | Exits a **switch** block, a **do** block or a **while** block immediately. |
 | [break when](#breakwhen) | Exits a **switch** block, a **do** block or a **while** block when a condition is met. |
 
-# <a name="goto"></a>Goto
+# <a name="goto"></a>goto
 
 Jumps unconditionally to a specified label or line number in the code. The label must be local to the **sub**, **function** or **method** where the `goto` statement is located. `goto` differs froom `gosub` in that after execution of a `goto`, the program retains no memory of where it was before it executed the jump. `goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `do..loop`, `for..next`, `sub`, and `function`.
 
