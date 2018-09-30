@@ -486,7 +486,7 @@ x != 1
 
 # <a name="booleanandandassign"></a>Logical And and assign operator (&&=)
 
-Performs a logical AND operation and assigns the result to a variable.
+Performs a logical And operation and assigns the result to a variable.
 
 ```
 dim x as long = 1
