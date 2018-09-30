@@ -8,12 +8,12 @@ Statements that transfer control to another part of a program.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Goto](#goto) | Jumps unconditionally to a specified label in the code. |
-| [Gosub](#gosub) | Calls a labelled subroutine. |
-| [Ret](#ret) | Returns from a **Gosub**. |
-| [Return](#return) | Returns from a procedure. |
-| [Exit Sub](#exitsub) | Exits a procedure. |
-| [Exit Function](#exitfunction) | Exits a function. |
+| [goto](#goto) | Jumps unconditionally to a specified label in the code. |
+| [gosub](#gosub) | Calls a labelled subroutine. |
+| [ret](#ret) | Returns from a **gosub**. |
+| [return](#return) | Returns from a procedure. |
+| [exit sub](#exitsub) | Exits a procedure. |
+| [exit function](#exitfunction) | Exits a function. |
 
 ### Branching Statements
 
@@ -21,17 +21,17 @@ Statements that execute one of a number of code branches.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [If](#if) | Starts a conditional block with a test. |
-| [Then](#then) | Starts the conditional block where the prior test is met. |
-| [ElseIf](#elseif) | Makes an alternative test if the previous condition was not met. |
-| [Else](#else) | Starts the alternative block where none of the prior conditions are met. |
-| [EndIf](#endif) | Ends the conditional block. |
-| [Select](#select) | Starts a case block. |
-| [Case](#case) | Specifies a case to match followed by actions to perform.  |
-| [Case Else](#caseelse) | Matches any case not already matched. |
-| [End Select](#endselect) | Ends the select block. |
-| [EndSel](#endselect) | Ends the select block. |
-| [Switch](#switch) | Starts a C style case block. |
+| [if](#if) | Starts a conditional block with a test. |
+| [then](#then) | Starts the conditional block where the prior test is met. |
+| [elseif](#elseif) | Makes an alternative test if the previous condition was not met. |
+| [else](#else) | Starts the alternative block where none of the prior conditions are met. |
+| [endif](#endif) | Ends the conditional block. |
+| [select](#select) | Starts a case block. |
+| [case](#case) | Specifies a case to match followed by actions to perform.  |
+| [case else](#caseelse) | Matches any case not already matched. |
+| [end select](#endselect) | Ends the select block. |
+| [enddel](#endselect) | Ends the select block. |
+| [switch](#switch) | Starts a C style case block. |
 
 ### Looping Statements
 
@@ -39,36 +39,36 @@ Statements that execute code repeatedly.
 
 | Name       | Description |
 | ---------- | ----------- |
-| [Do](#do) | Starts a block for repetition (looping). |
-| [End Do](#enddo) | Ends a **Do** repeating block. |
-| [EndDo](#enddo) | Ends a **Do** repeating block. |
-| [Loop](#loop) | Ends a **Do** repeating block. |
-| [Exit Do](#exitdo) | Exits a **Do** loop immediately. | |
-| [Continue Do](#continuedo) | Goes back to the beginning of a **Do** block. |
-| [For](#for) | Starts an iteration block. |
-| [To](#to) | Specifies the liit of an iteration. |
-| [Step](#step) | Specifies the incremente of an iteration. |
-| [Next](#next) | Ends an iteration block. |
-| [Exit For](#exitfor) | Exits a **For** loop immediately. |
-| [Continue For](#continuefor) | Goes back to the beginning of a **For** block. |
-| [While](#while) | Starts a block for conditional repetition. |
-| [Wend](#wend) | Ends a **While** block. |
-| [End While](#endwhile) | Ends a **While** block. |
-| [EndWhile](#endwhile) | Ends a **While** block. |
-| [Exit While](#exitwhile) | Exits a **While** block immediately. |
-| [Continue While](#continuewhile) | Goes back to the beginning of a **While** block. |
-| [Repeat](#repeat) | Starts a block for conditional repetition. |
-| [Until](#until) | Continue executing a **Repeat** loop until a condition is met. |
-| [Redo](#redo) | Starts a block for conditional repetition. |
-| [Break](#break) | Exits a **Switch** block, a **Do** block or a **While** block immediately. |
-| [Break When](#breakwhen) | Exits a **Switch** block, a **Do** block or a **While** block when a condition is met. |
+| [do](#do) | Starts a block for repetition (looping). |
+| [end do](#enddo) | Ends a **do** repeating block. |
+| [endddo](#enddo) | Ends a **do** repeating block. |
+| [loop](#loop) | Ends a **do** repeating block. |
+| [exit do](#exitdo) | Exits a **do** loop immediately. | |
+| [continue do](#continuedo) | Goes back to the beginning of a **do** block. |
+| [for](#for) | Starts an iteration block. |
+| [to](#to) | Specifies the liit of an iteration. |
+| [step](#step) | Specifies the incremente of an iteration. |
+| [next](#next) | Ends an iteration block. |
+| [exit for](#exitfor) | Exits a **for** loop immediately. |
+| [continue for](#continuefor) | Goes back to the beginning of a **for** block. |
+| [while](#while) | Starts a block for conditional repetition. |
+| [wend](#wend) | Ends a **while** block. |
+| [end while](#endwhile) | Ends a **while** block. |
+| [endwhile](#endwhile) | Ends a **while** block. |
+| [exit ehile](#exitwhile) | Exits a **while** block immediately. |
+| [continue while](#continuewhile) | Goes back to the beginning of a **while** block. |
+| [repeat](#repeat) | Starts a block for conditional repetition. |
+| [until](#until) | Continue executing a **repeat** loop until a condition is met. |
+| [redo](#redo) | Starts a block for conditional repetition. |
+| [break](#break) | Exits a **switch** block, a **do** block or a **while** block immediately. |
+| [break when](#breakwhen) | Exits a **switch** block, a **do** block or a **while** block when a condition is met. |
 
 # <a name="goto"></a>Goto
 
-Jumps unconditionally to a specified label or line number in the code. The label must be local to the **Sub**, **Function** or **Method** where the `Goto` statement is located. `Goto` differs froom `Gosub` in that after execution of a `Goto`, the program retains no memory of where it was before it executed the jump. `Goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `Do...Loop`, `For...Next`, `Sub`, and `Function`.
+Jumps unconditionally to a specified label or line number in the code. The label must be local to the **sub**, **function** or **method** where the `goto` statement is located. `goto` differs froom `gosub` in that after execution of a `goto`, the program retains no memory of where it was before it executed the jump. `goto` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use more modern structures such as `do..loop`, `for..next`, `sub`, and `function`.
 
 ```
-IF x = 1 THEN Goto LExit
+if x = 1 then goto LExit
 ...
 ...
 ...
@@ -78,252 +78,251 @@ IF x = 1 THEN Goto LExit
 
 ```
 10  REM Legacy
-20  DIM a AS SINGLE, b AS SINGLE, c AS SINGLE, i AS LONG
+20  dim a as single, b as single, c as single, i as long
 30  a = 1.0 : b = 1.0 : i = 0
 40  c = a + b
 60: i = i + 1
-70: IF i < 20 THEN a = b : b = c : GOTO 40
+70: if i < 20 then a = b : b = c : goto 40
 80:   
-90: PRINT "APPROX FIBONACCI NUMBER: " STR$(c / b)
+90: PRINT "APPROX FIBONACCI NUMBER: " str(c / b)
 ```
 
-# <a name="gosub"></a>Gosub
+# <a name="gosub"></a>gosub
 
-Calls a labelled subroutine. Execution jumps to a subroutine marked by a line label. Always use `Ret` to exit a `Gosub`, execution will continue on next statement after `Gosub`. The line label where `Gosub` jumps must be in the same main/function/sub block as `Gosub`. All the variables in the subroutine are shared with the block and no arguments can be used. `Gosub` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use `Sub` or `Function` instead.
+Calls a labelled subroutine. Execution jumps to a subroutine marked by a line label. Always use `Ret` to exit a `gosub`, execution will continue on next statement after `gosub`. The line label where `gosub` jumps must be in the same main/function/sub block as `gosub`. All the variables in the subroutine are shared with the block and no arguments can be used. `gosub` is considered bad programming practice as it can generate unreadable and untraceable code. It is better to use `sub` or `function` instead.
 
 ```
-SUB Foo
+subB Foo
 
-  INT a = 42
-  INT b
+  int a = 42
+  int b
 
-  GOSUB g
-  PRINT b
-  RETURN
+  gosub g
+  print b
+  return
 
 g:
   b = a / 2
-  RET
+  ret
 
-END SUB
+end sub
 ```
 
-# <a name="ret"></a>Ret
+# <a name="ret"></a>ret
 
-Terminates the execution of a subroutine and returns the control to the statement following the calling `Gosub` statement. A `GoSub` should always have a matching `Ret` statement.
+Terminates the execution of a subroutine and returns the control to the statement following the calling `gosub` statement. A `goSub` should always have a matching `ret` statement.
 
-# <a name="return"></a>Return
+# <a name="return"></a>return
 
-Syntax
-
-```
-Return [expression]
-```
-
-Exits from a procedure. A `Sub` cannot specify a return return value. In a `Sub`, it is roughly equivalent to `Exit Sub`. In a `Function`, `Return` must specify a return value. `Return`*expression* is roughly equivalent to `Function = expression : Exit Function`.
+#### Syntax
 
 ```
-SUB DisplayMessage (s AS STRING)
-   IF s = "" THEN RETURN
-   PRINT s
-END SUB
+return [expression]
+```
+
+Exits from a procedure. A `sub` cannot specify a return value. In a `sub`, it is roughly equivalent to `exit sub`. In a `function`, `return` must specify a return value. `return`*expression* is roughly equivalent to `function = expression : exit function`.
+
+```
+sub DisplayMessage (s as string)
+   if s = "" then return
+   print s
+end sub
 ```
 
 ```
-FUNCTION Sum (BYVAL x AS LONG, BYVAL z AS LONG) AS LONG
-   RETURN x + z
-END FUNCTION
+function Sum (byval x as long, byval z as long) as long
+   return x + z
+end function
 
 print Sum(5, 3)
 ' Output: 8
 ```
 
-# <a name="exitsub"></a>Exit Sub
+# <a name="exitsub"></a>exit sub
 
 Exits a procedure.
 
 ```
-SUB DisplayMessage (s AS STRING)
-   IF s = "" THEN EXIT SUB
-   PRINT s
-END SUB
+sub DisplayMessage (s as string)
+   if s = "" then exit sub
+   print s
+end sub
 ```
 
-# <a name="exitfunction"></a>Exit Function
+# <a name="exitfunction"></a>exit function
 
 Exits a function.
 
 ```
-FUNCTION Div (BYVAL x AS LONG, BYVAL z AS LONG) AS LONG
-   IF z = 0 THEN EXIT FUNCTION
-   EXIT FUNCTION
-   FUNCTION = x + z
-END FUNCTION
+function Div (byval x as long, byval z as long) as long
+   if z = 0 then exit function
+   function = x + z
+end function
 ```
 
-# <a name="if"></a>If
+# <a name="if"></a>if
 
 Starts a conditional block with a test.
 
 ```
-INT a = 1, b = 2
-IF a < b THEN a = b
+int a = 1, b = 2
+if a < b then a = b
 ```
 
-# <a name="then"></a>Then
+# <a name="then"></a>then
 
 Starts the conditional block where the prior test is met.
 
 ```
-INT a = 1, b = 2
-IF a < b THEN a = b
+int a = 1, b = 2
+if a < b then a = b
 ```
 
 Syntax variations:
 
 ```
-IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+if (a > b) {s = "A > B"} elseif (a = b) {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+if a > b {s = "A > B"} elseif a = b {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {
+if a > b {
    s = "A > B"
-} ELSEIF a = b {
+} elseif a = b {
    s = "A = B"
-} ELSE {
+} else {
    s = "A < B"
 }
 ```
 
-# <a name="elseif"></a>ElseIf
+# <a name="elseif"></a>elseif
 
 Makes an alternative test if the previous condition was not met.
 
 ```
-STRING s
-INT a = 1, b = 2
-IF a > b THEN
+string s
+int a = 1, b = 2
+if a > b then
    s = "A > B"
-ELSEIF a = b THEN
+elseif a = b then
    s = "A = B"
-ELSE
+else
    s = "A < B"
-END IF
+end if
 ```
 
 Syntax variations:
 
 ```
-IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+if (a > b) {s = "A > B"} elseif (a = b) {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+if a > b {s = "A > B"} elseif a = b {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {
+if a > b {
    s = "A > B"
-} ELSEIF a = b {
+} elseif a = b {
    s = "A = B"
-} ELSE {
+} else {
    s = "A < B"
 }
 ```
 
-# <a name="else"></a>Else
+# <a name="else"></a>else
 
 Starts the alternative block where none of the prior conditions are met.
 
 ```
-STRING s
-INT a = 1, b = 2
-IF a > b THEN
+string s
+int a = 1, b = 2
+if a > b then
    s = "A > B"
-ELSEIF a = b THEN
+elseif a = b then
    s = "A = B"
-ELSE
+else
    s = "A < B"
-END IF
+end if
 ```
 
 Syntax variations:
 
 ```
-IF (a > b) {s = "A > B"} ELSEIF (a = b) {s = "A = B"} ELSE {s = "A < B"}
+if (a > b) {s = "A > B"} elseif (a = b) {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {s = "A > B"} ELSEIF a = b {s = "A = B"} ELSE {s = "A < B"}
+if a > b {s = "A > B"} elseif a = b {s = "A = B"} else {s = "A < B"}
 ```
 ```
-IF a > b {
+if a > b {
    s = "A > B"
-} ELSEIF a = b {
+} elseif a = b {
    s = "A = B"
-} ELSE {
+} else {
    s = "A < B"
 }
 ```
 
-# <a name="endif"></a>EndIf
+# <a name="endif"></a>endif
 
 Ends the conditional block.
 
 ```
-STRING s
-INT a = 1, b = 2
-IF a > b THEN
+string s
+int a = 1, b = 2
+if a > b then
    s = "A > B"
-ELSEIF a = b THEN
+elseif a = b then
    s = "A = B"
-ELSE
+else
    s = "A < B"
-END IF
+end if
 ```
 
-# <a name="select"></a>Select Case
+# <a name="select"></a>select case
 
 Starts a case block.
 
 Compact form:
 
 ```
-DIM a AS LONG, s AS STRING
+dim a as long, s as string
 a = 3
-SELECT a   ' SELECT CASE a
-  CASE 1 : s = "A = 1"
-  CASE 2 : s = "A = 2"
-  CASE 3 : s = "A = 3"
-  CASE ELSE : s = "A > 3"
-END SELECT   'ENDSEL
+select a   ' select case a
+  case 1 : s = "A = 1"
+  case 2 : s = "A = 2"
+  case 3 : s = "A = 3"
+  case else : s = "A > 3"
+end select   ' or endsel
 ```
 
 General form:
 
 ```
-SELECT a
-  CASE 1
+select a
+  case 1
     s = "A = 1"
-  CASE 2
+  case 2
     s = "A = 2"
-  CASE 3
+  case 3
     s = "A = 3"
-  CASE ELSE
+  case else
     s = "A > 3"
-END SELECT
+end select
 ```
 
 Syntax variations:
 
 ```
-SELECT a {
-  CASE 1
+select a {
+  case 1
     s = "A = 1"
-  CASE 2
+  case 2
     s = "A = 2"
-  CASE 3
+  case 3
     s = "A = 3"
-  CASE ELSE
+  case else
     s = "A > 3"
 }
 ```
@@ -331,52 +330,52 @@ SELECT a {
 Extensions:
 
 ```
-SELECT a
-  CASE 1
+select a
+  case 1
     s = "A = 1"
-  CASE 2
+  case 2
     s = "A = 2"
-  CASE 3
+  case 3
     s = "A = 3"
-  CASE 4,5,6
+  case 4,5,6
     '
-  CASE 7 to 9
+  case 7 to 9
     '
-  CASE 10 to <20
+  case 10 to <20
     '
-  CASE ELSE
+  case else
     s = "A > 3"
-END SELECT
+end select
 ```
 
 ```
-SELECT ASC("qwerty", 1)
-  CASE "a" TO "p"
+select asc("qwerty", 1)
+  case "a"toO "p"
     print "a to p"
-  CASE "q" TO "z"
+  case "q" to "z"
     print "q to z"
-  CASE ELSE
+  case else
     print "not lower case"
-END SELECT
+end select
 ```
 
 ```
-SELECT ASC("qwerty", 1)
-  CASE 'a' TO 'p'   ' single quote marks
+select asc("qwerty", 1)
+  case 'a' to 'p'   ' single quote marks
     print "a to p"
-  CASE "q" TO "z"
+  case "q" to "z"
     print "q to z"
-  CASE ELSE
+  case else
     print "not lower case"
-END SELECT
+end select
 ```
 
-# <a name="switch"></a>Switch
+# <a name="switch"></a>switch
 
 Starts a C style case block.
 
 ```
-DIM a AS LONG, s AS STRING
+dim a as long, s as string
 a = 3
 switch a {
   case 1
@@ -394,52 +393,52 @@ switch a {
 }
 ```
 
-# <a name="while"></a>While
+# <a name="while"></a>while
 
 Starts a block for conditional repetition.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+while b <= a
    b += 1
-WEND
+wend
 ```
 
-# <a name="wend"></a>Wend
+# <a name="wend"></a>wend
 
-Ends a `While` block.
+Ends a `while` block.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+while b <= a
    b += 1
-WEND
+wend
 ```
 
-# <a name="endwhile"></a>End While
+# <a name="endwhile"></a>end while
 
-Ends a `While` block.
+Ends a `while` block.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+wgile b <= a
    b += 1
-END WHILE   ' or ENDWHILE
+end while   ' or endwhile
 ```
 
-# <a name="for"></a>For
+# <a name="for"></a>for
 
 Starts an iteration block.
 
 #### Syntax
 
 ```
-For iterator = startvalue To endvalue [ Step stepvalue ]
+for iterator = startvalue to endvalue [ step stepvalue ]
    [ statement block ]
-Next
+next
 ```
 
 | Parameter  | Description |
@@ -450,310 +449,309 @@ Next
 | *stepvalue* | An expression that is added to the iterator after every iteration. |
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10
+dim as long i, n
+for i = 1 to 10
    n += 1
-NEXT
+next
 ```
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10 STEP 2
+dim as long i, n
+for i = 1 tO 10 step 2
    n += 1
-NEXT
+next
 ```
 
 ```
-DIM AS SINGLE i
-FOR i = 3 TO 0 STEP -0.5
-   PRINT i
-NEXT
+dim as single i
+for i = 3 to 0 step -0.5
+   print i
+next
 ```
 
 ```
-DIM AS LONG i, b
-DIM s AS STRING = "QWERTY"
-FOR i = 1 TO LEN(s)
-   b += ASC(s,i)
-NEXT
+dim as long i, b
+dim s as string = "QWERTY"
+for i = 1 to len(s)
+   b += asc(s,i)
+next
 ```
 
 Syntax variations:
 
 ```
-FOR i = 1 TO LEN(s) STEP 1 {
-   a = ASC(s,i)
+for i = 1 to len(s) step 1 {
+   a = asc(s,i)
    b += a
 }
 ```
 
 ```
-FOR i = 1, LEN(s), 1 {
-   a = ASC(s,i)
+for i = 1, len(s), 1 {
+   a = asc(s,i)
    b += a
 }
 ```
 
 ```
-FOR (i = 1, i <= LEN(s), i++) {
-   a = ASCI(s,i)
+for (i = 1, i <= len(s), i++) {
+   a = asc(s,i)
    b += a
 }
 ```
 
 ```
 #semicolon separator
-FOR (i = 1; i <= LEN(s); i++) {
-   a = ASC(s,i)
+for (i = 1; i <= len(s); i++) {
+   a = asc(s,i)
    b += a
 }
 #semicolon comment
 ```
 
 ```
-FOR (i = 1, i <= LEN(s), i++) {
-   a = ASC(s,i)
+for (i = 1, i <= len(s), i++) {
+   a = asc(s,i)
    b += a
 }
 ```
 
-# <a name="to"></a>To
+# <a name="to"></a>to
 
 Specifies the limit of an iteration.
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10 STEP 2
+dim as long i, n
+for i = 1 to 10 step 2
    n += 1
-NEXT
+next
 ```
 
-# <a name="step"></a>Step
+# <a name="step"></a>step
 
 Specifies the increment of an iteration.
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10 STEP 2
+dima s long i, n
+for i = 1 to 10 step 2
    n += 1
-NEXT
+next
 ```
 
 ```
-DIM AS SINGLE i
-FOR i = 3 TO 0 STEP -0.5
-   PRINT i
-NEXT
+dim as single i
+for i = 3 to 0 step -0.5
+   print i
+next
 ```
 
-# <a name="next"></a>Next
+# <a name="next"></a>next
 
 Ends an iteration block.
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10
+dim as long i, n
+for i = 1 to 10
    n += 1
-NEXT
+next
 ```
 
-# <a name="exitfor"></a>Exit For
+# <a name="exitfor"></a>exit for
 
-Exits a `For` loop immediately.
+Exits a `for` loop immediately.
 
 ```
-DIM AS LONG i, n
-FOR i = 1 TO 10
+dim as long i, n
+for i = 1 to 10
    n += 1
-   IF n = 5 THEN EXIT FOR
-NEXT
+   if n = 5 then exit for
+next
 ```
 
-# <a name="do"></a>Do
+# <a name="do"></a>do
 
 Starts a block for repetition (looping).
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b > a THEN EXIT DO
-END DO   'or ENDDO
+   if b > a then exit do
+end do   'or enddo
 ```
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b > a THEN EXIT DO
-LOOP
+   if b > a then exit do
+loop
 ```
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-LOOP WHILE b < a
+loop while b < a
 ```
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-LOOP UNTIL b >= a
+loop until b >= a
 ```
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b >= a THEN BREAK
-LOOP
+   if b >= a then break
+loop
 ```
 
-# <a name="enddo"></a>EndDo
+# <a name="enddo"></a>enddo
 
-Ends a `Do` repeating block.
+Ends a `do` repeating block.
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b > a THEN EXIT DO
-END DO   'or ENDDO
+   if b > a then exit do
+end do   'or enddo
 ```
 
-# <a name="loop"></a>Loop
+# <a name="loop"></a>loop
 
-Ends a `Do` repeating block.
+Ends a `do` repeating block.
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b > a THEN EXIT DO
-LOOP
+   if b > a then exit do
+loop
 ```
 
-# <a name="exitdo"></a>Exit Do
+# <a name="exitdo"></a>exit do
 
-Exits a `Do` loop immediately.
+Exits a `do` loop immediately.
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b > a THEN EXIT DO
-LOOP
+   if b > a then exit do
+loop
 ```
 
-# <a name="continuedo"></a>Continue Do
+# <a name="continuedo"></a>continue do
 
-Goes back to the beginning of a `Do` block.
+Goes back to the beginning of a `do` block.
 
 ```
-DIM AS LONG a, b
+dim as long a, b
 a = 4
-DO
+do
    b += 1
-   IF b < a THEN CONTINUE DO
-   IF b >= a THEN EXIT DO
-LOOP
+   if b < a then continue do
+   if b >= a then exit do
+loop
 ```
 
-# <a name="continuefor"></a>Continue For
+# <a name="continuefor"></a>continue for
 
 Goes back to the beginning of a `For` block.
 
 ```
-DIM a, b, i AS LONG
+dim a, b, i as long
 a = 4
-FOR i = 1 TO 10
+for i = 1 to 10
    b += 1
-   IF b < a THEN CONTINUE FOR
-   IF b >= a THEN EXIT FOR
-NEXT
+   if b < a then continue for
+   if b >= a then exit for
+next
 ```
 
-# <a name="continuewhile"></a>Continue While
+# <a name="continuewhile"></a>continue while
 
-Goes back to the beginning of a `While` block.
+Goes back to the beginning of a `while` block.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b < a
+while b < a
    b += 1
-   IF b < a THEN CONTINUE WHILE
-WEND
+   if b < a then continue while
+wend
 ```
-# <a name="repeat"></a>Repeat
+# <a name="repeat"></a>repeat
 
 Starts a block for conditional repetition.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   IF b < a THEN REPEAT DO
-   IF b >= a THEN EXIT DO
-LOOP
+   if b < a then repeat do
+   IF b >= a then exit do
+loop
 ```
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   REPEAT UNTIL b >= a
-   IF b >= a THEN EXIT DO
-LOOP
+   repeat until b >= a
+   if b >= a then exit do
+loop
 ```
 
-# <a name="until"></a>Until
+# <a name="until"></a>until
 
-Continue executing a `Repeat` loop until a condition is met.
+Continue executing a `repeat` loop until a condition is met.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   REPEAT UNTIL b >= a
-   IF b >= a THEN EXIT DO
-LOOP
+   repeat until b >= a
+   if b >= a then exit do
+loop
 ```
 
-# <a name="redo"></a>Redo
+# <a name="redo"></a>redo
 
 Starts a block for conditional repetition.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   REDO UNTIL b >= a
-   IF b >= a THEN EXIT DO
-LOOP
+   redo until b >= a
+   if b >= a then exit do
+loop
 ```
 
+# <a name="break"></a>break
 
-# <a name="break"></a>Break
-
-Exits a `Switch`, `Do` or `While` blocks.
+Exits a `switch`, `do` or `while` blocks.
 
 ```
-DIM a AS LONG, s AS STRING
+dim a as long, s as string
 a = 3
 switch a {
   case 1
@@ -772,50 +770,50 @@ switch a {
 ```
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   IF b >= a THEN BREAK
-LOOP
+   if b >= a then break
+loop
 ```
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+while b <= a
    b += 1
-   IF b = a THEN BREAK
-END WHILE
+   if b = a then break
+end while
 ```
 
-# <a name="breakwhen"></a>Break When
+# <a name="breakwhen"></a>break when
 
-Exits a `Switch`, `Do` or `While` block when a condition is met.
+Exits a `switch`, `do` or `while` block when a condition is met.
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+while b <= a
    b += 1
-   BREAK WHEN b = a
-END WHILE
+   break when b = a
+end while
 ```
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-DO
+do
    b += 1
-   BREAK WHEN b = a
-LOOP
+   break when b = a
+loop
 ```
 
 ```
-DIM a, b AS LONG
+dim a, b as long
 a = 4
-WHILE b <= a
+while b <= a
    b += 1
-   BREAK WHEN b = a
-WEND
+   break when b = a
+wend
 ```
