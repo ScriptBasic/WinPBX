@@ -53,13 +53,15 @@
 | ---------- | ----------- |
 | [long](#long) | Used in conjunction with other types to double the bit width. |
 | [short](#short) | Used in conjunction with other types to halve the bit width. |
+| [signed](#signed) | Specifies that the type is a signed integer. |
+| [unsigned](#unsigned) | Specifies thay the type is an unsigned integer. |
 | [wide](#wide) | Used in conjunction with other types to double the bit width. |
 
 ### Assembler
 
 | Name       | Description |
 | ---------- | ----------- |
-| [qword](#qword) | Specify a 64-bit operand in assembly code.  |
+| [qword](#qword) | Specifies a 64-bit operand in assembly code.  |
 
 # <a name="byte"></a>byte
 
@@ -796,8 +798,28 @@ Garbage collection not required
 
 # <a name="qword"></a>qword
 
-Specify a 64 bit operand in assembly code.
+Specifies a 64 bit operand in assembly code.
 
 ```
 fld qword d
 ```
+
+# <a name="signed"></a>signed
+
+Specifies that the type is a signed integer.
+
+```
+signed int v
+```
+
+A signed int (long) called v is created.
+
+# <a name="unsigned"></a>unsigned
+
+Specifies that the type is an unsigned integer.
+
+```
+unsigned long v
+```
+
+An unsigned long (dword) called v is created.
