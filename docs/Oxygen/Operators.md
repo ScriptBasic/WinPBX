@@ -62,16 +62,16 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [&&](#booleanand) | Returns the logical AND operation of two numeric values. |
-| [\|\|](#booleanor) | Returns the logical OR operation of two numeric values. |
+| [&&](#booleanand) | Returns the logical And operation of two numeric values. |
+| [\|\|](#booleanor) | Returns the logical Or operation of two numeric values. |
 
 ### Bitwise Operators
 
 | Name       | Description |
 | ---------- | ----------- |
-| [&](#bitwiseand) | Bitwise **and**. |
-| [\|](#bitwiseor) | Bitwise **or**. |
-| [^^](#bitwisexor) | Bitwise **xor**. |
+| [&](#bitwiseand) | Bitwise And. |
+| [\|](#bitwiseor) | Bitwise Or. |
+| [^^](#bitwisexor) | Bitwise Xor. |
 | [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
 | [<<<](#rotateleft) | Shifts all bits one place to the left. |
