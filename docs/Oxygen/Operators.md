@@ -99,11 +99,13 @@
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
 | [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
 
-### Explicit Type Conversion Operator
+### Casting operators
 
 | Name       | Description |
 | ---------- | ----------- |
+| [cast](#cast) | Changes or specifies the type of a variable temporarily, in an expression. |
 | [()](#explicitcast) | Allows explicit type conversion using syntax similar to the function-call syntax. |
+| [?](#castint) | Casts variables as integers. |
 
 ### Overloading Operators
 
@@ -948,4 +950,21 @@ print i
 ' Output: 12345
 ```
 
+# <a name="castint"></a>Integer cast operator: ?
 
+Casts variables as integers.
+
+```
+float f = 100
+print hex(?f)   ' display the hexadecimal form of float f
+```
+
+# <a name="cast"></a>cast
+
+Changes or specifies the type of a variable temporarily, in an expression.
+
+```
+float f = 100
+print hex( cast(int) f)   ' display the hexadecimal form of float f
+print hex( (int) f )      ' the same without using the 'cast' word
+```
