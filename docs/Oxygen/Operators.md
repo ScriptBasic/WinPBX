@@ -261,7 +261,7 @@ v[2]<=
 print v[3].x tab v[3].y tab v[3].z  tab v[3].s
 ```
 
-The `=` operator is also used to compare two expressions for equality, but if the #assign directive is on, `==`must always be used to test equality instead of `=`. When this directive is active, **=** emulates the C convention of `=` always being an assignment operator in conditional statements, e.g.
+The `=` operator is also used to compare two expressions for equality, but if the `#assign` directive is on, `==`must always be used to test equality instead of `=`. When this directive is active, **=** emulates the C convention of `=` always being an assignment operator in conditional statements, e.g.
 
 ```
 #assign on
