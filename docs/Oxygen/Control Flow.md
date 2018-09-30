@@ -46,7 +46,7 @@ Statements that execute code repeatedly.
 | [exit do](#exitdo) | Exits a **do** loop immediately. | |
 | [continue do](#continuedo) | Goes back to the beginning of a **do** block. |
 | [for](#for) | Starts an iteration block. |
-| [to](#to) | Specifies the liit of an iteration. |
+| [to](#to) | Specifies the limit of an iteration. |
 | [step](#step) | Specifies the incremente of an iteration. |
 | [next](#next) | Ends an iteration block. |
 | [exit for](#exitfor) | Exits a **for** loop immediately. |
