@@ -39,12 +39,12 @@
 | [\\=](#integerdivideandassign) | Integer divides and assigns a value to a variable. |
 | [&=](#bitwiseandandassign) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
 | [\|=](#bitwiseorandassign) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
-| [&&=](#booleanandandassign) | Performs a logical AND operation and assigns the result to a variable. |
-| [\|\|=](#booleanorandassign) | Performs a logical OR operation and assigns the result to a variable. |
-| [^^=](#booleanxorandassign) | Performs a logical XOR operation and assigns the result to a variable. |
-| [And=](#bitwiseandandassign2) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
-| [Or=](#bitwiseorandassign2) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
-| [Xor=](#bitwisexorandassign2) | Performs a bitwise-xor (exclusive disjunction) and assigns the result to a variable. |
+| [&&=](#booleanandandassign) | Performs a logical and operation and assigns the result to a variable. |
+| [\|\|=](#booleanorandassign) | Performs a logical or operation and assigns the result to a variable. |
+| [^^=](#booleanxorandassign) | Performs a logical xor operation and assigns the result to a variable. |
+| [and=](#bitwiseandandassign2) | Performs a bitwise-and (conjunction) and assigns the result to a variable. |
+| [or=](#bitwiseorandassign2) | Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable. |
+| [xor=](#bitwisexorandassign2) | Performs a bitwise-xor (exclusive disjunction) and assigns the result to a variable. |
 
 ### Relational and Comparison Operators
 
@@ -69,18 +69,18 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [&](#bitwiseand) | Bitwise AND. |
-| [\|](#bitwiseor) | Bitwise OR. |
-| [^^](#bitwisexor) | Bitwise XOR. |
+| [&](#bitwiseand) | Bitwise **and**. |
+| [\|](#bitwiseor) | Bitwise **or**. |
+| [^^](#bitwisexor) | Bitwise **xor**. |
 | [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
 | [<<<](#rotateleft) | Shifts all bits one place to the left. |
 | [>>>](#rotateright) | Shifts all bits one place to the right. |
-| [And](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
-| [Not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
-| [Or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
-| [Xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
-| [Not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
+| [and](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
+| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
+| [or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
+| [xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
+| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
 ### Explicit Type Conversion Operator
 
@@ -221,37 +221,37 @@ print str(A+B)
 print str(C*(A+B))
 ```
 
-# <a name="assignment"></a>Assigment Operator (=)
+# <a name="assignment"></a>Assigment operator (=)
 
 Assigns a value to a variable.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 5
 ```
 
 Multiple assignments
 
 ```
-SYS a, b, c
+sys a, b, c
 a = b = c = 3.5
 print a "  " b "  " c
 ```
 ```
-DOUBLE a, b, c
+double a, b, c
 a = b = c = 3.5
 print a "  " b "  " c
 ```
 ```
-STRING a, b, c
+string a, b, c
 a = b = c = "okay"
 print a " " b " " c
 ```
 
 ```
 ' On an array of compoud types
-TYPE LabelledPoint SINGLE x, y, z, STRING s
-DIM AS LabelledPoint v[100]
+type LabelledPoint single x, y, z, string s
+dim as LabelledPoint v[100]
 v[2]<=
 0,1,2,"point A",
 0,3,4,"point B",
@@ -268,14 +268,14 @@ The `=` operator is also used to compare two expressions for equality, but if th
 if hresult = QueryInterface(gu,ob) then ...
 ```
 
-the hresult variable receives the result code of the call to QueryInterface.
+the *hresult* variable receives the result code of the call to **QueryInterface**.
 
-# <a name="assignment2"></a>Assigment Operator (:=)
+# <a name="assignment2"></a>Assigment operator (:=)
 
 Assigns a value to a variable.
 
 ```
-DIM x AS LONG
+dim x as long
 x := 5
 ```
 
@@ -288,89 +288,89 @@ while bRet := GetMessage @wm, 0, 0, 0
    ...
 ```
 
-# <a name="assignment2"></a>Assigment Operator (=>)
+# <a name="assignment2"></a>Assigment operator (=>)
 
 Assigns a value to a variable or values to an array. Can be used instead of `=` to avoid ambiguity in certain cases.
 
 ```
-DIM x AS LONG => 10
-DIM LONG a[8] => (2, 4, 6, 8, 10, 12, 42, 99)
-LONG a[8] <= (2,4,6,8,10,12,42,99)
+dim x as long => 10
+dim long a[8] => (2, 4, 6, 8, 10, 12, 42, 99)
+long a[8] <= (2,4,6,8,10,12,42,99)
 ```
 
-# <a name="assignment3"></a>Assigment Operator (<=)
+# <a name="assignment3"></a>Assigment operator (<=)
 
 Assigns a value to a variable or values to an array. Can be used instead of `=` to avoid ambiguity in certain cases.
 
 ```
-DIM x AS LONG <= 10
-LONG a[8] <= (2,4,6,8,10,12,42,99)
+dim x as long <= 10
+long a[8] <= (2,4,6,8,10,12,42,99)
 ```
 
-# <a name="addition"></a>Addition Operator (+)
+# <a name="addition"></a>Addition operator (+)
 
 Sums two expressions.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 3 + 4
 ```
 
-# <a name="substraction"></a>Substraction Operator (-)
+# <a name="substraction"></a>Substraction operator (-)
 
 Substracts two expressions.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 5 - 2
 ```
 
-# <a name="negate"></a>Negate Operator (-)
+# <a name="negate"></a>Negate operator (-)
 
 Returns the negative of the expression.
 
 ```
-DIM x AS LONG = 123
+dim x as long = 123
 x = -x
 ```
 
-# <a name="multiplication"></a>Multiplication Operator (*)
+# <a name="multiplication"></a>Multiplication operator (*)
 
 Multiplies two expressions.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 5 * 2
 ```
 
-# <a name="division"></a>Divison Operator (/)
+# <a name="division"></a>Divison operator (/)
 
 Divides two expressions.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 10 / 2
 ```
 
-# <a name="integerdivision"></a>Integer Divison Operator (\)
+# <a name="integerdivision"></a>Integer divison operator (\)
 
 Divides two integer expressions.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 13 \ 2
 ```
 
-# <a name="exponentiate"></a>Exponentiate Operator (^)
+# <a name="exponentiate"></a>Exponentiate operator (^)
 
 Raises a numeric expression to a given power.
 
 ```
-DIM x AS LONG
+dim x as long
 x = 11 ^ 2
 ```
 
-# <a name="increment"></a>Increment Operator (++)
+# <a name="increment"></a>Increment operator (++)
 
 Increments its operand by 1. The increment operator can appear before or after its operand: `++variable` and `variable++`.
 
@@ -379,173 +379,173 @@ The first form is a prefix increment operation. The result of the operation is t
 The second form is a postfix increment operation. The result of the operation is the value of the operand before it has been incremented.
 
 ```
-DIM x AS LONG = 5
-DIM r AS LONG = ++x
+dim x as long = 5
+dim r as long = ++x
 print r
 ' Output 6
 ```
 
 ```
-DIM x AS LONG = 5
-DIM r AS LONG = x++
+dim x as long = 5
+dim r as long = x++
 print r
 ' Output 5
 ```
 
-# <a name="decrement"></a>Decrement Operator (--)
+# <a name="decrement"></a>Decrement operator (--)
 
 Decrements its operand by 1. The decrement operator can appear before or after its operand: `--variable` and `variable--`.
 
 The first form is a prefix decrement operation. The result of the operation is the value of the operand "after" it has been decremented. The second form is a postfix decrement operation. The result of the operation is the value of the operand "before" it has been decremented.
 
 ```
-DIM x AS LONG = 5
-DIM r AS LONG = --x
+dim x as long = 5
+dim r as long = --x
 print r
 ' Output 4
 ```
 
 ```
-DIM x AS LONG = 5
-DIM r AS LONG = x--
+dim as long = 5
+dim r as long = x--
 print r
 ' Output 5
 ```
 
-# <a name="addandassign"></a>Add and Assign Operator (+=)
+# <a name="addandassign"></a>Add and assign operator (+=)
 
 Adds and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 5
+dim x as long = 5
 x += 3
 ```
 
-# <a name="substractandassign"></a>Substract and Assign Operator (-=)
+# <a name="substractandassign"></a>Substract and assign operator (-=)
 
 Substracts and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 5
+dim x as long = 5
 x -= 3
 ```
 
-# <a name="multiplyandassign"></a>Multiply and Assign Operator (*=)
+# <a name="multiplyandassign"></a>Multiply and assign operator (*=)
 
 Multiplies and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 5
+dim x as long = 5
 x *= 2
 ```
 
-# <a name="divideandassign"></a>Divide and Assign Operator (/=)
+# <a name="divideandassign"></a>Divide and assign operator (/=)
 
 Divides and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 10
+dim x as long = 10
 x /= 2
 ```
 
-# <a name="divideandassign"></a>Divide and Assign Operator (/=)
+# <a name="divideandassign"></a>Divide and assign operator (/=)
 
 Divides and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 10
+dim x as long = 10
 x /= 2
 ```
 
-# <a name="integerdivideandassign"></a>Integer Divide and Assign Operator (\=)
+# <a name="integerdivideandassign"></a>Integer divide and assign operator (\=)
 
 Integer divides and assigns a value to a variable.
 
 ```
-DIM x AS LONG = 13
+dim x as long = 13
 x \= 2
 ```
 
-# <a name="bitwiseandandassign"></a>Bitwise AND and Assign Operator (&=)
+# <a name="bitwiseandandassign"></a>Bitwise And and assign operator (&=)
 
 Performs a bitwise-and (conjunction) and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 11
+dim x as long = 11
 x &= 1
 ```
 
-# <a name="bitwiseorandassign"></a>Bitwise OR and Assign Operator (\!=)
+# <a name="bitwiseorandassign"></a>Bitwise Or and assign operator (\!=)
 
 Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
+dim x as long = 1
 x != 1
 ```
 
-# <a name="booleanandandassign"></a>Logical AND and Assign Operator (&&=)
+# <a name="booleanandandassign"></a>Logical And and assign operator (&&=)
 
 Performs a logical AND operation and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
+DIM x as long = 1
 x &&= 1
 ```
 
-The second operand is evaluated only if the first operand evaluates to true (nonzero). This evaluation eliminates needless evaluation of the second operand when the logical AND expression is false.
+The second operand is evaluated only if the first operand evaluates to true (nonzero). This evaluation eliminates needless evaluation of the second operand when the logical And expression is false.
 
-# <a name="booleanorandassign"></a>Logical OR and Assign Operator (\|\|=)
+# <a name="booleanorandassign"></a>Logical Or and assign operator (\|\|=)
 
 Performs a logical OR operation and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
+dim x as long = 1
 x ||= 1
 ```
 
-The logical OR operator (||) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical OR has left-to-right associativity.
+The logical Or operator (||) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical Or has left-to-right associativity.
 
 The operands to the logical OR operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
 
-The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical OR expression.
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical Or expression.
 
-The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical OR expression is true.
+The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical Or expression is true.
 
-# <a name="booleanxorandassign"></a>Logical XOR and Assign Operator (^^=)
+# <a name="booleanxorandassign"></a>Logical Xor and assign operator (^^=)
 
 Performs a logical XOR operation and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
+dim x as long = 1
 x ^^= 1
 ```
 
-# <a name="bitwiseandandassign2"></a>Bitwise AND and Assign Operator (And=)
+# <a name="bitwiseandandassign2"></a>Bitwise And and assign operator (and=)
 
 Performs a bitwise-and (conjunction) and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 11
-x And= 1
+dim x as long = 11
+x and= 1
 ```
 
-# <a name="bitwiseorandassign2"></a>Bitwise OR and Assign Operator (Or=)
+# <a name="bitwiseorandassign2"></a>Bitwise Or and assign operator (or=)
 
 Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
-x Or= 1
+Dim x as long = 1
+x or= 1
 ```
 
-# <a name="bitwisexorandassign2"></a>Bitwise XOR and Assign Operator (Xor=)
+# <a name="bitwisexorandassign2"></a>Bitwise Xor and assign operator (xor=)
 
 Performs a bitwise-xor (inclusive disjunction) and assigns the result to a variable.
 
 ```
-DIM x AS LONG = 1
-x Xor= 1
+dim x as long = 1
+x xor= 1
 ```
 
 # <a name="equalto"></a>Operator ==
@@ -553,9 +553,9 @@ x Xor= 1
 Compares two expressions for equality.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-IF x1 == x2 THEN PRINT "Equal"
+dim x1 as long = 1
+dim x2 as long = 1
+if x1 == x2 then print "Equal"
 ```
 
 If the #assign directive is on, `==` must always be used to test equality instead of `=`.
@@ -565,9 +565,9 @@ If the #assign directive is on, `==` must always be used to test equality instea
 Compares two expressions for inequality.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x1 |= x2 THEN PRINT "Not equal"
+dim x1 as long = 1
+dim x2 as long = 2
+if x1 |= x2 yhen print "Not equal"
 ```
 
 # <a name="notequalto2"></a>Operator <>
@@ -575,9 +575,9 @@ IF x1 |= x2 THEN PRINT "Not equal"
 Compares two expressions for inequality.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x1 <> x2 THEN PRINT "Not equal"
+dim x1 as long = 1
+dim x2 as long = 2
+if x1 <> x2 then print "Not equal"
 ```
 
 # <a name="lessthan"></a>Operator <
@@ -585,9 +585,9 @@ IF x1 <> x2 THEN PRINT "Not equal"
 Compares an expression less than another expression.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x1 < x2 THEN PRINT "Less"
+dim x1 as long = 1
+dim x2 as long = 2
+if x1 < x2 then print "Less"
 ```
 
 # <a name="greaterthan"></a>Operator >
@@ -595,9 +595,9 @@ IF x1 < x2 THEN PRINT "Less"
 Compares an expression greater than another expression.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x2 > x1 THEN PRINT "Greater"
+dim x1 as long = 1
+dim x2 as long = 2
+if x2 > x1 then print "Greater"
 ```
 
 # <a name="lessthanorqeualto"></a>Operator <=
@@ -605,9 +605,9 @@ IF x2 > x1 THEN PRINT "Greater"
 Compares an expression less than or equal to another expression.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x1 < x2 THEN PRINT "Less or equal"
+dim x1 as long = 1
+dim x2 as long = 2
+if x1 < x2 then print "Less or equal"
 ```
 
 # <a name="greaterthanorqeualto"></a>Operator >=
@@ -615,163 +615,163 @@ IF x1 < x2 THEN PRINT "Less or equal"
 Compares an expression greater than or equal to another expression.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-IF x2 < x1 THEN PRINT "Greater or equal"
+dim x1 as long = 1
+dim x2 as long = 2
+if x2 < x1 then print "Greater or equal"
 ```
 
 # <a name="booleanand"></a>Operator &&
 
-Returns the logical AND operation of two numeric values.
+Returns the logical and operation of two numeric values.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-PRINT x1 && x2
+dim x1 as long = 1
+dim x2 as long = 2
+print x1 && x2
 ```
 
-The logical AND operator (&&) returns the boolean value true if both operands are true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical AND has left-to-right associativity.
+The logical And operator (&&) returns the boolean value true if both operands are true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical AND has left-to-right associativity.
 
 The operands to the logical AND operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
 
-The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical AND expression.
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical And expression.
 
 # <a name="booleanor"></a>Operator \|\|
 
 Returns the logical OR operation of two numeric values.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 2
-PRINT x1 || x2
+dim x1 as long = 1
+dim x2 as long = 2
+print x1 || x2
 ```
 
-The logical OR operator (\|\|) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical OR has left-to-right associativity.
+The logical Or operator (\|\|) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical Or has left-to-right associativity.
 
 The operands to the logical OR operator need not be of the same type, but they must be of integral or pointer type. The operands are commonly relational or equality expressions.
 
-The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical OR expression.
+The first operand is completely evaluated and all side effects are completed before continuing evaluation of the logical Or expression.
 
-The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical OR expression is true.
+The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical Or expression is true.
 
-# <a name="bitwiseand"></a>Bitwise AND Operator (&)
+# <a name="bitwiseand"></a>Bitwise And Operator (&)
 
-Performs a bitwise AND operation.
-
-```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 & x2
-```
-
-# <a name="bitwisenot"></a>Bitwise NOT Operator
-
-Returns the bitwise-not (complement) of a numeric value. For a boolean type, NOT FALSE returns TRUE (-1) and NOT TRUE returns FALSE (0).
+Performs a bitwise And operation.
 
 ```
-DIM n AS BYTE
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 & x2
+```
+
+# <a name="bitwisenot"></a>Bitwise Not operator
+
+Returns the bitwise-not (complement) of a numeric value. For a boolean type, `not false` returns true (-1) and `not true` returns false (0).
+
+```
+dim n AS byte
 n = 15 '00001111
-PRINT NOT n
+print not n
 'Result = -16 =     11110000
 ```
 
 When used on conditional expressions it inverts the conditional logic.
 
 ```
-IF MOT a > 42 THEN ...    'IF a <= 42 THEN ...
+if not a > 42 then ...    'if a <= 42 then ...
 ```
 
-# <a name="bitwiseor"></a>Bitwise OR Operator (\|)
+# <a name="bitwiseor"></a>Bitwise Or operator (\|)
 
-Performs a bitwise OR operation.
-
-```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 | x2
-```
-
-# <a name="bitwisexor"></a>Bitwise XOR Operator (^^)
-
-Performs a bitwise XOR operation.
+Performs a bitwise Or operation.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 ^^ x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 | x2
 ```
 
-# <a name="shiftleft"></a>Shift Left Operator (<<)
+# <a name="bitwisexor"></a>Bitwise Xor operator (^^)
+
+Performs a bitwise Xor operation.
+
+```
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 ^^ x2
+```
+
+# <a name="shiftleft"></a>Shift left operator (<<)
 
 Shifts the bits of a numeric expression to the left.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 << x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 << x2
 ```
 
-# <a name="shiftright"></a>Shift Right Operator (>>)
+# <a name="shiftright"></a>Shift right operator (>>)
 
 Shifts the bits of a numeric expression to the right.
 
 ```
-DIM x1 AS LONG = 2
-DIM x2 AS LONG = 1
-PRINT x1 >> x2
+dim x1 as long = 2
+dim x2 as long = 1
+print x1 >> x2
 ```
 
-# <a name="rotateleft"></a>Rotate Left Operator (<<<)
+# <a name="rotateleft"></a>Rotate left operator (<<<)
 
 Shifts all bits one place to the left.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 <<< x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 <<< x2
 ```
 
-# <a name="rotateright"></a>Rotate Right Operator (>>>)
+# <a name="rotateright"></a>Rotate right operator (>>>)
 
 Shifts all bits one place to the left.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 >>> x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 >>> x2
 ```
 
-# <a name="bitwiseand2"></a>Bitwise AND Operator (And)
+# <a name="bitwiseand2"></a>Bitwise And operator (and)
 
-Performs a bitwise AND operation.
-
-```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 And x2
-```
-
-# <a name="bitwiseor2"></a>Bitwise OR Operator (Or)
-
-Performs a bitwise OR operation.
+Performs a bitwise And operation.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 Or x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 and x2
 ```
 
-# <a name="bitwisexor2"></a>Bitwise XOR Operator (Xor)
+# <a name="bitwiseor2"></a>Bitwise Or operator (or)
 
-Performs a bitwise XOR operation.
+Performs a bitwise Or operation.
 
 ```
-DIM x1 AS LONG = 1
-DIM x2 AS LONG = 1
-PRINT x1 Xor x2
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 Or x2
 ```
 
-# <a name="explicitcast"></a>Explicit Type Conversion Operator: ()
+# <a name="bitwisexor2"></a>Bitwise Xor operator (xor)
+
+Performs a bitwise Xor operation.
+
+```
+dim x1 as long = 1
+dim x2 as long = 1
+print x1 xor x2
+```
+
+# <a name="explicitcast"></a>Explicit type conversion operator: ()
 
 Allows explicit type conversion using syntax similar to the function-call syntax.
 
@@ -779,18 +779,18 @@ Allows explicit type conversion using syntax similar to the function-call syntax
 int i = int(d)
 ```
 
-# <a name="pointerindex"></a>Pointer Index Operator: []
+# <a name="pointerindex"></a>Pointer index operator: []
 
 You can use square brackets to index off a pointer. No bounds checking is performed.
 
 ```
-DIM s AS STRING = "ABCDEFGHIJ"
-DIM b AS BYTE AT STRPTR(s)
-PRINT STR(b[3]) " :  " CHR(b[3])
+dim s as string = "ABCDEFGHIJ"
+dim b as byte at strptr(s)
+print str(b[3]) " :  " chr(b[3])
 b[3] = 84   ' "T"
 ' --or--
-' b[3] = ASC("T")
-PRINT s
+' b[3] = asc("T")
+print s
 ```
 
 
