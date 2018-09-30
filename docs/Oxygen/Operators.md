@@ -857,7 +857,10 @@ print x1 xor x2
 Allows explicit type conversion using syntax similar to the function-call syntax.
 
 ```
+dim d as double = 12345.67
 int i = int(d)
+print i
+' Output: 12345
 ```
 
 # <a name="pointerindex"></a>Pointer index operator: []
