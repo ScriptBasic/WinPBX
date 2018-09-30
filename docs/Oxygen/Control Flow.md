@@ -77,14 +77,14 @@ if x = 1 then goto LExit
 ```
 
 ```
-10  REM Legacy
+10  rem Legacy
 20  dim a as single, b as single, c as single, i as long
 30  a = 1.0 : b = 1.0 : i = 0
 40  c = a + b
 60: i = i + 1
 70: if i < 20 then a = b : b = c : goto 40
 80:   
-90: PRINT "APPROX FIBONACCI NUMBER: " str(c / b)
+90: print "Approx Fibonacci number: " str(c / b)
 ```
 
 # <a name="gosub"></a>gosub
