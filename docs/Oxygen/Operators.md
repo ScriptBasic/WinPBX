@@ -95,6 +95,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [@](#addressof) | Returns the address of a variable, string literal or procedure. |
+| [&](#addressof) | Returns the address of a variable, string literal or procedure. |
 | [\*](#valueof) | Dereferenes a pointer. |
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
 | [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
@@ -235,21 +236,24 @@ print str(A+B)
 print str(C*(A+B))
 ```
 
-# <a name="addressof"></a>AddressOf Operator (@)
+# <a name="addressof"></a>AddressOf Operators (@) (&)
 
-Returns the address of a variable, string literal or procedure.
+Return the address of a variable, string literal or procedure.
 
 ```
 DIM v AS LONG = 12345
 print @v
+print &v
 ```
 ```
 print @"Test string"
+print &"Test string"
 ```
 ```
 sub Foo
 end sub
 print @Foo
+print &Foo
 ```
 
 Can also be used to read and write data of variables and arrays of variables, by reference. Unlike C, pointer resolution is handled implictly. So the @ operator is required for manipulating pointers. It is similar to the & operator in C. 
