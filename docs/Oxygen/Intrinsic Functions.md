@@ -37,7 +37,7 @@
 | [cos](#cos) |  |
 | [deg](#deg) |  |
 | [floor](#floor) |  |
-| [frac](#frac |  |
+| [frac](#frac) |  |
 | [hypot](#hypot) |  |
 | [log](#log) |  |
 | [log2](#log2) |  |
@@ -64,3 +64,27 @@
 | [hiword](#hiword) |  |
 | [lobyte](#lobyte) |  |
 | [loword](#loword) |  |
+
+### Memory Functions
+
+| Name       | Description |
+| ---------- | ----------- |
+| [copy](#copy) |  |
+| [copy0](#copy0) |  |
+| [copy00](#copy00) |  |
+| [copyn](#copyn) |  |
+
+# <a name="copy"></a>copy
+
+Copies the values of *NumBytes* from the location pointed to by *SourceAddress* directly to the memory block pointed to by *DestinationAddress*.
+
+#### Syntax
+
+```
+SUB sub copy (DestinationAddress, SourceAddress, NumBytes)
+```
+
+
+The underlying type of the objects pointed to by both the source and destination pointers are irrelevant for this procedure; the result is a binary copy of the data. This proceudre does not check for any terminating null character in source: it always copies exactly num bytes.
+
+To avoid overflows, the size of the memory blocks pointed to by both the *DestinationAddress* and *SourceAddress* parameters, shall be at least *NumBytes*, and should not overlap.
