@@ -71,8 +71,8 @@
 | ---------- | ----------- |
 | [copy](#copy) | Copies a block of memory. |
 | [copyn](#copy) | Copies a block of memory. |
-| [copy0](#copy0) |  |
-| [copy00](#copy00) |  |
+| [copy0](#copy0) | Copies a null terminated string to another location. |
+| [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
 
 # <a name="copy"></a>copy / copyn
 
