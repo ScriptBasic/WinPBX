@@ -81,7 +81,7 @@ Copies the values of *NumBytes* from the location pointed to by *SourceAddress* 
 #### Syntax
 
 ```
-SUB sub copy (DestinationAddress, SourceAddress, NumBytes)
+sub copy (DestinationAddress, SourceAddress, NumBytes)
 ```
 
 The underlying type of the objects pointed to by both the source and destination pointers are irrelevant for this procedure; the result is a binary copy of the data. This proceudre does not check for any terminating null character in source: it always copies exactly num bytes.
@@ -91,4 +91,28 @@ To avoid overflows, the size of the memory blocks pointed to by both the *Destin
 ```
 copy &dest, &src, n
 copyn &dest, &src, n
+```
+
+# <a name="copy0"></a>copy0
+
+Copies a null terminated string to another location.
+
+```
+sub copy0 (DestinationAddress, SourceAddress)
+```
+
+```
+copy0 &dest, &src
+```
+
+# <a name="copy00"></a>copy00
+
+Copies a null terminated string of wide (2 bytes) characters to another location.
+
+```
+sub copy00 (DestinationAddress, SourceAddress)
+```
+
+```
+copy00 &dest, &src
 ```
