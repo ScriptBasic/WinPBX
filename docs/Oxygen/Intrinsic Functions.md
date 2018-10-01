@@ -69,14 +69,14 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [copy](#copy) |  |
+| [copy](#copy) | Copies a block of memory. |
+| [copyn](#copyn) | Copies a block of memory. |
 | [copy0](#copy0) |  |
 | [copy00](#copy00) |  |
-| [copyn](#copyn) |  |
 
-# <a name="copy"></a>copy
+# <a name="copy"></a>copy / copyn
 
-Copies the values of *NumBytes* from the location pointed to by *SourceAddress* directly to the memory block pointed to by *DestinationAddress*.
+Copies the values of *NumBytes* from the location pointed to by *SourceAddress* directly to the memory block pointed to by *DestinationAddress*. `copy` and `copyn` are the same.
 
 #### Syntax
 
@@ -84,7 +84,11 @@ Copies the values of *NumBytes* from the location pointed to by *SourceAddress* 
 SUB sub copy (DestinationAddress, SourceAddress, NumBytes)
 ```
 
-
 The underlying type of the objects pointed to by both the source and destination pointers are irrelevant for this procedure; the result is a binary copy of the data. This proceudre does not check for any terminating null character in source: it always copies exactly num bytes.
 
 To avoid overflows, the size of the memory blocks pointed to by both the *DestinationAddress* and *SourceAddress* parameters, shall be at least *NumBytes*, and should not overlap.
+
+```
+copy &dest, &src, n
+copyn &dest, &src, n
+```
