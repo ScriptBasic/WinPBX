@@ -61,8 +61,8 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [hibyte](#hibyte) |  |
-| [hiword](#hiword) |  |
 | [lobyte](#lobyte) |  |
+| [hiword](#hiword) |  |
 | [loword](#loword) |  |
 
 ### Memory Functions
