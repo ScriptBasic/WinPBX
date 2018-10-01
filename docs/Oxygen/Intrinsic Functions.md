@@ -70,7 +70,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [copy](#copy) | Copies a block of memory. |
-| [copyn](#copyn) | Copies a block of memory. |
+| [copyn](#copy) | Copies a block of memory. |
 | [copy0](#copy0) |  |
 | [copy00](#copy00) |  |
 
