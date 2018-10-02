@@ -60,10 +60,10 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [hibyte](#hibyte) |  |
-| [lobyte](#lobyte) |  |
-| [hiword](#hiword) |  |
-| [loword](#loword) |  |
+| [hibyte](#hibyte) | Returns the high-order byte of an integer value (bits 8..15). |
+| [lobyte](#lobyte) | Returns the low-order byte of an integer value (bits 0..7). |
+| [hiword](#hiword) | Returns the high-order word of an integer value (bits 16..31). |
+| [loword](#loword) | Returns the low-order word an integer value (bits 0..15). |
 
 ### Memory Functions
 
@@ -73,6 +73,38 @@
 | [copyn](#copy) | Copies a block of memory. |
 | [copy0](#copy0) | Copies a null terminated string to another location. |
 | [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
+
+# <a name="hibyte"></a>hibyte
+
+Returns the high-order byte an integer value (bits 8..15).
+
+```
+result = hibyte ( expression )
+```
+
+# <a name="lobyte"></a>lobyte
+
+Returns the low-order byte an integer value (bits 0..7).
+
+```
+result = lobyte ( expression )
+```
+
+# <a name="hiword"></a>hiword
+
+Returns the high-order word an integer value (bits 16..31).
+
+```
+result = hiword ( expression )
+```
+
+# <a name="loword"></a>loword
+
+Returns the low-order word an integer value (bits 0..15).
+
+```
+result = loword ( expression )
+```
 
 # <a name="copy"></a>copy / copyn
 
