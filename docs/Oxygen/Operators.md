@@ -238,7 +238,7 @@ print str(C*(A+B))
 
 # <a name="addressof"></a>AddressOf Operators (@) (&)
 
-Return the address of a variable, string literal or procedure.
+Returns the address of a variable, string literal or procedure.
 
 ```
 DIM v AS LONG = 12345
