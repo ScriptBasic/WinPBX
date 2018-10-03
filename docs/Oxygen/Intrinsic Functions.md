@@ -44,7 +44,7 @@
 | [log2](#log2) | Returns the binary (base-2) logarithm of a number. |
 | [log10](#log10) | Returns the common (base-10) logarithm of a number. |
 | [logn](#logn) | Returns the logarthm of the first value to the base of the second value. |
-| [mod](#mod) |  |
+| [mod](#mod) | Returns the remainder of first value divided by the second value.  |
 | [pi](#pi) |  |
 | [pow](#pow) |  |
 | [rad](#rad) |  |
@@ -55,7 +55,7 @@
 | [sqr](#sqr) |  |
 | [sqrt](#sqrt) |  |
 | [tan](#tan) | Returns the tangent of a value given in radians. |
-| [trunc](#trunc) | Rounds a float number toward zero. |
+| [trunc](#trunc) | Rounds a float number towards zero. |
 
 ### Bit Manipulation Functions
 
@@ -259,6 +259,16 @@ dim d as double
 d = logn(1000, 10)
 ```
 
+# <a name="mod"></a>mod
+
+Returns the remainder of first value divided by the second value.
+
+```
+dim d as double
+d = mod(83.5, 10)
+' Output: 3.5
+```
+
 # <a name="round"></a>round
 
 Returns the integral value that is nearest to the passed float number.
@@ -292,7 +302,7 @@ result = tan(radians)
 
 # <a name="trunc"></a>trunc
 
-Rounds a float number toward zero, returning the nearest integral value that is not larger in magnitude than the float number.
+Rounds a float number towards zero, returning the nearest integral value that is not larger in magnitude than the float number.
 
 #### Syntax
 
