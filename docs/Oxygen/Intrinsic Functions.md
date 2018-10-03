@@ -98,17 +98,41 @@ d = asin(0.5) * 180.0 / pi
 ' the arc sine of 0.5 is 30 degrees
 ```
 
-# <a name="cos"></a>cos
+# <a name="atan"></a>atan
 
-Returns the cosine of an angle of *x* radians.
+Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. One radian is equivalent to 180/PI degrees.
+
+#### Syntax
+
+```
+angle = atan(y, x) 
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *y* | Value representing the proportion of the y-coordinate. |
+| *x* | Value representing the proportion of the x-coordinate. |
 
 ```
 dim d as double
-d = cos(pi / 3)
+d = atan(0.5, sqr(0.75))
+' Output: 3.1415926535897931
+```
+
+
+# <a name="atn"></a>atn
+
+Returns an angle in radians given the ratio of the *y* and *x* coordinates.
+
+#### Syntax
+
+```
+angle = atn(YXRatio) 
 ```
 ```
 dim d as double
-d = cos (60.0 * PI / 180.0)
+d = atn(1) * 4
+' Output: 3.1415926535897931
 ```
 
 # <a name="ceil"></a>ceil
@@ -132,6 +156,19 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="cos"></a>cos
+
+Returns the cosine of an angle of *x* radians.
+
+```
+dim d as double
+d = cos(pi / 3)
+```
+```
+dim d as double
+d = cos (60.0 * PI / 180.0)
 ```
 
 # <a name="floor"></a>floor
@@ -180,6 +217,14 @@ value   round   floor   ceil    trunc
 -5.5    -6.0    -6.0    -5.0    -5.0
 ```
 
+# <a name="tan"></a>tan
+
+Returns the tangent of a value given in radians.
+
+```
+result = tan(radians)
+```
+
 # <a name="trunc"></a>trunc
 
 Rounds a float number toward zero, returning the nearest integral value that is not larger in magnitude than the float number.
@@ -201,50 +246,6 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
-```
-
-# <a name="tan"></a>tan
-
-Returns the tangent of a value given in radians.
-
-```
-result = tan(radians)
-```
-
-# <a name="atn"></a>atn
-
-Returns an angle in radians given the ratio of the *y* and *x* coordinates.
-
-#### Syntax
-
-```
-angle = atn(YXRatio) 
-```
-```
-dim d as double
-d = atn(1) * 4
-' Output: 3.1415926535897931
-```
-
-# <a name="atan"></a>atan
-
-Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. One radian is equivalent to 180/PI degrees.
-
-#### Syntax
-
-```
-angle = atan(y, x) 
-```
-
-| Name       | Description |
-| ---------- | ----------- |
-| *y* | Value representing the proportion of the y-coordinate. |
-| *x* | Value representing the proportion of the x-coordinate. |
-
-```
-dim d as double
-d = atan(0.5, sqr(0.75))
-' Output: 3.1415926535897931
 ```
 
 # <a name="hibyte"></a>hibyte
