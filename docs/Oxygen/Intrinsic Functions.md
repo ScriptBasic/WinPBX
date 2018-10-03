@@ -6,7 +6,9 @@
 | ---------- | ----------- |
 | [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
 | [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
-| [frees](#frees) |  |
+| [freememory](#freememory) | Frees a previously allocated memory block. |
+| [frees](#frees) | Deallocates a bstring. |
+| [getmemory](#getmemory) | Allocates a block of memory and returns its base address. |
 | [hex](#hex) |  |
 | [instr](#instr) |  |
 | [lcase](#lcase) |  |
@@ -14,7 +16,7 @@
 | [len](#len) |  |
 | [ltrim](#ltrim) |  |
 | [mid](#mid) |  |
-| [news](#nws) |  |
+| [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) |  |
 | [right](#right) |  |
 | [rtrim](#rtrim) |  |
@@ -95,6 +97,50 @@ Returns the absolute value of a number (removes the negative sign).
 dim d as double
 d = abs(-2.5)
 ' Output: 2.5
+```
+
+# <a name="freememory"></a>freememory
+
+Frees a previously allocated memory block.
+
+```
+dim pmem as sys
+pmem = getmemory(8000)
+'...
+freememory pmem
+```
+
+# <a name="frees"></a>fress
+
+Frees a bstring.
+
+```
+dim b as bstring
+b = news(1000)
+'...
+frees b
+```
+
+# <a name="getmemory"></a>getmemory
+
+Allocates a block of memory and returns its base address.
+
+```
+dim pmem as sys
+pmem = getmemory(8000)
+'...
+freememory pmem
+```
+
+# <a name="news"></a>news
+
+Allocates a bstring of null characters given the length in bytes.
+
+```
+dim b as bstring
+b = news(1000)
+'...
+frees b
 ```
 
 # <a name="acos"></a>acos
