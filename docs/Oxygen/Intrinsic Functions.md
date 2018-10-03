@@ -4,7 +4,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [asc](#asc) |  |
+| [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
 | [chr](#chr) |  |
 | [frees](#frees) |  |
 | [hex](#hex) |  |
@@ -74,6 +74,18 @@
 | [copyn](#copy) | Copies a block of memory. |
 | [copy0](#copy0) | Copies a null terminated string to another location. |
 | [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
+
+# <a name="asc"></a>asc
+
+Returns the corresponding ASCII or Unicode integer representation of a character in a string.
+
+The function returns zero (0) if the string is a zero length string, position is less than one (1), or position is greater than the number of characters in str.
+
+```
+dim a as long
+a = asc("ABCDEF", 2)
+' Output: 66 (character "B")
+```
 
 # <a name="abs"></a>abs
 
