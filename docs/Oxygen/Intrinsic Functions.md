@@ -17,7 +17,7 @@
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
 | [right](#right) | Returns the rightmost substring of a string. | |
-| [rtrim](#rtrim) |  |
+| [rtrim](#rtrim) | Removes spaces on the right side of a string. |
 | [space](#space) |  |
 | [str](#str) |  |
 | [ucase](#ucase) |  |
@@ -247,6 +247,15 @@ Returns the rightmost substring of a string
 ```
 dim s a string = right("abcdef", 3)
 ' Output: "def"
+```
+
+# <a name="rtrim"></a>rtrim
+
+Removes spaces on the right side of a string.
+
+```
+dim s as string = rtrim("abc   ")
+' Output: "abc"
 ```
 
 # <a name="acos"></a>acos
