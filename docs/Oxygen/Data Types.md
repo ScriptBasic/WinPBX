@@ -4,6 +4,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
+| [any](#any) | Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide). |
 | [byte](#byte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
 | [sbyte](#sbyte) | 8-bit (1 byte) signed integer ranging in value from -128 to 127. |
 | [ubyte](#ubyte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
@@ -18,7 +19,7 @@
 | [ulong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
 | [uint](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
 | [quad](#quad) | 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. |
-| [void](#void) | Specifies a null pointer. |
+| [void](#void) | Specifies a null type. |
 | [sys](#sys) | 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. |
 
 ### Floating-point Types
@@ -64,6 +65,16 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [qword](#qword) | Specifies a 64-bit operand in assembly code.  |
+
+# <a name="any"></a>any
+
+Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide).
+
+```
+function f(any*a) {...}
+```
+
+Parameter of any type may be passed by-reference. Like C **void***.
 
 # <a name="byte"></a>byte
 
