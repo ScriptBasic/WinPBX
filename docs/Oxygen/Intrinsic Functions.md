@@ -12,7 +12,7 @@
 | [lcase](#lcase) | Returns a lower case copy of a string. |
 | [left](#left) | Returns the leftmost substring of a string. |
 | [len](#len) | Returns the length of a string in characters. |
-| [ltrim](#ltrim) |  |
+| [ltrim](#ltrim) | Removes spaces on the left side of a string. |
 | [mid](#mid) |  |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) |  |
@@ -180,6 +180,15 @@ Returns the length of a string in characters.
 ```
 print len("Hello")
 ' Output: 5
+```
+
+# <a name="ltrim"></a>ltrim
+
+Removes spaces on the left side of a string.
+
+```
+dim s as string = ltrim "   abc"
+' Output: "abc"
 ```
 
 # <a name="news"></a>news
