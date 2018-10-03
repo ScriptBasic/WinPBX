@@ -19,7 +19,7 @@
 | [right](#right) | Returns the rightmost substring of a string. | |
 | [rtrim](#rtrim) | Removes spaces on the right side of a string. |
 | [space](#space) | Returns a string consisting of a specified number of spaces. |
-| [str](#str) |  |
+| [str](#str) | Returns the string representation of a number. |
 | [ucase](#ucase) |  |
 | [unic](#unic) |  |
 | [val](#val) |  |
@@ -265,6 +265,21 @@ Returns a string consisting of a specified number of spaces.
 ```
 dim s as string = space(10)
 ' Output: "          "
+```
+
+# <a name="str"></a>str
+
+Returns the string representation of a number.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *number* | A number or expression evaluating to a number. A floating-point number will be converted to integer. |
+| *decdigits* | Optional number of decimal places to return. Rounding is automatically applied before decimal places are truncated. |
+
+```
+dim s as string
+s = str(-1.23456)     ' result: -1.23456
+s = str(-1.23456, 3)   ' result: -1.235
 ```
 
 # <a name="acos"></a>acos
