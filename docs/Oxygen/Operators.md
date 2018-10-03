@@ -96,7 +96,7 @@
 | ---------- | ----------- |
 | [@](#addressof) | Returns the address of a variable, string literal or procedure. |
 | [&](#addressof) | Returns the address of a variable, string literal or procedure. |
-| [\*](#valueof) | Defines a pointer. |
+| [\*](#valueof) | Dereferences a pointer. |
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
 | [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
 
@@ -268,7 +268,7 @@ print b   ' 42
 
 # <a name="valueof"></a>ValueOf Operator (*)
 
-Defines a pointer. Unlike C, pointer resolution is normally handled implictly. 
+Dereferences a pointer. Unlike C, pointer resolution is normally handled implictly. 
 
 ```
 dim s as asciiz * 260 = "Test string"
@@ -289,6 +289,12 @@ print s
 dim s as wide = "Test string"
 wchar *p = strptr(s)
 print s
+```
+```
+int a = 42
+sys b      ' sys ensures an integer large enough to hold a pointer
+b = @a     ' assign address of a to b
+print *b   ' 42
 ```
 
 # <a name="pointerindex"></a>Pointer index operator: []
