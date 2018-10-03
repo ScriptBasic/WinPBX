@@ -174,6 +174,21 @@ Returns the tangent of a value given in radians.
 result = tan(radians)
 ```
 
+# <a name="atn"></a>atn
+
+Returns an angle in radians given the ratio of the *y* and *x* coordinates.
+
+#### Syntax
+
+```
+angle = atn(YXRatio) 
+```
+```
+dim d as double
+d = atn(1) * 4
+' Output: 3.1415926535897931
+```
+
 # <a name="atan"></a>atan
 
 Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. One radian is equivalent to 180/PI degrees.
@@ -192,6 +207,7 @@ angle = atan(y, x)
 ```
 dim d as double
 d = atan(0.5, sqr(0.75))
+' Output: 3.1415926535897931
 ```
 
 # <a name="hibyte"></a>hibyte
