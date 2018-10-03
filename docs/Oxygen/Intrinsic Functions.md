@@ -74,6 +74,16 @@
 | [copy0](#copy0) | Copies a null terminated string to another location. |
 | [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
 
+# <a name="abs"></a>abs
+
+Returns the absolute value of a number (removes the negative sign).
+
+```
+dim d as double
+d = abs(-2.5)
+' Output: 2.5
+```
+
 # <a name="ceil"></a>ceil
 
 Rounds a float number upward, returning the smallest integral value that is not less than the float number.
