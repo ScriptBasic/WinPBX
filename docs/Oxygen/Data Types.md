@@ -824,3 +824,24 @@ unsigned long v
 ```
 
 An unsigned long (dword) called v is created.
+
+# <a name="ptr"></a>ptr
+
+Declares a pointer variable.
+
+```
+' Create the pointer.
+Dim p As Integer Ptr
+' Create an integer value that we will point to using pointer "p"
+Dim num As Integer = 98845
+' Point p towards the memory address that variable "num" occupies.
+@p = @num
+' Print the value stored in memory pointed to by pointer "p"
+print p   ' output: 98845
+```
+```
+dim s as asciiz * 260 = "Test string"
+dim p as asciiz ptr
+@p = strptr(s)
+print p   ' output: "Test string"
+```
