@@ -29,14 +29,15 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [abs](#abs) |  |
-| [asin](#asin) |  |
-| [atan](#atan) |  |
-| [atn](#atn) |  |
-| [ceil](#ceil) |  |
-| [cos](#cos) |  |
+| [abs](#abs) | Returns the absolute value of a number (removes the negative sign). |
+| [acos](#acos) |  |
+| [asin](#asin) | Returns angle in radians given the ratio y-coordinate/radius. |
+| [atan](#atan) | Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. |
+| [atn](#atn) | Returns an angle in radians given the ratio of the *y* and *x* coordinates. |
+| [ceil](#ceil) | Rounds a float number upward, returning the smallest integral value that is not less than the float number. |
+| [cos](#cos) | Returns the cosine of an angle of *x* radians. |
 | [deg](#deg) |  |
-| [floor](#floor) |  |
+| [floor](#floor) | Rounds a float number downward, returning the largest integral value that is not greater than the float number. |
 | [frac](#frac) |  |
 | [hypot](#hypot) |  |
 | [log](#log) |  |
@@ -48,13 +49,13 @@
 | [pow](#pow) |  |
 | [rad](#rad) |  |
 | [recip](#recip) |  |
-| [round](#round) |  |
+| [round](#round) | Returns the integral value that is nearest to the passed float number. |
 | [sgn](#sgn) |  |
 | [sin](#sin) |  |
 | [sqr](#sqr) |  |
 | [sqrt](#sqrt) |  |
-| [tan](#tan) |  |
-| [trunc](#trunc) |  |
+| [tan](#tan) | Returns the tangent of a value given in radians. |
+| [trunc](#trunc) | Rounds a float number toward zero, returning the nearest integral value that is not larger in magnitude than the float number. |
 
 ### Bit Manipulation Functions
 
