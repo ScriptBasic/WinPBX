@@ -18,7 +18,7 @@
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
 | [right](#right) | Returns the rightmost substring of a string. | |
 | [rtrim](#rtrim) | Removes spaces on the right side of a string. |
-| [space](#space) |  |
+| [space](#space) | Returns a string consisting of a specified number of spaces. |
 | [str](#str) |  |
 | [ucase](#ucase) |  |
 | [unic](#unic) |  |
@@ -256,6 +256,15 @@ Removes spaces on the right side of a string.
 ```
 dim s as string = rtrim("abc   ")
 ' Output: "abc"
+```
+
+# <a name="space"></a>space
+
+Returns a string consisting of a specified number of spaces.
+
+```
+dim s as string = space(10)
+' Output: "          "
 ```
 
 # <a name="acos"></a>acos
