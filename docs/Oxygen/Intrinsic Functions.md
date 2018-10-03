@@ -167,16 +167,6 @@ value   round   floor   ceil    trunc
 -5.5    -6.0    -6.0    -5.0    -5.0
 ```
 
-# <a name="deg"></a>deg
-
-Converts radians to degrees.
-
-```
-dim d as double
-d = deg(pi)
-' Output: 180
-```
-
 # <a name="cos"></a>cos
 
 Returns the cosine of an angle in radians. The result is within the range of -1.0 to 1.0.
@@ -188,6 +178,16 @@ d = cos(pi / 3)
 ```
 dim d as double
 d = cos (60.0 * PI / 180.0)
+```
+
+# <a name="deg"></a>deg
+
+Converts radians to degrees.
+
+```
+dim d as double
+d = deg(pi)
+' Output: 180
 ```
 
 # <a name="floor"></a>floor
