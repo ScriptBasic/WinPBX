@@ -48,7 +48,7 @@
 | [pi](#pi) | Returns pi, the ratio of the circumference of a circle to its diameter. |
 | [pow](#pow) | Returns the value of the first value raised to the power of the exponent. |
 | [rad](#rad) | Converts from degrees to radians. |
-| [recip](#recip) |  |
+| [recip](#recip) | Returns the reciprocal of a value. |
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
 | [sgn](#sgn) |  |
 | [sin](#sin) |  |
@@ -296,6 +296,16 @@ Converts from degrees to radians
 dim d as double
 d = rad(180)
 ' Output: 3.1415926535897931
+```
+
+# <a name="recip"></a>recip
+
+Returns the reciprocal of a value (x = 1 / v)
+
+```
+dim d as double
+d = recip(5 / 4)
+' Output: 0.8
 ```
 
 # <a name="round"></a>round
