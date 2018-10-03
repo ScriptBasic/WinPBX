@@ -39,7 +39,7 @@
 | [deg](#deg) | Converts radians to degrees. |
 | [floor](#floor) | Rounds a float number downward. |
 | [frac](#frac) | Returns the fractional part of a number. |
-| [hypot](#hypot) |  |
+| [hypot](#hypot) | Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides. |
 | [log](#log) |  |
 | [log2](#log2) |  |
 | [log10](#log10) |  |
@@ -55,7 +55,7 @@
 | [sqr](#sqr) |  |
 | [sqrt](#sqrt) |  |
 | [tan](#tan) | Returns the tangent of a value given in radians. |
-| [trunc](#trunc) | Rounds a float number toward zero, returning the nearest integral value that is not larger in magnitude than the float number. |
+| [trunc](#trunc) | Rounds a float number toward zero. |
 
 ### Bit Manipulation Functions
 
@@ -299,6 +299,15 @@ Returns the high-order word an integer value (bits 16..31).
 
 ```
 result = hiword ( expression )
+```
+
+# <a name="hypot"></a>hypot
+
+Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides.
+
+```
+dim d as double
+d = hypot(3, 4)
 ```
 
 # <a name="loword"></a>loword
