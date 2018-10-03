@@ -268,15 +268,6 @@ dim d as double
 d = logn(1000, 10)
 ```
 
-# <a name="pi"></a>pi
-
-Returns pi, the ratio of the circumference of a circle to its diameter.
-
-```
-print pi
-' Output: 3.1415926535897931
-```
-
 # <a name="mod"></a>mod
 
 Returns the remainder of first value divided by the second value.
@@ -285,6 +276,15 @@ Returns the remainder of first value divided by the second value.
 dim d as double
 d = mod(83.5, 10)
 ' Output: 3.5
+```
+
+# <a name="pi"></a>pi
+
+Returns pi, the ratio of the circumference of a circle to its diameter.
+
+```
+print pi
+' Output: 3.1415926535897931
 ```
 
 # <a name="pow"></a>pow
