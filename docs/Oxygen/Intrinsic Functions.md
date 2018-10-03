@@ -6,6 +6,7 @@
 | ---------- | ----------- |
 | [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
 | [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
+| [comparestr](#comparestr) | Assembler. String comparator. It sets the CPU zero and sign flags. |
 | [frees](#frees) | Deallocates a bstring. |
 | [hex](#hex) | Returns the hexadecimal string representation of integer part of a number. |
 | [instr](#instr) | Locates the first occurrence of a substring or character within a string. |
@@ -109,6 +110,34 @@ s = chr(65)
 print s   ' Output "A"
 s = chr(66, 67)
 print s   ' Output: "AB"
+```
+
+# <a name="comparestr"></a>comparestr
+
+Assembler. String comparator. It sets the CPU zero and sign flags: jg = greater, jl = less, jz = equal.
+
+```
+string a = "abc"
+string b = "abc"
+string c = "123"
+sys cm
+comparestr(a,b)
+(
+  jnz exit
+  print "equal"
+  jmp fwd ncompare
+)
+(
+  jg exit
+  print "less"
+  jmp fwd ncompare
+)
+(
+  jl exit
+  print "greater"
+  jmp fwd ncompare
+)
+.ncompare
 ```
 
 # <a name="frees"></a>frees
