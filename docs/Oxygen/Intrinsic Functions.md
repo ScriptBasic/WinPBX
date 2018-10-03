@@ -21,7 +21,7 @@
 | [space](#space) | Returns a string consisting of a specified number of spaces. |
 | [str](#str) | Returns the string representation of a number. |
 | [ucase](#ucase) | Returns an uppercase copy of a string. |
-| [unic](#unic) |  |
+| [unic](#unic) | Returns the corresponding Unicode integer representation of a character in a string. |
 | [val](#val) |  |
 | [wchr](#wchr) |  |
 
@@ -290,6 +290,19 @@ Returns a lower case copy of a string.
 dim s as string = ucase("abcdef")
 ' Output: "abcdef"
 ```
+
+# <a name="unic"></a>unic
+
+Returns the corresponding Unicode integer representation of a character in a string.
+
+The function returns zero (0) if the string is a zero length string, position is less than one (1), or position is greater than the number of characters in the string.
+
+```
+dim s as string2 = "ABCDEF"
+dim c as long = unic(s, 2)
+' Output: 66 (character "B")
+```
+
 
 # <a name="acos"></a>acos
 
