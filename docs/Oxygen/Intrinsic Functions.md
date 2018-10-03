@@ -45,7 +45,7 @@
 | [log10](#log10) | Returns the common (base-10) logarithm of a number. |
 | [logn](#logn) | Returns the logarthm of the first value to the base of the second value. |
 | [mod](#mod) | Returns the remainder of first value divided by the second value.  |
-| [pi](#pi) |  |
+| [pi](#pi) | Returns pi, the ratio of the circumference of a circle to its diameter. |
 | [pow](#pow) |  |
 | [rad](#rad) |  |
 | [recip](#recip) |  |
@@ -257,6 +257,15 @@ Returns the logarthm of the first value to the base of the second value.
 ```
 dim d as double
 d = logn(1000, 10)
+```
+
+# <a name="pi"></a>pi
+
+Returns pi, the ratio of the circumference of a circle to its diameter.
+
+```
+print pi
+' Output: 3.1415926535897931
 ```
 
 # <a name="mod"></a>mod
