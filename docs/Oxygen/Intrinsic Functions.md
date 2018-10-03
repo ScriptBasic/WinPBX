@@ -34,11 +34,11 @@
 | [asin](#asin) | Returns the arcsine of an number. |
 | [atan](#atan) | Returns arctangent of a ratio. |
 | [atn](#atn) | Returns arctangent of a number. |
-| [ceil](#ceil) | Rounds a float number upward, returning the smallest integral value that is not less than the float number. |
+| [ceil](#ceil) | Rounds a float number upward. |
 | [cos](#cos) | Returns the cosine of an angle of *x* radians. |
 | [deg](#deg) | Converts radians to degrees. |
-| [floor](#floor) | Rounds a float number downward, returning the largest integral value that is not greater than the float number. |
-| [frac](#frac) |  |
+| [floor](#floor) | Rounds a float number downward. |
+| [frac](#frac) | Returns the fractional part of a number. |
 | [hypot](#hypot) |  |
 | [log](#log) |  |
 | [log2](#log2) |  |
@@ -211,6 +211,16 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="frac"></a>frac
+
+Returns the fractional part of a number
+
+```
+dim d as double
+d = frac(123.456)
+' Output: 0.456
 ```
 
 # <a name="round"></a>round
