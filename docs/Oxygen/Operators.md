@@ -273,7 +273,7 @@ Dereferenes a pointer. Unlike C, pointer resolution is normally handled implictl
 ```
 dim s as asciiz * 260 = "Test string"
 dim p as asciiz ptr
-@p = strfptr(s)
+@p = strptr(s)
 print p
 ' Output "Test string"
 ```
