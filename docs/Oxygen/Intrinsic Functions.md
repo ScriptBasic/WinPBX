@@ -131,8 +131,8 @@ Locates the first occurrence of a substring or character within a string.
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *start* | Optional. The position in *str* at which the search will begin. The first character starts at position 1. |
-| *str* | The string to be searched. |
+| *start* | Optional. The position in *s* at which the search will begin. The first character starts at position 1. |
+| *s* | The string to be searched. |
 | *substring* | The substring to find. |
 
 ```
@@ -148,7 +148,7 @@ p = instr(8, "abcdef abcdef","def")
 
 #### Return Value
 
-The position of the first occurrence of substring in *str*. Zero (0) is returned if: either substring is not found, either *str* or substring are empty strings, or *start* < 1.
+The position of the first occurrence of substring in *s*. Zero (0) is returned if: either substring is not found, either *s* or substring are empty strings, or *start* < 1.
 
 # <a name="lcase"></a>lcase
 
@@ -165,7 +165,7 @@ Returns the leftmost substring of a string
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *str* | The source string. |
+| *s* | The source string. |
 | *n* | The number of characters to return from the source string. |
 
 ```
@@ -197,8 +197,8 @@ Returns a part of a string.
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *str* | The source string. |
-| *start* | The start position in *str* of the substring. The first character starts at position 1. |
+| *s* | The source string. |
+| *start* | The start position in *s* of the substring. The first character starts at position 1. |
 | *n* | The substring length, in characters. |
 
 If *n* is omitted or bigger than the remaining characters in the string, all remaining characters are returned. If there are no characters at the *start* position, an empty string is returned.
@@ -241,7 +241,7 @@ Returns the rightmost substring of a string
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *str* | The source string. |
+| *s* | The source string. |
 | *n* | The number of characters to return from the source string. |
 
 ```
