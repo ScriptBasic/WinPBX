@@ -52,8 +52,8 @@
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
 | [sgn](#sgn) | Returns the sign part of a number. |
 | [sin](#sin) | Returns the sine of an angle. |
-| [sqr](#sqr) |  |
-| [sqrt](#sqrt) |  |
+| [sqr](#sqr) | Returns the square root of a number. |
+| [sqrt](#sqr) | Returns the square root of a number. |
 | [tan](#tan) | Returns the tangent of a value given in radians. |
 | [trunc](#trunc) | Rounds a float number towards zero. |
 
@@ -351,6 +351,16 @@ Returns the sine of an angle given its value in radians.
 dim d as double
 d = sin(pi / 6)
 ' Output: 0.5
+```
+
+# <a name="sqr"></a>sqr / sqrt
+
+Returns the square root of a number.
+
+```
+dim d as double
+d = sqr(9)
+' Output: 3
 ```
 
 # <a name="tan"></a>tan
