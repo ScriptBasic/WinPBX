@@ -31,9 +31,9 @@
 | ---------- | ----------- |
 | [abs](#abs) | Returns the absolute value of a number (removes the negative sign). |
 | [acos](#acos) |  |
-| [asin](#asin) | Returns angle in radians given the ratio y-coordinate/radius. |
-| [atan](#atan) | Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. |
-| [atn](#atn) | Returns an angle in radians given the ratio of the *y* and *x* coordinates. |
+| [asin](#asin) | Returns the arc sine of an number. |
+| [atan](#atan) | Returns arctangent of a ratio. |
+| [atn](#atn) | Returns arctangent of a number. |
 | [ceil](#ceil) | Rounds a float number upward, returning the smallest integral value that is not less than the float number. |
 | [cos](#cos) | Returns the cosine of an angle of *x* radians. |
 | [deg](#deg) |  |
@@ -87,7 +87,7 @@ d = abs(-2.5)
 
 # <a name="asin"></a>asin
 
-Returns angle in radians given the ratio y-coordinate/radius. In trigonometrics, arc sine is the inverse operation of sine. One radian is equivalent to 180/PI degrees.
+Returns the arcsine of a number. The result is within the range of -Pi/2 to Pi/2. `asin` is the inverse of the `sin` function. The returned angle is measured in radians (not degrees).
 
 ```
 dim d as double
@@ -101,7 +101,7 @@ d = asin(0.5) * 180.0 / pi
 
 # <a name="atan"></a>atan
 
-Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. One radian is equivalent to 180/PI degrees.
+Returns the arctangent of the ratio *y*/*x*, where *y* is the vertical coordinate and *x* the horizontal coordinate.  The result is withing the range of -Pi to Pi. `atan` is the inverse of the `tan` function. The returned angle is measured in radians (not degrees).
 
 #### Syntax
 
@@ -120,15 +120,14 @@ d = atan(0.5, sqr(0.75))
 ' Output: 3.1415926535897931
 ```
 
-
 # <a name="atn"></a>atn
 
-Returns an angle in radians given the ratio of the *y* and *x* coordinates.
+Returns the arctangent of a number. The result is within the range of -Pi/2..Pi/2. `atn` is the inverse of the `tan` function. The returned angle is measured in radians (not degrees).
 
 #### Syntax
 
 ```
-angle = atn(YXRatio) 
+angle = atn(number) 
 ```
 ```
 dim d as double
@@ -161,7 +160,7 @@ value   round   floor   ceil    trunc
 
 # <a name="cos"></a>cos
 
-Returns the cosine of an angle of *x* radians.
+Returns the cosine of an angle in radians. The result is within the range of -1.0 to 1.0.
 
 ```
 dim d as double
