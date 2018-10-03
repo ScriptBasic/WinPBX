@@ -46,7 +46,7 @@
 | [logn](#logn) | Returns the logarthm of the first value to the base of the second value. |
 | [mod](#mod) | Returns the remainder of first value divided by the second value.  |
 | [pi](#pi) | Returns pi, the ratio of the circumference of a circle to its diameter. |
-| [pow](#pow) |  |
+| [pow](#pow) | Returns the value of the first value raised to the power of the exponent. |
 | [rad](#rad) |  |
 | [recip](#recip) |  |
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
@@ -276,6 +276,16 @@ Returns the remainder of first value divided by the second value.
 dim d as double
 d = mod(83.5, 10)
 ' Output: 3.5
+```
+
+# <a name="pow"></a>pow
+
+Returns the value of the first value raised to the power of the exponent. It is equivalent to the ^ operator.
+
+```
+dim d as double
+d = pow(3)
+' Output: 8
 ```
 
 # <a name="round"></a>round
