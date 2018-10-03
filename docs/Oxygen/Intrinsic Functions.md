@@ -5,7 +5,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
-| [chr](#chr) |  |
+| [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
 | [frees](#frees) |  |
 | [hex](#hex) |  |
 | [instr](#instr) |  |
@@ -79,7 +79,7 @@
 
 Returns the corresponding ASCII or Unicode integer representation of a character in a string.
 
-The function returns zero (0) if the string is a zero length string, position is less than one (1), or position is greater than the number of characters in str.
+The function returns zero (0) if the string is a zero length string, position is less than one (1), or position is greater than the number of characters in the string.
 
 ```
 dim a as long
@@ -177,6 +177,18 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="chr"></a>chr
+
+Returns a string of characters from one or more ASCII integer values
+
+```
+dim s as string
+s = chr(65)
+print s   ' Output "A"
+s = chr(66, 67)
+print s   ' Output: "AB"
 ```
 
 # <a name="cos"></a>cos
