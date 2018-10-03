@@ -36,7 +36,7 @@
 | [atn](#atn) | Returns arctangent of a number. |
 | [ceil](#ceil) | Rounds a float number upward, returning the smallest integral value that is not less than the float number. |
 | [cos](#cos) | Returns the cosine of an angle of *x* radians. |
-| [deg](#deg) |  |
+| [deg](#deg) | Converts radians to degrees. |
 | [floor](#floor) | Rounds a float number downward, returning the largest integral value that is not greater than the float number. |
 | [frac](#frac) |  |
 | [hypot](#hypot) |  |
@@ -165,6 +165,16 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="deg"></a>deg
+
+Converts radians to degrees.
+
+```
+dim d as double
+d = deg(pi)
+' Output: 180
 ```
 
 # <a name="cos"></a>cos
