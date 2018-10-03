@@ -16,7 +16,7 @@
 | [mid](#mid) | Returns a part of a string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
-| [right](#right) |  |
+| [right](#right) | Returns the rightmost substring of a string. | |
 | [rtrim](#rtrim) |  |
 | [space](#space) |  |
 | [str](#str) |  |
@@ -234,6 +234,20 @@ s = nuls(1000)
 ```
 
 For wide strings, use string(n, wchr(0)) instead.
+
+# <a name="right"></a>right
+
+Returns the rightmost substring of a string
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *str* | The source string. |
+| *n* | The number of characters to return from the source string. |
+
+```
+dim s a string = right("abcdef", 3)
+' Output: "def"
+```
 
 # <a name="acos"></a>acos
 
