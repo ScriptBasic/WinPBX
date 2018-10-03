@@ -9,7 +9,7 @@
 | [frees](#frees) | Deallocates a bstring. |
 | [hex](#hex) | Returns the hexadecimal string representation of integer part of a number. |
 | [instr](#instr) | Locates the first occurrence of a substring or character within a string. |
-| [lcase](#lcase) |  |
+| [lcase](#lcase) | Returns a lower case copy of a string. |
 | [left](#left) |  |
 | [len](#len) |  |
 | [ltrim](#ltrim) |  |
@@ -149,6 +149,15 @@ p = instr(8, "abcdef abcdef","def")
 #### Return Value
 
 The position of the first occurrence of substring in *str*. Zero (0) is returned if: either substring is not found, either *str* or substring are empty strings, or *start* < 1.
+
+# <a name="lcase"></a>lcase
+
+Returns a lower case copy of a string
+
+```
+dim s as string = lcase("ABCDEF")
+' Output: "abcdef"
+```
 
 # <a name="news"></a>news
 
