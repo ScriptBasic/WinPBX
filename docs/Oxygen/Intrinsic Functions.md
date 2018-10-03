@@ -223,6 +223,15 @@ d = frac(123.456)
 ' Output: 0.456
 ```
 
+# <a name="hypot"></a>hypot
+
+Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides.
+
+```
+dim d as double
+d = hypot(3, 4)
+```
+
 # <a name="log"></a>log
 
 Returns the natural logarithm of a given number.
@@ -416,15 +425,6 @@ Returns the high-order word an integer value (bits 16..31).
 
 ```
 result = hiword ( expression )
-```
-
-# <a name="hypot"></a>hypot
-
-Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides.
-
-```
-dim d as double
-d = hypot(3, 4)
 ```
 
 # <a name="loword"></a>loword
