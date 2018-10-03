@@ -96,7 +96,7 @@
 | ---------- | ----------- |
 | [@](#addressof) | Returns the address of a variable, string literal or procedure. |
 | [&](#addressof) | Returns the address of a variable, string literal or procedure. |
-| [\*](#valueof) | Dereferenes a pointer. |
+| [\*](#valueof) | Defines a pointer. |
 | [[]](#pointerindex) | Returns a reference to memory offset from an address. |
 | [addr](#addr) | Assembler only. Loads the address of a variable to a register. |
 
@@ -268,15 +268,8 @@ print b   ' 42
 
 # <a name="valueof"></a>ValueOf Operator (*)
 
-Dereferenes a pointer. Unlike C, pointer resolution is normally handled implictly. 
+Defines a pointer. Unlike C, pointer resolution is normally handled implictly. 
 
-```
-dim s as asciiz * 260 = "Test string"
-dim p as asciiz ptr
-@p = strptr(s)
-print p
-' Output "Test string"
-```
 ```
 dim s as asciiz * 260 = "Test string"
 char *p = strptr(s)
