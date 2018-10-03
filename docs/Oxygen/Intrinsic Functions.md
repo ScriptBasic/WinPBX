@@ -15,7 +15,7 @@
 | [ltrim](#ltrim) | Removes spaces on the left side of a string. |
 | [mid](#mid) | Returns a part of a string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
-| [nuls](#nuls) |  |
+| [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
 | [right](#right) |  |
 | [rtrim](#rtrim) |  |
 | [space](#space) |  |
@@ -224,6 +224,16 @@ b = news(1000)
 '...
 frees b
 ```
+
+# <a name="nuls"></a>nuls
+
+Returns a string consisting of a specified number of null (chr(0)) characters.
+
+```
+s = nuls(1000)
+```
+
+For wide strings, use string(n, wchr(0)) instead.
 
 # <a name="acos"></a>acos
 
