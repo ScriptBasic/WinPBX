@@ -74,6 +74,98 @@
 | [copy0](#copy0) | Copies a null terminated string to another location. |
 | [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
 
+# <a name="ceil"></a>ceil
+
+Rounds a float number upward, returning the smallest integral value that is not less than the float number.
+
+#### Syntax
+
+```
+IntegerValue = ceil(FloatValue) 
+```
+
+**Output**:
+
+```
+value   round   floor   ceil    trunc
+-----   -----   -----   ----    -----
+ 2.3     2.0     2.0     3.0     2.0
+ 3.8     4.0     3.0     4.0     3.0
+ 5.5     6.0     5.0     6.0     5.0
+-2.3    -2.0    -3.0    -2.0    -2.0
+-3.8    -4.0    -4.0    -3.0    -3.0
+-5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="floor"></a>floor
+
+Rounds a float number downward, returning the largest integral value that is not greater than the float number.
+
+#### Syntax
+
+```
+IntegerValue = float(FloatValue) 
+```
+
+**Output**:
+
+```
+value   round   floor   ceil    trunc
+-----   -----   -----   ----    -----
+ 2.3     2.0     2.0     3.0     2.0
+ 3.8     4.0     3.0     4.0     3.0
+ 5.5     6.0     5.0     6.0     5.0
+-2.3    -2.0    -3.0    -2.0    -2.0
+-3.8    -4.0    -4.0    -3.0    -3.0
+-5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="round"></a>round
+
+Returns the integral value that is nearest to the passed float number.
+
+#### Syntax
+
+```
+IntegerValue = round(FloatValue) 
+```
+
+**Output**:
+
+```
+value   round   floor   ceil    trunc
+-----   -----   -----   ----    -----
+ 2.3     2.0     2.0     3.0     2.0
+ 3.8     4.0     3.0     4.0     3.0
+ 5.5     6.0     5.0     6.0     5.0
+-2.3    -2.0    -3.0    -2.0    -2.0
+-3.8    -4.0    -4.0    -3.0    -3.0
+-5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="trunc"></a>trunc
+
+Rounds a float number toward zero, returning the nearest integral value that is not larger in magnitude than the float number.
+
+#### Syntax
+
+```
+IntegerValue = trunc(FloatValue) 
+```
+
+**Output**:
+
+```
+value   round   floor   ceil    trunc
+-----   -----   -----   ----    -----
+ 2.3     2.0     2.0     3.0     2.0
+ 3.8     4.0     3.0     4.0     3.0
+ 5.5     6.0     5.0     6.0     5.0
+-2.3    -2.0    -3.0    -2.0    -2.0
+-3.8    -4.0    -4.0    -3.0    -3.0
+-5.5    -6.0    -6.0    -5.0    -5.0
+```
+
 # <a name="hibyte"></a>hibyte
 
 Returns the high-order byte an integer value (bits 8..15).
