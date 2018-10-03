@@ -31,7 +31,7 @@
 | ---------- | ----------- |
 | [abs](#abs) | Returns the absolute value of a number (removes the negative sign). |
 | [acos](#acos) |  |
-| [asin](#asin) | Returns the arc sine of an number. |
+| [asin](#asin) | Returns the arcsine of an number. |
 | [atan](#atan) | Returns arctangent of a ratio. |
 | [atn](#atn) | Returns arctangent of a number. |
 | [ceil](#ceil) | Rounds a float number upward, returning the smallest integral value that is not less than the float number. |
