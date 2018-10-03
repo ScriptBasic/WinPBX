@@ -84,6 +84,20 @@ d = abs(-2.5)
 ' Output: 2.5
 ```
 
+# <a name="asin"></a>asin
+
+Returns angle in radians given the ratio y-coordinate/radius. In trigonometrics, arc sine is the inverse operation of sine. One radian is equivalent to 180/PI degrees.
+
+```
+dim d as double
+d = asin(0.5)
+```
+```
+dim d as double
+d = asin(0.5) * 180.0 / pi
+' the arc sine of 0.5 is 30 degrees
+```
+
 # <a name="ceil"></a>ceil
 
 Rounds a float number upward, returning the smallest integral value that is not less than the float number.
