@@ -6,9 +6,7 @@
 | ---------- | ----------- |
 | [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
 | [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
-| [freememory](#freememory) | Frees a previously allocated memory block. |
 | [frees](#frees) | Deallocates a bstring. |
-| [getmemory](#getmemory) | Allocates a block of memory and returns its base address. |
 | [hex](#hex) |  |
 | [instr](#instr) |  |
 | [lcase](#lcase) |  |
@@ -76,6 +74,8 @@
 | [copyn](#copy) | Copies a block of memory. |
 | [copy0](#copy0) | Copies a null terminated string to another location. |
 | [copy00](#copy00) | Copies a null terminated string of wide (2 bytes) characters to another location. |
+| [freememory](#freememory) | Frees a previously allocated memory block. |
+| [getmemory](#getmemory) | Allocates a block of memory and returns its base address. |
 
 # <a name="asc"></a>asc
 
@@ -99,17 +99,6 @@ d = abs(-2.5)
 ' Output: 2.5
 ```
 
-# <a name="freememory"></a>freememory
-
-Frees a previously allocated memory block.
-
-```
-dim pmem as sys
-pmem = getmemory(8000)
-'...
-freememory pmem
-```
-
 # <a name="frees"></a>frees
 
 Frees a bstring.
@@ -119,17 +108,6 @@ dim b as bstring
 b = news(1000)
 '...
 frees b
-```
-
-# <a name="getmemory"></a>getmemory
-
-Allocates a block of memory and returns its base address.
-
-```
-dim pmem as sys
-pmem = getmemory(8000)
-'...
-freememory pmem
 ```
 
 # <a name="news"></a>news
@@ -546,4 +524,26 @@ sub copy00 (DestinationAddress, SourceAddress)
 
 ```
 copy00 &dest, &src
+```
+
+# <a name="freememory"></a>freememory
+
+Frees a previously allocated memory block.
+
+```
+dim pmem as sys
+pmem = getmemory(8000)
+'...
+freememory pmem
+```
+
+# <a name="getmemory"></a>getmemory
+
+Allocates a block of memory and returns its base address.
+
+```
+dim pmem as sys
+pmem = getmemory(8000)
+'...
+freememory pmem
 ```
