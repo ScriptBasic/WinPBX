@@ -114,6 +114,11 @@ frees b
 
 Returns the hexadecimal string representation of integer part of a number.
 
+| Parameter  | Description |
+| ---------- | ----------- |
+| *number* | A number or expression evaluating to a number. A floating-point number will be converted to integer. |
+| *digits* | Optional number of digits to return. |
+
 ```
 print hex(14)        ' result 'E'
 print hex(14.4)      ' result 'E'
