@@ -40,10 +40,10 @@
 | [floor](#floor) | Rounds a float number downward. |
 | [frac](#frac) | Returns the fractional part of a number. |
 | [hypot](#hypot) | Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides. |
-| [log](#log) |  |
-| [log2](#log2) |  |
-| [log10](#log10) |  |
-| [logn](#logn) |  |
+| [log](#log) | Returns the natural logarithm of a given number. |
+| [log2](#log2) | Returns the binary (base-2) logarithm of a number. |
+| [log10](#log10) | Returns the common (base-10) logarithm of a number. |
+| [logn](#logn) | Returns the logarthm of the first value to the base of the second value. |
 | [mod](#mod) |  |
 | [pi](#pi) |  |
 | [pow](#pow) |  |
@@ -221,6 +221,42 @@ Returns the fractional part of a number
 dim d as double
 d = frac(123.456)
 ' Output: 0.456
+```
+
+# <a name="log"></a>log
+
+Returns the natural logarithm of a given number.
+
+```
+dim d as double
+d = log(10)
+```
+
+# <a name="log2"></a>log2
+
+Returns the binary (base-2) logarithm of a number.
+
+```
+dim d as double
+d = log2(32)
+```
+
+# <a name="log10"></a>log10
+
+Returns the common (base-10) logarithm of a number.
+
+```
+dim d as double
+d = log10(100)
+```
+
+# <a name="logn"></a>logn
+
+Returns the logarthm of the first value to the base of the second value.
+
+```
+dim d as double
+d = logn(1000, 10)
 ```
 
 # <a name="round"></a>round
