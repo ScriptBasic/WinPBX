@@ -51,7 +51,7 @@
 | [recip](#recip) | Returns the reciprocal of a value. |
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
 | [sgn](#sgn) | Returns the sign part of a number. |
-| [sin](#sin) |  |
+| [sin](#sin) | Returns the sine of an angle. |
 | [sqr](#sqr) |  |
 | [sqrt](#sqrt) |  |
 | [tan](#tan) | Returns the tangent of a value given in radians. |
@@ -333,7 +333,7 @@ value   round   floor   ceil    trunc
 
 # <a name="sgn"></a>sgn
 
-Returns the sign part of a number
+Returns the sign part of a number.
 
 * If number is greater than zero, it returns 1.
 * If number is equal to zero, it returns 0.
@@ -341,6 +341,16 @@ Returns the sign part of a number
 
 ```
 result = sgn(-42)
+```
+
+# <a name="sin"></a>sin
+
+Returns the sine of an angle given its value in radians.
+
+```
+dim d as double
+d = sin(pi / 6)
+' Output: 0.5
 ```
 
 # <a name="tan"></a>tan
