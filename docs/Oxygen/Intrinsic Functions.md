@@ -99,6 +99,18 @@ d = abs(-2.5)
 ' Output: 2.5
 ```
 
+# <a name="chr"></a>chr
+
+Returns a string of characters from one or more ASCII integer values
+
+```
+dim s as string
+s = chr(65)
+print s   ' Output "A"
+s = chr(66, 67)
+print s   ' Output: "AB"
+```
+
 # <a name="frees"></a>frees
 
 Frees a bstring.
@@ -400,18 +412,6 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
-```
-
-# <a name="chr"></a>chr
-
-Returns a string of characters from one or more ASCII integer values
-
-```
-dim s as string
-s = chr(65)
-print s   ' Output "A"
-s = chr(66, 67)
-print s   ' Output: "AB"
 ```
 
 # <a name="cos"></a>cos
