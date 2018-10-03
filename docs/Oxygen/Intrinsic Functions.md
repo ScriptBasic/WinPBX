@@ -110,7 +110,7 @@ pmem = getmemory(8000)
 freememory pmem
 ```
 
-# <a name="frees"></a>fress
+# <a name="frees"></a>frees
 
 Frees a bstring.
 
