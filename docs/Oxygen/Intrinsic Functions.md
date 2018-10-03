@@ -47,7 +47,7 @@
 | [mod](#mod) | Returns the remainder of first value divided by the second value.  |
 | [pi](#pi) | Returns pi, the ratio of the circumference of a circle to its diameter. |
 | [pow](#pow) | Returns the value of the first value raised to the power of the exponent. |
-| [rad](#rad) |  |
+| [rad](#rad) | Converts from degrees to radians. |
 | [recip](#recip) |  |
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
 | [sgn](#sgn) |  |
@@ -286,6 +286,16 @@ Returns the value of the first value raised to the power of the exponent. It is 
 dim d as double
 d = pow(3)
 ' Output: 8
+```
+
+# <a name="rad"></a>rad
+
+Converts from degrees to radians
+
+```
+dim d as double
+d = rad(180)
+' Output: 3.1415926535897931
 ```
 
 # <a name="round"></a>round
