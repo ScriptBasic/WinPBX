@@ -30,7 +30,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [abs](#abs) | Returns the absolute value of a number (removes the negative sign). |
-| [acos](#acos) |  |
+| [acos](#acos) | Returns the arccosine of a number. |
 | [asin](#asin) | Returns the arcsine of an number. |
 | [atan](#atan) | Returns arctangent of a ratio. |
 | [atn](#atn) | Returns arctangent of a number. |
@@ -83,6 +83,15 @@ Returns the absolute value of a number (removes the negative sign).
 dim d as double
 d = abs(-2.5)
 ' Output: 2.5
+```
+
+# <a name="acos"></a>acos
+
+Returns the arccosine of a number. The result is within the range of 0 to Pi. `acos`is the inverse of the `cos` function. The returned angle is measured in radians (not degrees).
+
+```
+dim d as double
+d = acos(0.5)
 ```
 
 # <a name="asin"></a>asin
