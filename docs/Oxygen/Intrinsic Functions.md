@@ -10,7 +10,7 @@
 | [hex](#hex) | Returns the hexadecimal string representation of integer part of a number. |
 | [instr](#instr) | Locates the first occurrence of a substring or character within a string. |
 | [lcase](#lcase) | Returns a lower case copy of a string. |
-| [left](#left) |  |
+| [left](#left) | Returns the leftmost substring of a string. |
 | [len](#len) |  |
 | [ltrim](#ltrim) |  |
 | [mid](#mid) |  |
@@ -157,6 +157,20 @@ Returns a lower case copy of a string
 ```
 dim s as string = lcase("ABCDEF")
 ' Output: "abcdef"
+```
+
+# <a name="left"></a>left
+
+Returns the leftmost substring of a string
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *str* | The string to be searched. |
+| *n* | The number of characters to return from the source string. |
+
+```
+dim s a string = left("abcdef", 3)
+' Output: "abc"
 ```
 
 # <a name="news"></a>news
