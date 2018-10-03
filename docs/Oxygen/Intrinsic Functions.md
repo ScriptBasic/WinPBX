@@ -13,7 +13,7 @@
 | [left](#left) | Returns the leftmost substring of a string. |
 | [len](#len) | Returns the length of a string in characters. |
 | [ltrim](#ltrim) | Removes spaces on the left side of a string. |
-| [mid](#mid) |  |
+| [mid](#mid) | Returns a part of a string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) |  |
 | [right](#right) |  |
@@ -165,7 +165,7 @@ Returns the leftmost substring of a string
 
 | Parameter  | Description |
 | ---------- | ----------- |
-| *str* | The string to be searched. |
+| *str* | The source string. |
 | *n* | The number of characters to return from the source string. |
 
 ```
@@ -189,6 +189,29 @@ Removes spaces on the left side of a string.
 ```
 dim s as string = ltrim "   abc"
 ' Output: "abc"
+```
+
+# <a name="mid"></a>mid
+
+Returns a part of a string.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *str* | The source string. |
+| *start* | The start position in *str* of the substring. The first character starts at position 1. |
+| *n* | The substring length, in characters. |
+
+If *n* is omitted or bigger than the remaining characters in the string, all remaining characters are returned. If there are no characters at the *start* position, an empty string is returned.
+ 
+```
+dim s as string
+s = mid("abcdef", 3)
+' Output: "cdef"
+```
+```
+dim s as string
+s = mid("abcdef", 3, 2)
+' Output: "cd"
 ```
 
 # <a name="news"></a>news
