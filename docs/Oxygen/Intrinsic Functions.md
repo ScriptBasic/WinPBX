@@ -20,7 +20,7 @@
 | [rtrim](#rtrim) | Removes spaces on the right side of a string. |
 | [space](#space) | Returns a string consisting of a specified number of spaces. |
 | [str](#str) | Returns the string representation of a number. |
-| [ucase](#ucase) |  |
+| [ucase](#ucase) | Returns an uppercase copy of a string. |
 | [unic](#unic) |  |
 | [val](#val) |  |
 | [wchr](#wchr) |  |
@@ -152,7 +152,7 @@ The position of the first occurrence of substring in *s*. Zero (0) is returned i
 
 # <a name="lcase"></a>lcase
 
-Returns a lower case copy of a string
+Returns a lower case copy of a string.
 
 ```
 dim s as string = lcase("ABCDEF")
@@ -281,6 +281,14 @@ dim s as string
 s = str(-1.23456)     ' result: -1.23456
 s = str(-1.23456, 3)   ' result: -1.235
 ```
+
+# <a name="ucase"></a>ucase
+
+Returns a lower case copy of a string.
+
+```
+dim s as string = ucase("abcdef")
+' Output: "abcdef"
 
 # <a name="acos"></a>acos
 
