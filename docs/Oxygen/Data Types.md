@@ -52,6 +52,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [long](#long) | Used in conjunction with other types to double the bit width. |
+| [ptr](#ptr) | Declares a pointer variable. |
 | [short](#short) | Used in conjunction with other types to halve the bit width. |
 | [signed](#signed) | Specifies that the type is a signed integer. |
 | [unsigned](#unsigned) | Specifies thay the type is an unsigned integer. |
