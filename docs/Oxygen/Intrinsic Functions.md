@@ -22,7 +22,7 @@
 | [str](#str) | Returns the string representation of a number. |
 | [ucase](#ucase) | Returns an uppercase copy of a string. |
 | [unic](#unic) | Returns the corresponding Unicode integer representation of a character in a string. |
-| [val](#val) |  |
+| [val](#val) | Converts a string to a numeric value. |
 | [wchr](#wchr) |  |
 
 ### Math Functions
@@ -303,6 +303,14 @@ dim c as long = unic(s, 2)
 ' Output: 66 (character "B")
 ```
 
+# <a name="val"></a>val
+
+Converts a string to a numeric value.
+
+```
+dim v as double = val(val "2.5")
+' Output: 2.5
+```
 
 # <a name="acos"></a>acos
 
