@@ -50,7 +50,7 @@
 | [rad](#rad) | Converts from degrees to radians. |
 | [recip](#recip) | Returns the reciprocal of a value. |
 | [round](#round) | Returns the integral value that is nearest to the passed float number. |
-| [sgn](#sgn) |  |
+| [sgn](#sgn) | Returns the sign part of a number. |
 | [sin](#sin) |  |
 | [sqr](#sqr) |  |
 | [sqrt](#sqrt) |  |
@@ -329,6 +329,18 @@ value   round   floor   ceil    trunc
 -2.3    -2.0    -3.0    -2.0    -2.0
 -3.8    -4.0    -4.0    -3.0    -3.0
 -5.5    -6.0    -6.0    -5.0    -5.0
+```
+
+# <a name="sgn"></a>sgn
+
+Returns the sign part of a number
+
+* If number is greater than zero, it returns 1.
+* If number is equal to zero, it returns 0.
+* If number is less than zero, it returns -1.
+
+```
+result = sgn(-42)
 ```
 
 # <a name="tan"></a>tan
