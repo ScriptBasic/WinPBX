@@ -8,7 +8,7 @@
 | [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
 | [frees](#frees) | Deallocates a bstring. |
 | [hex](#hex) | Returns the hexadecimal string representation of integer part of a number. |
-| [instr](#instr) |  |
+| [instr](#instr) | Locates the first occurrence of a substring or character within a string. |
 | [lcase](#lcase) |  |
 | [left](#left) |  |
 | [len](#len) |  |
@@ -124,6 +124,31 @@ print hex(14)        ' result 'E'
 print hex(14.4)      ' result 'E'
 print hex(14.4, 4)   ' result '000E'
 ```
+
+# <a name="instr"></a>instr
+
+Locates the first occurrence of a substring or character within a string.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *start* | Optional. The position in *str* at which the search will begin. The first character starts at position 1. |
+| *str* | The string to be searched. |
+| *substring* | The substring to find. |
+
+```
+dim p as long
+p = instr("abcdef abcdef","def")
+' Returns: 4
+```
+```
+dim p as long
+p = instr(8, "abcdef abcdef","def")
+' Returns: 11
+```
+
+#### Return Value
+
+The position of the first occurrence of substring in *str*. Zero (0) is returned if: either substring is not found, either *str* or substring are empty strings, or *start* < 1.
 
 # <a name="news"></a>news
 
