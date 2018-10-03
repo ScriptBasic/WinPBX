@@ -7,7 +7,7 @@
 | [asc](#asc) | Returns the corresponding ASCII or Unicode integer representation of a character in a string. |
 | [chr](#chr) | Returns a string of characters from one or more ASCII integer values. |
 | [frees](#frees) | Deallocates a bstring. |
-| [hex](#hex) |  |
+| [hex](#hex) | Returns the hexadecimal string representation of integer part of a number. |
 | [instr](#instr) |  |
 | [lcase](#lcase) |  |
 | [left](#left) |  |
@@ -108,6 +108,16 @@ dim b as bstring
 b = news(1000)
 '...
 frees b
+```
+
+# <a name="hex"></a>hex
+
+Returns the hexadecimal string representation of integer part of a number.
+
+```
+print hex(14)        ' result 'E'
+print hex(14.4)      ' result 'E'
+print hex(14.4, 4)   ' result '000E'
 ```
 
 # <a name="news"></a>news
