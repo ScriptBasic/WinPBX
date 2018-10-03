@@ -166,6 +166,34 @@ value   round   floor   ceil    trunc
 -5.5    -6.0    -6.0    -5.0    -5.0
 ```
 
+# <a name="tan"></a>tan
+
+Returns the tangent of a value given in radians.
+
+```
+result = tan(radians)
+```
+
+# <a name="atan"></a>atan
+
+Returns the principal value of the arc tangent of *y*/*x*, expressed in radians. One radian is equivalent to 180/PI degrees.
+
+#### Syntax
+
+```
+angle = atan(y, x) 
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *y* | Value representing the proportion of the y-coordinate. |
+| *x* | Value representing the proportion of the x-coordinate. |
+
+```
+dim d as double
+d = atan(0.5, sqr(0.75))
+```
+
 # <a name="hibyte"></a>hibyte
 
 Returns the high-order byte an integer value (bits 8..15).
