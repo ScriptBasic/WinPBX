@@ -23,7 +23,7 @@
 | [ucase](#ucase) | Returns an uppercase copy of a string. |
 | [unic](#unic) | Returns the corresponding Unicode integer representation of a character in a string. |
 | [val](#val) | Converts a string to a numeric value. |
-| [wchr](#wchr) |  |
+| [wchr](#wchr) | Returns a wide string of characters from one or more integer values. |
 
 ### Math Functions
 
@@ -310,6 +310,14 @@ Converts a string to a numeric value.
 ```
 dim v as double = val(val "2.5")
 ' Output: 2.5
+```
+
+# <a name="wchr"></a>wchr
+
+Returns a wide string of a 2 byte character (encoding 0..65535 / 0xffff)
+
+```
+wstring ws = wchr(65)   ' result: "A"
 ```
 
 # <a name="acos"></a>acos
