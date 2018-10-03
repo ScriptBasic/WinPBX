@@ -11,7 +11,7 @@
 | [instr](#instr) | Locates the first occurrence of a substring or character within a string. |
 | [lcase](#lcase) | Returns a lower case copy of a string. |
 | [left](#left) | Returns the leftmost substring of a string. |
-| [len](#len) |  |
+| [len](#len) | Returns the length of a string in characters. |
 | [ltrim](#ltrim) |  |
 | [mid](#mid) |  |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
@@ -171,6 +171,15 @@ Returns the leftmost substring of a string
 ```
 dim s a string = left("abcdef", 3)
 ' Output: "abc"
+```
+
+# <a name="len"></a>len
+
+Returns the length of a string in characters.
+
+```
+print len("Hello")
+' Output: 5
 ```
 
 # <a name="news"></a>news
