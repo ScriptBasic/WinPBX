@@ -18,6 +18,7 @@
 | [ulong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
 | [uint](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
 | [quad](#quad) | 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. |
+| [void](#void) | Specifies a null pointer. |
 | [sys](#sys) | 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. |
 
 ### Floating-point Types
@@ -361,6 +362,30 @@ n = 9223372036854775
 ```
 dim as quad n
 n = 9223372036854775
+```
+
+# <a name="void"></a>void
+
+Specifies a null type. Void cannot be used directly.
+
+Variables:
+
+```
+void * pv = getmemory(100 * sizeof(float))
+...
+freememory pv
+```
+
+In function headers:
+
+```
+function foo (byref v as void) as void ptr
+void* foo(void*v)
+```
+
+Procedures not returning a value:
+```
+void foo()
 ```
 
 # <a name="sys"></a>sys
