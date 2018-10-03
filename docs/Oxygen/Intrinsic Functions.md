@@ -289,6 +289,7 @@ Returns a lower case copy of a string.
 ```
 dim s as string = ucase("abcdef")
 ' Output: "abcdef"
+```
 
 # <a name="acos"></a>acos
 
