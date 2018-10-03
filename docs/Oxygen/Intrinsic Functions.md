@@ -98,6 +98,19 @@ d = asin(0.5) * 180.0 / pi
 ' the arc sine of 0.5 is 30 degrees
 ```
 
+# <a name="cos"></a>cos
+
+Returns the cosine of an angle of *x* radians.
+
+```
+dim d as double
+d = cos(pi / 3)
+```
+```
+dim d as double
+d = cos (60.0 * PI / 180.0)
+```
+
 # <a name="ceil"></a>ceil
 
 Rounds a float number upward, returning the smallest integral value that is not less than the float number.
