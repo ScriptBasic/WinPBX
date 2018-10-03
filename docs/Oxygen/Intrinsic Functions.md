@@ -290,7 +290,7 @@ d = pow(3)
 
 # <a name="rad"></a>rad
 
-Converts from degrees to radians
+Converts from degrees to radians.
 
 ```
 dim d as double
@@ -300,7 +300,7 @@ d = rad(180)
 
 # <a name="recip"></a>recip
 
-Returns the reciprocal of a value (x = 1 / v)
+Returns the reciprocal of a value (x = 1 / v).
 
 ```
 dim d as double
