@@ -424,21 +424,24 @@ n = 12356.789
 
 # <a name="extended"></a>extended
 
-10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932.
+10 bytes (80-bit) extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932.
+
+This 80-bit format uses one bit for the sign of the significand, 15 bits for the exponent field (i.e. the same range as the 128-bit quadruple precision IEEE 754 format) and 64 bits for the significand. The exponent field is biased by 16383, meaning that 16383 has to be subtracted from the value in the exponent field to compute the actual power of 2. An exponent field value of 32767 (all fifteen bits 1) is reserved so as to enable the representation of special states such as infinity and NAN (Not a Number). If the exponent field is zero, the value is a denormal number and the exponent of 2 is −16382.
 
 ```
 dim n as extended
-n = 12356789.12
-```
-
-```
+--or--
 extended n
-n = 12356789.12
-```
-
-```
+--or--
 dim as extended n
 n = 12356789.12
+```
+
+```
+extended f = 123.45
+int i at @f
+string fmt(int v){ return right(hex(v,8),8) }
+print fmt(i[3]and 0xffff) "  " fmt(i[2]) "  " fmt(i[1])
 ```
 
 # <a name="asciiz"></a>asciiz
