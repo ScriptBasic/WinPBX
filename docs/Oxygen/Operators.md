@@ -809,7 +809,7 @@ Returns the logical and operation of two numeric values.
 ```
 dim x1 as long = 1
 dim x2 as long = 2
-print x1 && x2
+print x1 && x2   ' Output: -1 (true)
 ```
 
 The logical And operator (&&) returns the boolean value true if both operands are true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical And has left-to-right associativity.
@@ -825,7 +825,7 @@ Returns the logical Or operation of two numeric values.
 ```
 dim x1 as long = 1
 dim x2 as long = 2
-print x1 || x2
+print x1 || x2   ' Output: -1 (true)
 ```
 
 The logical Or operator (\|\|) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical Or has left-to-right associativity.
