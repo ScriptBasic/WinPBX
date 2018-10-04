@@ -643,13 +643,14 @@ x &= 184
 print x   ' Output: 136
 ```
 
-# <a name="bitwiseorandassign"></a>Bitwise Or and assign operator (\!=)
+# <a name="bitwiseorandassign"></a>Bitwise Or and assign operator (\|=)
 
 Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
 
 ```
-dim x as long = 1
-x != 1
+dim x as long = 200
+x |= 184
+print x   ' Output: 248
 ```
 
 # <a name="booleanandandassign"></a>Logical And and assign operator (&&=)
