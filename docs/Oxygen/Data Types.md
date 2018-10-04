@@ -4,7 +4,6 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [any](#any) | Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide). |
 | [byte](#byte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
 | [sbyte](#sbyte) | 8-bit (1 byte) signed integer ranging in value from -128 to 127. |
 | [ubyte](#ubyte) | 8-bit (1 byte) unsigned integer ranging in value from 0 to 255. |
@@ -65,16 +64,6 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [qword](#qword) | Specifies a 64-bit operand in assembly code.  |
-
-# <a name="any"></a>any
-
-Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide).
-
-```
-function f(any*a) {...}
-```
-
-Parameter of any type may be passed by-reference. Like C **void***.
 
 # <a name="byte"></a>byte
 
@@ -377,26 +366,12 @@ n = 9223372036854775
 
 # <a name="void"></a>void
 
-Specifies a null type. Void cannot be used directly.
-
-Variables:
+Specifies a null type.
 
 ```
 void * pv = getmemory(100 * sizeof(float))
 ...
 freememory pv
-```
-
-In function headers:
-
-```
-function foo (byref v as void) as void ptr
-void* foo(void*v)
-```
-
-Procedures not returning a value:
-```
-void foo()
 ```
 
 # <a name="sys"></a>sys
