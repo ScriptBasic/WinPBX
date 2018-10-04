@@ -217,7 +217,12 @@ Overlays
 ```
 dim as string s = "ABCDEFGHIJ"
 dim as byte b at strptr(s)
-print str(b[3]) ":  " chr(b[3])
+print str(b[3]) ":  " chr(b[3])   ' 67 - "C"
+
+Which is similar to:
+
+dim rg(1 to 10) as byte at strptr(s)
+print rg(3)   ' 67 - "c"
 ```
 
 ```
