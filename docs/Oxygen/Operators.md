@@ -701,8 +701,10 @@ print x   ' Output: 136
 Performs a bitwise-or (inclusive disjunction) and assigns the result to a variable.
 
 ```
-Dim x as long = 1
-x or= 1
+dim x1 as long = 200
+dim x2 as long = 184
+x1 or= x2
+print x1   ' Output: 248
 ```
 
 # <a name="bitwisexorandassign2"></a>Bitwise Xor and assign operator (xor=)
@@ -710,9 +712,13 @@ x or= 1
 Performs a bitwise-xor (inclusive disjunction) and assigns the result to a variable.
 
 ```
-dim x as long = 1
-x xor= 1
+dim x1 as long = 200
+dim x2 as long = 184
+x1 xor= x2
+print x1   ' Putput: 112
 ```
+
++++++
 
 # <a name="equalto"></a>Operator ==
 
