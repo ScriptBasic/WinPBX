@@ -94,7 +94,21 @@ For example, a function taking 5 integer arguments will take the first to fourth
 
 In x86-64, Visual Studio 2008 stores floating point numbers in XMM6 and XMM7 (as well as XMM8 through XMM15); consequently, for x86-64, user-written assembly language routines must preserve XMM6 and XMM7 (as compared to x86 wherein user-written assembly language routines did not need to preserve XMM6 and XMM7). In other words, user-written assembly language routines must be updated to save/restore XMM6 and XMM7 before/after the function when being ported from x86 to x86-64.
 
-Starting with Visual Studio 2013, Microsoft introduced the \_\_vectorcall calling convention which extends the x64 convention.
+# <a name="pascal"></a>pascal
+
+Specifies the Pascal-calling convention.
+
+Based on the Borland Pascal programming language's calling convention, the parameters are pushed on the stack in left-to-right order (opposite of cdecl), and the callee is responsible for removing them from the stack.
+
+Returning the result works as follows:
+
+* Ordinal values are returned in AL (8-bit values), AX (16-bit values), EAX (32-bit values), or DX:AX (32-bit values on 16-bit systems).
+* Real values are returned in DX:BX:AX.
+* Floating point (8087) values are returned in ST0.
+* Pointers are returned in EAX on 32-bit systems and in AX in 16-bit systems.
+* Strings are returned in a temporary location pointed by the @Result symbol.
+
+This calling convention was common in the following 16-bit APIs: OS/2 1.x, Microsoft Windows 3.x, and Borland Delphi version 1.x. Modern versions of the Windows API use `stdcall`, which still has the callee restoring the stack as in the Pascal convention, but the parameters are now pushed right to left.
 
 # <a name="any"></a>any
 
