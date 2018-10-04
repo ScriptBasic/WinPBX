@@ -935,12 +935,17 @@ print x1 << x2
 
 # <a name="shiftright"></a>Shift right operator (>>)
 
-Shifts the bits of a numeric expression to the right.
+Shifts each bit in its left operand to the right. The number following the operator decides the number of places the bits are shifted (i.e. the right operand). Thus by doing ch >> 3 all the bits will be shifted to the right by three places and so on.
+
+If the variable *ch* contains the bit pattern 11100101, then ch >> 1 will produce the result 01110010, and ch >> 2 will produce 00111001.
+
+Here blank spaces are generated simultaneously on the left when the bits are shifted to the right. When performed on an unsigned type, the operation performed is a logical shift, causing the blanks to be filled by 0s (zeros). When performed on a signed type, the result is technically undefined.
+
+Right shift can be used to divide a bit pattern by 2 as shown:
 
 ```
-dim x1 as long = 2
-dim x2 as long = 1
-print x1 >> x2
+int i = 14       ' // Bit pattern 00001110
+int j = i >> 1   ' // here we have the bit pattern shifted by 1 thus we get 00000111 = 7 which is 14/2
 ```
 
 # <a name="rotateleft"></a>Rotate left operator (<<<)
