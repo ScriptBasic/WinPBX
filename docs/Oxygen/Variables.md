@@ -22,6 +22,7 @@
 | [dim](#dim) | Declares variables, arrays, objects and user defined types. |
 | [redim](#redim) | Creates or resizes a dynamic array, preserving contents within range.  |
 | [as](#as) | Part of a declaration which specifies a data type. |
+| [at](#dim) | Part of a declaration which specifies an absolute address. |
 | [byref](#byref) | Declares a reference (by name) to a variable. |
 | [let](#let) | Similar to **dim**, but the type is inferred from the assigned value. |
 | [var](#var) | Defines a set of variables. |
@@ -67,6 +68,8 @@
 # <a name="dim"></a>dim
 
 Declares variables, arrays, objects and user defined types.
+
+`dim` can specify an absolute address using the `at` address syntax, creating an overlay that allows to access the contents pointed by the absolute address to a different data type.
 
 #### Syntax
 
@@ -215,6 +218,18 @@ Overlays
 dim as string s = "ABCDEFGHIJ"
 dim as byte b at strptr(s)
 print str(b[3]) ":  " chr(b[3])
+```
+
+```
+float f = 123.45
+DIM i as int at @f
+print hex(i, 8)
+
+Which is equivalent to cast the float value f to the integer i.
+
+float f = 123.45
+dim i as int = (int)f
+print hex(i, 8)
 ```
 
 Multidimensional arrays
