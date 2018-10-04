@@ -11,6 +11,8 @@
 
 ### Calling Conventions
 
+| Name       | Description |
+| ---------- | ----------- |
 | [stdcall](#stdcall) |  |
 | [cdecl](#cdecl) |  |
 | [ms64](#ms64) |  |
@@ -18,6 +20,8 @@
 
 ### Parameter Passing Conventions
 
+| Name       | Description |
+| ---------- | ----------- |
 | [any](#any) |  |
 | [byref](#byref) |  |
 | [byval](#byval) |  |
@@ -25,6 +29,8 @@
 
 ### Linkage
 
+| Name       | Description |
+| ---------- | ----------- |
 | [alias](#alias) |  |
 | [bind](#bind) |  |
 | [extern](#extern) |  |
