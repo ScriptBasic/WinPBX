@@ -185,7 +185,42 @@ end function
 cubes 3, 2,3,4
 ```
 
+# <a name="sub"></a>sub
 
+Defines a procedure that does not returns a value.
+
+#### Syntax
+
+```
+sub subname [alias external_identifier] [cdecl|pascal|stdcall] [([parameter_list])]
+   [statements]
+   [Return]
+end sub
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *functionname* | The name of the function. |
+| *external_identifier* | Externally visible (to the linker) name enclosed in quotes. |
+| *parameter_list* | List of parameters. |
+| *parameter* | \[byref|byval] identifier \[as type] \[= default_value]. |
+| *type* | The type of variable. |
+| *default_value* | The value of the argument if none is specified in the call. |
+| *statements* | One or more statements that make up the function body. |
+
+As a `sub`can't return a value, we need to pass a variable by reference to receive the result.
+
+```
+sub cube (byval f as float, byref g as float)
+  g = f*f*f
+end sub
+
+dim float a
+cube 2, a
+print a
+```
+
+When calling a subroutine, parentheses after the subroutine name (surrounding the argument list if any) are optional.
 
 # <a name="stdcall"></a>stdcall
 
