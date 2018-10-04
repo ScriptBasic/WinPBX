@@ -58,7 +58,6 @@
 | [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 | [or](#bitwiseor) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
 | [xor](#bitwisexor) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
-| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
 ### Compound Assignment
 
