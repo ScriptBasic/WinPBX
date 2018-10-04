@@ -638,20 +638,9 @@ x \= 2
 Performs a bitwise-and (conjunction) and assigns the result to a variable.
 
 ```
-dim x as long = 11
-x &= 1
-```
-
-If the variable is a string, it adds and assigns the value to the string (if the value added is a number, it first converts the number to a string).
-
-```
-dim s as string = "ABCDEFG"
-s += "HIJK"
-```
-
-```
-dim s as string = "ABCDEFG"
-s += 123456
+dim x as long = 200
+x &= 184
+print x   ' Output: 136
 ```
 
 # <a name="bitwiseorandassign"></a>Bitwise Or and assign operator (\!=)
