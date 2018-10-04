@@ -624,7 +624,7 @@ dim x as long = 10
 x /= 2
 ```
 
-# <a name="integerdivideandassign"></a>Integer divide and assign operator (\=)
+# <a name="integerdivideandassign"></a>Integer divide and assign operator (\\=)
 
 Integer divides and assigns a value to a variable.
 
