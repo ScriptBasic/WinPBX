@@ -15,7 +15,7 @@
 | ---------- | ----------- |
 | [stdcall](#stdcall) | Specifies a stdcall-style calling convention in a procedure declaration. |
 | [cdecl](#cdecl) | Specifies a cdecl-style calling convention in a procedure declaration. |
-| [ms64](#ms64) | Microsoft x64 calling convention. |
+| [ms64](#ms64) | Specifies the Microsoft x64 calling convention. |
 | [pascal](#pascal) | Specifies a Pascal-style calling convention in a procedure declaration. |
 
 ### Parameter Passing Conventions
@@ -43,17 +43,58 @@
 
 Specifies a stdcall-style calling convention in a procedure declaration. This is the default calling convention on 32bit Windows platforms.
 
-In the stdcall calling convention, any parameters are to be passed (pushed onto the stack) from right to left. Registers EAX, ECX, and EDX are designated for use within the function and dont need to be preserved. The procedure must clean up the stack (pop any parameters) before it returns.
+In the `stdcall` calling convention, any parameters are to be passed (pushed onto the stack) from right to left. Registers EAX, ECX, and EDX are designated for use within the function and dont need to be preserved. The procedure must clean up the stack (pop any parameters) before it returns.
 
 #### Syntax
 
 ```
 declare sub procedurename [alias "aliasname"] [lib "libname"] stdcall ( parameters )
+declare function functionname [alias "aliasname"] [lib "libname"] stdcall ( parameters ) as return_type
 ```
 ```
 declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
+--or--
 ! Sleep lib "kernel32.dll" stdcall (int msec)
 ```
+
+# <a name="cdecl"></a>cdecl
+
+Specifies a cdecl-style calling convention in a procedure declaration.
+
+The `cdecl` (which stands for C declaration) is a calling convention that originates from the C programming language and is used by many C compilers for the x86 architecture. In `cdecl`, subroutine arguments are passed on the stack. Integer values and memory addresses are returned in the EAX register, floating point values in the ST0 x87 register. Registers EAX, ECX, and EDX are caller-saved, and the rest are callee-saved. The x87 floating point registers ST0 to ST7 must be empty (popped or freed) when calling a new function, and ST1 to ST7 must be empty on exiting a function. ST0 must also be empty when not used for returning a value. In the context of the C programming language, function arguments are pushed on the stack in the right-to-left order, i.e. the last argument is pushed first. The caller cleans the stack after the function call returns.
+
+#### Syntax
+
+```
+declare sub procedurename [alias "aliasname"] [lib "libname"] cdecl ( parameters )
+declare function functionname [alias "aliasname"] [lib "libname"] cdecl ( parameters ) as return_type
+```
+
+```
+declare function strcpy alias "strcpy" lib "msvcrt.dll" cdecl (byval dest as zstring ptr, byval src as zstring ptr) as zstring ptr
+--or--
+! strcpy lib "kernel32.dll" cdecl (dest as zstring ptr, src as zstring ptr) as zstring ptr
+```
+
+# <a name="ms64"></a>ms64
+
+Specifies the Microsoft x64 calling convention.
+
+The Microsoft x64 calling convention is followed on Windows and pre-boot UEFI (for long mode on x86-64). It uses registers RCX, RDX, R8, R9 for the first four integer or pointer arguments (in that order), and XMM0, XMM1, XMM2, XMM3 are used for floating point arguments. Additional arguments are pushed onto the stack (right to left). Integer return values (similar to x86) are returned in RAX if 64 bits or less. Floating point return values are returned in XMM0. Parameters less than 64 bits long are not zero extended; the high bits are not zeroed.
+
+When compiling for the x64 architecture in a Windows context (whether using Microsoft or non-Microsoft tools), there is only one calling convention – the one described here, so that stdcall, thiscall, cdecl, fastcall, etc., are now all one and the same.
+
+In the Microsoft x64 calling convention, it is the caller's responsibility to allocate 32 bytes of "shadow space" on the stack right before calling the function (regardless of the actual number of parameters used), and to pop the stack after the call. The shadow space is used to spill RCX, RDX, R8, and R9, but must be made available to all functions, even those with fewer than four parameters.
+
+The registers RAX, RCX, RDX, R8, R9, R10, R11 are considered volatile (caller-saved).
+
+The registers RBX, RBP, RDI, RSI, RSP, R12, R13, R14, and R15 are considered nonvolatile (callee-saved).
+
+For example, a function taking 5 integer arguments will take the first to fourth in registers, and the fifth will be pushed on the top of the shadow space. So when the called function is entered, the stack will be composed of (in ascending order) the return address, followed by the shadow space (32 bytes) followed by the fifth parameter.
+
+In x86-64, Visual Studio 2008 stores floating point numbers in XMM6 and XMM7 (as well as XMM8 through XMM15); consequently, for x86-64, user-written assembly language routines must preserve XMM6 and XMM7 (as compared to x86 wherein user-written assembly language routines did not need to preserve XMM6 and XMM7). In other words, user-written assembly language routines must be updated to save/restore XMM6 and XMM7 before/after the function when being ported from x86 to x86-64.
+
+Starting with Visual Studio 2013, Microsoft introduced the \_\_vectorcall calling convention which extends the x64 convention.
 
 # <a name="any"></a>any
 
@@ -63,6 +104,14 @@ Using `any` disables type checking for a particular parameter, and passes the ad
 
 ```
 function f(any*a) {...}
+```
+
+```
+declare sub procedurename [alias "aliasname"] [lib "libname"] cdecl ( parameters )
+```
+```
+declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
+! Sleep lib "kernel32.dll" stdcall (int msec)
 ```
 
 Parameter of any type may be passed by-reference. Like C **void***.
