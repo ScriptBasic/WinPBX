@@ -15,9 +15,9 @@
 | [int](#int) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
 | [integer](#integer) | 32-bit (4 bytes signed integer ranging in value from -2,147,483,648 to 2,147,483,647. |
 | [word](#word) | 16-bit (2 bytes) unsigned integer ranging in value from 0 to 65,535. |
-| [dword](#dword) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
-| [ulong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
-| [uint](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295. |
+| [dword](#dword) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295. |
+| [ulong](#ulong) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295. |
+| [uint](#uint) | 32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295. |
 | [quad](#quad) | 64-bit (8 bytes) signed integer ranging in value from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807. |
 | [void](#void) | Specifies a null type. |
 | [sys](#sys) | 32-bit (4 bytes) in 32-bit platforms and 64-bit (8 bytes) in 64-bit platforms. |
@@ -301,7 +301,7 @@ print n
 
 # <a name="dword"></a>dword
 
-32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295.
 
 ```
 dim n AS dword
@@ -320,7 +320,7 @@ n = 1234567890
 
 # <a name="ulong"></a>ulong
 
-32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295.
 
 ```
 dim n AS ulong
@@ -339,7 +339,7 @@ n = 1234567890
 
 # <a name="uint"></a>uint
 
-32-bit (4 bytes) signed integer ranging in value from 0 to 4 294,967,295.
+32-bit (4 bytes) signed integer ranging in value from 0 to 4,294,967,295.
 
 ```
 dim n as uint
