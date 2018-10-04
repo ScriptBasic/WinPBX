@@ -359,7 +359,7 @@ The function parses the string from the left, skipping any white space, and retu
 dim b as double = Val("2.1E+30xa211")
 ```
 
-Val can be used to convert integer numbers in binary / octal / hexadecimal format, if they have the relevant identifier ("&B" / "&O" / "&H") prefixed, for example: Val("&HFF") returns 255.
+`val` can be used to convert integer numbers in binary / octal / hexadecimal format, if they have the relevant identifier ("&B" / "&O" / "&H") prefixed, for example: val("&HFF") returns 255.
 
 ```
 print val("&B11100101")
