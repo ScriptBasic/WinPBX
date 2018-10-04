@@ -353,6 +353,18 @@ dim v as double = val(val "2.5")
 ' Output: 2.5
 ```
 
+The function parses the string from the left, skipping any white space, and returns the longest number it can read, stopping at the first non-suitable character it finds. Scientific notation is recognized, with "D" or "E" used to specify the exponent.
+
+```
+dim b as double = Val("2.1E+30xa211")
+```
+
+Val can be used to convert integer numbers in binary / octal / hexadecimal format, if they have the relevant identifier ("&B" / "&O" / "&H") prefixed, for example: Val("&HFF") returns 255.
+
+```
+print val("&B11100101")
+```
+
 # <a name="wchr"></a>wchr
 
 Returns a wide string of a 2 byte character (encoding 0..65535 / 0xffff)
