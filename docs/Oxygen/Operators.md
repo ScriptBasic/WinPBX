@@ -273,22 +273,22 @@ Dereferences a pointer. Unlike C, pointer resolution is normally handled implict
 ```
 dim s as asciiz * 260 = "Test string"
 char *p = strptr(s)
-print s
+print p
 ```
 ```
 dim s as asciiz2 * 260 = "Test string"
 wchar *p = strptr(s)
-print s
+print p
 ```
 ```
 dim s as wstring = "Test string"
 wchar *p = strptr(s)
-print s
+print p
 ```
 ```
 dim s as wide = "Test string"
 wchar *p = strptr(s)
-print s
+print p
 ```
 ```
 int a = 42
