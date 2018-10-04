@@ -250,7 +250,9 @@ print &"Test string"
 ```
 ```
 sub Foo
+   ...
 end sub
+
 print @Foo
 print &Foo
 ```
