@@ -943,7 +943,7 @@ Performs a bitwise Xor operation.
 ```
 dim x1 as long = 200
 dim x2 as long = 184
-print x1 ^^ x2   ' Output: 112
+print x1 xor x2   ' Output: 112
 ```
 
 The following example adds two operands using And, Xor and left shift (<<).
