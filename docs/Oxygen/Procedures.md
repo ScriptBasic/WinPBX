@@ -59,7 +59,7 @@ end function
 | *functionname* | The name of the function. |
 | *external_identifier* | Externally visible (to the linker) name enclosed in quotes. |
 | *parameter_list* | List of parameters. |
-| *parameter* | \[byref|byval] identifier \[as type] \[= default_value]. |
+| *parameter* | \[byref\|byval] identifier \[as type] \[= default_value]. |
 | *type* | The type of variable. |
 | *default_value* | The value of the argument if none is specified in the call. |
 | *return_type* | The type of variable returned by the function. |
@@ -203,7 +203,7 @@ end sub
 | *functionname* | The name of the function. |
 | *external_identifier* | Externally visible (to the linker) name enclosed in quotes. |
 | *parameter_list* | List of parameters. |
-| *parameter* | \[byref|byval] identifier \[as type] \[= default_value]. |
+| *parameter* | \[byref\|byval] identifier \[as type] \[= default_value]. |
 | *type* | The type of variable. |
 | *default_value* | The value of the argument if none is specified in the call. |
 | *statements* | One or more statements that make up the function body. |
