@@ -856,6 +856,25 @@ For instance, working with a byte (the char type):
 
 The most significant bit of the first number is 1 and that of the second number is also 1 so the most significant bit of the result is 1; in the second most significant bit, the bit of second number is zero, so we have the result as 0.
 
+The following example adds two operands using And, Xor and left shift (<<).
+
+```
+unsigned int x = 3, y = 1, sum, carry
+sum = x xor y           ' // x XOR y
+carry = x & y           ' // x AND y
+while (carry <> 0)
+   carry = carry << 1   ' // left shift the carry
+   x = sum              ' // initialize x as sum
+   y = carry            ' // initialize y as carry
+   sum = x xor y        ' // sum is calculated
+   carry = x & y        ' /* carry is calculated, the loop condition is 
+                        '    evaluated and the process is repeated until 
+                        '    carry is equal to 0.
+                        ' */
+wend
+print sum               ' Output: 4
+```
+
 # <a name="bitwisenot"></a>Bitwise Not operator
 
 Returns the bitwise-not (complement) of a numeric value. For a boolean type, `not false` returns true (-1) and `not true` returns false (0).
@@ -923,6 +942,25 @@ dim x2 as long = 184
 print x1 ^^ x2   ' Output: 112
 ```
 
+The following example adds two operands using And, Xor and left shift (<<).
+
+```
+unsigned int x = 3, y = 1, sum, carry
+sum = x xor y           ' // x XOR y
+carry = x & y           ' // x AND y
+while (carry <> 0)
+   carry = carry << 1   ' // left shift the carry
+   x = sum              ' // initialize x as sum
+   y = carry            ' // initialize y as carry
+   sum = x xor y        ' // sum is calculated
+   carry = x & y        ' /* carry is calculated, the loop condition is 
+                        '    evaluated and the process is repeated until 
+                        '    carry is equal to 0.
+                        ' */
+wend
+print sum               ' Output: 4
+```
+
 # <a name="shiftleft"></a>Shift left operator (<<)
 
 Shifts each bit in its left-hand operand to the left by the number of positions indicated by the right-hand operand. It works opposite to that of right shift operator. Blank spaces generated are filled up by zeroes.
@@ -947,6 +985,25 @@ Right shift can be used to divide a bit pattern by 2 as shown:
 ```
 int i = 14       ' // Bit pattern 00001110
 int j = i >> 1   ' // here we have the bit pattern shifted by 1 thus we get 00000111 = 7 which is 14/2
+```
+
+The following example adds two operands using And, Xor and left shift (<<).
+
+```
+unsigned int x = 3, y = 1, sum, carry
+sum = x xor y           ' // x XOR y
+carry = x & y           ' // x AND y
+while (carry <> 0)
+   carry = carry << 1   ' // left shift the carry
+   x = sum              ' // initialize x as sum
+   y = carry            ' // initialize y as carry
+   sum = x xor y        ' // sum is calculated
+   carry = x & y        ' /* carry is calculated, the loop condition is 
+                        '    evaluated and the process is repeated until 
+                        '    carry is equal to 0.
+                        ' */
+wend
+print sum               ' Output: 4
 ```
 
 # <a name="rotateleft"></a>Rotate left operator (<<<)
