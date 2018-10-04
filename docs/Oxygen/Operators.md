@@ -697,8 +697,9 @@ print x   ' Output: -1 (true)
 Performs a bitwise-and (conjunction) and assigns the result to a variable.
 
 ```
-dim x as long = 11
-x and= 1
+dim x as long = 200
+x and= 184
+print x   ' Output: 136
 ```
 
 # <a name="bitwiseorandassign2"></a>Bitwise Or and assign operator (or=)
