@@ -42,6 +42,7 @@
 | ---------- | ----------- |
 | [&&](#booleanand) | Returns the logical And operation of two numeric values. |
 | [\|\|](#booleanor) | Returns the logical Or operation of two numeric values. |
+| [^^](#booleanxor) | Returns the logical Xor operation of two numeric values. |
 
 ### Bitwise Operators
 
@@ -49,7 +50,6 @@
 | ---------- | ----------- |
 | [&](#bitwiseand) | Bitwise And. |
 | [\|](#bitwiseor) | Bitwise Or. |
-| [^^](#bitwisexor) | Bitwise Xor. |
 | [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
 | [<<<](#rotateleft) | Shifts all bits one place to the left. |
@@ -693,7 +693,7 @@ The second operand is evaluated only if the first operand evaluates to false (0)
 
 # <a name="booleanxorandassign"></a>Logical Xor and assign operator (^^=)
 
-Performs a logical XOR operation and assigns the result to a variable.
+Performs a logical Xor operation and assigns the result to a variable.
 
 ```
 dim x as long = 1
@@ -833,6 +833,16 @@ The first operand is completely evaluated and all side effects are completed bef
 
 The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical Or expression is true.
 
+# <a name="booleanxor"></a>Operator ^^
+
+Returns the logical Xor operation of two numeric values.
+
+```
+dim x1 as long = 1
+dim x2 as long = 0
+print x1 ^^ x2   ' Output: -1 (true)
+```
+
 # <a name="bitwiseand"></a>Bitwise And Operator (&) (and)
 
 Performs a bitwise And operation.
@@ -867,9 +877,9 @@ The following example adds two operands using And, Xor and left shift (<<).
 
 ```
 unsigned int x = 3, y = 1, sum, carry
-sum = x xor y           ' // x XOR y
-carry = x & y           ' // x AND y
-while (carry <> 0)
+sum = x xor y           ' // x xor y
+carry = x & y           ' // x and y
+while (carry ^^ 0)      ' // ^^ = boolean xor
    carry = carry << 1   ' // left shift the carry
    x = sum              ' // initialize x as sum
    y = carry            ' // initialize y as carry
@@ -932,7 +942,7 @@ print x1 | x2   ' Output: 248
 
 Similar to bitwise And, bitwise Or only operates at the bit level. Its result is a 1 if one of the either bits is 1 and zero only when both bits are 0. Its symbol is \| which can be called a pipe.
 
-# <a name="bitwisexor"></a>Bitwise Xor operator (^^) (xor)
+# <a name="bitwisexor"></a>Bitwise Xor operator (xor)
 
 ```
       11001000  
@@ -953,9 +963,9 @@ The following example adds two operands using And, Xor and left shift (<<).
 
 ```
 unsigned int x = 3, y = 1, sum, carry
-sum = x xor y           ' // x XOR y
-carry = x & y           ' // x AND y
-while (carry <> 0)
+sum = x xor y           ' // x xor y
+carry = x & y           ' // x and y
+while (carry ^^ 0)      ' // ^^ = boolean xor
    carry = carry << 1   ' // left shift the carry
    x = sum              ' // initialize x as sum
    y = carry            ' // initialize y as carry
@@ -983,9 +993,9 @@ The following example adds two operands using And, Xor and left shift (<<).
 
 ```
 unsigned int x = 3, y = 1, sum, carry
-sum = x xor y           ' // x XOR y
-carry = x & y           ' // x AND y
-while (carry <> 0)
+sum = x xor y           ' // x xor y
+carry = x & y           ' // x and y
+while (carry ^^ 0)      ' // ^^ = boolean xor
    carry = carry << 1   ' // left shift the carry
    x = sum              ' // initialize x as sum
    y = carry            ' // initialize y as carry
