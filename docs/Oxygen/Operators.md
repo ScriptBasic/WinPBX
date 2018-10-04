@@ -36,6 +36,30 @@
 | [++](#increment) | Increments its operand by 1. |
 | [--](#decrement) | Decrements its operand by 1. |
 
+### Logical Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [&&](#booleanand) | Returns the logical And operation of two numeric values. |
+| [\|\|](#booleanor) | Returns the logical Or operation of two numeric values. |
+
+### Bitwise Operators
+
+| Name       | Description |
+| ---------- | ----------- |
+| [&](#bitwiseand) | Bitwise And. |
+| [\|](#bitwiseor) | Bitwise Or. |
+| [^^](#bitwisexor) | Bitwise Xor. |
+| [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
+| [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
+| [<<<](#rotateleft) | Shifts all bits one place to the left. |
+| [>>>](#rotateright) | Shifts all bits one place to the right. |
+| [and](#bitwiseand) | Returns the bitwise-and (conjunction) of two numeric values. |
+| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
+| [or](#bitwiseor) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
+| [xor](#bitwisexor) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
+| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
+
 ### Compound Assignment
 
 | Name       | Description |
@@ -65,30 +89,6 @@
 | [>](#greaterthan) | Compares an expression greater than another expression. |
 | [<=](#lessthanorqeualto) | Compares an expression less than or equal to another expression. |
 | [>=](#greaterthanorqeualto) | Compares an expression greater than or equal to another expression. |
-
-### Logical Operators
-
-| Name       | Description |
-| ---------- | ----------- |
-| [&&](#booleanand) | Returns the logical And operation of two numeric values. |
-| [\|\|](#booleanor) | Returns the logical Or operation of two numeric values. |
-
-### Bitwise Operators
-
-| Name       | Description |
-| ---------- | ----------- |
-| [&](#bitwiseand) | Bitwise And. |
-| [\|](#bitwiseor) | Bitwise Or. |
-| [^^](#bitwisexor) | Bitwise Xor. |
-| [<<](#shiftleft) | Shifts the bits of a numeric expression to the left. |
-| [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
-| [<<<](#rotateleft) | Shifts all bits one place to the left. |
-| [>>>](#rotateright) | Shifts all bits one place to the right. |
-| [and](#bitwiseand) | Returns the bitwise-and (conjunction) of two numeric values. |
-| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
-| [or](#bitwiseor) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
-| [xor](#bitwisexor) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
-| [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
 ### Pointer Operators
 
