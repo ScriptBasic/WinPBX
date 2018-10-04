@@ -67,3 +67,41 @@ Procedures not returning a value:
 ```
 void foo()
 ```
+
+# <a name="byref"></a>byref
+
+Declaration specifier to explicitly pass a parameter by reference. When parameters are passed by reference, the address of the variable passed to the routine is placed on the stack and its content can be changed by the procedure.
+
+When a constant or a literal expression are passed by reference to a procedure, the compiler passed a temporary variable initialized with the constant or the literal expression.
+
+```
+function foo (byref v as long) as long
+'equivalent in C notation:
+long foo (long * v)
+```
+
+```
+sub  foo (byref v as long)
+    v = v + 1
+end sub
+
+dim v as long = 1
+Foo v
+print v   ' Output: 2
+```
+
+# <a name="byval"></a>byval
+
+Declaration specifier to explicitly pass a parameter by value. When parameters are passed by value, a copy of the actual data is placed on the stack. Any changes done to the copy don't alter the content of the passed variable.
+
+```
+sub  foo (byval v as long)
+    v = v + 1
+end sub
+
+dim v as long = 1
+Foo v
+print v   ' Output: 1
+```
+
+`byval`is good for small objects, like numeric types, and avoids the overhead of the pointer used by `byref` (that has to be deferenced at each access to the object) since the data is retrieved from the stack. `byref` is better for passing strings or big UDTs that should not be copied.
