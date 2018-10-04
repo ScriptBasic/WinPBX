@@ -43,6 +43,8 @@
 
 Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide).
 
+Using `any` disables type checking for a particular parameter, and passes the address of the variable on the stack. 
+
 ```
 function f(any*a) {...}
 ```
