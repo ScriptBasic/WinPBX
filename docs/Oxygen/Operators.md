@@ -1021,9 +1021,14 @@ int j = i >> 1   ' // here we have the bit pattern shifted by 1 thus we get 0000
 Shifts all bits one place to the left.
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 <<< x2
+dim x1 as long = 1   ' Binary: 0001
+dim x2 as long = 1   ' Binary: 0001
+print x1 <<< x2      ' Output: 2 - Binary: 0010
+```
+```
+dim x1 as long = 2   ' Binary: 0010
+dim x2 as long = 1   ' Binary: 0001
+print x1 <<< x2      ' Output: 4 - Binary: 0100
 ```
 
 # <a name="rotateright"></a>Rotate right operator (>>>)
@@ -1031,9 +1036,9 @@ print x1 <<< x2
 Shifts all bits one place to the left.
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 >>> x2
+dim x1 as long = 1   ' Binary: 0001
+dim x2 as long = 1   ' Binary: 0001
+print x1 >>> x2      ' Output: -2.147.483.648 - Binary: 8000 0000
 ```
 
 # <a name="cast"></a>cast
