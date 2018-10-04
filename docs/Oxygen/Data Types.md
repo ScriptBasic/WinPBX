@@ -411,7 +411,7 @@ dim hCtl as sys = GetDlgItem(hwnd, ID)
 
 # <a name="single"></a>single / float
 
-32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. They are limited to six digiys of precision and can only accurately hold multiples of powers of two, which will lead to inaccuracies in most base-10 fractions.
+32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. They are limited to six digiys of precision and can only accurately hold multiples of powers of two, which will lead to inaccuracies in most base-10 fractions. `single` and `float`are the same data type.
 
 ```
 dim n as single
