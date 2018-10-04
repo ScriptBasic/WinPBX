@@ -29,7 +29,7 @@
 | [single](#single) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
 | [double](#double) | 64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308. |
 | [extended](#extended) | 10 bytes extended-precision floating number ranging in  value from +/- 3.4\*10^-4932 to 1.2\*10^4932. |
-| [float](#float) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
+| [float](#single) | 32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. |
 
 ### String Types
 
@@ -409,9 +409,9 @@ The following example retrieves the handle of a Windows control identified by ID
 dim hCtl as sys = GetDlgItem(hwnd, ID)
 ```
 
-# <a name="single"></a>single
+# <a name="single"></a>single / float
 
-32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
+32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38. They are limited to six digiys of precision and can only accurately hold multiples of powers of two, which will lead to inaccuracies in most base-10 fractions.
 
 ```
 dim n as single
@@ -430,7 +430,7 @@ n = 123.45
 
 # <a name="double"></a>double
 
-64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308.
+64-bit (8 bytes) double-precision floating number ranging in value from +/- 4.19\*10^-307 to 1.79\*10^308. They contain at most 53 bits of precision, or about 15 decimal digits, and can only accurately hold multiples of powers of two, which will lead to inaccuracies in most base-10 fractions.
 
 ```
 dim n as double
@@ -464,25 +464,6 @@ n = 12356789.12
 ```
 dim as extended n
 n = 12356789.12
-```
-
-# <a name="float"></a>float
-
-32-bit (4 bytes) single-precision floating number ranging in value from +/- 8.43\*10^-37 to 3.40\*10^38.
-
-```
-dim n as float
-n = 123.45
-```
-
-```
-float n
-n = 123.45
-```
-
-```
-dim as float n
-n = 123.45
 ```
 
 # <a name="asciiz"></a>asciiz
