@@ -259,10 +259,18 @@ Can also be used to read and write data of variables and arrays of variables, by
 
 ```
 int a = 42
-print @a 'address of a
-int *b 'indirect (pointer) variable
+print @a  'address of a
+int *b    'indirect (pointer) variable
 @b = @a   'coupled by address
 print b   ' 42
+```
+
+```
+typedef double *pDouble
+dim as double num = 123456.78
+dim as pDouble pNum
+@pNum = @num 'address coupling
+print pNum
 ```
 
 # <a name="valueof"></a>ValueOf Operator (*)
