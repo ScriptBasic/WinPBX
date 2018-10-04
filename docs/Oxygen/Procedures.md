@@ -39,6 +39,156 @@
 | [lib](#lib) | Specifies the library where a sub or function can be found as part of a declaration. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations.  |
 
+# <a name="function"></a>function
+
+Defines a procedure that returns a value.
+
+#### Syntax
+
+```
+function functionname [alias external_identifier] [cdecl|pascal|stdcall] [([parameter_list])] as return_type
+   [statements]
+   [Return return_value]
+   [Function = return_value]
+   [functionname = return_value]
+end function
+```
+
+| Name       | Description |
+| ---------- | ----------- |
+| *functionname* | The name of the function. |
+| *external_identifier* | Externally visible (to the linker) name enclosed in quotes. |
+| *parameter_list* | List of parameters. |
+| *parameter* | \[byref|byval] identifier \[as type] \[= default_value]. |
+| *type* | The type of variable. |
+| *default_value* | The value of the argument if none is specified in the call. |
+| *return_type* | The type of variable returned by the function. |
+| *statements* | One or more statements that make up the function body. |
+| *return_value* | The value returned by the function. |
+
+```
+function triple(byval i as int) as int
+   return i*3
+end function
+```
+```
+function triple(i as int) as int
+   return i*3
+end function
+```
+```
+function cube(f as float) as float
+  function = f*f*f
+end function
+```
+```
+function cube(f as float) as float {return f*f*f}
+```
+```
+function cube(f as float) as float {
+  return f*f*f
+}
+```
+```
+float cube(f as float) {
+  return f*f*f
+}
+```
+```
+float cube(float f) {
+  return f*f*f
+}
+```
+
+Passing an array by reference:
+
+```
+dim as float f() = {1,2,3,4,5}
+
+function cubes(byref f as float, byval n as int)
+  indexbase 1
+  int i
+  float v
+  for i = 1 to n
+    v = f[i]
+    print v*v*v
+  next
+end function
+
+function cubes(float *f, int n)
+  indexbase 1
+  int i
+  float v
+  for i = 1 to n
+    v = f[i]
+    print v*v*v
+  next
+end function
+
+cubes f(2),3
+cubes f, countof(f)
+```
+
+With optional parameter:
+
+```
+dim as float f() = {1,2,3,4,5}
+
+function cubes(byref f as float, optional byval n as int)
+  if n = 0 then n = 1
+  indexbase 1
+  int i
+  float v
+  for i = 1 to n
+    v = f[i]
+    print v*v*v
+  next
+end function
+
+cubes f(3)
+cubes f(3),1
+cubes float{1,2,3,4}, countof  ' passing literal data set
+```
+
+With default value:
+
+```
+dim as float f() = {1,2,3,4,5}
+
+function cubes(float *f, int n = 2)
+  indexbase 1
+  int i
+  float v
+  for i = 1 to n
+    v = f[i]
+    print v*v*v
+  next
+end function
+
+cubes f(3)
+cubes f(3),2
+```
+
+With ellipsis:
+
+```
+dim as float f() = {1,2,3,4,5}
+
+function cubes(int n, ...)
+  indexbase 0
+  int i
+  float v
+  for i = 1 to n
+    v = (int) param[i]
+    print v*v*v
+  next
+end function
+
+cubes 3, 2,3,4
+```
+
+
+
 # <a name="stdcall"></a>stdcall
 
 Specifies a stdcall-style calling convention in a procedure declaration. This is the default calling convention on 32bit Windows platforms.
