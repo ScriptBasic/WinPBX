@@ -51,23 +51,6 @@ function f(any*a) {...}
 
 Parameter of any type may be passed by-reference. Like C **void***.
 
-
-# <a name="void"></a>void
-
-Specifies a null type.
-
-In function headers:
-
-```
-function foo (byref v as void) as void ptr
-void* foo(void*v)
-```
-
-Procedures not returning a value:
-```
-void foo()
-```
-
 # <a name="byref"></a>byref
 
 Declaration specifier to explicitly pass a parameter by reference. When parameters are passed by reference, the address of the variable passed to the routine is placed on the stack and its content can be changed by the procedure.
@@ -111,3 +94,19 @@ print v   ' Output: 1
 ```
 
 `byval`is good for small objects, like numeric types, and avoids the overhead of the pointer used by `byref` (that has to be deferenced at each access to the object) since the data is retrieved from the stack. `byref` is better for passing strings or big UDTs that should not be copied.
+
+# <a name="void"></a>void
+
+Specifies a null type.
+
+In function headers:
+
+```
+function foo (byref v as void) as void ptr
+void* foo(void*v)
+```
+
+Procedures not returning a value:
+```
+void foo()
+```
