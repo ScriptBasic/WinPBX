@@ -172,8 +172,6 @@ cubes f(3),2
 With ellipsis:
 
 ```
-dim as float f() = {1,2,3,4,5}
-
 function cubes(int n, ...)
   indexbase 0
   int i
