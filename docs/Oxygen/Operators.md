@@ -507,7 +507,7 @@ dim x as long
 x = 10 / 2
 ```
 
-# <a name="integerdivision"></a>Integer divison operator (\)
+# <a name="integerdivision"></a>Integer divison operator (\\)
 
 Divides two integer expressions.
 
