@@ -95,6 +95,12 @@ print v   ' Output: 2
 Declaration specifier to explicitly pass a parameter by value. When parameters are passed by value, a copy of the actual data is placed on the stack. Any changes done to the copy don't alter the content of the passed variable.
 
 ```
+function foo (byval v as long) as long
+'equivalent in C notation:
+long foo (long v)
+```
+
+```
 sub  foo (byval v as long)
     v = v + 1
 end sub
