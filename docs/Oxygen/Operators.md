@@ -860,6 +860,20 @@ The most significant bit of the first number is 1 and that of the second number 
 
 Returns the bitwise-not (complement) of a numeric value. For a boolean type, `not false` returns true (-1) and `not true` returns false (0).
 
+
+| bit a      | Not a (complement of a) |
+| ---------- | --------------- |
+| 0 | 1 |
+| 1 | 0 |
+
+The ones' complement or the bitwise complement gets the complement of a given number. Thus we get the bits inverted, for every bit 1 the result is bit 0 and conversely for every bit 0 we have a bit 1. This operation should not be confused with logical negation.
+
+```
+    ~ 11001000   
+      -------- 
+    = 00110111
+```
+
 ```
 dim n AS byte
 n = 15 '00001111
