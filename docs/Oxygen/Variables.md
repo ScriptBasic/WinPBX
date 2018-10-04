@@ -69,7 +69,7 @@
 
 Declares variables, arrays, objects and user defined types.
 
-`dim` can specify an absolute address using the `at` address syntax, creating an overlay that allows to access the contents pointed by the absolute address to a different data type.
+`dim` can specify an absolute address using the `at` address syntax, creating an overlay that allows to access the contents pointed by the absolute address to a different data type. See the "Overlays" examples below.
 
 #### Syntax
 
