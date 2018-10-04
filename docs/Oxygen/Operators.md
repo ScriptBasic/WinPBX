@@ -596,7 +596,7 @@ Substracts and assigns a value to a variable.
 
 ```
 dim x as long = 5
-x -= 3
+x -= 3   ' Result: 2
 ```
 
 # <a name="multiplyandassign"></a>Multiply and assign operator (*=)
@@ -605,7 +605,7 @@ Multiplies and assigns a value to a variable.
 
 ```
 dim x as long = 5
-x *= 2
+x *= 2   ' Result: 10
 ```
 
 # <a name="divideandassign"></a>Divide and assign operator (/=)
@@ -614,16 +614,7 @@ Divides and assigns a value to a variable.
 
 ```
 dim x as long = 10
-x /= 2
-```
-
-# <a name="divideandassign"></a>Divide and assign operator (/=)
-
-Divides and assigns a value to a variable.
-
-```
-dim x as long = 10
-x /= 2
+x /= 2   ' Result: 5
 ```
 
 # <a name="integerdivideandassign"></a>Integer divide and assign operator (\\=)
@@ -632,7 +623,7 @@ Integer divides and assigns a value to a variable.
 
 ```
 dim x as long = 13
-x \= 2
+x \= 2   ' Result: 6
 ```
 
 # <a name="bitwiseandandassign"></a>Bitwise And and assign operator (&=)
@@ -735,14 +726,14 @@ if x1 == x2 then print "Equal"
 
 If the #assign directive is on, `==` must always be used to test equality instead of `=`.
 
-# <a name="notequalto"></a>Operator |=
+# <a name="notequalto"></a>Operator !=
 
 Compares two expressions for inequality.
 
 ```
 dim x1 as long = 1
 dim x2 as long = 2
-if x1 |= x2 yhen print "Not equal"
+if x1 != x2 yhen print "Not equal"
 ```
 
 # <a name="notequalto2"></a>Operator <>
@@ -1066,7 +1057,7 @@ Casts variables as integers.
 
 ```
 float f = 100
-print hex(?f)   ' display the hexadecimal form of float f
+print hex(?f)   ' display the hexadecimal form of float f - output: 42C80000
 ```
 
 # <a name="convert"></a>convert
