@@ -84,7 +84,7 @@
 | [>>](#shiftright) | Shifts the bits of a numeric expression to the right. |
 | [<<<](#rotateleft) | Shifts all bits one place to the left. |
 | [>>>](#rotateright) | Shifts all bits one place to the right. |
-| [and](#bitwiseand2) | Returns the bitwise-and (conjunction) of two numeric values. |
+| [and](#bitwiseand) | Returns the bitwise-and (conjunction) of two numeric values. |
 | [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 | [or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
 | [xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
@@ -826,15 +826,35 @@ The first operand is completely evaluated and all side effects are completed bef
 
 The second operand is evaluated only if the first operand evaluates to false (0). This eliminates needless evaluation of the second operand when the logical Or expression is true.
 
-# <a name="bitwiseand"></a>Bitwise And Operator (&)
+# <a name="bitwiseand"></a>Bitwise And Operator (&) (and)
 
 Performs a bitwise And operation.
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 & x2
+dim x1 as long = 200
+dim x2 as long = 184
+print x1 & x2   ' Output 136
 ```
+
+| bit a      | bit b       | a & b (a And b) |
+| ---------- | ----------- | --------------- |
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+The bitwise And operator is a single ampersand: &. It is just a representation of And which does its work on the bits of the operands rather than the truth value of the operands. Bitwise binary And does the logical And (as shown in the table above) of the bits in each position of a number in its binary form.
+
+For instance, working with a byte (the char type):
+
+```
+     11001000  
+   & 10111000 
+     -------- 
+   = 10001000
+```
+
+The most significant bit of the first number is 1 and that of the second number is also 1 so the most significant bit of the result is 1; in the second most significant bit, the bit of second number is zero, so we have the result as 0.
 
 # <a name="bitwisenot"></a>Bitwise Not operator
 
@@ -911,16 +931,6 @@ Shifts all bits one place to the left.
 dim x1 as long = 1
 dim x2 as long = 1
 print x1 >>> x2
-```
-
-# <a name="bitwiseand2"></a>Bitwise And operator (and)
-
-Performs a bitwise And operation.
-
-```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 and x2
 ```
 
 # <a name="bitwiseor2"></a>Bitwise Or operator (or)
