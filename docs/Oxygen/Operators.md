@@ -86,8 +86,8 @@
 | [>>>](#rotateright) | Shifts all bits one place to the right. |
 | [and](#bitwiseand) | Returns the bitwise-and (conjunction) of two numeric values. |
 | [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
-| [or](#bitwiseor2) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
-| [xor](#bitwisexor2) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
+| [or](#bitwiseor) | Returns the bitwise-or (inclusive disjunction) of two numeric values. |
+| [xor](#bitwisexor) | Returns the bitwise-xor (exclusive disjunction) of two numeric values. |
 | [not](#bitwisenot) | Returns the bitwise-not (complement) of a numeric value. |
 
 ### Pointer Operators
@@ -873,24 +873,40 @@ When used on conditional expressions it inverts the conditional logic.
 if not a > 42 then ...    'if a <= 42 then ...
 ```
 
-# <a name="bitwiseor"></a>Bitwise Or operator (\|)
+# <a name="bitwiseor"></a>Bitwise Or operator (\|) (or)
 
 Performs a bitwise Or operation.
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 | x2
+dim x1 as long = 200
+dim x2 as long = 184
+print x1 | x2   ' Output: 248
 ```
 
-# <a name="bitwisexor"></a>Bitwise Xor operator (^^)
+| bit a      | bit b       | a & b (a And b) |
+| ---------- | ----------- | --------------- |
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 1 |
+
+Similar to bitwise And, bitwise Or only operates at the bit level. Its result is a 1 if one of the either bits is 1 and zero only when both bits are 0. Its symbol is \| which can be called a pipe.
+
+# <a name="bitwisexor"></a>Bitwise Xor operator (^^) (xor)
+
+```
+      11001000  
+    | 10111000 
+      -------- 
+    = 11111000
+```
 
 Performs a bitwise Xor operation.
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 ^^ x2
+dim x1 as long = 200
+dim x2 as long = 184
+print x1 ^^ x2   ' Output: 112
 ```
 
 # <a name="shiftleft"></a>Shift left operator (<<)
@@ -931,26 +947,6 @@ Shifts all bits one place to the left.
 dim x1 as long = 1
 dim x2 as long = 1
 print x1 >>> x2
-```
-
-# <a name="bitwiseor2"></a>Bitwise Or operator (or)
-
-Performs a bitwise Or operation.
-
-```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 Or x2
-```
-
-# <a name="bitwisexor2"></a>Bitwise Xor operator (xor)
-
-Performs a bitwise Xor operation.
-
-```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 xor x2
 ```
 
 # <a name="cast"></a>cast
