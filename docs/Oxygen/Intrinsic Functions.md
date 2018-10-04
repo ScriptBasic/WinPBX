@@ -41,6 +41,7 @@
 | [floor](#floor) | Rounds a float number downward. |
 | [frac](#frac) | Returns the fractional part of a number. |
 | [hypot](#hypot) | Returns the hypotenuse (longest side) of a right angle triangle given the other 2 sides. |
+| [lin](#lin) | Returns the logarithm of the first value to base e (2.71828182845904523536…). |
 | [log](#log) | Returns the natural logarithm of a given number. |
 | [log2](#log2) | Returns the binary (base-2) logarithm of a number. |
 | [log10](#log10) | Returns the common (base-10) logarithm of a number. |
@@ -518,6 +519,16 @@ Returns the hypotenuse (longest side) of a right angle triangle given the other 
 ```
 dim d as double
 d = hypot(3, 4)
+```
+
+# <a name="lin"></a>lin
+
+Returns the logarthm of the first value to base e (2.71828182845904523536…).
+
+```
+dim d as double
+d = log(10)
+print d   ' Output: 2.30258092...
 ```
 
 # <a name="log"></a>log
