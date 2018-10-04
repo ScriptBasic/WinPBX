@@ -670,6 +670,7 @@ Performs a logical And operation and assigns the result to a variable.
 ```
 dim x as long = 1
 x &&= 1
+print x   ' Output: -1 (true)
 ```
 
 The second operand is evaluated only if the first operand evaluates to true (nonzero). This evaluation eliminates needless evaluation of the second operand when the logical And expression is false.
@@ -681,6 +682,7 @@ Performs a logical OR operation and assigns the result to a variable.
 ```
 dim x as long = 1
 x ||= 1
+print x   ' Output: -1 (true)
 ```
 
 The logical Or operator (||) returns the boolean value true if either or both operands is true and returns false otherwise. The operands are implicitly converted to type bool prior to evaluation, and the result is of type bool. Logical Or has left-to-right associativity.
@@ -697,7 +699,8 @@ Performs a logical Xor operation and assigns the result to a variable.
 
 ```
 dim x as long = 1
-x ^^= 1
+x ^^= 0
+print x   ' Output: -1 (true)
 ```
 
 # <a name="bitwiseandandassign2"></a>Bitwise And and assign operator (and=)
