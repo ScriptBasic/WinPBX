@@ -925,12 +925,13 @@ print x1 ^^ x2   ' Output: 112
 
 # <a name="shiftleft"></a>Shift left operator (<<)
 
-Shifts the bits of a numeric expression to the left.
+Shifts each bit in its left-hand operand to the left by the number of positions indicated by the right-hand operand. It works opposite to that of right shift operator. Blank spaces generated are filled up by zeroes.
+
+Left shift can be used to multiply an integer by powers of 2 as in
 
 ```
-dim x1 as long = 1
-dim x2 as long = 1
-print x1 << x2
+int i = 4        ' /* bit pattern equivalent is binary 100 */
+int j = i << 2   ' /* makes it binary 10000, which multiplies the original number by 4 i.e. 16 */
 ```
 
 # <a name="shiftright"></a>Shift right operator (>>)
