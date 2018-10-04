@@ -39,6 +39,22 @@
 | [lib](#lib) | Specifies the library where a sub or function can be found as part of a declaration. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations.  |
 
+# <a name="stdcall"></a>stdcall
+
+Specifies a stdcall-style calling convention in a procedure declaration. This is the default calling convention on 32bit Windows platforms.
+
+In the stdcall calling convention, any parameters are to be passed (pushed onto the stack) from right to left. Registers EAX, ECX, and EDX are designated for use within the function and dont need to be preserved. The procedure must clean up the stack (pop any parameters) before it returns.
+
+#### Syntax
+
+```
+declare sub procedurename [alias "aliasname"] [lib "libname"] stdcall ( parameters )
+```
+```
+declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
+! Sleep lib "kernel32.dll" stdcall (int msec)
+```
+
 # <a name="any"></a>any
 
 Specifies a parameter of uncertain type, nominally a signed integer of system width (32/64 bits wide).
