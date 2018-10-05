@@ -322,11 +322,11 @@ freelibrary hLib
 ' Explicit type conversion
 ' This can be used for procedure calls without prototypes.
 
-function fs(single a, b) external
+function fs (single a, b) external
    print a + b
 end function
 
-function fd(double a, b) external
+function fd (double a, b) external
   print a + b
 end function
 
