@@ -419,4 +419,13 @@ extern stdcall lib "kernel32.dll"
 end extern
 ```
 
+# <a name="external"></a>external
  
+Functions with the `external` attribute expect to be called from procedures external to Oxygen Basic. Additional register management is
+enlisted to support external calls.
+
+```
+function fs (single a, single b) as single external
+   function = a + b
+end function
+```
