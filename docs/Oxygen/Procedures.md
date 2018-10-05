@@ -387,9 +387,6 @@ An `alias` clause may be used to give an alternate name for imported or exported
 
 `Alias` is commonly used for procedures in libraries written in other languages when such procedure names contain characters that are invalid in Basic.
 
-
-This option is particularly useful if you want to abbreviate a long name, or if the original name of a function contains characters that are illegal in PowerBASIC.  The alias name is the actual name used in the other module, while the ProcName is the word you use in your PowerBASIC program.  For example:
-
 ```
 Declare sub LegalName alias "Illegal$Name""
 ```
