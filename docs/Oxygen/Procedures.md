@@ -318,6 +318,35 @@ call proc(0,"Hello World", "MessageBoxA", 0)
 freelibrary hLib
 ```
 
+```
+' Explicit type conversion
+' This can be used for procedure calls without prototypes.
+
+function fs(single a, b) external
+   print a + b
+end function
+
+function fd(double a, b) external
+  print a + b
+end function
+
+' Setup anonymous procedures usin a sys variale as a pointer.
+sys g
+
+' Implicit double with decimal point
+g = @fs   ' anonymise
+call g 1.2, 15.25 + 1.0   ' default single
+
+' Implicit single
+g = @fs   ' anonymise
+single a = 4.5, b = 8.25
+call g a, a + b
+
+' Explicit double
+g = @fd   ' anonymise
+call g  convert double 1, convert double 10
+```
+
 # <a name="stdcall"></a>stdcall
 
 Specifies a stdcall-style calling convention in a procedure declaration. This is the default calling convention on 32bit Windows platforms.
