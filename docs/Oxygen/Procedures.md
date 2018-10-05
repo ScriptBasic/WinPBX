@@ -43,7 +43,7 @@
 
 Declares a procedure with or without its prototype (may be external or declared in advance).
 
-With prototype:
+External, with prototype:
 
 ```
 extern lib "user32.dll"
@@ -52,7 +52,7 @@ end extern
 MessageBox 0,"Hello World", "declare",0
 ```
 
-Without prototype (it may be added later):
+Wxternal, without prototype (it may be added later):
 
 ```
 extern lib "user32.dll"
@@ -60,6 +60,19 @@ extern lib "user32.dll"
 end extern
 declare MessageBox(sys hWnd, char* lpText, char* lpCaption, dword uType) as int at @MessageBox
 MessageBox 0,"Hello World", "declare",0
+```
+
+Forward declaration:
+
+```
+! fun (float a,b,c,d) as float
+' or: ! function fun (float a, b, c, d) as float
+
+print fun(1, 2, 3, 4)
+
+function fun (float a, b, c, d) as float
+   function = a + b + c + d
+end function
 ```
 
 # <a name="function"></a>function
