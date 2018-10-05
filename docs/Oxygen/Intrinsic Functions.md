@@ -15,6 +15,7 @@
 | [len](#len) | Returns the length of a string in characters. |
 | [ltrim](#ltrim) | Removes spaces on the left side of a string. |
 | [mid](#mid) | Returns a part of a string. |
+| [mid (statement)](#mid2) | Overwrites part of a substring of a string with another string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
 | [right](#right) | Returns the rightmost substring of a string. | |
@@ -233,7 +234,7 @@ dim s as string = ltrim "   abc"
 ' Output: "abc"
 ```
 
-# <a name="mid"></a>mid
+# <a name="mid"></a>mid (function)
 
 Returns a part of a string.
 
@@ -256,9 +257,9 @@ s = mid("abcdef", 3, 2)
 ' Output: "cd"
 ```
 
-#### Mid (statement)
+# <a name="mid"></a>mid (statement)
 
-Overwrites a substring of a string with another string.
+Overwrites part of a substring of a string with another string.
 
 | Parameter  | Description |
 | ---------- | ----------- |
@@ -278,7 +279,7 @@ print s
 print s   ' Output: "1000567890"
 ```
 
-Contrarily to other dialects, it has not an optional *end* parameter to limit the number of characters that can be replaced.
+Contrarily to other dialects, it has not an optional *end* parameter to limit the number of characters that can be replaced (the length of the replacement string is used to calculate them). The length of the source string does not change, so if *expression* is too big, only the number of characters that fit in the source string are copied.
 
 # <a name="news"></a>news
 
