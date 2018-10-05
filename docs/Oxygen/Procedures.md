@@ -391,3 +391,19 @@ An `alias` clause may be used to give an alternate name for imported or exported
 ```
 Declare sub LegalName alias "Illegal$Name""
 ```
+
+# <a name="export"></a>export
+
+Declaration specifier to indicate that a procedure in a DLL should be visible from other programs.
+
+If a function is declared with this clause in a DLL, it is added to the public export table, so external programs can dynamically link to it using `Getprocaddress`. If a procedure is not marked with `export`, it is hidden from the outside.
+
+```
+function HelloA (string s) as string, export
+ return "HelloA "+s
+end function
+
+function HelloW (wstring s) as wstring, export
+ return "HelloW "+s
+end function
+```
