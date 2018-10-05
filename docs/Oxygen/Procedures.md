@@ -407,3 +407,16 @@ function HelloW (wstring s) as wstring, export
  return "HelloW "+s
 end function
 ```
+
+# <a name="extern"></a>extern
+
+Aassociates declared procedures with a calling convention and/or DLL name.
+
+```
+extern stdcall lib "kernel32.dll"
+  declare function QueryPerformanceCounter(lpPerformanceCount as quad) as sys
+  declare function QueryPerformanceFrequency(lpPerformanceFrequency as quad) as sys
+end extern
+```
+
+ 
