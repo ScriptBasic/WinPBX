@@ -15,7 +15,7 @@
 | [len](#len) | Returns the length of a string in characters. |
 | [ltrim](#ltrim) | Removes spaces on the left side of a string. |
 | [mid (function)](#mid) | Returns a part of a string. |
-| [mid (statement)](#mid2) | Overwrites part of a substring of a string with another string. |
+| [mid (statement)](#mid2) | Overwrites part of a string with another string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
 | [right](#right) | Returns the rightmost substring of a string. | |
@@ -259,7 +259,7 @@ s = mid("abcdef", 3, 2)
 
 # <a name="mid2"></a>mid (statement)
 
-Overwrites part of a substring of a string with another string.
+Overwrites part of a string with another string.
 
 | Parameter  | Description |
 | ---------- | ----------- |
