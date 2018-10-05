@@ -117,11 +117,9 @@ if a=a and a==a or a==a and a==a then
   'translates to ((a==a)and(a==a))or((a==a)and(a==a))
 end if
 
-
 if a==a*a+a and a*a+a==a or a==a and a==a then
   'translates to ((a==((a*a)+a))and(((a*a)+a)==a))or((a==a)and(a==a))
 end if
-
 
 if a==a << a * a + a and a xor a or a
   'translates to (((a==a<<((a*a)+a)))and a)xor a)or a
