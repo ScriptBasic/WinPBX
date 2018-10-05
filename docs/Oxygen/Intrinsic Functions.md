@@ -256,6 +256,30 @@ s = mid("abcdef", 3, 2)
 ' Output: "cd"
 ```
 
+#### Mid (statement)
+
+Overwrites a substring of a string with another string.
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *s* | The source string. |
+| *start* | The start position in *s* of the substring. The first character starts at position 1. |
+| *expression* | The replacement string. |
+
+```
+DIM s as string = "1234567890"
+mid(s, 2) = "000"
+print s   ' Output: "1000567890"
+```
+```
+DIM s as string = "1234567890"
+mid(s, 2, "000")
+print s
+print s   ' Output: "1000567890"
+```
+
+Contrarily to other dialects, it has not an optional *end* parameter to limit the number of characters that can be replaced.
+
 # <a name="news"></a>news
 
 Allocates a bstring of null characters given the length in bytes.
