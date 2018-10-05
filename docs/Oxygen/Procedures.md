@@ -8,6 +8,8 @@
 | [declare](#declare) | Declares a procedure. |
 | [function](#function) | Defines a procedure that returns a value.  |
 | [sub](#sub) | Defines a procedure that does not return a value. |
+| [...](#ellipsis) | Used in procedure declarations and definitions to indicate a variable argument list. |
+| [param](#param) | Returns the Nth argument from a variable argument list. |
 
 ### Calling Conventions
 
@@ -264,7 +266,41 @@ cube 2, a
 print a
 ```
 
-When calling a subroutine, parentheses after the subroutine name (surrounding the argument list if any) are optional.
+# <a name="ellipsis"></a>... (ellipsis)
+
+Used in procedure declarations and definitions to indicate a variable argument list. The first parameter in the variadic procedure must be the number of arguments pushed on the stack. The passed arguments must be of the same type.
+
+```
+function cubes(int n, ...)
+  indexbase 0
+  int i
+  float v
+  for i = 1 to n
+    v = (int) param[i]
+    print v*v*v
+  next
+end function
+
+cubes 3, 2,3,4
+```
+
+# <a name="param"></a>param
+
+Returns the Nth argument from a variable argument list. Together with `...` (ellipsis), it allows the use of a variable number or arguments within a procedure. The passed arguments must be of the same type.
+
+```
+function cubes(int n, ...)
+  indexbase 0
+  int i
+  float v
+  for i = 1 to n
+    v = (int) param[i]
+    print v*v*v
+  next
+end function
+
+cubes 3, 2,3,4
+```
 
 # <a name="stdcall"></a>stdcall
 
