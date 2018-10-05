@@ -39,6 +39,29 @@
 | [lib](#lib) | Declaration specifier to indicate where a sub or function can be found. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations. |
 
+# <a name="declare"></a>! (declare)
+
+Declares a procedure with or without its prototype (may be external or declared in advance).
+
+With prototype:
+
+```
+extern lib "user32.dll"
+! MessageBox "MessageBoxA"(sys hWnd, char* lpText, char* lpCaption, dword uType) as int
+end extern
+MessageBox 0,"Hello World", "declare",0
+```
+
+Without prototype (it may be added later):
+
+```
+extern lib "user32.dll"
+! MessageBox "MessageBoxA"
+end extern
+declare MessageBox(sys hWnd, char* lpText, char* lpCaption, dword uType) as int at @MessageBox
+MessageBox 0,"Hello World", "declare",0
+```
+
 # <a name="function"></a>function
 
 Defines a procedure that returns a value.
