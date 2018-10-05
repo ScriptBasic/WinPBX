@@ -5,7 +5,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [!](#declare1) | Declares a procedure. |
-| [declare](#declare2) | Declares a procedure. |
+| [declare](#declare) | Declares a procedure. |
 | [function](#function) | Defines a procedure that returns a value.  |
 | [sub](#sub) | Defines a procedure that does not return a value. |
 
@@ -39,9 +39,9 @@
 | [lib](#lib) | Declaration specifier to indicate where a sub or function can be found. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations. |
 
-# <a name="declare1"></a>!
+# <a name="declare"></a>! / declare
 
-Declares a procedure with or without its prototype (may be external or declared in advance).
+Declares a procedure with or without its prototype (may be external or declared in advance). `!` and `declare` are the same.
 
 External, with prototype:
 
@@ -74,6 +74,14 @@ function fun (float a, b, c, d) as float
    function = a + b + c + d
 end function
 ```
+
+Alternate syntaxes:
+
+```
+dclare fun (float a,b,c,d) as float
+decalre function fun (float a, b, c, d) as float
+```
+
 
 # <a name="function"></a>function
 
