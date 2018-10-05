@@ -36,7 +36,7 @@
 | [export](#export) | Declaration specifier to indicate that a procedure in a DLL should be visible from other programs.  |
 | [extern](#extern) | Associates declared procedures with a calling convention and/or DLL name.  |
 | [external](#external) | Attribute that specifies that a procedure can be called from procedures external to Oxygen Basic. |
-| [lib](#lib) | Specifies the library where a sub or function can be found as part of a declaration. |
+| [lib](#lib) | Declaration specifier to indicate where a sub or function can be found. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations.  |
 
 # <a name="function"></a>function
@@ -428,4 +428,28 @@ enlisted to support external calls.
 function fs (single a, single b) as single external
    function = a + b
 end function
+```
+
+# <a name="lib"></a>lib
+
+Declaration specifier to indicate where a sub or function can be found.
+
+```
+declare sub procedurename [alias "aliasname"] [lib "libname"] stdcall ( parameters )
+declare function functionname [alias "aliasname"] [lib "libname"] stdcall ( parameters ) as return_type
+```
+```
+declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
+--or--
+! Sleep lib "kernel32.dll" stdcall (int msec)
+```
+
+`lib` may be specified in the `declare` statement or it may be specified in an `extern` statement, referring to an entire group
+of declarations.
+
+```
+extern stdcall lib "kernel32.dll"
+  declare function QueryPerformanceCounter(lpPerformanceCount as quad) as sys
+  declare function QueryPerformanceFrequency(lpPerformanceFrequency as quad) as sys
+end extern
 ```
