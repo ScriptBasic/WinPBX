@@ -10,6 +10,7 @@
 | [sub](#sub) | Defines a procedure that does not return a value. |
 | [...](#ellipsis) | Used in procedure declarations and definitions to indicate a variable argument list. |
 | [param](#param) | Returns the Nth argument from a variable argument list. |
+| [call](#call) | Invoke a procedure by its address. |
 
 ### Calling Conventions
 
@@ -300,6 +301,21 @@ function cubes(int n, ...)
 end function
 
 cubes 3, 2,3,4
+```
+
+# <a name="call"></a>call
+
+Invokes a procedure by its address.
+
+```
+' Load the user32.dll
+dim hLib as sys = LoadLibrary("user32.dll")
+' Get the address of the MessageBoxA procedure
+dim proc as sys = GetProcAddress(hLib, "MessageBoxA")
+'  Call the procedure by its address
+call proc(0,"Hello World", "MessageBoxA", 0)
+' Free the library
+freelibrary hLib
 ```
 
 # <a name="stdcall"></a>stdcall
