@@ -31,7 +31,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [alias](#alias) | Clause of the Sub and Function statements that provides an alternate internal name. |
+| [alias](#alias) | Clause of the `Sub` and `Function` statements that provides an alternate internal name. |
 | [bind](#bind) | Binds a list of procedures from a Dynamic Link Library (DLL).  |
 | [export](#export) | Declaration specifier to indicate that a procedure in a DLL should be visible from other programs.  |
 | [extern](#extern) | Associates declared procedures with a calling convention and/or DLL name.  |
@@ -371,4 +371,25 @@ void* foo(void*v)
 Procedures not returning a value:
 ```
 void foo()
+```
+
+# <a name="alias"></a>alias
+
+Clause of the `Sub` and `Function` statements that provides an alternate internal name.
+
+#### Syntax
+
+```
+[Declare] { sub | function } usablename alias "alternatename" (...)
+```
+
+An `alias` clause may be used to give an alternate name for imported or exported procedures. This alternate name cannot be used within the program to call the procedure, but it is visible to the linker when linking with code written in other languages. The alias name must be specified by a string literal which provides the name and capitalization of the procedure in the external DLL.
+
+`Alias` is commonly used for procedures in libraries written in other languages when such procedure names contain characters that are invalid in Basic.
+
+
+This option is particularly useful if you want to abbreviate a long name, or if the original name of a function contains characters that are illegal in PowerBASIC.  The alias name is the actual name used in the other module, while the ProcName is the word you use in your PowerBASIC program.  For example:
+
+```
+Declare sub LegalName alias "Illegal$Name""
 ```
