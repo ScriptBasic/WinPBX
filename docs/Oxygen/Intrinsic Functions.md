@@ -14,7 +14,7 @@
 | [left](#left) | Returns the leftmost substring of a string. |
 | [len](#len) | Returns the length of a string in characters. |
 | [ltrim](#ltrim) | Removes spaces on the left side of a string. |
-| [mid](#mid) | Returns a part of a string. |
+| [mid (function)](#mid) | Returns a part of a string. |
 | [mid (statement)](#mid2) | Overwrites part of a substring of a string with another string. |
 | [news](#nws) | Allocates a bstring of null characters given the length in bytes.  |
 | [nuls](#nuls) | Returns a string consisting of a specified number of null (chr(0)) characters. |
