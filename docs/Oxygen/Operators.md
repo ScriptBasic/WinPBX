@@ -108,6 +108,26 @@
 | [?](#castint) | Casts variables as integers. |
 | [convert](#convert) | Explicitly convert the type of an expression. |
 
+### Operators Precedence
+
+```
+long a=2
+
+if a=a and a==a or a==a and a==a then
+  'translates to ((a==a)and(a==a))or((a==a)and(a==a))
+end if
+
+
+if a==a*a+a and a*a+a==a or a==a and a==a then
+  'translates to ((a==((a*a)+a))and(((a*a)+a)==a))or((a==a)and(a==a))
+end if
+
+
+if a==a << a * a + a and a xor a or a
+  'translates to (((a==a<<((a*a)+a)))and a)xor a)or a
+end if
+```
+
 ### Overloading Operators
 
 Customised operations can be associated with UDTs and classes.
