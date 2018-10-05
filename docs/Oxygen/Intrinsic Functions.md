@@ -257,7 +257,7 @@ s = mid("abcdef", 3, 2)
 ' Output: "cd"
 ```
 
-# <a name="mid"></a>mid (statement)
+# <a name="mid2"></a>mid (statement)
 
 Overwrites part of a substring of a string with another string.
 
