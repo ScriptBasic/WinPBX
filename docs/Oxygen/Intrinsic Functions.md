@@ -275,7 +275,6 @@ print s   ' Output: "1000567890"
 ```
 DIM s as string = "1234567890"
 mid(s, 2, "000")
-print s
 print s   ' Output: "1000567890"
 ```
 
