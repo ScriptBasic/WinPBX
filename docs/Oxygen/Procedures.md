@@ -52,7 +52,7 @@ end extern
 MessageBox 0,"Hello World", "declare",0
 ```
 
-Wxternal, without prototype (it may be added later):
+External, without prototype (it may be added later):
 
 ```
 extern lib "user32.dll"
