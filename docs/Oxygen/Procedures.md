@@ -507,7 +507,7 @@ extern stdcall lib "kernel32.dll"
 end extern
 ```
 
-We can also specify the calling convention (msvcrt.dll used cdecl in 32-bit).
+We can also specify the calling convention (msvcrt.dll uses cdecl in 32-bit).
 
 ```
 #ifndef mode64bit
