@@ -39,7 +39,7 @@
 | [lib](#lib) | Declaration specifier to indicate where a sub or function can be found. |
 | [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations. |
 
-# <a name="declare1"></a>! (declare)
+# <a name="declare1"></a>!
 
 Declares a procedure with or without its prototype (may be external or declared in advance).
 
