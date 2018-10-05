@@ -311,7 +311,59 @@ declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
 ! Sleep lib "kernel32.dll" stdcall (int msec)
 ```
 
-Parameter of any type may be passed by-reference. Like C **void***.
+Parameters of any type may be passed by-reference. Like C **void***.
+
+# <a name="bind"></a>bind
+
+Binds a list of procedures from a Dynamic Link Library (DLL).
+
+Used for low level (without protoype) calls to DLL functions. The first name is the one used in the program. The second is the name used in the DLL. A prototype may be attached to any of these keywords later.
+
+```
+sys kernel32=LoadLibrary `kernel32.dll`
+sys user32=LoadLibrary `user32.dll`
+sys GDI32=LoadLibrary `GDI32.dll`
+
+bind kernel32
+  (
+    GetCommandLine  GetCommandLineA   ; @0
+    GetModuleHandle GetModuleHandleA  ; @4
+    ExitProcess     ExitProcess       ; @4
+  )
+
+bind user32
+  (
+    LoadIcon         LoadIconA         ; @8
+    LoadCursor       LoadCursorA       ; @8
+    RegisterClass    RegisterClassA    ; @4
+    MessageBox       MessageBoxA       ; @4
+    CreateWindowEx   CreateWindowExA   ; @48
+    ShowWindow       ShowWindow        ; @8
+    UpdateWindow     UpdateWindow      ; @4
+    GetMessage       GetMessageA       ; @16
+    TranslateMessage TranslateMessage  ; @4
+    DispatchMessage  DispatchMessageA  ; @4
+    PostQuitMessage  PostQuitMessage   ; @4
+    BeginPaint       BeginPaint        ; @8
+    EndPaint         EndPaint          ; @8
+    GetClientRect    GetClientRect     ; @8  
+    DrawText         DrawTextA         ; @20
+    PostMessage      PostMessageA      ; @16
+    DefWindowProc    DefWindowProcA    ; @16
+  )
+
+bind GDI32
+  (
+    GetStockObject   GetStockObject    ; @4
+  )
+
+' Attach a function prototype to the address of MessageBox.
+declare MessageBox(sys hWnd, char* lpText, char* lpCaption,   
+   dword uType) as int at @MessageBox
+
+' Call the function.
+MessageBox 0,"Hello World", "binding",0
+```
 
 # <a name="byref"></a>byref
 
