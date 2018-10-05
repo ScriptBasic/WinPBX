@@ -4,7 +4,7 @@
 
 | Name       | Description |
 | ---------- | ----------- |
-| [!](#declare1) | Declares a procedure. |
+| [!](#declare) | Declares a procedure. |
 | [declare](#declare) | Declares a procedure. |
 | [function](#function) | Defines a procedure that returns a value.  |
 | [sub](#sub) | Defines a procedure that does not return a value. |
