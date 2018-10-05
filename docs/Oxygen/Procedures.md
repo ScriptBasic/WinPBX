@@ -321,6 +321,7 @@ When a constant or a literal expression are passed by reference to a procedure, 
 
 ```
 function foo (byref v as long) as long
+
 'equivalent in C notation:
 long foo (long * v)
 ```
