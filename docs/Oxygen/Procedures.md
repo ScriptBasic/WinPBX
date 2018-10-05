@@ -507,6 +507,18 @@ extern stdcall lib "kernel32.dll"
 end extern
 ```
 
+We can also specify the calling convention (msvcrt.dll used cdecl in 32-bit).
+
+```
+#ifndef mode64bit
+  extern lib "msvcrt.dll" cdecl
+#else
+  extern lib "msvcrt.dll"
+#endif
+! memcpy
+end extern
+```
+
 # <a name="external"></a>external
  
 Functions with the `external` attribute expect to be called from procedures external to Oxygen Basic. Additional register management is
