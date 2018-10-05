@@ -553,7 +553,7 @@ declare sub Sleep alias "Sleep" lib "kernel32.dll" stdcall (byval msec as int)
 ```
 
 `lib` may be specified in the `declare` statement or it may be specified in an `extern` statement, referring to an entire group
-of declarations.
+of declarations. When used for this purpose, it is a synonim of `library` (below).
 
 ```
 extern stdcall lib "kernel32.dll"
