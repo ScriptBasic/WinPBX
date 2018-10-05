@@ -37,7 +37,7 @@
 | [extern](#extern) | Associates declared procedures with a calling convention and/or DLL name.  |
 | [external](#external) | Attribute that specifies that a procedure can be called from procedures external to Oxygen Basic. |
 | [lib](#lib) | Declaration specifier to indicate where a sub or function can be found. |
-| [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations.  |
+| [library](#library) | Specifies the name of a DLL library to associate with a set of procedure declarations. |
 
 # <a name="function"></a>function
 
@@ -449,6 +449,17 @@ of declarations.
 
 ```
 extern stdcall lib "kernel32.dll"
+  declare function QueryPerformanceCounter(lpPerformanceCount as quad) as sys
+  declare function QueryPerformanceFrequency(lpPerformanceFrequency as quad) as sys
+end extern
+```
+
+# <a name="library"></a>library
+
+Specifies the name of a DLL library to associate with a set of procedure declarations.
+
+```
+extern stdcall library "kernel32.dll"   ' or: extern stdcall lib "kernel32.dll"
   declare function QueryPerformanceCounter(lpPerformanceCount as quad) as sys
   declare function QueryPerformanceFrequency(lpPerformanceFrequency as quad) as sys
 end extern
