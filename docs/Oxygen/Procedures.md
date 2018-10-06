@@ -272,7 +272,9 @@ print a
 
 # <a name="ellipsis"></a>... (ellipsis)
 
-Used in procedure declarations and definitions to indicate a variable argument list. The first parameter in the variadic procedure must be the number of arguments pushed on the stack. The passed arguments must be of the same type.
+Used in procedure declarations and definitions to indicate a variable argument list. The first parameter in the variadic procedure can be the number of arguments pushed on the stack if a format string.
+
+If the first argument is an integer value with the number of parameters pushed in the stack, the passed arguments must be of the same type.
 
 ```
 function cubes(int n, ...)
@@ -288,9 +290,41 @@ end function
 cubes 3, 2,3,4
 ```
 
+If the first parameter is a format string, the subsequent params to be dynamically typed:
+
+```
+function fmt(string sf,...) as string
+  sys     p = @param + sizeof(sys)
+  int     nv at p 'integers
+  bstring sv at p 'string
+  single  fv at p 'single
+  double  dv at p 'double
+  sys i
+  int le = len(sf)
+  string sp = "  "
+  do
+    i++ : if i > le then exit do
+    select asc(sf, i)
+    case "s" : function += sv(sp) : p += sizeof(sys)
+    case "n" : function += nv(sp) : p += sizeof(sys)
+    case "f" : function += fv(sp) : p += sizeof(sys)
+    case "d" : function += dv(sp) : p += sizeof(double)
+    end select
+  end do
+end function
+
+' Test
+' Literal floating points are Double
+string s
+s = fmt("sndd","Result:", 42, 1.25, pi)
+print s
+```
+  
 # <a name="param"></a>param
 
-Returns the Nth argument from a variable argument list. Together with `...` (ellipsis), it allows the use of a variable number or arguments within a procedure. The passed arguments must be of the same type.
+Returns the Nth argument from a variable argument list. Together with `...` (ellipsis), it allows the use of a variable number or arguments within a procedure.
+
+`param` can be used to access parameters on the stack, as an array of `sys` values, that can be cast to the expected type. But be aware that direct doubles on a 32bit system occupy 2 parameter slots.
 
 ```
 function cubes(int n, ...)
@@ -305,6 +339,29 @@ end function
 
 cubes 3, 2,3,4
 ```
+
+`@param` can be used as a base pointer to the list of parameters on the stack.
+
+```
+function fmt(string sf,...) as string
+  sys     p = @param + sizeof(sys)
+  int     nv at p 'integers
+  bstring sv at p 'string
+  single  fv at p 'single
+  double  dv at p 'double
+  sys i
+  int le = len(sf)
+  string sp = "  "
+  do
+    i++ : if i > le then exit do
+    select asc(sf, i)
+    case "s" : function += sv(sp) : p += sizeof(sys)
+    case "n" : function += nv(sp) : p += sizeof(sys)
+    case "f" : function += fv(sp) : p += sizeof(sys)
+    case "d" : function += dv(sp) : p += sizeof(double)
+    end select
+  end do
+end function
 
 # <a name="call"></a>call
 
