@@ -11,6 +11,9 @@
 | [...](#ellipsis) | Used in procedure declarations and definitions to indicate a variable argument list. |
 | [param](#param) | Returns the Nth argument from a variable argument list. |
 | [call](#call) | Invoke a procedure by its address. |
+| [loadlibrary](#loadlibrary) | Loads a library (if not already loaded) and returns its handle. |
+| [getprocaddress](#getprocaddress) | Retrieves the address of an exported function or variable from the specified dynamic-link library. |
+| [freelibrary](#freelibrary) | Frees the loaded dynamic-link library (DLL). |
 
 ### Calling Conventions
 
@@ -361,6 +364,51 @@ call g a, a + b
 ' Explicit double
 g = @fd   ' anonymise
 call g  convert double 1, convert double 10
+```
+
+# <a name="loadlibrary"></a>loadlibrary
+
+Loads a library (if not already loaded) and returns its handle. The returned handle must be freed with a call to `freelibrary`.
+
+```
+dim hLib as sys = loadlibrary("kernel32.dll")
+```
+
+# <a name="getprocaddress"></a>getprocaddress
+
+Retrieves the address of an exported function or variable from the specified dynamic-link library 
+
+#### Syntax
+
+```
+function getprocaddress(sys hModule, zstring ptr lpProcName)
+```
+
+| Parameter  | Description |
+| ---------- | ----------- |
+| *hModule* | A handle to the DLL module that contains the function or variable. The `loadlibrary` function returns this handle. |
+| *lpProcName* | The function or variable name, or the function's ordinal value. If this parameter is an ordinal value, it must be in the low-order word; the high-order word must be zero. The name must be ansi and it is case sensitive. |
+
+```
+' Load the user32.dll
+dim hLib as sys = LoadLibrary("user32.dll")
+' Get the address of the MessageBoxA procedure
+dim proc as sys = GetProcAddress(hLib, "MessageBoxA")
+'  Call the procedure by its address
+dim hr as long = call proc(0,"Hello World", "MessageBoxA", 0)
+print hr
+' Free the library
+freelibrary hLib
+```
+
+# <a name="freelibrary"></a>freelibrary
+
+Frees the loaded dynamic-link library (DLL) module and, if necessary, decrements its reference count. When the reference count reaches zero, the module is unloaded from the address space of the calling process and the handle is no longer valid. You must pass the handle returned by `loadlibrary` to load the DLL.
+
+```
+dim hLib as sys = loadlibrary("kernel32.dll")
+...
+freelibrary hLib
 ```
 
 # <a name="stdcall"></a>stdcall
