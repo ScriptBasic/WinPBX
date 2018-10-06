@@ -10,7 +10,7 @@
 | [sub](#sub) | Defines a procedure that does not return a value. |
 | [...](#ellipsis) | Used in procedure declarations and definitions to indicate a variable argument list. |
 | [param](#param) | Returns the Nth argument from a variable argument list. |
-| [call](#call) | Invoke a procedure by its address. |
+| [call](#call) | Invokes a procedure by its name or address. |
 | [loadlibrary](#loadlibrary) | Loads a library (if not already loaded) and returns its handle. |
 | [getprocaddress](#getprocaddress) | Retrieves the address of an exported function or variable from the specified dynamic-link library. |
 | [freelibrary](#freelibrary) | Frees the loaded dynamic-link library (DLL). |
@@ -308,7 +308,31 @@ cubes 3, 2,3,4
 
 # <a name="call"></a>call
 
-Invokes a procedure by its address.
+Invokes a procedure by its name or address.
+
+A call with no parameters is treated as an asm instruction.
+
+```
+call abc
+```
+
+A call with parameters or empty brackets is treated as a normal procedural call, obeying the prevailing calling convention. `call` is usually omitted when calling procedures.
+
+```
+call abc()
+v = call abc(...)
+v = call abc x,y,z ...
+```
+
+```
+function foo (int a) as long
+   function = a * a * a
+end function
+dim v as long = call foo(3)
+print v
+```
+
+Calling a procedure by its address:
 
 ```
 ' Load the user32.dll
@@ -321,7 +345,7 @@ call proc(0,"Hello World", "MessageBoxA", 0)
 freelibrary hLib
 ```
 
-It can also be used as a function to get the returned value.
+It can also be used as a function to get the returned value:
 
 ```
 ' Load the user32.dll
@@ -335,7 +359,7 @@ print hr
 freelibrary hLib
 ```
 
-And as a way to anonymise procedures.
+And as a way to anonymise procedures:
 
 ```
 ' Explicit type conversion
