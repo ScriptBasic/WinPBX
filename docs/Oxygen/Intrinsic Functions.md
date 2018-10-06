@@ -281,6 +281,24 @@ mid(s, 2, "000")
 print s   ' Output: "1000567890"
 ```
 
+The encoding (ansi or unicode) of the assigned string must match the encoding of the target string.
+
+This will work because both the target and the assignment are unicode:
+
+```
+dim s as string2 = "1234567890"
+dim s2 as string2 = "000"
+mid(s, 2) = s2
+print s   ' Output: "1000567890"
+```
+
+But this won't because the literal is interpreted as an ansi string:
+
+```
+dim s as string2 = "1234567890"
+mid(s, 3) = "000"
+```
+
 Contrarily to other dialects, it has not an optional *end* parameter to limit the number of characters that can be replaced (the length of the replacement string is used to calculate them). The length of the source string does not change, so if *expression* is too big, only the number of characters that fit in the source string are copied.
 
 # <a name="news"></a>news
