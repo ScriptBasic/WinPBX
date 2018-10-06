@@ -318,6 +318,22 @@ call proc(0,"Hello World", "MessageBoxA", 0)
 freelibrary hLib
 ```
 
+It can also be used as a function to get the returned value.
+
+```
+' Load the user32.dll
+dim hLib as sys = LoadLibrary("user32.dll")
+' Get the address of the MessageBoxA procedure
+dim proc as sys = GetProcAddress(hLib, "MessageBoxA")
+'  Call the procedure by its address
+dim hr as long = call proc(0,"Hello World", "MessageBoxA", 0)
+print hr
+' Free the library
+freelibrary hLib
+```
+
+And as a way to anonymise procedures.
+
 ```
 ' Explicit type conversion
 ' This can be used for procedure calls without prototypes.
