@@ -101,6 +101,7 @@ function functionname [alias external_identifier] [cdecl|pascal|stdcall] [([para
    [Return return_value]
    [Function = return_value]
    [functionname = return_value]
+   [callback]
 end function
 ```
 
