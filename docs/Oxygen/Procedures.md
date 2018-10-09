@@ -272,10 +272,10 @@ function WinMain() as sys
    wc.cbWndExtra = 0    
    wc.hInstance = GetModuleHandle 0
    wc.hIcon=LoadIcon 0, IDI_APPLICATION
-   wc.hCursor=LoadCursor 0,IDC_ARROW
+   wc.hCursor=LoadCursor 0, IDC_ARROW
    wc.hbrBackground = GetStockObject WHITE_BRUSH 
-   wc.lpszMenuName =0
-   wc.lpszClassName =@"Demo"
+   wc.lpszMenuName = 0
+   wc.lpszClassName = @"Demo"
 
    RegisterClass (&wc)
 
@@ -298,60 +298,60 @@ function WinMain() as sys
    SetWindowSubclass hEdit, &EditSubclassProc, 102, 0
    SetFocus hEdit
 
-   ShowWindow hwnd,SW_SHOW
+   ShowWindow hwnd, SW_SHOW
    UpdateWindow hwnd
 
-   WHILE GetMessage(&wm, 0, 0, 0) > 0
-      IF IsDialogMessage(hWnd, &wm) = 0 THEN
+   while GetMessage(&wm, 0, 0, 0) > 0
+      if IsDialogMessage(hWnd, &wm) = 0 then
          TranslateMessage(&wm)
          DispatchMessage(&wm)
-      END IF
-   WEND
+      end if
+   wend
 
-End Function 
+end function 
 
 function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
 
-    SELECT wMsg
+    select case wMsg
         
-      CASE WM_CREATE
-         EXIT FUNCTION
+      case WM_CREATE
+         exit function
 
-      CASE WM_COMMAND
-         SELECT CASE LOWORD(wParam)
-            CASE IDCANCEL
+      case WM_COMMAND
+         select case LOWORD(wParam)
+            case IDCANCEL
                ' // If the Escape key has been pressed...
-               IF HIWORD(wParam) = BN_CLICKED THEN
+               if hiword(wParam) = BN_CLICKED then
                   ' // ... close the application by sending a WM_CLOSE message
                   SendMessage hwnd, WM_CLOSE, 0, 0
-                  EXIT FUNCTION
-               END IF
-         END SELECT
+                  exit function
+               end if
+         end select
 
-      CASE WM_DESTROY
+      case WM_DESTROY
          PostQuitMessage 0
 
-    END SELECT
+    end select
 
    function = DefWindowProc hWnd,wMsg,wParam,lParam
 
 end function ' WndProc
 
-FUNCTION EditSubclassProc (sys hWnd, uint wMsg, sys wParam, sys lparam, uIdSubclass, dwRefData) as sys callback
+function EditSubclassProc (sys hWnd, uint wMsg, sys wParam, sys lparam, uIdSubclass, dwRefData) as sys callback
 
-   SELECT CASE wMsg
-      CASE WM_DESTROY
+   select case wMsg
+      case WM_DESTROY
          ' // REQUIRED: Remove control subclassing
          RemoveWindowSubclass hwnd, &EditSubclassProc, uIdSubclass
 
-      CASE WM_KEYDOWN
+      case WM_KEYDOWN
          SetWindowText GetParent(hwnd), "ASCII " & STR(wParam)
 
-   END SELECT
+   end select
 
-   FUNCTION = DefSubclassProc(hwnd, wMsg, wParam, lParam)
+   function = DefSubclassProc(hwnd, wMsg, wParam, lParam)
 
-END FUNCTION
+end function
 
 WinMain   ' Call the main procedure
 ```
