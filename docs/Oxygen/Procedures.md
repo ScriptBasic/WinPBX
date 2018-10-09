@@ -116,7 +116,7 @@ end function
 | *return_type* | The type of variable returned by the function. |
 | *statements* | One or more statements that make up the function body. |
 | *return_value* | The value returned by the function. |
-| *callback* | Specifies that it is a callback procedure. |
+| *callback* | Specifies that it is a callback function. |
 
 ```
 function triple(byval i as int) as int
