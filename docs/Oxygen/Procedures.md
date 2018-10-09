@@ -239,7 +239,7 @@ cubes 3, 2,3,4
 
 Callback:
 
-The `callback` or `external` attribute is required so that the standard calling convention is used (`stdcall`in Windows 32 and `ms64`in Windows 64). Callback functions in Windows have a standard set of four parameters and return a long integer value (32-bit in Windows 32 and 64-bit in Windows 64).
+The `callback` or `external` attribute is required so that the standard calling convention is used (`stdcall`in Windows 32 and `ms64`in Windows 64).
 
 ```
 function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
