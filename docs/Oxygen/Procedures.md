@@ -245,6 +245,116 @@ The `callback` or `external` attribute is required so that the standard calling 
 function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
 ```
 
+The following example subclasses an edit control and requires the use of the `callbacl`keyword in the subclass procedure.
+
+```
+$ filename "test4.exe"
+'uses rtl64
+uses MinWin
+uses User
+uses Comctl
+#lookahead
+
+%GWLP_WNDPROC = -4
+
+function WinMain() as sys
+
+   WndClass wc
+   MSG      wm
+   sys inst = GetModuleHandle 0
+
+   sys hwnd, wwd, wht, wtx, wty, tax
+
+   wc.style = CS_HREDRAW or CS_VREDRAW
+   wc.lpfnWndProc = &WndProc 
+   wc.cbClsExtra = 0
+   wc.cbWndExtra = 0    
+   wc.hInstance = GetModuleHandle 0
+   wc.hIcon=LoadIcon 0, IDI_APPLICATION
+   wc.hCursor=LoadCursor 0,IDC_ARROW
+   wc.hbrBackground = GetStockObject WHITE_BRUSH 
+   wc.lpszMenuName =0
+   wc.lpszClassName =@"Demo"
+
+   RegisterClass (&wc)
+
+   Wwd = 320 : Wht = 200
+   Tax = GetSystemMetrics SM_CXSCREEN
+   Wtx = (Tax - Wwd) /2
+   Tax = GetSystemMetrics SM_CYSCREEN
+   Wty = (Tax - Wht) /2
+
+   hwnd = CreateWindowEx(0,wc.lpszClassName,"OXYGEN BASIC",WS_OVERLAPPEDWINDOW,Wtx,Wty,Wwd,Wht,0,0,inst,0)
+
+   sys hEdit = CreateWindowEx(WS_EX_CLIENTEDGE, _
+                              "Edit", _
+                              "", _
+                              WS_CHILD OR WS_VISIBLE OR WS_TABSTOP, _
+                              20, 30, _ 
+                              250, 25, _
+                              hWnd, 102, _ 
+                              inst, 0)
+   SetWindowSubclass hEdit, &EditSubclassProc, 102, 0
+   SetFocus hEdit
+
+   ShowWindow hwnd,SW_SHOW
+   UpdateWindow hwnd
+
+   WHILE GetMessage(&wm, 0, 0, 0) > 0
+      IF IsDialogMessage(hWnd, &wm) = 0 THEN
+         TranslateMessage(&wm)
+         DispatchMessage(&wm)
+      END IF
+   WEND
+
+End Function 
+
+function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
+
+    SELECT wMsg
+        
+      CASE WM_CREATE
+         EXIT FUNCTION
+
+      CASE WM_COMMAND
+         SELECT CASE LOWORD(wParam)
+            CASE IDCANCEL
+               ' // If the Escape key has been pressed...
+               IF HIWORD(wParam) = BN_CLICKED THEN
+                  ' // ... close the application by sending a WM_CLOSE message
+                  SendMessage hwnd, WM_CLOSE, 0, 0
+                  EXIT FUNCTION
+               END IF
+         END SELECT
+
+      CASE WM_DESTROY
+         PostQuitMessage 0
+
+    END SELECT
+
+   function = DefWindowProc hWnd,wMsg,wParam,lParam
+
+end function ' WndProc
+
+FUNCTION EditSubclassProc (sys hWnd, uint wMsg, sys wParam, sys lparam, uIdSubclass, dwRefData) as sys callback
+
+   SELECT CASE wMsg
+      CASE WM_DESTROY
+         ' // REQUIRED: Remove control subclassing
+         RemoveWindowSubclass hwnd, &EditSubclassProc, uIdSubclass
+
+      CASE WM_KEYDOWN
+         SetWindowText GetParent(hwnd), "ASCII " & STR(wParam)
+
+   END SELECT
+
+   FUNCTION = DefSubclassProc(hwnd, wMsg, wParam, lParam)
+
+END FUNCTION
+
+WinMain   ' Call the main procedure
+```
+
 # <a name="sub"></a>sub
 
 Defines a procedure that does not returns a value.
