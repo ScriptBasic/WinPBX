@@ -248,7 +248,8 @@ function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
 The following example subclasses an edit control and requires the use of the `callback` keyword in the subclass procedure.
 
 ```
-$ filename "test4.exe"
+$ filename "test.exe"
+'uses rtl32
 'uses rtl64
 uses MinWin
 uses User
