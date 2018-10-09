@@ -245,7 +245,7 @@ The `callback` or `external` attribute is required so that the standard calling 
 function WndProc (sys hwnd, uint wMsg, sys wParam, sys lparam) as sys callback
 ```
 
-The following example subclasses an edit control and requires the use of the `callbacl`keyword in the subclass procedure.
+The following example subclasses an edit control and requires the use of the `callback` keyword in the subclass procedure.
 
 ```
 $ filename "test4.exe"
