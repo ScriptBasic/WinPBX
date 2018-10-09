@@ -483,6 +483,7 @@ function fmt(string sf,...) as string
     end select
   end do
 end function
+```
 
 # <a name="call"></a>call
 
