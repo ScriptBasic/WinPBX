@@ -57,8 +57,18 @@ extern lib "user32.dll"
 end extern
 MessageBox 0,"Hello World", "declare",0
 ```
+External with C-style prototypes:
 
-External, without prototype (it may be added later):
+```
+extern lib "user32.dll"
+int MessageBoxA(HWND hWnd, LPCSTR lpText, LPCSTR lpCaption, UINT uType);
+int MessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType);
+LRESULT SendMessageA(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+LRESULT SendMessageW(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+end extern
+```
+
+External without prototype (it may be added later):
 
 ```
 extern lib "user32.dll"
