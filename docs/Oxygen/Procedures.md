@@ -49,6 +49,10 @@
 
 Declares a procedure with or without its prototype (may be external or declared in advance). `!` and `declare` are the same.
 
+```
+! MessageBox lib "user32.dll" alias "MessageBoxA" (sys hWnd, char* lpText, char* lpCaption, dword uType) as int
+```
+
 External, with prototype:
 
 ```
@@ -57,6 +61,7 @@ extern lib "user32.dll"
 end extern
 MessageBox 0,"Hello World", "declare",0
 ```
+
 External with C-style prototypes:
 
 ```
