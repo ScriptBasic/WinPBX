@@ -84,8 +84,8 @@ end function
 Alternate syntaxes:
 
 ```
-dclare fun (float a,b,c,d) as float
-decalre function fun (float a, b, c, d) as float
+declare fun (float a,b,c,d) as float
+declare function fun (float a, b, c, d) as float
 ```
 
 
