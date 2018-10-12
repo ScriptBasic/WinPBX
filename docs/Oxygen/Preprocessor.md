@@ -25,7 +25,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#file](#file) | Specifies a filename for compiled code (.EXE or .DLL). |
 | [#if](#if) | Preprocessor conditional directive. |
 | [#ifdef](#ifdef) | Preprocessor conditional directive. |
-| [#ifndef](#ifndef) |  |
+| [#ifndef](#ifndef) | Preprocessor conditional directive. |
 | [#include](#include) |  |
 | [#lookahead](#lookahead) |  |
 | [#noinit](#noinit) |  |
@@ -399,5 +399,23 @@ Define LPTSTR as an LPWSTR if UNICODE is defined, an LPSTR otherwise.
  typedef LPWSTR LPTSTR;
 #else
  typedef LPSTR LPTSTR;
+#endif
+```
+
+# <a name="#ifndef"></a>#ifndef
+
+Preprocessor conditional directive.
+
+Include code if symbol is not defined.
+
+#### Example
+
+Define LONG_PTR as a long if we are compiling to 32-bit or as quad if we are compiling to 64 bit.
+
+```
+#ifndef mode64bit
+   typedef long LONG_PTR;
+#else
+   typedef quad LONG_PTR;
 #endif
 ```
