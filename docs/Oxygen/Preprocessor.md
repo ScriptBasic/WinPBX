@@ -112,9 +112,9 @@ Specifies that parameters must be passed by value instead of by reference.
 
 Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
 
-#case insensitive  ' converts words to lowercase   ' this is the default<br>
-#case sensitive    ' no case conversion, like the C language<br>
-#case capital      ' converts words to lowercase, except for all-uppercase words
+`#case insensitive`  ' converts words to lowercase (this is the default)<br>
+`#case sensitive`    ' no case conversion, like the C language<br>
+'#case capital`      ' converts words to lowercase, except for all-uppercase words
 
 `#case` has block scope and reverts to its previous state when the block ends.
  
