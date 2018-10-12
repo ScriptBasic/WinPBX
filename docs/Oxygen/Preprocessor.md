@@ -14,7 +14,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#compact](#compact) | Removes unused code. |
 | [#console](#console) | Prevents the creation of a new console. |
 | [#def](#def) | Defines a low level macro. |
-| [#define](#define) |  |
+| [#define](#define) | Defines a preprocessor macro. |
 | [#dim](#dim) |  |
 | [#else](#else) |  |
 | [#elseif](#elseif) |  |
@@ -160,4 +160,39 @@ Defines a low level macro. `#def` and `def` are the same.
 #def show "%1: " %1
 int x = 123
 print show x
+```
+
+# <a name="define"></a>#define
+
+Defines a preprocessor macro.
+
+#### Syntax
+
+```
+#define identifier replacement
+```
+
+When the preprocessor encounters this directive, it replaces any occurrence of identifier in the rest of the code by replacement. This replacement can be an expression, a statement, a block or simply anything.
+
+#### Example
+
+```
+#define x 32
+#define False 0
+#define True (not False)
+```
+
+Defines are scoped; they are only visible in the scope they were defined in.
+
+#### Example
+
+```
+#define x 45
+
+scope
+#define x 32
+   print x   ' output: 32
+end scope
+
+print x   ' output: 45
 ```
