@@ -5,7 +5,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | Name       | Description |
 | ---------- | ----------- |
 | [#alert](#alert) | Generates a compiler message (like an error). |
-| [#assign](#assign) |  |
+| [#assign](#assign) | Emulates the C convention for the `=` operator. |
 | [#autodim](#autodim) |  |
 | [#blockdepth](#blockdepth) |  |
 | [#byref](#byref) |  |
@@ -51,6 +51,15 @@ Used to alert programmer about an area of code that requires attention.
 #alert (please implement methods for this interface)
 ```
 
+# <a name="assign"></a>#assign
 
+Emulates the C convention for the `=` operator.
+
+When `assign`is on, `=` acts always as an assignment operator in conditional statements.
  
+#### Example
 
+```
+#assign on
+if hresult = QueryInterface(gu, ob) then ...
+```
