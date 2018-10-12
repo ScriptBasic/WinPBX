@@ -15,7 +15,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#console](#console) | Prevents the creation of a new console. |
 | [#def](#def) | Defines a low level macro. |
 | [#define](#define) | Defines a preprocessor macro. |
-| [#dim](#dim) |  |
+| [#dim](#dim) | Specifies the datatype to be used when this is unspecified. |
 | [#else](#else) |  |
 | [#elseif](#elseif) |  |
 | [#endif](#endif) |  |
@@ -196,3 +196,16 @@ end scope
 
 print x   ' output: 45
 ```
+
+# <a name="dim"></a>#dim
+
+Specifies the datatype to be used when this is unspecified.
+
+#### Example
+
+```
+#dim float
+```
+
+The type (or class) must be defined already.
+
