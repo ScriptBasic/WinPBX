@@ -29,7 +29,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#include](#include) | Includes source code from another file. |
 | [#lookahead](#lookahead) | Tells the compiler to internally create header declarations for all procedures. |
 | [#noinit](#noinit) | Prevents variables from being automatically initialised to nul within a procedure. |
-| [#noprec](#noprec) |  |
+| [#noprec](#noprec) | Directive to evaluate an expression from left to right, ignoring standard operator precedence rule. |
 | [#pragma](#pragma) |  |
 | [#print](#print) |  |
 | [#recordof](#recordof) |  |
@@ -463,4 +463,20 @@ Prevents variables from being automatically initialised to nul within a procedur
 
 ```
 #noinit
+```
+
+# <a name="#noprec"></a>#noprec
+
+Directive to evaluate an expression from left to right, ignoring standard operator precedence rule.
+
+#### Example
+
+```
+function my_log (float v) as float
+   static double k1 = 0.69314718
+   static double k2 = 126.94269504
+   float y = (int) v
+   'return k1 * (y*ishift - k2) ' with standard operator precedence
+   #noprec return y * ishift - k2 * k1
+end function
 ```
