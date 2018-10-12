@@ -11,7 +11,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#byref](#byref) | Specifies that parameters must be passed using its address instead of its value. |
 | [#byval](#byval) | Specifies that parameters must be passed by value instead of by reference. |
 | [#case](#case) | Specifies the case sensitivity mode. |
-| [#compact](#compact) |  |
+| [#compact](#compact) | Removes unused code. |
 | [#console](#console) |  |
 | [#def](#def) |  |
 | [#define](#define) |  |
@@ -114,7 +114,7 @@ Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
 
 `#case insensitive`  ' converts words to lowercase (this is the default)<br>
 `#case sensitive`    ' no case conversion, like the C language<br>
-'#case capital`      ' converts words to lowercase, except for all-uppercase words
+`#case capital`      ' converts words to lowercase, except for all-uppercase words
 
 `#case` has block scope and reverts to its previous state when the block ends.
  
@@ -124,3 +124,12 @@ Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
 #case sensitive
 ```
 
+# <a name="compact"></a>#compact
+
+Removes unused unused methods from classes, as well as unused general functions.
+
+#### Example
+
+```
+#compact on
+```
