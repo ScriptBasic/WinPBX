@@ -23,7 +23,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#endv](#endv) | Creates a window for compiler listings. |
 | [#error](#error) | Generates a compiler error message. |
 | [#file](#file) | Specifies a filename for compiled code (.EXE or .DLL). |
-| [#if](#if) |  |
+| [#if](#if) | Preprocessor conditional directive. |
 | [#ifdef](#ifdef) |  |
 | [#ifndef](#ifndef) |  |
 | [#include](#include) |  |
@@ -370,3 +370,14 @@ Specifies a filename for compiled code (.EXE or .DLL).
 #file "myDll.dll"
 ```
 
+# <a name="#if"></a>#if
+
+Statements contained within the `#if / #endif` block are included if expression evaluates to true (non-zero) and excluded (ignored) if expression evaluates to false (0).
+
+```
+#define DEBUG_LEVEL 1
+#if (DEBUG_LEVEL >= 2)
+  ' This line is not compiled since the expression is false
+  OutputDebugString ("expression")
+#endif
+```
