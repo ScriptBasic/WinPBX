@@ -24,7 +24,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#error](#error) | Generates a compiler error message. |
 | [#file](#file) | Specifies a filename for compiled code (.EXE or .DLL). |
 | [#if](#if) | Preprocessor conditional directive. |
-| [#ifdef](#ifdef) |  |
+| [#ifdef](#ifdef) | Preprocessor conditional directive. |
 | [#ifndef](#ifndef) |  |
 | [#include](#include) |  |
 | [#lookahead](#lookahead) |  |
@@ -372,6 +372,8 @@ Specifies a filename for compiled code (.EXE or .DLL).
 
 # <a name="#if"></a>#if
 
+Preprocessor conditional directive.
+
 Statements contained within the `#if / #endif` block are included if expression evaluates to true (non-zero) and excluded (ignored) if expression evaluates to false (0).
 
 ```
@@ -379,5 +381,23 @@ Statements contained within the `#if / #endif` block are included if expression 
 #if (DEBUG_LEVEL >= 2)
   ' This line is not compiled since the expression is false
   OutputDebugString ("expression")
+#endif
+```
+
+# <a name="#ifdef"></a>#ifdef
+
+Preprocessor conditional directive.
+
+Include code if symbol already defined.
+
+#### Example
+
+Define LPTSTR as an LPWSTR if UNICODE is defined, an LPSTR otherwise.
+
+```
+#ifdef UNICODE
+ typedef LPWSTR LPTSTR;
+#else
+ typedef LPSTR LPTSTR;
 #endif
 ```
