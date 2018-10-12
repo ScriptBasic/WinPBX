@@ -36,7 +36,6 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#semicolon](#semicolon) | Switch use of semicolon as comment marker or separator. |
 | [#show](#show) | Displays the translated assembler code of a statement during compilation. |
 | [#undef](#undef) | Removes a previously defined symbol. |
-| [#undefine](#undef) | Removes a previously defined symbol. |
 | [#unique](#unique) |  |
 | [#view](#view) |  |
 
