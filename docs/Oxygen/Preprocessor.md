@@ -21,7 +21,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#elseif](#elseif) | Preprocessor conditional directive. |
 | [#endif](#endif) | Ends a group of conditional directives. |
 | [#endv](#endv) | Creates a window for compiler listings. |
-| [#error](#error) |  |
+| [#error](#error) | Generates a compiler error message. |
 | [#file](#file) |  |
 | [#if](#if) |  |
 | [#ifdef](#ifdef) |  |
@@ -347,5 +347,18 @@ The `###` markers restrict the listing to a window so that the code can be studi
 
 `#view` and `#endv` are generated internally from the pair of `###` symbols.
 
+# <a name="#error"></a>#error
 
+Generates a compiler error message.
+
+Used to alert the programmer about inconsistencies that require attention. 
+
+#### Example
+
+```
+#error (please implement methods for this interface)
+```
+
+
+ 
 
