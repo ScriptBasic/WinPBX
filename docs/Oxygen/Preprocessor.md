@@ -33,7 +33,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#pragma](#pragma) | Ignored C-style directive. |
 | [#print](#print) | Displays a constant expression during compilation. |
 | [#recordof](#recordof) | Returns the internal record of a declared entity. |
-| [#semicolon](#semicolon) |  |
+| [#semicolon](#semicolon) | Switch use of semicolon as comment marker or separator. |
 | [#show](#show) |  |
 | [#undef](#undef) |  |
 | [#undefine](#undefine) |  |
@@ -514,3 +514,17 @@ Returns the internal record of a declared entity.
 This command was introduced to aid debugging at compile time.
 
 
+# <a name="#semicolon"></a>#semicolon
+
+Switch use of semicolon as comment marker or separator.
+
+It can be confined to a scope (function, etc.).
+
+#### Example
+
+```
+#semicolon separator
+s="ok"  ; print s
+#semicolon comment
+print "ok" ; this is a comment
+```
