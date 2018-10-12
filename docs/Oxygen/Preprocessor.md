@@ -28,7 +28,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#ifndef](#ifndef) | Preprocessor conditional directive. |
 | [#include](#include) | Includes source code from another file. |
 | [#lookahead](#lookahead) | Tells the compiler to internally create header declarations for all procedures. |
-| [#noinit](#noinit) |  |
+| [#noinit](#noinit) | Prevents variables from being automatically initialised to nul within a procedure. |
 | [#noprec](#noprec) |  |
 | [#pragma](#pragma) |  |
 | [#print](#print) |  |
@@ -454,3 +454,13 @@ end sub
 ```
 
 Procedures in inner blocks are ignored, so each block must have its own `#lookahead`.
+
+# <a name="#noinit"></a>#noinit
+
+Prevents variables from being automatically initialised to nul within a procedure.
+
+#### Example
+
+```
+#noinit
+```
