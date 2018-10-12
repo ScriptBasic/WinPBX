@@ -31,7 +31,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#noinit](#noinit) | Prevents variables from being automatically initialised to nul within a procedure. |
 | [#noprec](#noprec) | Directive to evaluate an expression from left to right, ignoring standard operator precedence rule. |
 | [#pragma](#pragma) | Ignored C-style directive. |
-| [#print](#print) |  |
+| [#print](#print) | Displays a constant expression during compilation. |
 | [#recordof](#recordof) |  |
 | [#semicolon](#semicolon) |  |
 | [#show](#show) |  |
@@ -491,4 +491,12 @@ C compilers use it for platform or compiler-specific mode changes.
 #pragma warning(push)
 ```
 
+# <a name="#print"></a>#print
  
+Displays a constant expression during compilation.
+
+#### Example
+
+```
+#print "Not implemented"
+```
