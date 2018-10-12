@@ -13,7 +13,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#case](#case) | Specifies the case sensitivity mode. |
 | [#compact](#compact) | Removes unused code. |
 | [#console](#console) | Prevents the creation of a new console. |
-| [#def](#def) |  |
+| [#def](#def) | Defines a low level macro. |
 | [#define](#define) |  |
 | [#dim](#dim) |  |
 | [#else](#else) |  |
@@ -150,6 +150,14 @@ Programs compiled to EXE/DLL will run in an existing console (MS Subsystem 3)
 
 When Oxygen is embedded it will use the host's subsystem.
 
- 
+# <a name="def"></a>#def
 
+Defines a low level macro. `#def` and `def` are the same.
 
+#### Example
+
+```
+#def show "%1: " %1
+int x = 123
+print show x
+```
