@@ -5,40 +5,40 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | Name       | Description |
 | ---------- | ----------- |
 | [#alert](#alert) | Generates a compiler message (like an error). |
-| [#assign](assign) | Emulates the C convention for the `=` operator. |
-| [#autodim](autodim) | Enables variables to be created without a `dim` statement. |
-| [#blockdepth](blockdepth) | Returns the nesting depth of a block. |
-| [#byref](byref) | Specifies that parameters must be passed using its address instead of its value. |
-| [#byval](byval) | Specifies that parameters must be passed by value instead of by reference. |
-| [#case](case) | Specifies the case sensitivity mode. |
-| [#compact](compact) | Removes unused code. |
-| [#console](console) | Prevents the creation of a new console. |
-| [#cpointer](cpointer) | Specifies to use C-like syntax with pointers. |
-| [#def](def) | Defines a low level macro. |
-| [#define](define) | Defines a preprocessor macro. |
-| [#dim](dim) | Specifies the datatype to be used when this is unspecified. |
-| [#else](else) |  |
-| [#elseif](elseif) |  |
-| [#endif](endif) |  |
-| [#endv](endv) |  |
-| [#error](error) |  |
-| [#file](file) |  |
-| [#if](if) |  |
-| [#ifdef](ifdef) |  |
-| [#ifndef](ifndef) |  |
-| [#include](include) |  |
-| [#lookahead](lookahead) |  |
-| [#noinit](noinit) |  |
-| [#noprec](noprec) |  |
-| [#pragma](pragma) |  |
-| [#print](print) |  |
-| [#recordof](recordof) |  |
-| [#semicolon](semicolon) |  |
-| [#show](show) |  |
-| [#undef](undef) |  |
-| [#undefine](undefine) |  |
-| [#unique](unique) |  |
-| [#view](view) |  |
+| [#assign](#assign) | Emulates the C convention for the `=` operator. |
+| [#autodim](#autodim) | Enables variables to be created without a `dim` statement. |
+| [#blockdepth](#blockdepth) | Returns the nesting depth of a block. |
+| [#byref](#byref) | Specifies that parameters must be passed using its address instead of its value. |
+| [#byval](#byval) | Specifies that parameters must be passed by value instead of by reference. |
+| [#case](#case) | Specifies the case sensitivity mode. |
+| [#compact](#compact) | Removes unused code. |
+| [#console](#console) | Prevents the creation of a new console. |
+| [#cpointer](#cpointer) | Specifies to use C-like syntax with pointers. |
+| [#def](#def) | Defines a low level macro. |
+| [#define](#define) | Defines a preprocessor macro. |
+| [#dim](#dim) | Specifies the datatype to be used when this is unspecified. |
+| [#else](#else) |  |
+| [#elseif](#elseif) |  |
+| [#endif](#endif) |  |
+| [#endv](#endv) |  |
+| [#error](#error) |  |
+| [#file](#file) |  |
+| [#if](#if) |  |
+| [#ifdef](#ifdef) |  |
+| [#ifndef](#ifndef) |  |
+| [#include](#include) |  |
+| [#lookahead](#lookahead) |  |
+| [#noinit](#noinit) |  |
+| [#noprec](#noprec) |  |
+| [#pragma](#pragma) |  |
+| [#print](#print) |  |
+| [#recordof](#recordof) |  |
+| [#semicolon](#semicolon) |  |
+| [#show](#show) |  |
+| [#undef](#undef) |  |
+| [#undefine](#undefine) |  |
+| [#unique](#unique) |  |
+| [#view](#view) |  |
 
 # <a name="#alert"></a>#alert
 
@@ -52,7 +52,7 @@ Used to alert programmer about an area of code that requires attention.
 #alert (please implement methods for this interface)
 ```
 
-# <a name="assign"></a>#assign
+# <a name="#assign"></a>#assign
 
 Emulates the C convention for the `=` operator.
 
@@ -65,7 +65,7 @@ When `assign` is on, `=` acts always as an assignment operator in conditional st
 if hresult = QueryInterface(gu, ob) then ...
 ```
 
-# <a name="autodim"></a>#autodim
+# <a name="#autodim"></a>#autodim
 
 Enables variables to be created without a `dim` statement. The type is implied from the initializer expression.
 
@@ -77,7 +77,7 @@ v = 123
 print v
 ```
 
-# <a name="blockdepth"></a>#blockdepth
+# <a name="#blockdepth"></a>#blockdepth
 
 Returns the nesting depth of a block at compile time.
 
@@ -89,7 +89,7 @@ This command was introduced to catch unclosed blocks which are often hard to tra
 #blockdepth node x   ' use any descriptive label on the line
 ```
 
-# <a name="byref"></a>#byref
+# <a name="#byref"></a>#byref
 
 Specifies that parameters must be passed using its address instead of its value.
 
@@ -99,7 +99,7 @@ Specifies that parameters must be passed using its address instead of its value.
 #byref on
 ```
 
-# <a name="byval"></a>#byval
+# <a name="#byval"></a>#byval
 
 Specifies that parameters must be passed by value instead of by reference.
 
@@ -109,7 +109,7 @@ Specifies that parameters must be passed by value instead of by reference.
 #byval on
 ```
 
-# <a name="case"></a>#case
+# <a name="#case"></a>#case
 
 Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
 
@@ -125,7 +125,7 @@ Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
 #case sensitive
 ```
 
-# <a name="compact"></a>#compact
+# <a name="#compact"></a>#compact
 
 Removes unused unused methods from classes, as well as unused general functions.
 
@@ -135,7 +135,7 @@ Removes unused unused methods from classes, as well as unused general functions.
 #compact on
 ```
 
-# <a name="console"></a>#console
+# <a name="#console"></a>#console
 
 Prevents the creation of a new console. Inputs and outputs will use the existing console.
 
@@ -151,7 +151,37 @@ Programs compiled to EXE/DLL will run in an existing console (MS Subsystem 3)
 
 When Oxygen is embedded it will use the host's subsystem.
 
-# <a name="def"></a>#def
+
+# <a name="#cpointer"></a>#cpointer
+
+Specifies to use C-like syntax with pointers.
+
+#### Example
+
+Wrapping code between `#cpointer on`and `#cpointer off` directives allows to use explicit pointers that are deferenced with the `*` operator:
+
+```
+#cpointer on
+dim x as long = 123456
+dim p as long ptr = @x
+print *p
+#cpointer off
+```
+
+instead of:
+
+```
+dim x as long = 123456
+dim p as long ptr
+@p = @x
+print p
+```
+
+By default, Oxygen Basic uses a novelty syntax style to avoid the use of explicit pointers. This applies uniformly to objects, functions and variables. Also to COM objects. Once an indirect variable is given an address, no further pointer notation is required.
+
+The principle is that once an indirect variable is provided with an address, it is treated just like a normal variable. This is exactly how byref parameters work within functions for most basics.
+
+# <a name="#def"></a>#def
 
 Defines a low level macro. `#def` and `def` are the same.
 
@@ -163,7 +193,7 @@ int x = 123
 print show x
 ```
 
-# <a name="define"></a>#define
+# <a name="#define"></a>#define
 
 Defines a preprocessor macro.
 
@@ -198,7 +228,7 @@ end scope
 print x   ' output: 45
 ```
 
-# <a name="dim"></a>#dim
+# <a name="#dim"></a>#dim
 
 Specifies the datatype to be used when this is unspecified.
 
@@ -209,34 +239,3 @@ Specifies the datatype to be used when this is unspecified.
 ```
 
 The type (or class) must be defined already.
-
-# <a name="cpointer"></a>#cpointer
-
-Specifies to use C-like syntax with pointers.
-
-#### Example
-
-Wrapping code between `#cpointer on`and `#cpointer off` directives allows to use explicit pointers that are deferenced with the `*` operator:
-
-```
-#cpointer on
-dim x as long = 123456
-dim p as long ptr = @x
-print *p
-#cpointer off
-```
-
-instead of:
-
-```
-dim x as long = 123456
-dim p as long ptr
-@p = @x
-print p
-```
-
-By default, Oxygen Basic uses a novelty syntax style to avoid the use of explicit pointers. This applies uniformly to objects, functions and variables. Also to COM objects. Once an indirect variable is given an address, no further pointer notation is required.
-
-The principle is that once an indirect variable is provided with an address, it is treated just like a normal variable. This is exactly how byref parameters work within functions for most basics.
-
-
