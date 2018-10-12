@@ -6,7 +6,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | ---------- | ----------- |
 | [#alert](#alert) | Generates a compiler message (like an error). |
 | [#assign](#assign) | Emulates the C convention for the `=` operator. |
-| [#autodim](#autodim) |  |
+| [#autodim](#autodim) | Enables variables to be created without a `dim` statement. |
 | [#blockdepth](#blockdepth) |  |
 | [#byref](#byref) |  |
 | [#byval](#byval) |  |
@@ -55,7 +55,7 @@ Used to alert programmer about an area of code that requires attention.
 
 Emulates the C convention for the `=` operator.
 
-When `assign`is on, `=` acts always as an assignment operator in conditional statements.
+When `assign` is on, `=` acts always as an assignment operator in conditional statements and `==` must be used to test equality.
  
 #### Example
 
@@ -63,3 +63,16 @@ When `assign`is on, `=` acts always as an assignment operator in conditional sta
 #assign on
 if hresult = QueryInterface(gu, ob) then ...
 ```
+
+# <a name="autodim"></a>#autodim
+
+Enables variables to be created without a `dim` statement.
+
+#### Example
+
+```
+#autodim on
+v = 123
+print v
+```
+
