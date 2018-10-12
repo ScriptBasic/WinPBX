@@ -555,3 +555,5 @@ Undefines a symbol previously defined with `#define`.
 ...
 #undef x
 ```
+
+# <a name="#unique"></a>#unique
