@@ -7,7 +7,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#alert](#alert) | Generates a compiler message (like an error). |
 | [#assign](#assign) | Emulates the C convention for the `=` operator. |
 | [#autodim](#autodim) | Enables variables to be created without a `dim` statement. |
-| [#blockdepth](#blockdepth) |  |
+| [#blockdepth](#blockdepth) | Returns the nesting depth of a block. |
 | [#byref](#byref) |  |
 | [#byval](#byval) |  |
 | [#case](#case) |  |
@@ -66,7 +66,7 @@ if hresult = QueryInterface(gu, ob) then ...
 
 # <a name="autodim"></a>#autodim
 
-Enables variables to be created without a `dim` statement.
+Enables variables to be created without a `dim` statement. The type is implied from the initializer expression.
 
 #### Example
 
@@ -76,3 +76,14 @@ v = 123
 print v
 ```
 
+# <a name="blockdepth"></a>#blockdepth
+
+Returns the nesting depth of a block at compile time.
+
+This command was introduced to catch unclosed blocks which are often hard to trace.
+
+#### Example
+
+```
+#blockdepth node x   ' use any descriptive label on the line
+```
