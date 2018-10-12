@@ -18,7 +18,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#define](#define) | Defines a preprocessor macro. |
 | [#dim](#dim) | Specifies the datatype to be used when this is unspecified. |
 | [#else](#else) | Preprocessor conditional directive. |
-| [#elseif](#elseif) |  |
+| [#elseif](#elseif) | Preprocessor conditional directive. |
 | [#endif](#endif) |  |
 | [#endv](#endv) |  |
 | [#error](#error) |  |
@@ -272,6 +272,33 @@ Define LONG_PTR as a long if we are compiling to 32-bit or as quad if we are com
 #ifndef mode64bit
    typedef long LONG_PTR;
 #else
+   typedef quad LONG_PTR;
+#endif
+```
+
+# <a name="#elseif"></a>#elseif
+
+Preprocessor conditional directive.
+
+#### Syntax
+
+```
+#if (expression1)
+  ' Conditionally included statements if expression1 is True
+#elseif (expression2)
+  ' Conditionally included statements if expression2 is True
+#else
+  ' Conditionally included statements if both
+  ' expression1 and expression2 are False
+#endif
+```
+
+#### Example
+
+```
+#ifdef mode32bit
+   typedef long LONG_PTR;
+#elseif mode64bit
    typedef quad LONG_PTR;
 #endif
 ```
