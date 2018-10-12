@@ -30,7 +30,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#lookahead](#lookahead) | Tells the compiler to internally create header declarations for all procedures. |
 | [#noinit](#noinit) | Prevents variables from being automatically initialised to nul within a procedure. |
 | [#noprec](#noprec) | Directive to evaluate an expression from left to right, ignoring standard operator precedence rule. |
-| [#pragma](#pragma) |  |
+| [#pragma](#pragma) | Ignored C-style directive. |
 | [#print](#print) |  |
 | [#recordof](#recordof) |  |
 | [#semicolon](#semicolon) |  |
@@ -480,3 +480,15 @@ function my_log (float v) as float
    #noprec return y * ishift - k2 * k1
 end function
 ```
+
+# <a name="#pragma"></a>#pragma
+
+Ignored C-style directive.
+
+C compilers use it for platform or compiler-specific mode changes.
+ 
+```
+#pragma warning(push)
+```
+
+ 
