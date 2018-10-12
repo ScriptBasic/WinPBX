@@ -32,7 +32,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#noprec](#noprec) | Directive to evaluate an expression from left to right, ignoring standard operator precedence rule. |
 | [#pragma](#pragma) | Ignored C-style directive. |
 | [#print](#print) | Displays a constant expression during compilation. |
-| [#recordof](#recordof) |  |
+| [#recordof](#recordof) | Returns the internal record of a declared entity. |
 | [#semicolon](#semicolon) |  |
 | [#show](#show) |  |
 | [#undef](#undef) |  |
@@ -500,3 +500,17 @@ Displays a constant expression during compilation.
 ```
 #print "Not implemented"
 ```
+
+# <a name="#recordof"></a>#recordof
+
+Returns the internal record of a declared entity.
+
+#### Example
+
+```
+#recordof MyStructure
+```
+
+This command was introduced to aid debugging at compile time.
+
+
