@@ -27,7 +27,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#ifdef](#ifdef) | Preprocessor conditional directive. |
 | [#ifndef](#ifndef) | Preprocessor conditional directive. |
 | [#include](#include) | Includes source code from another file. |
-| [#lookahead](#lookahead) |  |
+| [#lookahead](#lookahead) | Tells the compiler to internally create header declarations for all procedures. |
 | [#noinit](#noinit) |  |
 | [#noprec](#noprec) |  |
 | [#pragma](#pragma) |  |
@@ -437,3 +437,20 @@ Includes source code from another file. `#include` and `include` are the same.
 ```
 
 The `once` specifier instructs the compiler to include the file only once even if it is included several times by the source code.
+
+# <a name="#lookahead"></a>#lookahead
+
+Tells the compiler to internally create header declarations for all procedures, allowing forward referenced procedure calls.
+
+#### Example
+
+```
+#lookahead
+f "ok"
+'...
+sub f (s as string)
+  print s
+end sub
+```
+
+Procedures in inner blocks are ignored, so each block must have its own `#lookahead`.
