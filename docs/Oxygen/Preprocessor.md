@@ -343,9 +343,9 @@ a = b + c
 string s = "Value " + str(a)
 ```
 
-The ### markers restrict the listing to a window so that the code can be studied in detail.
+The `###` markers restrict the listing to a window so that the code can be studied in detail.
 
-#view and #endv are generated internally from the pair of '###' symbols.
+`#view` and `#endv` are generated internally from the pair of `###` symbols.
 
- 
+
 
