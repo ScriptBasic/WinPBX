@@ -369,7 +369,9 @@ const [as datatype] symbolname1 = value1 [, symbolname2 = value2, ...]
 ```
 const x = 10
 const x = 10, y = 11, z = 12
+const long x = 123, y = 234, z = 456
 const as long x = 123, y = 234, z = 456
+const string s = "Hello"
 const s as string = "Hello"
 const as string s = "Hello"
 ```
