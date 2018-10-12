@@ -12,7 +12,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#byval](#byval) | Specifies that parameters must be passed by value instead of by reference. |
 | [#case](#case) | Specifies the case sensitivity mode. |
 | [#compact](#compact) | Removes unused code. |
-| [#console](#console) |  |
+| [#console](#console) | Prevents the creation of a new console. |
 | [#def](#def) |  |
 | [#define](#define) |  |
 | [#dim](#dim) |  |
@@ -133,3 +133,23 @@ Removes unused unused methods from classes, as well as unused general functions.
 ```
 #compact on
 ```
+
+# <a name="console"></a>#console
+
+Prevents the creation of a new console. Inputs and outputs will use the existing console.
+
+#### Example
+
+```
+#console
+```
+
+Programs compiled to EXE/DLL will run in an existing console (MS Subsystem 3) 
+ 
+#### Remark
+
+When Oxygen is embedded it will use the host's subsystem.
+
+ 
+
+
