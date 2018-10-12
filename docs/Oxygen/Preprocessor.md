@@ -20,7 +20,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#else](#else) | Preprocessor conditional directive. |
 | [#elseif](#elseif) | Preprocessor conditional directive. |
 | [#endif](#endif) | Ends a group of conditional directives. |
-| [#endv](#endv) |  |
+| [#endv](#endv) | Creates a window for compiler listings. |
 | [#error](#error) |  |
 | [#file](#file) |  |
 | [#if](#if) |  |
@@ -329,3 +329,23 @@ Ends a group of conditional directives.
    typedef quad LONG_PTR;
 #endif
 ```
+
+# <a name="#endv"></a>#endv
+
+Creates a window for compiler listings, allowing the programmer to see a selected part of the compiled code.
+ 
+#### Example
+```
+sys a, b, c
+###
+a = b + c
+###
+string s = "Value " + str(a)
+```
+
+The ### markers restrict the listing to a window so that the code can be studied in detail.
+
+#view and #endv are generated internally from the pair of '###' symbols.
+
+ 
+
