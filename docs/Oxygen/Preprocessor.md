@@ -26,7 +26,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#if](#if) | Preprocessor conditional directive. |
 | [#ifdef](#ifdef) | Preprocessor conditional directive. |
 | [#ifndef](#ifndef) | Preprocessor conditional directive. |
-| [#include](#include) |  |
+| [#include](#include) | Includes source code from another file. |
 | [#lookahead](#lookahead) |  |
 | [#noinit](#noinit) |  |
 | [#noprec](#noprec) |  |
@@ -419,3 +419,21 @@ Define LONG_PTR as a long if we are compiling to 32-bit or as quad if we are com
    typedef quad LONG_PTR;
 #endif
 ```
+
+# <a name="#include"></a>#include
+
+Includes source code from another file. `#include` and `include` are the same.
+
+#### Syntax
+
+```
+#include [once] "file"
+```
+
+#### Example
+
+```
+#include "rtl32.inc"
+```
+
+The `once` specifier instructs the compiler to include the file only once even if it is included several times by the source code.
