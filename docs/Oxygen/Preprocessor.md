@@ -35,7 +35,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#recordof](#recordof) | Returns the internal record of a declared entity. |
 | [#semicolon](#semicolon) | Switch use of semicolon as comment marker or separator. |
 | [#show](#show) | Displays the translated assembler code of a statement during compilation. |
-| [#undef](#undef) | Removes a previously defined symbol. |
+| [#undef](#undefine) | Removes a previously defined symbol. |
 | [#undefine](#undefine) | Removes a previously defined symbol. |
 | [#unique](#unique) |  |
 | [#view](#view) |  |
@@ -540,7 +540,7 @@ sys a, b, c
 #show a = b + c 'display coding in a messagebox
 ```
 
-# <a name="#undef"></a>#undef / #undefine
+# <a name="#undefine"></a>#undef / #undefine
 
 Undefines a symbol previously defined with `#define`.
 
