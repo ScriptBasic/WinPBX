@@ -4,40 +4,41 @@ Preprocessor directives are lines included in the code of programs preceded by a
 
 | Name       | Description |
 | ---------- | ----------- |
-| [#alert](#alert) | Generates a compiler message (like an error). |
-| [#assign](#assign) | Emulates the C convention for the `=` operator. |
-| [#autodim](#autodim) | Enables variables to be created without a `dim` statement. |
-| [#blockdepth](#blockdepth) | Returns the nesting depth of a block. |
-| [#byref](#byref) | Specifies that parameters must be passed using its address instead of its value. |
-| [#byval](#byval) | Specifies that parameters must be passed by value instead of by reference. |
-| [#case](#case) | Specifies the case sensitivity mode. |
-| [#compact](#compact) | Removes unused code. |
-| [#console](#console) | Prevents the creation of a new console. |
-| [#def](#def) | Defines a low level macro. |
-| [#define](#define) | Defines a preprocessor macro. |
-| [#dim](#dim) | Specifies the datatype to be used when this is unspecified. |
-| [#else](#else) |  |
-| [#elseif](#elseif) |  |
-| [#endif](#endif) |  |
-| [#endv](#endv) |  |
-| [#error](#error) |  |
-| [#file](#file) |  |
-| [#if](#if) |  |
-| [#ifdef](#ifdef) |  |
-| [#ifndef](#ifndef) |  |
-| [#include](#include) |  |
-| [#lookahead](#lookahead) |  |
-| [#noinit](#noinit) |  |
-| [#noprec](#noprec) |  |
-| [#pragma](#pragma) |  |
-| [#print](#print) |  |
-| [#recordof](#recordof) |  |
-| [#semicolon](#semicolon) |  |
-| [#show](#show) |  |
-| [#undef](#undef) |  |
-| [#undefine](#undefine) |  |
-| [#unique](#unique) |  |
-| [#view](#view) |  |
+| [#alert](alert) | Generates a compiler message (like an error). |
+| [#assign](assign) | Emulates the C convention for the `=` operator. |
+| [#autodim](autodim) | Enables variables to be created without a `dim` statement. |
+| [#blockdepth](blockdepth) | Returns the nesting depth of a block. |
+| [#byref](byref) | Specifies that parameters must be passed using its address instead of its value. |
+| [#byval](byval) | Specifies that parameters must be passed by value instead of by reference. |
+| [#case](case) | Specifies the case sensitivity mode. |
+| [#compact](compact) | Removes unused code. |
+| [#console](console) | Prevents the creation of a new console. |
+| [#cpointer](cpointer) | Specifies to use C-like syntax with pointers. |
+| [#def](def) | Defines a low level macro. |
+| [#define](define) | Defines a preprocessor macro. |
+| [#dim](dim) | Specifies the datatype to be used when this is unspecified. |
+| [#else](else) |  |
+| [#elseif](elseif) |  |
+| [#endif](endif) |  |
+| [#endv](endv) |  |
+| [#error](error) |  |
+| [#file](file) |  |
+| [#if](if) |  |
+| [#ifdef](ifdef) |  |
+| [#ifndef](ifndef) |  |
+| [#include](include) |  |
+| [#lookahead](lookahead) |  |
+| [#noinit](noinit) |  |
+| [#noprec](noprec) |  |
+| [#pragma](pragma) |  |
+| [#print](print) |  |
+| [#recordof](recordof) |  |
+| [#semicolon](semicolon) |  |
+| [#show](show) |  |
+| [#undef](undef) |  |
+| [#undefine](undefine) |  |
+| [#unique](unique) |  |
+| [#view](view) |  |
 
 # <a name="alert"></a>#alert
 
@@ -208,4 +209,34 @@ Specifies the datatype to be used when this is unspecified.
 ```
 
 The type (or class) must be defined already.
+
+# <a name="cpointer"></a>#cpointer
+
+Specifies to use C-like syntax with pointers.
+
+#### Example
+
+Wrapping code between `#cpointer on`and `#cpointer off` directives allows to use explicit pointers that are deferenced with the `*` operator:
+
+```
+#cpointer on
+dim x as long = 123456
+dim p as long ptr = @x
+print *p
+#cpointer off
+```
+
+instead of:
+
+```
+dim x as long = 123456
+dim p as long ptr
+@p = @x
+print p
+```
+
+By default, Oxygen Basic uses a novelty syntax style to avoid the use of explicit pointers. This applies uniformly to objects, functions and variables. Also to COM objects. Once an indirect variable is given an address, no further pointer notation is required.
+
+The principle is that once an indirect variable is provided with an address, it is treated just like a normal variable. This is exactly how byref parameters work within functions for most basics.
+
 
