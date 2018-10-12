@@ -34,7 +34,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#print](#print) | Displays a constant expression during compilation. |
 | [#recordof](#recordof) | Returns the internal record of a declared entity. |
 | [#semicolon](#semicolon) | Switch use of semicolon as comment marker or separator. |
-| [#show](#show) |  |
+| [#show](#show) | Displays the translated assembler code of a statement during compilation. |
 | [#undef](#undef) |  |
 | [#undefine](#undefine) |  |
 | [#unique](#unique) |  |
@@ -528,3 +528,18 @@ s="ok"  ; print s
 #semicolon comment
 print "ok" ; this is a comment
 ```
+
+# <a name="#show"></a>#show
+
+Displays the translated assembler code of a statement during compilation.
+
+Allows the programmer to see a selected part of the compiled code.
+ 
+```
+sys a, b, c
+#show a = b + c 'display coding in a messagebox
+```
+
+
+
+ 
