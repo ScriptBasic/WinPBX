@@ -8,9 +8,9 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#assign](#assign) | Emulates the C convention for the `=` operator. |
 | [#autodim](#autodim) | Enables variables to be created without a `dim` statement. |
 | [#blockdepth](#blockdepth) | Returns the nesting depth of a block. |
-| [#byref](#byref) |  |
-| [#byval](#byval) |  |
-| [#case](#case) |  |
+| [#byref](#byref) | Specifies that parameters must be passed using its address instead of its value. |
+| [#byval](#byval) | Specifies that parameters must be passed by value instead of by reference. |
+| [#case](#case) | Specifies the case sensitivity mode. |
 | [#compact](#compact) |  |
 | [#console](#console) |  |
 | [#def](#def) |  |
@@ -87,3 +87,40 @@ This command was introduced to catch unclosed blocks which are often hard to tra
 ```
 #blockdepth node x   ' use any descriptive label on the line
 ```
+
+# <a name="byref"></a>#byref
+
+Specifies that parameters must be passed using its address instead of its value.
+
+#### Example
+
+```
+#byref on
+```
+
+# <a name="byval"></a>#byval
+
+Specifies that parameters must be passed by value instead of by reference.
+
+#### Example
+
+```
+#byval on
+```
+
+# <a name="case"></a>#case
+
+Specifies the case sensitivity mode: `sensitive`, `insensitive`, or `capital`.
+
+#case insensitive  ' converts words to lowercase   ' this is the default<br>
+#case sensitive    ' no case conversion, like the C language<br>
+#case capital      ' converts words to lowercase, except for all-uppercase words
+
+`#case` has block scope and reverts to its previous state when the block ends.
+ 
+#### Example
+
+```
+#case sensitive
+```
+
