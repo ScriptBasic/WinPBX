@@ -37,8 +37,8 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#show](#show) | Displays the translated assembler code of a statement during compilation. |
 | [#undef](#undef) | Removes a previously defined symbol. |
 | [#undefine](#undefine) | Removes a previously defined symbol. |
-| [#unique](#unique) |  |
-| [#view](#view) |  |
+| [#unique](#unique) | Prevents symbols from being redefined. |
+| [#view](#view) | Creates a window for compiler listings. |
 
 # <a name="#alert"></a>#alert
 
@@ -573,3 +573,53 @@ Undefines a symbol previously defined with `#define`.
 ```
 
 # <a name="#unique"></a>#unique
+
+Prevents symbols from being redefined.
+
+Flags an error if a a symbol definition is not unique (in the same nesting level).
+
+```
+#unique on
+#unique off 'default
+```
+```
+#unique enabled
+#unique disabled 'default
+```
+
+#### Example
+
+If the `#unique`directive is enabled, the code below display an error message saying that 'x' is already defined.
+
+```
+#unique on
+dim x as long = 123
+dim x as int = 456
+print x
+```
+
+Without it, 'x' is redefined as an `int` with a new value.
+
+```
+#unique on
+dim x as long = 123
+dim x as int = 456
+print x
+```
+
+# <a name="#view"></a>#view
+
+Creates a window for compiler listings, allowing the programmer to see a selected part of the compiled code.
+ 
+#### Example
+```
+sys a, b, c
+###
+a = b + c
+###
+string s = "Value " + str(a)
+```
+
+The `###` markers restrict the listing to a window so that the code can be studied in detail.
+
+`#view` and `#endv` are generated internally from the pair of `###` symbols.
