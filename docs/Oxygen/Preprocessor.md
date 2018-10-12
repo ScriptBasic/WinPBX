@@ -4,7 +4,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 
 | Name       | Description |
 | ---------- | ----------- |
-| [#alert](alert) | Generates a compiler message (like an error). |
+| [#alert](#alert) | Generates a compiler message (like an error). |
 | [#assign](assign) | Emulates the C convention for the `=` operator. |
 | [#autodim](autodim) | Enables variables to be created without a `dim` statement. |
 | [#blockdepth](blockdepth) | Returns the nesting depth of a block. |
@@ -40,7 +40,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#unique](unique) |  |
 | [#view](view) |  |
 
-# <a name="alert"></a>#alert
+# <a name="#alert"></a>#alert
 
 Generates a compiler message (like an error).
 
