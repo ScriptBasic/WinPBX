@@ -22,7 +22,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#endif](#endif) | Ends a group of conditional directives. |
 | [#endv](#endv) | Creates a window for compiler listings. |
 | [#error](#error) | Generates a compiler error message. |
-| [#file](#file) |  |
+| [#file](#file) | Specifies a filename for compiled code (.EXE or .DLL). |
 | [#if](#if) |  |
 | [#ifdef](#ifdef) |  |
 | [#ifndef](#ifndef) |  |
@@ -359,6 +359,14 @@ Used to alert the programmer about inconsistencies that require attention.
 #error (please implement methods for this interface)
 ```
 
+# <a name="#file"></a>#file
 
- 
+Specifies a filename for compiled code (.EXE or .DLL).
+
+#### Example
+
+```
+#file "test.exe"
+#file "myDll.dll"
+```
 
