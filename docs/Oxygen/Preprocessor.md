@@ -17,7 +17,7 @@ Preprocessor directives are lines included in the code of programs preceded by a
 | [#def](#def) | Defines a low level macro. |
 | [#define](#define) | Defines a preprocessor macro. |
 | [#dim](#dim) | Specifies the datatype to be used when this is unspecified. |
-| [#else](#else) |  |
+| [#else](#else) | Preprocessor conditional directive. |
 | [#elseif](#elseif) |  |
 | [#endif](#endif) |  |
 | [#endv](#endv) |  |
@@ -158,7 +158,7 @@ Specifies to use C-like syntax with pointers.
 
 #### Example
 
-Wrapping code between `#cpointer on`and `#cpointer off` directives allows to use explicit pointers that are deferenced with the `*` operator:
+Wrapping code between `#cpointer on` and `#cpointer off` directives allows to use explicit pointers that are deferenced with the `*` operator:
 
 ```
 #cpointer on
@@ -239,3 +239,39 @@ Specifies the datatype to be used when this is unspecified.
 ```
 
 The type (or class) must be defined already.
+
+# <a name="#else"></a>#else
+
+Preprocessor conditional directive.
+
+#### Syntax
+
+```
+#if (expression)
+   ' Conditionally included statements if expression is True
+#else
+   ' Conditionally included statements if expression is False 
+#endif
+```
+
+#### Example
+
+Define LPTSTR as an LPWSTR if UNICODE is defined, an LPSTR otherwise.
+
+```
+#ifdef UNICODE
+ typedef LPWSTR LPTSTR;
+#else
+ typedef LPSTR LPTSTR;
+#endif
+```
+
+Define LONG_PTR as a long if we are compiling to 32-bit or as quad if we are compiling to 64 bit.
+
+```
+#ifndef mode64bit
+   typedef long LONG_PTR;
+#else
+   typedef quad LONG_PTR;
+#endif
+```
