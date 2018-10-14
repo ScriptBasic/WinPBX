@@ -172,3 +172,10 @@ The following table contains the following types: character, integer, Boolean, p
 | **ULONG32** | An unsigned LONG32. The range is 0 through 4294967295 decimal.<br>`typedef unsigned int ULONG32;` |
 | **ULONG64** | An unsigned LONG64. The range is 0 through 18446744073709551615 decimal.<br>`typedef unsigned __int64 ULONG64;` |
 | **UNICODE_STRING** | A Unicode string.<br>`typedef struct _UNICODE_STRING` {<br>  `USHORT  Length;`<br>  `USHORT  MaximumLength;`<br>`  PWSTR  Buffer`;<br>`} UNICODE_STRING;`<br>`typedef UNICODE_STRING *PUNICODE_STRING;`<br>`typedef const UNICODE_STRING *PCUNICODE_STRING;` |
+| **USHORT** | An unsigned SHORT. The range is 0 through 65535 decimal.<br>`typedef unsigned short USHORT;` |
+| **USN** | An update sequence number (USN).<br>`typedef LONGLONG USN;` |
+| **VOID** | Any type.<br>`typedef void VOID;` |
+| **WCHAR** | A 16-bit Unicode character.<br>`typedef wchar WCHAR;` |
+| **WINAPI** | The calling convention for system functions.<br>`#define WINAPI stdcall (32-bit) #define WINAPI ms64 (64-bit)` |
+| **WORD** | A 16-bit unsigned integer. The range is 0 through 65535 decimal.<br>`typedef word WORD;` |
+| **WPARAM** | typedef UINT_PTR WPARAM;` |
