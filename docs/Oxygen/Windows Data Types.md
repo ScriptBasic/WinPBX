@@ -27,3 +27,38 @@ For more information about handling 64-bit integers, see Large Integers.
 | **HACCEL** | A handle to an accelerator table.<br>`typedef HANDLE HACCEL;` |
 | **HALF_PTR** | A handle to an accelerator table.<br>`typedef int HALF_PTR;` (32-bit) `typedef short HALF_PTR;` (64-bit) |
 | **HANDLE** | A handle to an object.<br>`typedef sys HANDLE;` |
+| **HBITMAP** | A handle to a bitmap.<br>`typedef HANDLE HBITMAP;` |
+| **HBRUSH** | A handle to a brush.<br>`typedef HANDLE HBRUSH;` |
+| **HCOLORSPACE** | A handle to a color space.<br>`typedef HANDLE HCOLORSPACE;` |
+| **HCONV** | A handle to a dynamic data exchange (DDE) conversation.<br>`typedef HANDLE HCONV;` |
+| **HCONVLIST** | A handle to a DDE conversation list.<br>`typedef HANDLE HCONVLIST;` |
+| **HCURSOR** | A handle to a cursor.<br>`typedef HANDLE HCURSOR;` |
+| **HDC** | A handle to a device context (DC).<br>`typedef HANDLE HDC;` |
+| **HDDEDATA** | A handle to DDE data.<br>`typedef HANDLE HDDEDATA;` |
+| **HDESK** | A handle to a desktop.<br>`typedef HANDLE HDESK;` |
+| **HDROP** | A handle to an internal drop structure.<br>`typedef HANDLE HDROP;` |
+| **HDWP** | A handle to a deferred window position structure.<br>`typedef HANDLE HDWP;` |
+| **HENHMETAFILE** | A handle to an enhanced metafile.<br>`typedef HANDLE HENHMETAFILE;` |
+| **HFILE** | A handle to a file opened by **OpenFile**, not **CreateFile**.<br>`typedef HANDLE HFILE;` |
+| **HFONT** | A handle to a font.<br>`typedef HANDLE HFONT;` |
+| **HGDIOBJ** | A handle to a GDI objet.<br>`typedef HANDLE HGDIOBJ;` |
+| **HGLOBAL** | A handle to a global memory block.<br>`typedef HANDLE HGLOBAL;` |
+| **HHOOK** | A handle to a hook.<br>`typedef HANDLE HHOOK;` |
+| **HICON** | A handle to an icon.<br>`typedef HANDLE HICON;` |
+| **HINSTANCE** | A handle to an instance. This is the base address of the module in memory. HMODULE and HINSTANCE are the same today, but represented different things in 16-bit Windows.<br>`typedef HANDLE HINSTANCE;` |
+| **HKEY** | A handle to a registry key.<br>`typedef HANDLE HKEY;` |
+| **HKL** | An input locale identifier.<br>`typedef HANDLE HKL;` |
+| **HLOCAL** | A handle to a local memory block.<br>`typedef HANDLE HLOCAL;` |
+| **HMENU** | A handle to a menu.<br>`typedef HANDLE HMENU;` |
+| **HMETAFILE** | A handle to a metafile.<br>`typedef HANDLE HMETAFILE;` |
+| **HMODULE** | A handle to a module. The is the base address of the module in memory. HMODULE and HINSTANCE are the same in current versions of Windows, but represented different things in 16-bit Windows.<br>`typedef HANDLE HMODULE;` |
+| **HMONITOR** | A handle to a display monitor.<br>`typedef HANDLE HMONITOR;` |
+| **HPALETTE** | A handle to a palette.<br>`typedef HANDLE HPALETTE;` |
+| **HPEN** | A handle to a pen.<br>`typedef HANDLE HPEN;` |
+| **HRESULT** | The return codes used by COM interfaces.<br>`typedef long HRESULT;` |
+| **HRGN** | A handle to a region.<br>`typedef HANDLE HRGN;` |
+| **HRSRC** | A handle to a resource.<br>`typedef HANDLE HRSRC;` |
+| **HSZ** | A handle to a DDE string.<br>`typedef HANDLE HSZ;` |
+| **HWINSTA** | A handle to a window station.<br>`typedef HANDLE HWINSTA;` |
+| **HWND** | A handle to a window.<br>`typedef HANDLE HWND;` |
+| **INT** | A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.<br>`typedef int INT;` |
