@@ -153,3 +153,22 @@ The following table contains the following types: character, integer, Boolean, p
 | **SC_HANDLE** | A handle to a service control manager database.<br>`typedef HANDLE SC_HANDLE;` |
 | **SC_LOCK** | A lock to a service control manager database.<br>`typedef LPVOID SC_LOCK;` |
 | **SERVICE_STATUS_HANDLE** | A handle to a service status value.<br>`typedef HANDLE SERVICE_STATUS_HANDLE;;` |
+| **SHORT** | A 16-bit integer. The range is 32768 through 32767 decimal.<br>`typedef short SHORT;` |
+| **SIZE_T** | The maximum number of bytes to which a pointer can point. Use for a count that must span the full range of a pointer.<br>`typedef ULONG_PTR SIZE_T;` |
+| **SSIZE_T** | A signed version of SIZE_T<br>`typedef LONG_PTR SSIZE_T;` |
+| **TBYTE** | A WCHAR if UNICODE is defined, a CHAR otherwise.<br>`typedef wchar TBYTE; (UNICODE) `typedef unsigned char TBYTE;` (ANSI)` |
+| **TCHAR** | A WCHAR if UNICODE is defined, a CHAR otherwise.<br>`typedef wchar TCHAR; (UNICODE) `typedef char TCHAR;` (ANSI)` |
+| **UCHAR** | An unsigned CHAR.<br>`typedef unsigned char UCHAR;` |
+| **UHALF_PTR** | An unsigned HALF_PTR. Use within a structure that contains a pointer and two small fields.<br>`typedef unsigned short UHALF_PTR;` (32-bit) typedef unsigned int UHALF_PTR; (64-bit) |
+| **UINT** | An unsigned INT. The range is 0 through 4294967295 decimal.<br>`typedef uint UINT;` |
+| **UINT_PTR** | An unsigned INT_PTR.<br>`typedef unsigned int UINT_PTR; (32-bit) typedef unsigned __int64 UINT_PTR; (64-bit)` |
+| **UINT8** | An unsigned INT8.<br>`typedef unsigned char UINT8;` |
+| **UINT16** | An unsigned INT16.<br>`typedef unsigned short UINT16;` |
+| **UINT32** | An unsigned INT32. The range is 0 through 4294967295 decimal.<br>`typedef unsigned int UINT32;` |
+| **UINT64** | An unsigned INT64. The range is 0 through 18446744073709551615 decimal.<br>`typedef unsigned __int64 UINT64;` |
+| **ULONG** | An unsigned LONG. The range is 0 through 4294967295 decimal.<br>`typedef ulong ULONG;` |
+| **ULONGLONG** | A 64-bit unsigned integer. The range is 0 through 18446744073709551615 decimal.<br>`typedef unsigned __int64 ULONGLONG;` |
+| **ULONG_PTR** | An unsigned LONG_PTR.<br>`typedef unsigned long ULONG_PTR (32-bit) typedef unsigned __int64 ULONG_PTR; (64-bit)` |
+| **ULONG32** | An unsigned LONG32. The range is 0 through 4294967295 decimal.<br>`typedef unsigned int ULONG32;` |
+| **ULONG64** | An unsigned LONG64. The range is 0 through 18446744073709551615 decimal.<br>`typedef unsigned __int64 ULONG64;` |
+| **UNICODE_STRING** | A Unicode string.<br>`typedef struct _UNICODE_STRING {<br>  USHORT  Length;<br>  USHORT  MaximumLength;<br>  PWSTR  Buffer;<br>} UNICODE_STRING;<br>typedef UNICODE_STRING *PUNICODE_STRING;<br>typedef const UNICODE_STRING *PCUNICODE_STRING;` |
