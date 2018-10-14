@@ -178,4 +178,4 @@ The following table contains the following types: character, integer, Boolean, p
 | **WCHAR** | A 16-bit Unicode character.<br>`typedef wchar WCHAR;` |
 | **WINAPI** | The calling convention for system functions.<br>`#define WINAPI stdcall (32-bit) #define WINAPI ms64 (64-bit)` |
 | **WORD** | A 16-bit unsigned integer. The range is 0 through 65535 decimal.<br>`typedef word WORD;` |
-| **WPARAM** | typedef UINT_PTR WPARAM;` |
+| **WPARAM** | A message parameter. `typedef UINT_PTR WPARAM;` |
