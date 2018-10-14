@@ -8,7 +8,7 @@ For more information about handling 64-bit integers, see Large Integers.
 
 | Name       | Description |
 | ---------- | ----------- |
-| **APIENTRY** | The calling convention for system functions.<br>``#define APIENTRY WINAPI` |
+| **APIENTRY** | The calling convention for system functions.<br>`#define APIENTRY WINAPI` |
 | **ATOM** | An atom.<br>`typedef word ATOM;` |
 | **BOOL** | A Boolean variable (should be TRUE or FALSE).<br>`typedef bool BOOL;` |
 | **BOOLEAN** | A Boolean variable (should be TRUE or FALSE).<br>`typedef boolean BOOLEAN;` |
