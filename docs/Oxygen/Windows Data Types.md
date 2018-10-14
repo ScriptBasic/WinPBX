@@ -63,3 +63,14 @@ For more information about handling 64-bit integers, see Large Integers.
 | **HWND** | A handle to a window.<br>`typedef HANDLE HWND;` |
 | **INT** | A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.<br>`typedef int INT;` |
 | **INT_PTR** | A signed integer type for pointer precision. Use when casting a pointer to an integer to perform pointer arithmetic.<br>`typedef int INT_PTR;` (32-bit) typedef `__int64 INT_PTR;` (64-bit) |
+| **INT8** | An 8-bit signed integer.<br>`typedef sbyte INT8;` |
+| **INT16** | A 16-bit signed integer.<br>`typedef signed short INT16;` |
+| **INT32** | A 32-bit signed integer.<br>`typedef signed int INT32;` |
+| **INT64** | A 64-bit signed integer.<br>`typedef signed __int64 INT64;` |
+| **LANGID** | A language identifier.<br>`typedef word LANGID;` |
+| **LCID** | A locale identifier.<br>`typedef dword LCID;` |
+| **LCTYPE** | A locale information type.<br>`typedef dword LCTYPE;` |
+| **LGRPID** | A language group identifier.<br>`typedef dword LGRPID;` |
+| **LONG** | A 32-bit signed integer. The range is 2147483648 through 2147483647 decimal.<br>`typedef long LONG;` |
+| **LONGLONG** | A 64-bit signed integer. The range is 9223372036854775808 through 9223372036854775807 decimal.<br>`typedef __int64 LONGLONG;` |
+| **LONG_PTR** | A signed long type for pointer precision. Use when casting a pointer to a long to perform pointer arithmetic.<br>`typedef long LONG_PTR;` (32-bit) `typedef __int64 LONG_PTR;`(64-bit) |
