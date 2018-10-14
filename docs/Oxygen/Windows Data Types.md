@@ -62,3 +62,4 @@ For more information about handling 64-bit integers, see Large Integers.
 | **HWINSTA** | A handle to a window station.<br>`typedef HANDLE HWINSTA;` |
 | **HWND** | A handle to a window.<br>`typedef HANDLE HWND;` |
 | **INT** | A 32-bit signed integer. The range is -2147483648 through 2147483647 decimal.<br>`typedef int INT;` |
+| **INT_PTR** | A signed integer type for pointer precision. Use when casting a pointer to an integer to perform pointer arithmetic.<br>`typedef int INT_PTR;` (32-bit) typedef \_\_int64 INT_PTR; (64-bit) |
