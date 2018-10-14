@@ -25,3 +25,5 @@ For more information about handling 64-bit integers, see Large Integers.
 | **DWORD64** | A 64-bit unsigned integer.<br>`typedef unsigned __int64 DWORD64;` |
 | **FLOAT** | A floating-point variable.<br>`typedef float FLOAT;` |
 | **HACCEL** | A handle to an accelerator table.<br>`typedef HANDLE HACCEL;` |
+| **HALF_PTR** | A handle to an accelerator table.<br>`typedef int HALF_PTR;` (32-bit) `typedef short HALF_PTR;` (64-bit) |
+| **HANDLE** | A handle to an object.<br>`typedef sys HANDLE;` |
