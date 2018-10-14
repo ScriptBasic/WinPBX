@@ -88,3 +88,8 @@ The following table contains the following types: character, integer, Boolean, p
 | **LPLONG** | A pointer to an LONG.<br>`typedef long *LPLONG;` |
 | **LPSTR** | A pointer to a null-terminated string of 8-bit Windows (ANSI) characters.<br>`typedef char *LPSTR;` |
 | **LPTSTR** | An LPWSTR if UNICODE is defined, an LPSTR otherwise<br>`typedef LPWSTR LPTSTR;` (UNICODE) `typedef LPSTR LPTSTR;` (ANSI) |
+| **LPVOID** | A pointer to any type.<br>`typedef void *LPVOID;` |
+| **LPWORD** | A pointer to a a WORD.<br>`typedef word *LPWORD;` |
+| **LPWSTR** | A pointer to a null-terminated string of 16-bit Unicode characters.<br>`typedef wchar *LPWSTR;` |
+| **LRESULT** | Signed result of message processing.<br>`typedef LONG_PTR LRESULT;` |
+| **PBOOL** | A pointer to a BOOL.<br>`typedef bool *PBOOL;` |
