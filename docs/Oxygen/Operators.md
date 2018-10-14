@@ -1082,7 +1082,7 @@ print i
 
 Can also be used for explicit casting.
 
-In the following example, casting the *b* variable to *sys* tells the compiler that we are returning a pointer, not a numemri value:
+In the following example, casting the *b* variable to *sys* tells the compiler that we are returning a pointer, not a numeric value:
 
 ```
 function Foo () as string2
