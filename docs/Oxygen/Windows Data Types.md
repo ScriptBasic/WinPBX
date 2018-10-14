@@ -74,3 +74,9 @@ For more information about handling 64-bit integers, see Large Integers.
 | **LONG** | A 32-bit signed integer. The range is 2147483648 through 2147483647 decimal.<br>`typedef long LONG;` |
 | **LONGLONG** | A 64-bit signed integer. The range is 9223372036854775808 through 9223372036854775807 decimal.<br>`typedef __int64 LONGLONG;` |
 | **LONG_PTR** | A signed long type for pointer precision. Use when casting a pointer to a long to perform pointer arithmetic.<br>`typedef long LONG_PTR;` (32-bit) `typedef __int64 LONG_PTR;`(64-bit) |
+| **LONG32** | A 32-bit signed integer. The range is 2147483648 through 2147483647 decimal.<br>`typedef signed int LONG32;` |
+| **LONG64** | A 64-bit signed integer. The range is 9223372036854775808 through 9223372036854775807 decimal.<br>`typedef __int64 LONG64;` |
+| **LPARAM** | A message parameter.<br>`typedef LONG_PTR LPARAM;` |
+| **LPBOOL** | A pointer to a BOOL.<br>`typedef bool *LPBOOL;` |
+| **LPBYTE** | A pointer to a BYTE.<br>`typedef byte *LPBYTE;` |
+| **LPCOLORREF** | A pointer to a COLORREF value.<br>`typedef dword*LPCOLORREF;` |
