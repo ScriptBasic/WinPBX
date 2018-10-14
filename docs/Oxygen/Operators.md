@@ -1061,7 +1061,7 @@ print x1 >>> x2      ' Output: -2.147.483.648 - Binary: 8000 0000
 
 # <a name="cast"></a>cast
 
-Changes or specifies the type of a variable temporarily, in an expression.
+Changes or specifies the type of a variable temporarily, in an expression. See also the `()` operator.
 
 ```
 float f = 100
@@ -1080,7 +1080,7 @@ print i
 ' Output: 12345
 ```
 
-Can also be used for explicit casting.
+Can also be used for explicit casting, being functionally equivalent to `cast()`.
 
 In the following example, casting the *b* variable to *sys* tells the compiler that we are returning a pointer, not a numeric value:
 
