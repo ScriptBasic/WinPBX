@@ -13,7 +13,8 @@ For more information about handling 64-bit integers, see Large Integers.
 | **BOOL** | A Boolean variable (should be TRUE or FALSE).<br>`typedef bool BOOL;` |
 | **BOOLEAN** | A Boolean variable (should be TRUE or FALSE).<br>`typedef boolean BOOLEAN;` |
 | **BYTE** | A byte (8 bits).<br>`typedef byte BYTE;` |
-| **CALLBACK** | The calling convention for callback functions.<br>`#define CALLBACK stdcall` |
+| **CALLBACK** | The calling convention for callback functions.<br>`#ifndef mode64bit #define CALLBACK stdcall #else #define CALLBACK ms64
+#endif` |
 | **CCHAR** | An 8-bit Windows (ANSI) character.<br>`typedef char CCHAR;` |
 | **CHAR** | An 8-bit Windows (ANSI) character.<br>`typedef char CHAR;` |
 | **COLORREF** | The red, green, blue (RGB) color value (32 bits).<br>`typedef dword COLORREF;` |
