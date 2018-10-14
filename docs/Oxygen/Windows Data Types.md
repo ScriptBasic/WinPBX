@@ -1,10 +1,8 @@
 # Windows Data Types
 
-The data types supported by Windows are used to define function return values, function and message parameters, and structure members. They define the size and meaning of these elements. For more information about the underlying C/C++ data types, see Data Type Ranges.
+The data types supported by Windows are used to define function return values, function and message parameters, and structure members. They define the size and meaning of these elements.
 
 The following table contains the following types: character, integer, Boolean, pointer, and handle. The character, integer, and Boolean types are common to most C compilers. Most of the pointer-type names begin with a prefix of P or LP. Handles refer to a resource that has been loaded into memory.
-
-For more information about handling 64-bit integers, see Large Integers.
 
 | Name       | Description / O2 definition |
 | ---------- | ----------- |
