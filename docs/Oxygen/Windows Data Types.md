@@ -86,3 +86,5 @@ The following table contains the following types: character, integer, Boolean, p
 | **LPHANDLE** | A pointer to a HANDLE.<br>`typedef HANDLE *LPHANDLE;` |
 | **LPINT** | A pointer to an INT.<br>`typedef int *LPINT;` |
 | **LPLONG** | A pointer to an LONG.<br>`typedef long *LPLONG;` |
+| **LPSTR** | A pointer to a null-terminated string of 8-bit Windows (ANSI) characters.<br>`typedef char *LPSTR;` |
+| **LPTSTR** | An LPWSTR if UNICODE is defined, an LPSTR otherwise<br>`typedef LPWSTR LPTSTR;` (UNICODE) `typedef LPSTR LPTSTR;` (ANSI) |
