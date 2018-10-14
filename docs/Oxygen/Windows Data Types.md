@@ -120,3 +120,36 @@ The following table contains the following types: character, integer, Boolean, p
 | **PLONG_PTR** | A pointer to an LONG_PTR.<br>`typedef LONG_PTR *PLONG_PTR;` |
 | **PLONG32** | A pointer to a LONG32.<br>`typedef LONG32 *PLONG32;` |
 | **PLONG64** | A pointer to a LONG64.<br>`typedef LONG64 *PLONG64;` |
+| **POINTER_32** | A 32-bit pointer. On a 32-bit system, this is a native pointer. On a 64-bit system, this is a truncated 64-bit pointer. |
+| **POINTER_64** | A 64-bit pointer. On a 64-bit system, this is a native pointer. On a 32-bit system, this is a sign-extended 32-bit pointer. |
+| **POINTER_SIGNED** | A signed pointer. |
+| **POINTER_UNSIGNED** | A unsigned pointer. |
+| **PSHORT** | A pointer to an SHORT.<br>`typedef short *PSHORT;` |
+| **PSIZE_T** | A pointer to an SIZE_T.<br>`typedef SIZE_T *PSIZE_T;` |
+| **PSSIZE_T** | A pointer to an SSIZE_T.<br>`typedef SSIZE_T *PSSIZE_T;` |
+| **PSTR** | A pointer to a null-terminated string of 8-bit Windows (ANSI) characters.<br>`typedef char *PSTR;` |
+| **PTBYTE** | A pointer to a TBYTE.<br>`typedef TBYTE *PTBYTE;` |
+| **PTCHAR** | A pointer to a TCHAR.<br>`typedef TCHAR *PTCHAR;` |
+| **PTSTR** | A PWSTR if UNICODE is defined, a PSTR otherwise.<br>`typedef LPWSTR PTSTR;` (UNICODE) `typedef LPSTR PTSTR;` (ANSI) |
+| **PUCHAR** | A pointer to a UCHAR.<br>`typedef UCHAR *PUCHAR;` |
+| **PUHALF_PTR** | A pointer to a UHALF_PTR.<br>`typedef UHALF_PTR *PUHALF_PTR;` |
+| **PUINT** | A pointer to a UINT.<br>`typedef uint *PUINT;` |
+| **PUINT_PTR** | A pointer to a UINT.<br>`typedef UINT_PTR *PUINT_PTR;` |
+| **PUINT8** | A pointer to a UINT8.<br>`typedef UINT8 *PUINT8;` |
+| **PUINT16** | A pointer to a UINT16.<br>`typedef UINT16 *PUINT16;` |
+| **PUINT32** | A pointer to a UINT32.<br>`typedef UINT32 *PUINT32;` |
+| **PUINT64** | A pointer to a UINT64.<br>`typedef UINT64 *PUINT64;` |
+| **PULONG** | A pointer to a ULONG.<br>`typedef ULONG *PULONG;` |
+| **PULONGLONG** | A pointer to a ULONGLONG.<br>`typedef ULONGLONG *PULONGLONG;` |
+| **PULONG_PTR** | A pointer to a ULONG_PTR.<br>`typedef ULONG_PTR *PULONG_PTR;` |
+| **PULONG32** | A pointer to a ULONG32.<br>`typedef ULONG32 *PULONG32;` |
+| **PULONG64** | A pointer to a ULONG64.<br>`typedef ULONG64 *PULONG64;` |
+| **PUSHORT** | A pointer to a USHORT.<br>`typedef USHORT *PUSHORT;` |
+| **PVOID** | A pointer to any type.<br>`typedef void *LPVOID;` |
+| **PWCHAR** | A pointer to a WCHAR.<br>`typedef wchar *PWCHAR;` |
+| **PWORD** | A pointer to a WORD.<br>`typedef word *PWORD;` |
+| **PWSTR** | A pointer to a null-terminated string of 16-bit Unicode characters.<br>`typedef wchar *PWSTR;` |
+| **QWORD** | A pointer to a A 64-bit unsigned integer.<br>`typedef qword QWORD;` |
+| **SC_HANDLE** | A handle to a service control manager database.<br>`typedef HANDLE SC_HANDLE;` |
+| **SC_LOCK** | A lock to a service control manager database.<br>`typedef LPVOID SC_LOCK;` |
+| **SERVICE_STATUS_HANDLE** | A handle to a service status value.<br>`typedef HANDLE SERVICE_STATUS_HANDLE;;` |
