@@ -77,4 +77,12 @@ The following table contains the following types: character, integer, Boolean, p
 | **LPARAM** | A message parameter.<br>`typedef LONG_PTR LPARAM;` |
 | **LPBOOL** | A pointer to a BOOL.<br>`typedef bool *LPBOOL;` |
 | **LPBYTE** | A pointer to a BYTE.<br>`typedef byte *LPBYTE;` |
-| **LPCOLORREF** | A pointer to a COLORREF value.<br>`typedef dword*LPCOLORREF;` |
+| **LPCOLORREF** | A pointer to a COLORREF value.<br>`typedef dword *LPCOLORREF;` |
+| **LPCSTR** | A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters.<br>`typedef char *LPCSTR;` |
+| **LPCTSTR** | An LPCWSTR if UNICODE is defined, an LPCSTR otherwise.<br>`typedef LPCWSTR LPCTSTR; (UNICODE) typedef LPCSTR LPCTSTR; (ANSI)` |
+| **LPCVOID** | A pointer to a constant of any type.<br>`typedef void *LPCVOID;` |
+| **LPCWSTR** | A pointer to a constant null-terminated string of 16-bit Unicode characters.<br>`typedef wchar *LPCWSTR;` |
+| **LPDWORD** | A pointer to a DWORD.<br>`typedef dword *LPDWORD;` |
+| **LPHANDLE** | A pointer to a HANDLE.<br>`typedef HANDLE *LPHANDLE;` |
+| **LPINT** | A pointer to an INT.<br>`typedef int *LPINT;` |
+| **LPLONG** | A pointer to an LONG.<br>`typedef long *LPLONG;` |
