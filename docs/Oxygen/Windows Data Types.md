@@ -93,3 +93,30 @@ The following table contains the following types: character, integer, Boolean, p
 | **LPWSTR** | A pointer to a null-terminated string of 16-bit Unicode characters.<br>`typedef wchar *LPWSTR;` |
 | **LRESULT** | Signed result of message processing.<br>`typedef LONG_PTR LRESULT;` |
 | **PBOOL** | A pointer to a BOOL.<br>`typedef bool *PBOOL;` |
+| **PBOOLEAN** | A pointer to a BOOLEAN.<br>`typedef boolean *PBOOLEAN;` |
+| **PBYTE** | A pointer to a BYTE.<br>`typedef byte *PBYTE;` |
+| **PCHAR** | A pointer to a CHAR.<br>`typedef char *PCHAR;` |
+| **PCSTR** | A pointer to a constant null-terminated string of 8-bit Windows (ANSI) characters.<br>`typedef char *PCSTR;` |
+| **PCTSTR** | A PCWSTR if UNICODE is defined, a PCSTR otherwise.<br>`typedef LPCWSTR PCTSTR;` (UNICODE) `typedef LPCSTR PCTSTR;` (ANSI) |
+| **PCWSTR** | A pointer to a constant null-terminated string of 16-bit Unicode characters.<br>`typedef wchar *PCWSTR;` |
+| **PDWORD** | A pointer to a DWORD.<br>`typedef dword *PDWORD;` |
+| **PDWORDLONG** | A pointer to a DWORDLONG.<br>`typedef DWORDLONG *PDWORDLONG;` |
+| **PDWORD_PTR** | A pointer to a DWORD_PTR.<br>`typedef DWORD_PTR *PDWORD_PTR;` |
+| **PDWORD32** | A pointer to a DWORD32.<br>`typedef DWORD32 *PDWORD32;` |
+| **PDWORD64** | A pointer to a DWORD64.<br>`typedef DWORD64 *PDWORD64;` |
+| **PFLOAT** | A pointer to a FLOAT.<br>`typedef float *PFLOAT;` |
+| **PHALF_PTR** | A pointer to a HALF_PTR.<br>`typedef HALF_PTR *PHALF_PTR;` |
+| **PHANDLE** | A pointer to a HANDLE.<br>`typedef HANDLE *PHANDLE;` |
+| **PHKEY** | A pointer to an HKEY.<br>`typedef HKEY *PHKEY;` |
+| **PINT** | A pointer to an INT.<br>`typedef int *PINT;` |
+| **PINT_PTR** | A pointer to an INT_PTR.<br>`typedef INT_PTR *PINT_PTR;` |
+| **PINT8** | A pointer to an INT8.<br>`typedef INT8 *PINT8;` |
+| **PINT16** | A pointer to an INT16.<br>`typedef INT16 *PINT16;` |
+| **PINT32** | A pointer to an INT32.<br>`typedef INT32 *PINT32;` |
+| **PINT64** | A pointer to an INT64.<br>`typedef INT64 *PINT64;` |
+| **PLCID** | A pointer to an LCID.<br>`typedef PDWORD PLCID;` |
+| **PLONG** | A pointer to an LONG.<br>`typedef LONG *PLONG;` |
+| **PLONGLONG** | A pointer to an LONGLONG.<br>`typedef LONGLONG *PLONGLONG;` |
+| **PLONG_PTR** | A pointer to an LONG_PTR.<br>`typedef LONG_PTR *PLONG_PTR;` |
+| **PLONG32** | A pointer to a LONG32.<br>`typedef LONG32 *PLONG32;` |
+| **PLONG64** | A pointer to a LONG64.<br>`typedef LONG64 *PLONG64;` |
