@@ -1093,7 +1093,7 @@ function Foo () as string2
 end function
 ```
 
-And in the following ones, casting the return value of the function to *bstring*, without using an intermediate variable, the *bstr* pointer is attached to a newly created native *strig2* function and the garbage collector will grab it for timely disposal.
+And in the following ones, casting the return value of the function to *bstring*, without using an intermediate variable, the *bstr* pointer is attached to a newly created native *string2* function and the garbage collector will grab it for timely disposal.
 
 ```
 function Foo () as string2
