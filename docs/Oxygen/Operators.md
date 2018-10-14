@@ -1080,6 +1080,32 @@ print i
 ' Output: 12345
 ```
 
+Can also be used for explicit casting.
+
+In the following example, casting the *b* variable to *sys* tells the compiler that we are returning a pointer, not a numemri value:
+
+```
+function Foo () as string2
+   dim b as bstr 
+   (sys) b = SysAllocString("Test string")
+   function = b
+   SysFreeString b
+end function
+```
+
+And in the following ones, casting the return value of the function to *bstring*, without using an intermediate variable, the *bstr* pointer is attached to a newly created native *strig2* function and the garbage collector will grab it for timely disposal.
+
+```
+function Foo () as string2
+   function = (bstring) SysAllocString("Test string")
+end function
+```
+```
+function Foo () as string2
+   return (bstring) SysAllocString("Test string")
+end function
+```
+
 # <a name="castint"></a>Integer cast operator: ?
 
 Casts variables as integers.
