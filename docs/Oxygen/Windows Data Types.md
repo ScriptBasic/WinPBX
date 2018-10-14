@@ -15,3 +15,6 @@ For more information about handling 64-bit integers, see Large Integers.
 | **BYTE** | A byte (8 bits). | `typedef unsigned char BYTE;` | `typedef byte BYTE;` |
 | **CALLBACK** | The calling convention for callback functions. | `#define CALLBACK __stdcall` | `#define CALLBACK stdcall` |
 | **CCHAR** | An 8-bit Windows (ANSI) character. | `typedef char CCHAR;` | `typedef char CCHAR;` |
+| **CHAR** | An 8-bit Windows (ANSI) character. | `typedef char CHAR;` | `typedef char CHAR;` |
+| **COLORREF** | The red, green, blue (RGB) color value (32 bits). | `typedef DWORD COLORREF;` | `typedef dword COLORREF;` |
+| **CONST** | A variable whose value is to remain constant during execution.  | `#define CONST const` | N/A |
