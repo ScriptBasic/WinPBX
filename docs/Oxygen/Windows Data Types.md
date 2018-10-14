@@ -171,4 +171,4 @@ The following table contains the following types: character, integer, Boolean, p
 | **ULONG_PTR** | An unsigned LONG_PTR.<br>`typedef unsigned long ULONG_PTR (32-bit) typedef unsigned __int64 ULONG_PTR; (64-bit)` |
 | **ULONG32** | An unsigned LONG32. The range is 0 through 4294967295 decimal.<br>`typedef unsigned int ULONG32;` |
 | **ULONG64** | An unsigned LONG64. The range is 0 through 18446744073709551615 decimal.<br>`typedef unsigned __int64 ULONG64;` |
-| **UNICODE_STRING** | A Unicode string.<br>`typedef struct _UNICODE_STRING {<br>  USHORT  Length;<br>  USHORT  MaximumLength;<br>  PWSTR  Buffer;<br>} UNICODE_STRING;<br>typedef UNICODE_STRING *PUNICODE_STRING;<br>typedef const UNICODE_STRING *PCUNICODE_STRING;` |
+| **UNICODE_STRING** | A Unicode string.<br>`typedef struct _UNICODE_STRING` {<br>  `USHORT  Length;`<br>  `USHORT  MaximumLength;`<br>`  PWSTR  Buffer`;<br>`} UNICODE_STRING;`<br>`typedef UNICODE_STRING *PUNICODE_STRING;`<br>`typedef const UNICODE_STRING *PCUNICODE_STRING;` |
