@@ -6,7 +6,7 @@ The following table contains the following types: character, integer, Boolean, p
 
 For more information about handling 64-bit integers, see Large Integers.
 
-| Name       | Description |
+| Name       | Description / O2 definition |
 | ---------- | ----------- |
 | **APIENTRY** | The calling convention for system functions.<br>`#define APIENTRY WINAPI` |
 | **ATOM** | An atom.<br>`typedef word ATOM;` |
