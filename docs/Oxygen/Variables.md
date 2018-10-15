@@ -65,6 +65,7 @@
 | [\*/](#rem3) | Terminates comment block. |
 | [scope](#scope) | Creates a block where variables and functions may be locally defined. |
 | [skip](#skip) | Prevents code within the block from being executed. |
+| [::](#scopeop) | Scope resolution operator. |
 
 # <a name="dim"></a>dim
 
@@ -896,6 +897,25 @@ skin {
   dim int i = 2
   print i
 }
+```
+
+# <a name="::"></a>Scope resolution operator (::)
+
+The scope resolution operator `::` is used to identify and disambiguate identifiers used in different scopes. To access the global namespace use `global::identifier`. The identifier can be a variable or a procedure.
+
+```
+namespace aa
+   int i = 10
+   int x = 22
+end namespace
+
+namespace bb
+   int i = 11
+   int x = 33
+end namespace
+
+print aa::i   ' output: 10
+print bb::i   ' output: 11
 ```
 
 # <a name="len"></a>len
