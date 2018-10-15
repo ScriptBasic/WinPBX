@@ -797,6 +797,19 @@ aa::foo
 bb::foo
 ```
 
+```
+namespace x
+   type t
+      int x
+      int y
+   end type
+end namespace
+
+dim tt as x::t
+tt.x = 11
+print tt.x
+```
+
 # <a name="rem2"></a>rem (//)
 
 Comments till end of line.
