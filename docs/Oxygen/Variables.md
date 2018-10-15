@@ -58,6 +58,7 @@
 | Name       | Description |
 | ---------- | ----------- |
 | [block](#block) | Creates a block of code. |
+| [namespace](#namespace) | Declares a namespace block. |
 | [rem](#rem) | Comments till end of line. |
 | [//](#rem2)| Comments till end of line. |
 | [\/\*](#rem3) | Comments till end of block. |
@@ -754,6 +755,46 @@ Comments till end of line.
 
 ```
 rem this is a comment
+```
+
+# <a name="namespace"></a>namespace
+
+Declares a namespace block. Symbols are locally defined but accessible from the outside.
+
+#### Syntax
+```
+namespace identifier
+   [statements]
+end namespace
+```
+
+```
+int i = 1
+
+namespace aa
+   int i = 10
+   sub foo
+      print "foo from namespace aa"
+   end sub
+end namespace
+
+namespace bb
+   int i = 20
+   sub foo
+      print "foo from namespace bb"
+   end sub
+end namespace
+
+print i + aa::i + bb::i   ' output: 31
+
+namespace bb
+   print i   ' output: 20
+end namespace
+
+print bb::i   ' output: 20
+
+aa::foo
+bb::foo
 ```
 
 # <a name="rem2"></a>rem (//)
