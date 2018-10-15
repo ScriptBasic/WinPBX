@@ -759,7 +759,7 @@ rem this is a comment
 
 # <a name="namespace"></a>namespace
 
-Declares a namespace block. Symbols are locally defined but accessible from the outside.
+Declares a namespace block. A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries. All identifiers at namespace scope are visible to one another without qualification. Identifiers outside the namespace can access the members by using the fully qualified name for each identifier, for example *namespace_name::variable_name*.
 
 #### Syntax
 ```
