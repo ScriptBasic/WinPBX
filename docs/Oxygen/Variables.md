@@ -829,6 +829,26 @@ print c32.g
 print c32.b
 ```
 
+A namespace can be declared in multiple blocks in a single file, and in multiple files. The compiler joins the parts together during preprocessing and the resulting namespace contains all the members declared in all the parts.
+
+```
+namespace aa
+   int i = 10
+end namespace
+
+namespace bb
+   int i = 20
+end namespace
+
+namespace aa
+   int x = 11
+end namespace
+
+print aa::i
+print bb::i
+print aa::x
+```
+
 # <a name="rem2"></a>rem (//)
 
 Comments till end of line.
