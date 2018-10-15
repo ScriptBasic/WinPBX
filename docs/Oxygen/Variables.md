@@ -810,6 +810,25 @@ tt.x = 11
 print tt.x
 ```
 
+```
+namespace x
+  typedef struct _color32 {
+    union { 
+      struct {
+        byte r,g,b,a
+      }
+      long rgba
+    }  
+  } color32, *pcolor32
+end namespace
+
+dim c32 as x::color32
+c32.rgba = 0xFFFEFC
+print c32.r
+print c32.g
+print c32.b
+```
+
 # <a name="rem2"></a>rem (//)
 
 Comments till end of line.
