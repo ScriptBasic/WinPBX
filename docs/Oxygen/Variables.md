@@ -899,7 +899,7 @@ skin {
 }
 ```
 
-# <a name="::"></a>Scope resolution operator (::)
+# <a name="scopeop"></a>Scope resolution operator (::)
 
 The scope resolution operator `::` is used to identify and disambiguate identifiers used in different scopes. To access the global namespace use `global::identifier`. The identifier can be a variable or a procedure.
 
