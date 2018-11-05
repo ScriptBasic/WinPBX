@@ -373,7 +373,7 @@ WinMain   ' Call the main procedure
 
 # <a name="sub"></a>sub
 
-Defines a procedure that does not returns a value.
+Defines a procedure that does not return a value.
 
 #### Syntax
 
